@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=82:02:34:AC:C3:80:6E:B8:2A:CD:34:58:7B:3D:E2:52:76:9B:2A:BE%3Bcom.pokemon.toronto.game
+
+    You can also add your credentials to an existing key, using this line:
+    82:02:34:AC:C3:80:6E:B8:2A:CD:34:58:7B:3D:E2:52:76:9B:2A:BE;com.pokemon.toronto.game
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAi_UIzj7Wbu-GmgzAbrMcdTLXttYgV5m8
+    </string>
+</resources>
