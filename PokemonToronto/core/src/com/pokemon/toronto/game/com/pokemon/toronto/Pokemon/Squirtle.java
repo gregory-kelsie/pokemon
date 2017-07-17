@@ -10,25 +10,25 @@ import java.util.List;
  * Created by Gregory on 6/14/2017.
  */
 public class Squirtle extends Pokemon {
-    private static final int SQUIRTLE_NUMBER = 7;
-    private static final String SQUIRTLE_NAME = "Squirtle";
-    private static final int SQUIRTLE_BASE_EXP = 54;
-    private static final int[] SQUIRTLE_EV_YIELD = {0, 0, 1, 0, 0, 0};
+    private static final int NUMBER = 7;
+    private static final String NAME = "Squirtle";
+    private static final int BASE_EXP = 54;
+    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
-    private static final int SQUIRTLE_BASE_HEALTH = 44;
-    private static final int SQUIRTLE_BASE_ATTACK = 48;
-    private static final int SQUIRTLE_BASE_DEFENSE = 65;
-    private static final int SQUIRTLE_BASE_SPECIAL_ATTACK = 50;
-    private static final int SQUIRTLE_BASE_SPECIAL_DEFENSE = 64;
-    private static final int SQUIRTLE_BASE_SPEED = 43;
+    private static final int BASE_HEALTH = 44;
+    private static final int BASE_ATTACK = 48;
+    private static final int BASE_DEFENSE = 65;
+    private static final int BASE_SPECIAL_ATTACK = 50;
+    private static final int BASE_SPECIAL_DEFENSE = 64;
+    private static final int BASE_SPEED = 43;
 
-    private static final String SQUIRTLE_ICON_PATH = "pokemonSprites/squirtle/squirtle.png";
+    private static final String ICON_PATH = "pokemonSprites/squirtle/squirtle.png";
     private static final String BACK_PATH = "battle/backs/squirtle.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/squirtle.png";
     public Squirtle(int level) {
-        super(SQUIRTLE_NUMBER, SQUIRTLE_NAME, level, Type.WATER, Type.NONE, Ability.TORRENT, ExpType.MEDIUM_SLOW,
-                SQUIRTLE_BASE_EXP, SQUIRTLE_EV_YIELD, new int[]{SQUIRTLE_BASE_HEALTH, SQUIRTLE_BASE_ATTACK, SQUIRTLE_BASE_DEFENSE,
-                        SQUIRTLE_BASE_SPECIAL_ATTACK, SQUIRTLE_BASE_SPECIAL_DEFENSE, SQUIRTLE_BASE_SPEED}, SQUIRTLE_ICON_PATH,
+        super(NUMBER, NAME, level, Type.WATER, Type.NONE, Ability.TORRENT, ExpType.MEDIUM_SLOW,
+                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();

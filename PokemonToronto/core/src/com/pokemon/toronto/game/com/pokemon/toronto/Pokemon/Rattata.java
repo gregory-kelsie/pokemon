@@ -10,25 +10,25 @@ import java.util.List;
  * Created by Gregory on 6/11/2017.
  */
 public class Rattata extends Pokemon {
-    private static final int RATTATA_NUMBER = 19;
-    private static final String RATTATA_NAME = "Rattata";
-    private static final int RATTATA_BASE_EXP = 54;
-    private static final int[] RATTATA_EV_YIELD = {0, 0, 0, 0, 0, 1};
+    private static final int NUMBER = 19;
+    private static final String NAME = "Rattata";
+    private static final int BASE_EXP = 54;
+    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
-    private static final int RATTATA_BASE_HEALTH = 30;
-    private static final int RATTATA_BASE_ATTACK = 1000; //56
-    private static final int RATTATA_BASE_DEFENSE = 35;
-    private static final int RATTATA_BASE_SPECIAL_ATTACK = 25;
-    private static final int RATTATA_BASE_SPECIAL_DEFENSE = 35;
-    private static final int RATTATA_BASE_SPEED = 72;
+    private static final int BASE_HEALTH = 30;
+    private static final int BASE_ATTACK = 1000; //56
+    private static final int BASE_DEFENSE = 35;
+    private static final int BASE_SPECIAL_ATTACK = 25;
+    private static final int BASE_SPECIAL_DEFENSE = 35;
+    private static final int BASE_SPEED = 72;
 
-    private static final String RATTATA_ICON_PATH = "pokemonSprites/rattata/rattata.png";
+    private static final String ICON_PATH = "pokemonSprites/rattata/rattata.png";
     private static final String BACK_PATH = "battle/backs/rattata.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/rattata.png";
     public Rattata(int level) {
-        super(RATTATA_NUMBER, RATTATA_NAME, level, Type.NORMAL, Type.NONE, Ability.GUTS, ExpType.MEDIUM_FAST,
-                RATTATA_BASE_EXP, RATTATA_EV_YIELD, new int[]{RATTATA_BASE_HEALTH, RATTATA_BASE_ATTACK, RATTATA_BASE_DEFENSE,
-                RATTATA_BASE_SPECIAL_ATTACK, RATTATA_BASE_SPECIAL_DEFENSE, RATTATA_BASE_SPEED}, RATTATA_ICON_PATH,
+        super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, Ability.GUTS, ExpType.MEDIUM_FAST,
+                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
+                BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
