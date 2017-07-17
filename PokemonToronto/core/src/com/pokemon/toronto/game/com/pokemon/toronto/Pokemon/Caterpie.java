@@ -13,7 +13,7 @@ public class Caterpie extends Pokemon {
     private static final String CATERPIE_NAME = "Caterpie";
     private static final int CATERPIE_BASE_EXP = 54;
     private static final int[] CATERPIE_EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CATERPIE_CAPTURE_RATE = 255;
+    private static final int CAPTURE_RATE = 255;
     private static final int CATERPIE_BASE_HEALTH = 45;
     private static final int CATERPIE_BASE_ATTACK = 30;
     private static final int CATERPIE_BASE_DEFENSE = 35;
@@ -28,7 +28,7 @@ public class Caterpie extends Pokemon {
         super(CATERPIE_NUMBER, CATERPIE_NAME, level, Type.BUG, Type.NONE, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
                 CATERPIE_BASE_EXP, CATERPIE_EV_YIELD, new int[]{CATERPIE_BASE_HEALTH, CATERPIE_BASE_ATTACK, CATERPIE_BASE_DEFENSE,
                         CATERPIE_BASE_SPECIAL_ATTACK, CATERPIE_BASE_SPECIAL_DEFENSE, CATERPIE_BASE_SPEED}, CATERPIE_ICON_PATH,
-                CATERPIE_BACK_PATH, MINI_PATH);
+                CATERPIE_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

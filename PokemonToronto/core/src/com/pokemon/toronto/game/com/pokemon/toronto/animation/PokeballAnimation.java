@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.animation;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class PokeballAnimation {
 
     private List<Texture> pokeballFrames;
     private int currentShake;
+    private CatchResults catchResults;
 
     public PokeballAnimation() {
         this.x = 122;
@@ -77,9 +79,13 @@ public class PokeballAnimation {
                 if (counter >= 1) {
                     state = SHAKE_STATE;
                     counter = 0;
-                    if (currentShake == 3) {
+                    if (currentShake == catchResults.getShakes() && catchResults.isCaught()) {
                         state = FADED_STATE;
                         currentFrame = FADED;
+                    } else if (currentShake == catchResults.getShakes()) {
+                        counter = 0;
+                        shaking = false;
+                        finished = true;
                     }
                 }
             } else if (state == SHAKE_STATE) {
@@ -96,8 +102,7 @@ public class PokeballAnimation {
                     }
                 }
             } else if (state == FADED_STATE) {
-                counter += dt;
-                if (counter >= 10) {
+                if (counter >= 2) {
                     counter = 0;
                     shaking = false;
                     finished = true;
@@ -121,7 +126,8 @@ public class PokeballAnimation {
         }
     }
 
-    public void resetFinish() {
+    public void resetFinish(CatchResults catchResults) {
+        this.catchResults = catchResults;
         finished = false;
     }
     public void dispose() {

@@ -14,7 +14,7 @@ public class NidoranF extends Pokemon {
     private static final String NIDORANF_NAME = "Nidoran (f)";
     private static final int NIDORANF_BASE_EXP = 54;
     private static final int[] NIDORANF_EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int NIDORANF_CAPTURE_RATE = 235;
+    private static final int CAPTURE_RATE = 235;
     private static final int NIDORANF_BASE_HEALTH = 55;
     private static final int NIDORANF_BASE_ATTACK = 47;
     private static final int NIDORANF_BASE_DEFENSE = 52;
@@ -29,7 +29,7 @@ public class NidoranF extends Pokemon {
         super(NIDORANF_NUMBER, NIDORANF_NAME, level, Type.POISON, Type.NONE, Ability.POISON_POINT, ExpType.MEDIUM_SLOW,
                 NIDORANF_BASE_EXP, NIDORANF_EV_YIELD, new int[]{NIDORANF_BASE_HEALTH, NIDORANF_BASE_ATTACK, NIDORANF_BASE_DEFENSE,
                         NIDORANF_BASE_SPECIAL_ATTACK, NIDORANF_BASE_SPECIAL_DEFENSE, NIDORANF_BASE_SPEED}, NIDORANF_ICON_PATH,
-                NIDORANF_BACK_PATH, MINI_PATH);
+                NIDORANF_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

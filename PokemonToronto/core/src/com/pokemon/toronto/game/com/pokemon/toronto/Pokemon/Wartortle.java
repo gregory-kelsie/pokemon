@@ -13,7 +13,7 @@ public class Wartortle extends Pokemon {
     private static final String WARTORTLE_NAME = "Wartortle";
     private static final int WARTORTLE_BASE_EXP = 54;
     private static final int[] WARTORTLE_EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int WARTORTLE_CAPTURE_RATE = 45;
+    private static final int CAPTURE_RATE = 45;
     private static final int WARTORTLE_BASE_HEALTH = 59;
     private static final int WARTORTLE_BASE_ATTACK = 63;
     private static final int WARTORTLE_BASE_DEFENSE = 80;
@@ -28,7 +28,7 @@ public class Wartortle extends Pokemon {
         super(WARTORTLE_NUMBER, WARTORTLE_NAME, level, Type.WATER, Type.NONE, Ability.TORRENT, ExpType.MEDIUM_SLOW,
                 WARTORTLE_BASE_EXP, WARTORTLE_EV_YIELD, new int[]{WARTORTLE_BASE_HEALTH, WARTORTLE_BASE_ATTACK, WARTORTLE_BASE_DEFENSE,
                         WARTORTLE_BASE_SPECIAL_ATTACK, WARTORTLE_BASE_SPECIAL_DEFENSE, WARTORTLE_BASE_SPEED}, WARTORTLE_ICON_PATH,
-                BACK_PATH, MINI_PATH);
+                BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

@@ -13,7 +13,7 @@ public class Weedle extends Pokemon {
     private static final String WEEDLE_NAME = "Weedle";
     private static final int WEEDLE_BASE_EXP = 54;
     private static final int[] WEEDLE_EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int WEEDLE_CAPTURE_RATE = 255;
+    private static final int CAPTURE_RATE = 255;
     private static final int WEEDLE_BASE_HEALTH = 40;
     private static final int WEEDLE_BASE_ATTACK = 35;
     private static final int WEEDLE_BASE_DEFENSE = 30;
@@ -28,7 +28,7 @@ public class Weedle extends Pokemon {
         super(WEEDLE_NUMBER, WEEDLE_NAME, level, Type.BUG, Type.POISON, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
                 WEEDLE_BASE_EXP, WEEDLE_EV_YIELD, new int[]{WEEDLE_BASE_HEALTH, WEEDLE_BASE_ATTACK, WEEDLE_BASE_DEFENSE,
                         WEEDLE_BASE_SPECIAL_ATTACK, WEEDLE_BASE_SPECIAL_DEFENSE, WEEDLE_BASE_SPEED}, WEEDLE_ICON_PATH,
-                BACK_PATH, MINI_PATH);
+                BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

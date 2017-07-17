@@ -14,7 +14,7 @@ public class Ivysaur extends Pokemon {
     private static final String IVYSAUR_NAME = "Ivysaur";
     private static final int IVYSAUR_BASE_EXP = 54;
     private static final int[] IVYSAUR_EV_YIELD = {0, 0, 0, 1, 1, 0};
-    private static final int IVYSAUR_CAPTURE_RATE = 45;
+    private static final int CAPTURE_RATE = 45;
     private static final int IVYSAUR_BASE_HEALTH = 60;
     private static final int IVYSAUR_BASE_ATTACK = 62;
     private static final int IVYSAUR_BASE_DEFENSE = 63;
@@ -29,7 +29,7 @@ public class Ivysaur extends Pokemon {
         super(IVYSAUR_NUMBER, IVYSAUR_NAME, level, Type.GRASS, Type.POISON, Ability.OVERGROW, ExpType.MEDIUM_SLOW,
                 IVYSAUR_BASE_EXP, IVYSAUR_EV_YIELD, new int[]{IVYSAUR_BASE_HEALTH, IVYSAUR_BASE_ATTACK, IVYSAUR_BASE_DEFENSE,
                         IVYSAUR_BASE_SPECIAL_ATTACK, IVYSAUR_BASE_SPECIAL_DEFENSE, IVYSAUR_BASE_SPEED}, IVYSAUR_ICON_PATH,
-                IVYSAUR_BACK_PATH, MINI_PATH);
+                IVYSAUR_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

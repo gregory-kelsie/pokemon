@@ -43,7 +43,6 @@ public class BattleState extends GameState implements BattleInterface {
 
     private GameStateManager gsm;
     private int panelPosition;
-    private String textBoxText;
     private Pokemon enemyPokemon;
     private Pokemon currentPokemon;
     private int currentPokemonPosition;
@@ -114,8 +113,13 @@ public class BattleState extends GameState implements BattleInterface {
         panelPosition = FIRST_PANEL;
         currentItemPage = FIRST_ITEM_PAGE;
         this.enemyPokemon = enemyPokemon;
-        currentPokemonPosition = 0;
-        currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            if (gsm.getParty().get(i).getCurrentHealth() > 0) {
+                currentPokemon = gsm.getParty().get(i);
+                currentPokemonPosition = i;
+                break;
+            }
+        }
         this.bgm = bgm;
         healthText = new BitmapFont(Gdx.files.internal("battle/healthFont.fnt"));
         healthText.setColor(Color.BLACK);
@@ -277,7 +281,9 @@ public class BattleState extends GameState implements BattleInterface {
 
         if (pta.isFinished()) {
             if (!battleUpdater.started()) {
-                regularFont.draw(batch, "What will " + currentPokemon.getName() + " do?", 54, 1143);
+                if (!battleUpdater.caughtThePokemon()) {
+                    regularFont.draw(batch, "What will " + currentPokemon.getName() + " do?", 54, 1143);
+                }
             } else {
                 battleUpdater.renderText(batch);
             }
@@ -444,7 +450,6 @@ public class BattleState extends GameState implements BattleInterface {
             }
         }
     }
-
     private void createSkillButtonTextures() {
         Gdx.app.log("Skills", currentPokemon.getName() + ": " + currentPokemon.getSkills().size());
         firstSkill = initTypeTexture(currentPokemon.getSkills().get(0).getType());
@@ -460,7 +465,6 @@ public class BattleState extends GameState implements BattleInterface {
         }
 
     }
-
     private void resetSkillButtonTextures() {
         try {
             firstSkill.dispose();
@@ -593,13 +597,14 @@ public class BattleState extends GameState implements BattleInterface {
                     resetSkillButtonTextures();
                 }
 
+            } else {
+                if (battleUpdater.caughtThePokemon()) {
+                    gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
+                    dispose();
+                }
             }
 
-            if (panelPosition == FIRST_PANEL) {
-                textBoxText = "What will you do?";
-            } else if (panelPosition == BATTLE_PANEL) {
-                textBoxText = "Select a move.";
-            }
+
         }
 
         if (MyInput.clicked()) {

@@ -14,7 +14,7 @@ public class Eevee extends Pokemon {
     private static final String EEVEE_NAME = "Eevee";
     private static final int EEVEE_BASE_EXP = 54;
     private static final int[] EEVEE_EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int EEVEE_CAPTURE_RATE = 55;
+    private static final int CAPTURE_RATE = 55;
     private static final int EEVEE_BASE_HEALTH = 55;
     private static final int EEVEE_BASE_ATTACK = 50;
     private static final int EEVEE_BASE_DEFENSE = 52;
@@ -29,7 +29,7 @@ public class Eevee extends Pokemon {
         super(EEVEE_NUMBER, EEVEE_NAME, level, Type.NORMAL, Type.NONE, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
                 EEVEE_BASE_EXP, EEVEE_EV_YIELD, new int[]{EEVEE_BASE_HEALTH, EEVEE_BASE_ATTACK, EEVEE_BASE_DEFENSE,
                         EEVEE_BASE_SPECIAL_ATTACK, EEVEE_BASE_SPECIAL_DEFENSE, EEVEE_BASE_SPEED}, EEVEE_ICON_PATH,
-                EEVEE_BACK_PATH, MINI_PATH);
+                EEVEE_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

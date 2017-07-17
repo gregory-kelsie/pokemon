@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.PokeballAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleState;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -31,6 +32,8 @@ public class BattleUpdater {
     private boolean started;
     private boolean hidingUserPokemon;
     private int ballType;
+    private boolean caughtThePokemon;
+    private CatchResults catchResults;
 
 
     private int state;
@@ -94,6 +97,7 @@ public class BattleUpdater {
         state = IDLE;
         counter = 0;
         hidingUserPokemon = false;
+        caughtThePokemon = false;
 
     }
 
@@ -157,8 +161,20 @@ public class BattleUpdater {
         this.ballType = POKEBALL;
         this.enemySkill = enemySkill;
         secondSkill = enemySkill;
-
-        text = "You caught a " + enemyPokemon.getName() + "!";
+        catchResults = getCatchResults();
+        if (catchResults.isCaught()) {
+            text = "You caught a " + enemyPokemon.getName() + "!";
+        } else {
+            if (catchResults.getShakes() == 0) {
+                text = "Oh, no! The Pokémon broke free!";
+            } else if (catchResults.getShakes() == 1) {
+                text = "Aww! It appeared to be caught!";
+            } else if (catchResults.getShakes() == 2) {
+                text = "Aargh! Almost had it!";
+            } else {
+                text = "Shoot! It was so close, too!";
+            }
+        }
         textCounter = 0;
         textPosition = 0;
         listPosition = 0;
@@ -166,6 +182,54 @@ public class BattleUpdater {
         pokeballAnimation = new PokeballAnimation();
         state = THROW_POKEBALL;
         started = true;
+    }
+
+    private CatchResults getCatchResults() {
+        double ballMultiplier = getBallMultiplier(ballType);
+        double catchRate = enemyPokemon.getCaptureRate();
+        int maxHealth = enemyPokemon.getHealthStat();
+        int currentHealth = enemyPokemon.getCurrentHealth();
+        double bonusStatus = getBonusStatus(enemyPokemon.getStatus());
+        double a = (((3 * maxHealth - 2 * currentHealth) * catchRate * ballMultiplier)
+                / (3 * maxHealth)) * bonusStatus;
+        Gdx.app.log("Capture", "a: " + a);
+        int shakeAmount = 0;
+        if (a < 255) {
+            double b = 1048560 / (Math.sqrt(Math.sqrt(16711680 / a)));
+            Gdx.app.log("Capture", "b: " + b);
+            boolean caught = true;
+            for (int i = 0; i < 4; i++) {
+                long rand = Math.round(Math.random() * 65535);
+                Gdx.app.log("Capture", "rand: " + rand);
+                if (rand < b) {
+                    shakeAmount++;
+                } else {
+                    caught = false;
+                    break;
+                }
+            }
+            return new CatchResults(caught, shakeAmount);
+        } else {
+            return new CatchResults(true, 0);
+        }
+
+    }
+
+    private double getBonusStatus(Pokemon.Status s) {
+        if (s == Pokemon.Status.BURN || s == Pokemon.Status.PARALYSIS) {
+            return 1.5;
+        } else if (s == Pokemon.Status.FROZEN || s == Pokemon.Status.SLEEP) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+    private double getBallMultiplier(int ballType) {
+        if (ballType == POKEBALL) {
+            return 1;
+        } else {
+            return 1;
+        }
     }
 
     /*
@@ -285,7 +349,7 @@ public class BattleUpdater {
         pokeballAnimation.update(dt);
         if (pokeballAnimation.isFinished()) {
             state = SHAKING_POKEBALL;
-            pokeballAnimation.resetFinish();
+            pokeballAnimation.resetFinish(catchResults);
         }
     }
 
@@ -308,12 +372,17 @@ public class BattleUpdater {
 
         }
         //1 Second delay after writing the name.
-        if (textCounter >= 1) {
-            text = enemyPokemon.getName() + " used " + enemySkill.getName();
-            textCounter = 0;
-            textPosition = 0;
-            listPosition = 0;
-            state = DISPLAY_SECOND_SKILL_NAME;
+        if (textCounter >= 2) {
+            if (catchResults.isCaught()) {
+                started = false;
+                caughtThePokemon = true;
+            } else {
+                text = enemyPokemon.getName() + " used " + enemySkill.getName();
+                textCounter = 0;
+                textPosition = 0;
+                listPosition = 0;
+                state = DISPLAY_SECOND_SKILL_NAME;
+            }
         }
     }
 
@@ -922,11 +991,16 @@ public class BattleUpdater {
         return started;
     }
 
+    public boolean caughtThePokemon() { return caughtThePokemon; }
+
 
     public boolean isShaking() {
         if (state == SHAKING_POKEBALL) {
             return true;
         } else {
+            if (state == DISPLAY_CATCH_RESULTS && catchResults.isCaught()) {
+                return true;
+            }
             return false;
         }
     }

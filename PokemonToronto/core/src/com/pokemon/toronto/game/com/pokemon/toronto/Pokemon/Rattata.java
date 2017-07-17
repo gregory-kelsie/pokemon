@@ -14,7 +14,7 @@ public class Rattata extends Pokemon {
     private static final String RATTATA_NAME = "Rattata";
     private static final int RATTATA_BASE_EXP = 54;
     private static final int[] RATTATA_EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int RATTATA_CAPTURE_RATE = 255;
+    private static final int CAPTURE_RATE = 255;
     private static final int RATTATA_BASE_HEALTH = 30;
     private static final int RATTATA_BASE_ATTACK = 1000; //56
     private static final int RATTATA_BASE_DEFENSE = 35;
@@ -29,7 +29,7 @@ public class Rattata extends Pokemon {
         super(RATTATA_NUMBER, RATTATA_NAME, level, Type.NORMAL, Type.NONE, Ability.GUTS, ExpType.MEDIUM_FAST,
                 RATTATA_BASE_EXP, RATTATA_EV_YIELD, new int[]{RATTATA_BASE_HEALTH, RATTATA_BASE_ATTACK, RATTATA_BASE_DEFENSE,
                 RATTATA_BASE_SPECIAL_ATTACK, RATTATA_BASE_SPECIAL_DEFENSE, RATTATA_BASE_SPEED}, RATTATA_ICON_PATH,
-                BACK_PATH, MINI_PATH);
+                BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

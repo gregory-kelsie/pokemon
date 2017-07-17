@@ -13,7 +13,7 @@ public class Charizard extends Pokemon {
     private static final String CHARIZARD_NAME = "Charizard";
     private static final int CHARIZARD_BASE_EXP = 54;
     private static final int[] CHARIZARD_EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CHARIZARD_CAPTURE_RATE = 45;
+    private static final int CAPTURE_RATE = 45;
     private static final int CHARIZARD_BASE_HEALTH = 78;
     private static final int CHARIZARD_BASE_ATTACK = 84;
     private static final int CHARIZARD_BASE_DEFENSE = 78;
@@ -28,7 +28,7 @@ public class Charizard extends Pokemon {
         super(CHARIZARD_NUMBER, CHARIZARD_NAME, level, Type.FIRE, Type.FLYING, Ability.BLAZE, ExpType.MEDIUM_SLOW,
                 CHARIZARD_BASE_EXP, CHARIZARD_EV_YIELD, new int[]{CHARIZARD_BASE_HEALTH, CHARIZARD_BASE_ATTACK, CHARIZARD_BASE_DEFENSE,
                         CHARIZARD_BASE_SPECIAL_ATTACK, CHARIZARD_BASE_SPECIAL_DEFENSE, CHARIZARD_BASE_SPEED}, CHARIZARD_ICON_PATH,
-                CHARIZARD_BACK_PATH, MINI_PATH);
+                CHARIZARD_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

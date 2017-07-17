@@ -21,6 +21,7 @@ public abstract class Pokemon {
     protected Type typeOne;
     protected Type typeTwo;
     protected int level;
+    protected int captureRate;
     protected int currentHealth;
     protected int animationHealth;
     protected int baseExp;
@@ -119,7 +120,7 @@ public abstract class Pokemon {
     }
 
     public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo, Ability ability, ExpType expType,
-                   int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath) {
+                   int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath, int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
         this.gender = gender;
@@ -134,6 +135,7 @@ public abstract class Pokemon {
         this.typeOne = typeOne;
         this.typeTwo = typeTwo;
         this.ability = ability;
+        this.captureRate = captureRate;
         this.fainted = false;
         this.focused = false;
         status = Status.STATUS_FREE;
@@ -496,6 +498,7 @@ public abstract class Pokemon {
         nature = natureList[value];
     }
 
+    public int getCaptureRate() { return captureRate; }
     public int getBaseStatHealth() {
         return baseStats[HEALTH];
     }

@@ -13,7 +13,7 @@ public class Charmeleon extends Pokemon {
     private static final String CHARMELEON_NAME = "Charmeleon";
     private static final int CHARMELEON_BASE_EXP = 54;
     private static final int[] CHARMELEON_EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CHARMELEON_CAPTURE_RATE = 45;
+    private static final int CAPTURE_RATE = 45;
     private static final int CHARMELEON_BASE_HEALTH = 58;
     private static final int CHARMELEON_BASE_ATTACK = 64;
     private static final int CHARMELEON_BASE_DEFENSE = 58;
@@ -28,7 +28,7 @@ public class Charmeleon extends Pokemon {
         super(CHARMELEON_NUMBER, CHARMELEON_NAME, level, Type.FIRE, Type.NONE, Ability.BLAZE, ExpType.MEDIUM_SLOW,
                 CHARMELEON_BASE_EXP, CHARMELEON_EV_YIELD, new int[]{CHARMELEON_BASE_HEALTH, CHARMELEON_BASE_ATTACK, CHARMELEON_BASE_DEFENSE,
                         CHARMELEON_BASE_SPECIAL_ATTACK, CHARMELEON_BASE_SPECIAL_DEFENSE, CHARMELEON_BASE_SPEED}, CHARMELEON_ICON_PATH,
-                CHARMELEON_BACK_PATH, MINI_PATH);
+                CHARMELEON_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }

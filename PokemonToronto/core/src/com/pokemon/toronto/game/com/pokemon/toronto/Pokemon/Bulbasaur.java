@@ -15,7 +15,7 @@ public class Bulbasaur extends Pokemon {
     private static final String BULBASAUR_NAME = "Bulbasaur";
     private static final int BULBASAUR_BASE_EXP = 54;
     private static final int[] BULBASAUR_EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int BULBASAUR_CAPTURE_RATE = 45;
+    private static final int CAPTURE_RATE = 45;
     private static final int BULBASAUR_BASE_HEALTH = 45;
     private static final int BULBASAUR_BASE_ATTACK = 49;
     private static final int BULBASAUR_BASE_DEFENSE = 49;
@@ -30,7 +30,7 @@ public class Bulbasaur extends Pokemon {
         super(BULBASAUR_NUMBER, BULBASAUR_NAME, level, Type.GRASS, Type.POISON, Ability.OVERGROW, ExpType.MEDIUM_SLOW,
                 BULBASAUR_BASE_EXP, BULBASAUR_EV_YIELD, new int[]{BULBASAUR_BASE_HEALTH, BULBASAUR_BASE_ATTACK, BULBASAUR_BASE_DEFENSE,
                         BULBASAUR_BASE_SPECIAL_ATTACK, BULBASAUR_BASE_SPECIAL_DEFENSE, BULBASAUR_BASE_SPEED}, BULBASAUR_ICON_PATH,
-                BULBASAUR_BACK_PATH, MINI_PATH);
+                BULBASAUR_BACK_PATH, MINI_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
