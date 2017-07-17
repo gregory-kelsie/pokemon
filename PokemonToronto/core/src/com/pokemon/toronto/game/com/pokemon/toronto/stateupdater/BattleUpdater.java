@@ -69,6 +69,7 @@ public class BattleUpdater {
     private final int HIDE_SWITCHED_POKEMON = 22;
     private final int DISPLAY_NEW_POKEMON_NAME = 23;
     private final int DISPLAY_SENT_OUT_POKEMON = 24;
+    private final int DELAY_AFTER_NEW_POKEMON_ENTRANCE = 25;
 
 
     private final double PAUSE_TIME = 1; //Pause for 1 second
@@ -232,12 +233,13 @@ public class BattleUpdater {
             updateCatchResultsText(dt);
         } else if (state == HIDE_SWITCHED_POKEMON) {
             counter += dt;
-            Gdx.app.log("CHECKING", "" + counter);
-            if (counter >= 1) {
-
+            //Wait two seconds before displaying the pokemon that is coming out.
+            if (counter >= 1.5) {
                 counter = 0;
                 state = DISPLAY_NEW_POKEMON_NAME;
             }
+        } else if (state == DELAY_AFTER_NEW_POKEMON_ENTRANCE) {
+            updateDelayAfterNewPokemonEntrance(dt);
         } else if (state == DISPLAY_NEW_POKEMON_NAME) {
 
             updateNewPokemonName(dt);
@@ -264,8 +266,19 @@ public class BattleUpdater {
             textPosition = 0;
             listPosition = 0;
             userPokemon = sentOutPokemon;
+            state = DELAY_AFTER_NEW_POKEMON_ENTRANCE;
+            text = "";
+            counter = 0;
+
+        }
+    }
+
+    private void updateDelayAfterNewPokemonEntrance(double dt) {
+        counter += dt;
+        if (counter >= 1.5) {
+            counter = 0;
             text = enemyPokemon.getName() + " used " + enemySkill.getName();
-            state = DISPLAY_SENT_OUT_POKEMON;
+            state = DISPLAY_SECOND_SKILL_NAME;
         }
     }
     private void updateThrowPokeball(double dt) {
@@ -823,7 +836,8 @@ public class BattleUpdater {
      */
     public void renderText(SpriteBatch batch) {
         if (state == DISPLAY_FIRST_SKILL_NAME  || state == DISPLAY_SECOND_SKILL_NAME || state == DISPLAY_BLACKED_OUT_TEXT ||
-                state == SWITCH_POKEMON || state == DISPLAY_CATCH_RESULTS || state == HIDE_SWITCHED_POKEMON || state == DISPLAY_NEW_POKEMON_NAME) {
+                state == SWITCH_POKEMON || state == DISPLAY_CATCH_RESULTS || state == HIDE_SWITCHED_POKEMON ||
+        state == DISPLAY_NEW_POKEMON_NAME) {
             font.draw(batch, text.substring(0, textPosition), 54, 1143);
         } else if (state == DISPLAY_FIRST_SKILL_MISS_FAIL) {
             font.draw(batch, battleListText.get(0).get(listPosition)
@@ -925,15 +939,12 @@ public class BattleUpdater {
     }
 
     public boolean isDisplayingNewPokemon() {
-        if (state == DISPLAY_SENT_OUT_POKEMON) {
+        if (state == DELAY_AFTER_NEW_POKEMON_ENTRANCE) {
             return true;
         }
         return false;
     }
 
-    public void switchToEnemySecondAttack() {
-        state = DISPLAY_SECOND_SKILL_NAME;
-    }
     public void getNextPokemonPosition(int position) {
         userPokemon = playerParty.get(position);
     }

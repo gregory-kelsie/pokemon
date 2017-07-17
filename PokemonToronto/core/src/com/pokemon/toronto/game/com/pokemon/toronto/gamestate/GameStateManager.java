@@ -117,8 +117,6 @@ public class GameStateManager {
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));
         addToParty(new Charmander(5));
-
-
     }
 
     public void setGameCallBack(pokemonToronto.MyGameCallBack gameCallBack) {

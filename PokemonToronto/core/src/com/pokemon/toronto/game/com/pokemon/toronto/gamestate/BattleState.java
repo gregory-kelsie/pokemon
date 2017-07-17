@@ -179,9 +179,11 @@ public class BattleState extends GameState implements BattleInterface {
 
     private void renderBattleScreen(SpriteBatch batch) {
         //Render battle scene on top
-        renderBackgroundAndUI(batch);
+        renderBackground(batch);
         //Draw Pokemon
         renderBattlingPokemon(batch);
+
+        renderUI(batch);
 
         //battleUpdater.renderSwitchBall(batch);
         //Render the skill animation going on if it is happening.
@@ -201,15 +203,16 @@ public class BattleState extends GameState implements BattleInterface {
             drawPokemonSelectPanel(batch);
         }
     }
-    private void renderBackgroundAndUI(SpriteBatch batch) {
+    private void renderBackground(SpriteBatch batch) {
         //Draw Background
         batch.draw(battleBackground, 0, 1205);
-
-        renderHealthUI(batch);
 
         //Draw animation background when the health bars disappear and the field disappears
         //momentarily.
         battleUpdater.renderAnimationBackground(batch);
+    }
+    private void renderUI(SpriteBatch batch) {
+        renderHealthUI(batch);
     }
     private void renderBattlingPokemon(SpriteBatch batch) {
         if (pta.isFinished()) {
@@ -443,6 +446,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     private void createSkillButtonTextures() {
+        Gdx.app.log("Skills", currentPokemon.getName() + ": " + currentPokemon.getSkills().size());
         firstSkill = initTypeTexture(currentPokemon.getSkills().get(0).getType());
         if (currentPokemon.getSkills().size() > 1) {
             secondSkill = initTypeTexture(currentPokemon.getSkills().get(1).getType());
@@ -455,6 +459,19 @@ public class BattleState extends GameState implements BattleInterface {
             }
         }
 
+    }
+
+    private void resetSkillButtonTextures() {
+        try {
+            firstSkill.dispose();
+            secondSkill.dispose();
+            thirdSkill.dispose();
+            fourthSkill.dispose();
+        } catch (Exception e) { }
+        secondSkill = null;
+        thirdSkill = null;
+        fourthSkill = null;
+        createSkillButtonTextures();
     }
     private boolean hasFirstItem() {
         if (currentItemPage * 4 < gsm.getBag().getPokeballBag().size()) {
@@ -570,10 +587,10 @@ public class BattleState extends GameState implements BattleInterface {
                     panelPosition = POKEMON_SELECT_PANEL;
                 }
                 if (battleUpdater.isDisplayingNewPokemon()) {
-                    battleUpdater.switchToEnemySecondAttack();
                     userPokemonTexture.dispose();
                     userPokemonTexture = new Texture(gsm.getParty().get(currentPokemonPosition).getBackPath());
                     currentPokemon = gsm.getParty().get(currentPokemonPosition);
+                    resetSkillButtonTextures();
                 }
 
             }
@@ -590,15 +607,15 @@ public class BattleState extends GameState implements BattleInterface {
             int y = MyInput.getY();
             if (pta.isFinished()) {
                 if (x >= 309 && x <= 776 && y >= 1107 && y <= 1243) {
-                    if (panelPosition == FIRST_PANEL) {
+                    if (panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                         panelPosition = BATTLE_PANEL;
                         clickSound.play();
                     }
-                } else if (x >= 0 && x <= 421 && y >= 1361 && y <= 1441 && panelPosition == FIRST_PANEL) {
+                } else if (x >= 0 && x <= 421 && y >= 1361 && y <= 1441 && panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                     //Clicked Bag
                     panelPosition = BAG_OPTION_PANEL;
                     clickSound.play();
-                } else if (x >= 627 && x <= 1051 && y >= 1353 && y <= 1464 && panelPosition == FIRST_PANEL) {
+                } else if (x >= 627 && x <= 1051 && y >= 1353 && y <= 1464 && panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                     //Clicked Pokemon
                     panelPosition = POKEMON_SELECT_PANEL;
                     clickSound.play();
@@ -639,39 +656,62 @@ public class BattleState extends GameState implements BattleInterface {
                             gsm.getBag().getPokeballBag().remove(0);
                         }
                         clickSound.play();
+                        panelPosition = FIRST_PANEL;
                     }
 
                 } else if (x >= 81 && x <= 479 && y >= 1217 && y <= 1337 && panelPosition == BATTLE_PANEL) {
                     //Clicked First Skill
                     Gdx.app.log("Battle Log", "Clicked first skill");
+                    panelPosition = FIRST_PANEL;
                     clickSound.play();
                 } else if (x >= 577 && x <= 1017 && y >= 1205 && y <= 1340 && panelPosition == BATTLE_PANEL) {
                     //Clicked Second Skill
                     Gdx.app.log("Battle Log", "Clicked second skill");
-                    clickSound.play();
+                    if (currentPokemon.getSkills().size() > 1) {
+                        panelPosition = FIRST_PANEL;
+                        clickSound.play();
+                    }
                 } else if (x >= 26 && x <= 485 && y >= 1443 && y <= 1555 && panelPosition == BATTLE_PANEL) {
                     //Clicked third skill
                     Gdx.app.log("Battle Log", "Clicked third skill");
-                    clickSound.play();
-                    if (!battleUpdater.started()) {
-                        battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
-                                currentPokemon.getSkills().get(2), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
+
+                    if (currentPokemon.getSkills().size() > 2) {
+                        clickSound.play();
+                        if (!battleUpdater.started()) {
+                            panelPosition = FIRST_PANEL;
+                            battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
+                                    currentPokemon.getSkills().get(2), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
+                        }
                     }
                 } else if (x >= 577 && x <= 1017 && y >= 1443 && y <= 1555 && panelPosition == BATTLE_PANEL) {
                     //Clicked fourth skill
                     Gdx.app.log("Battle Log", "Clicked fourth skill");
-                    clickSound.play();
-                } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && panelPosition == FIRST_PANEL) {
+                    if (currentPokemon.getSkills().size() > 3) {
+                        panelPosition = FIRST_PANEL;
+                        clickSound.play();
+                    }
+                } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                     //Clicked Run
                     gsm.setState(new MainMenuState(gsm));
                     dispose();
                 } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && panelPosition == POKEMON_SELECT_PANEL && currentPokemonPosition != 0) {
                     //First Pokemon
-
+                    if (gsm.getParty().get(0).getCurrentHealth() > 0) {
+                        currentPokemonPosition = 0;
+                        if (battleUpdater.waitingForNextPokemon()) {
+                            switchCurrentPokemon();
+                        } else {
+                            battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
+                                    gsm.getParty().get(0), enemyPokemon.getSkills().get(0));
+                        }
+                        panelPosition = FIRST_PANEL;
+                        clickSound.play();
+                    }
                 } else if (x >= 594 && x <= 916 && y >= 1268 && y <= 1431 && panelPosition == POKEMON_SELECT_PANEL && currentPokemonPosition != 1) {
                     //Second Pokemon
                     if (gsm.getParty().size() > 1) {
                         if (gsm.getParty().get(1).getCurrentHealth() > 0) {
+                            currentPokemonPosition = 1;
                             if (battleUpdater.waitingForNextPokemon()) {
                                 switchCurrentPokemon();
                             } else {
@@ -679,7 +719,7 @@ public class BattleState extends GameState implements BattleInterface {
                                         gsm.getParty().get(1), enemyPokemon.getSkills().get(0));
                             }
                             panelPosition = FIRST_PANEL;
-                            currentPokemonPosition = 1;
+                            clickSound.play();
                         }
                     }
                 } else if (x >= 88 && x <= 411 && y >= 1422 && y <= 1554 && panelPosition == POKEMON_SELECT_PANEL && currentPokemonPosition != 2) {
@@ -694,7 +734,7 @@ public class BattleState extends GameState implements BattleInterface {
                                         gsm.getParty().get(2), enemyPokemon.getSkills().get(0));
 
                             }
-
+                            clickSound.play();
                             panelPosition = FIRST_PANEL;
                         }
                     }
@@ -710,7 +750,7 @@ public class BattleState extends GameState implements BattleInterface {
                                         gsm.getParty().get(3), enemyPokemon.getSkills().get(0));
 
                             }
-
+                            clickSound.play();
                             panelPosition = FIRST_PANEL;
                         }
                     }
@@ -725,6 +765,7 @@ public class BattleState extends GameState implements BattleInterface {
                                 battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
                                         gsm.getParty().get(4), enemyPokemon.getSkills().get(0));
                             }
+                            clickSound.play();
                             panelPosition = FIRST_PANEL;
 
                         }
@@ -740,6 +781,7 @@ public class BattleState extends GameState implements BattleInterface {
                                 battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
                                         gsm.getParty().get(5), enemyPokemon.getSkills().get(0));
                             }
+                            clickSound.play();
                             panelPosition = FIRST_PANEL;
                         }
                     }
@@ -751,6 +793,7 @@ public class BattleState extends GameState implements BattleInterface {
             } else {
                 if (pta.isPaused() && pta.finishedPauseText()) {
                     pta.unPause();
+                    clickSound.play();
                 }
             }
         }
@@ -760,6 +803,7 @@ public class BattleState extends GameState implements BattleInterface {
         userPokemonTexture.dispose();
         userPokemonTexture = new Texture(gsm.getParty().get(currentPokemonPosition).getBackPath());
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        resetSkillButtonTextures();
         battleUpdater.finishedFaintSwitch();
     }
     public void endBattle() {
