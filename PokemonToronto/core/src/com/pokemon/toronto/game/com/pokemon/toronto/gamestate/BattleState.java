@@ -64,6 +64,7 @@ public class BattleState extends GameState implements BattleInterface {
     private Texture enemyHealthPanel;
     private Texture textArea;
     private Texture greenHealth;
+    private Texture yesNo;
 
     //Pokemon Icon Textures
     private List<Texture> iconTextures;
@@ -134,6 +135,8 @@ public class BattleState extends GameState implements BattleInterface {
         battleUpdater = new BattleUpdater(this, regularFont);
         pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName());
         initTextures();
+        Gdx.app.log("CurrentExp: ", "" + currentPokemon.getNextLevelExp());
+
 
     }
 
@@ -156,6 +159,7 @@ public class BattleState extends GameState implements BattleInterface {
         leftArrow = new Texture("battle/leftArrow.png");
         rightArrow = new Texture("battle/rightArrow.png");
         itemSlotPanel = new Texture("battle/itemSlot.png");
+        yesNo = new Texture("battle/yesno.png");
 
         //Init Pokemon Icon Textures
         iconTextures = new ArrayList<Texture>();
@@ -206,6 +210,9 @@ public class BattleState extends GameState implements BattleInterface {
         } else if (panelPosition == POKEMON_SELECT_PANEL) {
             drawPokemonSelectPanel(batch);
         }
+        if (battleUpdater.displayingYesNo()) {
+            batch.draw(yesNo, 760, 950);
+        }
     }
     private void renderBackground(SpriteBatch batch) {
         //Draw Background
@@ -217,6 +224,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
     private void renderUI(SpriteBatch batch) {
         renderHealthUI(batch);
+
     }
     private void renderBattlingPokemon(SpriteBatch batch) {
         if (pta.isFinished()) {
@@ -228,7 +236,7 @@ public class BattleState extends GameState implements BattleInterface {
                 if (!battleUpdater.hidingUserPokemon()) {
                     batch.draw(userPokemonTexture, 122, 1231, 394, 394);
                 }
-                if (!battleUpdater.isShaking()) {
+                if (!battleUpdater.isHidingEnemyPokemon()) {
                     batch.draw(enemyPokemonTexture, 591, 1460, 394, 394);
                 }
             } else {
@@ -240,7 +248,7 @@ public class BattleState extends GameState implements BattleInterface {
                         }
                     }
                 }
-                if (!battleUpdater.isShaking() && battleUpdater.getSkillAnimation().displayEnemyPokemon()) {
+                if (!battleUpdater.isHidingEnemyPokemon() && battleUpdater.getSkillAnimation().displayEnemyPokemon()) {
                     if (!enemyPokemon.isFainted()) {
                         batch.draw(enemyPokemonTexture, enemyPokemon.getEnemyX(), enemyPokemon.getEnemyY(), 394, 394);
                     }
@@ -266,14 +274,20 @@ public class BattleState extends GameState implements BattleInterface {
             batch.draw(userHealthPanel, 432, 1266);
             //User total health, current health, level
             healthText.draw(batch, Integer.toString(currentPokemon.getHealthStat()), 888,1325);
-            healthText.draw(batch, Integer.toString(currentPokemon.getAnimationHealth()), 785,1325);
-            healthText.draw(batch, Integer.toString(currentPokemon.getLevel()), 900,1400);
+            if (currentPokemon.getAnimationHealth() >= 100) {
+                healthText.draw(batch, Integer.toString(currentPokemon.getAnimationHealth()), 750, 1325);
+            } else {
+                healthText.draw(batch, Integer.toString(currentPokemon.getAnimationHealth()), 785, 1325);
+            }
+            healthText.draw(batch, Integer.toString(currentPokemon.getLevel()), 900,1398);
             batch.draw(greenHealth, 712, 1340, Math.round(261 *((1.0 * currentPokemon.getAnimationHealth()) / currentPokemon.getHealthStat())), 14);
+            batch.draw(expBar, 578, 1271, (int)((1.0 * currentPokemon.getDisplayedExp() / currentPokemon.getNextLevelExp()) * 441.0), 12); //439 14 width height
         }
         //Enemy level
         healthText.draw(batch, Integer.toString(enemyPokemon.getLevel()), 488,1874);
         //Enemy Healthbar
         batch.draw(greenHealth, 221, 1818,  Math.round(261 *((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
+
     }
     private void renderTextPanel(SpriteBatch batch) {
         //Render text panel in the middle
@@ -597,6 +611,7 @@ public class BattleState extends GameState implements BattleInterface {
                     resetSkillButtonTextures();
                 }
 
+
             } else {
                 if (battleUpdater.caughtThePokemon()) {
                     gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
@@ -611,6 +626,23 @@ public class BattleState extends GameState implements BattleInterface {
             int x = MyInput.getX();
             int y = MyInput.getY();
             if (pta.isFinished()) {
+                if (battleUpdater.waitingForFaintClick()) {
+                    battleUpdater.goToExpGainState();
+                }
+                if (battleUpdater.waitingForExpClick()) {
+                    battleUpdater.goToExpGraphicsState();
+                }
+                if (battleUpdater.displayingYesNo()) {
+                    Gdx.app.log("Coords", "X: " + x + ", Y: " + y);
+                    if (x >= 813 && x <= 1005 && y >= 754 && y <= 841) {
+                        battleUpdater.acceptedNewMove();
+                    } else if (x >= 813 && x <= 1005 && y >= 899 && y <= 994) {
+                        battleUpdater.declinedNewMove();
+                    }
+                }
+                if (battleUpdater.waitingForMoveDeletion()) {
+                    panelPosition = BATTLE_PANEL;
+                }
                 if (x >= 309 && x <= 776 && y >= 1107 && y <= 1243) {
                     if (panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                         panelPosition = BATTLE_PANEL;
@@ -667,31 +699,43 @@ public class BattleState extends GameState implements BattleInterface {
                 } else if (x >= 81 && x <= 479 && y >= 1217 && y <= 1337 && panelPosition == BATTLE_PANEL) {
                     //Clicked First Skill
                     Gdx.app.log("Battle Log", "Clicked first skill");
+                    if (battleUpdater.waitingForMoveDeletion()) {
+                        battleUpdater.removeFirstSkill();
+                    }
                     panelPosition = FIRST_PANEL;
                     clickSound.play();
+
                 } else if (x >= 577 && x <= 1017 && y >= 1205 && y <= 1340 && panelPosition == BATTLE_PANEL) {
                     //Clicked Second Skill
                     Gdx.app.log("Battle Log", "Clicked second skill");
                     if (currentPokemon.getSkills().size() > 1) {
+                        if (battleUpdater.waitingForMoveDeletion()) {
+                            battleUpdater.removeSecondSkill();
+                        }
                         panelPosition = FIRST_PANEL;
                         clickSound.play();
                     }
                 } else if (x >= 26 && x <= 485 && y >= 1443 && y <= 1555 && panelPosition == BATTLE_PANEL) {
                     //Clicked third skill
                     Gdx.app.log("Battle Log", "Clicked third skill");
-
                     if (currentPokemon.getSkills().size() > 2) {
-                        clickSound.play();
+                        if (battleUpdater.waitingForMoveDeletion()) {
+                            battleUpdater.removeThirdSkill();
+                        }
                         if (!battleUpdater.started()) {
                             panelPosition = FIRST_PANEL;
                             battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
                                     currentPokemon.getSkills().get(2), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
                         }
+                        clickSound.play();
                     }
                 } else if (x >= 577 && x <= 1017 && y >= 1443 && y <= 1555 && panelPosition == BATTLE_PANEL) {
                     //Clicked fourth skill
                     Gdx.app.log("Battle Log", "Clicked fourth skill");
                     if (currentPokemon.getSkills().size() > 3) {
+                        if (battleUpdater.waitingForMoveDeletion()) {
+                            battleUpdater.removeFourthSkill();
+                        }
                         panelPosition = FIRST_PANEL;
                         clickSound.play();
                     }
@@ -804,6 +848,7 @@ public class BattleState extends GameState implements BattleInterface {
         }
     }
 
+
     private void switchCurrentPokemon() {
         userPokemonTexture.dispose();
         userPokemonTexture = new Texture(gsm.getParty().get(currentPokemonPosition).getBackPath());
@@ -841,6 +886,7 @@ public class BattleState extends GameState implements BattleInterface {
         regularFont.dispose();
         smallFont.dispose();
         firstSkill.dispose();
+        yesNo.dispose();
         try {
             secondSkill.dispose();
             thirdSkill.dispose();

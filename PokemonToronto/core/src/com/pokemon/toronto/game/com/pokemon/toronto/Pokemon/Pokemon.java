@@ -31,7 +31,6 @@ public abstract class Pokemon {
     protected int[] ivs;
     protected int[] evs;
     protected int[] baseStats;
-    protected int currentExp;
     protected String mapIconPath;
     protected String backPath;
     protected String miniPath;
@@ -66,8 +65,10 @@ public abstract class Pokemon {
     protected int playerY;
     protected int enemyX;
     protected int enemyY;
-    //Other Variables
-    protected int overflownExp;
+    //Exp Variables
+    protected long overflownExp;
+    protected double currentExp;
+    protected int displayedExp;
 
     //Constants
     protected final int MAX_LEVEL = 100;
@@ -140,6 +141,7 @@ public abstract class Pokemon {
         this.focused = false;
         status = Status.STATUS_FREE;
         currentExp = NO_EXP;
+        displayedExp = NO_EXP;
         levelUpSkills = new HashMap<Integer, List<Integer>>();
         skills = new ArrayList<Skill>();
         resetCoordinates();
@@ -156,7 +158,116 @@ public abstract class Pokemon {
         this.enemyX = ENEMY_NORMAL_X;
         this.enemyY = ENEMY_NORMAL_Y;
     }
+
     protected abstract void initLevelUpSkills();
+
+    public void addExp(double amt) {
+        currentExp += amt;
+    }
+
+    public void addEvs(int[] enemyEvYield) {
+        int availableEvs = TOTAL_EV - getTotalEvs();
+        for (int i = 0; i < evs.length; i++) {
+            if (!hasMaxEvs() && availableEvs > 0) {
+                //Make sure the ev count is under the maximum evs
+                if (evs[i] < MAX_EV) {
+                    //Check if the yield is more than what's available to the total evs
+                    if (enemyEvYield[i] > availableEvs) {
+                        //Check if the yield is more than what's available to the current ev
+                        if (evs[i] + enemyEvYield[i] > MAX_EV) {
+                            //Determine the number of evs to reach the maximum
+                            int toMax = MAX_EV - evs[i];
+                            if (toMax < availableEvs) {
+                                //Cap off the ev to the max
+                                availableEvs -= toMax;
+                                evs[i] += toMax;
+                            } else {
+                                //Just add the available evs left to the stat.
+                                availableEvs = 0;
+                                evs[i] = Math.min(MAX_EV, evs[i] + availableEvs);
+                            }
+                        } else {
+                            //The stat won't get maxed so just add the remaining evs to the stat
+                            evs[i] = Math.min(MAX_EV, evs[i] + availableEvs);
+                            availableEvs = 0;
+                        }
+
+                    } else {
+                        //Add ev yield to the pokemon.
+                        if (evs[i] + enemyEvYield[i] > MAX_EV) {
+                            availableEvs -= (MAX_EV - evs[i]);
+                            evs[i] = MAX_EV;
+                        } else {
+                            evs[i] += enemyEvYield[i];
+                            availableEvs -= enemyEvYield[i];
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    public int[] getEvYield() {
+        return evYield;
+    }
+
+
+    public boolean hasMaxEvs() {
+        int sum = getTotalEvs();
+        if (sum == TOTAL_EV) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getTotalEvs() {
+        return evs[0] + evs[1] + evs[2] + evs[3] + evs[4] + evs[5];
+    }
+
+    public long calculateExp(int numberOfBattleParticipants) {
+        double a = 1; //Wild pokemon 1, trainer 1.5
+        int b = getBaseExp();
+        double e = 1; //1.5 if holding lucky egg
+        int l = getLevel();
+        int t = 1; //1.5 if the pokemon was traded.
+        int s = 1; //The number of pokemon who participated in the party
+
+        long exp = Math.round((a * b * e * l * t) / (7 * s));
+        Gdx.app.log("Experience: ", "" + exp);
+        return exp;
+    }
+
+    public void setExp(int amt) {
+        currentExp = amt;
+        displayedExp = amt;
+    }
+
+    public void transferOverflow() {
+        currentExp = NO_EXP;
+        displayedExp = NO_EXP;
+        currentExp += overflownExp;
+        overflownExp = 0;
+        if (currentExp > getNextLevelExp()) {
+            overflownExp = Math.round(currentExp) - getNextLevelExp();
+            currentExp = getNextLevelExp();
+        }
+    }
+
+    public void levelUp() {
+
+        level = Math.min(100, level + 1);
+        currentExp = 0;
+    }
+
+    public long getOverflownExp() {
+        return overflownExp;
+    }
+
+    public double getDisplayedExp() {
+        return currentExp;
+    }
 
 
     protected void initWildSkills() {
@@ -172,6 +283,23 @@ public abstract class Pokemon {
                     }
                 }
             }
+        }
+    }
+
+    public HashMap<Integer, List<Integer>> getLevelUpSkills() {
+        return levelUpSkills;
+    }
+
+    public List<Integer> getCurrentLevelUpSkills() {
+        if (levelUpSkills.containsKey(level)) {
+            return levelUpSkills.get(level);
+        }
+        return null;
+    }
+
+    public void addMove(Skill newMove) {
+        if (skills.size() < 4) {
+            skills.add(newMove);
         }
     }
     protected abstract void initGender();
@@ -552,24 +680,32 @@ public abstract class Pokemon {
                 / 100.0) + 5) * natureSpeedMultiplier);
     }
 
-    public int getTotalExp() {
+    public int getTotalExp(int level) {
         if (expType == ExpType.FLUCTUATING) {
-            return getFluctuatingTotalExp();
+            return getFluctuatingTotalExp(level);
         }
         else if (expType == ExpType.MEDIUM_FAST) {
-            return getMediumFastTotalExp();
+            return getMediumFastTotalExp(level);
         }
         else if (expType == ExpType.MEDIUM_SLOW) {
-            return getMediumSlowTotalExp();
+            return getMediumSlowTotalExp(level);
         }
         else if (expType == ExpType.ERRATIC) {
-            return getErraticTotalExp();
+            return getErraticTotalExp(level);
         }
         else if (expType == ExpType.SLOW) {
-            return getSlowTotalExp();
+            return getSlowTotalExp(level);
         }
         else { //expType == ExpType.FAST
-            return getFastTotalExp();
+            return getFastTotalExp(level);
+        }
+    }
+
+    public int getNextLevelExp() {
+        if (level == 100) {
+            return 0;
+        } else {
+            return getTotalExp(level + 1) - getTotalExp(level);
         }
     }
 
@@ -593,7 +729,7 @@ public abstract class Pokemon {
         return speedStage;
     }
 
-    private int getFluctuatingTotalExp() {
+    private int getFluctuatingTotalExp(int level) {
         if (level <= 15)
         {
             return (int)Math.round(Math.pow(level, 3) * ((Math.floor((level + 1) / 3) + 24) / 50.0));
@@ -608,11 +744,11 @@ public abstract class Pokemon {
         }
     }
 
-    private int getMediumFastTotalExp() {
+    private int getMediumFastTotalExp(int level) {
         return (int)Math.round(Math.pow(level, 3));
     }
 
-    private int getMediumSlowTotalExp() {
+    private int getMediumSlowTotalExp(int level) {
         if (level == 1) {
             return 0;
         }
@@ -621,15 +757,15 @@ public abstract class Pokemon {
         }
     }
 
-    private int getSlowTotalExp() {
+    private int getSlowTotalExp(int level) {
         return (int)Math.round(5 * Math.pow(level, 3) / 4.0);
     }
 
-    private int getFastTotalExp() {
+    private int getFastTotalExp(int level) {
         return (int)Math.round(4 * Math.pow(level, 3) / 5.0);
     }
 
-    private int getErraticTotalExp() {
+    private int getErraticTotalExp(int level) {
         if (level <= 50)
         {
             return (int)Math.round((Math.pow(level, 3) * (100 - level)) / 50.0);
@@ -646,6 +782,10 @@ public abstract class Pokemon {
         {
             return (int)Math.round((Math.pow(level, 3) * (160 - level)) / 100.0);
         }
+    }
+
+    public int getBaseExp() {
+        return baseExp;
     }
 
     public void fullyHeal() {

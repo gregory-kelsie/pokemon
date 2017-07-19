@@ -11,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleState;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
 
@@ -34,7 +35,13 @@ public class BattleUpdater {
     private int ballType;
     private boolean caughtThePokemon;
     private CatchResults catchResults;
-
+    private boolean doneDisplayingExpText;
+    private double expGain;
+    private long fullBarofExp;
+    private double expGainRate;
+    private List<Integer> newSkillsForLevelUp;
+    private boolean displayingYesNo;
+    private Skill newMove;
 
     private int state;
 
@@ -73,6 +80,14 @@ public class BattleUpdater {
     private final int DISPLAY_NEW_POKEMON_NAME = 23;
     private final int DISPLAY_SENT_OUT_POKEMON = 24;
     private final int DELAY_AFTER_NEW_POKEMON_ENTRANCE = 25;
+    private final int WAIT_FOR_FAINT_CLICK = 26; //wait for player to click so exp can be distributed
+    private final int ADD_EXP = 27;
+    private final int LEVEL_UP_STATE = 28;
+    private final int DELAY_AFTER_EXP_GAIN = 29;
+    private final int AUTOMATIC_NEW_MOVE = 30;
+    private final int ASKING_TO_MAKE_ROOM = 31;
+    private final int WAITING_FOR_MOVE_DELETION = 32;
+    private final int FINISHED_REPLACING_MOVE = 33;
 
 
     private final double PAUSE_TIME = 1; //Pause for 1 second
@@ -98,6 +113,9 @@ public class BattleUpdater {
         counter = 0;
         hidingUserPokemon = false;
         caughtThePokemon = false;
+        doneDisplayingExpText = false;
+        expGain = 0;
+        displayingYesNo = false;
 
     }
 
@@ -309,6 +327,176 @@ public class BattleUpdater {
             updateNewPokemonName(dt);
         } else if (state == DISPLAY_SENT_OUT_POKEMON) {
 
+        } else if (state == DISPLAY_EXP_GAIN) {
+            updateExpText(dt);
+        } else if (state == ADD_EXP) {
+            updateExpGraphics(dt);
+        } else if (state == LEVEL_UP_STATE) {
+            updateLevelUp(dt);
+        } else if (state == DELAY_AFTER_EXP_GAIN) {
+            counter += dt;
+            if (counter >= 1.5) {
+                started = false;
+                battleState.endBattle();
+            }
+        } else if (state == AUTOMATIC_NEW_MOVE) {
+            updateAutomaticNewMove(dt);
+        } else if (state == ASKING_TO_MAKE_ROOM) {
+            updateAskingToMakeRoom(dt);
+        } else if (state == FINISHED_REPLACING_MOVE) {
+            updateFinishedReplacingMove(dt);
+        }
+
+    }
+
+    private void updateFinishedReplacingMove(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+        }
+        if (textCounter >= 2) {
+            state = AUTOMATIC_NEW_MOVE;
+        }
+    }
+
+    private void updateAskingToMakeRoom(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+                if (textCounter <= 0.07) {
+                    displayingYesNo = true;
+                }
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+
+        }
+
+    }
+    private void updateAutomaticNewMove(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+
+        }
+        if (textCounter >= 1.5) {
+            if (newSkillsForLevelUp.size() == 0) {
+                state = ADD_EXP;
+            } else {
+                if (userPokemon.getSkills().size() < 4) {
+                    SkillFactory sf = new SkillFactory();
+                    newMove = sf.createSkill(newSkillsForLevelUp.get(0));
+                    newSkillsForLevelUp.remove(0);
+                    userPokemon.addMove(newMove);
+                    state = AUTOMATIC_NEW_MOVE;
+                    text = userPokemon.getName() + " learned " + newMove.getName() + "!";
+                    resetAllTextVariables();
+                } else {
+                    //GO TO QUESTIONING FOR NEW MOVE STATE
+                    state = ASKING_TO_MAKE_ROOM;
+                }
+            }
+        }
+    }
+    private void updateLevelUp(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+
+        }
+        if (textCounter >= 1.5) {
+            Gdx.app.log("DONEWAITING", "" + expGain);
+            newSkillsForLevelUp = userPokemon.getCurrentLevelUpSkills();
+            if (newSkillsForLevelUp == null) {
+                Gdx.app.log("NONEWSKILLS", "" + expGain);
+                state = ADD_EXP;
+            } else {
+                Gdx.app.log("NEWSKILLS", "" + userPokemon.getSkills().size());
+                SkillFactory sf = new SkillFactory();
+                newMove = sf.createSkill(newSkillsForLevelUp.get(0));
+                newSkillsForLevelUp.remove(0);
+                if (userPokemon.getSkills().size() < 4) {
+                    userPokemon.addMove(newMove);
+                    state = AUTOMATIC_NEW_MOVE;
+                    text = userPokemon.getName() + " learned " + newMove.getName() + "!";
+                    resetAllTextVariables();
+                } else {
+                    //GO TO QUESTIONING FOR NEW MOVE
+                    state = ASKING_TO_MAKE_ROOM;
+                    text = "Should a move be deleted for\n" + newMove.getName() + "?";
+                    resetAllTextVariables();
+                }
+            }
+        }
+    }
+
+    private void updateExpGraphics(double dt) {
+        //expGain is the total amount of exp being given
+        Gdx.app.log("EXPGAIN", "" + expGain);
+        if (expGain < dt * expGainRate) {
+            userPokemon.addExp(expGain);
+            if (userPokemon.getDisplayedExp() >= userPokemon.getNextLevelExp()) {
+                //Overflown so add back to expGain
+                expGain = userPokemon.getDisplayedExp() - userPokemon.getNextLevelExp();
+                //Go to level up state
+                state = LEVEL_UP_STATE;
+                text = userPokemon.getName() + " has leveled up!";
+                resetAllTextVariables();
+                userPokemon.levelUp();
+                fullBarofExp = userPokemon.getNextLevelExp();
+                expGainRate = fullBarofExp / 1.5;
+            } else {
+                Gdx.app.log("ANDY", "RUN");
+                expGain = 0;
+                //End the battle phase.
+                counter = 0;
+                state = DELAY_AFTER_EXP_GAIN;
+            }
+        }
+        else {
+            userPokemon.addExp(dt * expGainRate);
+            expGain -= dt * expGainRate;
+            if (userPokemon.getDisplayedExp() >= userPokemon.getNextLevelExp()) {
+                //Overflown
+                expGain += userPokemon.getDisplayedExp() - userPokemon.getNextLevelExp();
+                //Go to level up state
+                text = userPokemon.getName() + " has leveled up!";
+                resetAllTextVariables();
+                userPokemon.levelUp();
+                fullBarofExp = userPokemon.getNextLevelExp();
+                expGainRate = fullBarofExp / 1.5;
+                state = LEVEL_UP_STATE;
+            }
+
+        }
+
+    }
+    private void updateExpText(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+                doneDisplayingExpText = true;
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+
         }
 
     }
@@ -326,9 +514,7 @@ public class BattleUpdater {
         }
         //1 Second delay after writing the name.
         if (textCounter >= 1) {
-            textCounter = 0;
-            textPosition = 0;
-            listPosition = 0;
+            resetAllTextVariables();
             userPokemon = sentOutPokemon;
             state = DELAY_AFTER_NEW_POKEMON_ENTRANCE;
             text = "";
@@ -378,9 +564,7 @@ public class BattleUpdater {
                 caughtThePokemon = true;
             } else {
                 text = enemyPokemon.getName() + " used " + enemySkill.getName();
-                textCounter = 0;
-                textPosition = 0;
-                listPosition = 0;
+                resetAllTextVariables();
                 state = DISPLAY_SECOND_SKILL_NAME;
             }
         }
@@ -580,31 +764,33 @@ public class BattleUpdater {
             //When the textCounter is past 1.5 the delay is over
             //It will only be past 1.5 when finished drawing the lines
             if (textCounter >= 1.5) {
-                textPosition = 0;
+
                 if (listPosition < battleListText.get(1).size() - 1)
                 {
+                    textPosition = 0;
                     listPosition++;
                     textCounter = 0;
                 }
                 else {
-                    listPosition = 0;
+
                     if (userPokemonIsFirstAttacker) {
                         if (enemyPokemon.isFainted()) {
-                            state = DISPLAY_EXP_GAIN;
+                            state = WAIT_FOR_FAINT_CLICK;
                         } else {
+                            resetAllTextVariables();
                             state = DISPLAY_SECOND_SKILL_NAME;
                             text = enemyPokemon.getName() + " used " + secondSkill.getName();
                         }
                     } else {
+                        listPosition = 0;
                         if (userPokemon.isFainted()) {
                             if (playerHasMorePokemon()) {
                                 state = WAIT_FOR_NEXT_POKEMON;
                             } else {
-                                Gdx.app.log("Blacked", "BABY");
+
                                 state = DISPLAY_BLACKED_OUT_TEXT;
                                 text = "You have blacked out";
-                                textPosition = 0;
-                                textCounter = 0;
+                                resetTextVariables();
                             }
                         } else {
                             state = DISPLAY_SECOND_SKILL_NAME;
@@ -616,7 +802,9 @@ public class BattleUpdater {
             }
             if (resetCounter) {
                 //Reset the counter
-                textCounter = 0;
+                if (state != WAIT_FOR_FAINT_CLICK) {
+                    textCounter = 0;
+                }
             }
         }
     }
@@ -752,9 +940,7 @@ public class BattleUpdater {
                 enemyPokemon.setFaint(true);
 
                 state = DISPLAY_FIRST_MOVE_RESULTS;
-                textCounter = 0;
-                textPosition = 0;
-                listPosition = 0;
+                resetAllTextVariables();
             }
         } else {
             //Make the sprite go down
@@ -765,9 +951,7 @@ public class BattleUpdater {
                 userPokemon.setFaint(true);
 
                 state = DISPLAY_FIRST_MOVE_RESULTS;
-                textCounter = 0;
-                textPosition = 0;
-                listPosition = 0;
+                resetAllTextVariables();
             }
         }
     }
@@ -782,9 +966,7 @@ public class BattleUpdater {
                 userPokemon.setFaint(true);
 
                 state = DISPLAY_SECOND_MOVE_RESULTS;
-                textCounter = 0;
-                textPosition = 0;
-                listPosition = 0;
+                resetAllTextVariables();
             }
 
         } else {
@@ -796,9 +978,7 @@ public class BattleUpdater {
                 enemyPokemon.setFaint(true);
 
                 state = DISPLAY_SECOND_MOVE_RESULTS;
-                textCounter = 0;
-                textPosition = 0;
-                listPosition = 0;
+                resetAllTextVariables();
             }
         }
     }
@@ -831,10 +1011,8 @@ public class BattleUpdater {
             //When the textCounter is past 1.5 the delay is over
             //It will only be past 1.5 when finished drawing the lines
             if (textCounter >= 1.5) {
-                textCounter = 0;
-                textPosition = 0;
+                resetTextVariables();
                 if (listPosition == battleListText.get(1).size() - 1) {
-                    listPosition = 0;
                     listPosition = 0;
                     if (userPokemonIsFirstAttacker)
                     {
@@ -844,10 +1022,10 @@ public class BattleUpdater {
                             } else {
                                 state = DISPLAY_BLACKED_OUT_TEXT;
                                 text = "You have blacked out";
-                                textPosition = 0;
-                                textCounter = 0;
+                                resetTextVariables();
                             }
                         } else {
+                            //The battle phase ends.
                             started = false;
                         }
 
@@ -855,8 +1033,9 @@ public class BattleUpdater {
                     else
                     {
                         if (enemyPokemon.isFainted()) {
-                            state = DISPLAY_EXP_GAIN;
+                            state = WAIT_FOR_FAINT_CLICK;
                         } else {
+                            //The battle phase ends
                             started = false;
                         }
                     }
@@ -906,15 +1085,26 @@ public class BattleUpdater {
     public void renderText(SpriteBatch batch) {
         if (state == DISPLAY_FIRST_SKILL_NAME  || state == DISPLAY_SECOND_SKILL_NAME || state == DISPLAY_BLACKED_OUT_TEXT ||
                 state == SWITCH_POKEMON || state == DISPLAY_CATCH_RESULTS || state == HIDE_SWITCHED_POKEMON ||
-        state == DISPLAY_NEW_POKEMON_NAME) {
+        state == DISPLAY_NEW_POKEMON_NAME || state == DISPLAY_EXP_GAIN || state == LEVEL_UP_STATE || state == AUTOMATIC_NEW_MOVE || state == ASKING_TO_MAKE_ROOM
+                || state == FINISHED_REPLACING_MOVE) {
             font.draw(batch, text.substring(0, textPosition), 54, 1143);
         } else if (state == DISPLAY_FIRST_SKILL_MISS_FAIL) {
             font.draw(batch, battleListText.get(0).get(listPosition)
                     .substring(0, textPosition), 54, 1143);
-        } else if (state == DISPLAY_FIRST_MOVE_RESULTS || state == DISPLAY_SECOND_MOVE_RESULTS) {
+        } else if (state == DISPLAY_FIRST_MOVE_RESULTS || state == DISPLAY_SECOND_MOVE_RESULTS || state == WAIT_FOR_FAINT_CLICK) {
             font.draw(batch, battleListText.get(1).get(listPosition)
                     .substring(0, textPosition), 54, 1143);
         }
+    }
+
+
+    private void resetTextVariables() {
+        textCounter = 0;
+        textPosition = 0;
+    }
+    private void resetAllTextVariables() {
+        resetTextVariables();
+        listPosition = 0;
     }
 
 
@@ -967,21 +1157,6 @@ public class BattleUpdater {
         return animation;
     }
 
-    /*
-    * Return the player's pokemon.
-    * @return userPokemon The player's pokemon in the battle.
-     */
-    public Pokemon getUserPokemon() {
-        return userPokemon;
-    }
-
-    /*
-    * Return the enemy's pokemon.
-    * @param Pokemon enemyPokemon The enemy's pokemon in the battle.
-     */
-    public Pokemon getEnemyPokemon() {
-        return enemyPokemon;
-    }
 
     /*
     * Return whether or not the battle phase started.
@@ -994,10 +1169,11 @@ public class BattleUpdater {
     public boolean caughtThePokemon() { return caughtThePokemon; }
 
 
-    public boolean isShaking() {
+    public boolean isHidingEnemyPokemon() {
         if (state == SHAKING_POKEBALL) {
             return true;
-        } else {
+        }
+        else {
             if (state == DISPLAY_CATCH_RESULTS && catchResults.isCaught()) {
                 return true;
             }
@@ -1017,6 +1193,93 @@ public class BattleUpdater {
             return true;
         }
         return false;
+    }
+
+    public boolean waitingForFaintClick() {
+        if (state == WAIT_FOR_FAINT_CLICK) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean waitingForExpClick() {
+        if (doneDisplayingExpText) {
+            return true;
+        }
+        return false;
+    }
+
+    public void goToExpGraphicsState() {
+        state = ADD_EXP;
+        doneDisplayingExpText = false;
+    }
+
+    public void goToExpGainState() {
+        resetAllTextVariables();
+        expGain = enemyPokemon.calculateExp(1);
+        fullBarofExp = userPokemon.getNextLevelExp();
+        expGainRate = fullBarofExp / 1.5;
+        if (!userPokemon.hasMaxEvs()) {
+            userPokemon.addEvs(enemyPokemon.getEvYield());
+        } else {
+            Gdx.app.log("MAXED STATS", "");
+        }
+        text = userPokemon.getName() + " gained " + enemyPokemon.calculateExp(1) + " Exp. Points.";
+        state = DISPLAY_EXP_GAIN;
+    }
+
+    public boolean displayingYesNo() {
+        return displayingYesNo;
+    }
+
+    public void acceptedNewMove() {
+        state = WAITING_FOR_MOVE_DELETION;
+        displayingYesNo = false;
+    }
+
+    public boolean waitingForMoveDeletion() {
+        if (state == WAITING_FOR_MOVE_DELETION) {
+            return true;
+        }
+        return false;
+    }
+
+    public void removeFirstSkill() {
+        state = FINISHED_REPLACING_MOVE;
+        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
+                + userPokemon.getSkills().get(0).getName() +
+                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
+        resetAllTextVariables();
+        userPokemon.getSkills().set(0, newMove);
+    }
+    public void removeSecondSkill() {
+        state = FINISHED_REPLACING_MOVE;
+        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
+                + userPokemon.getSkills().get(1).getName() +
+                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
+        resetAllTextVariables();
+        userPokemon.getSkills().set(1, newMove);
+    }
+    public void removeThirdSkill() {
+        state = FINISHED_REPLACING_MOVE;
+        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
+                + userPokemon.getSkills().get(2).getName() +
+                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
+        resetAllTextVariables();
+        userPokemon.getSkills().set(2, newMove);
+    }
+    public void removeFourthSkill() {
+        state = FINISHED_REPLACING_MOVE;
+        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
+                + userPokemon.getSkills().get(3).getName() +
+                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
+        resetAllTextVariables();
+        userPokemon.getSkills().set(3, newMove);
+    }
+
+    public void declinedNewMove() {
+        displayingYesNo = false;
+        state = AUTOMATIC_NEW_MOVE;
     }
 
     public void getNextPokemonPosition(int position) {

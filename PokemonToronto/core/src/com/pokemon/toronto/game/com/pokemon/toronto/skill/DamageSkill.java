@@ -43,10 +43,11 @@ public abstract class DamageSkill extends Skill {
             }
             int damage = getDamage(skillUser, enemyPokemon, new Field(), hasCrit);
             enemyPokemon.subtractHealth(damage);
+
+            secondList.add("Dealt " + damage + " damage.");
             if (enemyPokemon.getCurrentHealth() == 0) {
                 secondList.add(enemyPokemon.getName() + " fainted.");
             }
-            secondList.add("Dealt " + damage + " damage.");
 
         } else {
             if (skillFailed) {

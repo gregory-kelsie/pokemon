@@ -112,6 +112,8 @@ public class GameStateManager {
         //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
         currentState = new LoadingState(this, LoadingState.MAIN_MENU);
         addToParty(new Eevee(5));
+        getParty().get(0).setExp(80);
+        getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});
         addToParty(new Charizard(5));
         addToParty(new Venusaur(5));
         addToParty(new Blastoise(5));

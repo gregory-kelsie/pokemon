@@ -68,6 +68,9 @@ public class StatusState extends GameState{
         regularFont.draw(batch, gsm.getParty().get(pokemonPosition).getId() +"", 828, 1062);
         regularFont.draw(batch, gsm.getParty().get(pokemonPosition).getName(), 828, 993);
         regularFont.draw(batch, gsm.getParty().get(pokemonPosition).getNatureString(), 828, 849);
+        regularFont.draw(batch, "" + Math.round(gsm.getParty().get(pokemonPosition).getDisplayedExp()), 828, 774);
+        regularFont.draw(batch, "" +  (gsm.getParty().get(pokemonPosition).getNextLevelExp()
+                - Math.round(gsm.getParty().get(pokemonPosition).getDisplayedExp())), 828, 700);
         regularFont.draw(batch, gsm.getParty().get(pokemonPosition).getAbilityString(), 828, 633);
     }
     private void renderStatBox(SpriteBatch batch) {
