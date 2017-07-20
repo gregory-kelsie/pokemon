@@ -13,6 +13,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charizard;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmander;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Eevee;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pidgey;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
@@ -45,6 +46,7 @@ public class GameStateManager {
     private WildPokemonCreator wpc;
     private Sound notificationSound;
     private List<Pokemon> party;
+    private List<Pokemon> box;
     private Bag bag;
 
     private List<WildPokemon> nearbyPokemon;
@@ -59,6 +61,7 @@ public class GameStateManager {
         wpc = new WildPokemonCreator();
         nearbyPokemon = new ArrayList<WildPokemon>();
         party = new ArrayList<Pokemon>();
+        box = new ArrayList<Pokemon>();
         notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
         bag = new Bag();
         bag.addPokeball(Ball.POKEBALL, 5);
@@ -77,6 +80,13 @@ public class GameStateManager {
             party.add(p);
         }
     }
+
+    public void addToBox(Pokemon p) {
+        if (box.size() < 30) {
+            box.add(p);
+        }
+    }
+
     private void loadData() {
         loadTextures();
         loadSounds();
@@ -84,15 +94,10 @@ public class GameStateManager {
     }
 
     private void loadTextures() {
-
-
-
         /*
         loader.load("pokemonSprites/rattata/rattata.png", Texture.class);
         loader.load("pokemonSprites/pidgey/pidgey.png", Texture.class);
         loader.load("pokemonSprites/pikachu/pikachu.png", Texture.class);*/
-
-
     }
 
     private void loadSounds() {
@@ -104,6 +109,9 @@ public class GameStateManager {
     public List<Pokemon> getParty() {
         return party;
     }
+
+    public List<Pokemon> getBox() { return box; }
+
     private void loadMusic() {
 
     }
@@ -119,6 +127,36 @@ public class GameStateManager {
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));
         addToParty(new Charmander(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pikachu(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pikachu(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pikachu(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pikachu(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pidgey(5));
+        addToBox(new Pikachu(5));
     }
 
     public void setGameCallBack(pokemonToronto.MyGameCallBack gameCallBack) {

@@ -94,6 +94,7 @@ public class PokeNavState extends GameState{
             case POKEDEX_SCREEN:
                 break;
             case PC_SCREEN:
+                executePokemonBoxScreen();
                 break;
             case MAP_SCREEN:
                 executeMapScreen();
@@ -113,6 +114,12 @@ public class PokeNavState extends GameState{
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
         dispose();
     }
+
+    private void executePokemonBoxScreen() {
+        gsm.setState(new BoxState(gsm));
+        dispose();
+    }
+
     private void executeMapScreen() {/*
         if (gsm.gotCoordinates()) {
             gsm.getGameCallBack().startMapActivity(gsm.getLatitude(), gsm.getLongitude());
