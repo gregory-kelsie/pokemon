@@ -19,6 +19,16 @@ public class BoxState extends GameState {
     private final int CLICKED_PARTY_POKEMON = 0;
     private final int CLICKED_BOX_POKEMON = 1;
 
+    private final int TOP_BOX_OFFSET = 1090;
+    private final int LEFT_BOX_OFFSET = 30;
+    private final int X_CLICK_SIZE = 160;
+    private final int X_CLICK_OFFSET = 10;
+    private final int Y_CLICK_SIZE = 160;
+    private final int Y_CLICK_OFFSET = 10;
+    private final int BOX_COLUMNS = 6;
+    private final int BOX_ROWS = 5;
+
+
     private GameStateManager gsm;
     private Texture background;
     private Texture popUp;
@@ -241,13 +251,18 @@ public class BoxState extends GameState {
     }
 
     private void checkBoxClick(int x, int y) {
+        int clickIndex = getBoxClickIndex(x, y);
+        if (clickIndex != -1) {
+            justClickedSlot(CLICKED_BOX_POKEMON, clickIndex);
+        }
+        /*
         if (x >= 30 && x <= 135 && y >= 1090 && y <= 1174) {
             justClickedSlot(CLICKED_BOX_POKEMON, 0);
         } else if (x >= 233 && x <= 330 && y >= 1090 && y <= 1174) {
             justClickedSlot(CLICKED_BOX_POKEMON, 1);
         }  else if (x >= 30 && x <= 135 && y >= 1267 && y <= 1364) {
             justClickedSlot(CLICKED_BOX_POKEMON, 6);
-        }
+        }*/
     }
 
     /**
@@ -276,11 +291,38 @@ public class BoxState extends GameState {
 
     private void swap(int clickZone, int clickPosition) {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
+            //Swap party with another party member
             Texture temp = partyTextures.get(selectedPartySlot);
             Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
             partyTextures.set(selectedPartySlot, partyTextures.get(clickPosition));
             partyTextures.set(clickPosition, temp);
             gsm.getParty().set(selectedPartySlot, gsm.getParty().get(clickPosition));
+            gsm.getParty().set(clickPosition, tempPokemon);
+            setNoPokemonSelection();
+        } else if (selectedAPartyPokemon() && clickZone == CLICKED_BOX_POKEMON) {
+            //Swap party to box
+            Texture temp = partyTextures.get(selectedPartySlot);
+            Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
+            partyTextures.set(selectedPartySlot, boxTextures.get(clickPosition));
+            boxTextures.set(clickPosition, temp);
+            gsm.getParty().set(selectedPartySlot, gsm.getBox().get(clickPosition));
+            gsm.getBox().set(clickPosition, tempPokemon);
+            setNoPokemonSelection();
+        } else if (selectedABoxPokemon() && clickZone == CLICKED_BOX_POKEMON) {
+            //Swap box to box
+            Texture temp = boxTextures.get(selectedBoxSlot);
+            Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
+            boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
+            boxTextures.set(clickPosition, temp);
+            gsm.getBox().set(selectedBoxSlot, gsm.getBox().get(clickPosition));
+            gsm.getBox().set(clickPosition, tempPokemon);
+            setNoPokemonSelection();
+        } else if (selectedABoxPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
+            Texture temp = boxTextures.get(selectedBoxSlot);
+            Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
+            boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
+            partyTextures.set(clickPosition, temp);
+            gsm.getBox().set(selectedBoxSlot, gsm.getParty().get(clickPosition));
             gsm.getParty().set(clickPosition, tempPokemon);
             setNoPokemonSelection();
         }
@@ -348,6 +390,96 @@ public class BoxState extends GameState {
         disposeSelectedPokemonTexture();
     }
 
+
+    /**
+     * Return the index of the pokemon that was clicked in the box at the click
+     * position (x, y). Return -1 if the click position is not on a pokemon.
+     * @param x The x coordinate of the click
+     * @param y The y position of the click
+     * @return The index of the pokemon that was clicked on in the box
+     */
+    private int getBoxClickIndex(int x, int y) {
+        if (clickedInRow(y) && clickedInColumn(x)) {
+            int row = getRow(y);
+            if (yCoordinateIsInClickZone(row, y)) {
+                int col = getColumn(x);
+                if (xCoordinateIsInClickZone(col, x)) {
+                    return row * BOX_COLUMNS + col;
+                }
+            }
+
+        }
+        return -1;
+    }
+
+    private boolean clickedInColumn(int x) {
+        if (x >= LEFT_BOX_OFFSET && x <= getBoxRightOffset()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean clickedInRow(int y) {
+        if (y >= TOP_BOX_OFFSET && y <= getBoxBottomOffset()) {
+            return true;
+        }
+        return false;
+    }
+
+    private int getRow(int y) {
+        return (y - TOP_BOX_OFFSET) / getBoxPokemonTotalHeight();
+    }
+
+    private int getColumn(int x) {
+        return (x - LEFT_BOX_OFFSET) / getBoxPokemonTotalWidth();
+    }
+
+    private boolean yCoordinateIsInClickZone(int row, int y) {
+        if (y >= getLowerBoundY(row) && y <= getUpperBoundY(row)) {
+            return true;
+        }
+        return false;
+    }
+
+    private int getLowerBoundY(int row) {
+        return TOP_BOX_OFFSET + (getBoxPokemonTotalHeight() * row);
+    }
+
+    private int getUpperBoundY(int row) {
+        return TOP_BOX_OFFSET + (getBoxPokemonTotalHeight() * row) + Y_CLICK_SIZE;
+    }
+
+    private boolean xCoordinateIsInClickZone(int col, int x) {
+        if (x >= getLowerBoundX(col) && x <= getUpperBoundX(col)) {
+            return true;
+        }
+        return false;
+    }
+
+    private int getLowerBoundX(int col) {
+        return LEFT_BOX_OFFSET + (col * getBoxPokemonTotalWidth());
+    }
+
+    private int getUpperBoundX(int col) {
+        return LEFT_BOX_OFFSET + (col * getBoxPokemonTotalWidth()) + X_CLICK_SIZE;
+    }
+
+
+    private int getBoxPokemonTotalWidth() {
+        return X_CLICK_OFFSET + X_CLICK_SIZE;
+    }
+
+    private int getBoxPokemonTotalHeight() {
+        return Y_CLICK_OFFSET + Y_CLICK_SIZE;
+    }
+
+    private int getBoxBottomOffset() {
+        return TOP_BOX_OFFSET + (getBoxPokemonTotalHeight() * BOX_ROWS);
+    }
+
+    private int getBoxRightOffset() {
+        return LEFT_BOX_OFFSET + (getBoxPokemonTotalWidth() * BOX_COLUMNS);
+    }
     @Override
     protected void dispose() {
         background.dispose();
