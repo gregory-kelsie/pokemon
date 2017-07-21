@@ -255,14 +255,6 @@ public class BoxState extends GameState {
         if (clickIndex != -1) {
             justClickedSlot(CLICKED_BOX_POKEMON, clickIndex);
         }
-        /*
-        if (x >= 30 && x <= 135 && y >= 1090 && y <= 1174) {
-            justClickedSlot(CLICKED_BOX_POKEMON, 0);
-        } else if (x >= 233 && x <= 330 && y >= 1090 && y <= 1174) {
-            justClickedSlot(CLICKED_BOX_POKEMON, 1);
-        }  else if (x >= 30 && x <= 135 && y >= 1267 && y <= 1364) {
-            justClickedSlot(CLICKED_BOX_POKEMON, 6);
-        }*/
     }
 
     /**
@@ -274,11 +266,18 @@ public class BoxState extends GameState {
     private void justClickedSlot(int clickZone, int clickPosition) {
         if (!selectedAPokemon()) {
             if (clickZone == CLICKED_PARTY_POKEMON) {
-                selectedPartySlot = clickPosition;
+                if (gsm.getParty().size() >= clickPosition + 1) {
+                    //Make sure that there is a pokemon in the slot before selecting.
+                    selectedPartySlot = clickPosition;
+                    setSelectedPokemonTexture(clickZone, clickPosition);
+                }
             } else if (clickZone == CLICKED_BOX_POKEMON) {
-                selectedBoxSlot = clickPosition;
+                if (gsm.getBox().size() >= clickPosition + 1) {
+                    selectedBoxSlot = clickPosition;
+                    setSelectedPokemonTexture(clickZone, clickPosition);
+                }
             }
-            setSelectedPokemonTexture(clickZone, clickPosition);
+
         } else {
             if (selectedTheSamePokemon(clickZone, clickPosition)) {
                 openPopUp = true;
@@ -292,42 +291,71 @@ public class BoxState extends GameState {
     private void swap(int clickZone, int clickPosition) {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
             //Swap party with another party member
-            Texture temp = partyTextures.get(selectedPartySlot);
-            Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
-            partyTextures.set(selectedPartySlot, partyTextures.get(clickPosition));
-            partyTextures.set(clickPosition, temp);
-            gsm.getParty().set(selectedPartySlot, gsm.getParty().get(clickPosition));
-            gsm.getParty().set(clickPosition, tempPokemon);
-            setNoPokemonSelection();
+            if (gsm.getParty().size() >= clickPosition + 1) {
+                Texture temp = partyTextures.get(selectedPartySlot);
+                Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
+                partyTextures.set(selectedPartySlot, partyTextures.get(clickPosition));
+                partyTextures.set(clickPosition, temp);
+                gsm.getParty().set(selectedPartySlot, gsm.getParty().get(clickPosition));
+                gsm.getParty().set(clickPosition, tempPokemon);
+                setNoPokemonSelection();
+            }
         } else if (selectedAPartyPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap party to box
-            Texture temp = partyTextures.get(selectedPartySlot);
-            Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
-            tempPokemon.fullyHeal();
-            partyTextures.set(selectedPartySlot, boxTextures.get(clickPosition));
-            boxTextures.set(clickPosition, temp);
-            gsm.getParty().set(selectedPartySlot, gsm.getBox().get(clickPosition));
-            gsm.getBox().set(clickPosition, tempPokemon);
-            setNoPokemonSelection();
+            if (gsm.getBox().size() >= clickPosition + 1) {
+                Texture temp = partyTextures.get(selectedPartySlot);
+                Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
+                tempPokemon.fullyHeal();
+                partyTextures.set(selectedPartySlot, boxTextures.get(clickPosition));
+                boxTextures.set(clickPosition, temp);
+                gsm.getParty().set(selectedPartySlot, gsm.getBox().get(clickPosition));
+                gsm.getBox().set(clickPosition, tempPokemon);
+                setNoPokemonSelection();
+            } else {
+                deposit();
+                setNoPokemonSelection();
+            }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap box to box
-            Texture temp = boxTextures.get(selectedBoxSlot);
-            Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
-            boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
-            boxTextures.set(clickPosition, temp);
-            gsm.getBox().set(selectedBoxSlot, gsm.getBox().get(clickPosition));
-            gsm.getBox().set(clickPosition, tempPokemon);
-            setNoPokemonSelection();
+            if (gsm.getBox().size() >= clickPosition + 1) {
+                Texture temp = boxTextures.get(selectedBoxSlot);
+                Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
+                boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
+                boxTextures.set(clickPosition, temp);
+                gsm.getBox().set(selectedBoxSlot, gsm.getBox().get(clickPosition));
+                gsm.getBox().set(clickPosition, tempPokemon);
+                setNoPokemonSelection();
+            }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
-            Texture temp = boxTextures.get(selectedBoxSlot);
-            Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
-            boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
-            partyTextures.set(clickPosition, temp);
-            gsm.getBox().set(selectedBoxSlot, gsm.getParty().get(clickPosition));
-            gsm.getBox().get(selectedBoxSlot).fullyHeal();
-            gsm.getParty().set(clickPosition, tempPokemon);
-            setNoPokemonSelection();
+            if (gsm.getParty().size() >= clickPosition + 1) {
+                Texture temp = boxTextures.get(selectedBoxSlot);
+                Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
+                boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
+                partyTextures.set(clickPosition, temp);
+                gsm.getBox().set(selectedBoxSlot, gsm.getParty().get(clickPosition));
+                gsm.getBox().get(selectedBoxSlot).fullyHeal();
+                gsm.getParty().set(clickPosition, tempPokemon);
+                setNoPokemonSelection();
+            } else {
+                withdraw();
+                setNoPokemonSelection();
+            }
         }
+    }
+
+    private void deposit() {
+        gsm.getParty().get(selectedPartySlot).fullyHeal();
+        gsm.getBox().add(gsm.getParty().get(selectedPartySlot));
+        gsm.getParty().remove(selectedPartySlot);
+        boxTextures.add(partyTextures.get(selectedPartySlot));
+        partyTextures.remove(selectedPartySlot);
+    }
+
+    private void withdraw() {
+        gsm.getParty().add(gsm.getBox().get(selectedBoxSlot));
+        gsm.getBox().remove(selectedBoxSlot);
+        partyTextures.add(boxTextures.get(selectedBoxSlot));
+        boxTextures.remove(selectedBoxSlot);
     }
     private boolean selectedTheSamePokemon(int clickZone, int clickPosition) {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON && clickPosition == selectedPartySlot) {
