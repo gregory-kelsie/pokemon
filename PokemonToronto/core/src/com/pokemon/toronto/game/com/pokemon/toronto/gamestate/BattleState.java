@@ -614,6 +614,12 @@ public class BattleState extends GameState implements BattleInterface {
 
             } else {
                 if (battleUpdater.caughtThePokemon()) {
+                    if (!gsm.isPartyFull()) {
+                        gsm.getParty().add(enemyPokemon);
+                    } else if (!gsm.isBoxFull()) {
+                        enemyPokemon.fullyHeal();
+                        gsm.getBox().add(enemyPokemon);
+                    }
                     gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
                     dispose();
                 }
@@ -680,9 +686,11 @@ public class BattleState extends GameState implements BattleInterface {
                     clickSound.play();
                 } else if (x >= 200 && x <= 919 && y >= 1441 && y <= 1583 && panelPosition == BAG_OPTION_PANEL) {
                     //Clicked Pokeballs
-                    panelPosition = POKEBALL_BAG;
-                    initPokeballIconTextures();
-                    clickSound.play();
+                    if (!gsm.isPartyFull() || !gsm.isBoxFull()) {
+                        panelPosition = POKEBALL_BAG;
+                        initPokeballIconTextures();
+                        clickSound.play();
+                    }
                 } else if (x >= 0 && x <= 473 && y >= 1203 && y <= 1337 && panelPosition == POKEBALL_BAG) {
                     //Clicked Pokeballs
                     if (gsm.getBag().getPokeballBag().size() >= 1) {

@@ -303,6 +303,7 @@ public class BoxState extends GameState {
             //Swap party to box
             Texture temp = partyTextures.get(selectedPartySlot);
             Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
+            tempPokemon.fullyHeal();
             partyTextures.set(selectedPartySlot, boxTextures.get(clickPosition));
             boxTextures.set(clickPosition, temp);
             gsm.getParty().set(selectedPartySlot, gsm.getBox().get(clickPosition));
@@ -323,6 +324,7 @@ public class BoxState extends GameState {
             boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
             partyTextures.set(clickPosition, temp);
             gsm.getBox().set(selectedBoxSlot, gsm.getParty().get(clickPosition));
+            gsm.getBox().get(selectedBoxSlot).fullyHeal();
             gsm.getParty().set(clickPosition, tempPokemon);
             setNoPokemonSelection();
         }

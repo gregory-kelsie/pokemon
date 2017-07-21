@@ -87,6 +87,20 @@ public class GameStateManager {
         }
     }
 
+    public boolean isBoxFull() {
+        if (box.size() < 30) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isPartyFull() {
+        if (party.size() < 6) {
+            return false;
+        }
+        return true;
+    }
+
     private void loadData() {
         loadTextures();
         loadSounds();
@@ -126,7 +140,7 @@ public class GameStateManager {
         addToParty(new Venusaur(5));
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));
-        addToParty(new Charmander(5));
+        //addToParty(new Charmander(5));
         addToBox(new Pidgey(5));
         addToBox(new Pidgey(5));
         addToBox(new Pidgey(5));
@@ -156,7 +170,7 @@ public class GameStateManager {
         addToBox(new Pidgey(5));
         addToBox(new Pidgey(5));
         addToBox(new Pidgey(5));
-        addToBox(new Pikachu(5));
+        //addToBox(new Pikachu(5));
     }
 
     public void setGameCallBack(pokemonToronto.MyGameCallBack gameCallBack) {
