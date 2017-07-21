@@ -1,7 +1,9 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -33,6 +35,7 @@ public class BoxState extends GameState {
     private Texture background;
     private Texture popUp;
     private Texture selector;
+    private Pokemon selectedPokemon;
     private Texture selectedPokemonTexture;
     private List<Texture> partyTextures;
     private List<Texture> boxTextures;
@@ -40,12 +43,16 @@ public class BoxState extends GameState {
     private boolean openPopUp;
     private int selectedPartySlot;
     private int selectedBoxSlot;
-    private int justClickedSlot;
+
+    private BitmapFont font;
 
     public BoxState(GameStateManager gsm) {
         this.gsm = gsm;
         setNoPokemonSelection();
         openPopUp = false;
+        font = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
+        font.setColor(Color.BLACK);
+        selectedPokemon = null;
         initTextures();
     }
 
@@ -82,6 +89,8 @@ public class BoxState extends GameState {
         renderMiniPokemon(batch);
         //Render Selected Pokemon
         renderSelectedPokemon(batch);
+        //Render Description
+        renderSelectedPokemonDescription(batch);
         //Render Pop up
         renderPopUp(batch);
     }
@@ -89,6 +98,15 @@ public class BoxState extends GameState {
     private void renderSelectedPokemon(SpriteBatch batch) {
         if (selectedPokemonTexture != null) {
             batch.draw(selectedPokemonTexture, 624, 1460, 394, 394);
+        }
+    }
+    private void renderSelectedPokemonDescription(SpriteBatch batch) {
+        if (selectedPokemon != null) {
+            font.draw(batch, selectedPokemon.getName() +
+                    "\nLv. " + selectedPokemon.getLevel() +
+                    "\nNature: " + selectedPokemon.getNatureString() +
+                    "\nAbility: " + selectedPokemon.getAbilityString() +
+                    "\nItem: None" , 624, 1405);
         }
     }
     private void renderMiniPokemon(SpriteBatch batch) {
@@ -269,11 +287,13 @@ public class BoxState extends GameState {
                 if (gsm.getParty().size() >= clickPosition + 1) {
                     //Make sure that there is a pokemon in the slot before selecting.
                     selectedPartySlot = clickPosition;
+                    selectedPokemon = gsm.getParty().get(clickPosition);
                     setSelectedPokemonTexture(clickZone, clickPosition);
                 }
             } else if (clickZone == CLICKED_BOX_POKEMON) {
                 if (gsm.getBox().size() >= clickPosition + 1) {
                     selectedBoxSlot = clickPosition;
+                    selectedPokemon = gsm.getBox().get(clickPosition);
                     setSelectedPokemonTexture(clickZone, clickPosition);
                 }
             }
@@ -417,6 +437,7 @@ public class BoxState extends GameState {
     private void setNoPokemonSelection() {
         selectedPartySlot = -1;
         selectedBoxSlot = -1;
+        selectedPokemon = null;
         disposeSelectedPokemonTexture();
     }
 
@@ -515,6 +536,7 @@ public class BoxState extends GameState {
         background.dispose();
         popUp.dispose();
         selector.dispose();
+        font.dispose();
         disposePartyTextures();
         disposeBoxTextures();
         disposeSelectedPokemonTexture();
