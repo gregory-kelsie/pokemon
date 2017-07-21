@@ -1,6 +1,8 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -45,12 +47,34 @@ public class BoxState extends GameState {
     private int selectedBoxSlot;
 
     private BitmapFont font;
+    private Music bgm;
+    private Sound clickSound;
+    private Music bootingSound;
+    private Sound logoutSound;
+    private Sound errorSound;
+    private Sound depositSound;
+    private Sound switchSound;
+    private boolean playedBootSound;
+    private boolean startedBgm;
 
     public BoxState(GameStateManager gsm) {
         this.gsm = gsm;
         setNoPokemonSelection();
         openPopUp = false;
         font = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
+        bgm = Gdx.audio.newMusic(Gdx.files.internal("pokecenter/bgm.mp3"));
+        clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
+        bootingSound = Gdx.audio.newMusic(Gdx.files.internal("sounds/bootpc.wav"));
+        logoutSound = Gdx.audio.newSound(Gdx.files.internal("sounds/logout.wav"));
+        errorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/error.wav"));
+        depositSound = Gdx.audio.newSound(Gdx.files.internal("sounds/deposit.wav"));
+        switchSound = Gdx.audio.newSound(Gdx.files.internal("sounds/switch.wav"));
+        playedBootSound = false;
+        startedBgm = false;
+        bgm.setLooping(true);
+        bgm.setVolume(0.25f);
+        bootingSound.setLooping(false);
+
         font.setColor(Color.BLACK);
         selectedPokemon = null;
         initTextures();
@@ -197,6 +221,14 @@ public class BoxState extends GameState {
 
     @Override
     public void update(double dt) {
+        if (!playedBootSound) {
+            bootingSound.play();
+            playedBootSound = true;
+        }
+        if (!startedBgm && playedBootSound && !bootingSound.isPlaying()) {
+            startedBgm = false;
+            bgm.play();
+        }
         if (MyInput.clicked()) {
             int x = MyInput.getX();
             int y = MyInput.getY();
@@ -207,6 +239,7 @@ public class BoxState extends GameState {
                 } else if (clickedRelease(x, y)) {
                     openReleasePage();
                 } else if (clickedCancel(x, y)) {
+                    errorSound.play();
                     openPopUp = false;
                     setNoPokemonSelection();
                 }
@@ -214,6 +247,8 @@ public class BoxState extends GameState {
             else {
                 if (clickedLogout(x, y)) {
                     logOut();
+                } else if (clickedDescriptionArea(x, y)) {
+                    clickedDescriptionArea();
                 }
                 checkPartyClick(x, y);
                 checkBoxClick(x, y);
@@ -222,6 +257,19 @@ public class BoxState extends GameState {
         }
     }
 
+    private boolean clickedDescriptionArea(int x, int y) {
+        if (x >= 572 && x <= 1014 && y >= 54 && y <= 849) {
+            return true;
+        }
+        return false;
+    }
+
+    private void clickedDescriptionArea() {
+        if (selectedAPokemon()) {
+            clickSound.play();
+            openPopUp = true;
+        }
+    }
     private boolean clickedSummary(int x, int y) {
         return false;
     }
@@ -289,18 +337,20 @@ public class BoxState extends GameState {
                     selectedPartySlot = clickPosition;
                     selectedPokemon = gsm.getParty().get(clickPosition);
                     setSelectedPokemonTexture(clickZone, clickPosition);
+                    clickSound.play();
                 }
             } else if (clickZone == CLICKED_BOX_POKEMON) {
                 if (gsm.getBox().size() >= clickPosition + 1) {
                     selectedBoxSlot = clickPosition;
                     selectedPokemon = gsm.getBox().get(clickPosition);
                     setSelectedPokemonTexture(clickZone, clickPosition);
+                    clickSound.play();
                 }
             }
 
         } else {
             if (selectedTheSamePokemon(clickZone, clickPosition)) {
-                openPopUp = true;
+                setNoPokemonSelection();
             } else {
                 //Swap pokemon.
                 swap(clickZone, clickPosition);
@@ -312,6 +362,7 @@ public class BoxState extends GameState {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
             //Swap party with another party member
             if (gsm.getParty().size() >= clickPosition + 1) {
+                switchSound.play();
                 Texture temp = partyTextures.get(selectedPartySlot);
                 Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
                 partyTextures.set(selectedPartySlot, partyTextures.get(clickPosition));
@@ -323,6 +374,7 @@ public class BoxState extends GameState {
         } else if (selectedAPartyPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap party to box
             if (gsm.getBox().size() >= clickPosition + 1) {
+                switchSound.play();
                 Texture temp = partyTextures.get(selectedPartySlot);
                 Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
                 tempPokemon.fullyHeal();
@@ -338,6 +390,7 @@ public class BoxState extends GameState {
         } else if (selectedABoxPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap box to box
             if (gsm.getBox().size() >= clickPosition + 1) {
+                switchSound.play();
                 Texture temp = boxTextures.get(selectedBoxSlot);
                 Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
                 boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
@@ -348,6 +401,7 @@ public class BoxState extends GameState {
             }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
             if (gsm.getParty().size() >= clickPosition + 1) {
+                switchSound.play();
                 Texture temp = boxTextures.get(selectedBoxSlot);
                 Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
                 boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
@@ -364,6 +418,7 @@ public class BoxState extends GameState {
     }
 
     private void deposit() {
+        depositSound.play();
         gsm.getParty().get(selectedPartySlot).fullyHeal();
         gsm.getBox().add(gsm.getParty().get(selectedPartySlot));
         gsm.getParty().remove(selectedPartySlot);
@@ -372,6 +427,7 @@ public class BoxState extends GameState {
     }
 
     private void withdraw() {
+        depositSound.play();
         gsm.getParty().add(gsm.getBox().get(selectedBoxSlot));
         gsm.getBox().remove(selectedBoxSlot);
         partyTextures.add(boxTextures.get(selectedBoxSlot));
@@ -409,6 +465,7 @@ public class BoxState extends GameState {
     }
 
     private void logOut() {
+        logoutSound.play();
         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
         dispose();
     }
@@ -537,9 +594,21 @@ public class BoxState extends GameState {
         popUp.dispose();
         selector.dispose();
         font.dispose();
+        disposeSounds();
+        bgm.stop();
+        bgm.dispose();
         disposePartyTextures();
         disposeBoxTextures();
         disposeSelectedPokemonTexture();
+    }
+
+    private void disposeSounds() {
+        clickSound.dispose();
+        bootingSound.dispose();
+        logoutSound.dispose();
+        errorSound.dispose();
+        depositSound.dispose();
+        switchSound.dispose();
     }
 
     private void disposeSelectedPokemonTexture() {
