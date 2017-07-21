@@ -275,6 +275,9 @@ public class BoxState extends GameState {
     }
 
     private boolean clickedRelease(int x, int y) {
+        if (x >= 44 && x <= 972 && y >= 998 && y <= 1101) {
+            return true;
+        }
         return false;
     }
 
@@ -297,7 +300,18 @@ public class BoxState extends GameState {
     }
 
     private void openReleasePage() {
+        openPopUp = false;
 
+        if (selectedABoxPokemon()) {
+            gsm.getBox().remove(selectedBoxSlot);
+            boxTextures.remove(selectedBoxSlot);
+        } else if (selectedAPartyPokemon()) {
+            if (gsm.getParty().size() != 1) {
+                gsm.getParty().remove(selectedPartySlot);
+                partyTextures.remove(selectedPartySlot);
+            }
+        }
+        setNoPokemonSelection();
     }
 
     private void checkPartyClick(int x, int y) {
@@ -384,8 +398,10 @@ public class BoxState extends GameState {
                 gsm.getBox().set(clickPosition, tempPokemon);
                 setNoPokemonSelection();
             } else {
-                deposit();
-                setNoPokemonSelection();
+                if (gsm.getParty().size() != 1) {
+                    deposit();
+                    setNoPokemonSelection();
+                }
             }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap box to box
@@ -432,6 +448,7 @@ public class BoxState extends GameState {
         gsm.getBox().remove(selectedBoxSlot);
         partyTextures.add(boxTextures.get(selectedBoxSlot));
         boxTextures.remove(selectedBoxSlot);
+
     }
     private boolean selectedTheSamePokemon(int clickZone, int clickPosition) {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON && clickPosition == selectedPartySlot) {
