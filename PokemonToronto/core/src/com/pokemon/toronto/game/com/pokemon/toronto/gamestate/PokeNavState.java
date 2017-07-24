@@ -116,7 +116,7 @@ public class PokeNavState extends GameState{
     }
 
     private void executePokemonBoxScreen() {
-        gsm.setState(new BoxState(gsm));
+        gsm.setState(new BoxState(gsm, true));
         dispose();
     }
 

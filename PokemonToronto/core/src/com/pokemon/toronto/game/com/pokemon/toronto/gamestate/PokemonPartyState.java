@@ -174,7 +174,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(0);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 0));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(0), false));
                     dispose();
                 }
             }   else if (x >= 8 && x <= 950 && y >= 462 && y <= 651 && hasSecondPokemon()) {
@@ -185,7 +185,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(1);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 1));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(1), false));
                     dispose();
                 }
             }  else if (x >= 8 && x <= 950 && y >= 750 && y <= 909 && hasThirdPokemon()) {
@@ -196,7 +196,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(2);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 2));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(2), false));
                     dispose();
                 }
             }  else if (x >= 8 && x <= 950 && y >= 1032 && y <= 1170 && hasFourthPokemon()) {
@@ -207,7 +207,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(3);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 3));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(3), false));
                     dispose();
                 }
             }  else if (x >= 8 && x <= 950 && y >= 1309 && y <= 1433 && hasFifthPokemon()) {
@@ -218,7 +218,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(4);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 4));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(4), false));
                     dispose();
                 }
             }  else if (x >= 8 && x <= 950 && y >= 1553 && y <= 1672 && hasSixthPokemon()) {
@@ -229,7 +229,7 @@ public class PokemonPartyState extends GameState {
                     swapPokemon(5);
 
                 } else {
-                    gsm.setState(new StatusState(gsm, 5));
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(5), false));
                     dispose();
                 }
             } else if (x >= 44 && x <= 340 && y >= 1836 && y <= 1905) {

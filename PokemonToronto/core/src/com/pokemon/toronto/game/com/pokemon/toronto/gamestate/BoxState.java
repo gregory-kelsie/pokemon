@@ -35,6 +35,7 @@ public class BoxState extends GameState {
 
     private GameStateManager gsm;
     private Texture background;
+    private Texture statusBackground;
     private Texture popUp;
     private Texture selector;
     private Pokemon selectedPokemon;
@@ -56,11 +57,13 @@ public class BoxState extends GameState {
     private Sound switchSound;
     private boolean playedBootSound;
     private boolean startedBgm;
+    private boolean displayingStatusWindow;
 
-    public BoxState(GameStateManager gsm) {
+    public BoxState(GameStateManager gsm, boolean cameFromPokeNav) {
         this.gsm = gsm;
         setNoPokemonSelection();
         openPopUp = false;
+        displayingStatusWindow = false;
         font = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
         bgm = Gdx.audio.newMusic(Gdx.files.internal("pokecenter/bgm.mp3"));
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
@@ -69,7 +72,11 @@ public class BoxState extends GameState {
         errorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/error.wav"));
         depositSound = Gdx.audio.newSound(Gdx.files.internal("sounds/deposit.wav"));
         switchSound = Gdx.audio.newSound(Gdx.files.internal("sounds/switch.wav"));
-        playedBootSound = false;
+        if (!cameFromPokeNav) {
+            playedBootSound = true;
+        } else {
+            playedBootSound = false;
+        }
         startedBgm = false;
         bgm.setLooping(true);
         bgm.setVolume(0.25f);
@@ -82,6 +89,7 @@ public class BoxState extends GameState {
 
     private void initTextures() {
         background = new Texture("pokemonpc/boxbackground.png");
+        statusBackground = new Texture("pokemonMenu/statusScreen.png");
         popUp = new Texture("pokemonpc/popup.png");
         selector = new Texture("pokemonpc/selector.png");
         selectedPokemonTexture = null;
@@ -105,18 +113,22 @@ public class BoxState extends GameState {
 
     @Override
     public void render(SpriteBatch batch) {
-        //Render Background
-        batch.draw(background, 0, 0);
-        //Render Selector
-        renderSelector(batch);
-        //Render Mini Pokemon
-        renderMiniPokemon(batch);
-        //Render Selected Pokemon
-        renderSelectedPokemon(batch);
-        //Render Description
-        renderSelectedPokemonDescription(batch);
-        //Render Pop up
-        renderPopUp(batch);
+        if (displayingStatusWindow) {
+            renderStatusWindow(batch);
+        } else {
+            //Render Background
+            batch.draw(background, 0, 0);
+            //Render Selector
+            renderSelector(batch);
+            //Render Mini Pokemon
+            renderMiniPokemon(batch);
+            //Render Selected Pokemon
+            renderSelectedPokemon(batch);
+            //Render Description
+            renderSelectedPokemonDescription(batch);
+            //Render Pop up
+            renderPopUp(batch);
+        }
     }
 
     private void renderSelectedPokemon(SpriteBatch batch) {
@@ -211,6 +223,81 @@ public class BoxState extends GameState {
             batch.draw(selector, x, y);
 
         }
+
+    }
+    
+    private void renderStatusWindow(SpriteBatch batch) {
+        batch.draw(statusBackground, 0, 0);
+        batch.draw(selectedPokemonTexture, 75, 1338, 340, 340);
+        renderNameAndItemBox(batch);
+        renderStatBox(batch);
+        renderInfoBox(batch);
+        renderEvBox(batch);
+        renderIvBox(batch);
+        renderMoveNames(batch);
+    }
+
+    private void renderMoveNames(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getSkills().get(0).getName(), 20, 1008);
+        font.draw(batch, "PP    " + selectedPokemon.getSkills().get(0).getCurrentPP() +
+                "/" + selectedPokemon.getSkills().get(0).getCurrentPP(), 20, 948);
+        if (selectedPokemon.getSkills().size() > 1) {
+            font.draw(batch, selectedPokemon.getSkills().get(1).getName(), 20, 858);
+            font.draw(batch, "PP    " + selectedPokemon.getSkills().get(1).getCurrentPP() +
+                    "/" + selectedPokemon.getSkills().get(1).getCurrentPP(), 20, 798);
+            if (selectedPokemon.getSkills().size() > 2) {
+                font.draw(batch, selectedPokemon.getSkills().get(2).getName(), 20, 708);
+                font.draw(batch, "PP    " + selectedPokemon.getSkills().get(2).getCurrentPP() +
+                        "/" + selectedPokemon.getSkills().get(2).getCurrentPP(), 20, 648);
+                if (selectedPokemon.getSkills().size() > 3) {
+                    font.draw(batch, selectedPokemon.getSkills().get(3).getName(), 20, 558);
+                    font.draw(batch, "PP    " + selectedPokemon.getSkills().get(3).getCurrentPP() +
+                            "/" + selectedPokemon.getSkills().get(3).getCurrentPP(), 20, 498);
+                }
+            }
+        }
+    }
+    private void renderEvBox(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getHealthEV() + "", 431, 342);
+        font.draw(batch, selectedPokemon.getAttackEV() + "", 431, 294);
+        font.draw(batch, selectedPokemon.getDefenseEV() + "", 431, 246);
+        font.draw(batch, selectedPokemon.getSpAttackEV() + "", 431, 198);
+        font.draw(batch, selectedPokemon.getSpDefenseEV() + "", 431, 156);
+        font.draw(batch, selectedPokemon.getSpeedEV() + "", 431, 105);
+    }
+
+    private void renderIvBox(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getHealthIV() + "", 935, 342);
+        font.draw(batch, selectedPokemon.getAttackIV() + "", 935, 294);
+        font.draw(batch, selectedPokemon.getDefenseIV() + "", 935, 246);
+        font.draw(batch, selectedPokemon.getSpAttackIV() + "", 935, 198);
+        font.draw(batch, selectedPokemon.getSpDefenseIV() + "", 935, 156);
+        font.draw(batch, selectedPokemon.getSpeedIV() + "", 935, 105);
+    }
+
+    private void renderNameAndItemBox(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getName() +
+                "\nLv." + selectedPokemon.getLevel(), 42, 1812);
+        font.draw(batch, selectedPokemon.getCurrentHealth() + "/" +
+                selectedPokemon.getHealthStat(), 918, 1701);
+        font.draw(batch, "None", 15, 1227);
+    }
+
+    private void renderInfoBox(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getId() +"", 828, 1062);
+        font.draw(batch, selectedPokemon.getName(), 828, 993);
+        font.draw(batch, selectedPokemon.getNatureString(), 828, 849);
+        font.draw(batch, "" + Math.round(selectedPokemon.getDisplayedExp()), 828, 774);
+        font.draw(batch, "" +  (selectedPokemon.getNextLevelExp()
+                - Math.round(selectedPokemon.getDisplayedExp())), 828, 700);
+        font.draw(batch, selectedPokemon.getAbilityString(), 828, 633);
+    }
+    private void renderStatBox(SpriteBatch batch) {
+        font.draw(batch, selectedPokemon.getAttackStat() +"", 957, 1605);
+        font.draw(batch, selectedPokemon.getDefenseStat() +"", 957, 1548);
+        font.draw(batch, selectedPokemon.getSpecialAttackStat() +"", 957, 1491);
+        font.draw(batch, selectedPokemon.getSpecialDefenseStat() +"", 957, 1422);
+        font.draw(batch, selectedPokemon.getSpeedStat() +"", 957, 1365);
     }
 
     private void renderPopUp(SpriteBatch batch) {
@@ -233,30 +320,47 @@ public class BoxState extends GameState {
             int x = MyInput.getX();
             int y = MyInput.getY();
             Gdx.app.log("Coords", "x: " + x + ", y: " + y);
-            if (openPopUp) {
-                if (clickedSummary(x, y)) {
-                    openSummaryPage();
-                } else if (clickedRelease(x, y)) {
-                    openReleasePage();
-                } else if (clickedCancel(x, y)) {
-                    errorSound.play();
-                    openPopUp = false;
-                    setNoPokemonSelection();
-                }
-            }
-            else {
-                if (clickedLogout(x, y)) {
-                    logOut();
-                } else if (clickedDescriptionArea(x, y)) {
-                    clickedDescriptionArea();
-                }
-                checkPartyClick(x, y);
-                checkBoxClick(x, y);
+            if (!displayingStatusWindow) {
+                if (openPopUp) {
+                    if (clickedSummary(x, y)) {
+                        openSummaryPage();
+                    } else if (clickedRelease(x, y)) {
+                        openReleasePage();
+                    } else if (clickedCancel(x, y)) {
+                        errorSound.play();
+                        openPopUp = false;
+                        setNoPokemonSelection();
+                    }
+                } else {
+                    if (clickedLogout(x, y)) {
+                        logOut();
+                    } else if (clickedDescriptionArea(x, y)) {
+                        clickedDescriptionArea();
+                    }
+                    checkPartyClick(x, y);
+                    checkBoxClick(x, y);
 
+                }
+            } else {
+                if (clickedExitStatusWindow(x, y)) {
+                    exitStatusWindow();
+                }
             }
         }
     }
 
+    private boolean clickedExitStatusWindow(int x, int y) {
+       if (x >= 852 && x <= 1080 && y >= 0 && y <= 160) {
+           return true;
+       }
+       return false;
+    }
+
+    private void exitStatusWindow() {
+        errorSound.play();
+        displayingStatusWindow = false;
+        setNoPokemonSelection();
+    }
     private boolean clickedDescriptionArea(int x, int y) {
         if (x >= 572 && x <= 1014 && y >= 54 && y <= 849) {
             return true;
@@ -271,6 +375,9 @@ public class BoxState extends GameState {
         }
     }
     private boolean clickedSummary(int x, int y) {
+        if (x >= 128 && x <= 959 && y >= 818 && y <= 919) {
+            return true;
+        }
         return false;
     }
 
@@ -296,7 +403,11 @@ public class BoxState extends GameState {
     }
 
     private void openSummaryPage() {
-
+        clickSound.play();
+        displayingStatusWindow = true;
+        openPopUp = false;
+        /*gsm.setState(new StatusState(gsm, selectedPokemon, true));
+        dispose();*/
     }
 
     private void openReleasePage() {
@@ -608,6 +719,7 @@ public class BoxState extends GameState {
     @Override
     protected void dispose() {
         background.dispose();
+        statusBackground.dispose();
         popUp.dispose();
         selector.dispose();
         font.dispose();
