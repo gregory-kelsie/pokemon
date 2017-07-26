@@ -1,5 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,15 +18,6 @@ public class PokemonLookup {
     private double longitude;
 
     private final int POKEMON_RANGE = 500; //500m
-    //Cut and paste to pokemon later.
-    private final int CATERPIE = 10;
-    private final int WEEDLE = 13;
-    private final int PIDGEY = 16;
-    private final int RATTATA = 19;
-    private final int PIKACHU = 25;
-    private final int NIDORANF = 29;
-    private final int NIDORANM = 32;
-    private final int EEVEE = 133;
 
     /**
      * Look up a stated amount of Pokemon from a given location.
@@ -108,33 +101,33 @@ public class PokemonLookup {
             double[] pokemonLocation = getRandomLocation(latitude, longitude, POKEMON_RANGE);
             int rand = (int) Math.round(Math.random() * 100);
             if (rand <= 30) {
-                pokemon.insertData(RATTATA, pokemonLocation[0],
+                pokemon.insertData(PokemonId.RATTATA.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
 
             } else if (rand <= 60) {
-                pokemon.insertData(PIDGEY, pokemonLocation[0],
+                pokemon.insertData(PokemonId.PIDGEY.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             else if (rand <= 70) {
-                pokemon.insertData(CATERPIE, pokemonLocation[0],
+                pokemon.insertData(PokemonId.CATERPIE.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             else if (rand <= 80) {
-                pokemon.insertData(WEEDLE, pokemonLocation[0],
+                pokemon.insertData(PokemonId.WEEDLE.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             else if (rand <= 85) {
-                pokemon.insertData(PIKACHU, pokemonLocation[0],
+                pokemon.insertData(PokemonId.PIKACHU.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             } else if (rand <= 92) {
-                pokemon.insertData(NIDORANM, pokemonLocation[0],
+                pokemon.insertData(PokemonId.NIDORANM.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }  else if (rand <= 99) {
-                pokemon.insertData(NIDORANF, pokemonLocation[0],
+                pokemon.insertData(PokemonId.NIDORANF.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             else {
-                pokemon.insertData(EEVEE, pokemonLocation[0],
+                pokemon.insertData(PokemonId.EEVEE.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             plp.add(pokemon);
@@ -154,10 +147,10 @@ public class PokemonLookup {
             double[] pokemonLocation = getRandomLocation(latitude, longitude, POKEMON_RANGE);
             int rand = (int) (Math.random() * 100);
             if (rand <= 50) {
-                pokemon.insertData(RATTATA, pokemonLocation[0],
+                pokemon.insertData(PokemonId.RATTATA.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             } else {
-                pokemon.insertData(PIDGEY, pokemonLocation[0],
+                pokemon.insertData(PokemonId.PIDGEY.getValue(), pokemonLocation[0],
                         pokemonLocation[1]);
             }
             plp.add(pokemon);

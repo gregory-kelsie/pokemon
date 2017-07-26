@@ -100,6 +100,7 @@ public class PokeNavState extends GameState{
                 executeMapScreen();
                 break;
             case SIMULATOR_SCREEN:
+                executeSimulator();
                 break;
             case COMMUNITY_SCREEN:
                 break;
@@ -108,6 +109,11 @@ public class PokeNavState extends GameState{
             case POKEMART_SCREEN:
                 break;
         }
+    }
+
+    private void executeSimulator() {
+        gsm.setState(new RegionSelect(gsm));
+        dispose();
     }
 
     private void executePokeCenterScreen() {
