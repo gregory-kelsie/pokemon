@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -18,7 +19,7 @@ public class PokeNavState extends GameState{
     private Texture background;
     private List<PokeNavScreen> pokeNavScreens;
     private int currentScreen;
-
+    private Sound clickSound;
     private final int POKEDEX_SCREEN = 0;
     private final int PC_SCREEN = 1;
     private final int MAP_SCREEN = 2;
@@ -29,6 +30,7 @@ public class PokeNavState extends GameState{
     public PokeNavState(GameStateManager gsm) {
         this.gsm = gsm;
         background = gsm.getLoader().get("pokeNav/background.png", Texture.class);
+        clickSound = gsm.getLoader().get("sounds/click.wav", Sound.class);
         initPokeNavScreens();
     }
 
@@ -52,6 +54,7 @@ public class PokeNavState extends GameState{
     }
 
     private void clickedLeft() {
+        clickSound.play();
         if (currentScreen != 0) {
             currentScreen--;
         }
@@ -65,6 +68,7 @@ public class PokeNavState extends GameState{
     }
 
     private void clickedRight() {
+        clickSound.play();
         if (currentScreen != pokeNavScreens.size() - 1) {
             currentScreen++;
         }
@@ -78,6 +82,7 @@ public class PokeNavState extends GameState{
     }
 
     private void clickedBack() {
+        clickSound.play();
         gsm.setState(new LoadingState(gsm, LoadingState.MAIN_MENU));
         dispose();
     }
@@ -90,6 +95,7 @@ public class PokeNavState extends GameState{
     }
 
     private void clickedSelect() {
+        clickSound.play();
         switch (currentScreen) {
             case POKEDEX_SCREEN:
                 break;
@@ -182,5 +188,6 @@ public class PokeNavState extends GameState{
         gsm.getLoader().unload("pokeNav/pokemoncenter_text.png");
         gsm.getLoader().unload("pokeNav/pokemart.png");
         gsm.getLoader().unload("pokeNav/pokemart_text.png");
+        gsm.getLoader().unload("sounds/click.wav");
     }
 }

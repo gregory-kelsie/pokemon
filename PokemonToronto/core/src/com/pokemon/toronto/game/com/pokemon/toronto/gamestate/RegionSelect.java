@@ -53,7 +53,7 @@ public class RegionSelect extends GameState {
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(background, 0, 0);
-        batch.draw(title, 240, 1744);
+        batch.draw(title, 240, 1764);
         renderArrows(batch);
         renderButtons(batch);
 

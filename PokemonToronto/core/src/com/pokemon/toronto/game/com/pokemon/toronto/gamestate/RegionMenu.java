@@ -54,6 +54,8 @@ public class RegionMenu extends GameState {
 
     private void clickedRoutes() {
         clickSound.play();
+        gsm.setState(new RouteState(gsm));
+        dispose();
     }
 
     private void clickedGyms() {
@@ -71,6 +73,7 @@ public class RegionMenu extends GameState {
     }
 
     private void clickedPowerButton() {
+        clickSound.play();
         gsm.setState(new RegionSelect(gsm));
         dispose();
     }

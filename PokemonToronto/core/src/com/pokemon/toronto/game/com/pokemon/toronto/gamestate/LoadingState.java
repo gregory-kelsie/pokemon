@@ -145,6 +145,7 @@ public class LoadingState extends GameState {
         gsm.getLoader().load("pokeNav/pokemoncenter_text.png", Texture.class);
         gsm.getLoader().load("pokeNav/pokemart.png", Texture.class);
         gsm.getLoader().load("pokeNav/pokemart_text.png", Texture.class);
+        gsm.getLoader().load("sounds/click.wav", Sound.class);
     }
     
     

@@ -1,5 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -17,6 +19,7 @@ public class KantoGymState extends GameState {
     private Texture title;
     private int badges;
     private List<Texture> gymTextures;
+    private Sound clickSound;
 
     public KantoGymState(GameStateManager gsm) {
         this.gsm = gsm;
@@ -25,6 +28,7 @@ public class KantoGymState extends GameState {
         background = new Texture("simulator/background.png");
         title = new Texture("simulator/gym_leaders/kanto/title.png");
         gymTextures.add(new Texture("simulator/gym_leaders/kanto/brock.png"));
+        clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
         addLitTextures();
         addGrayTextures();
 
@@ -102,6 +106,7 @@ public class KantoGymState extends GameState {
         }
     }
     private void clickedPowerButton() {
+        clickSound.play();
         gsm.setState(new RegionMenu(gsm, 0)); //0 brings back to kanto region menu
         dispose();
     }
@@ -112,5 +117,6 @@ public class KantoGymState extends GameState {
         for (Texture gymTexture: gymTextures) {
             gymTexture.dispose();
         }
+        clickSound.dispose();
     }
 }
