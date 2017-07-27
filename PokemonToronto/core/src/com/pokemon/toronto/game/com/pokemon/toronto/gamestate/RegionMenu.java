@@ -58,6 +58,8 @@ public class RegionMenu extends GameState {
 
     private void clickedGyms() {
         clickSound.play();
+        gsm.setState(new KantoGymState(gsm));
+        dispose();
     }
 
     private void clickedCaves() {

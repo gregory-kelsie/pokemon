@@ -48,6 +48,7 @@ public class GameStateManager {
     private List<Pokemon> party;
     private List<Pokemon> box;
     private Bag bag;
+    private int kantoBadges;
 
     private List<WildPokemon> nearbyPokemon;
     public GameStateManager() {
@@ -65,7 +66,12 @@ public class GameStateManager {
         notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
         bag = new Bag();
         bag.addPokeball(Ball.POKEBALL, 5);
+        kantoBadges = 0;
 
+    }
+
+    public int getNumKantoBadges() {
+        return kantoBadges;
     }
 
     public Bag getBag() {
