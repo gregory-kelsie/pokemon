@@ -24,15 +24,19 @@ public class Route {
     private List<RoutePokemon> surfPokemon;
     private List<RoutePokemon> fishingPokemon;
 
-    public Route(int routeNumber, String imagePath) {
+    public Route(int routeNumber, String imagePath, boolean isRoute) {
         this.routeNumber = routeNumber;
         this.imagePath = imagePath;
         this.hasTrainers = true;
 
         RoutePokemonFactory rpc = new RoutePokemonFactory();
-        grassPokemon = rpc.createRoutePokemon(routeNumber);
-        surfPokemon = rpc.createSurfPokemon(routeNumber);
-        fishingPokemon = rpc.createFishingPokemon(routeNumber);
+        if (isRoute) {
+            grassPokemon = rpc.createRoutePokemon(routeNumber);
+            surfPokemon = rpc.createSurfPokemon(routeNumber);
+            fishingPokemon = rpc.createFishingPokemon(routeNumber);
+        } else {
+            grassPokemon = rpc.createRouteDungeonPokemon(routeNumber);
+        }
 
         if (grassPokemon != null) {
             hasGrass = true;

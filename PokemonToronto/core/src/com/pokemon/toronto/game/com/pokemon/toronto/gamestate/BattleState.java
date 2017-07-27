@@ -105,10 +105,28 @@ public class BattleState extends GameState implements BattleInterface {
     private int beginningState;
     private final int WILD_POKEMON_APPEARS_TEXT = 0;
 
+    //Variables for Battles from the Simulator
+    private int startingRoute;
+    private int region;
+    private boolean isRoute;
+
     private PlayerTrainerAnimation pta;
 
 
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
+        init(gsm, enemyPokemon, bgm);
+        startingRoute = -1;
+        region = -1;
+    }
+
+    public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm, int startingRoute, int region, boolean isRoute) {
+        init(gsm, enemyPokemon, bgm);
+        this.startingRoute = startingRoute;
+        this.region = region;
+        this.isRoute = isRoute;
+    }
+
+    private void init(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         this.gsm = gsm;
         this.battleType = WILD_BATTLE;
         panelPosition = FIRST_PANEL;
@@ -136,8 +154,6 @@ public class BattleState extends GameState implements BattleInterface {
         pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName());
         initTextures();
         Gdx.app.log("CurrentExp: ", "" + currentPokemon.getNextLevelExp());
-
-
     }
 
     private void initTextures() {
@@ -620,7 +636,11 @@ public class BattleState extends GameState implements BattleInterface {
                         enemyPokemon.fullyHeal();
                         gsm.getBox().add(enemyPokemon);
                     }
-                    gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
+                    if (region != -1) {
+                        gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+                    } else {
+                        gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
+                    }
                     dispose();
                 }
             }
@@ -686,7 +706,7 @@ public class BattleState extends GameState implements BattleInterface {
                     clickSound.play();
                 } else if (x >= 200 && x <= 919 && y >= 1441 && y <= 1583 && panelPosition == BAG_OPTION_PANEL) {
                     //Clicked Pokeballs
-                    if (!gsm.isPartyFull() || !gsm.isBoxFull()) {
+                    if ((!gsm.isPartyFull() || !gsm.isBoxFull()) && region == -1) {
                         panelPosition = POKEBALL_BAG;
                         initPokeballIconTextures();
                         clickSound.play();
@@ -749,7 +769,11 @@ public class BattleState extends GameState implements BattleInterface {
                     }
                 } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && panelPosition == FIRST_PANEL && !battleUpdater.started()) {
                     //Clicked Run
-                    gsm.setState(new MainMenuState(gsm));
+                    if (region != -1) {
+                        gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+                    } else {
+                        gsm.setState(new MainMenuState(gsm));
+                    }
                     dispose();
                 } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && panelPosition == POKEMON_SELECT_PANEL && currentPokemonPosition != 0) {
                     //First Pokemon
@@ -865,7 +889,11 @@ public class BattleState extends GameState implements BattleInterface {
         battleUpdater.finishedFaintSwitch();
     }
     public void endBattle() {
-        gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+        if (region != -1) {
+            gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+        } else {
+            gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+        }
         dispose();
     }
 

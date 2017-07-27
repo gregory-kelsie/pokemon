@@ -14,8 +14,12 @@ public class RouteFactory {
     public Route createRoute(int routeNumber) {
         //TODO: Create trainer class later and add them to the route.
         if (routeNumber == 1) {
-            return new Route(1, "simulator/routes/route1.png");
+            return new Route(1, "simulator/routes/route1.png", true);
         }
         return null;
+    }
+
+    public Route createDungeon(int dungeonId) {
+        return new Route(1, "simulator/dungeons/kanto/viridian_forest.png", false);
     }
 }

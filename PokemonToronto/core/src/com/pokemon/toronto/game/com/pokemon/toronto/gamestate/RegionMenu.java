@@ -54,7 +54,7 @@ public class RegionMenu extends GameState {
 
     private void clickedRoutes() {
         clickSound.play();
-        gsm.setState(new RouteState(gsm));
+        gsm.setState(new RouteState(gsm, 1, KANTO, true));
         dispose();
     }
 
@@ -66,6 +66,8 @@ public class RegionMenu extends GameState {
 
     private void clickedCaves() {
         clickSound.play();
+        gsm.setState(new RouteState(gsm, 1, KANTO, false));
+        dispose();
     }
 
     private void clickedSpecialBattles() {
