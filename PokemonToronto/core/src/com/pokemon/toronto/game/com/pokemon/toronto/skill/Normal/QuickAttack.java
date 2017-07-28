@@ -12,6 +12,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 public class QuickAttack extends DamageSkill {
     public QuickAttack() {
         super("Quick Attack", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 40, 1);
+        setPriority(1);
     }
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

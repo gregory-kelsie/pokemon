@@ -730,7 +730,11 @@ public class BattleState extends GameState implements BattleInterface {
                     if (battleUpdater.waitingForMoveDeletion()) {
                         battleUpdater.removeFirstSkill();
                     }
-                    panelPosition = FIRST_PANEL;
+                    if (!battleUpdater.started()) {
+                        panelPosition = FIRST_PANEL;
+                        battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
+                                currentPokemon.getSkills().get(0), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
+                    }
                     clickSound.play();
 
                 } else if (x >= 577 && x <= 1017 && y >= 1205 && y <= 1340 && panelPosition == BATTLE_PANEL) {
@@ -740,7 +744,11 @@ public class BattleState extends GameState implements BattleInterface {
                         if (battleUpdater.waitingForMoveDeletion()) {
                             battleUpdater.removeSecondSkill();
                         }
-                        panelPosition = FIRST_PANEL;
+                        if (!battleUpdater.started()) {
+                            panelPosition = FIRST_PANEL;
+                            battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
+                                    currentPokemon.getSkills().get(1), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
+                        }
                         clickSound.play();
                     }
                 } else if (x >= 26 && x <= 485 && y >= 1443 && y <= 1555 && panelPosition == BATTLE_PANEL) {
@@ -764,7 +772,11 @@ public class BattleState extends GameState implements BattleInterface {
                         if (battleUpdater.waitingForMoveDeletion()) {
                             battleUpdater.removeFourthSkill();
                         }
-                        panelPosition = FIRST_PANEL;
+                        if (!battleUpdater.started()) {
+                            panelPosition = FIRST_PANEL;
+                            battleUpdater.start(gsm.getParty(), currentPokemon, enemyPokemon,
+                                    currentPokemon.getSkills().get(3), enemyPokemon.getSkills().get(0));// 0 is speedcheck phase
+                        }
                         clickSound.play();
                     }
                 } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && panelPosition == FIRST_PANEL && !battleUpdater.started()) {

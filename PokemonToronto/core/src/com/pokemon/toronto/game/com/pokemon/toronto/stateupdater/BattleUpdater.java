@@ -634,20 +634,33 @@ public class BattleUpdater {
      */
     private void speedClash(Pokemon userPokemon, Pokemon enemyPokemon,
                             Skill userSkill,Skill enemySkill) {
-        if (userPokemon.getSpeedStat() >= enemyPokemon.getSpeedStat()) {
-            firstSkill = userSkill;
-            secondSkill = enemySkill;
-            userPokemonIsFirstAttacker = true;
-            text = userPokemon.getName() + " used " + firstSkill.getName();
+        if (userSkill.getPriority() > enemySkill.getPriority()) {
+            setUserFirstAttacker(userSkill, enemySkill);
+        } else if (userSkill.getPriority() < enemySkill.getPriority()) {
+            setEnemyFirstAttacker(userSkill, enemySkill);
+        }
+        else if (userPokemon.getSpeedStat() >= enemyPokemon.getSpeedStat()) {
+            setUserFirstAttacker(userSkill, enemySkill);
         } else {
-            firstSkill = enemySkill;
-            secondSkill = userSkill;
-            userPokemonIsFirstAttacker = false;
-            text = enemyPokemon.getName() + " used " + firstSkill.getName();
+            setEnemyFirstAttacker(userSkill, enemySkill);
         }
         state = DISPLAY_FIRST_SKILL_NAME;
 
         textCounter = 0;
+    }
+
+    private void setUserFirstAttacker(Skill userSkill, Skill enemySkill) {
+        firstSkill = userSkill;
+        secondSkill = enemySkill;
+        userPokemonIsFirstAttacker = true;
+        text = userPokemon.getName() + " used " + firstSkill.getName();
+    }
+
+    private void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill) {
+        firstSkill = enemySkill;
+        secondSkill = userSkill;
+        userPokemonIsFirstAttacker = false;
+        text = enemyPokemon.getName() + " used " + firstSkill.getName();
     }
 
     /*

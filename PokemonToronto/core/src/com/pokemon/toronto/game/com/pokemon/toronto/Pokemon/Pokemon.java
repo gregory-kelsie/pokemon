@@ -319,6 +319,50 @@ public abstract class Pokemon {
         speedStage = INITIAL_STAT_STAGE;
     }
 
+    public void decreaseAttackStage(int amount) {
+        attackStage -= amount;
+        attackStage = Math.max(attackStage, -6);
+    }
+
+    public void decreaseDefenseStage(int amount) {
+        defenseStage -= amount;
+        defenseStage = Math.max(defenseStage, -6);
+    }
+    public void decreaseSpAttackStage(int amount) {
+        specialAttackStage -= amount;
+        specialAttackStage = Math.max(specialAttackStage, -6);
+    }
+    public void decreaseSpDefenseStage(int amount) {
+        specialDefenseStage -= amount;
+        specialDefenseStage = Math.max(specialDefenseStage, -6);
+    }
+    public void decreaseSpeedStage(int amount) {
+        speedStage -= amount;
+        speedStage = Math.max(speedStage, -6);
+    }
+
+    public void increaseAttackStage(int amount) {
+        attackStage += amount;
+        attackStage = Math.max(attackStage, 6);
+    }
+
+    public void increaseDefenseStage(int amount) {
+        defenseStage += amount;
+        defenseStage = Math.max(defenseStage, 6);
+    }
+    public void increaseSpAttackStage(int amount) {
+        specialAttackStage += amount;
+        specialAttackStage = Math.max(specialAttackStage, 6);
+    }
+    public void increaseSpDefenseStage(int amount) {
+        specialDefenseStage += amount;
+        specialDefenseStage = Math.max(specialDefenseStage, 6);
+    }
+    public void increaseSpeedStage(int amount) {
+        speedStage += amount;
+        speedStage = Math.min(speedStage, 6);
+    }
+
     private void initNatureMultipliers() {
         natureAttackMultiplier = NORMAL_MULTIPLIER;
         natureDefenseMultiplier = NORMAL_MULTIPLIER;
@@ -956,6 +1000,16 @@ public abstract class Pokemon {
     public Ability getAbility() { return ability; }
     public int getCurrentHealth() { return currentHealth; }
     public Status getStatus() { return status; }
+    public boolean isStatused() {
+        if (status != Status.STATUS_FREE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void setStatus(Status newStatus) {
+        this.status = newStatus;
+    }
     public Type getTypeOne() { return typeOne; }
     public Type getTypeTwo() { return typeTwo; }
     public int getId() { return pokemonId; }

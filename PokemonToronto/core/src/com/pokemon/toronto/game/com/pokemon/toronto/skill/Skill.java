@@ -19,6 +19,7 @@ public abstract class Skill {
     protected int currentPP;
     protected Pokemon.Type type;
     protected SkillCategory category;
+    protected int priority;
 
     public Skill(String name, int maxPP, Pokemon.Type type, SkillCategory category) {
         this.name = name;
@@ -26,8 +27,16 @@ public abstract class Skill {
         this.currentPP = maxPP;
         this.type = type;
         this.category = category;
+        priority = 0;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    protected void setPriority(int priority) {
+        this.priority = priority;
+    }
     public String getName() {
         return name;
     }
@@ -46,6 +55,9 @@ public abstract class Skill {
 
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
         return null;
+    }
+
+    protected void decreaseEnemyAttack(Pokemon enemyPokemon, int amount) {
     }
 
     //Player side animation if userAnimation, enemy side otherwise.
