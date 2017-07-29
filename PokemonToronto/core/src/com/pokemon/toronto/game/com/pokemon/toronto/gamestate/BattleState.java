@@ -311,19 +311,18 @@ public class BattleState extends GameState implements BattleInterface {
             healthText.draw(batch, Integer.toString(currentPokemon.getLevel()), 900,1398);
             batch.draw(greenHealth, 712, 1340, Math.round(261 *((1.0 * currentPokemon.getAnimationHealth()) / currentPokemon.getHealthStat())), 14);
             batch.draw(expBar, 578, 1271, (int)((1.0 * currentPokemon.getDisplayedExp() / currentPokemon.getNextLevelExp()) * 441.0), 12); //439 14 width height
+            renderPlayerStatus(batch);
         }
         //Enemy level
         healthText.draw(batch, Integer.toString(enemyPokemon.getLevel()), 488,1874);
         //Enemy Healthbar
         batch.draw(greenHealth, 221, 1818,  Math.round(261 *((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
         //Render the statuses
-        renderStatus(batch);
+        renderEnemyStatus(batch);
+
 
     }
-    private void renderStatus(SpriteBatch batch) {
-        renderPlayerStatus(batch);
-        renderEnemyStatus(batch);
-    }
+
     private void renderPlayerStatus(SpriteBatch batch) {
         if (currentPokemon.getStatus() == Pokemon.Status.BURN) {
             batch.draw(burnTexture, 816, 1365, 80, 40);
