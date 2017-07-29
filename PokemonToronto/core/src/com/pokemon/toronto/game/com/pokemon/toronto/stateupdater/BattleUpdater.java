@@ -88,6 +88,8 @@ public class BattleUpdater {
     private final int ASKING_TO_MAKE_ROOM = 31;
     private final int WAITING_FOR_MOVE_DELETION = 32;
     private final int FINISHED_REPLACING_MOVE = 33;
+    private final int FAST_PARALYSIS = 34;
+    private final int SLOW_PARALYSIS = 35;
 
 
     private final double PAUSE_TIME = 1; //Pause for 1 second
@@ -345,6 +347,10 @@ public class BattleUpdater {
             updateAskingToMakeRoom(dt);
         } else if (state == FINISHED_REPLACING_MOVE) {
             updateFinishedReplacingMove(dt);
+        } else if (state == FAST_PARALYSIS) {
+            updateParalysisText(dt, true);
+        } else if (state == SLOW_PARALYSIS) {
+            updateParalysisText(dt, false);
         }
 
     }
@@ -527,8 +533,10 @@ public class BattleUpdater {
         counter += dt;
         if (counter >= 1.5) {
             counter = 0;
-            text = enemyPokemon.getName() + " used " + enemySkill.getName();
-            state = DISPLAY_SECOND_SKILL_NAME;
+            //blah
+            checkParalysis(false);
+            //text = enemyPokemon.getName() + " used " + enemySkill.getName();
+            //state = DISPLAY_SECOND_SKILL_NAME;
         }
     }
     private void updateThrowPokeball(double dt) {
@@ -563,9 +571,10 @@ public class BattleUpdater {
                 started = false;
                 caughtThePokemon = true;
             } else {
-                text = enemyPokemon.getName() + " used " + enemySkill.getName();
+                //text = enemyPokemon.getName() + " used " + enemySkill.getName();
                 resetAllTextVariables();
-                state = DISPLAY_SECOND_SKILL_NAME;
+                checkParalysis(false);
+                //state = DISPLAY_SECOND_SKILL_NAME;
             }
         }
     }
@@ -638,29 +647,144 @@ public class BattleUpdater {
             setUserFirstAttacker(userSkill, enemySkill);
         } else if (userSkill.getPriority() < enemySkill.getPriority()) {
             setEnemyFirstAttacker(userSkill, enemySkill);
-        }
-        else if (userPokemon.getSpeedStat() >= enemyPokemon.getSpeedStat()) {
-            setUserFirstAttacker(userSkill, enemySkill);
         } else {
-            setEnemyFirstAttacker(userSkill, enemySkill);
+            double userSpeed = userPokemon.getSpeedStat();
+            int stage = userPokemon.getSpeedStage();
+            if (stage > 0) {
+                userSpeed *= ((2 + stage) / 2);
+            } else if (stage < 0) {
+                userSpeed *= (2 / (Math.abs(stage) + 2));
+            }
+            if (userPokemon.isParalyzed()) {
+                userSpeed *= 0.5;
+            }
+            double enemySpeed = enemyPokemon.getSpeedStat();
+            stage = enemyPokemon.getSpeedStage();
+            if (stage > 0) {
+                enemySpeed *= ((2 + stage) / 2);
+            } else if (stage < 0) {
+                enemySpeed *= (2 / (Math.abs(stage) + 2));
+            }
+            if (enemyPokemon.isParalyzed()) {
+                enemySpeed *= 0.5;
+            }
+            if (userSpeed >= enemySpeed) {
+                setUserFirstAttacker(userSkill, enemySkill);
+            } else {
+                setEnemyFirstAttacker(userSkill, enemySkill);
+            }
         }
-        state = DISPLAY_FIRST_SKILL_NAME;
-
+        checkParalysis(true);
         textCounter = 0;
+    }
+
+    private void checkParalysis(boolean firstMove) {
+        String fastName;
+        String slowName;
+        if (userPokemonIsFirstAttacker) {
+            fastName = userPokemon.getName();
+            slowName = enemyPokemon.getName();
+        } else {
+            fastName = enemyPokemon.getName();
+            slowName = userPokemon.getName();
+        }
+        if (firstMove && userPokemonIsFirstAttacker && userPokemon.isParalyzed()) {
+            if (isParalyzed()) {
+                resetTextVariables();
+                text = fastName + " is fully paralyzed.";
+                state = FAST_PARALYSIS;
+            } else {
+                passedParalysisCheck(firstMove, fastName, slowName);
+            }
+        } else if (firstMove && !userPokemonIsFirstAttacker && enemyPokemon.isParalyzed()) {
+            if (isParalyzed()) {
+                resetTextVariables();
+                text = fastName + " is fully paralyzed.";
+                state = FAST_PARALYSIS;
+            } else {
+                passedParalysisCheck(firstMove, fastName, slowName);
+            }
+        } else if (!firstMove && userPokemonIsFirstAttacker && enemyPokemon.isParalyzed()) {
+            if (isParalyzed()) {
+                resetTextVariables();
+                text = slowName + " is fully paralyzed.";
+                state = SLOW_PARALYSIS;
+            } else {
+                passedParalysisCheck(firstMove, fastName, slowName);
+            }
+        } else if (!firstMove && !userPokemonIsFirstAttacker && userPokemon.isParalyzed()) {
+            if (isParalyzed()) {
+                resetTextVariables();
+                text = slowName + " is fully paralyzed.";
+                state = SLOW_PARALYSIS;
+            } else {
+                passedParalysisCheck(firstMove, fastName, slowName);
+            }
+        } else {
+            passedParalysisCheck(firstMove, fastName, slowName);
+        }
+    }
+    private boolean isParalyzed() {
+        if (Math.random() <= 1) {
+            return true;
+        }
+        return false;
+    }
+
+    private void passedParalysisCheck(boolean firstMove, String fastName, String slowName) {
+        resetTextVariables();
+        if (firstMove) {
+            text = fastName + " used " + firstSkill.getName();
+            state = DISPLAY_FIRST_SKILL_NAME;
+        } else {
+            text = slowName + " used " + secondSkill.getName();
+            state = DISPLAY_SECOND_SKILL_NAME;
+        }
+    }
+
+    private void updateParalysisText(double dt, boolean firstMove) {
+        Gdx.app.log("PARALYSIS", "GOING");
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition == text.length()) {
+
+            } else {
+                textPosition += 1;
+                textCounter = 0;
+            }
+
+        }
+        //1 Second delay after writing the name.
+        if (textCounter >= 1) {
+            textCounter = 0;
+            resetAllTextVariables();
+            if (firstMove) {
+                String name;
+                if (userPokemonIsFirstAttacker) {
+                    name = enemyPokemon.getName();
+                } else {
+                    name = userPokemon.getName();
+                }
+                text = name + " used " + secondSkill.getName();
+                state = DISPLAY_SECOND_SKILL_NAME;
+            } else {
+                started = false;
+            }
+        }
     }
 
     private void setUserFirstAttacker(Skill userSkill, Skill enemySkill) {
         firstSkill = userSkill;
         secondSkill = enemySkill;
         userPokemonIsFirstAttacker = true;
-        text = userPokemon.getName() + " used " + firstSkill.getName();
+        //text = userPokemon.getName() + " used " + firstSkill.getName();
     }
 
     private void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill) {
         firstSkill = enemySkill;
         secondSkill = userSkill;
         userPokemonIsFirstAttacker = false;
-        text = enemyPokemon.getName() + " used " + firstSkill.getName();
+        //text = enemyPokemon.getName() + " used " + firstSkill.getName();
     }
 
     /*
@@ -791,8 +915,9 @@ public class BattleUpdater {
                             state = WAIT_FOR_FAINT_CLICK;
                         } else {
                             resetAllTextVariables();
-                            state = DISPLAY_SECOND_SKILL_NAME;
-                            text = enemyPokemon.getName() + " used " + secondSkill.getName();
+                            checkParalysis(false);
+                            //state = DISPLAY_SECOND_SKILL_NAME;
+                            //text = enemyPokemon.getName() + " used " + secondSkill.getName();
                         }
                     } else {
                         listPosition = 0;
@@ -806,8 +931,9 @@ public class BattleUpdater {
                                 resetTextVariables();
                             }
                         } else {
-                            state = DISPLAY_SECOND_SKILL_NAME;
-                            text = userPokemon.getName() + " used " + secondSkill.getName();
+                            checkParalysis(false);
+                            //state = DISPLAY_SECOND_SKILL_NAME;
+                            //text = userPokemon.getName() + " used " + secondSkill.getName();
                         }
                     }
                 }
@@ -896,12 +1022,11 @@ public class BattleUpdater {
                         textPosition = 0;
                     }
                     else {
-
-                    text = enemyPokemon.getName() + " used " + secondSkill.getName();
+                    //text = enemyPokemon.getName() + " used " + secondSkill.getName();
                     textCounter = 0;
                     textPosition = 0;
-                    state = DISPLAY_SECOND_SKILL_NAME;
-
+                    //state = DISPLAY_SECOND_SKILL_NAME;
+                    checkParalysis(false);
                     }
                 } else {
                     state = FAINT_SLOW_POKEMON;
@@ -923,10 +1048,11 @@ public class BattleUpdater {
                         textCounter = 0;
                         textPosition = 0;
                     } else {
-                        text = userPokemon.getName() + " used " + secondSkill.getName();
+                        //text = userPokemon.getName() + " used " + secondSkill.getName();
                         textCounter = 0;
                         textPosition = 0;
-                        state = DISPLAY_SECOND_SKILL_NAME;
+                        checkParalysis(false);
+                        //state = DISPLAY_SECOND_SKILL_NAME;
                     }
                 } else {
                     state = FAINT_SLOW_POKEMON;
@@ -1101,7 +1227,7 @@ public class BattleUpdater {
         if (state == DISPLAY_FIRST_SKILL_NAME  || state == DISPLAY_SECOND_SKILL_NAME || state == DISPLAY_BLACKED_OUT_TEXT ||
                 state == SWITCH_POKEMON || state == DISPLAY_CATCH_RESULTS || state == HIDE_SWITCHED_POKEMON ||
         state == DISPLAY_NEW_POKEMON_NAME || state == DISPLAY_EXP_GAIN || state == LEVEL_UP_STATE || state == AUTOMATIC_NEW_MOVE || state == ASKING_TO_MAKE_ROOM
-                || state == FINISHED_REPLACING_MOVE) {
+                || state == FINISHED_REPLACING_MOVE || state == FAST_PARALYSIS || state == SLOW_PARALYSIS) {
             font.draw(batch, text.substring(0, textPosition), 54, 1143);
         } else if (state == DISPLAY_FIRST_SKILL_MISS_FAIL) {
             font.draw(batch, battleListText.get(0).get(listPosition)

@@ -838,6 +838,8 @@ public abstract class Pokemon {
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
         fainted = false;
+        status = Status.STATUS_FREE;
+        preStatus = Status.STATUS_FREE;
     }
     public int getPlayerX() { return playerX; }
     public int getPlayerNormalX() { return PLAYER_NORMAL_X; }
@@ -1002,6 +1004,36 @@ public abstract class Pokemon {
     public Ability getAbility() { return ability; }
     public int getCurrentHealth() { return currentHealth; }
     public Status getStatus() { return status; }
+    public boolean isParalyzed() {
+        if (status == Status.PARALYSIS) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isBurned() {
+        if (status == Status.BURN) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isSleeping() {
+        if (status == Status.SLEEP) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isPoisoned() {
+        if (status == Status.POISON) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isFrozen() {
+        if (status == Status.FROZEN) {
+            return true;
+        }
+        return false;
+    }
     public boolean isStatused() {
         if (status != Status.STATUS_FREE) {
             return true;

@@ -37,6 +37,8 @@ public abstract class DamageSkill extends Skill {
 
             if (moveIsSuperEffective(enemyPokemon)) {
                 secondList.add("It was super effective!");
+            } else if (moveIsNotVeryEffective(enemyPokemon)) {
+                secondList.add("It was not very effective...");
             }
             if (hasCrit) {
                 secondList.add("Critical Hit!");
@@ -65,6 +67,14 @@ public abstract class DamageSkill extends Skill {
 
     private boolean moveIsSuperEffective(Pokemon enemyPokemon) {
         if (enemyPokemon.getResistances().get(this.type) > 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean moveIsNotVeryEffective(Pokemon enemyPokemon) {
+        if (enemyPokemon.getResistances().get(this.type) < 1) {
             return true;
         } else {
             return false;
