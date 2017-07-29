@@ -27,7 +27,7 @@ public class PoisonSting extends DamageSkill {
                 poisoned = true;
             }
             if (poisoned) {
-                enemyPokemon.setStatus(Pokemon.Status.POISON);
+                enemyPokemon.setPreStatus(Pokemon.Status.POISON);
                 fullList.get(1).add(enemyPokemon.getName() + " was poisoned.");
             }
         }

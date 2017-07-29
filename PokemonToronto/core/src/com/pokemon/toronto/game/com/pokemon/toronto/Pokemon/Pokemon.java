@@ -18,6 +18,7 @@ public abstract class Pokemon {
     protected Nature nature;
     protected ExpType expType;
     protected Status status;
+    protected Status preStatus;
     protected Type typeOne;
     protected Type typeTwo;
     protected int level;
@@ -140,6 +141,7 @@ public abstract class Pokemon {
         this.fainted = false;
         this.focused = false;
         status = Status.STATUS_FREE;
+        preStatus = Status.STATUS_FREE;
         currentExp = NO_EXP;
         displayedExp = NO_EXP;
         levelUpSkills = new HashMap<Integer, List<Integer>>();
@@ -1010,6 +1012,7 @@ public abstract class Pokemon {
     public void setStatus(Status newStatus) {
         this.status = newStatus;
     }
+    public void setPreStatus(Status newStatus) { this.preStatus = newStatus; }
     public Type getTypeOne() { return typeOne; }
     public Type getTypeTwo() { return typeTwo; }
     public int getId() { return pokemonId; }
@@ -1040,5 +1043,12 @@ public abstract class Pokemon {
     public void subtractHealth(int amt) {
         currentHealth = Math.max(0, currentHealth  - amt);
         Gdx.app.log("Subtract", "" + amt);
+    }
+
+    public void transferPreStatus() {
+        if (preStatus != Status.STATUS_FREE) {
+            status = preStatus;
+            preStatus = Status.STATUS_FREE;
+        }
     }
 }

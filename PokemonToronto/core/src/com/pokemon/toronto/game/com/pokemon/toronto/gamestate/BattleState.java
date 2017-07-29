@@ -88,6 +88,12 @@ public class BattleState extends GameState implements BattleInterface {
     private Texture thirdItem;
     private Texture fourthItem;
 
+    private Texture burnTexture;
+    private Texture frozenTexture;
+    private Texture poisonTexture;
+    private Texture paralysisTexture;
+    private Texture sleepTexture;
+
     private Music bgm;
     private Sound clickSound;
     List<List<String>> battleTextList;
@@ -182,6 +188,13 @@ public class BattleState extends GameState implements BattleInterface {
         for (int i = 0; i < gsm.getParty().size(); i++) {
             iconTextures.add(new Texture(gsm.getParty().get(i).getMiniIconPath()));
         }
+
+        //Init Status Textures
+        burnTexture = new Texture("battle/status/burn.png");
+        frozenTexture = new Texture("battle/status/frozen.png");
+        poisonTexture = new Texture("battle/status/poison.png");
+        paralysisTexture = new Texture("battle/status/paralysis.png");
+        sleepTexture = new Texture("battle/status/sleep.png");
 
         secondSkill = null;
         thirdSkill = null;
@@ -303,7 +316,40 @@ public class BattleState extends GameState implements BattleInterface {
         healthText.draw(batch, Integer.toString(enemyPokemon.getLevel()), 488,1874);
         //Enemy Healthbar
         batch.draw(greenHealth, 221, 1818,  Math.round(261 *((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
+        //Render the statuses
+        renderStatus(batch);
 
+    }
+    private void renderStatus(SpriteBatch batch) {
+        renderPlayerStatus(batch);
+        renderEnemyStatus(batch);
+    }
+    private void renderPlayerStatus(SpriteBatch batch) {
+        if (currentPokemon.getStatus() == Pokemon.Status.BURN) {
+            batch.draw(burnTexture, 816, 1365, 80, 40);
+        } else if (currentPokemon.getStatus() == Pokemon.Status.FROZEN) {
+            batch.draw(frozenTexture, 816, 1365, 80, 40);
+        } else if (currentPokemon.getStatus() == Pokemon.Status.PARALYSIS) {
+            batch.draw(paralysisTexture, 816, 1365, 80, 40);
+        } else if (currentPokemon.getStatus() == Pokemon.Status.POISON) {
+            batch.draw(poisonTexture, 816, 1365, 80, 40);
+        } else if (currentPokemon.getStatus() == Pokemon.Status.SLEEP) {
+            batch.draw(sleepTexture, 816, 1365, 80, 40);
+        }
+    }
+
+    private void renderEnemyStatus(SpriteBatch batch) {
+        if (enemyPokemon.getStatus() == Pokemon.Status.BURN) {
+            batch.draw(burnTexture, 407, 1843, 80, 40);
+        } else if (enemyPokemon.getStatus() == Pokemon.Status.FROZEN) {
+            batch.draw(frozenTexture, 407, 1843, 80, 40);
+        } else if (enemyPokemon.getStatus() == Pokemon.Status.PARALYSIS) {
+            batch.draw(paralysisTexture, 407, 1843, 80, 40);
+        } else if (enemyPokemon.getStatus() == Pokemon.Status.POISON) {
+            batch.draw(poisonTexture, 407, 1843, 80, 40);
+        } else if (enemyPokemon.getStatus() == Pokemon.Status.SLEEP) {
+            batch.draw(sleepTexture, 407, 1843, 80, 40);
+        }
     }
     private void renderTextPanel(SpriteBatch batch) {
         //Render text panel in the middle

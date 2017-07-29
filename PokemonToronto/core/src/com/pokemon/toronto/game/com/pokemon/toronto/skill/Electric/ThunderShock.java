@@ -27,7 +27,7 @@ public class ThunderShock extends DamageSkill {
                 paralyzed = true;
             }
             if (paralyzed) {
-                enemyPokemon.setStatus(Pokemon.Status.PARALYSIS);
+                enemyPokemon.setPreStatus(Pokemon.Status.PARALYSIS);
                 fullList.get(1).add(enemyPokemon.getName() + " was paralyzed.");
             }
         }

@@ -785,7 +785,7 @@ public class BattleUpdater {
                     textCounter = 0;
                 }
                 else {
-
+                    transferPreStatus();
                     if (userPokemonIsFirstAttacker) {
                         if (enemyPokemon.isFainted()) {
                             state = WAIT_FOR_FAINT_CLICK;
@@ -1025,7 +1025,9 @@ public class BattleUpdater {
             //It will only be past 1.5 when finished drawing the lines
             if (textCounter >= 1.5) {
                 resetTextVariables();
+
                 if (listPosition == battleListText.get(1).size() - 1) {
+                    transferPreStatus();
                     listPosition = 0;
                     if (userPokemonIsFirstAttacker)
                     {
@@ -1239,6 +1241,11 @@ public class BattleUpdater {
         }
         text = userPokemon.getName() + " gained " + enemyPokemon.calculateExp(1) + " Exp. Points.";
         state = DISPLAY_EXP_GAIN;
+    }
+
+    private void transferPreStatus() {
+        userPokemon.transferPreStatus();
+        enemyPokemon.transferPreStatus();
     }
 
     public boolean displayingYesNo() {
