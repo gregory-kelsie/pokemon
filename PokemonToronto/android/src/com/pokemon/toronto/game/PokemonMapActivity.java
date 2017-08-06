@@ -43,6 +43,7 @@ import java.io.InputStream;
 
 public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    //Instance Variables
     private GoogleMap mMap;
     private double latitude;
     private double longitude;
@@ -50,9 +51,30 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
     private double pokemonLongitude;
     private String pokemonIcon;
     private int distance;
+
+    /**
+     * Create a Google Maps Activity (The player and a specific pokemon)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initReceivedData();
+        setContentView(R.layout.activity_maps);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    /**
+     * Initialize all of the data that has been passed to this activity.
+     * - Player Location
+     * - Pokemon Location
+     * - Distance between the player and pokemon in metres
+     */
+    private void initReceivedData() {
         Intent i = getIntent();
         latitude =  i.getDoubleExtra("latitude", 0);
         longitude = i.getDoubleExtra("longitude", 0);
@@ -60,19 +82,21 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
         pokemonLongitude = i.getDoubleExtra("pokemonLongitude", 0);
         pokemonIcon = i.getStringExtra("pokemonIcon");
         distance = i.getIntExtra("distance", -1);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
     }
 
+
+    /**
+     * onPause, Android lifecycle.
+     */
     @Override
     protected void onPause() {
         super.onPause();
-        //onBackPressed();
     }
 
+    /**
+     * Destroy this activity and return to the AndroidLauncher when the
+     * back button is pressed.
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -90,20 +114,33 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //Initialize the Google map
         mMap = googleMap;
         mMap.clear();
-        // Add a marker in Sydney and move the camera
+
+        //Create a marker for the player's position
         LatLng sydney = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
                 .icon(BitmapDescriptorFactory.fromBitmap(
                         resizeBitmap("maletrainer.png", 78, 100))));
-            mMap.addMarker(new MarkerOptions().position(new LatLng(pokemonLatitude, pokemonLongitude))
-                    .title("Distance: " + distance + "m")
-                    .icon(BitmapDescriptorFactory.fromBitmap(
-                            resizeBitmap(pokemonIcon, 200, 200))));
+
+        //Create a marker for the Pokemon's position
+        mMap.addMarker(new MarkerOptions().position(new LatLng(pokemonLatitude, pokemonLongitude))
+                .title("Distance: " + distance + "m")
+                .icon(BitmapDescriptorFactory.fromBitmap(
+                        resizeBitmap(pokemonIcon, 200, 200))));
+
+        //Move the camera to the player's position and zoom in.
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14.0f));
     }
 
+    /**
+     * Return a resized Bitmap to the specified dimensions
+     * @param location The path to the Bitmap that will get resized.
+     * @param width The new width of the Bitmap.
+     * @param height The new height of the Bitmap.
+     * @return A resized Bitmap
+     */
     private Bitmap resizeBitmap(String location, int width, int height) {
         AssetManager assetManager = getAssets();
         InputStream istr = null;

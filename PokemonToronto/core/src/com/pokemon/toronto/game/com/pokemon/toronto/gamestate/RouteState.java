@@ -220,9 +220,9 @@ public class RouteState extends GameState {
         startedABattle = true;
         wildBgm.play();
         if (isRoute) {
-            gsm.setState(new BattleState(gsm, currentRoute.getAGrassPokemon(), wildBgm, routeList[currentRoutePosition], region, isRoute));
+            gsm.setState(new BattleState(gsm, currentRoute.getAPokemon(Route.GRASS), wildBgm, routeList[currentRoutePosition], region, isRoute));
         } else {
-            gsm.setState(new BattleState(gsm, currentRoute.getAGrassPokemon(), wildBgm, routeList[currentRoutePosition], region, isRoute));
+            gsm.setState(new BattleState(gsm, currentRoute.getAPokemon(Route.GRASS), wildBgm, routeList[currentRoutePosition], region, isRoute));
         }
         dispose();
     }

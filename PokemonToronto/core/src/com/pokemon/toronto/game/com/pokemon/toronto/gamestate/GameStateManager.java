@@ -17,6 +17,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pidgey;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
@@ -139,9 +140,10 @@ public class GameStateManager {
     public void setInitialState() {
         //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
         currentState = new LoadingState(this, LoadingState.MAIN_MENU);
+        addToParty(new Weedle(5));
         addToParty(new Eevee(5));
-        getParty().get(0).setExp(80);
-        getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});
+        //getParty().get(0).setExp(80);
+        //getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});
         addToParty(new Charizard(5));
         addToParty(new Venusaur(5));
         addToParty(new Blastoise(5));
@@ -185,12 +187,6 @@ public class GameStateManager {
 
     public pokemonToronto.MyGameCallBack getGameCallBack() {
         return gameCallBack;
-    }
-
-    public void coordinateUpdate(double latitude, double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        gotCoordinates = true;
     }
 
     public void addNewWildPokemon(double longitude, double latitude, String country,

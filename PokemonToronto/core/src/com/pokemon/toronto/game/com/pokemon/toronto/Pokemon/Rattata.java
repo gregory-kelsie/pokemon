@@ -10,11 +10,17 @@ import java.util.List;
  * Created by Gregory on 6/11/2017.
  */
 public class Rattata extends Pokemon {
+
+    /** Init Variables */
+
+    //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 19;
     private static final String NAME = "Rattata";
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
+
+    //Base Stats
     private static final int BASE_HEALTH = 30;
     private static final int BASE_ATTACK = 1000; //56
     private static final int BASE_DEFENSE = 35;
@@ -22,9 +28,15 @@ public class Rattata extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 35;
     private static final int BASE_SPEED = 72;
 
+    //Image Paths
     private static final String ICON_PATH = "pokemonSprites/rattata/rattata.png";
     private static final String BACK_PATH = "battle/backs/rattata.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/rattata.png";
+
+    /**
+     * Create a Rattata with the specified level.
+     * @param level The level of the Rattata.
+     */
     public Rattata(int level) {
         super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, Ability.GUTS, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
@@ -34,6 +46,9 @@ public class Rattata extends Pokemon {
         initWildSkills();
     }
 
+    /**
+     * Init Rattata's level up skills.
+     */
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
@@ -42,6 +57,10 @@ public class Rattata extends Pokemon {
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
     }
+
+    /**
+     * Init Rattata's gender.
+     */
     @Override
     protected void initGender() {
         int genderProbability = (int)(Math.round(Math.random() * 100));

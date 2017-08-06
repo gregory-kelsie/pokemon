@@ -13,25 +13,29 @@ import java.util.List;
  * Created by Gregory on 6/11/2017.
  */
 public abstract class Pokemon {
+
+    /** Instance Variables */
+
+    //Basic
     protected int pokemonId;
     protected String name;
     protected Nature nature;
     protected ExpType expType;
-    protected Status status;
-    protected Status preStatus;
+    protected Ability ability;
+    protected char gender;
     protected Type typeOne;
     protected Type typeTwo;
     protected int level;
     protected int captureRate;
-    protected int currentHealth;
-    protected int animationHealth;
-    protected int baseExp;
-    protected int[] evYield;
-    protected Ability ability;
-    protected char gender;
+
+    //Stat Numbers
     protected int[] ivs;
     protected int[] evs;
     protected int[] baseStats;
+    protected int baseExp;
+    protected int[] evYield;
+
+    //Image Paths
     protected String mapIconPath;
     protected String backPath;
     protected String miniPath;
@@ -45,6 +49,14 @@ public abstract class Pokemon {
     protected int wrapTurns;
     protected boolean fainted;
     private HashMap<Type, Double> resistances;
+
+    //Status Variables
+    protected Status status;
+    protected Status preStatus;
+
+    //Health Variables
+    protected int currentHealth;
+    protected int animationHealth;
 
     //Stage Variables
     protected int attackStage;
@@ -60,18 +72,20 @@ public abstract class Pokemon {
     protected double natureSpecialDefenseMultiplier;
     protected double natureSpeedMultiplier;
 
-
     //Coordaintes
     protected int playerX;
     protected int playerY;
     protected int enemyX;
     protected int enemyY;
+
     //Exp Variables
     protected long overflownExp;
     protected double currentExp;
     protected int displayedExp;
 
-    //Constants
+    /** Constants */
+
+    //Mins and Maxes
     protected final int MAX_LEVEL = 100;
     protected final int MIN_LEVEL = 1;
     protected final int MAX_IV = 31;
@@ -80,6 +94,9 @@ public abstract class Pokemon {
     protected final int MIN_EV = 0;
     protected final int TOTAL_EV = 510;
     protected final int NO_EXP = 0;
+    protected final int INITIAL_STAT_STAGE = 0;
+
+    //
     protected final int HEALTH = 0;
     protected final int ATTACK = 1;
     protected final int SPECIAL_ATTACK = 2;
@@ -87,12 +104,12 @@ public abstract class Pokemon {
     protected final int SPECIAL_DEFENSE = 4;
     protected final int SPEED = 5;
 
-    protected final int INITIAL_STAT_STAGE = 0;
-
+    //Damage Multiplier Constants
     protected final double NORMAL_MULTIPLIER = 1;
     protected final double REDUCED_MULTIPLIER = 0.9;
     protected final double INCREASED_MULTIPLIER = 1.1;
 
+    //Positional Constants
     protected final int PLAYER_NORMAL_X = 122;
     protected final int PLAYER_NORMAL_Y = 1231;
     protected final int FAINTED_PLAYER_Y = 1100;
@@ -100,14 +117,26 @@ public abstract class Pokemon {
     protected final int ENEMY_NORMAL_Y = 1460;
     protected final int FAINTED_ENEMY_Y = 1300;
 
+    /** Enums */
+
+    /**
+     * The exp growth rate for a Pokemon.
+     */
     public enum ExpType {
         ERRATIC, FAST, MEDIUM_FAST, MEDIUM_SLOW, SLOW, FLUCTUATING
     }
 
+    /**
+     * Pokemon status conditions. (Poison, burn etc)
+     * STATUS_FREE is when the Pokemon has no condition.
+     */
     public enum Status {
         STATUS_FREE, POISON, BURN, PARALYSIS, FROZEN, SLEEP
     }
 
+    /**
+     * Pokemon abilities
+     */
     public enum Ability {
         INTIMIDATE, SHED_SKIN, UNNERVE, RUN_AWAY, QUICK_FEET, RATTLED, GUTS, HUSTLE, SNIPER,
         SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
@@ -116,16 +145,37 @@ public abstract class Pokemon {
         SOLID_ROCK
     }
 
+    /**
+     * Pokemon types, Fire, Grass, Water etc.
+     * None is also a type when the Pokemon doesn't have a second type.
+     */
     public enum Type {
         NONE, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FIGHTING, FIRE, FLYING, GHOST, GRASS, GROUND,
         ICE, NORMAL, POISON, PSYCHIC, ROCK, STEEL, WATER
     }
 
+    /**
+     * Create a fresh Pokemon given the parameters.
+     * Fresh means that there are no current evs
+     * @param pokemonId The Pokemon id, 1 is Bulbasaur, 2 is Ivysaur etc.
+     * @param name The name of the Pokemon.
+     * @param level The Pokemon's level.
+     * @param typeOne The Pokemon's type.
+     * @param typeTwo The Pokemon's second type, could be NONE
+     * @param ability The Pokemon's ability.
+     * @param expType The Pokemon's exp growth type
+     * @param baseExp The base exp the Pokemon yields.
+     * @param evYield The ev yield for the Pokemon.
+     * @param baseStats The Pokemon's base stats.
+     * @param mapIconPath The basic Pokemon image path.
+     * @param backPath The back of the Pokemon image path.
+     * @param miniPath The mini Pokemon image path.
+     * @param captureRate The Pokemon's capture rate.
+     */
     public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo, Ability ability, ExpType expType,
                    int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath, int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
-        this.gender = gender;
         this.level = level;
         this.baseStats = baseStats;
         this.baseExp = baseExp;
@@ -154,6 +204,11 @@ public abstract class Pokemon {
         initializeResistances();
     }
 
+
+    /**
+     * Reset the coordaintes of the Pokemon, both enemy and
+     * player positions to their original spots.
+     */
     private void resetCoordinates() {
         this.playerX = PLAYER_NORMAL_X;
         this.playerY = PLAYER_NORMAL_Y;
@@ -161,12 +216,21 @@ public abstract class Pokemon {
         this.enemyY = ENEMY_NORMAL_Y;
     }
 
+    /**
+     * Init the Pokemon's level up skills.
+     */
     protected abstract void initLevelUpSkills();
 
-    public void addExp(double amt) {
-        currentExp += amt;
-    }
+    /**
+     * Init the Pokemon's gender.
+     */
+    protected abstract void initGender();
 
+    /**
+     * Add evs to the Pokemon based on the enemyEvYield
+     * @param enemyEvYield The enemy's evYield that gets added
+     *                     to the Pokemons ev pool.
+     */
     public void addEvs(int[] enemyEvYield) {
         int availableEvs = TOTAL_EV - getTotalEvs();
         for (int i = 0; i < evs.length; i++) {
@@ -211,11 +275,21 @@ public abstract class Pokemon {
 
     }
 
+    /**
+     * Return the Pokemon's EV yield.
+     * @return The evYield for the Pokemon as an integer array.
+     */
     public int[] getEvYield() {
         return evYield;
     }
 
 
+    /**
+     * Return whether or not the Pokemon has the total amount of
+     * possible EVs (510)
+     * @return Whether or not the Pokemon has the total amount of
+     * possible EVs.
+     */
     public boolean hasMaxEvs() {
         int sum = getTotalEvs();
         if (sum == TOTAL_EV) {
@@ -224,10 +298,23 @@ public abstract class Pokemon {
         return false;
     }
 
+    /**
+     * Return the total amount of EVs the Pokemon has.
+     * @return The total amount of EVs the Pokemon has.
+     */
     public int getTotalEvs() {
-        return evs[0] + evs[1] + evs[2] + evs[3] + evs[4] + evs[5];
+        return evs[0] + evs[1] + evs[2] +
+                evs[3] + evs[4] + evs[5];
     }
 
+
+    /**
+     * Return the amount of exp this Pokemon gives based on the number
+     * of participants in the battle.
+     * @param numberOfBattleParticipants The number of participants in the
+     *                                   battle.
+     * @return The amount of exp the Pokemon will give.
+     */
     public long calculateExp(int numberOfBattleParticipants) {
         double a = 1; //Wild pokemon 1, trainer 1.5
         int b = getBaseExp();
@@ -241,46 +328,56 @@ public abstract class Pokemon {
         return exp;
     }
 
+    /**
+     * Add exp to the Pokemon
+     * @param amt The amount of exp to be added.
+     */
+    public void addExp(double amt) {
+        currentExp += amt;
+    }
+
+    /**
+     * Set the amount of exp to amt.
+     * @param amt The amount of exp getting set to the currentExp
+     */
     public void setExp(int amt) {
         currentExp = amt;
         displayedExp = amt;
     }
 
-    public void transferOverflow() {
-        currentExp = NO_EXP;
-        displayedExp = NO_EXP;
-        currentExp += overflownExp;
-        overflownExp = 0;
-        if (currentExp > getNextLevelExp()) {
-            overflownExp = Math.round(currentExp) - getNextLevelExp();
-            currentExp = getNextLevelExp();
-        }
-    }
-
+    /**
+     * Level up the Pokemon. Can't exceed the max level of 100.
+     */
     public void levelUp() {
 
         level = Math.min(100, level + 1);
         currentExp = 0;
     }
 
-    public long getOverflownExp() {
-        return overflownExp;
-    }
-
+    /**
+     * Return the amount of exp the Pokemon has.
+     * @return The amount of exp the Pokemon has.
+     */
     public double getDisplayedExp() {
         return currentExp;
     }
 
 
+    /**
+     * Initialize the moves the wild version of this Pokemon would have.
+     */
     protected void initWildSkills() {
         int currentSkill = 0;
         SkillFactory skillFactory = new SkillFactory();
         for (int i = 0; i < level; i++) {
+            //Check if the Pokemon learns a move at the level i
             if (levelUpSkills.containsKey(i)) {
                 for (int j = 0; j < levelUpSkills.get(i).size(); j++) {
                     skills.add(currentSkill, skillFactory.createSkill(levelUpSkills.get(i).get(j)));
                     currentSkill++;
                     if (currentSkill == 4) {
+                        //Start adding moves from the oldest to the newest since the
+                        //move list is full.
                         currentSkill = 0;
                     }
                 }
@@ -288,10 +385,22 @@ public abstract class Pokemon {
         }
     }
 
+    /**
+     * Return the hash map of level up skills. (level to list of learnable skills at that
+     * level.
+     * @return The HashMap of level up skills (Level to List of Learnable skills at that
+     * level)
+     */
     public HashMap<Integer, List<Integer>> getLevelUpSkills() {
         return levelUpSkills;
     }
 
+
+    /**
+     * Return the level up skills at the Pokemon's current level. Null if there
+     * are no level up skills at the current level.
+     * @return The level up skills at the Pokemon's current level.
+     */
     public List<Integer> getCurrentLevelUpSkills() {
         if (levelUpSkills.containsKey(level)) {
             return levelUpSkills.get(level);
@@ -299,13 +408,23 @@ public abstract class Pokemon {
         return null;
     }
 
+    /**
+     * Add a new move to the list of skills if there is space available.
+     * @param newMove The move to be added.
+     */
     public void addMove(Skill newMove) {
         if (skills.size() < 4) {
             skills.add(newMove);
         }
     }
-    protected abstract void initGender();
 
+    /**
+     * Initialize the Pokemon's battle variables.
+     * - Stages
+     * - Health
+     * - Animation Health
+     * - Nature multipliers
+     */
     private void initBattleVariables() {
         resetStages();
         currentHealth = getHealthStat();
@@ -313,6 +432,10 @@ public abstract class Pokemon {
         initNatureMultipliers();
     }
 
+    /**
+     * Set all of the battle stages to default.
+     * - Attack, Sp. Atk, ... Speed.
+     */
     public void resetStages() {
         attackStage = INITIAL_STAT_STAGE;
         specialAttackStage = INITIAL_STAT_STAGE;
@@ -321,50 +444,111 @@ public abstract class Pokemon {
         speedStage = INITIAL_STAT_STAGE;
     }
 
+
+    /**
+     * Decrease the attack stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
     public void decreaseAttackStage(int amount) {
         attackStage -= amount;
         attackStage = Math.max(attackStage, -6);
     }
 
+    /**
+     * Decrease the defense stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
     public void decreaseDefenseStage(int amount) {
         defenseStage -= amount;
         defenseStage = Math.max(defenseStage, -6);
     }
+
+    /**
+     * Decrease the special attack stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
     public void decreaseSpAttackStage(int amount) {
         specialAttackStage -= amount;
         specialAttackStage = Math.max(specialAttackStage, -6);
     }
+
+    /**
+     * Decrease the special defense stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
     public void decreaseSpDefenseStage(int amount) {
         specialDefenseStage -= amount;
         specialDefenseStage = Math.max(specialDefenseStage, -6);
     }
+
+    /**
+     * Decrease the speed stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
     public void decreaseSpeedStage(int amount) {
         speedStage -= amount;
         speedStage = Math.max(speedStage, -6);
     }
 
+    /**
+     * Increase the attack stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
     public void increaseAttackStage(int amount) {
         attackStage += amount;
         attackStage = Math.max(attackStage, 6);
     }
 
+    /**
+     * Increase the defense stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
     public void increaseDefenseStage(int amount) {
         defenseStage += amount;
         defenseStage = Math.max(defenseStage, 6);
     }
+
+    /**
+     * Increase the special attack stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
     public void increaseSpAttackStage(int amount) {
         specialAttackStage += amount;
         specialAttackStage = Math.max(specialAttackStage, 6);
     }
+
+    /**
+     * Increase the special defense stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
     public void increaseSpDefenseStage(int amount) {
         specialDefenseStage += amount;
         specialDefenseStage = Math.max(specialDefenseStage, 6);
     }
+
+    /**
+     * Increase the speed stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
     public void increaseSpeedStage(int amount) {
         speedStage += amount;
         speedStage = Math.min(speedStage, 6);
     }
 
+
+    /**
+     * Initialize the Nature multipliers
+     */
     private void initNatureMultipliers() {
         natureAttackMultiplier = NORMAL_MULTIPLIER;
         natureDefenseMultiplier = NORMAL_MULTIPLIER;
@@ -418,6 +602,9 @@ public abstract class Pokemon {
             natureSpecialDefenseMultiplier = REDUCED_MULTIPLIER; }
     }
 
+    /**
+     * Create random IVs for the Pokemon
+     */
     private void initRandomIVs() {
         ivs = new int[6];
         ivs[HEALTH] = createRandomIV();
@@ -428,30 +615,57 @@ public abstract class Pokemon {
         ivs[SPEED] = createRandomIV();
     }
 
+    /**
+     * Return the Pokemon's Health IV
+     * @return Health IV
+     */
     public int getHealthIV() {
         return ivs[HEALTH];
     }
 
+    /**
+     * Return the Pokemon's Attack IV
+     * @return Attack IV
+     */
     public int getAttackIV() {
         return ivs[ATTACK];
     }
 
+    /**
+     * Return the Pokemon's Defense IV
+     * @return Defense IV
+     */
     public int getDefenseIV() {
         return ivs[DEFENSE];
     }
 
+    /**
+     * Return the Pokemon's Special Attack IV
+     * @return Special Attack IV
+     */
     public int getSpAttackIV() {
         return ivs[SPECIAL_ATTACK];
     }
 
+    /**
+     * Return the Pokemon's Special Defense IV
+     * @return Special Defense IV
+     */
     public int getSpDefenseIV() {
         return ivs[SPECIAL_DEFENSE];
     }
 
+    /**
+     * Return the Pokemon's Speed IV
+     * @return Speed IV
+     */
     public int getSpeedIV() {
         return ivs[SPEED];
     }
 
+    /**
+     * Initialize the Pokemon's resistances.
+     */
     private void initializeResistances() {
         resistances = new HashMap<Type, Double>();
         resistances.put(Pokemon.Type.NORMAL, 1.0);
@@ -478,6 +692,13 @@ public abstract class Pokemon {
         }
     }
 
+    /**
+     * Initialize the Pokemon's resistances for the specified
+     * type.
+     * This method gets called twice. Once for typeOne,
+     * second for typeTwo.
+     * @param type The type of the Pokemon, either one or two.
+     */
     private void initializeResistances(Type type) {
         if (type == Pokemon.Type.NORMAL) {
             resistances.put(Pokemon.Type.FIGHTING, 
@@ -623,14 +844,26 @@ public abstract class Pokemon {
         }        
     }
 
+    /**
+     * Return the Pokemon's resistance hash map.
+      * @return A hash map of the Pokemon's resistances. The
+     * attack type is the key, and the resist modifier for the value.
+     */
     public HashMap<Type, Double> getResistances() {
         return resistances;
     }
 
+    /**
+     * Return a random IV value, 1-31
+     * @return A random IV value
+     */
     private int createRandomIV() {
         return (int)(Math.round(Math.random() * 30)) + 1;
     }
 
+    /**
+     * Initialize an empty EV set. (All = 0)
+     */
     private void initBlankEVs() {
         evs = new int[6];
         evs[HEALTH] = 0;
@@ -642,91 +875,230 @@ public abstract class Pokemon {
         evs[SPEED] = 0;
     }
 
+
+    /**
+     * Return the amount of Health EVs the Pokemon has.
+     * @return Amount of Health EVs
+     */
     public int getHealthEV() {
         return evs[HEALTH];
     }
 
+    /**
+     * Return the amount of Attack EVs the Pokemon has.
+     * @return Amount of Attack EVs
+     */
     public int getAttackEV() {
         return evs[ATTACK];
     }
 
+    /**
+     * Return the amount of Defense EVs the Pokemon has.
+     * @return Amount of Defense EVs.
+     */
     public int getDefenseEV() {
         return evs[DEFENSE];
     }
 
+    /**
+     * Return the amount of Special Attack EVs the Pokemon has.
+     * @return Amount of Special Attack EVs.
+     */
     public int getSpAttackEV() {
         return evs[SPECIAL_ATTACK];
     }
 
+    /**
+     * Return the amount of Special Defense EVs the Pokemon has.
+     * @return Amount of Special Defense EVs.
+     */
     public int getSpDefenseEV() {
         return evs[SPECIAL_DEFENSE];
     }
 
+    /**
+     * Return the amount of Speed EVs the Pokemon has.
+     * @return Amount of Speed EVs.
+     */
     public int getSpeedEV() {
         return evs[SPEED];
     }
 
+    /**
+     * Set a random nature for the Pokemon.
+     */
     private void setRandomNature() {
         Nature[] natureList = Nature.values();
         int value = (int)Math.round(Math.random() * (natureList.length - 1));
         nature = natureList[value];
     }
 
+    /**
+     * Return the Pokemon's capture rate.
+     * @return The capture rate
+     */
     public int getCaptureRate() { return captureRate; }
+
+    /**
+     * Return the Pokemon's base heatlh stat.
+     * @return Base Health
+     */
     public int getBaseStatHealth() {
         return baseStats[HEALTH];
     }
 
+    /**
+     * Return the Pokemon's base attack stat.
+     * @return Base Attack
+     */
     public int getBaseStatAttack() {
         return baseStats[ATTACK];
     }
 
+    /**
+     * Return the Pokemon's base special attack
+     * @return Base Special Attack
+     */
     public int getBaseStatSpeicialAttack() {
         return baseStats[SPECIAL_ATTACK];
     }
 
+    /**
+     * Return the Pokemon's base defense.
+     * @return Base Defense
+     */
     public int getBaseStatDefense() {
         return baseStats[DEFENSE];
     }
 
+    /**
+     * Return the Pokemon's base special defense.
+     * @return Base Special Defense
+     */
     public int getBaseStatSpecialDefense() {
         return baseStats[SPECIAL_DEFENSE];
     }
 
+    /**
+     * Return the Pokemon's base speed.
+     * @return Base Speed
+     */
     public int getBaseStatSpeed() {
         return baseStats[SPEED];
     }
 
+    /**
+     * Return the Pokemon's health stat, total health
+     * @return Total Health stat
+     */
     public int getHealthStat() {
         return (int)Math.round(((2 * baseStats[HEALTH]+ ivs[HEALTH] + (evs[HEALTH] / 4.0) + 100) * level) / 100.0) + 10;
     }
 
+    /**
+     * Return the Pokemon's attack stat
+     * @return Attack Stat
+     */
     public int getAttackStat() {
         return (int)Math.round(((((2 * baseStats[ATTACK] + ivs[ATTACK] + (evs[ATTACK] / 4.0)) * level)
                 / 100.0) + 5) * natureAttackMultiplier);
     }
 
+    /**
+     * Return the Pokemon's special attack stat.
+     * @return Special Attack Stat
+     */
     public int getSpecialAttackStat() {
         return (int)Math.round(((((2 * baseStats[SPECIAL_ATTACK] + ivs[SPECIAL_ATTACK] + (evs[SPECIAL_ATTACK] / 4.0)) * level)
                 / 100.0) + 5) * natureSpecialAttackMultiplier);
     }
 
+    /**
+     * Return the Pokemon's defense stat.
+     * @return Defense Stat
+     */
     public int getDefenseStat() {
         return (int)Math.round(((((2 * baseStats[DEFENSE] + ivs[DEFENSE] + (evs[DEFENSE] / 4.0)) * level)
                 / 100.0) + 5) * natureDefenseMultiplier);
     }
 
+    /**
+     * Return the Pokemon's special defense stat.
+     * @return Special Defense Stat
+     */
     public int getSpecialDefenseStat() {
         return (int)Math.round(((((2 * baseStats[SPECIAL_DEFENSE] + ivs[SPECIAL_DEFENSE] + (evs[SPECIAL_DEFENSE] / 4.0)) * level)
                 / 100.0) + 5) * natureSpecialDefenseMultiplier);
     }
 
+    /**
+     * Return the Pokemon's speed stat.
+     * @return Speed Stat
+     */
     public int getSpeedStat() {
         return (int)Math.round(((((2 * baseStats[SPEED] + ivs[SPEED] + (evs[SPEED] / 4.0)) * level)
                 / 100.0) + 5) * natureSpeedMultiplier);
     }
 
+    /**
+     * Return the Pokemon's attack stage.
+     * @return Attack Stage
+     */
+    public int getAttackStage() {
+        return attackStage;
+    }
+
+    /**
+     * Return the Pokemon's defense stage.
+     * @return Defense Stage
+     */
+    public int getDefenseStage() {
+        return defenseStage;
+    }
+
+    /**
+     * Return the Pokemon's special attack stage.
+     * @return Special Attack Stage
+     */
+    public int getSpecialAttackStage() {
+        return specialAttackStage;
+    }
+
+    /**
+     * Return the Pokemon's special defense stage.
+     * @return Special Defense Stage
+     */
+    public int getSpecialDefenseStage() {
+        return specialDefenseStage;
+    }
+
+    /**
+     * Return the Pokemon's speed stage.
+     * @return Speed Stage
+     */
+    public int getSpeedStage() {
+        return speedStage;
+    }
+
+    /**
+     * Return the exp required to reach the next level.
+     * @return The exp required to reach the next level.
+     */
+    public int getNextLevelExp() {
+        if (level == 100) {
+            return 0;
+        } else {
+            return getTotalExp(level + 1) - getTotalExp(level);
+        }
+    }
+
+    /**
+     * Return the total amount of exp at the specified level
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     public int getTotalExp(int level) {
+        //Determine the exp growth rate and then get the total exp.
         if (expType == ExpType.FLUCTUATING) {
             return getFluctuatingTotalExp(level);
         }
@@ -742,39 +1114,18 @@ public abstract class Pokemon {
         else if (expType == ExpType.SLOW) {
             return getSlowTotalExp(level);
         }
-        else { //expType == ExpType.FAST
+        else {
+            //The last exp growth rate is ExpType.FAST
             return getFastTotalExp(level);
         }
     }
 
-    public int getNextLevelExp() {
-        if (level == 100) {
-            return 0;
-        } else {
-            return getTotalExp(level + 1) - getTotalExp(level);
-        }
-    }
-
-    public int getAttackStage() {
-        return attackStage;
-    }
-
-    public int getDefenseStage() {
-        return defenseStage;
-    }
-
-    public int getSpecialAttackStage() {
-        return specialAttackStage;
-    }
-
-    public int getSpecialDefenseStage() {
-        return specialDefenseStage;
-    }
-
-    public int getSpeedStage() {
-        return speedStage;
-    }
-
+    /**
+     * Return the total amount of exp at the specified level
+     * for a fluctuating exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getFluctuatingTotalExp(int level) {
         if (level <= 15)
         {
@@ -790,10 +1141,22 @@ public abstract class Pokemon {
         }
     }
 
+    /**
+     * Return the total amount of exp at the specified level
+     * for a medium fast exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getMediumFastTotalExp(int level) {
         return (int)Math.round(Math.pow(level, 3));
     }
 
+    /**
+     * Return the total amount of exp at the specified level
+     * for a medium slow exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getMediumSlowTotalExp(int level) {
         if (level == 1) {
             return 0;
@@ -803,14 +1166,32 @@ public abstract class Pokemon {
         }
     }
 
+    /**
+     * Return the total amount of exp at the specified level
+     * for a slow exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getSlowTotalExp(int level) {
         return (int)Math.round(5 * Math.pow(level, 3) / 4.0);
     }
 
+    /**
+     * Return the total amount of exp at the specified level
+     * for a fast exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getFastTotalExp(int level) {
         return (int)Math.round(4 * Math.pow(level, 3) / 5.0);
     }
 
+    /**
+     * Return the total amount of exp at the specified level
+     * for an erratic exp growth rate.
+     * @param level The level in which we are looking at for total exp
+     * @return The total exp at level level.
+     */
     private int getErraticTotalExp(int level) {
         if (level <= 50)
         {
@@ -830,10 +1211,20 @@ public abstract class Pokemon {
         }
     }
 
+    /**
+     * Return the Pokemon's base exp
+     * @return Base Exp
+     */
     public int getBaseExp() {
         return baseExp;
     }
 
+    /**
+     * Completely heal the Pokemon. (Nurse Joy style)
+     * - Revive
+     * - Full Health
+     * - Remove Status Condition
+     */
     public void fullyHeal() {
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
@@ -841,35 +1232,154 @@ public abstract class Pokemon {
         status = Status.STATUS_FREE;
         preStatus = Status.STATUS_FREE;
     }
+
+    /**
+     * Return the Pokemon's X position from a Player perspective. (Back)
+     * @return The x position of the back image.
+     */
     public int getPlayerX() { return playerX; }
+
+    /**
+     * Return the Pokemon's default X position from a Player perspective. (Back)
+     * @return The default x position of the back image.
+     */
     public int getPlayerNormalX() { return PLAYER_NORMAL_X; }
-    public void setPlayerX(int amt) { playerX = amt; }
+
+    /**
+     * Set the Pokemon's X position to newX
+     * @param newX The new x position.
+     */
+    public void setPlayerX(int newX) { playerX = newX; }
+
+    /**
+     * Return the Pokemon's Y position from a Player perspective. (Back)
+     * @return The Y position of the back image.
+     */
     public int getPlayerY() { return playerY; }
+
+    /**
+     * Return the Pokemon's default Y position from a Player perspective. (Back)
+     * @return The default Y position of the back image.
+     */
     public int getPlayerNormalY() { return PLAYER_NORMAL_Y; }
+
+    /**
+     * Set the Pokemon's Y position to newY
+     * @param newY The new Y position.
+     */
+    public void setPlayerY(int newY) { playerY = newY; }
+
+    /**
+     * Return the Pokemon's X position from a Enemy perspective. (Front)
+     * @return The x position of the front image.
+     */
+    public int getEnemyX() { return enemyX; }
+
+    /**
+     * Set the Pokemon's X position to newX for the enemy sprite
+     * @param newX The new x position for the enemy sprite.
+     */
+    public void setEnemyX(int newX) { enemyX = newX; }
+
+    /**
+     * Return the Pokemon's Y position from an enemy perspective. (front)
+     * @return The Y position of the front image.
+     */
+    public int getEnemyY() { return enemyY; }
+
+    /**
+     * Set the Pokemon's Y position to newY for the enemy sprite
+     * @param newY The new Y position for the enemy sprite.
+     */
+    public void setEnemyY(int newY) { enemyY = newY; }
+
+    /**
+     * Return the Player's fainted Y position.
+     * When the player faints, the sprite goes down. This
+     * value is the minimum y amount during a faint.
+     * @return Fainted Y position for the Player side.
+     */
     public int getFaintedPlayerY() { return FAINTED_PLAYER_Y; }
+
+    /**
+     * Return the Enemy's fainted Y position.
+     * When the enemy faints, the sprite goes down. This
+     * value is the minimum y amount during a faint.
+     * @return Fainted Y position for the Enemy side.
+     */
     public int getFaintedEnemyY() { return FAINTED_ENEMY_Y; }
+
+    /**
+     * Make the Pokemon faint. Based on fainted boolean
+     * @param fainted Whether or not the Pokemon faints
+     */
     public void setFaint(boolean fainted) {
         this.fainted = fainted;
+        if (fainted) {
+            //Remove all status conditions when fainted.
+            status = Status.STATUS_FREE;
+            preStatus = Status.STATUS_FREE;
+        }
     }
+
+    /**
+     * Return whether or not the Pokemon has fainted.
+     * @return Whether or not the Pokemon has fainted.
+     */
     public boolean isFainted() {
         return fainted;
     }
-    public void setPlayerY(int amt) { playerY = amt; }
-    public int getEnemyX() { return enemyX; }
-    public void setEnemyX(int amt) { enemyX = amt; }
-    public int getEnemyY() { return enemyY; }
-    public void setEnemyY(int amt) { enemyY = amt; }
+
+    /**
+     * Return the Pokemon's list of skills.
+     * @return The Pokemon's list of moves.
+     */
     public List<Skill> getSkills() { return skills; }
+
+    /**
+     * Return the Pokemon's Front Image path
+     * @return The path for the Pokemon's front image.
+     */
     public String getMapIconPath() {
         return mapIconPath;
     }
+
+    /**
+     * Return the Pokemon's Back Image Path
+     * @return The path for the Pokemon's back image.
+     */
     public String getBackPath() { return backPath; }
+
+    /**
+     * Return the Pokemon's mini image path.
+     * @return The path for the Pokemon's mini image.
+     */
     public String getMiniIconPath() {
         return miniPath;
     }
+
+    /**
+     * Return whether or not the Pokemon is focused.
+     * @return Whether or not the Pokemon is focused (Focus Energy)
+     */
     public boolean isFocused() { return focused; }
+
+    /**
+     * Return the Pokemon's name
+     * @return Pokemon's name
+     */
     public String getName() { return name; }
+
+    /**
+     * Return the Pokemon's level.
+     * @return Pokemon's level.
+     */
     public int getLevel() { return level; }
+
+    /**
+     * Return the String representation for the Pokemon's nature.
+     * @return A String representing the Pokemon's nature.
+     */
     public String getNatureString() {
         switch(nature) {
             case ADAMANT:
@@ -926,6 +1436,11 @@ public abstract class Pokemon {
                 return "NATURE ERROR";
         }
     }
+
+    /**
+     * Return the String representation for the Pokemon's ability.
+     * @return A String representing the Pokemon's ability.
+     */
     public String getAbilityString() {
         switch(ability) {
             case INTIMIDATE:
@@ -1001,39 +1516,86 @@ public abstract class Pokemon {
 
         }
     }
+
+    /**
+     * Return the Pokemon's ability
+     * @return The Pokemon's ability
+     */
     public Ability getAbility() { return ability; }
+
+    /**
+     * Return the Pokemon's current health.
+     * @return The current health
+     */
     public int getCurrentHealth() { return currentHealth; }
+
+    /**
+     * Return the Status of the Pokemon.
+     * @return The Pokemon's Status.
+     */
     public Status getStatus() { return status; }
+
+    /**
+     * Return whether or not the Pokemon is paralyzed.
+     * @return Whether or not the Pokemon is paralyzed.
+     */
     public boolean isParalyzed() {
         if (status == Status.PARALYSIS) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return whether or not the Pokemon is burned.
+     * @return Whether or not the Pokemon is burned.
+     */
     public boolean isBurned() {
         if (status == Status.BURN) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return whether or not the Pokemon is sleeping.
+     * @return Whether or not the Pokemon is sleeping.
+     */
     public boolean isSleeping() {
         if (status == Status.SLEEP) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return whether or not the Pokemon is poisoned.
+     * @return Whether or not the Pokemon is poisoned.
+     */
     public boolean isPoisoned() {
         if (status == Status.POISON) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return whether or not the Pokemon is frozen.
+     * @return Whether or not the Pokemon is frozen.
+     */
     public boolean isFrozen() {
         if (status == Status.FROZEN) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return whether or not the Pokemon is afflicted by a
+     * status condition.
+     * @return Whether or not the Pokemon is afflicted by a
+     * status condition.
+     */
     public boolean isStatused() {
         if (status != Status.STATUS_FREE) {
             return true;
@@ -1041,30 +1603,93 @@ public abstract class Pokemon {
             return false;
         }
     }
+
+    /**
+     * Set the Pokemon's status to newStatus
+     * @param newStatus The status that will override the current status.
+     */
     public void setStatus(Status newStatus) {
         this.status = newStatus;
     }
+
+    /**
+     * Set the Pokemon's preStatus to newStatus.
+     * @param newStatus The status that will override the preStatus.
+     */
     public void setPreStatus(Status newStatus) { this.preStatus = newStatus; }
+
+    /**
+     * Transfer the preStatus to the currentStatus.
+     */
+    public void transferPreStatus() {
+        if (preStatus != Status.STATUS_FREE) {
+            status = preStatus;
+            preStatus = Status.STATUS_FREE;
+        }
+    }
+
+    /**
+     * Return the Pokemon's first type.
+     * @return The Pokemon's first type.
+     */
     public Type getTypeOne() { return typeOne; }
+
+    /**
+     * Return the Pokemon's second type
+     * @return The Pokemon's second type.
+     */
     public Type getTypeTwo() { return typeTwo; }
+
+    /**
+     * Return the Pokemon's ID (0 for Bulbasaur etc)
+     * @return The Pokemon's ID
+     */
     public int getId() { return pokemonId; }
+
+    /**
+     * Return whether or not the animation bar's displayed health
+     * matches the actual current health of the Pokemon.
+     * @return Whether or not the animation health matches the
+     * current health.
+     */
     public boolean matchingAnimationHealth() {
         if (animationHealth == currentHealth) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Return the animation health bar's health value.
+     * @return The animation health bar's health value.
+     */
     public int getAnimationHealth() {
         return animationHealth;
     }
+
+    /**
+     * Subtract an amount of animation health
+     * @param amt The amount of animation health to subtract.
+     */
     public void subtractAnimationHealth(int amt) {
         animationHealth -= amt;
         animationHealth = Math.max(currentHealth, animationHealth);
     }
+
+    /**
+     * Add an amount of animation health.
+     * @param amt The amount of animation health to add.
+     */
     public void addAnimationHealth(int amt) {
         animationHealth += amt;
         animationHealth = Math.min(currentHealth, animationHealth);
     }
+
+    /**
+     * Add or subtract the animation health in order to make it
+     * equivalent to the current health.
+     * @param rate The amount to add or subtract from the animation health
+     */
     public void adjustAnimationHealth(int rate) {
         if (animationHealth > currentHealth) {
             subtractAnimationHealth(rate);
@@ -1072,15 +1697,23 @@ public abstract class Pokemon {
             addAnimationHealth(rate);
         }
     }
+
+    /**
+     * Subtract an amount from the current health
+     * @param amt The amount to subtract from current health.
+     */
     public void subtractHealth(int amt) {
         currentHealth = Math.max(0, currentHealth  - amt);
         Gdx.app.log("Subtract", "" + amt);
     }
 
-    public void transferPreStatus() {
-        if (preStatus != Status.STATUS_FREE) {
-            status = preStatus;
-            preStatus = Status.STATUS_FREE;
-        }
+    /**
+     * Add an amount to the current health.
+     * @param amt The amount to add to current health.
+     */
+    public void addHealth(int amt) {
+        currentHealth = Math.min(getHealthStat(), currentHealth + amt);
     }
+
+
 }

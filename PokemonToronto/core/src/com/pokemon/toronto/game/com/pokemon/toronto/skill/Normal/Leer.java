@@ -12,15 +12,29 @@ import java.util.List;
  * Created by Gregory on 6/15/2017.
  */
 public class Leer extends Skill {
+
+    /**
+     * - Name: Leer
+     * - Type: Normal
+     * - PP: 30
+     * - Cat: Misc
+     */
     public Leer() {
         super("Leer", 30, Pokemon.Type.NORMAL, SkillCategory.MISC);
     }
 
+    /**
+     * Use Leer and return the move results.
+     * @param skillUser The Pokemon using the skill
+     * @param enemyPokemon The enemy receiving the skill
+     * @return The move results
+     */
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
         List<List<String>> fullList = new ArrayList<List<String>>();
         List<String> firstList = new ArrayList<String>();
         List<String> secondList = new ArrayList<String>();
 
+        //Attempt to lower the enemy's defense by 1 stage.
         if (enemyPokemon.getDefenseStage() == -6) {
             firstList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
@@ -32,6 +46,12 @@ public class Leer extends Skill {
         return fullList;
     }
 
+    /**
+     * Return Leer's move animation.
+     * @param userAnimation Whether or not the skill's animation is from the user
+     *                      using the skill or the enemy using the skill.
+     * @return Leer's move animation.
+     */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {
         return new TackleAnimation(userAnimation);

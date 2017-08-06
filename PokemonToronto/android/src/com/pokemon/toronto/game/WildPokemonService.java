@@ -14,21 +14,30 @@ import java.util.Date;
 import java.util.Locale;
 
 public class WildPokemonService extends Service {
-    //private Sound notificationSound;
 
+    /**
+     * Create the Service.
+     */
     @Override
     public void onCreate() {
         super.onCreate();
-        //notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
     }
 
+    /**
+     * Start the service.
+     * @param intent
+     * @param flags
+     * @param startId
+     * @return
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Runnable r = new Runnable() {
             public void run() {
                 while (true) {
                     try {
-                        long futureTime = System.currentTimeMillis() + (60000 * 10); //10 minutes spawn
+                        //10 minutes spawn a new set of Pokemon.
+                        long futureTime = System.currentTimeMillis() + (60000 * 10);
                         while (System.currentTimeMillis() < futureTime) {
                             synchronized (this) {
                                 try {
@@ -36,8 +45,7 @@ public class WildPokemonService extends Service {
                                 } catch(Exception e) {}
                             }
                         }
-                        //Thread.sleep(60000 * 10);
-                        //notificationSound.play();
+                        //Send the receiver that it found new Pokemon.
                         Intent i = new Intent();
                         i.setAction("com.pokemon.toronto.game.sendWildPokemonBroadcast");
                         i.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
@@ -47,20 +55,28 @@ public class WildPokemonService extends Service {
                 }
             }
         };
+        //Start the runnable thread.
         Thread t = new Thread(r);
         t.start();
         return Service.START_STICKY;
 
     }
 
+    /**
+     * Destroy the service.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
 
+    /**
+     * Bind the service.
+     * @param intent
+     * @return
+     */
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 

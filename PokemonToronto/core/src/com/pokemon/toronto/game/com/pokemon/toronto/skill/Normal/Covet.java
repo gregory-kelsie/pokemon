@@ -10,9 +10,25 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
  * Created by Gregory on 6/15/2017.
  */
 public class Covet extends DamageSkill {
+
+    /**
+     * - Name: Covet
+     * - Type: Normal
+     * - Base Damage: 40
+     * - PP: 25
+     * - Cat: Physical
+     * - Crit Stage: 1
+     */
     public Covet() {
         super("Covet", 25, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 40 ,1);
     }
+
+    /**
+     * Return Covet's animation
+     * @param userAnimation Whether or not the skill's animation is from the user
+     *                      using the skill or the enemy using the skill.
+     * @return Covet's animation
+     */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {
         return new TackleAnimation(userAnimation);

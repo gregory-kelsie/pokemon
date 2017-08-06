@@ -10,11 +10,17 @@ import java.util.List;
  * Created by Gregory on 6/14/2017.
  */
 public class Squirtle extends Pokemon {
+
+    /** Init Variables */
+
+    //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 7;
     private static final String NAME = "Squirtle";
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+
+    //Base Stats
     private static final int BASE_HEALTH = 44;
     private static final int BASE_ATTACK = 48;
     private static final int BASE_DEFENSE = 65;
@@ -22,9 +28,15 @@ public class Squirtle extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 64;
     private static final int BASE_SPEED = 43;
 
+    //Image Paths
     private static final String ICON_PATH = "pokemonSprites/squirtle/squirtle.png";
     private static final String BACK_PATH = "battle/backs/squirtle.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/squirtle.png";
+
+    /**
+     * Create a Squirtle with the specified level.
+     * @param level The level of the Squirtle.
+     */
     public Squirtle(int level) {
         super(NUMBER, NAME, level, Type.WATER, Type.NONE, Ability.TORRENT, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
@@ -34,13 +46,18 @@ public class Squirtle extends Pokemon {
         initWildSkills();
     }
 
+    /**
+     * Init Squirtle's level up skills.
+     */
     @Override
     protected void initLevelUpSkills() {
         levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCRATCH)));
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
     }
 
-
+    /**
+     * Init Squirtle's gender.
+     */
     @Override
     protected void initGender() {
         double genderProbability = Math.random();

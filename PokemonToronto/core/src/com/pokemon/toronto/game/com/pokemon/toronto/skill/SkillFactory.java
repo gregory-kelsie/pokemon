@@ -18,6 +18,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
  */
 public class SkillFactory {
 
+    //Skill IDs
     public static final int SCRATCH = 0;
     public static final int TACKLE = 1;
     public static final int QUICK_ATTACK = 2;
@@ -35,6 +36,11 @@ public class SkillFactory {
 
     }
 
+    /**
+     * Return a new skill based on the skill id.
+     * @param skillId The skill id of the skill to be created.
+     * @return A new skill with skillId
+     */
     public Skill createSkill(int skillId) {
         if (skillId == SCRATCH) {
             return new Scratch();

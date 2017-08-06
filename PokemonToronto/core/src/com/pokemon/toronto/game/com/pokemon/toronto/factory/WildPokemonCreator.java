@@ -18,12 +18,25 @@ import java.util.Date;
  * Created by Gregory on 6/11/2017.
  */
 public class WildPokemonCreator {
-    
-    public WildPokemonCreator() {
 
-    }
-    
-    public WildPokemon createPokemon(int number, double latitude, double longitude, Date date, String dateString) {
+    /**
+     * Create a Wild Pokemon from either the google map or
+     * a regular Pokemon.
+     */
+    public WildPokemonCreator() {}
+
+    /**
+     * Return a Wild Pokemon from the map.
+     * @param number The Pokemon's id
+     * @param latitude The latitude coordinate for the Pokemon.
+     * @param longitude The longitude coordinate for the Pokemon.
+     * @param date The date object for the Pokemon
+     * @param dateString A formatted expiration date string to display
+     *                   "yyyy/MM/dd HH:mm";
+     * @return A new Wild Pokemon based on the parameters.
+     */
+    public WildPokemon createPokemon(int number, double latitude, double longitude,
+                                     Date date, String dateString) {
         if (number == PokemonId.PIDGEY.getValue()) {
             Pidgey p = new Pidgey(5);
             return new WildPokemon(p, latitude, longitude, date, dateString);
@@ -52,6 +65,14 @@ public class WildPokemonCreator {
         }
     }
 
+
+    /**
+     * Return a Pokemon within a level range.
+     * @param pokemonNumber The Pokemon's id
+     * @param lowestLevel The lowest possible level for the Pokemon.
+     * @param highestLevel The highest possible level for the Pokemon.
+     * @return A new Pokemon within a level range.
+     */
     public Pokemon createPokemon(int pokemonNumber, int lowestLevel, int highestLevel) {
         int level = (int)((Math.random() * (highestLevel - lowestLevel)) + lowestLevel);
         if (pokemonNumber == PokemonId.PIDGEY.getValue()) {

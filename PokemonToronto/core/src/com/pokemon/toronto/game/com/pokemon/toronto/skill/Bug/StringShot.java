@@ -12,15 +12,29 @@ import java.util.List;
  * Created by Gregory on 6/15/2017.
  */
 public class StringShot extends Skill {
+
+    /**
+     * - Name: String Shot
+     * - Type: Bug
+     * - PP: 35
+     * - Cat: Misc
+     */
     public StringShot() {
         super("String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC);
     }
 
+    /**
+     * Use String Shot and return the move results.
+     * @param skillUser The Pokemon using the skill
+     * @param enemyPokemon The enemy receiving the skill
+     * @return String Shot's move results.
+     */
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
         List<List<String>> fullList = new ArrayList<List<String>>();
         List<String> firstList = new ArrayList<String>();
         List<String> secondList = new ArrayList<String>();
 
+        //Attempt to lower the enemy's speed by 1 stage.
         if (enemyPokemon.getSpeedStage() == -6) {
             firstList.add(enemyPokemon.getName() + "'s speed can't be lowered.");
         } else {
@@ -31,6 +45,13 @@ public class StringShot extends Skill {
         fullList.add(secondList);
         return fullList;
     }
+
+    /**
+     * Return String Shot's skill animation.
+     * @param userAnimation Whether or not the skill's animation is from the user
+     *                      using the skill or the enemy using the skill.
+     * @return String Shot's skill animation.
+     */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {
         return new TackleAnimation(userAnimation);

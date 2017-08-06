@@ -7,10 +7,18 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Pokeball;
  * Created by Gregory on 6/17/2017.
  */
 public class PokeballFactory {
-    public PokeballFactory() {
 
-    }
+    /**
+     * Constructor
+     */
+    public PokeballFactory() {}
 
+    /**
+     * Return the type of Pokeball with the given id and quantity.
+     * @param id The id of the Pokeball to be created.
+     * @param quantity The quantity of Pokeballs
+     * @return A created Pokeball with id and quantity.
+     */
     public Ball createPokeball(int id, int quantity) {
         if (id == Ball.POKEBALL) {
             return new Pokeball(quantity);

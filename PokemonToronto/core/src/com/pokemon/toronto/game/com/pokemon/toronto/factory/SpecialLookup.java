@@ -4,12 +4,30 @@ package com.pokemon.toronto.game.com.pokemon.toronto.factory;
  * Created by Gregory on 6/11/2017.
  */
 public abstract class SpecialLookup {
+
+    //Instance Variables
     protected double longitude;
     protected double latitude;
+
+    /**
+     * Create a speical lookup zone.
+     * @param longitude
+     * @param latitude
+     */
     public SpecialLookup(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+    /**
+     * Calculate the distance between two latitude and longitude coordinates in
+     * metres.
+     * @param lat1 The first point's latitude coordinate.
+     * @param lat2 The second point's latitude coordinate.
+     * @param lon1 The first point's longitude coordinate.
+     * @param lon2 The second point's longitude coordinate.
+     * @return The distance between both points in metres.
+     */
     protected double distance(double lat1, double lat2, double lon1,
                                   double lon2) {
 
@@ -29,5 +47,5 @@ public abstract class SpecialLookup {
 
         return Math.sqrt(distance);
     }
-    public abstract int getSpecialPokemon();
+
 }

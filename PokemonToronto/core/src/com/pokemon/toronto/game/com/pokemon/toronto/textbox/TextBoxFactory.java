@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class TextBoxFactory {
 
+    /**
+     * Return the text box where Professor Ivy asks the user for their gender.
+     * @return The text box where Professor Ivy asks for the user's gender.
+     */
     public static TextBoxText getGenderText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -20,6 +24,10 @@ public class TextBoxFactory {
         return tbt;
     }
 
+    /**
+     * Return the text box where Professor Ivy tells the user to select a started Pokeball.
+     * @return The text box where Professor Ivy tells the user to select a Pokeball.
+     */
     public static TextBoxText getPokeballSelectText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -28,6 +36,11 @@ public class TextBoxFactory {
         tbt.addLine("Select a Pokeball");
         return tbt;
     }
+
+    /**
+     * Return the text boxes talking about Bulbasaur's information.
+     * @return Bulbasaur information text boxes.
+     */
     public static List<TextBoxText> getStarterBulbasaurText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -48,6 +61,10 @@ public class TextBoxFactory {
         return tbts;
     }
 
+    /**
+     * Return the text boxes talking about Charmander's information.
+     * @return Charmander information text boxes.
+     */
     public static List<TextBoxText> getStarterCharmanderText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -68,6 +85,10 @@ public class TextBoxFactory {
         return tbts;
     }
 
+    /**
+     * Return the text boxes talking about Squirtle's information.
+     * @return Squirtle's information text boxes.
+     */
     public static List<TextBoxText> getStarterSquirtleText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -89,6 +110,10 @@ public class TextBoxFactory {
         return tbts;
     }
 
+    /**
+     * Return the text box after the player chooses a starter.
+     * @return The response text box to choosing a starter.
+     */
     public static TextBoxText getCongratsText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -102,6 +127,10 @@ public class TextBoxFactory {
         return tbt;
     }
 
+    /**
+     * Return the text box after you've chosen your gender.
+     * @return The text box after choosing a gender.
+     */
     public static TextBoxText getGenderResponseText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -113,6 +142,12 @@ public class TextBoxFactory {
         tbt.addLine("your starter Pokemon.");
         return tbt;
     }
+
+    /**
+     * Return the double checking text box to ensure that the player
+     * chose male for sure.
+     * @return The text box reassuring the player that they've chosen male.
+     */
     public static TextBoxText getMaleResponseText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -122,6 +157,11 @@ public class TextBoxFactory {
         return tbt;
     }
 
+    /**
+     * Return the double checking text box to ensure that the player
+     * chose female for sure.
+     * @return The text box reassuring the player that they've chosen female.
+     */
     public static TextBoxText getFemaleResponseText() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -131,6 +171,12 @@ public class TextBoxFactory {
         return tbt;
     }
 
+    /**
+     * Return the Pokemon Center text box list.
+     * @param blackedOut An identifier to show whether or not the player got to
+     *                   the Pokecenter by blacking out or through the menu.
+     * @return The Pokemon Center text box list.
+     */
     public static List<TextBoxText> getPokeCenterText(boolean blackedOut) {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -170,6 +216,12 @@ public class TextBoxFactory {
 
         return tbts;
     }
+
+    /**
+     * Return the first text boxes Professor Ivy says explaining the game.
+     * Ends when she is about to ask for your gender.
+     * @return The first set of text boxes from Professor Ivy.
+     */
     public static List<TextBoxText> getFirstBox() {
         BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
         BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
@@ -220,7 +272,7 @@ public class TextBoxFactory {
         tbt55.addLine("On the map, you will see the");
         tbt55.addLine("approximate location of the wild");
         tbt55.addLine("Pokemon. When you approach the area,");
-        tbt55.addLine("can battle or even catch it!");
+        tbt55.addLine("can battle or even catching it!");
 
         TextBoxText tbt6 = new TextBoxText(header, body);
         tbt6.setHeader("Professor Ivy");

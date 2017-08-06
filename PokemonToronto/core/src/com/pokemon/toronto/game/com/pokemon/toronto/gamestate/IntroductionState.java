@@ -28,15 +28,36 @@ import java.util.List;
  */
 public class IntroductionState extends GameState {
 
+    /** Instance Variables */
+
+    //Textures
     private Texture background;
     private Texture genderImages;
     private Texture yesNoImages;
     private Texture textBox;
     private Texture textBoxHeader;
+    private Texture starterPokeballsTexture;
+    private Texture ivyWink;
+
+    //Sounds
+    private Sound clickSound;
+    private Sound bulbasaurCry;
+    private Sound charmanderCry;
+    private Sound squirtleCry;
+    private Sound throwPokeballSound;
+    private Sound wooshSound;
+    private Sound caughtPokemonSound;
+    private Music ivyTheme;
+
+    //Animations
     private Animation bulbasaurAnimation;
     private Animation charmanderAnimation;
     private Animation squirtleAnimation;
-    private Texture starterPokeballsTexture;
+    private Animation ivyAnimation;
+    private StraightLineAnimation droppingPokeballAnimation;
+
+
+    //Text Boxes
     private List<TextBoxText> tbts;
     private TextBoxText genderText;
     private TextBoxText maleResponseText;
@@ -47,30 +68,13 @@ public class IntroductionState extends GameState {
     private List<TextBoxText> bulbasaurDexText;
     private List<TextBoxText> charmanderDexText;
     private List<TextBoxText> squirtleDexText;
-    private Animation ivyAnimation;
-    private StraightLineAnimation droppingPokeballAnimation;
-    private Texture ivyWink;
-    private int currentTextBox;
-
-    private Sound clickSound;
-    private Sound bulbasaurCry;
-    private Sound charmanderCry;
-    private Sound squirtleCry;
-    private Sound throwPokeballSound;
-    private Sound wooshSound;
-    private Sound caughtPokemonSound;
-    private Music ivyTheme;
-
-    //Quick Switches
-    private boolean crySwitch;
 
     //Counters
-    //Count time when the caught sound is played
-    //When the sound played for it's duration, unpause the ivy theme.
     private double caughtSoundCounter;
     private float fadingCounter;
     private double fadingRate = (0.0033333f / 2.0f);
     private final double caughtSoundDuration = 3; //2.009 seconds of play time
+
     //FLAGS
     private boolean firstDialogue;
     private boolean genderDialogue;
@@ -92,14 +96,37 @@ public class IntroductionState extends GameState {
     private boolean startedCaughtSound;
     private boolean obtainedPokemon;
     private boolean startedFading;
+    private boolean crySwitch;
+
+    //Misc
     private ShapeRenderer shapeRenderer;
     private GameStateManager gsm;
-    //Newly Set Variables
     private char gender;
+    private int currentTextBox;
 
+    /**
+     * The Introduction State is the state that is open after a user logs
+     * in for the first time. Professor Ivy teaches the player about the game
+     * and the player selects their gender and starter Pokemon.
+     * @param gsm A reference to the Game State Manager
+     */
     public IntroductionState(GameStateManager gsm) {
         this.gsm = gsm;
         gsm.setNotificationSound();
+        initTextBoxes();
+        initAnimations();
+        initTextures();
+        initAudio();
+        initFlags();
+        initMisc();
+        shapeRenderer = new ShapeRenderer();
+    }
+
+    /**
+     * Initialize all of the text boxes for this state.
+     * Retrive them from the TextBoxFactory.
+     */
+    private void initTextBoxes() {
         tbts = TextBoxFactory.getFirstBox();
         genderText = TextBoxFactory.getGenderText();
         maleResponseText = TextBoxFactory.getMaleResponseText();
@@ -110,33 +137,47 @@ public class IntroductionState extends GameState {
         charmanderDexText = TextBoxFactory.getStarterCharmanderText();
         squirtleDexText = TextBoxFactory.getStarterSquirtleText();
         congratsText = TextBoxFactory.getCongratsText();
+    }
+
+    /**
+     * Initialize all of the textures for the state.
+     */
+    private void initTextures() {
         background = gsm.getLoader().get("nature_background.png");
         genderImages = gsm.getLoader().get("genderOptions.png");
         yesNoImages = gsm.getLoader().get("yesNoOptions.png");
         starterPokeballsTexture = gsm.getLoader().get("starterPokeballs.png");
+        ivyWink = gsm.getLoader().get("professor_ivy3.png");
+        textBox = gsm.getLoader().get("textbox.png");
+        textBoxHeader = gsm.getLoader().get("textbox_header.png");
+    }
+
+    /**
+     * Initialize the animations for this state.
+     */
+    private void initAnimations() {
         charmanderAnimation = AnimationFactory.getCharmanderAnimation(gsm.getLoader());
         bulbasaurAnimation = AnimationFactory.getBulbasaurAnimation(gsm.getLoader());
         squirtleAnimation = AnimationFactory.getSquirtleAnimation(gsm.getLoader());
         ivyAnimation = AnimationFactory.getIvyAnimation(gsm.getLoader());
         droppingPokeballAnimation = AnimationFactory.getDroppingPokeballAnimation(gsm.getLoader());
-        ivyWink = gsm.getLoader().get("professor_ivy3.png");
-        textBox = gsm.getLoader().get("textbox.png");
-        textBoxHeader = gsm.getLoader().get("textbox_header.png");
+    }
+
+    /**
+     * Initialize any remainder variables to their initial state.
+     */
+    private void initMisc() {
+        caughtSoundCounter = 0;
         currentTextBox = 0;
         fadingCounter = 0;
         crySwitch = false;
-        initAudio();
-        initFlags();
-        initCounters();
-        shapeRenderer = new ShapeRenderer();
     }
 
-    private void initCounters() {
-        caughtSoundCounter = 0;
-    }
-
+    /**
+     * Initialize the audio files for this state.
+     * Play the Professor Ivy theme after all of the files are loaded.
+     */
     private void initAudio() {
-        //clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
         clickSound = gsm.getLoader().get("sounds/click.wav");
         bulbasaurCry = gsm.getLoader().get("sounds/cry/01.wav");
         charmanderCry = gsm.getLoader().get("sounds/cry/04.wav");
@@ -145,11 +186,16 @@ public class IntroductionState extends GameState {
         wooshSound = gsm.getLoader().get("sounds/woosh.wav");
         caughtPokemonSound = gsm.getLoader().get("sounds/caughtPokemon.wav");
         ivyTheme = gsm.getLoader().get("bgm/professorIvyTheme.mp3", Music.class);
-        //ivyTheme = Gdx.audio.newMusic(Gdx.files.internal("bgm/professorIvyTheme.mp3"));
         ivyTheme.setLooping(true);
         ivyTheme.play();
     }
 
+    /**
+     * Initialize the flags for this state.
+     * Set the first flag for the first dialogue to play.
+     * The flags are used to determine where in the conversation
+     * the player is at.
+     */
     private void initFlags() {
         firstDialogue = true;
         genderDialogue = false;
@@ -172,9 +218,19 @@ public class IntroductionState extends GameState {
         obtainedPokemon = false;
         startedFading = false;
     }
+
+    /**
+     * Return whether or not the player selected a gender yet.
+     * @return Whether or not the player selected a gender.
+     */
     private boolean selectedGender() {
         return (choseMale || choseFemale);
     }
+
+    /**
+     * Finish updating the first dialogue text box if it hasn't finished yet.
+     * Otherwise, go to the next text box.
+     */
     private void firstDialogueClickedTextBox() {
         if (!tbts.get(currentTextBox).finishedUpdating()) {
             tbts.get(currentTextBox).quickUpdate();
@@ -190,7 +246,14 @@ public class IntroductionState extends GameState {
         }
     }
 
+    /**
+     * Execute clicking on the gender dialogue box.
+     * This occurs on:
+     * - Asking player for gender
+     * - Asking again if the player is sure for their selection.
+     */
     private void genderDialogueClickedTextBox() {
+        //Update any text boxes if they haven't finished updating.
         if (!genderText.finishedUpdating()) {
             genderText.quickUpdate();
         }
@@ -200,24 +263,31 @@ public class IntroductionState extends GameState {
         if (choseFemale && !femaleResponseText.finishedUpdating()) {
             femaleResponseText.quickUpdate();
         }
-        if (MyInput.getX() >= 75 && MyInput.getX() <= 333 && MyInput.getY() >= 1579 && MyInput.getY() <= 1795) {
-            //Chose Male
+
+        //Clicked on the Male Button
+        if (MyInput.getX() >= 75 && MyInput.getX() <= 333 &&
+                MyInput.getY() >= 1579 && MyInput.getY() <= 1795) {
+            //Check if the gender buttons are visible.
             if (drawGenderOptions) {
                 choseMale = true;
                 drawGenderOptions = false;
                 clickSound.play();
             }
         }
-        if (MyInput.getX() >= 639 && MyInput.getX() <= 935 && MyInput.getY() >= 1630 && MyInput.getY() <= 1804) {
-            //Chose Female
+        //Clicked on the Female Button
+        if (MyInput.getX() >= 639 && MyInput.getX() <= 935 &&
+                MyInput.getY() >= 1630 && MyInput.getY() <= 1804) {
+            //Check if the gender buttons are visible.
             if (drawGenderOptions) {
                 choseFemale = true;
                 drawGenderOptions = false;
                 clickSound.play();
             }
         }
-        if (MyInput.getX() >= 69 && MyInput.getX() <= 414 && MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
-            //Chose Yes
+        //Clicked on the Yes Button
+        if (MyInput.getX() >= 69 && MyInput.getX() <= 414 &&
+                MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
+            //Check if the Yes and No option buttons are visible.
             if (drawYesNoOptions) {
                 if (choseMale) {
                     gender = 'm';
@@ -231,20 +301,31 @@ public class IntroductionState extends GameState {
             }
 
         }
-        if (MyInput.getX() >= 658 && MyInput.getX() <= 996 && MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
-            //Chose No
+        //Clicked on the No Button
+        if (MyInput.getX() >= 658 && MyInput.getX() <= 996 &&
+                MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
+            //Check if the Yes and No option buttons are visible.
             if (drawYesNoOptions) {
+                //Reset the lines because it cycles back to asking
+                //for the player's gender.
                 genderText.resetLines();
+                maleResponseText.resetLines();
+                femaleResponseText.resetLines();
+                //Reset any choice the player made in regards to gender.
                 choseMale = false;
                 choseFemale = false;
                 drawYesNoOptions = false;
-                maleResponseText.resetLines();
-                femaleResponseText.resetLines();
                 clickSound.play();
             }
         }
     }
 
+
+    /**
+     * Execute clicking on the gender response text box.
+     * Update the text box if it is not finished updating.
+     * Go towards the Pokemon select dialogue if it's done updating.
+     */
     private void genderResponseDialogueClickedTextBox() {
         if (!genderResponseText.finishedUpdating()) {
             genderResponseText.quickUpdate();
@@ -255,26 +336,35 @@ public class IntroductionState extends GameState {
         }
     }
 
+    /**
+     * Execute clicking on the pokemon select text box.
+     * Update the text box if it hasn't finished updating.
+     * Check to see if the player clicked on a Pokeball if it
+     * has finished updating.
+     */
     private void pokemonSelectDialogueClickedTextBox() {
         if (!pokeballSelectText.finishedUpdating()) {
             pokeballSelectText.quickUpdate();
         } else {
             //Check to see if clicked on a Pokeball
-            if (MyInput.getX() >= 10 && MyInput.getX() <= 306 && MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
+            if (MyInput.getX() >= 10 && MyInput.getX() <= 306 &&
+                    MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
                 //Left Pokeball
                 displayBulbasaurIntroduction = true;
                 pokemonSelectDialogue = false;
                 drawPokeballs = false;
                 crySwitch = true;
                 currentTextBox = 0;
-            } else if (MyInput.getX() >= 403 && MyInput.getX() <= 615 && MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
+            } else if (MyInput.getX() >= 403 && MyInput.getX() <= 615 &&
+                    MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
                 //Middle Pokeball
                 displayCharmanderIntroduction = true;
                 pokemonSelectDialogue = false;
                 drawPokeballs = false;
                 crySwitch = true;
                 currentTextBox = 0;
-            } else if (MyInput.getX() >= 765 && MyInput.getX() <= 996 && MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
+            } else if (MyInput.getX() >= 765 && MyInput.getX() <= 996 &&
+                    MyInput.getY() >= 1646 && MyInput.getY() <= 1916) {
                 //Right Pokeball
                 displaySquirtleIntroduction = true;
                 pokemonSelectDialogue = false;
@@ -285,6 +375,11 @@ public class IntroductionState extends GameState {
         }
     }
 
+    /**
+     * Execute clicking on the Charmander information text box.
+     * Update the text box if it hasn't finished updating.
+     * Check if clicked on the yes no options while it is displayed.
+     */
     private void charmanderClicked() {
         if (!charmanderDexText.get(currentTextBox).finishedUpdating()) {
             charmanderDexText.get(currentTextBox).quickUpdate();
@@ -295,7 +390,8 @@ public class IntroductionState extends GameState {
                 clickSound.play();
             }
 
-            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 && MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
+            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 &&
+                    MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     gsm.addToParty(new Charmander(5));
@@ -303,7 +399,8 @@ public class IntroductionState extends GameState {
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
                 }
-            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 && MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
+            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 &&
+                    MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
                 //Chose No
                 if (drawYesNoOptions) {
                     exited = true;
@@ -319,11 +416,19 @@ public class IntroductionState extends GameState {
             }
 
             if (exited) {
+                //Set the current text box for the next list of text
+                //boxes to come in.
                 currentTextBox = 0;
             }
         }
     }
 
+
+    /**
+     * Execute clicking on the Bulbasaur information text box.
+     * Update the text box if it hasn't finished updating.
+     * Check if clicked on the yes no options while it is displayed.
+     */
     private void bulbasaurClicked() {
         if (!bulbasaurDexText.get(currentTextBox).finishedUpdating()) {
             bulbasaurDexText.get(currentTextBox).quickUpdate();
@@ -334,7 +439,8 @@ public class IntroductionState extends GameState {
                 clickSound.play();
             }
 
-            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 && MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
+            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 &&
+                    MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     gsm.addToParty(new Bulbasaur(5));
@@ -342,7 +448,8 @@ public class IntroductionState extends GameState {
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
                 }
-            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 && MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
+            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 &&
+                    MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
                 //Chose No
                 if (drawYesNoOptions) {
                     exited = true;
@@ -363,6 +470,11 @@ public class IntroductionState extends GameState {
         }
     }
 
+    /**
+     * Execute clicking on the Squirtle information text box.
+     * Update the text box if it hasn't finished updating.
+     * Check if clicked on the yes no options while it is displayed.
+     */
     private void squirtleClicked() {
         if (!squirtleDexText.get(currentTextBox).finishedUpdating()) {
             squirtleDexText.get(currentTextBox).quickUpdate();
@@ -373,7 +485,8 @@ public class IntroductionState extends GameState {
                 clickSound.play();
             }
 
-            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 && MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
+            if (MyInput.getX() >= 69 && MyInput.getX() <= 414 &&
+                    MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     gsm.addToParty(new Squirtle(5));
@@ -381,7 +494,8 @@ public class IntroductionState extends GameState {
                     drawDroppingPokeballAnimation = true;
                     throwPokeballSound.play();
                 }
-            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 && MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
+            } else if (MyInput.getX() >= 658 && MyInput.getX() <= 996 &&
+                    MyInput.getY() >= 1626 && MyInput.getY() <= 1785) {
                 //Chose No
                 if (drawYesNoOptions) {
                     exited = true;
@@ -402,6 +516,13 @@ public class IntroductionState extends GameState {
         }
     }
 
+
+    /**
+     * Execute clicking on the congrats text box when Professor Ivy
+     * congratulates the user on choosing their starter.
+     * Updates the text box if it hasn't finished updating.
+     * Start the fade out phase if the box finished updating.
+     */
     private void obtainedPokemonClicked() {
         if (!congratsText.finishedUpdating()) {
             congratsText.quickUpdate();
@@ -413,25 +534,45 @@ public class IntroductionState extends GameState {
         }
     }
 
+    /**
+     * Return whether or not a starter is being displayed.
+     * This is the only case when Professor Ivy is not shown
+     * on the screen.
+     * @return Whether or not a starter is being displayed as the
+     * main render.
+     */
     private boolean isDisplayingStarter() {
-        if (displaySquirtleIntroduction || displayCharmanderIntroduction || displayBulbasaurIntroduction) {
+        if (displaySquirtleIntroduction || displayCharmanderIntroduction ||
+                displayBulbasaurIntroduction) {
             return true;
         }
         return false;
     }
 
+    /**
+     * Render the Introduction State.
+     * @param batch The SpriteBatch the Introduction State is being
+     *              rendered to.
+     */
     @Override
     public void render(SpriteBatch batch) {
-        batch.draw(background, 0, 0);
+        batch.draw(background, 0, 0); //Draw the background.
+
+        //Determine whether or not to draw Professor Ivys
+        //regular animation (blinking), wink or neither.
         if (genderResponseDialogue) {
             batch.draw(ivyWink, 0, 0);
         } else if (!isDisplayingStarter()){
             ivyAnimation.render(batch);
         }
+
+        ///Render the text box and header
         if (!drawDroppingPokeballAnimation && !startedFading) {
             batch.draw(textBox, 0, 0);
             batch.draw(textBoxHeader, 0, 0);
         }
+
+        //Render the right text box based on the true flag.
         if (firstDialogue) {
             tbts.get(currentTextBox).render(batch);
         } else if (genderDialogue) {
@@ -448,7 +589,10 @@ public class IntroductionState extends GameState {
             pokeballSelectText.render(batch);
         } else if (obtainedPokemon) {
             congratsText.render(batch);
-        } else if (startedFading) {
+        }
+
+        //Fade the screen to black
+        else if (startedFading) {
             batch.end();
             Gdx.gl.glEnable(GL20.GL_BLEND);
             Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
@@ -459,6 +603,8 @@ public class IntroductionState extends GameState {
             Gdx.gl.glDisable(GL20.GL_BLEND);
             batch.begin();
         }
+
+        //Draw the icons based on the true flag.
         if (drawGenderOptions) {
             batch.draw(genderImages, 0, 0);
         }
@@ -471,6 +617,7 @@ public class IntroductionState extends GameState {
             batch.draw(starterPokeballsTexture, 0, 0);
         }
 
+        //Draw the Starter Renders
         if (displayBulbasaurIntroduction) {
             if (!finishedFadingPokemon) {
                 bulbasaurAnimation.render(batch);
@@ -508,16 +655,26 @@ public class IntroductionState extends GameState {
             }
         }
 
+        //Render the Pokeball that drops down onto the starters.
         if (drawDroppingPokeballAnimation) {
             droppingPokeballAnimation.render(batch);
         }
 
     }
 
+    /**
+     * Update the Introduction State.
+     * @param dt The time elapsed.
+     */
     @Override
     public void update(double dt) {
+
+        //Check to see if the caught Pokemon sound is playing.
         if (startedCaughtSound) {
             caughtSoundCounter += dt;
+            //Wait for the caught sound to finish playing before
+            //Going to the next phase and starting the Ivy theme
+            //again.
             if (caughtSoundCounter >= caughtSoundDuration) {
                 ivyTheme.play();
                 obtainedPokemon = true;
@@ -528,9 +685,14 @@ public class IntroductionState extends GameState {
                 displaySquirtleIntroduction = false;
             }
         }
+
+        //Update the ivy animation only when the gender response text
+        //is not up. (Due to Ivy being on a wink frame at that time)
         if (!genderResponseDialogue) {
             ivyAnimation.update(dt);
         }
+
+        //Update the text boxes based on the dialogue that is open.
         if (this.firstDialogue) {
             tbts.get(currentTextBox).update(dt);
         } else if (genderDialogue) {
@@ -626,7 +788,10 @@ public class IntroductionState extends GameState {
             }
         } else if (obtainedPokemon) {
             congratsText.update(dt);
-        } else if (startedFading) {
+        }
+        //Update the fade out into the new state.
+        else if (startedFading) {
+            //Fade the volume and the screen into darkness.
             fadingCounter += fadingRate;
             ivyTheme.setVolume(Math.max(0,1 - fadingCounter));
             if (fadingCounter >= 1) {
@@ -636,6 +801,8 @@ public class IntroductionState extends GameState {
                 dispose();
             }
         }
+
+        //Update the dropping ball animation if it is playing.
         if (drawDroppingPokeballAnimation) {
             droppingPokeballAnimation.update(dt);
             if (droppingPokeballAnimation.ended()) {
@@ -646,10 +813,15 @@ public class IntroductionState extends GameState {
                 }
 
             }
-
         }
+
+        //Check to see if there was a click.
         if (MyInput.clicked()) {
-            if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 && MyInput.getY() >= 1324 && MyInput.getY() <= 1920) {
+            //Check clicking on the text box area.
+            if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 &&
+                    MyInput.getY() >= 1324 && MyInput.getY() <= 1920) {
+                //Execute what happens to the text box depending on which
+                //one was clicked.
                 if (this.firstDialogue) {
                     firstDialogueClickedTextBox();
                 } else if (genderDialogue) {
@@ -668,10 +840,13 @@ public class IntroductionState extends GameState {
                     obtainedPokemonClicked();
                 }
             }
-            Gdx.app.log("GDX LOGGERs - ", "X: " + MyInput.getX() + ", Y: " + MyInput.getY());
         }
     }
 
+    /**
+     * Dispose all of the textures and sounds that were used
+     * for the Introduction State.
+     */
     @Override
     protected void dispose() {
         textBox.dispose();
