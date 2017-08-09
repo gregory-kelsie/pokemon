@@ -14,42 +14,53 @@ import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 /**
  * Created by Gregory on 6/12/2017.
  */
-public class WildPokemonListState extends GameState{
-    private GameStateManager gsm;
+public class WildPokemonListState extends GameState {
+
+    /** Instance Variables */
+
+    //Constants
+    private final int TOP_POSITION = 0;
+    private final int MID_POSITION = 1;
+    private final int BOT_POSITION = 2;
+    private final int FIRST_PAGE = 0;
+
+    //Textures
     private Texture background;
     private Texture backArrow;
     private Texture forwardArrow;
     private Texture panel;
-    private int currentPage;
-    private final int FIRST_PAGE = 0;
-    private BitmapFont name;
-    private BitmapFont info;
-
-    private final int TOP_POSITION = 0;
-    private final int MID_POSITION = 1;
-    private final int BOT_POSITION = 2;
-
     private Texture topTexture;
     private Texture middleTexture;
     private Texture bottomTexture;
 
+    //Transition Variables
     private boolean initiateBattle;
     private ShapeRenderer transitionRenderer;
     private int transitionHeight;
     private boolean finishedTransition;
-    private int clickedPokemonPosition;
+
+    //Fonts
+    private BitmapFont name;
+    private BitmapFont info;
+
+    //Music
     private Music wildBgm;
+
+    //Misc
+    private GameStateManager gsm;
+    private int currentPage;
+    private int clickedPokemonPosition;
+
+    /**
+     * Create the screen where the Player looks at each of the wild pokemon
+     * available to them for capture.
+     * @param gsm A callback to the GameStateManager to set the next state.
+     */
     public WildPokemonListState(GameStateManager gsm) {
         this.gsm = gsm;
-        background = gsm.getLoader().get("wildPokemonList/wildPokemonListBackground.png", Texture.class);
-        backArrow = gsm.getLoader().get("wildPokemonList/backwardsArrow.png", Texture.class);
-        forwardArrow = gsm.getLoader().get("wildPokemonList/forwardArrow.png", Texture.class);
-        panel = gsm.getLoader().get("wildPokemonList/pokemonListPanel.png", Texture.class);
         currentPage = FIRST_PAGE;
-        name = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
-        name.setColor(Color.BLACK);
-        info = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
-        info.setColor(Color.BLACK);
+        initTextures();
+        initFonts();
         initNewSpriteTextures();
         wildBgm = Gdx.audio.newMusic(Gdx.files.internal("sounds/wildBgm.mp3"));
         initiateBattle = false;
@@ -59,15 +70,43 @@ public class WildPokemonListState extends GameState{
         clickedPokemonPosition = -1;
     }
 
+    /**
+     * Initialize the Textures used for this screen.
+     */
+    private void initTextures() {
+        background = gsm.getLoader().get("wildPokemonList/wildPokemonListBackground.png", Texture.class);
+        backArrow = gsm.getLoader().get("wildPokemonList/backwardsArrow.png", Texture.class);
+        forwardArrow = gsm.getLoader().get("wildPokemonList/forwardArrow.png", Texture.class);
+        panel = gsm.getLoader().get("wildPokemonList/pokemonListPanel.png", Texture.class);
+    }
+
+    /**
+     * Initialize the fonts used for this screen.
+     */
+    private void initFonts() {
+        name = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        name.setColor(Color.BLACK);
+        info = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        info.setColor(Color.BLACK);
+    }
+
+    /**
+     * Initialize the Pokemon sprite textures for the state's current
+     * page.
+     */
     private void initNewSpriteTextures() {
-        topTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getMapIconPath());
+        topTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3)
+                .getPokemon().getMapIconPath());
         if (currentPage * 3 + 1 < gsm.getNearbyPokemon().size()) {
-            middleTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getMapIconPath());
+            middleTexture = new Texture(gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + 1).getPokemon().getMapIconPath());
         }
         if (currentPage * 3 + 2 < gsm.getNearbyPokemon().size()) {
-            bottomTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getMapIconPath());
+            bottomTexture = new Texture(gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + 2).getPokemon().getMapIconPath());
         }
     }
+
     /**
      * Calculate distance between two points in latitude and longitude taking
      * into account height difference. If you are not interested in height
@@ -97,6 +136,15 @@ public class WildPokemonListState extends GameState{
         return Math.sqrt(distance);
     }
 
+    /**
+     * Set the colour of the Pokemon's name in the position pokemonPosition.
+     * Green if they're close
+     * Yellow if they're nearby.
+     * Orange if they're within a kilometer
+     * Red if they're Beyond a kilometer.
+     * @param pokemonPosition The position of the Pokemon on the screen.
+     *                        Top = 0, Middle = 1, Bottom = 2
+     */
     private void setNameColor(int pokemonPosition) {
         double dist = distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pokemonPosition).getLatitude(),
                 gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pokemonPosition).getLongitude());
@@ -111,6 +159,14 @@ public class WildPokemonListState extends GameState{
         }
     }
 
+    /**
+     * Return whether or not the Pokemon in pokemonPosition is close enough
+     * to battle.
+     * @param pokemonPosition The position of the Pokemon on the screen.
+     *                        Top = 0, Middle = 1, Bottom = 2
+     * @return Whether or not the Pokemon in pokemonPosition is close enough
+     * to battle.
+     */
     private boolean inBattlingRange(int pokemonPosition) {
         double dist = distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pokemonPosition).getLatitude(),
                 gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pokemonPosition).getLongitude());
@@ -120,9 +176,37 @@ public class WildPokemonListState extends GameState{
             return false;
         }
     }
+
+    /**
+     * Render the WildPokemonListState screen.
+     * @param batch The SpriteBatch that the screen gets rendered to.
+     */
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(background, 0, 0);
+        drawTopPokemon(batch);
+        //Check if there are more Pokemon on the current page.
+        if (currentPage * 3 + 1 < gsm.getNearbyPokemon().size()) {
+            drawMiddlePokemon(batch);
+            if (currentPage * 3 + 2 < gsm.getNearbyPokemon().size()) {
+                drawBottomPokemon(batch);
+                //Check if there is more Pokemon.
+                if (currentPage * 3 + 3 < gsm.getNearbyPokemon().size()) {
+                    //Draw an arrow to go to the next page.
+                    batch.draw(forwardArrow, 880, 10);
+                }
+            }
+        }
+        drawBackBottomArrow(batch);
+        drawTransition(batch);
+    }
+
+    /**
+     * Render the Pokemon in the top position of the current page of the
+     * screen. Render their sprite, name and description.
+     * @param batch The SpriteBatch the Pokemon gets rendered to.
+     */
+    private void drawTopPokemon(SpriteBatch batch) {
         setNameColor(TOP_POSITION);
         name.draw(batch, gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getName() + " Lv " +
                 Integer.toString(gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getLevel()), 30, 1700);
@@ -134,41 +218,62 @@ public class WildPokemonListState extends GameState{
                 gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getNatureString() +
                 "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getAbilityString() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3).getExpirationString(), 30, 1620);
+    }
 
-        if (currentPage * 3 + 1 < gsm.getNearbyPokemon().size()) {
-            batch.draw(panel, 0, 710);
-            setNameColor(MID_POSITION);
-            name.draw(batch, gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getName() + " Lv " +
-                    Integer.toString(gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getLevel()), 30, 1150);
-            info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLatitude(),
-                    gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLongitude())) + "m\nNature: " +
-                    gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getNatureString() +
-                    "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getAbilityString() +
-                    "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 1).getExpirationString(), 30, 1070);
-            batch.draw(middleTexture,700,780, 394, 394);
+    /**
+     * Render the Pokemon in the bottom position of the current page of the
+     * screen. Render their sprite, name and description.
+     * @param batch The SpriteBatch the Pokemon gets rendered to.
+     */
+    private void drawBottomPokemon(SpriteBatch batch) {
+        batch.draw(panel, 0, 170);
+        setNameColor(BOT_POSITION);
+        name.draw(batch, gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getName() + " Lv " +
+                Integer.toString(gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getLevel()), 30, 600);
+        info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLatitude(),
+                gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLongitude())) + "m\nNature: " +
+                gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getNatureString() +
+                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getAbilityString() +
+                "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 2).getExpirationString(), 30, 520);
+        batch.draw(bottomTexture,700,260, 394, 394);
+    }
 
-            if (currentPage * 3 + 2 < gsm.getNearbyPokemon().size()) {
-                batch.draw(panel, 0, 170);
-                setNameColor(BOT_POSITION);
-                name.draw(batch, gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getName() + " Lv " +
-                        Integer.toString(gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getLevel()), 30, 600);
-                info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLatitude(),
-                        gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLongitude())) + "m\nNature: " +
-                        gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getNatureString() +
-                        "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getAbilityString() +
-                        "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 2).getExpirationString(), 30, 520);
-                batch.draw(bottomTexture,700,260, 394, 394);
-                if (currentPage * 3 + 3 < gsm.getNearbyPokemon().size()) {
-                    batch.draw(forwardArrow, 880, 10);
-                }
-            }
-        }
+    /**
+     * Render the Pokemon in the middle position of the current page of the
+     * screen. Render their sprite, name and description.
+     * @param batch The SpriteBatch the Pokemon gets rendered to.
+     */
+    private void drawMiddlePokemon(SpriteBatch batch) {
+        batch.draw(panel, 0, 710);
+        setNameColor(MID_POSITION);
+        name.draw(batch, gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getName() + " Lv " +
+                Integer.toString(gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getLevel()), 30, 1150);
+        info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLatitude(),
+                gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLongitude())) + "m\nNature: " +
+                gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getNatureString() +
+                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getAbilityString() +
+                "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 1).getExpirationString(), 30, 1070);
+        batch.draw(middleTexture,700,780, 394, 394);
+    }
+
+    /**
+     * Render the back bottom arrow if the player is not on the first page.
+     * Render The total number of pages and the current page the player is on.
+     * @param batch The SpriteBatch the arrow and text get rendered to.
+     */
+    private void drawBackBottomArrow(SpriteBatch batch) {
         if (currentPage > FIRST_PAGE) {
             batch.draw(backArrow, 60, 10);
         }
         name.setColor(Color.BLACK);
         name.draw(batch, Integer.toString(currentPage + 1) + "/" + Integer.toString((int)Math.ceil(gsm.getNearbyPokemon().size() / 3.0)), 420, 70);
+    }
 
+    /**
+     * Render the transition if the player was able to initiate a battle.
+     * @param batch The SpriteBatch the transition gets drawn to.
+     */
+    private void drawTransition(SpriteBatch batch) {
         if (initiateBattle || finishedTransition) {
             batch.end();
             Gdx.gl.glEnable(GL20.GL_BLEND);
@@ -182,101 +287,158 @@ public class WildPokemonListState extends GameState{
         }
     }
 
+    /**
+     * Update the WildPokemonListState screen.
+     * @param dt The time elapsed.
+     */
     @Override
     public void update(double dt) {
         if (finishedTransition) {
-            if (clickedPokemonPosition == TOP_POSITION) {
-                gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getPokemon(), wildBgm));
-                gsm.getNearbyPokemon().remove(currentPage * 3 + TOP_POSITION);
-            } else if (clickedPokemonPosition == MID_POSITION) {
-                gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getPokemon(), wildBgm));
-                gsm.getNearbyPokemon().remove(currentPage * 3 + MID_POSITION);
-            } else if (clickedPokemonPosition == BOT_POSITION) {
-                gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getPokemon(), wildBgm));
-                gsm.getNearbyPokemon().remove(currentPage * 3 + BOT_POSITION);
-            }
+            startWildBattle();
         }
         if (initiateBattle) {
-            transitionHeight += (dt * 760);
-            if (transitionHeight >= 1920) {
-                initiateBattle = false;
-                finishedTransition = true;
-            }
+            updateTransition(dt);
         }
-
         if (MyInput.clicked() && !initiateBattle) {
-            if (MyInput.getX() >= 931 && MyInput.getX() <= 1080 && MyInput.getY() >= 0 && MyInput.getY() <= 152) {
-                gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
-                dispose();
-            } else if (MyInput.getX() >= 841 && MyInput.getX() <= 1021 && MyInput.getY() >= 1754 && MyInput.getY() <= 1920) {
+            if (MyInput.getX() >= 931 && MyInput.getX() <= 1080 &&
+                    MyInput.getY() >= 0 && MyInput.getY() <= 152) {
+                returnToMapState();
+            } else if (MyInput.getX() >= 841 && MyInput.getX() <= 1021 &&
+                    MyInput.getY() >= 1754 && MyInput.getY() <= 1920) {
+                //Check if there is another page.
                 if (currentPage * 3 + 3 < gsm.getNearbyPokemon().size()) {
-                    currentPage++;
-                    topTexture.dispose();
-                    bottomTexture.dispose();
-                    middleTexture.dispose();
-                    initNewSpriteTextures();
+                    goToNextPage();
                 }
-            } else if (MyInput.getX() >= 33 && MyInput.getX() <= 160 && MyInput.getY() >= 1819 && MyInput.getY() <= 1920) {
-                if (currentPage != 0) {
-                    currentPage--;
-                    topTexture.dispose();
-                    topTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getMapIconPath());
-                    middleTexture.dispose();
-                    middleTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getMapIconPath());
-                    bottomTexture.dispose();
-                    bottomTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getMapIconPath());
+            } else if (MyInput.getX() >= 33 && MyInput.getX() <= 160 &&
+                    MyInput.getY() >= 1819 && MyInput.getY() <= 1920) {
+                //Make sure the player isn't on the first page.
+                if (currentPage != FIRST_PAGE) {
+                    goToPreviousPage();
                 }
             } else if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 && MyInput.getY() >= 246 && MyInput.getY() <= 671) {
                 //Clicked top panel
-                if (inBattlingRange(TOP_POSITION)) {
-                    initiateBattle = true;
-                    clickedPokemonPosition = TOP_POSITION;
-                    wildBgm.play();
-                } else {
-                    gsm.getGameCallBack().startPokemonMapActivity(gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLatitude(),
-                            gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLongitude(),
-                            gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getPokemon().getMapIconPath(),
-                            (int) Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLatitude(),
-                                    gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLongitude())));
-                }
-
+                selectBattleOrMap(TOP_POSITION);
             } else if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 && MyInput.getY() >= 777 && MyInput.getY() <= 1197) {
                 //Clicked mid panel
-
                 if (currentPage * 3 + 1 < gsm.getNearbyPokemon().size()) {
-                    if (inBattlingRange(MID_POSITION)) {
-                        initiateBattle = true;
-                        clickedPokemonPosition = MID_POSITION;
-                        wildBgm.play();
-                    } else {
-                        gsm.getGameCallBack().startPokemonMapActivity(gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLatitude(),
-                                gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLongitude(),
-                                gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getPokemon().getMapIconPath(),
-                                (int) Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLatitude(),
-                                        gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLongitude())));
-                    }
-
+                    selectBattleOrMap(MID_POSITION);
                 }
             } else if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 && MyInput.getY() >= 1332 && MyInput.getY() <= 1690) {
                 //Clicked bottom panel
                 if (currentPage * 3 + 2 < gsm.getNearbyPokemon().size()) {
-                    if (inBattlingRange(BOT_POSITION)) {
-                        initiateBattle = true;
-                        clickedPokemonPosition = BOT_POSITION;
-                        wildBgm.play();
-                    } else {
-                        gsm.getGameCallBack().startPokemonMapActivity(gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLatitude(),
-                                gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLongitude(),
-                                gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getPokemon().getMapIconPath(),
-                                (int) Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLatitude(),
-                                        gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLongitude())));
-                    }
+                    selectBattleOrMap(BOT_POSITION);
                 }
             }
-            Gdx.app.log("GDX LOGGERs - ", "X: " + MyInput.getX() + ", Y: " + MyInput.getY());
         }
     }
 
+    /**
+     * Start the wild battle depending on which Pokemon the player
+     * clicked.
+     */
+    private void startWildBattle() {
+        if (clickedPokemonPosition == TOP_POSITION) {
+            gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + TOP_POSITION).getPokemon(), wildBgm));
+            gsm.getNearbyPokemon().remove(currentPage * 3 + TOP_POSITION);
+        } else if (clickedPokemonPosition == MID_POSITION) {
+            gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + MID_POSITION).getPokemon(), wildBgm));
+            gsm.getNearbyPokemon().remove(currentPage * 3 + MID_POSITION);
+        } else if (clickedPokemonPosition == BOT_POSITION) {
+            gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + BOT_POSITION).getPokemon(), wildBgm));
+            gsm.getNearbyPokemon().remove(currentPage * 3 + BOT_POSITION);
+        }
+    }
+
+    /**
+     * Update the transition.
+     * Increases the size of the "curtain" every so often.
+     * @param dt The time elapsed to measure how much to transition.
+     */
+    private void updateTransition(double dt) {
+        transitionHeight += (dt * 760);
+        if (transitionHeight >= 1920) {
+            initiateBattle = false;
+            finishedTransition = true;
+        }
+    }
+
+    /**
+     * Change the state to the map state where the playe chooses
+     * between looking at the map or the wild pokemon list.
+     */
+    private void returnToMapState() {
+        gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+        dispose();
+    }
+
+    /**
+     * Go to the next page of the wild pokemon list.
+     */
+    private void goToNextPage() {
+        currentPage++; //Update page number.
+        //Dispose the current pokemon textures.
+        topTexture.dispose();
+        bottomTexture.dispose();
+        middleTexture.dispose();
+        //Get the pokemon textures for the pokemon
+        //on the next page.
+        initNewSpriteTextures();
+    }
+
+    /**
+     * Go to the previous page of the wild pokemon list.
+     */
+    private void goToPreviousPage() {
+        currentPage--; //Update the current page.
+        //Dispose the current page pokemon textures and initialize the
+        //previous page's pokemon textures.
+        topTexture.dispose();
+        topTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3)
+                .getPokemon().getMapIconPath());
+        middleTexture.dispose();
+        middleTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 1)
+                .getPokemon().getMapIconPath());
+        bottomTexture.dispose();
+        bottomTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 2)
+                .getPokemon().getMapIconPath());
+    }
+
+    /**
+     * Select whether to initiate the battle or open the map of the
+     * Pokemon in position pos that was clicked.
+     * @param pos The position of the Pokemon panel that was clicked.
+     *            TOP_POSITION, MID_POSITION or BOT_POSITION
+     */
+    private void selectBattleOrMap(int pos) {
+        if (inBattlingRange(pos)) {
+            initiateBattle = true;
+            clickedPokemonPosition = pos;
+            wildBgm.play();
+        } else {
+            openMapActivity(pos);
+        }
+    }
+
+    /**
+     * Open the Google map activity where it shows the Player's position and
+     * the position of the Pokemon that was clicked on at position pos.
+     * @param pos The position of the Pokemon panel that was clicked.
+     *            TOP_POSITION, MID_POSITION or BOT_POSITION
+     */
+    private void openMapActivity(int pos) {
+        gsm.getGameCallBack().startPokemonMapActivity(gsm.getNearbyPokemon().get(currentPage * 3 + pos).getLatitude(),
+                gsm.getNearbyPokemon().get(currentPage * 3 + pos).getLongitude(),
+                gsm.getNearbyPokemon().get(currentPage * 3 + pos).getPokemon().getMapIconPath(),
+                (int) Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pos).getLatitude(),
+                        gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + pos).getLongitude())));
+    }
+
+    /**
+     * Dispose the textures, fonts and sounds.
+     */
     @Override
     protected void dispose() {
         name.dispose();
