@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -54,6 +55,7 @@ public class Weedle extends Pokemon {
         beginnerSkills.add(SkillFactory.POISON_STING);
         beginnerSkills.add(SkillFactory.STRING_SHOT);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
     }
 
     /**

@@ -17,7 +17,12 @@ public abstract class BattlePhase {
 
     public abstract void update(double dt);
     public abstract void renderText(SpriteBatch batch);
+    public void render(SpriteBatch batch) { }
 
+    public boolean isHidingEnemyPokemon() {
+        return false;
+    }
+    public boolean isHidingUserPokemon() { return false; }
     public SkillAnimation getSkillAnimation() {
         return null;
     }

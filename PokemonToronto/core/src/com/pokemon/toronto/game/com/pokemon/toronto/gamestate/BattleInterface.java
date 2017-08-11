@@ -15,4 +15,5 @@ public interface BattleInterface {
     public void endBattle();
     public void blackedOut();
     public void setCurrentPokemon(Pokemon poke);
+    void switchUserPokemonTextures();
 }

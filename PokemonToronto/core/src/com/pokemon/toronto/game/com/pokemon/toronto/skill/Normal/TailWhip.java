@@ -19,9 +19,10 @@ public class TailWhip extends Skill {
      * - PP: 30
      * - Cat: Misc
      * - Crit Stage: 1
+     * - Accuracy: 100
      */
     public TailWhip() {
-        super("Tail Whip", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL);
+        super("Tail Whip", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100);
     }
 
     /**
@@ -37,7 +38,7 @@ public class TailWhip extends Skill {
 
         //Attempt to lower the enemy's defense by 1 stage.
         if (enemyPokemon.getDefenseStage() == -6) {
-            firstList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
+            secondList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
             enemyPokemon.decreaseDefenseStage(1);
             secondList.add(enemyPokemon.getName() + "'s defense was lowered.");

@@ -18,9 +18,10 @@ public class Leer extends Skill {
      * - Type: Normal
      * - PP: 30
      * - Cat: Misc
+     * - Accuracy: 100
      */
     public Leer() {
-        super("Leer", 30, Pokemon.Type.NORMAL, SkillCategory.MISC);
+        super("Leer", 30, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
     }
 
     /**
@@ -36,7 +37,7 @@ public class Leer extends Skill {
 
         //Attempt to lower the enemy's defense by 1 stage.
         if (enemyPokemon.getDefenseStage() == -6) {
-            firstList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
+            secondList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
             enemyPokemon.decreaseDefenseStage(1);
             secondList.add(enemyPokemon.getName() + "'s defense was lowered.");

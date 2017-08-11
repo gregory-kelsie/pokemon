@@ -26,9 +26,10 @@ public abstract class DamageSkill extends Skill {
      * @param category The category of the skill (Physical, Special or Misc)
      * @param damage The base damage for the skill
      * @param crit The crit stage for the skill
+     * @param accuracy The accuracy level for the skill.
      */
-    public DamageSkill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int damage, int crit) {
-        super(name, maxPP, type, category);
+    public DamageSkill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit) {
+        super(name, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
     }
@@ -51,39 +52,24 @@ public abstract class DamageSkill extends Skill {
         //It comes after the animation
         List<String> secondList = new ArrayList<String>();
 
-        //Determine if the skill missed or failed.
-        boolean skillMissed = checkMiss();
-        boolean skillFailed = checkFail();
+        boolean hasCrit = false;
 
-        if (!skillMissed && !skillFailed) {
-            boolean hasCrit = false;
-
-            //Add Effectiveness results
-            if (moveIsSuperEffective(enemyPokemon)) {
-                secondList.add("It was super effective!");
-            } else if (moveIsNotVeryEffective(enemyPokemon)) {
-                secondList.add("It was not very effective...");
-            }
-
-            //Add critical hit text
-            if (hasCrit) {
-                secondList.add("Critical Hit!");
-            }
-
-            //Calculate the damage results
-            int damage = getDamage(skillUser, enemyPokemon, new Field(), hasCrit);
-            enemyPokemon.subtractHealth(damage);
-            secondList.add("Dealt " + damage + " damage.");
-        } else {
-            //Add miss and fail results
-            if (skillFailed) {
-                firstList.add("It failed...");
-            } else {
-                firstList.add("It missed...");
-            }
-            fullList.add(firstList);
-            return fullList;
+        //Add Effectiveness results
+        if (moveIsSuperEffective(enemyPokemon)) {
+            secondList.add("It was super effective!");
+        } else if (moveIsNotVeryEffective(enemyPokemon)) {
+            secondList.add("It was not very effective...");
         }
+
+        //Add critical hit text
+        if (hasCrit) {
+            secondList.add("Critical Hit!");
+        }
+
+        //Calculate the damage results
+        int damage = getDamage(skillUser, enemyPokemon, new Field(), hasCrit);
+        enemyPokemon.subtractHealth(damage);
+        secondList.add("Dealt " + damage + " damage.");
 
         //Add results to the final list
         fullList.add(firstList);
@@ -120,23 +106,6 @@ public abstract class DamageSkill extends Skill {
             return false;
         }
     }
-
-    /**
-     * Return whether or not the move missed.
-     * @return Whether or not the move missed.
-     */
-    private boolean checkMiss() {
-        return false;
-    }
-
-    /**
-     * Return whether or not the move failed.
-     * @return Whether or not the move failed.
-     */
-    private boolean checkFail() {
-        return false;
-    }
-
 
     /**
      * Return whether or not the move crit.

@@ -18,9 +18,10 @@ public class StringShot extends Skill {
      * - Type: Bug
      * - PP: 35
      * - Cat: Misc
+     * - Accuracy: 95
      */
     public StringShot() {
-        super("String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC);
+        super("String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC, 95);
     }
 
     /**
@@ -36,7 +37,7 @@ public class StringShot extends Skill {
 
         //Attempt to lower the enemy's speed by 1 stage.
         if (enemyPokemon.getSpeedStage() == -6) {
-            firstList.add(enemyPokemon.getName() + "'s speed can't be lowered.");
+            secondList.add(enemyPokemon.getName() + "'s speed can't be lowered.");
         } else {
             enemyPokemon.decreaseSpeedStage(1);
             secondList.add(enemyPokemon.getName() + "'s speed was lowered.");

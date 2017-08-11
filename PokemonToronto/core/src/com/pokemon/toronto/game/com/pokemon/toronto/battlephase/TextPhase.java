@@ -41,7 +41,6 @@ public class TextPhase extends BattlePhase {
         //1 Second delay after writing the name.
         //No delay if there is no text.
         if (text == "" || textCounter >= 1.5) {
-            Gdx.app.log("mytext", "done nigga: " + text);
             pui.setPhase(nextPhase);
         }
     }

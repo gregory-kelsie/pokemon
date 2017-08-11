@@ -18,9 +18,10 @@ public class Growl extends Skill {
      * - Type: Normal
      * - PP: 35
      * - Cat: Misc
+     * - Accuracy: 100
      */
     public Growl() {
-        super("Growl", 40, Pokemon.Type.NORMAL, SkillCategory.MISC);
+        super("Growl", 40, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
     }
 
     /**
@@ -36,7 +37,7 @@ public class Growl extends Skill {
 
         //Attempt to lower the attack stage of the enemy by 1 stage.
         if (enemyPokemon.getAttackStage() == -6) {
-            firstList.add(enemyPokemon.getName() + "'s attack can't be lowered.");
+            secondList.add(enemyPokemon.getName() + "'s attack can't be lowered.");
         } else {
             enemyPokemon.decreaseAttackStage(1);
             secondList.add(enemyPokemon.getName() + "'s attack was lowered.");

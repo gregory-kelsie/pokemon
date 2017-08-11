@@ -15,12 +15,6 @@ public class BattleClickController {
 
     public void clicked(int x, int y) {
         if (model.getPlayerTrainerAnimation().isFinished()) {
-            if (model.isWaitingForFaintClick()) {
-                model.goToExpGainState();
-            }
-            if (model.isWaitingForExpClick()) {
-                model.goToExpGraphicsState();
-            }
             if (model.isDisplayingNewMoveYesNoOptions()) {
                 Gdx.app.log("Coords", "X: " + x + ", Y: " + y);
                 if (x >= 813 && x <= 1005 && y >= 754 && y <= 841) {
@@ -29,9 +23,7 @@ public class BattleClickController {
                     model.declinedNewMove();
                 }
             }
-            if (model.isWaitingForMoveDeletion()) {
-                model.setPanelPosition(model.BATTLE_PANEL);
-            }
+
             if (x >= 309 && x <= 776 && y >= 1107 && y <= 1243) {
                 if (model.isOnMainPanel() && !model.startedAttack()) {
                     model.setPanelPosition(model.BATTLE_PANEL);

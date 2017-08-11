@@ -23,6 +23,7 @@ public class UseAttackPhase extends BattlePhase {
     protected boolean updateAttackerHealth;
     protected boolean displayRecoilResults;
     protected boolean finishedDepletion;
+    protected boolean missed;
 
     protected SkillAnimation animation;
     protected List<List<String>> battleListText;
@@ -37,6 +38,10 @@ public class UseAttackPhase extends BattlePhase {
     protected int resultsPosition;
     protected double textCounter;
     protected double resultsCounter;
+    protected String missText;
+
+    //Contact Variables
+    private boolean madePhysicalContact;
 
     public UseAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
@@ -53,8 +58,9 @@ public class UseAttackPhase extends BattlePhase {
         resultsPosition = 0;
         textCounter = 0;
         resultsCounter = 0;
-
+        missed = false;
         recoilResults = new ArrayList<String>();
+        madePhysicalContact = false;
     }
     /**
      * Check the attacker and receiver's health after using the first move.
@@ -173,6 +179,8 @@ public class UseAttackPhase extends BattlePhase {
             pui.getFont().draw(batch, battleListText.get(1).get(resultsPosition).substring(0, textPosition), 54, 1143);
         } else if (displayRecoilResults) {
             pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+        } else if (missed) {
+            pui.getFont().draw(batch, missText.substring(0, textPosition), 54, 1143);
         }
     }
 

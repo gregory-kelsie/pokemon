@@ -42,8 +42,8 @@ public class RoutePokemonFactory {
     public List<RoutePokemon> createRouteDungeonPokemon(int dungeonId) {
         List<RoutePokemon> dungeonPokemonList = new ArrayList<RoutePokemon>();
         if (dungeonId == 1) {
-            dungeonPokemonList.add(new RoutePokemon(PokemonId.CATERPIE.getValue(), 3, 5, 48));
-            dungeonPokemonList.add(new RoutePokemon(PokemonId.WEEDLE.getValue(), 3, 5, 95));
+            dungeonPokemonList.add(new RoutePokemon(PokemonId.PIKACHU.getValue(), 3, 5, 48));
+            dungeonPokemonList.add(new RoutePokemon(PokemonId.PIKACHU.getValue(), 3, 5, 95));
             dungeonPokemonList.add(new RoutePokemon(PokemonId.PIKACHU.getValue(), 3, 5, 100));
         } else {
             dungeonPokemonList.add(new RoutePokemon(PokemonId.CATERPIE.getValue(), 3, 5, 48));

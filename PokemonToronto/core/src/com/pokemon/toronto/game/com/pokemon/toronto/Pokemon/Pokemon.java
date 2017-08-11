@@ -64,6 +64,8 @@ public abstract class Pokemon {
     protected int specialDefenseStage;
     protected int specialAttackStage;
     protected int speedStage;
+    protected int accuracyStage;
+    protected int evasionStage;
 
     //Nature Multiplier Variables
     protected double natureAttackMultiplier;
@@ -142,7 +144,7 @@ public abstract class Pokemon {
         SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
         LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
-        SOLID_ROCK
+        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE
     }
 
     /**
@@ -442,6 +444,8 @@ public abstract class Pokemon {
         defenseStage = INITIAL_STAT_STAGE;
         specialDefenseStage = INITIAL_STAT_STAGE;
         speedStage = INITIAL_STAT_STAGE;
+        accuracyStage = INITIAL_STAT_STAGE;
+        evasionStage = INITIAL_STAT_STAGE;
     }
 
 
@@ -496,6 +500,26 @@ public abstract class Pokemon {
     }
 
     /**
+     * Decrease the accuracy stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
+    public void decreaseAccuracyStage(int amount) {
+        accuracyStage -= amount;
+        accuracyStage = Math.max(accuracyStage, -6);
+    }
+
+    /**
+     * Decrease the evasion stage by amount stages.
+     * The stage can't go below -6
+     * @param amount The amount of stages to decrease
+     */
+    public void decreaseEvasionStage(int amount) {
+        evasionStage -= amount;
+        evasionStage = Math.max(evasionStage, -6);
+    }
+
+    /**
      * Increase the attack stage by amount stages.
      * The stage can't go above 6
      * @param amount The amount of stages to increase.
@@ -543,6 +567,26 @@ public abstract class Pokemon {
     public void increaseSpeedStage(int amount) {
         speedStage += amount;
         speedStage = Math.min(speedStage, 6);
+    }
+
+    /**
+     * Increase the accuracy stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
+    public void increaseAccuracyStage(int amount) {
+        accuracyStage += amount;
+        accuracyStage = Math.min(accuracyStage, 6);
+    }
+
+    /**
+     * Increase the evasion stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The amount of stages to increase.
+     */
+    public void increaseEvasionStage(int amount) {
+        evasionStage += amount;
+        evasionStage = Math.min(evasionStage, 6);
     }
 
 
@@ -1081,6 +1125,68 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the Pokemon's accuracy stage.
+     * @return Accuracy Stage
+     */
+    public int getAccuracyStage() { return accuracyStage; }
+
+    /**
+     * Return the Pokemon's evasion stage.
+     * @return Evasion Stage.
+     */
+    public int getEvasionStage() { return evasionStage; }
+
+    /**
+     * Convert the accuracy stage into the modifier and return it.
+     * @return The accuracy modifier.
+     */
+    public double getAccuracyModifier(int accuracyStage) {
+        if (accuracyStage >= 0) {
+            return 1 + (1 / 3.0) * accuracyStage;
+        } else {
+            if (accuracyStage == -1) {
+                return .75;
+            } else if (accuracyStage == -2) {
+                return .6;
+            } else if (accuracyStage == -3) {
+                return .5;
+            } else if (accuracyStage == -4) {
+                return .428;
+            } else if (accuracyStage == -5) {
+                return .375;
+            } else if (accuracyStage == -6) {
+                return .33;
+            }
+        }
+        return 1; //default
+    }
+
+    /**
+     * Convert the evasion stage into the modifier and return it.
+     * @return The evasion modifier.
+     */
+    public double getEvasionModifier(int evasionStage) {
+        if (evasionStage < 0) {
+            return Math.abs(evasionStage) * (1 / 3.0) + 1;
+        } else {
+            if (evasionStage == 1) {
+                return .75;
+            } else if (evasionStage == 2) {
+                return .6;
+            } else if (evasionStage == 3) {
+                return .5;
+            } else if (evasionStage == 4) {
+                return .428;
+            } else if (evasionStage == 5) {
+                return .375;
+            } else if (evasionStage == 6) {
+                return .33;
+            }
+        }
+        return 1; //default
+    }
+
+    /**
      * Return the exp required to reach the next level.
      * @return The exp required to reach the next level.
      */
@@ -1511,6 +1617,12 @@ public abstract class Pokemon {
                 return "Solid Rock";
             case TINTED_LENS:
                 return "Tinted Lens";
+            case POISON_TOUCH:
+                return "Poison Touch";
+            case FLAME_BODY:
+                return "Flame Body";
+            case EFFECT_SPORE:
+                return "Effect Spore";
             default:
                 return "Ability Error";
 

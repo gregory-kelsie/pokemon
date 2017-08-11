@@ -8,8 +8,10 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.PokeballAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BattlePhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.CatchingPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PhaseUpdaterInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SpeedCheckPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SwitchPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.UseAttackPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
@@ -24,7 +26,6 @@ import java.util.List;
  */
 public class BattleUpdater implements PhaseUpdaterInterface {
     private BattleInterface battleState;
-    private List<List<String>> battleListText;
     private boolean userPokemonIsFirstAttacker;
     private Pokemon userPokemon;
     private Pokemon sentOutPokemon;
@@ -32,107 +33,52 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     private List<Pokemon> playerParty;
     private Skill userSkill;
     private Skill enemySkill;
-    private Skill firstSkill;
-    private Skill secondSkill;
     private boolean started;
-    private boolean hidingUserPokemon;
-    private int ballType;
     private boolean caughtThePokemon;
-    private CatchResults catchResults;
+
     private boolean doneDisplayingExpText;
-    private double expGain;
-    private long fullBarofExp;
-    private double expGainRate;
-    private List<Integer> newSkillsForLevelUp;
+
     private boolean displayingYesNo;
-    private Skill newMove;
 
     private int state;
 
-    private final int POKEBALL = 0;
-    private final int GREATBALL = 1;
-    private final int ULTRABALL = 2;
-
-    private final boolean PLAYER_SIDE_ANIMATION = true;
-    private final boolean ENEMY_SIDE_ANIMATION = false;
 
     //BATTLE PHASE STATES.
     private final int IDLE = -1;
-    private final int SPEED_CHECK_PHASE = 0;
-    private final int DISPLAY_FIRST_SKILL_NAME = 1;
-    private final int DISPLAY_FIRST_SKILL_MISS_FAIL = 2;
-    private final int USE_FIRST_SKILL_ANIMATION = 3;
-    private final int START_SECOND_MOVE = 4;
-    private final int DEPLETE_SLOW_POKEMON_HEALTH = 5;
-    private final int DISPLAY_SECOND_SKILL_NAME = 6;
-    private final int USE_SECOND_SKILL_ANIMATION = 7;
-    private final int DEPLETE_FAST_POKEMON_HEALTH = 8;
-    private final int DISPLAY_FIRST_MOVE_RESULTS = 9;
-    private final int DISPLAY_SECOND_MOVE_RESULTS = 10;
-    private final int FAINT_SLOW_POKEMON = 11;
-    private final int FAINT_FAST_POKEMON = 12;
-    private final int DISPLAY_EXP_GAIN = 13;
-    private final int DISPLAY_BLACKED_OUT_TEXT = 14;
     private final int WAIT_FOR_NEXT_POKEMON = 15;
     private final int SWITCH_POKEMON = 16;
-    private final int DRAW_SWITCH_RETURN_BALL = 17;
-    private final int DRAW_SWITCH_THROW_BALL = 18;
-    private final int THROW_POKEBALL = 19; //Catching
-    private final int SHAKING_POKEBALL = 20; //when the enemy pokemon is in the ball
-    private final int DISPLAY_CATCH_RESULTS = 21;
-    private final int HIDE_SWITCHED_POKEMON = 22;
-    private final int DISPLAY_NEW_POKEMON_NAME = 23;
-    private final int DISPLAY_SENT_OUT_POKEMON = 24;
-    private final int DELAY_AFTER_NEW_POKEMON_ENTRANCE = 25;
     private final int WAIT_FOR_FAINT_CLICK = 26; //wait for player to click so exp can be distributed
-    private final int ADD_EXP = 27;
-    private final int LEVEL_UP_STATE = 28;
-    private final int DELAY_AFTER_EXP_GAIN = 29;
-    private final int AUTOMATIC_NEW_MOVE = 30;
-    private final int ASKING_TO_MAKE_ROOM = 31;
     private final int WAITING_FOR_MOVE_DELETION = 32;
-    private final int FINISHED_REPLACING_MOVE = 33;
-    private final int FAST_PARALYSIS = 34;
-    private final int SLOW_PARALYSIS = 35;
-    private final int DEPLETE_ENEMY_HEALTH_POISON = 36;
-    private final int DEPLETE_PLAYER_HEALTH_POISON = 37;
-    private final int DISPLAY_ENEMY_POISON_RESULTS = 38;
-    private final int DISPLAY_PLAYER_POISON_RESULTS = 39;
-    private final int FAINT_ENEMY_FROM_POISON = 40;
-    private final int FAINT_PLAYER_FROM_POISON = 41;
-    private final int DISPLAY_ENEMY_POISON_FAINT_RESULTS = 42;
-    private final int DISPLAY_PLAYER_POISON_FAINT_RESULTS = 43;
 
-    private final double PAUSE_TIME = 1; //Pause for 1 second
-
-    private String text;
-    private double textCounter;
-    private int textPosition;
-    private int listPosition;
     private BitmapFont font;
-    private SkillAnimation animation;
-    private double counter;
-    private int pokeballX;
-    private int pokeballY;
-
-    private Texture userPokemonTexture;
-    private PokeballAnimation pokeballAnimation;
-
     private BattlePhase currentPhase;
+
+
+    //Move Deletion Result Values
+    private final int DELETED_FIRST_MOVE = 0;
+    private final int DELETED_SECOND_MOVE = 1;
+    private final int DELETED_THIRD_MOVE = 2;
+    private final int DELETED_FOURTH_MOVE = 3;
+    private final int STOPPED_DELETING_MOVE = 4;
+    private int moveDeletionResult;
+
+    //Yes No Result Values
+    private final int YES_MOVE_REPLACEMENT = 0;
+    private final int NO_MOVE_REPLACEMENT = 1;
+    private int yesNoResult;
+
 
     public BattleUpdater(BattleInterface battleState, BitmapFont font) {
         this.battleState = battleState;
         this.font = font;
         started = false;
         state = IDLE;
-        counter = 0;
-        hidingUserPokemon = false;
         caughtThePokemon = false;
         doneDisplayingExpText = false;
-        expGain = 0;
         displayingYesNo = false;
 
-
+        moveDeletionResult = -1;
+        yesNoResult = -1;
     }
 
     /*
@@ -150,7 +96,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         this.userSkill = userSkill;
         this.enemySkill = enemySkill;
         currentPhase = new SpeedCheckPhase(this, userPokemon, enemyPokemon, userSkill, enemySkill);
-
+        state = IDLE;
         started = true;
     }
 
@@ -161,15 +107,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         this.enemyPokemon = enemyPokemon;
         this.sentOutPokemon = sentOutPokemon;
         this.enemySkill = enemySkill;
-        secondSkill = enemySkill;
-        text = "Come back " + prevPokemon.getName() + "!";
-        textCounter = 0;
-        textPosition = 0;
-        pokeballX = 0;
-        pokeballY = 1446;
-        state = SWITCH_POKEMON;
         userPokemonIsFirstAttacker = true;
         started = true;
+        currentPhase = new SwitchPhase(this, sentOutPokemon);
     }
 
     /**
@@ -184,40 +124,17 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      */
     public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon,
                       int pokeballType, Skill enemySkill) {
-        this.playerParty = playerParty;
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
-        this.ballType = POKEBALL;
         this.enemySkill = enemySkill;
-        secondSkill = enemySkill;
-        //catchResults = getCatchResults();
-        if (catchResults.isCaught()) {
-            text = "You caught a " + enemyPokemon.getName() + "!";
-        } else {
-            if (catchResults.getShakes() == 0) {
-                text = "Oh, no! The Pokémon broke free!";
-            } else if (catchResults.getShakes() == 1) {
-                text = "Aww! It appeared to be caught!";
-            } else if (catchResults.getShakes() == 2) {
-                text = "Aargh! Almost had it!";
-            } else {
-                text = "Shoot! It was so close, too!";
-            }
-        }
-        textCounter = 0;
-        textPosition = 0;
-        listPosition = 0;
         userPokemonIsFirstAttacker = true;
-        pokeballAnimation = new PokeballAnimation(catchResults);
-        state = THROW_POKEBALL;
         started = true;
+        currentPhase = new CatchingPhase(this, enemySkill, pokeballType);
     }
 
 
     public void dispose() {
-        if (pokeballAnimation != null) {
-            pokeballAnimation.dispose();
-        }
+
     }
 
     /****************************************************************************************************
@@ -227,8 +144,46 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      * *************************************************************************************************
      */
 
+    @Override
+    public void setWaitingForMoveDeletion() {
+        state = WAITING_FOR_MOVE_DELETION;
+    }
+    public boolean deletingFirstMove() {
+        if (moveDeletionResult == DELETED_FIRST_MOVE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deletingSecondMove() {
+        if (moveDeletionResult == DELETED_SECOND_MOVE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deletingThirdMove() {
+        if (moveDeletionResult == DELETED_THIRD_MOVE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deletingFourthMove() {
+        if (moveDeletionResult == DELETED_FOURTH_MOVE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean stoppedDeletingMove() {
+        if (moveDeletionResult == STOPPED_DELETING_MOVE) {
+            return true;
+        }
+        return false;
+    }
+
     public void finishedFaintSwitch() {
-        state = DISPLAY_SECOND_MOVE_RESULTS;
         started = false;
     }
 
@@ -247,32 +202,20 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     public void removeFirstSkill() {
-        state = FINISHED_REPLACING_MOVE;
-        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
-                + userPokemon.getSkills().get(0).getName() +
-                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
-        userPokemon.getSkills().set(0, newMove);
+        moveDeletionResult = DELETED_FIRST_MOVE;
+        state = IDLE;
     }
     public void removeSecondSkill() {
-        state = FINISHED_REPLACING_MOVE;
-        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
-                + userPokemon.getSkills().get(1).getName() +
-                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
-        userPokemon.getSkills().set(1, newMove);
+        moveDeletionResult = DELETED_SECOND_MOVE;
+        state = IDLE;
     }
     public void removeThirdSkill() {
-        state = FINISHED_REPLACING_MOVE;
-        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
-                + userPokemon.getSkills().get(2).getName() +
-                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
-        userPokemon.getSkills().set(2, newMove);
+        moveDeletionResult = DELETED_THIRD_MOVE;
+        state = IDLE;
     }
     public void removeFourthSkill() {
-        state = FINISHED_REPLACING_MOVE;
-        text = "1, 2 and... Poof! " + userPokemon.getName() + " forgot "
-                + userPokemon.getSkills().get(3).getName() +
-                "\n and... " + userPokemon.getName() + " learned " + newMove.getName();
-        userPokemon.getSkills().set(3, newMove);
+        moveDeletionResult = DELETED_FOURTH_MOVE;
+        state = IDLE;
     }
 
     /*
@@ -284,15 +227,15 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     public void acceptedNewMove() {
-        state = WAITING_FOR_MOVE_DELETION;
         displayingYesNo = false;
+        yesNoResult = YES_MOVE_REPLACEMENT;
     }
 
 
 
     public void declinedNewMove() {
         displayingYesNo = false;
-        state = AUTOMATIC_NEW_MOVE;
+        yesNoResult = NO_MOVE_REPLACEMENT;
     }
 
 
@@ -314,34 +257,13 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         return displayingYesNo;
     }
 
-    public void goToExpGraphicsState() {
-        state = ADD_EXP;
-        doneDisplayingExpText = false;
-    }
-
-    public void goToExpGainState() {
-        expGain = enemyPokemon.calculateExp(1);
-        fullBarofExp = userPokemon.getNextLevelExp();
-        expGainRate = fullBarofExp / 1.5;
-        if (!userPokemon.hasMaxEvs()) {
-            userPokemon.addEvs(enemyPokemon.getEvYield());
-        } else {
-            Gdx.app.log("MAXED STATS", "");
-        }
-        text = userPokemon.getName() + " gained " + enemyPokemon.calculateExp(1) + " Exp. Points.";
-        state = DISPLAY_EXP_GAIN;
-    }
 
     public void renderText(SpriteBatch batch) {
         currentPhase.renderText(batch);
     }
 
     public boolean caughtThePokemon() {
-        return false;
-    }
-
-    public boolean isDisplayingNewPokemon() {
-        return false;
+        return caughtThePokemon;
     }
 
     public SkillAnimation getSkillAnimation() {
@@ -353,16 +275,24 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     public boolean hidingUserPokemon() {
+        if (currentPhase != null) {
+            return currentPhase.isHidingUserPokemon();
+        }
         return false;
+
     }
 
     public boolean isHidingEnemyPokemon() {
-        return false;
+        if (currentPhase != null) {
+            return currentPhase.isHidingEnemyPokemon();
+        } else {
+            return false;
+        }
     }
 
     public void renderExtras(SpriteBatch batch) {
-        if (state == THROW_POKEBALL || state == SHAKING_POKEBALL) {
-            pokeballAnimation.render(batch);
+        if (currentPhase != null) {
+            currentPhase.render(batch);
         }
     }
 
@@ -372,7 +302,6 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     public void update(double dt) {
         currentPhase.update(dt);
-        //Gdx.app.log("PHASE", currentPhase.getPhaseName());
     }
 
     /**
@@ -380,8 +309,43 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      */
 
     public void setPhase(BattlePhase p) {
-        Gdx.app.log("SETTT", p.getPhaseName());
         this.currentPhase = p;
+    }
+
+    @Override
+    public void swapPokemon(Pokemon sentOutPokemon) {
+        userPokemon = sentOutPokemon;
+        battleState.switchUserPokemonTextures();
+    }
+
+    @Override
+    public void caughtTheWildPokemon() {
+        caughtThePokemon = true;
+    }
+    @Override
+    public boolean hasAcceptedNewMove() {
+        if (yesNoResult == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasDeclinedNewMove() {
+        if (yesNoResult == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void setDisplayYesNo() {
+        displayingYesNo = true;
+    }
+
+    @Override
+    public void blackOut() {
+        battleState.blackedOut();
     }
 
     @Override
@@ -435,7 +399,17 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     @Override
+    public void finishedBattle() {
+        battleState.endBattle();
+    }
+
+    @Override
     public BitmapFont getFont() {
         return font;
+    }
+
+    @Override
+    public void setWaitingForNextPokemon() {
+        state = WAIT_FOR_NEXT_POKEMON;
     }
 }

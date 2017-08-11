@@ -28,6 +28,9 @@ public abstract class Skill {
     protected Pokemon.Type type;
     protected SkillCategory category;
     protected int priority;
+    private int accuracy;
+    private boolean targetsEnemy;
+    protected boolean makesPhysicalContact;
 
     /**
      * Create a Skill.
@@ -35,14 +38,35 @@ public abstract class Skill {
      * @param maxPP The maximum PP for the skill
      * @param type The skill's type.
      * @param category The skill's category (physical, special or misc)
+     * @param accuracy The accuracy level for the skill.
      */
-    public Skill(String name, int maxPP, Pokemon.Type type, SkillCategory category) {
+    public Skill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy) {
         this.name = name;
         this.maxPP = maxPP;
         this.currentPP = maxPP;
         this.type = type;
         this.category = category;
         priority = 0;
+        this.accuracy = accuracy;
+        targetsEnemy = true; //default
+        makesPhysicalContact = false;
+    }
+
+    /**
+     * Return the base accuracy for the skill.
+     * @return The skill's accuracy.
+     */
+    public int getAccuracy() {
+        return accuracy;
+    }
+
+    /**
+     * Return the accuracy modifier for the skill.
+     * Ex: Accuracy 95 has a modifier of 0.95
+     * @return The accuracy modifier for the skill.
+     */
+    public double getAccuracyMod() {
+        return accuracy / 100.0;
     }
 
     /**
@@ -147,6 +171,50 @@ public abstract class Skill {
      */
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
         return null;
+    }
+
+    /**
+     * Return whether or not the move will hit the enemy.
+     * @param skillUser The Pokemon using the skill.
+     * @param enemyPokemon The Pokemon receiving the skill.
+     * @return Whether or not the skill hits the enemy.
+     */
+    public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon) {
+        //Init Modifiers
+        int accuracyStage = skillUser.getAccuracyStage();
+        double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
+        int evasionStage = enemyPokemon.getEvasionStage();
+        double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
+        double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;
+
+        //Check if hit.
+        double rand = Math.random();
+        if (rand > result) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Return whether or not the skill targets the enemy.
+     * For example, swords dance targets self, tackle targets enemy.
+     * @return Whether or not the skill targets the enemy.
+     */
+    public boolean targetsEnemy() {
+        return targetsEnemy;
+    }
+
+    /**
+     * Return whether or not the skill makes physical contact with the enemy.
+     * @return Whether or not the skill makes physical contact with the
+     * enemy.
+     */
+    public boolean makesPhysicalContact() {
+        if (makesPhysicalContact) {
+            return true;
+        }
+        return false;
     }
 
     /**

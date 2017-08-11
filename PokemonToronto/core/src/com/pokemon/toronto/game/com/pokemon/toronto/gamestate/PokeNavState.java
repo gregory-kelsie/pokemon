@@ -15,11 +15,9 @@ import java.util.List;
  */
 public class PokeNavState extends GameState{
 
-    private GameStateManager gsm;
-    private Texture background;
-    private List<PokeNavScreen> pokeNavScreens;
-    private int currentScreen;
-    private Sound clickSound;
+    /** Constants */
+
+    //Screen Position Values
     private final int POKEDEX_SCREEN = 0;
     private final int PC_SCREEN = 1;
     private final int MAP_SCREEN = 2;
@@ -27,6 +25,19 @@ public class PokeNavState extends GameState{
     private final int COMMUNITY_SCREEN = 4;
     private final int POKECENTER_SCREEN = 5;
     private final int POKEMART_SCREEN = 6;
+
+    /** Instance Variables */
+
+    private GameStateManager gsm;
+    private Texture background;
+    private List<PokeNavScreen> pokeNavScreens;
+    private int currentScreen;
+    private Sound clickSound;
+
+    /**
+     * Create the PokeNav navigational menu
+     * @param gsm A callback to the GameStateManager to switch states.
+     */
     public PokeNavState(GameStateManager gsm) {
         this.gsm = gsm;
         background = gsm.getLoader().get("pokeNav/background.png", Texture.class);
@@ -34,25 +45,40 @@ public class PokeNavState extends GameState{
         initPokeNavScreens();
     }
 
+    /**
+     * Initialize each of the different PokeNav screens and set the current
+     * screen.
+     */
     private void initPokeNavScreens() {
         pokeNavScreens = new ArrayList<PokeNavScreen>();
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/pokedex.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/pokedex.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokedex_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/pokemonpc.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/pokemonpc.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokemonpc_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/worldmap.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/worldmap.png", Texture.class),
                 gsm.getLoader().get("pokeNav/worldmap_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/battlesimulator.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/battlesimulator.png", Texture.class),
                 gsm.getLoader().get("pokeNav/battlesimulator_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/community.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/community.png", Texture.class),
                 gsm.getLoader().get("pokeNav/community_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/blissey.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/blissey.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokemoncenter_text.png", Texture.class)));
-        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader().get("pokeNav/pokemart.png", Texture.class),
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/pokemart.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokemart_text.png", Texture.class)));
         currentScreen = POKEDEX_SCREEN;
     }
 
+    /**
+     * Go to the previous PokeNav screen if the player isn't on the first
+     * screen.
+     */
     private void clickedLeft() {
         clickSound.play();
         if (currentScreen != 0) {
@@ -60,6 +86,12 @@ public class PokeNavState extends GameState{
         }
     }
 
+    /**
+     * Return whether or not the player clicked on the left button.
+     * @param x The x coordinate of the player click.
+     * @param y The y coordinate of the player click.
+     * @return Whether or not the playe rclicked the left button.
+     */
     private boolean clickedLeft(int x, int y) {
         if (x >= 0 && x <= 128 && y >= 1617 && y <= 1737) {
             return true;
@@ -67,6 +99,10 @@ public class PokeNavState extends GameState{
         return false;
     }
 
+    /**
+     * Go to the next PokeNav screen if the player isn't on the last
+     * screen.
+     */
     private void clickedRight() {
         clickSound.play();
         if (currentScreen != pokeNavScreens.size() - 1) {
@@ -74,6 +110,12 @@ public class PokeNavState extends GameState{
         }
     }
 
+    /**
+     * Return whether or not the player clicked on the right button.
+     * @param x The x coordinate of the player click.
+     * @param y The y coordinate of the player click.
+     * @return Whether or not the player clicked on the right button.
+     */
     private boolean clickedRight(int x, int y) {
         if (x >= 218 && x <= 305 && y >= 1612 && y <= 1788) {
             return true;
@@ -81,12 +123,21 @@ public class PokeNavState extends GameState{
         return false;
     }
 
+    /**
+     * Go to the main menu state.
+     */
     private void clickedBack() {
         clickSound.play();
         gsm.setState(new LoadingState(gsm, LoadingState.MAIN_MENU));
         dispose();
     }
 
+    /**
+     * Return whether or not the player clicked the red back button.
+     * @param x The x coordinate the player clicked.
+     * @param y The y coordinate the player clicked.
+     * @return Whether or not the player clicked the back button.
+     */
     private boolean clickedBack(int x, int y) {
         if (x >= 808 && x <= 974 && y >= 1530 && y <= 1666) {
             return true;
@@ -94,6 +145,9 @@ public class PokeNavState extends GameState{
         return false;
     }
 
+    /**
+     * Start the selected state on the PokeNav menu.
+     */
     private void clickedSelect() {
         clickSound.play();
         switch (currentScreen) {
@@ -117,42 +171,66 @@ public class PokeNavState extends GameState{
         }
     }
 
+    /**
+     * Go to the RegionSelect state to execute the battle simulator.
+     */
     private void executeSimulator() {
         gsm.setState(new RegionSelect(gsm));
         dispose();
     }
 
+    /**
+     * Go to the PokemonCenter state to heal the player's pokemon.
+     */
     private void executePokeCenterScreen() {
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
         dispose();
     }
 
+    /**
+     * Go to the Pokemon Box state to move around and release pokemon.
+     */
     private void executePokemonBoxScreen() {
         gsm.setState(new BoxState(gsm, true));
         dispose();
     }
 
-    private void executeMapScreen() {/*
-        if (gsm.gotCoordinates()) {
-            gsm.getGameCallBack().startMapActivity(gsm.getLatitude(), gsm.getLongitude());
-        } else {
-            //play error sound
-        }*/
+    /**
+     * Go to the Map state where the playe rcan look at their wild pokemon
+     * available to them or view their current location.
+     */
+    private void executeMapScreen() {
         gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
         dispose();
     }
+
+    /**
+     * Return whether or not the player clicked the green select button.
+     * @param x The x coordinate where the player clicked.
+     * @param y The y coordinate where the player clicked.
+     * @return Whether or not the player clicked the select button.
+     */
     private boolean clickedSelect(int x, int y) {
         if (x >= 882 && x <= 1033 && y >= 1687 && y <= 1808) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Render the PokeNav
+     * @param batch The SpriteBatch the PokeNav state gets rendered to.
+     */
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(background, 0, 0);
         pokeNavScreens.get(currentScreen).render(batch);
     }
 
+    /**
+     * Update the PokeNav state.
+     * @param dt The time elapsed.
+     */
     @Override
     public void update(double dt) {
         if (MyInput.clicked()) {
@@ -167,10 +245,12 @@ public class PokeNavState extends GameState{
             } else if (clickedSelect(x, y)) {
                 clickedSelect();
             }
-            Gdx.app.log("GDX LOGGERs - ", "X: " + MyInput.getX() + ", Y: " + MyInput.getY());
         }
     }
 
+    /**
+     * Dispose of the textures and sounds for the PokeNav.
+     */
     @Override
     protected void dispose() {
         gsm.getLoader().unload("pokeNav/background.png");

@@ -190,7 +190,9 @@ public class BattleState extends GameState implements BattleInterface {
                     }
                 }
                 if (!battleUpdater.isHidingEnemyPokemon()) {
-                    batch.draw(battleTextures.getEnemyPokemonTexture(), 591, 1460, 394, 394);
+                    if (!enemyPokemon.isFainted()) {
+                        batch.draw(battleTextures.getEnemyPokemonTexture(), enemyPokemon.getEnemyX(), enemyPokemon.getEnemyY(), 394, 394);
+                    }
                 }
             } else {
                 if (battleUpdater.getSkillAnimation().displayUserPokemon()) {
@@ -502,13 +504,9 @@ public class BattleState extends GameState implements BattleInterface {
                 if (isWaitingForNextPokemon()) {
                     panelPosition = POKEMON_SELECT_PANEL;
                 }
-                if (battleUpdater.isDisplayingNewPokemon()) {
-                    battleTextures.setUserPokemonTexture(new Texture(
-                            gsm.getParty().get(currentPokemonPosition).getBackPath()));
-                    currentPokemon = gsm.getParty().get(currentPokemonPosition);
-                    battleTextures.resetSkillButtonTextures(currentPokemon);
+                if (isWaitingForMoveDeletion()) {
+                    panelPosition = BATTLE_PANEL;
                 }
-
 
             } else {
                 if (battleUpdater.caughtThePokemon()) {
@@ -536,6 +534,14 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
 
+    public void switchUserPokemonTextures() {
+
+        battleTextures.setUserPokemonTexture(new Texture(
+                gsm.getParty().get(currentPokemonPosition).getBackPath()));
+        currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        battleTextures.resetSkillButtonTextures(currentPokemon);
+
+    }
     public void switchCurrentPokemon() {
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
@@ -543,6 +549,7 @@ public class BattleState extends GameState implements BattleInterface {
         battleTextures.resetSkillButtonTextures(currentPokemon);
         battleUpdater.finishedFaintSwitch();
     }
+
     public void endBattle() {
         if (region != -1) {
             gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
@@ -708,14 +715,6 @@ public class BattleState extends GameState implements BattleInterface {
         return currentItemPage;
     }
 
-    public void goToExpGainState() {
-        battleUpdater.goToExpGainState();
-    }
-
-    public void goToExpGraphicsState() {
-        battleUpdater.goToExpGraphicsState();
-    }
-
     public void goToMainMenuState() {
         gsm.setState(new MainMenuState(gsm));
     }
@@ -761,15 +760,19 @@ public class BattleState extends GameState implements BattleInterface {
 
     public void removeFirstSkill() {
         battleUpdater.removeFirstSkill();
+        panelPosition = FIRST_PANEL;
     }
     public void removeSecondSkill() {
         battleUpdater.removeSecondSkill();
+        panelPosition = FIRST_PANEL;
     }
     public void removeThirdSkill() {
         battleUpdater.removeThirdSkill();
+        panelPosition = FIRST_PANEL;
     }
     public void removeFourthSkill() {
         battleUpdater.removeFourthSkill();
+        panelPosition = FIRST_PANEL;
     }
 
     public void setCurrentPokemonPosition(int newPosition) {

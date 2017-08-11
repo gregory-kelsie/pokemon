@@ -9,15 +9,30 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
  */
 
 public interface PhaseUpdaterInterface {
-    public void setPhase(BattlePhase p);
-    public void setUserFirstAttacker(Skill userSkill, Skill enemySkill);
-    public void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill);
-    public boolean isUserPokemonFirstAttacker();
-    public Pokemon getUserPokemon();
-    public Pokemon getEnemyPokemon();
-    public Skill getUserSkill();
-    public Skill getEnemySkill();
-    public boolean playerHasMorePokemon();
-    public void endBattle();
-    public BitmapFont getFont();
+    void setPhase(BattlePhase p);
+    void setUserFirstAttacker(Skill userSkill, Skill enemySkill);
+    void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill);
+    boolean isUserPokemonFirstAttacker();
+    Pokemon getUserPokemon();
+    Pokemon getEnemyPokemon();
+    Skill getUserSkill();
+    Skill getEnemySkill();
+    boolean playerHasMorePokemon();
+    void endBattle();
+    BitmapFont getFont();
+    void setWaitingForNextPokemon();
+    boolean waitingForNextPokemon();
+    void blackOut();
+    void finishedBattle();
+    void setDisplayYesNo();
+    boolean deletingFirstMove();
+    boolean deletingSecondMove();
+    boolean deletingThirdMove();
+    boolean deletingFourthMove();
+    boolean stoppedDeletingMove();
+    void setWaitingForMoveDeletion();
+    boolean hasAcceptedNewMove();
+    boolean hasDeclinedNewMove();
+    void caughtTheWildPokemon();
+    void swapPokemon(Pokemon sentOutPokemon);
 }

@@ -20,9 +20,10 @@ public class ThunderShock extends DamageSkill {
      * - PP: 30
      * - Cat: Special
      * - Crit Stage: 1
+     * - Accuracy: 100
      */
     public ThunderShock() {
-        super("Thunder Shock", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 40, 1);
+        super("Thunder Shock", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 100, 40, 1);
     }
 
 

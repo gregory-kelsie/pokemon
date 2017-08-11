@@ -65,6 +65,6 @@ public class SpeedCheckPhase extends BattlePhase {
 
     @Override
     public void renderText(SpriteBatch batch) {
-
     }
+
 }

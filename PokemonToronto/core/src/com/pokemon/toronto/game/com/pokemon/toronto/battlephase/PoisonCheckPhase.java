@@ -44,7 +44,7 @@ public class PoisonCheckPhase extends BattlePhase {
 
     private void damagePlayerFromPoison() {
         int damage = (int)Math.round(pui.getUserPokemon().getHealthStat() / 8.0);
-        pui.getUserPokemon().subtractHealth(damage);
+        pui.getUserPokemon().subtractHealth(100);
     }
     private void updateHurtByPoisonText(double dt) {
         counter += dt;
@@ -109,7 +109,8 @@ public class PoisonCheckPhase extends BattlePhase {
             if (pui.getEnemyPokemon().isPoisoned()) {
                 poisonCheckState = DISPLAY_ENEMY_HURT_BY_POISON;
                 text = pui.getEnemyPokemon().getName() + " was hurt by poison.";
-                int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 8.0);
+                //int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 8.0);
+                int damage = 100;
                 pui.getEnemyPokemon().subtractHealth(damage);
             } else if (pui.getUserPokemon().isPoisoned()) {
                 poisonCheckState = DISPLAY_PLAYER_HURT_BY_POISON;
@@ -140,18 +141,15 @@ public class PoisonCheckPhase extends BattlePhase {
     }
 
     protected void updateUserFaintAnimation(double dt) {
-        Gdx.app.log("uufa", "FORCE SWITCH");
         pui.getUserPokemon().setPlayerY((int)(pui.getUserPokemon().getPlayerY() - 10));
         if (pui.getUserPokemon().getPlayerY() <= pui.getUserPokemon().getFaintedPlayerY()) {
             //Make the pokemon faint when it went down to the right faint position
             pui.getUserPokemon().setPlayerY(pui.getUserPokemon().getFaintedPlayerY());
             pui.getUserPokemon().setFaint(true);
-            if (pui.playerHasMorePokemon()) {
-                Gdx.app.log("AttackResults", "FORCE SWITCH");
-                //pui.setPhase(new SwitchOutPhase(pui));
-            } else {
-                Gdx.app.log("AttackResults", "BLACK OUT PHASE");
-                // pui.setPhase(new BlackedOutPhase(pui));
+            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+            } else if (!pui.playerHasMorePokemon()) {
+                pui.setPhase(new BlackedOutPhase(pui));
             }
         }
     }
@@ -163,6 +161,7 @@ public class PoisonCheckPhase extends BattlePhase {
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
             //Go to exp state.
+            pui.setPhase(new ExpPhase(pui));
 
         }
     }

@@ -18,9 +18,11 @@ public class Peck extends DamageSkill {
      * - PP: 30
      * - Cat: Physical
      * - Crit Stage: 1
+     * - Accuracy: 100
      */
     public Peck() {
-        super("Peck", 30, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 35, 1);
+        super("Peck", 30, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 35, 1);
+        makesPhysicalContact = true;
     }
 
     /**

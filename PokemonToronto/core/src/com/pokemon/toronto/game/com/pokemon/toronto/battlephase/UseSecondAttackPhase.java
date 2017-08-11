@@ -15,19 +15,48 @@ public class UseSecondAttackPhase extends UseAttackPhase {
     public UseSecondAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
         phaseName = "UseSecondAttack";
-        Gdx.app.log("secondattack", "bam");
         if (pui.isUserPokemonFirstAttacker()) {
-            battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon());
-            animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
-            attacker = pui.getEnemyPokemon();
-            receiver = pui.getUserPokemon();
-            checkPokemonHealthAfterEnemyAttack();
+            if (pui.getEnemySkill().targetsEnemy() &&
+                    pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0) {
+                if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+                    battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon());
+                    animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
+                    attacker = pui.getEnemyPokemon();
+                    receiver = pui.getUserPokemon();
+                    checkPokemonHealthAfterEnemyAttack();
+                } else {
+                    missText = pui.getEnemyPokemon().getName() + "'s attack missed.";
+                    updatingAnimation = false;
+                    missed = true;
+                    resetTextBox();
+                }
+            } else {
+                missText = "It had no effect...";
+                updatingAnimation = false;
+                missed = true;
+                resetTextBox();
+            }
         } else {
-            battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon());
-            animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
-            attacker = pui.getUserPokemon();
-            receiver = pui.getEnemyPokemon();
-            checkPokemonHealthAfterUserAttack();
+            if (pui.getUserSkill().targetsEnemy() &&
+                    pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0) {
+                if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+                    battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon());
+                    animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
+                    attacker = pui.getUserPokemon();
+                    receiver = pui.getEnemyPokemon();
+                    checkPokemonHealthAfterUserAttack();
+                } else {
+                    missText = pui.getUserPokemon().getName() + "'s attack missed.";
+                    updatingAnimation = false;
+                    missed = true;
+                    resetTextBox();
+                }
+            } else {
+                missText = "It had no effect...";
+                updatingAnimation = false;
+                missed = true;
+                resetTextBox();
+            }
         }
 
     }
@@ -50,29 +79,51 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             updateUserFaintAnimation(dt);
         } else if (finishedDepletion) {
             finishedDepletion(dt);
+        } else if (missed) {
+            updateMissText(dt);
         }
     }
 
-    private void finishedDepletion(double dt) {
-        if (enemyFainted && !userFainted) {
-            Gdx.app.log("AttackResults", "EXP PHASE");
-            //pui.setPhase(new ExpPhase(pui));
-        } else if (!enemyFainted && !userFainted) {
+    private void updateMissText(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition < missText.length()) {
+                textPosition++;
+                textCounter = 0;
+            }
+        }
+        if (textCounter >= 1.5) {
             pui.setPhase(new PoisonCheckPhase(pui));
+        }
+
+    }
+
+    private void finishedDepletion(double dt) {
+        Pokemon attacker;
+        Pokemon receiver;
+        if (pui.isUserPokemonFirstAttacker()) {
+            attacker = pui.getEnemyPokemon();
+            receiver = pui.getUserPokemon();
+
+        } else {
+            attacker = pui.getUserPokemon();
+            receiver = pui.getEnemyPokemon();
+        }
+        if (enemyFainted && !userFainted) {
+            pui.setPhase(new ExpPhase(pui));
+        } else if (!enemyFainted && !userFainted) {
+            pui.setPhase(new CheckContactEffectsPhase(pui, false, attacker, receiver));
         } else if (enemyFainted && userFainted) {
-            if (pui.playerHasMorePokemon()) {
-                pui.endBattle();
-            } else {
-                Gdx.app.log("AttackResults", "BLACK OUT PHASE");
-                //pui.setPhase(new BlackedOutPhase(pui));
+            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+            } else if (!pui.playerHasMorePokemon()) {
+                pui.setPhase(new BlackedOutPhase(pui));
             }
         } else if (!enemyFainted && userFainted) {
-            if (pui.playerHasMorePokemon()) {
-                Gdx.app.log("AttackResults", "FORCE SWITCH");
-                //pui.setPhase(new SwitchOutPhase(pui));
-            } else {
-                Gdx.app.log("AttackResults", "BLACK OUT PHASE");
-                // pui.setPhase(new BlackedOutPhase(pui));
+            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+            } else if (!pui.playerHasMorePokemon()) {
+                pui.setPhase(new BlackedOutPhase(pui));
             }
         }
     }

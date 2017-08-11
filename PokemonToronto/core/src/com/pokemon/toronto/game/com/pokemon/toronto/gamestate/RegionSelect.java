@@ -15,6 +15,8 @@ import java.util.List;
 
 public class RegionSelect extends GameState {
 
+    /** Constants */
+
     private final int KANTO_BUTTON = 0;
     private final int JOHTO_BUTTON = 1;
     private final int HOENN_BUTTON = 2;
@@ -26,17 +28,25 @@ public class RegionSelect extends GameState {
     private final int TOP_BUTTON_Y = 1167;
     private final int SPACE_BETWEEN_BUTTONS = 550;
 
-    private GameStateManager gsm;
-    private int scrollAmount;
+    /** Variables */
 
+    //Textures and Sounds
     private Texture background;
     private Texture title;
     private Texture upArrow;
     private Texture downArrow;
     private List<Texture> regionButtons;
-
     private Sound clickSound;
 
+    //Misc
+    private GameStateManager gsm;
+    private int scrollAmount;
+
+    /**
+     * Create the RegionSelect state where the player selects which
+     * region to visit in the battle simulator.
+     * @param gsm A callback to the GameStateManager to switch states.
+     */
     public RegionSelect(GameStateManager gsm) {
         this.gsm = gsm;
         scrollAmount = 0;
@@ -50,6 +60,11 @@ public class RegionSelect extends GameState {
         regionButtons.add(new Texture("simulator/gen_select/hoenn.png"));
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
     }
+
+    /**
+     * Render the RegionSelect state screen.
+     * @param batch The SpriteBatch the state is being drawn to.
+     */
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(background, 0, 0);
@@ -59,6 +74,11 @@ public class RegionSelect extends GameState {
 
     }
 
+    /**
+     * Render the up and down arrows to navigate through the available
+     * regions.
+     * @param batch The SpriteBatch the arrows are being drawn to.
+     */
     private void renderArrows(SpriteBatch batch) {
         if (scrollAmount != 0) {
             batch.draw(upArrow, 357, 1680);
@@ -68,6 +88,10 @@ public class RegionSelect extends GameState {
         }
     }
 
+    /**
+     * Render the buttons for each of the available regions.
+     * @param batch The SpriteBatch the buttons are being drawn to.
+     */
     private void renderButtons(SpriteBatch batch) {
         for (int i = 0; i < 3; i++) {
             batch.draw(regionButtons.get(scrollAmount + i), 0,
@@ -75,11 +99,16 @@ public class RegionSelect extends GameState {
         }
     }
 
+    /**
+     * Update the RegionSelect state.
+     * @param dt The time elapsed.
+     */
     @Override
     public void update(double dt) {
         if (MyInput.clicked()) {
             int x = MyInput.getX();
             int y = MyInput.getY();
+            //Check whether the player clicked on an arrow, region or power icon.
             if (x >= 911 && x <= 1080 && y >= 0 && y <= 136) {
                 clickedPowerButton();
             } else if (y >= 364 && y <= 707) {
@@ -93,23 +122,35 @@ public class RegionSelect extends GameState {
             } else if (x >= 337 && x <= 681 && y >= 174 && y <= 255) {
                 clickedUpArrow();
             }
-            Gdx.app.log("Region", "x: " + MyInput.getX() + ", y: " + MyInput.getY());
-
         }
     }
 
+    /**
+     * Execute clicking on the top region button.
+     */
     private void clickedTopButton() {
         clickedButton(scrollAmount);
     }
 
+    /**
+     * Execute clicking on the middle region button.
+     */
     private void clickedMiddleButton() {
         clickedButton(scrollAmount + 1);
     }
 
+    /**
+     * Execute clicking on the bottom region button.
+     */
     private void clickedBottomButton() {
         clickedButton(scrollAmount + 2);
     }
 
+    /**
+     * Determine which region button the player clicked using the buttonLocation.
+     * @param buttonLocation The location of the region's button.
+     *                       Ex: Kanto is 0, Johto is 1 etc.
+     */
     private void clickedButton(int buttonLocation) {
         if (buttonLocation == KANTO_BUTTON) {
             clickSound.play();
@@ -118,6 +159,9 @@ public class RegionSelect extends GameState {
         }
     }
 
+    /**
+     * Execute clicking the down arrow if the player is not on the last region.
+     */
     private void clickedDownArrow() {
         if (scrollAmount + 3 < regionButtons.size()) {
             scrollAmount++;
@@ -125,6 +169,10 @@ public class RegionSelect extends GameState {
         }
     }
 
+    /**
+     * Execute clicking the up arrow if the player is scrolled past the top
+     * region.
+     */
     private void clickedUpArrow() {
         if (scrollAmount != 0) {
             scrollAmount--;
@@ -132,12 +180,18 @@ public class RegionSelect extends GameState {
         }
     }
 
+    /**
+     * Return to the PokeNav menu.
+     */
     private void clickedPowerButton() {
         clickSound.play();
         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
         dispose();
     }
 
+    /**
+     * Dispose of the RegionSelect textures and sounds.
+     */
     @Override
     protected void dispose() {
         background.dispose();
