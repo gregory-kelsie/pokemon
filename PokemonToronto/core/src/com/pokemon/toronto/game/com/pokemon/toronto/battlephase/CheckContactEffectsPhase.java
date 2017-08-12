@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
  * Created by Gregory on 8/11/2017.
@@ -14,23 +15,33 @@ public class CheckContactEffectsPhase extends BattlePhase {
     private final int ABILITY_CONTACT = 0;
     private final int ITEM_CONTACT = 1;
     private final int DISPLAY_ABILITY_CONTACT_RESULTS = 2;
+    private final int NO_CONTACT = 3;
     private Pokemon attacker;
     private Pokemon receiver;
 
     private double counter;
     private int textPosition;
     private String contactResults;
-
+    private boolean enemyKilledUser;
+    private boolean userKilledEnemy;
     public CheckContactEffectsPhase(PhaseUpdaterInterface pui, boolean isFirstAttackContact, Pokemon attacker,
-                                    Pokemon receiver) {
+                                    Pokemon receiver, Skill attackingSkill, boolean enemyKilledUser, boolean userKilledEnemy) {
         super(pui);
+        this.enemyKilledUser = enemyKilledUser;
+        this.userKilledEnemy = userKilledEnemy;
         this.isFirstAttackContact = isFirstAttackContact;
-        state = ABILITY_CONTACT;
-        this.attacker = attacker;
-        this.receiver = receiver;
-        contactResults = "";
-        counter = 0;
-        textPosition = 0;
+        if (attackingSkill.makesPhysicalContact()) {
+            this.attacker = attacker;
+            this.receiver = receiver;
+            contactResults = "";
+            counter = 0;
+            textPosition = 0;
+            state = ABILITY_CONTACT;
+        } else {
+            state = NO_CONTACT;
+        }
+
+
     }
 
     @Override
@@ -39,6 +50,8 @@ public class CheckContactEffectsPhase extends BattlePhase {
             checkAbilityContact(dt);
         } else if (state == DISPLAY_ABILITY_CONTACT_RESULTS) {
             updateAbilityContactResults(dt);
+        } else if (state == NO_CONTACT) {
+            goToNextPhase();
         }
     }
 
@@ -80,7 +93,17 @@ public class CheckContactEffectsPhase extends BattlePhase {
     }
 
     private void goToNextPhase() {
-        if (isFirstAttackContact) {
+        if (enemyKilledUser) {
+            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+            } else if (!pui.playerHasMorePokemon()) {
+                pui.setPhase(new BlackedOutPhase(pui));
+            }
+        }
+        else if (userKilledEnemy) {
+            pui.setPhase(new ExpPhase(pui));
+        }
+        else if (isFirstAttackContact) {
             pui.setPhase(new ParalysisCheckPhase(pui, false));
         } else {
             pui.setPhase(new PoisonCheckPhase(pui));
@@ -90,7 +113,7 @@ public class CheckContactEffectsPhase extends BattlePhase {
     private void useStatic() {
         if (!attacker.isStatused()) {
             double rand = Math.random();
-            if (rand <= 1.30) {
+            if (rand <= 1) {
                 contactResults = attacker.getName() + " was paralyzed\nfrom " +
                         receiver.getName() + "s Static.";
                 attacker.setPreStatus(Pokemon.Status.PARALYSIS);

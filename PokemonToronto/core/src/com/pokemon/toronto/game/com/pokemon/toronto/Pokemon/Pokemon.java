@@ -1337,6 +1337,41 @@ public abstract class Pokemon {
         fainted = false;
         status = Status.STATUS_FREE;
         preStatus = Status.STATUS_FREE;
+
+        //Make them go up.
+        playerX = PLAYER_NORMAL_X;
+        playerY = PLAYER_NORMAL_Y;
+        enemyX = ENEMY_NORMAL_X;
+        enemyY = ENEMY_NORMAL_Y;
+    }
+
+    /**
+     * Revive the Pokemon with a specific amount of health.
+     * @param health The health the Pokemon will be revived
+     *               with.
+     */
+    public void revive(int health) {
+        currentHealth = Math.min(health, getHealthStat());
+        animationHealth = currentHealth;
+        fainted = false;
+        status = Status.STATUS_FREE;
+        preStatus = Status.STATUS_FREE;
+        //Make them go up.
+        playerX = PLAYER_NORMAL_X;
+        playerY = PLAYER_NORMAL_Y;
+        enemyX = ENEMY_NORMAL_X;
+        enemyY = ENEMY_NORMAL_Y;
+    }
+
+    /**
+     * Reset the battle variables for the Pokemon.
+     * Stages, Confusion etc. Basically the elements that
+     * get reset when the Pokemon returns to their ball.
+     */
+    public void resetBattleVariables() {
+        resetStages();
+        //TODO: Create temporary ability for worry seed, mummy etc
+        //TODO: Remove Confusion when it's implemented
     }
 
     /**
@@ -1738,6 +1773,16 @@ public abstract class Pokemon {
             status = preStatus;
             preStatus = Status.STATUS_FREE;
         }
+    }
+
+    /**
+     * Set the current health of the Pokemon to a new health
+     * amount.
+     * @param newHealth The new health amount.
+     */
+    public void setCurrentHealth(int newHealth) {
+        currentHealth = newHealth;
+        animationHealth = newHealth;
     }
 
     /**

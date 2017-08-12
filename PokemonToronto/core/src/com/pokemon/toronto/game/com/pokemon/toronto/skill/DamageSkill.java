@@ -17,6 +17,33 @@ public abstract class DamageSkill extends Skill {
     //Instance Variables
     private int crit; //Initial Crit Stage
     private int damage;
+    private int recoilLevel;
+
+    //Recoil Values
+    protected final int NO_RECOIL = 0;
+    protected final int ONE_FOURTH = 1;
+    protected final int ONE_THIRD = 2;
+    protected final int ONE_HALF = 3;
+
+    /**
+     * Create a Damage oriented skill.
+     * @param name The name of the skill
+     * @param maxPP The maximum amount of PP for the skill
+     * @param type The type of skill (Grass, Water, Fire etc)
+     * @param category The category of the skill (Physical, Special or Misc)
+     * @param damage The base damage for the skill
+     * @param crit The crit stage for the skill
+     * @param accuracy The accuracy level for the skill.
+     * @param recoilLevel The amount of recoil damage the user will take.
+     *                    none, 1/2, 1/3, 1/4.
+     */
+    public DamageSkill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
+        super(name, maxPP, type, category, accuracy);
+        this.crit = crit;
+        this.damage = damage;
+        this.recoilLevel = recoilLevel;
+        damagesEnemy = true;
+    }
 
     /**
      * Create a Damage oriented skill.
@@ -32,6 +59,7 @@ public abstract class DamageSkill extends Skill {
         super(name, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
+        recoilLevel = NO_RECOIL;
     }
 
     /**
@@ -68,8 +96,21 @@ public abstract class DamageSkill extends Skill {
 
         //Calculate the damage results
         int damage = getDamage(skillUser, enemyPokemon, new Field(), hasCrit);
+        //Prevent Overkill.
+        if (damage > enemyPokemon.getCurrentHealth()) {
+            damage = enemyPokemon.getCurrentHealth();
+        }
         enemyPokemon.subtractHealth(damage);
         secondList.add("Dealt " + damage + " damage.");
+
+        //Subtract recoil damage.
+        if (recoilLevel == ONE_THIRD) {
+            skillUser.subtractHealth((int) Math.ceil(damage / 3.0));
+        } else if (recoilLevel == ONE_HALF) {
+            skillUser.subtractHealth((int) Math.ceil(damage / 2.0));
+        } else if (recoilLevel == ONE_FOURTH) {
+            skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
+        }
 
         //Add results to the final list
         fullList.add(firstList);

@@ -56,7 +56,7 @@ public class ParalysisCheckPhase extends BattlePhase {
         }
     }
     private boolean isParalyzed() {
-        if (Math.random() <= 1) {
+        if (Math.random() <= .1) {
             return true;
         }
         return false;
@@ -80,10 +80,8 @@ public class ParalysisCheckPhase extends BattlePhase {
 
     private void allowAttackPhase() {
         if (isFirstMove) {
-            Gdx.app.log("ASDFAG", "aaaa");
             pui.setPhase(new InitialFirstAttackPhase(pui));
         } else {
-            Gdx.app.log("ASDFAG", "bbbbb");
             pui.setPhase(new InitialSecondAttackPhase(pui));
         }
     }

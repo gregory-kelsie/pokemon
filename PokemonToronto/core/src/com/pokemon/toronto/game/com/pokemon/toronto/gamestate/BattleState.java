@@ -535,13 +535,13 @@ public class BattleState extends GameState implements BattleInterface {
 
 
     public void switchUserPokemonTextures() {
-
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
         battleTextures.resetSkillButtonTextures(currentPokemon);
 
     }
+
     public void switchCurrentPokemon() {
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
@@ -551,6 +551,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void endBattle() {
+        gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
         if (region != -1) {
             gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
         } else {
@@ -560,6 +561,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void blackedOut() {
+        gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
         dispose();
     }
@@ -573,20 +575,6 @@ public class BattleState extends GameState implements BattleInterface {
 
     public PlayerTrainerAnimation getPlayerTrainerAnimation() {
         return pta;
-    }
-
-    public boolean isWaitingForFaintClick() {
-        if (battleUpdater.waitingForFaintClick()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isWaitingForExpClick() {
-        if (battleUpdater.waitingForExpClick()) {
-            return true;
-        }
-        return false;
     }
 
     public boolean isDisplayingNewMoveYesNoOptions() {
@@ -819,6 +807,11 @@ public class BattleState extends GameState implements BattleInterface {
 
 
     public void setCurrentPokemon(Pokemon poke) { this.currentPokemon = poke; }
+
+    @Override
+    public void removeBattleVariablesFromCurrentPokemon() {
+        gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
+    }
 
 
 

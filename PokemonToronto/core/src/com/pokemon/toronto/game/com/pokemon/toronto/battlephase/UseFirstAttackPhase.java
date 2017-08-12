@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,11 @@ public class UseFirstAttackPhase extends UseAttackPhase {
     public UseFirstAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
         phaseName = "UseFirstAttack";
+        firstAttack = true;
         if (pui.isUserPokemonFirstAttacker()) {
-            if (pui.getUserSkill().targetsEnemy() &&
-                    pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0) {
+            attackerIsUser = true;
+            if (!pui.getUserSkill().doesDamageToEnemy() || (pui.getUserSkill().doesDamageToEnemy() &&
+                    pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
                 if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
                     battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon());
                     animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
@@ -39,8 +42,9 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             }
 
         } else {
-            if (pui.getEnemySkill().targetsEnemy() &&
-                    pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0) {
+            attackerIsUser = false;
+            if (!pui.getEnemySkill().doesDamageToEnemy() || (pui.getEnemySkill().doesDamageToEnemy() &&
+                    pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
                 if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
                     battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon());
                     animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
@@ -103,28 +107,39 @@ public class UseFirstAttackPhase extends UseAttackPhase {
     private void finishedDepletion(double dt) {
         Pokemon attacker;
         Pokemon receiver;
+        Skill attackingSkill;
         if (pui.isUserPokemonFirstAttacker()) {
             attacker = pui.getUserPokemon();
+            attackingSkill = pui.getUserSkill();
             receiver = pui.getEnemyPokemon();
         } else {
             attacker = pui.getEnemyPokemon();
+            attackingSkill = pui.getEnemySkill();
             receiver = pui.getUserPokemon();
         }
         if (enemyFainted && !userFainted) {
-            pui.setPhase(new ExpPhase(pui));
+            if (!pui.isUserPokemonFirstAttacker()) {
+                //The enemy killed themselves with recoil if this is the case.
+                //Go to the exp phase
+                pui.setPhase(new ExpPhase(pui));
+            } else {
+                pui.setPhase(new CheckContactEffectsPhase(pui, true, attacker, receiver, attackingSkill, false, true));
+            }
         } else if (!enemyFainted && !userFainted) {
-            pui.setPhase(new CheckContactEffectsPhase(pui, true, attacker, receiver));
+            pui.setPhase(new CheckContactEffectsPhase(pui, true, attacker, receiver, attackingSkill, false, false));
         } else if (enemyFainted && userFainted) {
-            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                pui.setPhase(new PlayerPokemonFaintPhase(pui));
-            } else if (!pui.playerHasMorePokemon()) {
+            if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));
+            } else {
+                pui.finishedBattle();
             }
         } else if (!enemyFainted && userFainted) {
-            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                pui.setPhase(new PlayerPokemonFaintPhase(pui));
-            } else if (!pui.playerHasMorePokemon()) {
-                pui.setPhase(new BlackedOutPhase(pui));
+            if (pui.isUserPokemonFirstAttacker()) {
+                //The user killed themselves with recoil if this is the case.
+                //Go to the enemy's second move to hit nothing and then switch.
+                pui.setPhase(new MissAfterRecoilFaintPhase(pui));
+            } else {
+                pui.setPhase(new CheckContactEffectsPhase(pui, true, attacker, receiver, attackingSkill, true, false));
             }
         }
     }

@@ -141,6 +141,7 @@ public class GameStateManager {
         //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
         currentState = new LoadingState(this, LoadingState.MAIN_MENU);
         addToParty(new Eevee(5));
+        //getParty().get(0).setCurrentHealth(1);
         addToParty(new Weedle(5));
         getParty().get(0).setExp(80);
         //getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});

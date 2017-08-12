@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Rattata;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -87,11 +88,31 @@ public class ExpPhase extends BattlePhase {
             }
         }
         if (counter >= 1.5) {
-            currentState = AUTOMATIC_NEW_MOVE;
+            if (newSkillsForLevelUp.size() == 0) {
+                currentState = ADD_EXP;
+            } else {
+                if (pui.getUserPokemon().getSkills().size() < 4) {
+                    SkillFactory sf = new SkillFactory();
+                    newMove = sf.createSkill(newSkillsForLevelUp.get(0));
+                    newSkillsForLevelUp.remove(0);
+                    pui.getUserPokemon().addMove(newMove);
+                    currentState = AUTOMATIC_NEW_MOVE;
+                    text = pui.getUserPokemon().getName() + " learned " + newMove.getName() + "!";
+                    resetAllTextVariables();
+                } else {
+                    SkillFactory sf = new SkillFactory();
+                    newMove = sf.createSkill(newSkillsForLevelUp.get(0));
+                    newSkillsForLevelUp.remove(0);
+                    text = "Should a move be deleted for\n" + newMove.getName() + "?";
+                    currentState = ASKING_TO_MAKE_ROOM;
+                    resetAllTextVariables();
+                }
+            }
         }
     }
     private void waitForMoveDeletion(double dt) {
         if (pui.deletingFirstMove()) {
+            pui.resetDeletionResult();
             text = "1, 2 and... Poof! " + pui.getUserPokemon().getName() + " forgot "
                     + pui.getUserPokemon().getSkills().get(0).getName() +
                     "\n and... " + pui.getUserPokemon().getName() + " learned " + newMove.getName();
@@ -99,6 +120,7 @@ public class ExpPhase extends BattlePhase {
             currentState = LEARNED_NEW_MOVE;
             resetAllTextVariables();
         } else if (pui.deletingSecondMove()) {
+            pui.resetDeletionResult();
             text = "1, 2 and... Poof! " + pui.getUserPokemon().getName() + " forgot "
                     + pui.getUserPokemon().getSkills().get(1).getName() +
                     "\n and... " + pui.getUserPokemon().getName() + " learned " + newMove.getName();
@@ -106,6 +128,7 @@ public class ExpPhase extends BattlePhase {
             currentState = LEARNED_NEW_MOVE;
             resetAllTextVariables();
         } else if (pui.deletingThirdMove()) {
+            pui.resetDeletionResult();
             text = "1, 2 and... Poof! " + pui.getUserPokemon().getName() + " forgot "
                     + pui.getUserPokemon().getSkills().get(2).getName() +
                     "\n and... " + pui.getUserPokemon().getName() + " learned " + newMove.getName();
@@ -113,6 +136,7 @@ public class ExpPhase extends BattlePhase {
             currentState = LEARNED_NEW_MOVE;
             resetAllTextVariables();
         } else if (pui.deletingFourthMove()) {
+            pui.resetDeletionResult();
             text = "1, 2 and... Poof! " + pui.getUserPokemon().getName() + " forgot "
                     + pui.getUserPokemon().getSkills().get(3).getName() +
                     "\n and... " + pui.getUserPokemon().getName() + " learned " + newMove.getName();
@@ -269,14 +293,23 @@ public class ExpPhase extends BattlePhase {
     }
 
     private void updateWaitForYesNoResult(double dt) {
+        Gdx.app.log("yesno1", "waiting");
         if (pui.hasAcceptedNewMove()) {
+            pui.resetYesNoResult();
             currentState = WAIT_FOR_MOVE_DELETION;
             pui.setWaitingForMoveDeletion();
         } else if (pui.hasDeclinedNewMove()) {
-            currentState = AUTOMATIC_NEW_MOVE;
-            text = ""; //remove the text.
-            textPosition = 0;
-            counter = 2; //skip the text saying learned new move.
+            pui.resetYesNoResult();
+            if (newSkillsForLevelUp.size() > 0) {
+                SkillFactory sf = new SkillFactory();
+                newMove = sf.createSkill(newSkillsForLevelUp.get(0));
+                newSkillsForLevelUp.remove(0);
+                text = "Should a move be deleted for\n" + newMove.getName() + "?";
+                currentState = ASKING_TO_MAKE_ROOM;
+                resetAllTextVariables();
+            } else {
+                currentState = ADD_EXP;
+            }
         }
     }
 

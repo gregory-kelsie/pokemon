@@ -31,6 +31,7 @@ public abstract class Skill {
     private int accuracy;
     private boolean targetsEnemy;
     protected boolean makesPhysicalContact;
+    protected boolean damagesEnemy;
 
     /**
      * Create a Skill.
@@ -50,6 +51,16 @@ public abstract class Skill {
         this.accuracy = accuracy;
         targetsEnemy = true; //default
         makesPhysicalContact = false;
+        damagesEnemy = false;
+    }
+
+    /**
+     * Return whether or not the skill deals damage to the
+     * enemy Pokemon.
+     * @return Whether or not the skill deals damage to the enemy.
+     */
+    public boolean doesDamageToEnemy() {
+        return damagesEnemy;
     }
 
     /**

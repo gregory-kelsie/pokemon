@@ -148,6 +148,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     public void setWaitingForMoveDeletion() {
         state = WAITING_FOR_MOVE_DELETION;
     }
+
+    @Override
+    public void resetDeletionResult() {
+        moveDeletionResult = -1;
+    }
     public boolean deletingFirstMove() {
         if (moveDeletionResult == DELETED_FIRST_MOVE) {
             return true;
@@ -184,6 +189,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     public void finishedFaintSwitch() {
+        state = IDLE;
         started = false;
     }
 
@@ -336,6 +342,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void resetYesNoResult() {
+        yesNoResult = -1;
     }
 
     @Override

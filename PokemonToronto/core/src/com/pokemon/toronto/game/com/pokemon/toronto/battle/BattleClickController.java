@@ -145,6 +145,7 @@ public class BattleClickController {
             } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && model.isOnPartyPanel() && !model.hasFirstPokemonOnField()) {
                 //First Pokemon
                 if (model.getParty().get(0).getCurrentHealth() > 0) {
+                    model.removeBattleVariablesFromCurrentPokemon();
                     model.setCurrentPokemonPosition(0);
                     if (model.isWaitingForNextPokemon()) {
                         model.switchCurrentPokemon();
@@ -158,6 +159,7 @@ public class BattleClickController {
                 //Second Pokemon
                 if (model.getParty().size() > 1) {
                     if (model.getParty().get(1).getCurrentHealth() > 0) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         model.setCurrentPokemonPosition(1);
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();
@@ -172,6 +174,7 @@ public class BattleClickController {
                 //Third Pokemon
                 if (model.getParty().size() > 2) {
                     if (model.getParty().get(2).getCurrentHealth() > 0) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         model.setCurrentPokemonPosition(2);
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();
@@ -186,6 +189,7 @@ public class BattleClickController {
                 //Fourth Pokemon
                 if (model.getParty().size() > 3) {
                     if (model.getParty().get(3).getCurrentHealth() > 0) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         model.setCurrentPokemonPosition(3);
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();
@@ -201,6 +205,7 @@ public class BattleClickController {
                 //Fifth Pokemon
                 if (model.getParty().size() > 4) {
                     if (model.getParty().get(4).getCurrentHealth() > 0) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         model.setCurrentPokemonPosition(4);
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();
@@ -216,6 +221,7 @@ public class BattleClickController {
                 //Sixth Pokemon
                 if (model.getParty().size() > 5) {
                     if (model.getParty().get(5).getCurrentHealth() > 0) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         model.setCurrentPokemonPosition(5);
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();

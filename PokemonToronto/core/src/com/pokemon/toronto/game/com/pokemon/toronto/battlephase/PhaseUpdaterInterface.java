@@ -35,4 +35,6 @@ public interface PhaseUpdaterInterface {
     boolean hasDeclinedNewMove();
     void caughtTheWildPokemon();
     void swapPokemon(Pokemon sentOutPokemon);
+    void resetYesNoResult();
+    void resetDeletionResult();
 }

@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
@@ -29,16 +30,21 @@ public class UseAttackPhase extends BattlePhase {
     protected List<List<String>> battleListText;
     protected List<String> recoilResults;
 
+    protected boolean firstAttack;
     protected Pokemon attacker;
     protected Pokemon receiver;
     protected boolean enemyFainted;
     protected boolean userFainted;
+    protected boolean attackerIsUser;
 
     protected int textPosition;
     protected int resultsPosition;
     protected double textCounter;
     protected double resultsCounter;
     protected String missText;
+
+    private boolean userRecoilFaint;
+    private boolean enemyRecoilFaint;
 
     //Contact Variables
     private boolean madePhysicalContact;
@@ -61,7 +67,10 @@ public class UseAttackPhase extends BattlePhase {
         missed = false;
         recoilResults = new ArrayList<String>();
         madePhysicalContact = false;
+        userRecoilFaint = false;
+        enemyRecoilFaint = false;
     }
+
     /**
      * Check the attacker and receiver's health after using the first move.
      * Set faint flags if there was a faint on either side.
@@ -76,6 +85,7 @@ public class UseAttackPhase extends BattlePhase {
         }
         if (attacker.getCurrentHealth() == 0) {
             userFainted = true;
+            userRecoilFaint = true;
         } else {
             userFainted = false;
         }
@@ -95,10 +105,12 @@ public class UseAttackPhase extends BattlePhase {
         }
         if (attacker.getCurrentHealth() == 0) {
             enemyFainted = true;
+            enemyRecoilFaint = true;
         } else {
             enemyFainted = false;
         }
     }
+
     protected void updateAnimation(double dt) {
         animation.update(dt);
         pui.getUserPokemon().setPlayerX(animation.getPlayerX());
@@ -118,31 +130,19 @@ public class UseAttackPhase extends BattlePhase {
         } else {
             //Display the second skill name after depleting health.
             updatingHealth = false;
-            if (battleListText.get(1).size() > 0) {
-                //There are results to be displayed
-                displayingResults = true;
-            } else {
-                //No results so go right into the recoil phase
-                if (hasRecoil()) {
-                    //There is recoil, so update the health of the attacker.
-                    updateAttackerHealth = true;
-                } else {
-                    //No recoil so end the attack
-                    finishedDepletion = true;
-                }
-            }
+            //There are results to be displayed
+            displayingResults = true;
+
         }
     }
-
-
 
     protected void updateAttackerHealth(double dt) {
         if (!attacker.matchingAnimationHealth()) {
             attacker.adjustAnimationHealth(1);
         } else {
-            recoilResults.add(attacker + " was hit by recoil.");
+            recoilResults.add(attacker.getName() + " was hit by recoil.");
             if (attacker.getCurrentHealth() == 0) {
-                recoilResults.add(attacker + " fainted.");
+                recoilResults.add(attacker.getName() + " fainted.");
             }
             displayRecoilResults = true;
             resetTextBoxAndResults();
@@ -206,39 +206,47 @@ public class UseAttackPhase extends BattlePhase {
             } else {
                 //There are no more results
                 transferPreStatus();
-                if (pui.isUserPokemonFirstAttacker()) {
-                    if (enemyFainted) {
-                        displayingResults = false;
-                        displayEnemyFaintAnimation = true;
-                    } else if (userFainted) {
-                            displayingResults = false;
-                            displayUserFaintAnimation = true;
-                    }
-                    else {
-                        displayingResults = false;
-                        if (hasRecoil()) {
-                            updateAttackerHealth = true;
-                        } else {
-                            finishedDepletion = true;
+                //No results so go right into the recoil phase
+                if (hasRecoil()) {
+                    //There is recoil, so update the health of the attacker.
+                    displayingResults = false;
+                    if (attackerIsUser) {
+                        if (enemyFainted) {
+                            displayEnemyFaintAnimation = true;
                         }
                     }
+                    updateAttackerHealth = true;
                 } else {
-                    if (userFainted) {
-                        displayingResults = false;
-                        displayUserFaintAnimation = true;
-                    } else if (enemyFainted) {
-                        displayingResults = false;
-                        displayEnemyFaintAnimation = true;
-                    }
-                    else {
-                        displayingResults = false;
-                        if (hasRecoil()) {
-                            updateAttackerHealth = true;
-                        } else {
+                    //No recoil so end the attack accordingly
+                    if (pui.isUserPokemonFirstAttacker()) {
+                        if (enemyFainted) {
+                            displayingResults = false;
+                            displayEnemyFaintAnimation = true;
+                        } else if (userFainted) {
+                            displayingResults = false;
+                            displayUserFaintAnimation = true;
+                        }
+                        else {
+                            displayingResults = false;
+                            finishedDepletion = true;
+
+                        }
+                    } else {
+                        if (userFainted) {
+                            displayingResults = false;
+                            displayUserFaintAnimation = true;
+                        } else if (enemyFainted) {
+                            displayingResults = false;
+                            displayEnemyFaintAnimation = true;
+                        }
+                        else {
+                            displayingResults = false;
                             finishedDepletion = true;
                         }
                     }
                 }
+
+
             }
         }
     }
@@ -261,12 +269,16 @@ public class UseAttackPhase extends BattlePhase {
                 resultsPosition++;
                 resetTextBox();
             } else {
-                if (pui.isUserPokemonFirstAttacker() && userFainted) {
+                if (userRecoilFaint) {
                     displayRecoilResults = false;
                     displayUserFaintAnimation = true;
-                } else if (!pui.isUserPokemonFirstAttacker() && enemyFainted) {
+                } else if (enemyRecoilFaint) {
                     displayRecoilResults = false;
                     displayEnemyFaintAnimation = true;
+                }
+                else {
+                    displayRecoilResults = false;
+                    finishedDepletion = true;
                 }
             }
         }
@@ -279,18 +291,19 @@ public class UseAttackPhase extends BattlePhase {
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
             displayEnemyFaintAnimation = false;
-
-            if (pui.isUserPokemonFirstAttacker()) {
-                //Enemy fainted after the player attacked first
-                if (hasRecoil()) {
+            //Check if the skill has recoil
+            if (hasRecoil()) {
+                //If the attacker is the user, we haven't done recoil damage yet.
+                if (attackerIsUser) {
                     updateAttackerHealth = true;
                 } else {
+                    //If the attacker is the enemy, this is a result of the recoil damage
+                    //so end the turn.
                     finishedDepletion = true;
                 }
             } else {
                 finishedDepletion = true;
             }
-
         }
     }
 
@@ -301,15 +314,16 @@ public class UseAttackPhase extends BattlePhase {
             pui.getUserPokemon().setPlayerY(pui.getUserPokemon().getFaintedPlayerY());
             pui.getUserPokemon().setFaint(true);
             displayUserFaintAnimation = false;
-            if (pui.isUserPokemonFirstAttacker()) {
-                //Enemy fainted after the player attacked first
-                finishedDepletion = true;
-            } else {
-                if (hasRecoil()) {
-                    updateAttackerHealth = true;
-                } else {
+            if (hasRecoil()) {
+                if (attackerIsUser) {
+                    //If the attacker is the user, this is a result of the recoil damage.
                     finishedDepletion = true;
+                } else {
+                    //If the attacker is the enemy, we haven't done recoil damage yet.
+                    updateAttackerHealth = true;
                 }
+            } else {
+                finishedDepletion = true;
             }
         }
     }

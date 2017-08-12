@@ -11,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Scratch;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
 
 /**
@@ -31,6 +32,7 @@ public class SkillFactory {
     public static final int POISON_STING = 9;
     public static final int COVET = 10;
     public static final int THUNDER_SHOCK = 11;
+    public static final int TAKE_DOWN = 12;
 
     public SkillFactory() {
 
@@ -64,7 +66,10 @@ public class SkillFactory {
             return new PoisonSting();
         } else if (skillId == THUNDER_SHOCK) {
             return new ThunderShock();
-        }else {
+        } else if (skillId == TAKE_DOWN) {
+            return new TakeDown();
+        }
+        else {
             return new Covet();
         }
     }
