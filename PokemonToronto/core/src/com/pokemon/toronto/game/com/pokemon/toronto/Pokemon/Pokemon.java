@@ -135,6 +135,9 @@ public abstract class Pokemon {
     private boolean isLeechSeeded;
     private boolean hasNightmares;
 
+    private int confusionTime;
+    private final int NOT_CONFUSED = 0;
+
     /** Constants */
 
     //Mins and Maxes
@@ -194,7 +197,7 @@ public abstract class Pokemon {
         SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
         LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
-        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE
+        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO
     }
 
     /**
@@ -279,7 +282,6 @@ public abstract class Pokemon {
     public void resetBattleVariables() {
         resetStages();
         //TODO: Create temporary ability for worry seed, mummy etc
-        //TODO: Remove Confusion when it's implemented
         isTaunted = false;
         isEffectedByEmbargo = false;
         isEffectedByEncore = false;
@@ -307,6 +309,7 @@ public abstract class Pokemon {
         disabledSlot = -1;
         disabledTime = -1;
         perishSongTime = -1;
+        confusionTime = NOT_CONFUSED;
     }
 
     /**
@@ -613,6 +616,42 @@ public abstract class Pokemon {
      */
     public boolean heardPerishSong() {
         return heardPerishSong;
+    }
+
+    /**
+     * Apply confusion to the Pokemon that will last 1-4 attacking turns.
+     */
+    public void induceConfusion() {
+        double rand = Math.random();
+        if (rand <= .25) {
+            confusionTime = 1;
+        } else if (rand <= .5) {
+            confusionTime = 2;
+        } else if (rand <= .75) {
+            confusionTime = 3;
+        } else {
+            confusionTime = 4;
+        }
+    }
+
+    /**
+     * Reduce the confusion time by 1 turn.
+     */
+    public void reduceConfusionTime() {
+        confusionTime--;
+        confusionTime = Math.max(confusionTime, NOT_CONFUSED);
+    }
+
+    /**
+     * Return whether or not the Pokemon is confused.
+     * @return Whether or not the Pokemon is confused.
+     */
+    public boolean isConfused() {
+        if (confusionTime > NOT_CONFUSED) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -2149,6 +2188,8 @@ public abstract class Pokemon {
                 return "Flame Body";
             case EFFECT_SPORE:
                 return "Effect Spore";
+            case OWN_TEMPO:
+                return "Own Tempo";
             default:
                 return "Ability Error";
 

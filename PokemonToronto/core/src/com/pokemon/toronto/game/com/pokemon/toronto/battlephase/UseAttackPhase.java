@@ -173,8 +173,6 @@ public class UseAttackPhase extends BattlePhase {
         return false;
     }
 
-
-
     protected void resetTextBoxAndResults() {
         resetTextBox();
         resultsPosition = 0;

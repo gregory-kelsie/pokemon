@@ -381,7 +381,7 @@ public abstract class DamageSkill extends Skill {
      * @param hasCrit Whether or not the skill will crit.
      * @return
      */
-    private int getDamage(Pokemon user, Pokemon enemy, Field field, boolean hasCrit) {
+    protected int getDamage(Pokemon user, Pokemon enemy, Field field, boolean hasCrit) {
         double atkStat;
         double defStat;
 

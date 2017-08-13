@@ -200,20 +200,33 @@ public abstract class Skill {
      * @return Whether or not the skill hits the enemy.
      */
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon) {
-        //Init Modifiers
-        int accuracyStage = skillUser.getAccuracyStage();
-        double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
-        int evasionStage = enemyPokemon.getEvasionStage();
-        double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
-        double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;
+        if (accuracy != -1) {
+            //Init Modifiers
+            int accuracyStage = skillUser.getAccuracyStage();
+            double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
+            int evasionStage = enemyPokemon.getEvasionStage();
+            double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
+            double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;
 
-        //Check if hit.
-        double rand = Math.random();
-        if (rand > result) {
-            return false;
-        } else {
-            return true;
+            //Check if hit.
+            double rand = Math.random();
+            if (rand > result) {
+                return false;
+            } else {
+                return true;
+            }
         }
+        return true;
+    }
+
+    /**
+     * Return whether or not the skill will fail.
+     * @param skillUser The skill's user.
+     * @param enemyPokemon The Pokemon on the receiving end.
+     * @return Whether or not the skill will fail.
+     */
+    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon) {
+        return false;
     }
 
     /**

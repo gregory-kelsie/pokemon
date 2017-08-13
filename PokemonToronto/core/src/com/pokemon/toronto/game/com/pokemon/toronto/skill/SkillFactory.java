@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
@@ -35,6 +36,7 @@ public class SkillFactory {
     public static final int THUNDER_SHOCK = 11;
     public static final int TAKE_DOWN = 12;
     public static final int DOUBLE_SLAP = 13;
+    public static final int CONFUSE_RAY = 14;
 
     public SkillFactory() {
 
@@ -72,6 +74,8 @@ public class SkillFactory {
             return new TakeDown();
         } else if (skillId == DOUBLE_SLAP) {
             return new DoubleSlap();
+        } else if (skillId == CONFUSE_RAY) {
+            return new ConfuseRay();
         }
         else {
             return new Covet();
