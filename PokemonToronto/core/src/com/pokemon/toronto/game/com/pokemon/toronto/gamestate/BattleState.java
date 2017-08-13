@@ -16,6 +16,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SpriteDynamicAnima
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranimation.PlayerTrainerAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleClickController;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleTextures;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.stateupdater.BattleUpdater;
@@ -555,6 +556,16 @@ public class BattleState extends GameState implements BattleInterface {
 
     public void endBattle() {
         gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
+        if (gsm.getParty().get(currentPokemonPosition).hasJustLeveled() &&
+                gsm.getParty().get(currentPokemonPosition).getLevelUpEvolutionId() != -1) {
+            //TODO: Add to evolution list.
+
+            PokemonFactory pf = new PokemonFactory();
+            gsm.getParty().set(currentPokemonPosition,
+                    pf.createPokemon(gsm.getParty().get(currentPokemonPosition)
+                            .getLevelUpEvolutionId(), gsm.getParty().get(currentPokemonPosition)));
+        }
+        gsm.getParty().get(currentPokemonPosition).resetJustLeveled();
         if (region != -1) {
             gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
         } else {

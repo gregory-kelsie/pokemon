@@ -84,6 +84,7 @@ public abstract class Pokemon {
     protected long overflownExp;
     protected double currentExp;
     protected int displayedExp;
+    protected boolean justLeveled;
 
     //Battle Variables
     private boolean isTaunted;
@@ -247,6 +248,7 @@ public abstract class Pokemon {
         displayedExp = NO_EXP;
         levelUpSkills = new HashMap<Integer, List<Integer>>();
         skills = new ArrayList<Skill>();
+        justLeveled = false;
         resetCoordinates();
         setRandomNature();
         initRandomIVs();
@@ -773,6 +775,25 @@ public abstract class Pokemon {
 
         level = Math.min(100, level + 1);
         currentExp = 0;
+        justLeveled = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon just leveled up in a
+     * battle.
+     * @return Whether or not the Pokemon just leveled up in a battle.
+     */
+    public boolean hasJustLeveled() {
+        return justLeveled;
+    }
+
+    /**
+     * Set the Pokemon to have not just leveled up. This is called
+     * after a battle ends and the Pokemon finished evolving or does
+     * not evolve at that time.
+     */
+    public void resetJustLeveled() {
+        justLeveled = false;
     }
 
     /**
@@ -1134,6 +1155,14 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the Pokemon's IVs
+     * @return The Pokemons IVs
+     */
+    public int[] getIVs() { return ivs; }
+
+
+
+    /**
      * Initialize the Pokemon's resistances.
      */
     private void initializeResistances() {
@@ -1393,6 +1422,12 @@ public abstract class Pokemon {
     public int getSpeedEV() {
         return evs[SPEED];
     }
+
+    /**
+     * Return the Pokemon's EVs
+     * @return The Pokemon's EVs
+     */
+    public int[] getEVs() { return evs; }
 
     /**
      * Set a random nature for the Pokemon.
@@ -1893,6 +1928,47 @@ public abstract class Pokemon {
     public List<Skill> getSkills() { return skills; }
 
     /**
+     * Return the Pokemon's first skill.
+     * @return First Skill
+     */
+    public Skill getFirstSkill() {
+        return skills.get(0);
+    }
+
+    /**
+     * Return the Pokemon's second skill.
+     * @return Second Skill, null if no second skill.
+     */
+    public Skill getSecondSkill() {
+        if (skills.size() > 1) {
+            return skills.get(1);
+        }
+        return null;
+    }
+
+    /**
+     * Return the Pokemon's third skill.
+     * @return Third Skill, null if no third skill.
+     */
+    public Skill getThirdSkill() {
+        if (skills.size() > 2) {
+            return skills.get(2);
+        }
+        return null;
+    }
+
+    /**
+     * Return the Pokemon's fourth skill.
+     * @return Fourth Skill, null if no fourth skill.
+     */
+    public Skill getFourthSkill() {
+        if (skills.size() > 3) {
+            return skills.get(3);
+        }
+        return null;
+    }
+
+    /**
      * Return the Pokemon's Front Image path
      * @return The path for the Pokemon's front image.
      */
@@ -2084,6 +2160,12 @@ public abstract class Pokemon {
      * @return The Pokemon's ability
      */
     public Ability getAbility() { return ability; }
+
+    /**
+     * Return the Pokemon's nature.
+     * @return The Pokemon's nature.
+     */
+    public Nature getNature() { return nature; }
 
     /**
      * Return the Pokemon's current health.
