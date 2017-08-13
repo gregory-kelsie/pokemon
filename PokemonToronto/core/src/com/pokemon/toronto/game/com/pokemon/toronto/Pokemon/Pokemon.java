@@ -754,6 +754,19 @@ public abstract class Pokemon {
     }
 
     /**
+     * The the amount of current health and current exp to the specified
+     * values.
+     * @param newHealth The new amount of current health.
+     * @param newExp The new amount of current exp.
+     */
+    protected void setHealthAndExp(int newHealth, int newExp) {
+        currentHealth = newHealth;
+        animationHealth = newHealth;
+        currentExp = newExp;
+        displayedExp = newExp;
+    }
+
+    /**
      * Level up the Pokemon. Can't exceed the max level of 100.
      */
     public void levelUp() {
@@ -788,6 +801,27 @@ public abstract class Pokemon {
                         //move list is full.
                         currentSkill = 0;
                     }
+                }
+            }
+        }
+    }
+
+    /**
+     * Add the specified skills in the arguments to the Pokemon's skillset.
+     * @param firstSkill The skill to be added in the first slot.
+     * @param secondSkill The skill to be added in the second slot.
+     * @param thirdSkill The skill to be added in the third slot.
+     * @param fourthSkill The skill to be added in the fourth slot.
+     */
+    protected void addSkills(Skill firstSkill, Skill secondSkill, Skill thirdSkill,
+                             Skill fourthSkill) {
+        skills.add(firstSkill);
+        if (secondSkill != null) {
+            skills.add(secondSkill);
+            if (thirdSkill != null) {
+                skills.add(thirdSkill);
+                if (fourthSkill != null) {
+                    skills.add(fourthSkill);
                 }
             }
         }
