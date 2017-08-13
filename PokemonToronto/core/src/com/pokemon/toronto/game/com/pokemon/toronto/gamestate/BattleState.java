@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SpriteDynamicAnimation;
@@ -80,12 +81,13 @@ public class BattleState extends GameState implements BattleInterface {
 
     private GameStateManager gsm;
     private BattleClickController controller;
-
+    private Field field;
 
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         init(gsm, enemyPokemon, bgm);
         startingRoute = -1;
         region = -1;
+        field = new Field();
     }
 
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm, int startingRoute, int region, boolean isRoute) {
@@ -93,6 +95,7 @@ public class BattleState extends GameState implements BattleInterface {
         this.startingRoute = startingRoute;
         this.region = region;
         this.isRoute = isRoute;
+        field = new Field();
     }
 
     private void init(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
@@ -742,6 +745,8 @@ public class BattleState extends GameState implements BattleInterface {
         return currentPokemon;
     }
 
+    public Field getField() { return field; }
+
     public Pokemon getEnemyPokemon() {
         return enemyPokemon;
     }
@@ -769,17 +774,17 @@ public class BattleState extends GameState implements BattleInterface {
 
     public void start(int partyPosition, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                getParty().get(partyPosition), enemySkill);
+                getParty().get(partyPosition), enemySkill, field);
     }
 
     public void start(Skill userSkill, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                userSkill, enemySkill);
+                userSkill, enemySkill, field);
     }
 
     public void startPokeballThrow(int pokeballType, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                pokeballType, enemySkill);// 0 is speedcheck phase
+                pokeballType, enemySkill, field);// 0 is speedcheck phase
     }
 
     public BattleTextures getBattleTextures() {

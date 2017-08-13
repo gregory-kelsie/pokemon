@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -31,12 +32,13 @@ public class ThunderShock extends DamageSkill {
      * Use Thunder Shock and return the move results.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param field The field the battle is on.
      * @return Thunder Shock's move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
 
         //Use the damage part of Thunder Shock.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon);
+        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field);
 
         //Check if the enemy is able to receive paralysis after the damage
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {

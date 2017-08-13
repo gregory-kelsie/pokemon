@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
@@ -37,4 +38,5 @@ public interface PhaseUpdaterInterface {
     void swapPokemon(Pokemon sentOutPokemon);
     void resetYesNoResult();
     void resetDeletionResult();
+    Field getField();
 }

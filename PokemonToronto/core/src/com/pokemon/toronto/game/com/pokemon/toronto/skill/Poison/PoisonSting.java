@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -32,11 +33,12 @@ public class PoisonSting extends DamageSkill {
      * Damage the enemy, but also has a 30% chance to poison the enemy.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
         //Use the damage part of the move.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon);
+        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field);
 
         //Check if the user is able to receive poison.
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {

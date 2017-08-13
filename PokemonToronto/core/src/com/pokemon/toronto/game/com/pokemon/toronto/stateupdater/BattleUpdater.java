@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.PokeballAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
@@ -67,6 +68,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     private final int NO_MOVE_REPLACEMENT = 1;
     private int yesNoResult;
 
+    //Field
+    private Field field;
+
 
     public BattleUpdater(BattleInterface battleState, BitmapFont font) {
         this.battleState = battleState;
@@ -89,24 +93,26 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     * @param Skill enemySkill The move the enemy is using in this phase.
      */
     public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon,
-                      Skill userSkill, Skill enemySkill) {
+                      Skill userSkill, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
         this.userSkill = userSkill;
         this.enemySkill = enemySkill;
+        this.field = field;
         currentPhase = new SpeedCheckPhase(this, userPokemon, enemyPokemon, userSkill, enemySkill);
         state = IDLE;
         started = true;
     }
 
     public void start(List<Pokemon> playerParty, Pokemon prevPokemon, Pokemon enemyPokemon,
-                      Pokemon sentOutPokemon, Skill enemySkill) {
+                      Pokemon sentOutPokemon, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
         this.userPokemon = prevPokemon;
         this.enemyPokemon = enemyPokemon;
         this.sentOutPokemon = sentOutPokemon;
         this.enemySkill = enemySkill;
+        this.field = field;
         userPokemonIsFirstAttacker = true;
         started = true;
         currentPhase = new SwitchPhase(this, sentOutPokemon);
@@ -123,10 +129,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      * @param enemySkill The skill the enemy will use if the ball fails
      */
     public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon,
-                      int pokeballType, Skill enemySkill) {
+                      int pokeballType, Skill enemySkill, Field field) {
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
         this.enemySkill = enemySkill;
+        this.field = field;
         userPokemonIsFirstAttacker = true;
         started = true;
         currentPhase = new CatchingPhase(this, enemySkill, pokeballType);
@@ -316,6 +323,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     public void setPhase(BattlePhase p) {
         this.currentPhase = p;
+    }
+
+    @Override
+    public Field getField() {
+        return field;
     }
 
     @Override

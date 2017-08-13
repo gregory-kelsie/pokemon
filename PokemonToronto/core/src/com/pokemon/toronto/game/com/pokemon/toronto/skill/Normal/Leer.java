@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -28,9 +29,10 @@ public class Leer extends Skill {
      * Use Leer and return the move results.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param field The field the battle is on.
      * @return The move results
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
         List<List<String>> fullList = new ArrayList<List<String>>();
         List<String> firstList = new ArrayList<String>();
         List<String> secondList = new ArrayList<String>();

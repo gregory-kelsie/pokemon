@@ -69,8 +69,8 @@ public abstract class DamageSkill extends Skill {
      * @return The skill results.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
-        super.use(skillUser, enemyPokemon);
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+        super.use(skillUser, enemyPokemon, field);
         List<List<String>> fullList = new ArrayList<List<String>>();
 
         //The list that says if the pokemon missed or failed. The text before the move animation.
@@ -95,7 +95,7 @@ public abstract class DamageSkill extends Skill {
         }
 
         //Calculate the damage results
-        int damage = getDamage(skillUser, enemyPokemon, new Field(), hasCrit);
+        int damage = getDamage(skillUser, enemyPokemon, field, hasCrit);
         //Prevent Overkill.
         if (damage > enemyPokemon.getCurrentHealth()) {
             damage = enemyPokemon.getCurrentHealth();

@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -30,9 +31,15 @@ public class TakeDown extends DamageSkill {
         makesPhysicalContact = true;
     }
 
-    @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
-        return super.use(skillUser, enemyPokemon);
+    /**
+     * Damage the enemy and take 1/4 recoil damage.
+     * @param skillUser The Pokemon using the skill
+     * @param enemyPokemon The enemy receiving the skill
+     * @param field The field of the battle.
+     * @return The results of using the move.
+     */
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+        return super.use(skillUser, enemyPokemon, field);
     }
 
     /**

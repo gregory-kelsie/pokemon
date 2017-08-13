@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 
@@ -180,7 +181,7 @@ public abstract class Skill {
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
         return null;
     }
 
