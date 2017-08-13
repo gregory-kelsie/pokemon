@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Growl;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Leer;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
@@ -33,6 +34,7 @@ public class SkillFactory {
     public static final int COVET = 10;
     public static final int THUNDER_SHOCK = 11;
     public static final int TAKE_DOWN = 12;
+    public static final int DOUBLE_SLAP = 13;
 
     public SkillFactory() {
 
@@ -68,6 +70,8 @@ public class SkillFactory {
             return new ThunderShock();
         } else if (skillId == TAKE_DOWN) {
             return new TakeDown();
+        } else if (skillId == DOUBLE_SLAP) {
+            return new DoubleSlap();
         }
         else {
             return new Covet();

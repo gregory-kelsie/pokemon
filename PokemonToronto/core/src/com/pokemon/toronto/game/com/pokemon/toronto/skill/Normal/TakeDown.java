@@ -27,7 +27,7 @@ public class TakeDown extends DamageSkill {
      */
     public TakeDown() {
         //1/4 RECOIL
-        super("Take Down", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 400, 1, 1);
+        super("Take Down", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 90, 1, 1);
         makesPhysicalContact = true;
     }
 

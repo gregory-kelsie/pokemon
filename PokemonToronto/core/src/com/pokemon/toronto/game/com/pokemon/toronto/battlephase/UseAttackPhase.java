@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,8 @@ public class UseAttackPhase extends BattlePhase {
     protected boolean userFainted;
     protected boolean attackerIsUser;
 
+    protected Skill usedSkill;
+
     protected int textPosition;
     protected int resultsPosition;
     protected double textCounter;
@@ -48,6 +51,14 @@ public class UseAttackPhase extends BattlePhase {
 
     //Contact Variables
     private boolean madePhysicalContact;
+    protected int state;
+    protected final int ABILITY_CONTACT = 0;
+    protected final int ITEM_CONTACT = 1;
+    protected final int DISPLAY_ABILITY_CONTACT_RESULTS = 2;
+    protected final int NO_CONTACT = 3;
+    private String contactResults;
+    private boolean enemyKilledUser;
+    private boolean userKilledEnemy;
 
     public UseAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
@@ -69,6 +80,8 @@ public class UseAttackPhase extends BattlePhase {
         madePhysicalContact = false;
         userRecoilFaint = false;
         enemyRecoilFaint = false;
+        state = -1;
+        contactResults = "";
     }
 
     /**
@@ -130,8 +143,11 @@ public class UseAttackPhase extends BattlePhase {
         } else {
             //Display the second skill name after depleting health.
             updatingHealth = false;
-            //There are results to be displayed
-            displayingResults = true;
+            if (usedSkill.makesPhysicalContact()) {
+                state = ABILITY_CONTACT;
+            } else {
+                displayingResults = true;
+            }
 
         }
     }
@@ -173,15 +189,6 @@ public class UseAttackPhase extends BattlePhase {
     @Override
     public void update(double dt) {
 
-    }
-    public void renderText(SpriteBatch batch) {
-        if (displayingResults) {
-            pui.getFont().draw(batch, battleListText.get(1).get(resultsPosition).substring(0, textPosition), 54, 1143);
-        } else if (displayRecoilResults) {
-            pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
-        } else if (missed) {
-            pui.getFont().draw(batch, missText.substring(0, textPosition), 54, 1143);
-        }
     }
 
     protected void displayResults(double dt) {
@@ -331,5 +338,150 @@ public class UseAttackPhase extends BattlePhase {
     private void transferPreStatus() {
         pui.getUserPokemon().transferPreStatus();
         pui.getEnemyPokemon().transferPreStatus();
+    }
+
+    public void renderText(SpriteBatch batch) {
+        if (state == DISPLAY_ABILITY_CONTACT_RESULTS) {
+            pui.getFont().draw(batch, contactResults.substring(0, textPosition), 54, 1143);
+        } else {
+            if (displayingResults) {
+                pui.getFont().draw(batch, battleListText.get(1).get(resultsPosition).substring(0, textPosition), 54, 1143);
+            } else if (displayRecoilResults) {
+                pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+            } else if (missed) {
+                pui.getFont().draw(batch, missText.substring(0, textPosition), 54, 1143);
+            }
+        }
+    }
+
+    /**
+     * *************************************************************************************************************************
+     * *************************************************************************************************************************
+     *                                  MAKING CONTACT WITH THE RECEIVING POKEMON METHODS
+     * *************************************************************************************************************************
+     * *************************************************************************************************************************
+     */
+
+
+    protected void checkAbilityContact(double dt) {
+        if (receiver.getAbility() == Pokemon.Ability.STATIC) {
+            useStatic();
+        } else if (receiver.getAbility() == Pokemon.Ability.POISON_POINT) {
+            usePoisonPoint();
+        } else if (receiver.getAbility() == Pokemon.Ability.POISON_TOUCH) {
+            usePoisonTouch();
+        } else if (receiver.getAbility() == Pokemon.Ability.FLAME_BODY) {
+            useFlameBody();
+        } else if (receiver.getAbility() == Pokemon.Ability.EFFECT_SPORE) {
+            useEffectSpore();
+        }
+
+        if (!contactResults.equals("")) {
+            state = DISPLAY_ABILITY_CONTACT_RESULTS;
+        } else {
+            //go to next phase
+            goToNextPhase();
+        }
+    }
+
+    protected void updateAbilityContactResults(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition < contactResults.length()) {
+                textCounter = 0;
+                textPosition++;
+            }
+        }
+        if (textCounter >= 1.5) {
+            textCounter = 0;
+            textPosition = 0;
+            //go to next phase
+            attacker.transferPreStatus();
+            receiver.transferPreStatus();
+            goToNextPhase();
+        }
+    }
+
+    private void goToNextPhase() {
+        contactResults = "";
+        if (usedSkill.getStrikesLeft() > 0) {
+            battleListText = usedSkill.use(attacker, receiver, pui.getField()); //Override
+            updatingAnimation = true;
+            state = -1; //reset state.
+            if (attackerIsUser) {
+                animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);
+                checkPokemonHealthAfterUserAttack();
+            } else {
+                animation = usedSkill.getAnimation(ENEMY_SIDE_ANIMATION);
+                checkPokemonHealthAfterEnemyAttack();
+            }
+        } else {
+            state = -1;
+            //There are results to be displayed
+            displayingResults = true;
+        }
+    }
+
+    private void useStatic() {
+        if (!attacker.isStatused()) {
+            double rand = Math.random();
+            if (rand <= .3) {
+                contactResults = attacker.getName() + " was paralyzed\nfrom " +
+                        receiver.getName() + "s Static.";
+                attacker.setPreStatus(Pokemon.Status.PARALYSIS);
+            }
+        }
+    }
+
+    private void usePoisonPoint() {
+        if (!attacker.isStatused()) {
+            double rand = Math.random();
+            if (rand <= .30) {
+                contactResults = attacker.getName() + " was poisoned\nfrom " +
+                        receiver.getName() + "s Poison Point.";
+                attacker.setPreStatus(Pokemon.Status.POISON);
+            }
+        }
+    }
+
+    private void usePoisonTouch() {
+        if (!receiver.isStatused()) {
+            double rand = Math.random();
+            if (rand <= .30) {
+                contactResults = receiver.getName() + " was poisoned\nfrom " +
+                        attacker.getName() + "s Poison Touch.";
+                receiver.setPreStatus(Pokemon.Status.POISON);
+            }
+        }
+    }
+
+    private void useFlameBody() {
+        if (!attacker.isStatused()) {
+            double rand = Math.random();
+            if (rand <= .30) {
+                contactResults = attacker.getName() + " was burned\nfrom " +
+                        receiver.getName() + "s Flame Body.";
+                attacker.setPreStatus(Pokemon.Status.BURN);
+            }
+        }
+    }
+
+    private void useEffectSpore() {
+        if (!attacker.isStatused()) {
+            double rand = Math.random();
+            if (rand <= .9) {
+                contactResults = receiver.getName() + " was poisoned\nfrom " +
+                        attacker.getName() + "s Effect Spore.";
+                attacker.setPreStatus(Pokemon.Status.POISON);
+            } else if (rand > .9 && rand <= .19) {
+                contactResults = receiver.getName() + " was paralyzed\nfrom " +
+                        attacker.getName() + "s Effect Spore.";
+                attacker.setPreStatus(Pokemon.Status.PARALYSIS);
+            } else if (rand > .19 && rand <= .3) {
+                contactResults = receiver.getName() + " was put to sleep\nfrom " +
+                        attacker.getName() + "s Effect Spore.";
+                attacker.setPreStatus(Pokemon.Status.SLEEP);
+            }
+        }
     }
 }

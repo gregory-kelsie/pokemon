@@ -22,6 +22,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             if (!pui.getEnemySkill().doesDamageToEnemy() || (pui.getEnemySkill().doesDamageToEnemy() &&
                     pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
                 if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+                    usedSkill = pui.getEnemySkill();
                     battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField());
                     animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
                     attacker = pui.getEnemyPokemon();
@@ -44,6 +45,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             if (!pui.getUserSkill().doesDamageToEnemy() || (pui.getUserSkill().doesDamageToEnemy() &&
                     pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
                 if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+                    usedSkill = pui.getUserSkill();
                     battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField());
                     animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
                     attacker = pui.getUserPokemon();
@@ -66,7 +68,12 @@ public class UseSecondAttackPhase extends UseAttackPhase {
 
     @Override
     public void update(double dt) {
-        if (updatingAnimation) {
+        if (state == ABILITY_CONTACT) {
+            checkAbilityContact(dt);
+        } else if (state == DISPLAY_ABILITY_CONTACT_RESULTS) {
+            updateAbilityContactResults(dt);
+        }
+        else if (updatingAnimation) {
             updateAnimation(dt);
         } else if (updatingHealth) {
             updateReceiverHealth(dt);
@@ -102,28 +109,10 @@ public class UseSecondAttackPhase extends UseAttackPhase {
     }
 
     private void finishedDepletion(double dt) {
-        Pokemon attacker;
-        Pokemon receiver;
-        Skill attackingSkill;
-        if (pui.isUserPokemonFirstAttacker()) {
-            attacker = pui.getEnemyPokemon();
-            attackingSkill = pui.getEnemySkill();
-            receiver = pui.getUserPokemon();
-
-        } else {
-            attackingSkill = pui.getUserSkill();
-            attacker = pui.getUserPokemon();
-            receiver = pui.getEnemyPokemon();
-        }
         if (enemyFainted && !userFainted) {
-            if (pui.isUserPokemonFirstAttacker()) {
-                //Enemy killed themself with recoil.
-                pui.setPhase(new ExpPhase(pui));
-            } else {
-                pui.setPhase(new CheckContactEffectsPhase(pui, false, attacker, receiver, attackingSkill, false, true));
-            }
+            pui.setPhase(new ExpPhase(pui));
         } else if (!enemyFainted && !userFainted) {
-            pui.setPhase(new CheckContactEffectsPhase(pui, false, attacker, receiver, attackingSkill, false, false));
+            pui.setPhase(new PoisonCheckPhase(pui));
         } else if (enemyFainted && userFainted) {
             if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));
@@ -131,17 +120,11 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                 pui.finishedBattle();
             }
         } else if (!enemyFainted && userFainted) {
-            if (!pui.isUserPokemonFirstAttacker()) {
-                //User made themself faint
-                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
-                } else if (!pui.playerHasMorePokemon()) {
-                    pui.setPhase(new BlackedOutPhase(pui));
-                }
-            } else {
-                pui.setPhase(new CheckContactEffectsPhase(pui, false, attacker, receiver, attackingSkill, true, false));
+            if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+            } else if (!pui.playerHasMorePokemon()) {
+                pui.setPhase(new BlackedOutPhase(pui));
             }
-
         }
     }
 

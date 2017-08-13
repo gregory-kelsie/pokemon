@@ -101,6 +101,7 @@ public abstract class DamageSkill extends Skill {
             damage = enemyPokemon.getCurrentHealth();
         }
         enemyPokemon.subtractHealth(damage);
+        damageTally += damage; //Keep record of damage for multi-hit-moves
         secondList.add("Dealt " + damage + " damage.");
 
         //Subtract recoil damage.

@@ -34,6 +34,11 @@ public abstract class Skill {
     protected boolean makesPhysicalContact;
     protected boolean damagesEnemy;
 
+    //Multi-Hit Move Variables
+    protected boolean isMultiStrikeMove;
+    protected int strikesLeft;
+    protected int damageTally; //Counter to tally up damage.
+
     /**
      * Create a Skill.
      * @param name The skill's name
@@ -53,6 +58,9 @@ public abstract class Skill {
         targetsEnemy = true; //default
         makesPhysicalContact = false;
         damagesEnemy = false;
+        isMultiStrikeMove = false;
+        strikesLeft = -1;
+        damageTally = 0;
     }
 
     /**
@@ -227,6 +235,15 @@ public abstract class Skill {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Return the number of strikes left for a multi-hit move.
+     * @return The number of strikes left for a multi-hit move.
+     * -1 for non multi strike moves.
+     */
+    public int getStrikesLeft() {
+        return strikesLeft;
     }
 
     /**
