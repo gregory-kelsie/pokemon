@@ -68,4 +68,16 @@ public class Bulbasaur extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Ivysaur if the Bulbasaur is above level 16.
+     * @return Ivysaur if Bulbasaur is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 16) {
+            return PokemonId.IVYSAUR.getValue();
+        }
+        return -1;
+    }
 }

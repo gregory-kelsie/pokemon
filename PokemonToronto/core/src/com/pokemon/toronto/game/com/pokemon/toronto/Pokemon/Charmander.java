@@ -68,4 +68,16 @@ public class Charmander extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Charmeleon if the Charmander is above level 16.
+     * @return Charmeleon if Charmander is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 16) {
+            return PokemonId.CHARMELEON.getValue();
+        }
+        return -1;
+    }
 }

@@ -68,4 +68,16 @@ public class Charmeleon extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Charizard if the Charmeleon is above level 36.
+     * @return Charizard if Charmeleon is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 36) {
+            return PokemonId.CHARIZARD.getValue();
+        }
+        return -1;
+    }
 }

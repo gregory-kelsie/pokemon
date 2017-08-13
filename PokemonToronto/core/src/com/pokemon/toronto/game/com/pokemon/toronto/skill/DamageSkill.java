@@ -209,7 +209,6 @@ public abstract class DamageSkill extends Skill {
      */
     private double getModifier(Pokemon user, Pokemon enemy, Field field, boolean hasCrit) {
         double crit = this.getCritMultiplier(user, hasCrit);
-
         double resistMod = getResistModifier(user, enemy);
         double stabMod = getStabModifier(user);
         double abilityMod = getAbilityMod(user);

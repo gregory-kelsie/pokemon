@@ -66,4 +66,16 @@ public class Wartortle extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Blastoise if the Wartortle is above level 36.
+     * @return Blastoise if Wartortle is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 36) {
+            return PokemonId.BLASTOISE.getValue();
+        }
+        return -1;
+    }
 }

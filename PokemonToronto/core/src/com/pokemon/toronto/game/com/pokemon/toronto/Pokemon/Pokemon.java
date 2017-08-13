@@ -2253,5 +2253,117 @@ public abstract class Pokemon {
         currentHealth = Math.min(getHealthStat(), currentHealth + amt);
     }
 
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into
+     * at the Pokemon's current level.
+     * @return The id of the Pokemon this Pokemon would evolve into at
+     * the Pokemon's current level.
+     * Return -1 if the Pokemon wouldn't evolve into a Pokemon at this level.
+     * Ex: Return 2 if this Pokemon is Bulbasaur and Bulbasaur is level 16.
+     */
+    public int getLevelUpEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Fire Stone. -1 if it doesn't evolve into a Pokemon using a Fire Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Fire Stone.
+     */
+    public int getFireStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Leaf Stone. -1 if it doesn't evolve into a Pokemon using a Leaf Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Leaf Stone.
+     */
+    public int getLeafStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Water Stone. -1 if it doesn't evolve into a Pokemon using a Water Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Water Stone.
+     */
+    public int getWaterStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Sun Stone. -1 if it doesn't evolve into a Pokemon using a Sun Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Sun Stone.
+     */
+    public int getSunStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Moon Stone. -1 if it doesn't evolve into a Pokemon using a Moon Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Moon Stone.
+     */
+    public int getMoonStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Shiny Stone. -1 if it doesn't evolve into a Pokemon using a Shiny Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Shiny Stone.
+     */
+    public int getShinyStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Thunder Stone. -1 if it doesn't evolve into a Pokemon using a Thunder Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Thunder Stone.
+     */
+    public int getThunderStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Dawn Stone. -1 if it doesn't evolve into a Pokemon using a Dawn Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Dawn Stone.
+     */
+    public int getDawnStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Dusk Stone. -1 if it doesn't evolve into a Pokemon using a Dusk Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Dusk Stone.
+     */
+    public int getDuskStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
+     * Return the Pokemon's id that this Pokemon would evolve into through
+     * a trade. -1 if it doesn't evolve into a Pokemon through a trade.
+     * @return The id of the Pokemon this Pokemon would evolve into through
+     * a trade.
+     */
+    public int getRegularTradeEvolutionId() {
+        return -1;
+    }
+
 
 }

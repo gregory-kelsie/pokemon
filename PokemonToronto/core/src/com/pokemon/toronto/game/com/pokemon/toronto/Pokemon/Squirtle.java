@@ -67,4 +67,16 @@ public class Squirtle extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Wartortle if the Squirtle is above level 16.
+     * @return Wartortle
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 16) {
+            return PokemonId.WARTORTLE.getValue();
+        }
+        return -1;
+    }
 }

@@ -67,4 +67,16 @@ public class Ivysaur extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Venusaur if the Ivysaur is above level 32.
+     * @return Venusaur if Bulbasaur is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 32) {
+            return PokemonId.VENUSAUR.getValue();
+        }
+        return -1;
+    }
 }
