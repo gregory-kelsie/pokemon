@@ -85,6 +85,55 @@ public abstract class Pokemon {
     protected double currentExp;
     protected int displayedExp;
 
+    //Battle Variables
+    private boolean isTaunted;
+    private int tauntTime;
+
+    private boolean isEffectedByEncore;
+    private int encoreTime;
+    private int encoreSlot;
+    private final int TOTAL_ENCORE_TIME = 3;
+
+    private int disabledSlot;
+    private int disabledTime;
+    private final int TOTAL_DISABLE_TIME = 4;
+
+    private boolean isMagnetRisen;
+    private int magnetRisenTime;
+    private final int TOTAL_MAGNET_RISE_TIME = 5;
+
+    private boolean isLiftedByTelekinesis;
+    private int telekinesisTime;
+    private final int TOTAL_TELEKINESIS_TIME = 3;
+
+    private boolean isHealBlocked;
+    private int healBlockTime;
+    private final int TOTAL_HEAL_BLOCK_TIME = 5;
+
+    private boolean isEffectedByEmbargo;
+    private int embargoTime;
+    private final int TOTAL_EMBARGO_TIME = 5;
+
+    private boolean justReceivedYawn;
+    private boolean fallAsleepDueToYawnThisTurn;
+
+    private boolean heardPerishSong;
+    private int perishSongTime;
+    private final int TOTAL_PERISH_SONG_TIME = 3;
+
+    private boolean witnessedFutureSight;
+    private int futureSightTime;
+    private final int TOTAL_FUTURE_SIGHT_TIME = 2;
+
+    private boolean witnessedDoomDesire;
+    private int doomDesireTime;
+    private final int TOTAL_DOOM_DESIRE_TIME = 2;
+
+    private boolean envelopedInAquaRing;
+    private boolean isIngrained;
+    private boolean isLeechSeeded;
+    private boolean hasNightmares;
+
     /** Constants */
 
     //Mins and Maxes
@@ -206,6 +255,363 @@ public abstract class Pokemon {
         initializeResistances();
     }
 
+    /**
+     * Initialize the Pokemon's battle variables.
+     * - Stages
+     * - Health
+     * - Animation Health
+     * - Nature multipliers
+     */
+    private void initBattleVariables() {
+        resetBattleVariables();
+        currentHealth = getHealthStat();
+        animationHealth = currentHealth;
+        initNatureMultipliers();
+    }
+
+    /**
+     * Reset the battle variables for the Pokemon.
+     * Stages, Confusion etc. Basically the elements that
+     * get reset when the Pokemon returns to their ball.
+     */
+    public void resetBattleVariables() {
+        resetStages();
+        //TODO: Create temporary ability for worry seed, mummy etc
+        //TODO: Remove Confusion when it's implemented
+        isTaunted = false;
+        isEffectedByEmbargo = false;
+        isEffectedByEncore = false;
+        isHealBlocked = false;
+        justReceivedYawn = false;
+        fallAsleepDueToYawnThisTurn = false;
+        isMagnetRisen = false;
+        isLiftedByTelekinesis = false;
+        heardPerishSong = false;
+        witnessedFutureSight = false;
+        witnessedDoomDesire = false;
+        envelopedInAquaRing = false;
+        isIngrained = false;
+        isLeechSeeded = false;
+        hasNightmares = false;
+        tauntTime = -1;
+        embargoTime = -1;
+        encoreTime = -1;
+        encoreSlot = -1;
+        healBlockTime = -1;
+        telekinesisTime = -1;
+        magnetRisenTime = -1;
+        futureSightTime = -1;
+        doomDesireTime = -1;
+        disabledSlot = -1;
+        disabledTime = -1;
+        perishSongTime = -1;
+    }
+
+    /**
+     * Get taunted and set the time the Pokemon is taunted
+     * to the maximum taunt time.
+     */
+    public void receiveTaunt() {
+        isTaunted = true;
+        tauntTime = 3;
+    }
+
+    /**
+     * Return whether or not the Pokemon is taunted.
+     * @return Whether or not the Pokemon is taunted.
+     */
+    public boolean isTaunted() {
+        return isTaunted;
+    }
+
+    /**
+     * Receive the Embargo status.
+     */
+    public void receiveEmbargo() {
+        isEffectedByEmbargo = true;
+        embargoTime = TOTAL_EMBARGO_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon is effected by
+     * the Embargo move.
+     * @return Whether or not the Pokemon is effected by
+     * the Embargo move.
+     */
+    public boolean isEffectedByEmbargo() {
+        return isEffectedByEmbargo;
+    }
+
+    /**
+     * Make the skill at the index slot get encored.
+     * @param slot The move slot that gets encored.
+     */
+    public void receiveEncore(int slot) {
+        isEffectedByEncore = true;
+        encoreSlot = slot;
+        encoreTime = TOTAL_ENCORE_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon is encored.
+     * @return Whether or not the Pokemon is encored.
+     */
+    public boolean isEncored() {
+        return isEffectedByEncore;
+    }
+
+    /**
+     * Return which move slot is encored. -1 if the
+     * Pokemon is not effected by encore.
+     * @return Which move slot is encored. -1 if the
+     * Pokemon is not encored.
+     */
+    public int getEncoredSlot() {
+        return encoreSlot;
+    }
+
+    /**
+     * Use the Heal Block effect on the Pokemon.
+     */
+    public void receiveHealBlock() {
+        isHealBlocked = true;
+        healBlockTime = TOTAL_HEAL_BLOCK_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon is heal blocked.
+     * @return Whether or not the Pokemon is heal blocked.
+     */
+    public boolean isHealBlocked() {
+        return isHealBlocked;
+    }
+
+    /**
+     * Lift the Pokemon by the Telekinesis effect.
+     */
+    public void receiveTelekinesis() {
+        isLiftedByTelekinesis = true;
+        telekinesisTime = TOTAL_TELEKINESIS_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon is effected by
+     * the Telekinesis move.
+     * @return Whether or not the Pokemon is effected by
+     * the Telekinesis move.
+     */
+    public boolean isLiftedByTelekinesis() {
+        return isLiftedByTelekinesis;
+    }
+
+    /**
+     * Use the Magnet Rise move effect on the Pokemon.
+     */
+    public void receiveMagnetRise() {
+        isMagnetRisen = true;
+        magnetRisenTime = TOTAL_MAGNET_RISE_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon is effected by
+     * Magnet Rise.
+     * @return Whether or not the Pokemon is effected by
+     * Magnet Rise.
+     */
+    public boolean isMagnetRisen() {
+        return isMagnetRisen;
+    }
+
+    /**
+     * Get the Yawn effect.
+     */
+    public void receiveYawn() {
+        justReceivedYawn = true;
+        fallAsleepDueToYawnThisTurn = false;
+    }
+
+    /**
+     * Return whether or not the Pokemon just received
+     * the yawn effect.
+     * @return Whether or not the Pokemon just received
+     * the yawn effect.
+     */
+    public boolean isYawned() {
+        return justReceivedYawn;
+    }
+
+    /**
+     * Use Nightmare on the Pokemon.
+     */
+    public void receiveNightmare() {
+        hasNightmares = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon is effected by
+     * Nightmare.
+     * @return Whether or not the Pokemon is effected by
+     * Nightmare.
+     */
+    public boolean hasNightmares() {
+        return hasNightmares;
+    }
+
+    /**
+     * Use the Ingrain move on the Pokemon.
+     */
+    public void receiveIngrain() {
+        isIngrained = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon is ingrained.
+     * @return Whether or not the Pokemon is ingrained.
+     */
+    public boolean isIngrained() {
+        return isIngrained;
+    }
+
+    /**
+     * Let the Pokemon get leech seeded.
+     */
+    public void receiveLeechSeed() {
+        isLeechSeeded = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon is effected
+     * by Leech Seed.
+     * @return Whether or not the Pokemon is effected by
+     * Leech Seed.
+     */
+    public boolean isSeeded() {
+        return isLeechSeeded;
+    }
+
+    /**
+     * Envelop the Pokemon in Aqua Ring.
+     */
+    public void receiveAquaRing() {
+        envelopedInAquaRing = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon has Aqua Ring
+     * activated.
+     * @return Whether or not the Pokemon has Aqua Ring
+     * activated.
+     */
+    public boolean isEnvelopedInAquaRing() {
+        return envelopedInAquaRing;
+    }
+
+    /**
+     * Set the Pokemon to receive Future Sight damage after
+     * a few turns.
+     */
+    public void receiveFutureSight() {
+        witnessedFutureSight = true;
+        futureSightTime = TOTAL_FUTURE_SIGHT_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon has been hit by
+     * Future Sight and hasn't received the damage yet.
+     * @return Whether or not the Pokemon has been hit by
+     * Future Sight and hasn't received the damage yet.
+     */
+    public boolean witnessedFutureSight() {
+        return witnessedFutureSight;
+    }
+
+    /**
+     * Set the Pokemon to receive Doom Desire damage after
+     * a few turns.
+     */
+    public void receiveDoomDesire() {
+        witnessedDoomDesire = true;
+        doomDesireTime = TOTAL_DOOM_DESIRE_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon has been hit by
+     * Doom Desire and hasn't received the damage yet.
+     * @return Whether or not the Pokemon has been hit by
+     * Doom Desire  and hasn't received the damage yet.
+     */
+    public boolean witnessedDoomDesire() {
+        return witnessedDoomDesire;
+    }
+
+    /**
+     * Set the move slot that gets disabled.
+     * @param slot The move at index slot that gets disabled.
+     */
+    public void receiveDisable(int slot) {
+        disabledSlot = slot;
+        disabledTime = TOTAL_DISABLE_TIME;
+    }
+
+    /**
+     * Return whether or not the first move is disabled.
+     * @return Whether or not the first move is diabled.
+     */
+    public boolean isFirstMoveDisabled() {
+        if (disabledSlot == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return whether or not the second move is disabled.
+     * @return Whether or not the second move is diabled.
+     */
+    public boolean isSecondMoveDisabled() {
+        if (disabledSlot == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return whether or not the third move is disabled.
+     * @return Whether or not the third move is diabled.
+     */
+    public boolean isThirdMoveDisabled() {
+        if (disabledSlot == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return whether or not the fourth move is disabled.
+     * @return Whether or not the fourth move is diabled.
+     */
+    public boolean isFourthMoveDisabled() {
+        if (disabledSlot == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Let the Pokemon hear Perish Song.
+     */
+    public void receivePerishSong() {
+        heardPerishSong = true;
+        perishSongTime = TOTAL_PERISH_SONG_TIME;
+    }
+
+    /**
+     * Return whether or not the Pokemon heard Perish Song.
+     * @return Whether or not the Pokemon heard Perish Song.
+     */
+    public boolean heardPerishSong() {
+        return heardPerishSong;
+    }
 
     /**
      * Reset the coordaintes of the Pokemon, both enemy and
@@ -418,20 +824,6 @@ public abstract class Pokemon {
         if (skills.size() < 4) {
             skills.add(newMove);
         }
-    }
-
-    /**
-     * Initialize the Pokemon's battle variables.
-     * - Stages
-     * - Health
-     * - Animation Health
-     * - Nature multipliers
-     */
-    private void initBattleVariables() {
-        resetStages();
-        currentHealth = getHealthStat();
-        animationHealth = currentHealth;
-        initNatureMultipliers();
     }
 
     /**
@@ -1361,17 +1753,6 @@ public abstract class Pokemon {
         playerY = PLAYER_NORMAL_Y;
         enemyX = ENEMY_NORMAL_X;
         enemyY = ENEMY_NORMAL_Y;
-    }
-
-    /**
-     * Reset the battle variables for the Pokemon.
-     * Stages, Confusion etc. Basically the elements that
-     * get reset when the Pokemon returns to their ball.
-     */
-    public void resetBattleVariables() {
-        resetStages();
-        //TODO: Create temporary ability for worry seed, mummy etc
-        //TODO: Remove Confusion when it's implemented
     }
 
     /**
