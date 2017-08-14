@@ -1,4 +1,4 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire;
+package com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -13,45 +13,38 @@ import java.util.List;
  * Created by Gregory on 8/14/2017.
  */
 
-public class Ember extends DamageSkill {
-
+public class Bite extends DamageSkill {
     /**
-     * - Name: Ember
-     * - Type: Fire
-     * - Base Damage: 40
+     * - Name: Bite
+     * - Type: Dark
+     * - Base Damage: 60
      * - PP: 25
-     * - Cat: Special
+     * - Cat: Physical
      * - Crit Stage: 1
      * - Accuracy: 100
      */
-    public Ember() {
-        super("Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1);
+    public Bite() {
+        super("Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1);
+        makesPhysicalContact = true;
     }
 
     /**
-     * Damage the enemy, but also has a 10% chance to burn the enemy.
+     * Damage the enemy, but also has a 30% chance to flinch the enemy if bite goes first.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    @Override
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
         List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
-
-        //Check if the user is able to receive burn.
-        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {
-            double rand = Math.random(); //Roll the burn die
-            boolean burned = false;
-            if (rand <= 1) { //10% chance
-                burned = true;
-            }
-            if (burned) { //Inflict burned.
-                enemyPokemon.setPreStatus(Pokemon.Status.BURN);
-                fullList.get(1).add(enemyPokemon.getName() + " was burned.");
+        if (isFirstAttack && enemyPokemon.getAbility() != Pokemon.Ability.INNER_FOCUS) {
+            double rand = Math.random();
+            if (rand <= 1) {
+                enemyPokemon.flinch();
             }
         }
+
         return fullList;
     }
 

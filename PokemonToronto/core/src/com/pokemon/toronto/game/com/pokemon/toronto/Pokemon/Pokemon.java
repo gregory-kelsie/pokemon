@@ -43,7 +43,7 @@ public abstract class Pokemon {
     protected List<Skill> skills;
 
     //Battle Variables
-    protected boolean flinch;
+    protected boolean flinched;
     protected boolean focused;
     protected boolean wrapped;
     protected int wrapTurns;
@@ -273,6 +273,7 @@ public abstract class Pokemon {
     private void initBattleVariables() {
         resetBattleVariables();
         sleepTime = 0;
+        flinched = false;
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
         initNatureMultipliers();
@@ -315,6 +316,28 @@ public abstract class Pokemon {
         perishSongTime = -1;
         confusionTime = NOT_CONFUSED;
         confused = false;
+    }
+
+    /**
+     * Return whether or not the Pokemon has flinched.
+     * @return Whether or not the Pokemon flinched.
+     */
+    public boolean hasFlinched() {
+        return flinched;
+    }
+
+    /**
+     * Make the Pokemon flinch.
+     */
+    public void flinch() {
+        flinched = true;
+    }
+
+    /**
+     * Remove the flinch status from the Pokemon.
+     */
+    public void removeFlinch() {
+        flinched = false;
     }
 
     /**

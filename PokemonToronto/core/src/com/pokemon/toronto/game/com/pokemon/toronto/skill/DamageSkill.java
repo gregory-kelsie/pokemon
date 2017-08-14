@@ -69,8 +69,8 @@ public abstract class DamageSkill extends Skill {
      * @return The skill results.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
-        super.use(skillUser, enemyPokemon, field);
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        super.use(skillUser, enemyPokemon, field, isFirstAttack);
         List<List<String>> fullList = new ArrayList<List<String>>();
 
         //The list that says if the pokemon missed or failed. The text before the move animation.

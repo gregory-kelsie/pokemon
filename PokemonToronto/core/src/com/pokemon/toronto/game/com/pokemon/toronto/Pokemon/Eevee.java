@@ -85,13 +85,14 @@ public class Eevee extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.CONFUSE_RAY);
+        beginnerSkills.add(SkillFactory.COVET);
         beginnerSkills.add(SkillFactory.GROWL);
         beginnerSkills.add(SkillFactory.TACKLE);
         beginnerSkills.add(SkillFactory.TAIL_WHIP);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
     }
 
     /**

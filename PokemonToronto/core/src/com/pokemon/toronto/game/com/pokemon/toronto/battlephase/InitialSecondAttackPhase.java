@@ -16,14 +16,26 @@ public class InitialSecondAttackPhase extends TextPhase {
 
     private void init() {
         if (pui.isUserPokemonFirstAttacker()) {
-            text = pui.getEnemyPokemon().getName() + " used\n" +
-                    pui.getEnemySkill().getName() + "!";
-            secondSkill = pui.getEnemySkill();
+            if (pui.getEnemyPokemon().hasFlinched()) {
+                text = pui.getEnemyPokemon().getName() + " flinched.";
+                pui.getEnemyPokemon().removeFlinch();
+                nextPhase = new PoisonCheckPhase(pui);
+            } else {
+                text = pui.getEnemyPokemon().getName() + " used\n" +
+                        pui.getEnemySkill().getName() + "!";
+                nextPhase = new UseSecondAttackPhase(pui);
+            }
         } else {
-            text = pui.getUserPokemon().getName() + " used\n" +
-                    pui.getUserSkill().getName() + "!";
-            secondSkill = pui.getUserSkill();
+            if (pui.getUserPokemon().hasFlinched()) {
+                text = pui.getUserPokemon().getName() + " flinched.";
+                pui.getUserPokemon().removeFlinch();
+                nextPhase = new PoisonCheckPhase(pui);
+            } else {
+                text = pui.getUserPokemon().getName() + " used\n" +
+                        pui.getUserSkill().getName() + "!";
+                nextPhase = new UseSecondAttackPhase(pui);
+            }
         }
-        nextPhase = new UseSecondAttackPhase(pui);
+
     }
 }

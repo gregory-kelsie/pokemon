@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Bite;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
@@ -41,6 +42,7 @@ public class SkillFactory {
     public static final int CONFUSE_RAY = 14;
     public static final int SLEEP_POWDER = 15;
     public static final int EMBER = 16;
+    public static final int BITE = 17;
 
     public SkillFactory() {
 
@@ -84,6 +86,8 @@ public class SkillFactory {
             return new SleepPowder();
         } else if (skillId == EMBER) {
             return new Ember();
+        } else if (skillId == BITE) {
+            return new Bite();
         }
         else {
             return new Covet();

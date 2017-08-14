@@ -34,7 +34,7 @@ public class SleepPowder extends Skill {
      * @param field The field the battle is on.
      * @return The move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         List<List<String>> fullList = new ArrayList<List<String>>();
         List<String> firstList = new ArrayList<String>();
         List<String> secondList = new ArrayList<String>();

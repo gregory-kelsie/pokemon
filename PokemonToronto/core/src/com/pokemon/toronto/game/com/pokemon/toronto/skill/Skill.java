@@ -189,7 +189,7 @@ public abstract class Skill {
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         return null;
     }
 

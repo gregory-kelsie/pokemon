@@ -38,8 +38,9 @@ public class TakeDown extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
-        return super.use(skillUser, enemyPokemon, field);
+    @Override
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        return super.use(skillUser, enemyPokemon, field, isFirstAttack);
     }
 
     /**

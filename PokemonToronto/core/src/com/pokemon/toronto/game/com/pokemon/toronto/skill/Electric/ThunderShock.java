@@ -35,10 +35,10 @@ public class ThunderShock extends DamageSkill {
      * @param field The field the battle is on.
      * @return Thunder Shock's move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
 
         //Use the damage part of Thunder Shock.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field);
+        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
 
         //Check if the enemy is able to receive paralysis after the damage
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {

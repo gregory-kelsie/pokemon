@@ -25,7 +25,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                         pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
                     if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
                         usedSkill = pui.getUserSkill();
-                        battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField());
+                        battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), true);
                         animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
                         attacker = pui.getUserPokemon();
                         receiver = pui.getEnemyPokemon();
@@ -56,7 +56,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                         pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
                     if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
                         usedSkill = pui.getUserSkill();
-                        battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField());
+                        battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), true);
                         animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
                         attacker = pui.getEnemyPokemon();
                         receiver = pui.getUserPokemon();

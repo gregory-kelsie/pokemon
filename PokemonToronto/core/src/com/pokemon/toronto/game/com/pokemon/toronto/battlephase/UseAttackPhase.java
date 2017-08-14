@@ -403,7 +403,7 @@ public class UseAttackPhase extends BattlePhase {
     private void goToNextPhase() {
         contactResults = "";
         if (usedSkill.getStrikesLeft() > 0) {
-            battleListText = usedSkill.use(attacker, receiver, pui.getField()); //Override
+            battleListText = usedSkill.use(attacker, receiver, pui.getField(), firstAttack); //Override
             updatingAnimation = true;
             state = -1; //reset state.
             if (attackerIsUser) {

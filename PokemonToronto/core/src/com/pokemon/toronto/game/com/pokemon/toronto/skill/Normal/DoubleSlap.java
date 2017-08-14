@@ -42,7 +42,7 @@ public class DoubleSlap extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
         if (strikesLeft == -1) {
 
@@ -59,7 +59,7 @@ public class DoubleSlap extends DamageSkill {
         }
         timesHit++;
         strikesLeft--;
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field);
+        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
         fullList.get(1).remove(0); //Remove old single damage result.
         fullList.get(1).add("Dealt " + damageTally + " damage!");
         fullList.get(1).add("Hit " + timesHit + " times!");
