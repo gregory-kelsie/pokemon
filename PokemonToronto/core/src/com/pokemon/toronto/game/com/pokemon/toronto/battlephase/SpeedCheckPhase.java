@@ -60,7 +60,7 @@ public class SpeedCheckPhase extends BattlePhase {
                 pui.setEnemyFirstAttacker(userSkill, enemySkill);
             }
         }
-        pui.setPhase(new ConfusionCheckPhase(pui, CHECK_FIRST_ATTACKER_PARALYSIS));
+        pui.setPhase(new SleepCheckPhase(pui, CHECK_FIRST_ATTACKER_PARALYSIS));
     }
 
     @Override

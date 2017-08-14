@@ -139,6 +139,8 @@ public abstract class Pokemon {
     private final int NOT_CONFUSED = 0;
     private boolean confused;
 
+    private int sleepTime;
+
     /** Constants */
 
     //Mins and Maxes
@@ -270,6 +272,7 @@ public abstract class Pokemon {
      */
     private void initBattleVariables() {
         resetBattleVariables();
+        sleepTime = 0;
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
         initNatureMultipliers();
@@ -620,6 +623,47 @@ public abstract class Pokemon {
         return heardPerishSong;
     }
 
+
+    /**
+     * Put the Pokemon to sleep and give it a random sleep time.
+     */
+    public void induceSleep() {
+        preStatus = Status.SLEEP;
+        double rand = Math.random();
+        if (rand <= .33) {
+            sleepTime = 1;
+        } else if (rand <= .67) {
+            sleepTime = 2;
+        } else {
+            sleepTime = 3;
+        }
+    }
+
+    /**
+     * Reduce the amount of turns the Pokemon is asleep for by
+     * 1 turn.
+     */
+    public void reduceSleepTime() {
+        sleepTime--;
+        sleepTime = Math.max(sleepTime, 0);
+    }
+
+    /**
+     * Return the amount of turns the Pokemon is asleep for.
+     * @return The amount of turns the Pokemon is asleep for.
+     */
+    public int getSleepTime() {
+        return sleepTime;
+    }
+
+    /**
+     * Remove the Sleep status from the Pokemon and reset the sleepTime.
+     */
+    public void wakeUp() {
+        sleepTime = 0;
+        status = Status.STATUS_FREE;
+    }
+    
     /**
      * Apply confusion to the Pokemon that will last 1-4 attacking turns.
      */
@@ -1850,6 +1894,7 @@ public abstract class Pokemon {
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
         fainted = false;
+        sleepTime = 0;
         status = Status.STATUS_FREE;
         preStatus = Status.STATUS_FREE;
 

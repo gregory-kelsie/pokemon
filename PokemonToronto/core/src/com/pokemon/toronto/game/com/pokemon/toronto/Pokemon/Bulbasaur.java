@@ -86,6 +86,7 @@ public class Bulbasaur extends Pokemon {
     protected void initLevelUpSkills() {
         levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
         levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
     }
 
     /**

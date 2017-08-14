@@ -74,7 +74,7 @@ public class SwitchPhase extends BattlePhase {
     private void updateDelayAfterNewPokemon(double dt) {
         counter += dt;
         if (counter >= 1.5) {
-            pui.setPhase(new ConfusionCheckPhase(pui, false));
+            pui.setPhase(new SleepCheckPhase(pui, false));
         }
     }
 

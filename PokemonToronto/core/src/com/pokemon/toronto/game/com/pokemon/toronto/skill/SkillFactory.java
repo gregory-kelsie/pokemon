@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
@@ -37,6 +38,7 @@ public class SkillFactory {
     public static final int TAKE_DOWN = 12;
     public static final int DOUBLE_SLAP = 13;
     public static final int CONFUSE_RAY = 14;
+    public static final int SLEEP_POWDER = 15;
 
     public SkillFactory() {
 
@@ -76,6 +78,8 @@ public class SkillFactory {
             return new DoubleSlap();
         } else if (skillId == CONFUSE_RAY) {
             return new ConfuseRay();
+        } else if (skillId == SLEEP_POWDER) {
+            return new SleepPowder();
         }
         else {
             return new Covet();
