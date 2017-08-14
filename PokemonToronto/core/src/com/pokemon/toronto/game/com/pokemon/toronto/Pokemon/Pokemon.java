@@ -909,7 +909,7 @@ public abstract class Pokemon {
     protected void initWildSkills() {
         int currentSkill = 0;
         SkillFactory skillFactory = new SkillFactory();
-        for (int i = 0; i < level; i++) {
+        for (int i = 0; i <= level; i++) {
             //Check if the Pokemon learns a move at the level i
             if (levelUpSkills.containsKey(i)) {
                 for (int j = 0; j < levelUpSkills.get(i).size(); j++) {
