@@ -216,7 +216,8 @@ public abstract class DamageSkill extends Skill {
         double defenseAbilityMod = getDefenseAbilityMod(enemy);
         double weatherMod = getWeatherMod(field);
         double randVal = Math.random() * (0.15) + 0.85;
-        return  (stabMod * resistMod * crit * abilityMod * defenseAbilityMod * weatherMod * randVal);
+        double burnMod = getBurnMod(user);
+        return  (stabMod * resistMod * crit * abilityMod * defenseAbilityMod * weatherMod * randVal * burnMod);
     }
 
 	/**
@@ -283,6 +284,21 @@ public abstract class DamageSkill extends Skill {
         }
     }
 
+
+    /**
+     * Return the burn damage reduction on the skill.
+     * Only reduces damage if the attack is a physical attack or the user
+     * doesn't have guts or the skill isn't facade.
+     * @param user The Attacker
+     * @return The burn modifier.
+     */
+    private double getBurnMod (Pokemon user) {
+        if (user.getAbility() == Pokemon.Ability.GUTS ||
+                name.equals("Facade") || category != SkillCategory.PHYSICAL) {
+            return 1;
+        }
+        return 0.5;
+    }
 	/**
 	* 	Return the attacker's ability multiplier when determining the damage dealt.
 	*	@param user - The Attacker
