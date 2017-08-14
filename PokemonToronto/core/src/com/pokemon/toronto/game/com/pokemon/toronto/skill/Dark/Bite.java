@@ -40,7 +40,7 @@ public class Bite extends DamageSkill {
         List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
         if (isFirstAttack && enemyPokemon.getAbility() != Pokemon.Ability.INNER_FOCUS) {
             double rand = Math.random();
-            if (rand <= 1) {
+            if (rand <= .3) {
                 enemyPokemon.flinch();
             }
         }
