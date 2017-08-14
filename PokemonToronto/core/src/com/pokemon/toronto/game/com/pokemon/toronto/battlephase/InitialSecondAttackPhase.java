@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
@@ -19,7 +20,7 @@ public class InitialSecondAttackPhase extends TextPhase {
             if (pui.getEnemyPokemon().hasFlinched()) {
                 text = pui.getEnemyPokemon().getName() + " flinched.";
                 pui.getEnemyPokemon().removeFlinch();
-                nextPhase = new PoisonCheckPhase(pui);
+                nextPhase = new EndTurnPhase(pui);
             } else {
                 text = pui.getEnemyPokemon().getName() + " used\n" +
                         pui.getEnemySkill().getName() + "!";
@@ -29,7 +30,7 @@ public class InitialSecondAttackPhase extends TextPhase {
             if (pui.getUserPokemon().hasFlinched()) {
                 text = pui.getUserPokemon().getName() + " flinched.";
                 pui.getUserPokemon().removeFlinch();
-                nextPhase = new PoisonCheckPhase(pui);
+                nextPhase = new EndTurnPhase(pui);
             } else {
                 text = pui.getUserPokemon().getName() + " used\n" +
                         pui.getUserSkill().getName() + "!";

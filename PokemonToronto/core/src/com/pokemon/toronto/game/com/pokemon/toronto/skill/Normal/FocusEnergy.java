@@ -56,7 +56,8 @@ public class FocusEnergy extends Skill {
     }
 
     @Override
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon) {
+    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon,
+                            Field field, boolean isFirstAttack) {
         if (skillUser.isFocused()) {
             return true;
         }

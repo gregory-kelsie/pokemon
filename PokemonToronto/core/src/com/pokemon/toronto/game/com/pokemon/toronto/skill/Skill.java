@@ -185,11 +185,14 @@ public abstract class Skill {
      * Use the skill on an enemy pokemon.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param field The field for the battle.
+     * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return A List of a List of Strings that display the result of
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon,
+                                  Field field, boolean isFirstAttack) {
         return null;
     }
 
@@ -199,7 +202,8 @@ public abstract class Skill {
      * @param enemyPokemon The Pokemon receiving the skill.
      * @return Whether or not the skill hits the enemy.
      */
-    public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon) {
+    public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
+                                Field field, boolean isFirstAttack) {
         if (accuracy != -1) {
             //Init Modifiers
             int accuracyStage = skillUser.getAccuracyStage();
@@ -223,9 +227,12 @@ public abstract class Skill {
      * Return whether or not the skill will fail.
      * @param skillUser The skill's user.
      * @param enemyPokemon The Pokemon on the receiving end.
+     * @param field The field for the battle.
+     * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return Whether or not the skill will fail.
      */
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon) {
+    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon,
+                            Field field, boolean isFirstAttack) {
         return false;
     }
 

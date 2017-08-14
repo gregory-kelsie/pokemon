@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Hail;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.FocusEnergy;
@@ -45,6 +46,7 @@ public class SkillFactory {
     public static final int EMBER = 16;
     public static final int BITE = 17;
     public static final int FOCUS_ENERGY = 18;
+    public static final int HAIL = 19;
 
     public SkillFactory() {
 
@@ -92,6 +94,8 @@ public class SkillFactory {
             return new Bite();
         } else if (skillId == FOCUS_ENERGY) {
             return new FocusEnergy();
+        } else if (skillId == HAIL) {
+            return new Hail();
         }
         else {
             return new Covet();

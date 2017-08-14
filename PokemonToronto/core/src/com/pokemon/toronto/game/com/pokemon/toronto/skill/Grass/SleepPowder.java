@@ -58,7 +58,7 @@ public class SleepPowder extends Skill {
     }
 
     @Override
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon) {
+    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttacker) {
         if (enemyPokemon.isStatused()) {
             return true;
         }

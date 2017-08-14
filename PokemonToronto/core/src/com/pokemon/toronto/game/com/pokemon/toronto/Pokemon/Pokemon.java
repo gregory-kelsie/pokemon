@@ -200,7 +200,8 @@ public abstract class Pokemon {
         SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
         LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
-        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR
+        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
+        ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT
     }
 
     /**
@@ -2283,6 +2284,14 @@ public abstract class Pokemon {
                 return "Battle Armor";
             case SHELL_ARMOR:
                 return "Shell Armor";
+            case ICE_BODY:
+                return "Ice Body";
+            case SNOW_CLOAK:
+                return "Snow Cloak";
+            case MAGIC_GUARD:
+                return "Magic Guard";
+            case OVERCOAT:
+                return "Overcoat";
             default:
                 return "Ability Error";
 
@@ -2306,6 +2315,17 @@ public abstract class Pokemon {
      * @return The current health
      */
     public int getCurrentHealth() { return currentHealth; }
+
+    /**
+     * Return whether or not the Pokemon has full health.
+     * @return Whether or not the Pokemon has full health.
+     */
+    public boolean hasFullHealth() {
+        if (currentHealth == getHealthStat()) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Return the Status of the Pokemon.

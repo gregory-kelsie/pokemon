@@ -20,10 +20,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
         firstAttack = true;
         if (pui.isUserPokemonFirstAttacker()) {
             attackerIsUser = true;
-            if (!pui.getUserSkill().willFail(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+            if (!pui.getUserSkill().willFail(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), true)) {
                 if (!pui.getUserSkill().doesDamageToEnemy() || (pui.getUserSkill().doesDamageToEnemy() &&
                         pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
-                    if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+                    if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), true)) {
                         usedSkill = pui.getUserSkill();
                         battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), true);
                         animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
@@ -51,10 +51,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
 
         } else {
             attackerIsUser = false;
-            if (!pui.getEnemySkill().willFail(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+            if (!pui.getEnemySkill().willFail(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), true)) {
                 if (!pui.getEnemySkill().doesDamageToEnemy() || (pui.getEnemySkill().doesDamageToEnemy() &&
                         pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
-                    if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+                    if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), true)) {
                         usedSkill = pui.getUserSkill();
                         battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), true);
                         animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);

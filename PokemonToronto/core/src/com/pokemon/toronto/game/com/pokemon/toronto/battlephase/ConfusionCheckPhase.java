@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.HurtByConfusion;
 
 /**
@@ -204,7 +205,7 @@ public class ConfusionCheckPhase extends BattlePhase {
                     pui.setPhase(new SleepCheckPhase(pui, false));
                 } else {
                     //Go to end of turn effects.
-                    pui.setPhase(new PoisonCheckPhase(pui));
+                    pui.setPhase(new EndTurnPhase(pui));
                 }
             } else {
                 //Fainted.

@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.List;
@@ -19,10 +20,10 @@ public class UseSecondAttackPhase extends UseAttackPhase {
         firstAttack = false;
         if (pui.isUserPokemonFirstAttacker()) {
             attackerIsUser = false;
-            if (!pui.getEnemySkill().willFail(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+            if (!pui.getEnemySkill().willFail(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false)) {
                 if (!pui.getEnemySkill().doesDamageToEnemy() || (pui.getEnemySkill().doesDamageToEnemy() &&
                         pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
-                    if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon())) {
+                    if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false)) {
                         usedSkill = pui.getEnemySkill();
                         battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false);
                         animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
@@ -49,10 +50,10 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             }
         } else {
             attackerIsUser = true;
-            if (!pui.getUserSkill().willFail(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+            if (!pui.getUserSkill().willFail(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false)) {
                 if (!pui.getUserSkill().doesDamageToEnemy() || (pui.getUserSkill().doesDamageToEnemy() &&
                         pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
-                    if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon())) {
+                    if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false)) {
                         usedSkill = pui.getUserSkill();
                         battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false);
                         animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
@@ -117,7 +118,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             }
         }
         if (textCounter >= 1.5) {
-            pui.setPhase(new PoisonCheckPhase(pui));
+            pui.setPhase(new EndTurnPhase(pui));
         }
 
     }
@@ -126,7 +127,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
         if (enemyFainted && !userFainted) {
             pui.setPhase(new ExpPhase(pui));
         } else if (!enemyFainted && !userFainted) {
-            pui.setPhase(new PoisonCheckPhase(pui));
+            pui.setPhase(new EndTurnPhase(pui));
         } else if (enemyFainted && userFainted) {
             if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));

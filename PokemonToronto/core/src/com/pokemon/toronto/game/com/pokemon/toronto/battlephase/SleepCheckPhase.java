@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
@@ -140,7 +141,7 @@ public class SleepCheckPhase extends BattlePhase {
                     //Go to next turn
                     pui.setPhase(new SleepCheckPhase(pui, false));
                 } else { //End the turn
-                    pui.setPhase(new PoisonCheckPhase(pui));
+                    pui.setPhase(new EndTurnPhase(pui));
                 }
             }
         }

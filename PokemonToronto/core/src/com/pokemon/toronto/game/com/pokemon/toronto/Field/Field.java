@@ -9,8 +9,8 @@ public class Field {
     private final int NO_GRAVITY = 0;
     private final int DEFAULT_GRAVITY_TIME = 5;
     private final int NO_TIME_LIMIT = -1;
-    private final int DEFAULT_WEATHER_LENGTH = 5;
-    private final int LAST_WEATHER_TURN = -1;
+    private final int DEFAULT_WEATHER_LENGTH = 5; //5 turns
+    private final int LAST_WEATHER_TURN = 0;
     private final int DEFAULT_TERRAIN_LENGTH = 5;
     private final int LAST_TERRAIN_TURN = -1;
     
@@ -57,12 +57,45 @@ public class Field {
      * Adjust the weather type after a turn has passed.
      */
     public void adjustWeather() {
-        if (weatherType != WeatherType.NORMAL) {
+        if (weatherType != WeatherType.NORMAL &&
+                weatherTimeLimit != NO_TIME_LIMIT) {
             weatherTimeLimit--;
-            if (weatherTimeLimit == LAST_WEATHER_TURN) {
-                setWeather(WeatherType.NORMAL, NO_TIME_LIMIT); //Reset weather to clear skies
-            }
         }
+    }
+
+    /**
+     * Return whether or not the weather time limit is
+     * finished.
+     * @return Whether or not the weather time limit
+     * expired.
+     */
+    public boolean onLastWeatherTurn() {
+        if (weatherTimeLimit == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Clear all weather types and set it to normal.
+     */
+    public void clearWeather() {
+        weatherType = WeatherType.NORMAL;
+        weatherTimeLimit = NO_TIME_LIMIT;
+    }
+
+    /**
+     * Return whether or not the weather deals damage
+     * at the end of the turn.
+     * @return Whether or not the weather deals damage
+     * at the end of the turn.
+     */
+    public boolean hasDamagingWeatherConditions() {
+        if (weatherType == WeatherType.HAIL ||
+                weatherType == WeatherType.SAND) {
+            return true;
+        }
+        return false;
     }
 
     /**

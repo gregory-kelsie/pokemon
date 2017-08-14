@@ -117,21 +117,35 @@ public class PoisonCheckPhase extends BattlePhase {
         } else if (poisonCheckState == DISPLAY_PLAYER_FAINT_TEXT) {
             updateFaintText(dt, true);
         } else if (poisonCheckState == INIT) {
-            if (pui.getEnemyPokemon().isPoisoned()) {
-                poisonCheckState = DISPLAY_ENEMY_HURT_BY_POISON;
-                text = pui.getEnemyPokemon().getName() + " was hurt by poison.";
-                int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 8.0);
-                pui.getEnemyPokemon().subtractHealth(damage);
-            } else if (pui.getEnemyPokemon().isBurned()) {
-                poisonCheckState = DISPLAY_ENEMY_HURT_BY_POISON;
-                text = pui.getEnemyPokemon().getName() + " was hurt by burn.";
-                int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 16.0);
-                pui.getEnemyPokemon().subtractHealth(damage);
+            if (pui.getEnemyPokemon().isFainted()) {
+                pui.setPhase(new ExpPhase(pui));
+            } else if (pui.getUserPokemon().isFainted()) {
+                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                } else if (!pui.playerHasMorePokemon()) {
+                    pui.setPhase(new BlackedOutPhase(pui));
+                }
             } else {
-                checkPlayerForPoison();
+                checkEnemyForPoison();
             }
         }
 
+    }
+
+    private void checkEnemyForPoison() {
+        if (pui.getEnemyPokemon().isPoisoned()) {
+            poisonCheckState = DISPLAY_ENEMY_HURT_BY_POISON;
+            text = pui.getEnemyPokemon().getName() + " was hurt by poison.";
+            int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 8.0);
+            pui.getEnemyPokemon().subtractHealth(damage);
+        } else if (pui.getEnemyPokemon().isBurned()) {
+            poisonCheckState = DISPLAY_ENEMY_HURT_BY_POISON;
+            text = pui.getEnemyPokemon().getName() + " was hurt by burn.";
+            int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 16.0);
+            pui.getEnemyPokemon().subtractHealth(damage);
+        } else {
+            checkPlayerForPoison();
+        }
     }
 
     private void updateFaintText(double dt, boolean playerFainted) {

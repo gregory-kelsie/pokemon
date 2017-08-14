@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 
 /**
  * Created by Gregory on 7/30/2017.
@@ -70,7 +71,7 @@ public class ParalysisCheckPhase extends BattlePhase {
             if (isFirstMove) {
                 nextPhase = new InitialSecondAttackPhase(pui);
             } else {
-                nextPhase = new PoisonCheckPhase(pui);
+                nextPhase = new EndTurnPhase(pui);
             }
         } else {
             allowAttackPhase();
