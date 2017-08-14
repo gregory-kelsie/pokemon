@@ -21,6 +21,7 @@ public class SwitchPhase extends BattlePhase {
     public SwitchPhase(PhaseUpdaterInterface pui, Pokemon sentOutPokemon) {
         super(pui);
         currentState = COME_BACK;
+        pui.getUserPokemon().resetBattleVariables();
         text = "Come back " + pui.getUserPokemon().getName();
         counter = 0;
         textPosition = 0;
@@ -73,7 +74,7 @@ public class SwitchPhase extends BattlePhase {
     private void updateDelayAfterNewPokemon(double dt) {
         counter += dt;
         if (counter >= 1.5) {
-            pui.setPhase(new ParalysisCheckPhase(pui, false));
+            pui.setPhase(new ConfusionCheckPhase(pui, false));
         }
     }
 

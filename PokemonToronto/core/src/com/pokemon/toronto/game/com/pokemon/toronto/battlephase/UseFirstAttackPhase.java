@@ -120,7 +120,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             }
         }
         if (textCounter >= 1.5) {
-            pui.setPhase(new ParalysisCheckPhase(pui, false));
+            pui.setPhase(new ConfusionCheckPhase(pui, false));
         }
 
     }
@@ -129,7 +129,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
         if (enemyFainted && !userFainted) {
             pui.setPhase(new ExpPhase(pui));
         } else if (!enemyFainted && !userFainted) {
-            pui.setPhase(new ParalysisCheckPhase(pui, false));
+            pui.setPhase(new ConfusionCheckPhase(pui, false));
         } else if (enemyFainted && userFainted) {
             if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));

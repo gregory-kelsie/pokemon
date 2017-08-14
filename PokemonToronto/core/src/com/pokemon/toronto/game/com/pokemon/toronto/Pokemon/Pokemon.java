@@ -137,6 +137,7 @@ public abstract class Pokemon {
 
     private int confusionTime;
     private final int NOT_CONFUSED = 0;
+    private boolean confused;
 
     /** Constants */
 
@@ -310,6 +311,7 @@ public abstract class Pokemon {
         disabledTime = -1;
         perishSongTime = -1;
         confusionTime = NOT_CONFUSED;
+        confused = false;
     }
 
     /**
@@ -632,6 +634,8 @@ public abstract class Pokemon {
         } else {
             confusionTime = 4;
         }
+        confusionTime = 1;
+        confused = true;
     }
 
     /**
@@ -643,15 +647,27 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return how many turns of confusion are left.
+     * @return Number of confusion turns left.
+     */
+    public int getConfusionTime() {
+        return confusionTime;
+    }
+
+    /**
+     * Remove confusion from the Pokemon.
+     */
+    public void removeConfusion() {
+        confusionTime = 0;
+        confused = false;
+    }
+
+    /**
      * Return whether or not the Pokemon is confused.
      * @return Whether or not the Pokemon is confused.
      */
     public boolean isConfused() {
-        if (confusionTime > NOT_CONFUSED) {
-            return true;
-        } else {
-            return false;
-        }
+        return confused;
     }
 
     /**

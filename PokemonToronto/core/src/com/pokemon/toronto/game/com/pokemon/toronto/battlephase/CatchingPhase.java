@@ -137,7 +137,7 @@ public class CatchingPhase extends BattlePhase {
                 pui.caughtTheWildPokemon();
                 pui.endBattle();
             } else {
-                pui.setPhase(new ParalysisCheckPhase(pui, false));
+                pui.setPhase(new ConfusionCheckPhase(pui, false));
             }
         }
     }
