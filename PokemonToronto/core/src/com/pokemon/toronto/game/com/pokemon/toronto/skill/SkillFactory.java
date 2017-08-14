@@ -10,6 +10,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.FocusEnergy;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Growl;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Leer;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
@@ -43,6 +44,7 @@ public class SkillFactory {
     public static final int SLEEP_POWDER = 15;
     public static final int EMBER = 16;
     public static final int BITE = 17;
+    public static final int FOCUS_ENERGY = 18;
 
     public SkillFactory() {
 
@@ -88,6 +90,8 @@ public class SkillFactory {
             return new Ember();
         } else if (skillId == BITE) {
             return new Bite();
+        } else if (skillId == FOCUS_ENERGY) {
+            return new FocusEnergy();
         }
         else {
             return new Covet();

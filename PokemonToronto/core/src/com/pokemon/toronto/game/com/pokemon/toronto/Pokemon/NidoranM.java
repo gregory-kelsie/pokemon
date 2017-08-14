@@ -88,6 +88,7 @@ public class NidoranM extends Pokemon {
         beginnerSkills.add(SkillFactory.LEER);
         beginnerSkills.add(SkillFactory.PECK);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
     }
 

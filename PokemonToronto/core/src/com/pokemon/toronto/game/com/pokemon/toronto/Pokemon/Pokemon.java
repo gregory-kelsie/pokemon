@@ -200,7 +200,7 @@ public abstract class Pokemon {
         SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
         LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
-        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO
+        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR
     }
 
     /**
@@ -247,7 +247,6 @@ public abstract class Pokemon {
         this.ability = ability;
         this.captureRate = captureRate;
         this.fainted = false;
-        this.focused = false;
         status = Status.STATUS_FREE;
         preStatus = Status.STATUS_FREE;
         currentExp = NO_EXP;
@@ -316,6 +315,7 @@ public abstract class Pokemon {
         perishSongTime = -1;
         confusionTime = NOT_CONFUSED;
         confused = false;
+        focused = false;
     }
 
     /**
@@ -2119,6 +2119,12 @@ public abstract class Pokemon {
     public boolean isFocused() { return focused; }
 
     /**
+     * Make the Pokemon focus. (From focus energy)
+     */
+    public void focus() { focused = true; }
+
+
+    /**
      * Return the Pokemon's name
      * @return Pokemon's name
      */
@@ -2273,6 +2279,10 @@ public abstract class Pokemon {
                 return "Effect Spore";
             case OWN_TEMPO:
                 return "Own Tempo";
+            case BATTLE_ARMOR:
+                return "Battle Armor";
+            case SHELL_ARMOR:
+                return "Shell Armor";
             default:
                 return "Ability Error";
 

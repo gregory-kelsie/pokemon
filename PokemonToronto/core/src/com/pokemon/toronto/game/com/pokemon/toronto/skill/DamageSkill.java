@@ -80,7 +80,7 @@ public abstract class DamageSkill extends Skill {
         //It comes after the animation
         List<String> secondList = new ArrayList<String>();
 
-        boolean hasCrit = false;
+        boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results
         if (moveIsSuperEffective(enemyPokemon)) {
@@ -152,9 +152,15 @@ public abstract class DamageSkill extends Skill {
     /**
      * Return whether or not the move crit.
      * @param user The skill's user
+     * @param enemy The enemy pokemon
+     * @param field The field for the battle
      * @return Whether or not the move crit.
      */
-    private boolean calcCrit(Pokemon user) {
+    private boolean calcCrit(Pokemon user, Pokemon enemy, Field field) {
+        if (enemy.getAbility() == Pokemon.Ability.SHELL_ARMOR ||
+                enemy.getAbility() == Pokemon.Ability.BATTLE_ARMOR) {
+            return false;
+        }
         int critStage = crit;
         if (user.isFocused()) {
             critStage += 2;
@@ -162,7 +168,7 @@ public abstract class DamageSkill extends Skill {
         if (user.getAbility() == Pokemon.Ability.SUPER_LUCK) {
             critStage *= 2;
         }
-        //TODO: Add hold item bonus.
+        //TODO: Add hold item bonus, add lucky chant prevention.
         double rand = Math.random();
 
         switch(critStage) {
