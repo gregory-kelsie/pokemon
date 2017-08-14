@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -87,6 +88,7 @@ public class Charmeleon extends Pokemon {
         beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
     }
 
     /**

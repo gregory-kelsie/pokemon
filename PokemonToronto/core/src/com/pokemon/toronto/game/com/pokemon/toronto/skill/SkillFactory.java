@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
@@ -39,6 +40,7 @@ public class SkillFactory {
     public static final int DOUBLE_SLAP = 13;
     public static final int CONFUSE_RAY = 14;
     public static final int SLEEP_POWDER = 15;
+    public static final int EMBER = 16;
 
     public SkillFactory() {
 
@@ -80,6 +82,8 @@ public class SkillFactory {
             return new ConfuseRay();
         } else if (skillId == SLEEP_POWDER) {
             return new SleepPowder();
+        } else if (skillId == EMBER) {
+            return new Ember();
         }
         else {
             return new Covet();

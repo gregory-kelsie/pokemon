@@ -88,6 +88,7 @@ public class Pikachu extends Pokemon {
         beginnerSkills.add(SkillFactory.TAIL_WHIP);
         beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
     }
 

@@ -138,7 +138,7 @@ public class ConfusionCheckPhase extends BattlePhase {
      */
     private void checkConfusionChance() {
         double rand = Math.random();
-        if (rand <= .33) { //33% Chance to hurt self.
+        if (rand <= 1.33) { //33% Chance to hurt self.
             currentState = DISPLAY_HURT_CONFUSION;
             text = confusedPokemon.getName() + " hurt itself in confusion.";
         } else {
@@ -201,7 +201,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             if (confusedPokemon.getCurrentHealth() != 0) {
                 if (isFirstMove) {
                     //Go to second move
-                    pui.setPhase(new ParalysisCheckPhase(pui, false));
+                    pui.setPhase(new SleepCheckPhase(pui, false));
                 } else {
                     //Go to end of turn effects.
                     pui.setPhase(new PoisonCheckPhase(pui));
