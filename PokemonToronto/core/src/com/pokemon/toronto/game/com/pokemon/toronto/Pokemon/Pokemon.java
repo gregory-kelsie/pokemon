@@ -634,7 +634,6 @@ public abstract class Pokemon {
         } else {
             confusionTime = 4;
         }
-        confusionTime = 1;
         confused = true;
     }
 
