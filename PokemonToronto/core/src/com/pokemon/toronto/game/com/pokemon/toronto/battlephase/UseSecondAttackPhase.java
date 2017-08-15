@@ -31,7 +31,6 @@ public class UseSecondAttackPhase extends UseAttackPhase {
     }
     
     private void attemptSkillUsage() {
-        attackerIsUser = false;
         if (attackerIsUser) {
             attacker = pui.getUserPokemon();
             receiver = pui.getEnemyPokemon();
