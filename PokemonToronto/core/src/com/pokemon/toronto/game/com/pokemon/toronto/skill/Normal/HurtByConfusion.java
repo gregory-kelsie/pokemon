@@ -21,7 +21,7 @@ public class HurtByConfusion extends DamageSkill {
     }
 
     /**
-     * Damage the enemy, but also has a 30% chance to poison the enemy.
+     * Damage the enemy, hit self with confusion.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param field The field of the battle.
