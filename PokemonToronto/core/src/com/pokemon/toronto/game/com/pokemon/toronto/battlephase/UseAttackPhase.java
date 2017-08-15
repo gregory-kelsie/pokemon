@@ -28,7 +28,7 @@ public class UseAttackPhase extends BattlePhase {
     protected boolean missed;
 
     protected SkillAnimation animation;
-    protected List<List<String>> battleListText;
+    protected List<String> battleResults;
     protected List<String> recoilResults;
 
     protected boolean firstAttack;
@@ -91,7 +91,7 @@ public class UseAttackPhase extends BattlePhase {
      */
     protected void checkPokemonHealthAfterUserAttack() {
         if (receiver.getCurrentHealth() == 0) {
-            battleListText.get(1).add(receiver.getName() + " fainted.");
+            battleResults.add(receiver.getName() + " fainted.");
             enemyFainted = true;
         } else {
             enemyFainted = false;
@@ -111,7 +111,7 @@ public class UseAttackPhase extends BattlePhase {
      */
     protected void checkPokemonHealthAfterEnemyAttack() {
         if (receiver.getCurrentHealth() == 0) {
-            battleListText.get(1).add(receiver.getName() + " fainted.");
+            battleResults.add(receiver.getName() + " fainted.");
             userFainted = true;
         } else {
             userFainted = false;
@@ -192,19 +192,19 @@ public class UseAttackPhase extends BattlePhase {
     protected void displayResults(double dt) {
         textCounter += dt;
         if (textCounter >= 0.05) {
-            if (textPosition < battleListText.get(1).get(resultsPosition).length()) {
+            if (textPosition < battleResults.get(resultsPosition).length()) {
                 textPosition++;
                 textCounter = 0;
             }
         }
-        if (textPosition == battleListText.get(1).get(resultsPosition).length()) {
+        if (textPosition == battleResults.get(resultsPosition).length()) {
             //Update result timer if the text has finished rendering
             resultsCounter += dt;
         }
         if (resultsCounter >= 1.5) {
             //When the last character of the text is finished rendering, have a 1.5 second delay
             //and then move onto the next result
-            if (resultsPosition < battleListText.get(1).size() - 1) {
+            if (resultsPosition < battleResults.size() - 1) {
                 //There are still more results so go to the next one.
                 resultsPosition++;
                 resetTextBox();
@@ -343,7 +343,7 @@ public class UseAttackPhase extends BattlePhase {
             pui.getFont().draw(batch, contactResults.substring(0, textPosition), 54, 1143);
         } else {
             if (displayingResults) {
-                pui.getFont().draw(batch, battleListText.get(1).get(resultsPosition).substring(0, textPosition), 54, 1143);
+                pui.getFont().draw(batch, battleResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
             } else if (displayRecoilResults) {
                 pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
             } else if (missed) {
@@ -403,7 +403,7 @@ public class UseAttackPhase extends BattlePhase {
     private void goToNextPhase() {
         contactResults = "";
         if (usedSkill.getStrikesLeft() > 0) {
-            battleListText = usedSkill.use(attacker, receiver, pui.getField(), firstAttack); //Override
+            battleResults = usedSkill.use(attacker, receiver, pui.getField(), firstAttack); //Override
             updatingAnimation = true;
             state = -1; //reset state.
             if (attackerIsUser) {

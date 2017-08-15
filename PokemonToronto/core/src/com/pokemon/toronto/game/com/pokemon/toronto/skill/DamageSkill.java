@@ -70,29 +70,23 @@ public abstract class DamageSkill extends Skill {
      * @return The skill results.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         super.use(skillUser, enemyPokemon, field, isFirstAttack);
-        List<List<String>> fullList = new ArrayList<List<String>>();
-
-        //The list that says if the pokemon missed or failed. The text before the move animation.
-        List<String> firstList = new ArrayList<String>();
-
-        //The list that says if the pokemon crit or if the move was super effective or if the pokemon fainted
-        //It comes after the animation
-        List<String> secondList = new ArrayList<String>();
+        
+        List<String> results = new ArrayList<String>();
 
         boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results
         if (moveIsSuperEffective(enemyPokemon)) {
-            secondList.add("It was super effective!");
+            results.add("It was super effective!");
         } else if (moveIsNotVeryEffective(enemyPokemon)) {
-            secondList.add("It was not very effective...");
+            results.add("It was not very effective...");
         }
 
         //Add critical hit text
         if (hasCrit) {
-            secondList.add("Critical Hit!");
+            results.add("Critical Hit!");
         }
 
         //Calculate the damage results
@@ -103,7 +97,7 @@ public abstract class DamageSkill extends Skill {
         }
         enemyPokemon.subtractHealth(damage);
         damageTally += damage; //Keep record of damage for multi-hit-moves
-        secondList.add("Dealt " + damage + " damage.");
+        results.add("Dealt " + damage + " damage.");
 
         //Subtract recoil damage.
         if (recoilLevel == ONE_THIRD) {
@@ -113,11 +107,7 @@ public abstract class DamageSkill extends Skill {
         } else if (recoilLevel == ONE_FOURTH) {
             skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
         }
-
-        //Add results to the final list
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        return results;
     }
 
     /**
@@ -133,7 +123,6 @@ public abstract class DamageSkill extends Skill {
         }
         return false;
     }
-
 
     /**
      * Determine if the move is super effective on the enemy pokemon

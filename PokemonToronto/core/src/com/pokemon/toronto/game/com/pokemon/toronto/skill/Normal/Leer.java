@@ -33,25 +33,21 @@ public class Leer extends Skill {
      * @return The move results
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
 
         //Attempt to lower the enemy's defense by 1 stage.
         if (enemyPokemon.isProtectedByDefenseLoweringEffects()) {
-            secondList.add(enemyPokemon.getName() +"'s defense can't be lowered\n" +
+            results.add(enemyPokemon.getName() +"'s defense can't be lowered\n" +
                     "Due to the ability " + enemyPokemon.getAbilityString());
         }
         else if (enemyPokemon.getDefenseStage() == -6) {
-            secondList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
+            results.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
             enemyPokemon.decreaseDefenseStage(1);
-            secondList.add(enemyPokemon.getName() + "'s defense fell!");
+            results.add(enemyPokemon.getName() + "'s defense fell!");
         }
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        return results;
     }
 
     /**

@@ -33,26 +33,20 @@ public class SandAttack extends Skill {
      * @return The move results.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
-
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
         //Attempt to lower the attack stage of the enemy by 1 stage.
         if (enemyPokemon.isProtectedByAccuracyLoweringEffects()) {
-            secondList.add(enemyPokemon.getName() + "'s accuracy cannot be\nlowered due to " +
+            results.add(enemyPokemon.getName() + "'s accuracy cannot be\nlowered due to " +
                     enemyPokemon.getAbilityString() + ".");
         }
         else if (enemyPokemon.getAccuracyStage() == -6) {
-            secondList.add(enemyPokemon.getName() + "'s accuracy can't be lowered.");
+            results.add(enemyPokemon.getName() + "'s accuracy can't be lowered.");
         } else {
             enemyPokemon.decreaseAccuracyStage(1);
-            secondList.add(enemyPokemon.getName() + "'s accuracy fell!");
+            results.add(enemyPokemon.getName() + "'s accuracy fell!");
         }
-
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        return results;
     }
 
     /**

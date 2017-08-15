@@ -34,15 +34,11 @@ public class FocusEnergy extends Skill {
      * @param field The field the battle is on.
      * @return The move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
         skillUser.focus();
-        secondList.add(skillUser.getName() + " is getting pumped up!!");
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        results.add(skillUser.getName() + " is getting pumped up!!");
+        return results;
     }
 
     /**

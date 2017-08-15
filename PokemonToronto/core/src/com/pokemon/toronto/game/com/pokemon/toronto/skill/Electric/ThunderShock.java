@@ -36,35 +36,24 @@ public class ThunderShock extends DamageSkill {
      * @param field The field the battle is on.
      * @return Thunder Shock's move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
-        if (enemyPokemon.getAbility() == Pokemon.Ability.LIGHTNINGROD) {
-            fullList.add(firstList);
-            fullList.add(secondList);
-            fullList.get(1).add(skillUser.getName() + " takes no damage\ndue to their ability Lightning Rod");
-            fullList.get(1).add(skillUser.getName() + "'s Special Attack rose!");
-
-        } else {
-            //Use the damage part of Thunder Shock.
-            fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
-
-            //Check if the enemy is able to receive paralysis after the damage
-            if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&
-                    enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {
-                double rand = Math.random(); //Roll the paralysis die
-                boolean paralyzed = false;
-                if (rand <= .15) { //15% chance to paralyze.
-                    paralyzed = true;
-                }
-                if (paralyzed) { //Enemy was paralyzed.
-                    enemyPokemon.setPreStatus(Pokemon.Status.PARALYSIS);
-                    fullList.get(1).add(enemyPokemon.getName() + " was paralyzed.");
-                }
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
+        //Use the damage part of Thunder Shock.
+        results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        //Check if the enemy is able to receive paralysis after the damage
+        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&
+                enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {
+            double rand = Math.random(); //Roll the paralysis die
+            boolean paralyzed = false;
+            if (rand <= .15) { //15% chance to paralyze.
+                paralyzed = true;
+            }
+            if (paralyzed) { //Enemy was paralyzed.
+                enemyPokemon.setPreStatus(Pokemon.Status.PARALYSIS);
+                results.add(enemyPokemon.getName() + " was paralyzed.");
             }
         }
-        return fullList;
+        return results;
     }
 
     /**

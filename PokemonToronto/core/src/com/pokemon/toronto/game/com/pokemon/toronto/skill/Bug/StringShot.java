@@ -33,21 +33,17 @@ public class StringShot extends Skill {
      * @return String Shot's move results.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
 
         //Attempt to lower the enemy's speed by 1 stage.
         if (enemyPokemon.getSpeedStage() == -6) {
-            secondList.add(enemyPokemon.getName() + "'s speed can't be lowered.");
+            results.add(enemyPokemon.getName() + "'s speed can't be lowered.");
         } else {
             enemyPokemon.decreaseSpeedStage(1);
-            secondList.add(enemyPokemon.getName() + "'s speed fell!");
+            results.add(enemyPokemon.getName() + "'s speed fell!");
         }
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        return results;
     }
 
     /**

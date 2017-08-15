@@ -47,13 +47,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                 if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), true)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
                     if (absorbResult.hasAbsorbed()) {
-                        List<List<String>> blt = new ArrayList<List<String>>();
-                        List<String> blt1 = new ArrayList<String>();
-                        blt.add(blt1);
-                        blt.add(absorbResult.getAbsorbResult());
-                        battleListText = blt;
+                        List<String> blt = absorbResult.getAbsorbResult();
+                        battleResults = blt;
                     } else {
-                        battleListText = usedSkill.use(attacker, receiver, pui.getField(), true);
+                        battleResults = usedSkill.use(attacker, receiver, pui.getField(), true);
                     }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);

@@ -35,24 +35,18 @@ public class Hail extends Skill {
      * @param field The field the battle is on.
      * @return The move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
-
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
         if (field.getWeatherType() == WeatherType.SAND) {
-            secondList.add("The sandstorm subsided.");
+            results.add("The sandstorm subsided.");
         } else if (field.getWeatherType() == WeatherType.SUN) {
-            secondList.add("The sunlight faded.");
+            results.add("The sunlight faded.");
         } else if (field.getWeatherType() == WeatherType.RAIN) {
-            secondList.add("The rain stopped.");
+            results.add("The rain stopped.");
         }
         field.setWeather(WeatherType.HAIL);
-        secondList.add("It started to hail!");
-
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        results.add("It started to hail!");
+        return results;
     }
 
     /**

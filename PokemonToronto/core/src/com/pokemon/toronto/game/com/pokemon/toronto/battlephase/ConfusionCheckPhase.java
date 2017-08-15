@@ -139,7 +139,7 @@ public class ConfusionCheckPhase extends BattlePhase {
      */
     private void checkConfusionChance() {
         double rand = Math.random();
-        if (rand <= 1.33) { //33% Chance to hurt self.
+        if (rand <= .33) { //33% Chance to hurt self.
             currentState = DISPLAY_HURT_CONFUSION;
             text = confusedPokemon.getName() + " hurt itself in confusion.";
         } else {

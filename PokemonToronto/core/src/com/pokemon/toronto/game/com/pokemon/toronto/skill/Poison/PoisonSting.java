@@ -36,9 +36,9 @@ public class PoisonSting extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        List<String> results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
 
         //Check if the user is able to receive poison.
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&
@@ -50,10 +50,10 @@ public class PoisonSting extends DamageSkill {
             }
             if (poisoned) { //Inflict poison.
                 enemyPokemon.setPreStatus(Pokemon.Status.POISON);
-                fullList.get(1).add(enemyPokemon.getName() + " was poisoned.");
+                results.add(enemyPokemon.getName() + " was poisoned.");
             }
         }
-        return fullList;
+        return results;
     }
 
     /**

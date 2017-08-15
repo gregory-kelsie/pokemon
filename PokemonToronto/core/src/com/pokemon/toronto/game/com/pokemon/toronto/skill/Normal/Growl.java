@@ -32,21 +32,16 @@ public class Growl extends Skill {
      * @param field The field the battle is on.
      * @return The move results.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
-        List<String> firstList = new ArrayList<String>();
-        List<String> secondList = new ArrayList<String>();
-
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<String> results = new ArrayList<String>();
         //Attempt to lower the attack stage of the enemy by 1 stage.
         if (enemyPokemon.getAttackStage() == -6) {
-            secondList.add(enemyPokemon.getName() + "'s attack can't be lowered.");
+            results.add(enemyPokemon.getName() + "'s attack can't be lowered.");
         } else {
             enemyPokemon.decreaseAttackStage(1);
-            secondList.add(enemyPokemon.getName() + "'s attack fell!");
+            results.add(enemyPokemon.getName() + "'s attack fell!");
         }
-        fullList.add(firstList);
-        fullList.add(secondList);
-        return fullList;
+        return results;
     }
 
     /**

@@ -35,9 +35,9 @@ public class Bite extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        List<String> results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
         if (isFirstAttack && (enemyPokemon.getAbility() !=
                 Pokemon.Ability.INNER_FOCUS && enemyPokemon.getAbility() !=
                 Pokemon.Ability.SHIELD_DUST)) {
@@ -47,7 +47,7 @@ public class Bite extends DamageSkill {
             }
         }
 
-        return fullList;
+        return results;
     }
 
     /**

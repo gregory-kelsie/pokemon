@@ -49,13 +49,9 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                 if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), false)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
                     if (absorbResult.hasAbsorbed()) {
-                        List<List<String>> blt = new ArrayList<List<String>>();
-                        List<String> blt1 = new ArrayList<String>();
-                        blt.add(blt1);
-                        blt.add(absorbResult.getAbsorbResult());
-                        battleListText = blt;
+                        battleResults = absorbResult.getAbsorbResult();
                     } else {
-                        battleListText = usedSkill.use(attacker, receiver, pui.getField(), false);
+                        battleResults = usedSkill.use(attacker, receiver, pui.getField(), false);
                     }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);

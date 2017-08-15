@@ -36,9 +36,9 @@ public class Ember extends DamageSkill {
      * @return The results of using the move.
      */
     @Override
-    public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        List<String> results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
 
         //Check if the user is able to receive burn.
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0  &&
@@ -50,10 +50,10 @@ public class Ember extends DamageSkill {
             }
             if (burned) { //Inflict burned.
                 enemyPokemon.setPreStatus(Pokemon.Status.BURN);
-                fullList.get(1).add(enemyPokemon.getName() + " was burned.");
+                results.add(enemyPokemon.getName() + " was burned.");
             }
         }
-        return fullList;
+        return results;
     }
 
     /**
