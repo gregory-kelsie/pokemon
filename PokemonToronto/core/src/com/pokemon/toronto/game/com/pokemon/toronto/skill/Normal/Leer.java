@@ -39,7 +39,11 @@ public class Leer extends Skill {
         List<String> secondList = new ArrayList<String>();
 
         //Attempt to lower the enemy's defense by 1 stage.
-        if (enemyPokemon.getDefenseStage() == -6) {
+        if (enemyPokemon.isProtectedByDefenseLoweringEffects()) {
+            secondList.add(enemyPokemon.getName() +"'s defense can't be lowered\n" +
+                    "Due to the ability " + enemyPokemon.getAbilityString());
+        }
+        else if (enemyPokemon.getDefenseStage() == -6) {
             secondList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
             enemyPokemon.decreaseDefenseStage(1);

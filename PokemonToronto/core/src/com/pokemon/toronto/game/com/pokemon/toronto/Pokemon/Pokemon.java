@@ -1090,6 +1090,32 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return whether or not the Pokemon's defense can be lowered
+     * due to their ability.
+     * @return Whether or not the Pokemon's defense can be lowered
+     * due to their ability.
+     */
+    public boolean isProtectedByDefenseLoweringEffects() {
+        if (ability == Ability.BIG_PECKS) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return whether or not the Pokemon's accuracy can be lowered
+     * due to their ability.
+     * @return Whether or not the Pokemon's accuracy can be lowered
+     * due to their ability.
+     */
+    public boolean isProtectedByAccuracyLoweringEffects() {
+        if (ability == Ability.KEEN_EYE) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Increase the attack stage by amount stages.
      * The stage can't go above 6
      * @param amount The amount of stages to increase.

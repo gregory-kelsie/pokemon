@@ -38,17 +38,18 @@ public class SandAttack extends Skill {
         List<String> firstList = new ArrayList<String>();
         List<String> secondList = new ArrayList<String>();
 
-        if (enemyPokemon.getAbility() == Pokemon.Ability.KEEN_EYE) {
-            secondList.add(enemyPokemon.getName() + "'s accuracy cannot be\nlowered due to Keen Eye.");
-        } else {
-            //Attempt to lower the attack stage of the enemy by 1 stage.
-            if (enemyPokemon.getAccuracyStage() == -6) {
-                secondList.add(enemyPokemon.getName() + "'s accuracy can't be lowered.");
-            } else {
-                enemyPokemon.decreaseAccuracyStage(1);
-                secondList.add(enemyPokemon.getName() + "'s accuracy was lowered.");
-            }
+        //Attempt to lower the attack stage of the enemy by 1 stage.
+        if (enemyPokemon.isProtectedByAccuracyLoweringEffects()) {
+            secondList.add(enemyPokemon.getName() + "'s accuracy cannot be\nlowered due to " +
+                    enemyPokemon.getAbilityString() + ".");
         }
+        else if (enemyPokemon.getAccuracyStage() == -6) {
+            secondList.add(enemyPokemon.getName() + "'s accuracy can't be lowered.");
+        } else {
+            enemyPokemon.decreaseAccuracyStage(1);
+            secondList.add(enemyPokemon.getName() + "'s accuracy was lowered.");
+        }
+
         fullList.add(firstList);
         fullList.add(secondList);
         return fullList;
