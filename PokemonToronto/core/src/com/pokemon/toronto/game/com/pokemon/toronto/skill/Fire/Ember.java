@@ -45,7 +45,7 @@ public class Ember extends DamageSkill {
                 enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {
             double rand = Math.random(); //Roll the burn die
             boolean burned = false;
-            if (rand <= 1) { //10% chance
+            if (rand <= .1) { //10% chance
                 burned = true;
             }
             if (burned) { //Inflict burned.

@@ -202,7 +202,8 @@ public abstract class Pokemon {
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
         SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
         ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL, HYDRATION,
-        SWIFT_SWIM, DAMP
+        SWIFT_SWIM, DAMP, DRIZZLE, SAND_STREAM, DROUGHT, SNOW_WARNING, CLOUD_NINE, MOLD_BREAKER,
+        PRESSURE
     }
 
     /**
@@ -2331,6 +2332,20 @@ public abstract class Pokemon {
                 return "Swift Swim";
             case DAMP:
                 return "Damp";
+            case DRIZZLE:
+                return "Drizzle";
+            case DROUGHT:
+                return "Drought";
+            case SAND_STREAM:
+                return "Sand Stream";
+            case SNOW_WARNING:
+                return "Snow Warning";
+            case MOLD_BREAKER:
+                return "Mold Breaker";
+            case CLOUD_NINE:
+                return "Cloud Nine";
+            case PRESSURE:
+                return "Pressure";
 
             default:
                 return "Ability Error";

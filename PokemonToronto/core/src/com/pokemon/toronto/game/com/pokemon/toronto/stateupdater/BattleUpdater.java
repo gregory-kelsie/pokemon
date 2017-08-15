@@ -11,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BattlePhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.CatchingPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PhaseUpdaterInterface;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SentOutAbilityPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SpeedCheckPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SwitchPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.UseAttackPhase;
@@ -139,6 +140,14 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         currentPhase = new CatchingPhase(this, enemySkill, pokeballType);
     }
 
+    public void initiateFirstAbilities(Pokemon userPokemon, Pokemon enemyPokemon, Field field) {
+        started = true;
+        this.userPokemon = userPokemon;
+        this.enemyPokemon = enemyPokemon;
+        this.field = field;
+        setPhase(new SentOutAbilityPhase(this));
+    }
+
 
     public void dispose() {
 
@@ -195,9 +204,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         return false;
     }
 
-    public void finishedFaintSwitch() {
+    public void finishedFaintSwitch(Pokemon currentPokemon) {
         state = IDLE;
-        started = false;
+        userPokemon = currentPokemon;
+        setPhase(new SentOutAbilityPhase(this, userPokemon, enemyPokemon, true));
+        //started = false;
     }
 
     public boolean waitingForNextPokemon() {

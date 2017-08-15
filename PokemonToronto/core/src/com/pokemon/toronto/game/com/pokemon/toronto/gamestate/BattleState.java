@@ -79,6 +79,7 @@ public class BattleState extends GameState implements BattleInterface {
     private boolean isRoute;
 
     private PlayerTrainerAnimation pta;
+    private boolean justFinishedPta;
 
 
     private GameStateManager gsm;
@@ -102,7 +103,7 @@ public class BattleState extends GameState implements BattleInterface {
 
     private void init(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         this.gsm = gsm;
-
+        justFinishedPta = false;
         this.battleType = WILD_BATTLE;
         panelPosition = FIRST_PANEL;
         currentItemPage = FIRST_ITEM_PAGE;
@@ -286,6 +287,10 @@ public class BattleState extends GameState implements BattleInterface {
         batch.draw(battleTextures.getTextArea(), 0, 954);
 
         if (pta.isFinished()) {
+            if (!justFinishedPta) {
+                justFinishedPta = true;
+                battleUpdater.initiateFirstAbilities(currentPokemon, enemyPokemon, field);
+            }
             if (!battleUpdater.started()) {
                 if (!battleUpdater.caughtThePokemon()) {
                     battleTextures.getRegularFont().draw(batch, "What will " + currentPokemon.getName() + " do?", 54, 1143);
@@ -552,7 +557,7 @@ public class BattleState extends GameState implements BattleInterface {
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
         battleTextures.resetSkillButtonTextures(currentPokemon);
-        battleUpdater.finishedFaintSwitch();
+        battleUpdater.finishedFaintSwitch(currentPokemon);
     }
 
     public void endBattle() {

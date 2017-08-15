@@ -72,6 +72,9 @@ public class Hail extends Skill {
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.HAIL) {
             return new FailResult("It failed...");
+        } else if (enemyPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+            return new FailResult(enemyPokemon.getName() + " prevents weather changes\n" +
+                    "with ability Cloud Nine!");
         }
         return new FailResult(false);
     }
