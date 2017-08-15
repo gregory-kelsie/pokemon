@@ -216,6 +216,9 @@ public abstract class Skill {
                     field.getWeatherType() == WeatherType.HAIL) {
                 attackerAccuracyMod *= 0.8;
             }
+            if (skillUser.getAbility() == Pokemon.Ability.HUSTLE) {
+                attackerAccuracyMod *= 0.8;
+            }
             int evasionStage = enemyPokemon.getEvasionStage();
             if (enemyPokemon.isConfused() && enemyPokemon.getAbility() ==
                     Pokemon.Ability.TANGLED_FEET) {
