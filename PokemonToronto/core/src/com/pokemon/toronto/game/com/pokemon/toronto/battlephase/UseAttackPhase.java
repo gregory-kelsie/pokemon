@@ -192,12 +192,12 @@ public class UseAttackPhase extends BattlePhase {
     protected void displayResults(double dt) {
         textCounter += dt;
         if (textCounter >= 0.05) {
-            if (textPosition < battleListText.get(1).get(resultsPosition).length() - 1) {
+            if (textPosition < battleListText.get(1).get(resultsPosition).length()) {
                 textPosition++;
                 textCounter = 0;
             }
         }
-        if (textPosition == battleListText.get(1).get(resultsPosition).length() - 1) {
+        if (textPosition == battleListText.get(1).get(resultsPosition).length()) {
             //Update result timer if the text has finished rendering
             resultsCounter += dt;
         }

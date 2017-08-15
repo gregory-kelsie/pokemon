@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
 
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -203,7 +204,7 @@ public abstract class Pokemon {
         SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
         ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL, HYDRATION,
         SWIFT_SWIM, DAMP, DRIZZLE, SAND_STREAM, DROUGHT, SNOW_WARNING, CLOUD_NINE, MOLD_BREAKER,
-        PRESSURE
+        PRESSURE, MOTOR_DRIVE, WATER_ABSORB, VOLT_ABSORB
     }
 
     /**
@@ -1957,6 +1958,86 @@ public abstract class Pokemon {
         enemyY = ENEMY_NORMAL_Y;
     }
 
+    public AbsorbResult getAbsorbResults(Skill usedSkill) {
+        if (usedSkill.getType() == Type.ELECTRIC) {
+            if (ability == Ability.LIGHTNINGROD) {
+                getLightningRodAbsorbEffect();
+            } else if (ability == Ability.MOTOR_DRIVE) {
+                return getMotorDriveAbsorbEffect();
+            } else if (ability == Ability.VOLT_ABSORB) {
+                return getVoltAbsorbAbsorbEffect();
+            }
+        } else if (usedSkill.getType() == Type.WATER) {
+            if (ability == Ability.DRY_SKIN) {
+                return getDrySkinAbsorbEffect();
+            } else if (ability == Ability.WATER_ABSORB) {
+                return getWaterAbsorbAbsorbEffect();
+            }
+        }
+        return new AbsorbResult(false);
+    }
+
+    private AbsorbResult getLightningRodAbsorbEffect() {
+        List<String> absorbText = new ArrayList<String>();
+        absorbText.add(name + " takes no damage\ndue to their ability Lightning Rod.");
+        if (specialAttackStage < 6) {
+            absorbText.add(name + "'s Special Attack rose!");
+            increaseSpAttackStage(1);
+        } else {
+            absorbText.add(name + "'s Special Attack cannot go higher.");
+        }
+        return new AbsorbResult(absorbText);
+    }
+
+    private AbsorbResult getMotorDriveAbsorbEffect() {
+        List<String> absorbText = new ArrayList<String>();
+        absorbText.add(name + " takes no damage\ndue to their ability Motor Drive.");
+        if (speedStage < 6) {
+            absorbText.add(name + "'s Speed rose!");
+            increaseSpeedStage(1);
+        } else {
+            absorbText.add(name + "'s Speed cannot go higher.");
+        }
+        return new AbsorbResult(absorbText);
+    }
+
+    private AbsorbResult getDrySkinAbsorbEffect() {
+        List<String> absorbText = new ArrayList<String>();
+
+        if (!hasFullHealth()) {
+            absorbText.add(name + " recovered health\ndue to their ability Dry Skin.");
+            addHealth((int)Math.round(getHealthStat() / 4.0));
+        } else {
+            absorbText.add("Absorbed attack using Dry Skin");
+        }
+        return new AbsorbResult(absorbText);
+    }
+
+    private AbsorbResult getWaterAbsorbAbsorbEffect() {
+        List<String> absorbText = new ArrayList<String>();
+
+        if (!hasFullHealth()) {
+            absorbText.add(name + " recovered health\ndue to their ability Water Absorb.");
+            addHealth((int)Math.round(getHealthStat() / 4.0));
+        } else {
+            absorbText.add("Absorbed attack using Water Absorb.");
+        }
+        return new AbsorbResult(absorbText);
+    }
+
+    private AbsorbResult getVoltAbsorbAbsorbEffect() {
+        List<String> absorbText = new ArrayList<String>();
+
+        if (!hasFullHealth()) {
+            absorbText.add(name + " recovered health\ndue to their ability Volt Absorb.");
+            addHealth((int)Math.round(getHealthStat() / 4.0));
+        } else {
+            absorbText.add("Absorbed attack using Volt Absorb.");
+        }
+        return new AbsorbResult(absorbText);
+    }
+
+
     /**
      * Revive the Pokemon with a specific amount of health.
      * @param health The health the Pokemon will be revived
@@ -2346,6 +2427,12 @@ public abstract class Pokemon {
                 return "Cloud Nine";
             case PRESSURE:
                 return "Pressure";
+            case MOTOR_DRIVE:
+                return "Motor Drive";
+            case WATER_ABSORB:
+                return "Water Absorb";
+            case VOLT_ABSORB:
+                return "Volt Absorb";
 
             default:
                 return "Ability Error";

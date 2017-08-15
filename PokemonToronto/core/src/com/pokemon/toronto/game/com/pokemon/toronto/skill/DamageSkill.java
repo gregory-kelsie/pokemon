@@ -384,9 +384,10 @@ public abstract class DamageSkill extends Skill {
     private double getDefenseAbilityMod(Pokemon enemy) {
         //Ability mods when getting hit by fire
         if (this.getType() == Pokemon.Type.FIRE) {
-            if (enemy.getAbility() == Pokemon.Ability.THICK_FAT || enemy.getAbility()
-                    == Pokemon.Ability.DRY_SKIN || enemy.getAbility() == Pokemon.Ability.HEATPROOF) {
+            if (enemy.getAbility() == Pokemon.Ability.THICK_FAT || enemy.getAbility() == Pokemon.Ability.HEATPROOF) {
                 return 0.5;
+            } else if (enemy.getAbility() == Pokemon.Ability.DRY_SKIN) {
+                return 1.25;
             }
         }
         //Ability mods when getting hit by ice

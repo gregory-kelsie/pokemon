@@ -4,9 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,7 +48,16 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
                 if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), false)) {
-                    battleListText = usedSkill.use(attacker, receiver, pui.getField(), false);
+                    AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
+                    if (absorbResult.hasAbsorbed()) {
+                        List<List<String>> blt = new ArrayList<List<String>>();
+                        List<String> blt1 = new ArrayList<String>();
+                        blt.add(blt1);
+                        blt.add(absorbResult.getAbsorbResult());
+                        battleListText = blt;
+                    } else {
+                        battleListText = usedSkill.use(attacker, receiver, pui.getField(), false);
+                    }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);
                         checkPokemonHealthAfterUserAttack();

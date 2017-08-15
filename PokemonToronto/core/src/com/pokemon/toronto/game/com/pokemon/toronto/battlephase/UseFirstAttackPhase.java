@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
@@ -44,7 +45,16 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
                 if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), true)) {
-                    battleListText = usedSkill.use(attacker, receiver, pui.getField(), true);
+                    AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
+                    if (absorbResult.hasAbsorbed()) {
+                        List<List<String>> blt = new ArrayList<List<String>>();
+                        List<String> blt1 = new ArrayList<String>();
+                        blt.add(blt1);
+                        blt.add(absorbResult.getAbsorbResult());
+                        battleListText = blt;
+                    } else {
+                        battleListText = usedSkill.use(attacker, receiver, pui.getField(), true);
+                    }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);
                         checkPokemonHealthAfterUserAttack();

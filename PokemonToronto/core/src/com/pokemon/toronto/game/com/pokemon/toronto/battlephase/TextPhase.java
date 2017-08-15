@@ -31,9 +31,7 @@ public class TextPhase extends BattlePhase {
 
         textCounter += dt;
         if (textCounter >= 0.05) {
-            if (textPosition == text.length() - 1) {
-
-            } else {
+            if (textPosition < text.length()) {
                 textPosition += 1;
                 textCounter = 0;
             }
