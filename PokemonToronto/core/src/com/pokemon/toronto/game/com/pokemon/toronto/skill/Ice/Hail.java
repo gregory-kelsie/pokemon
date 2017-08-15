@@ -41,6 +41,10 @@ public class Hail extends Skill {
 
         if (field.getWeatherType() == WeatherType.SAND) {
             secondList.add("The sandstorm subsided.");
+        } else if (field.getWeatherType() == WeatherType.SUN) {
+            secondList.add("The sunlight faded.");
+        } else if (field.getWeatherType() == WeatherType.RAIN) {
+            secondList.add("The rain stopped.");
         }
         field.setWeather(WeatherType.HAIL);
         secondList.add("It started to hail!");
@@ -63,8 +67,9 @@ public class Hail extends Skill {
 
     @Override
     public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        if (field.getWeatherType() != WeatherType.SAND &&
-                field.getWeatherType() != WeatherType.NORMAL) {
+        if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
+                field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
+                field.getWeatherType() == WeatherType.HAIL) {
             return true;
         }
         return false;
