@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 
@@ -208,6 +209,13 @@ public abstract class Skill {
             //Init Modifiers
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
+            if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_VEIL &&
+                    field.getWeatherType() == WeatherType.SAND) {
+                attackerAccuracyMod *= 0.8;
+            } else if (enemyPokemon.getAbility() == Pokemon.Ability.SNOW_CLOAK &&
+                    field.getWeatherType() == WeatherType.HAIL) {
+                attackerAccuracyMod *= 0.8;
+            }
             int evasionStage = enemyPokemon.getEvasionStage();
             double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
             double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;

@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
@@ -43,6 +44,10 @@ public class SpeedCheckPhase extends BattlePhase {
             if (userPokemon.isParalyzed()) {
                 userSpeed *= 0.5;
             }
+            if (userPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
+                    pui.getField().getWeatherType() == WeatherType.SAND) {
+                userSpeed *= 2;
+            }
             double enemySpeed = enemyPokemon.getSpeedStat();
             stage = enemyPokemon.getSpeedStage();
             if (stage > 0) {
@@ -52,6 +57,10 @@ public class SpeedCheckPhase extends BattlePhase {
             }
             if (enemyPokemon.isParalyzed()) {
                 enemySpeed *= 0.5;
+            }
+            if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
+                    pui.getField().getWeatherType() == WeatherType.SAND) {
+                enemySpeed *= 2;
             }
             Gdx.app.log("Speedcheck", "enemy: " + enemySpeed + ", user: " + userSpeed);
             if (userSpeed >= enemySpeed) {

@@ -29,6 +29,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int FAINT_PLAYER_POKEMON = 9;
     private final int DISPLAY_ENEMY_FAINT_TEXT = 10;
     private final int DISPLAY_PLAYER_FAINT_TEXT = 11;
+    private final int USE_SAND = 12;
 
 
     //End turn weather results
@@ -88,6 +89,8 @@ public class EndTurnPhase extends BattlePhase {
             pui.setPhase(new PoisonCheckPhase(pui));
         } else if (currentState == FAINT_PLAYER_POKEMON) {
             updateUserFaintAnimation(dt);
+        } else if (currentState == USE_SAND) {
+            useSandstorm();
         }
     }
 
@@ -182,14 +185,52 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
-    private void useHail() {
+    private Pokemon getCurrentPokemon() {
         Pokemon pokemon;
         if (usingOnEnemy) {
             pokemon = pui.getEnemyPokemon();
         } else {
             pokemon = pui.getUserPokemon();
         }
-        //Enemy
+        return pokemon;
+    }
+
+    /**
+     * Switch the user getting hit by the weather if it's
+     * the enemy pokemon since the enemy gets hit first.
+     * Otherwise, go to the next end phase hit.
+     */
+    private void weatherDoesNothing() {
+        if (usingOnEnemy) {
+            usingOnEnemy = false;
+        } else {
+            currentState = CHECK_FUTURE_SIGHT;
+        }
+    }
+
+    private void useSandstorm() {
+        Pokemon pokemon = getCurrentPokemon();
+        if (pokemon.getAbility() == Pokemon.Ability.SAND_FORCE ||
+                pokemon.getAbility() == Pokemon.Ability.SAND_RUSH ||
+                pokemon.getAbility() == Pokemon.Ability.SAND_VEIL ||
+                pokemon.getAbility() == Pokemon.Ability.MAGIC_GUARD ||
+                pokemon.getAbility() == Pokemon.Ability.OVERCOAT ||
+                pokemon.getTypeOne() == Pokemon.Type.ROCK ||
+                pokemon.getTypeOne() == Pokemon.Type.GROUND ||
+                pokemon.getTypeOne() == Pokemon.Type.STEEL ||
+                pokemon.getTypeTwo() == Pokemon.Type.ROCK ||
+                pokemon.getTypeTwo() == Pokemon.Type.GROUND ||
+                pokemon.getTypeTwo() == Pokemon.Type.STEEL) { //TODO: Check for holding safety goggles
+            //Nothing happens -- Switch to use on next pokemon or go to next state.
+            weatherDoesNothing();
+        } else {
+            //Get hit
+            damagePokemonFromSandstorm(pokemon);
+        }
+    }
+
+    private void useHail() {
+        Pokemon pokemon = getCurrentPokemon();
         if (pokemon.getAbility() == Pokemon.Ability.ICE_BODY ||
                 pokemon.getAbility() == Pokemon.Ability.SNOW_CLOAK ||
                 pokemon.getAbility() == Pokemon.Ability.MAGIC_GUARD ||
@@ -201,11 +242,7 @@ public class EndTurnPhase extends BattlePhase {
                 recoverPokemonFromHail(pokemon);
             } else {
                 //Nothing happens -- Switch to use on next pokemon or go to next state.
-                if (usingOnEnemy) {
-                    usingOnEnemy = false;
-                } else {
-                    currentState = CHECK_FUTURE_SIGHT;
-                }
+                weatherDoesNothing();
             }
         } else {
             //Gets hit
@@ -229,6 +266,33 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void damagePokemonFromSandstorm(Pokemon pokemon) {
+        int damage = (int)Math.round(pokemon.getHealthStat() / 16.0);
+        pokemon.subtractHealth(damage);
+        text = pokemon.getName() + " is buffeted by the sandstorm!";
+        currentState = DISPLAY_TEXT;
+        if (usingOnEnemy) {
+            stateAfterText = ADJUST_ENEMY_HEALTH;
+            if (pokemon.getCurrentHealth() != 0) {
+                stateAfterHealthAdjustment = USE_SAND;
+                usingOnEnemy = false;
+            } else {
+                stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = USE_SAND;
+                usingOnEnemy = false;
+            }
+        } else {
+            stateAfterText = ADJUST_PLAYER_HEALTH;
+            if (pokemon.getCurrentHealth() != 0) {
+                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+                usingOnEnemy = true;
+            } else {
+                stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = CHECK_FUTURE_SIGHT;
+                usingOnEnemy = true;
+            }
+        }
+    }
     /**
      * Damage a Pokemon that gets hit by hail.
      * @param pokemon The Pokemon getting buffetted by hail.
@@ -236,7 +300,7 @@ public class EndTurnPhase extends BattlePhase {
     private void damagePokemonFromHail(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 16.0);
         pokemon.subtractHealth(damage);
-        text = pokemon.getName() + " was buffeted by hail.";
+        text = pokemon.getName() + " is buffeted by hail.";
 
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
@@ -262,12 +326,13 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
-
-
     private void useWeatherDamage() {
         if (pui.getField().getWeatherType() == WeatherType.HAIL) {
             usingOnEnemy = true;
             currentState = USE_HAIL;
+        } else if (pui.getField().getWeatherType() == WeatherType.SAND) {
+            usingOnEnemy = true;
+            currentState = USE_SAND;
         }
     }
 

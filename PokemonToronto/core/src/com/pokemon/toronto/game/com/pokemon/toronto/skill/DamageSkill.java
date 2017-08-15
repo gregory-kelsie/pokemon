@@ -330,6 +330,13 @@ public abstract class DamageSkill extends Skill {
                 }
             }
         }
+        if (user.getAbility() == Pokemon.Ability.SAND_FORCE) {
+            if (type == Pokemon.Type.GROUND ||
+                    type == Pokemon.Type.STEEL ||
+                    type == Pokemon.Type.ROCK) {
+                return 1.3;
+            }
+        }
         //Status ability mods
         if (user.getAbility() == Pokemon.Ability.GUTS && (user.getStatus() == Pokemon.Status.BURN
                 || user.getStatus() == Pokemon.Status.PARALYSIS || user.getStatus() == Pokemon.Status.POISON)) {
@@ -485,6 +492,11 @@ public abstract class DamageSkill extends Skill {
                 }
             }
             defStat = enemy.getSpecialDefenseStat();
+            if (field.getWeatherType() == WeatherType.SAND &&
+                    (enemy.getTypeOne() == Pokemon.Type.ROCK ||
+                            enemy.getTypeTwo() == Pokemon.Type.ROCK)) {
+                defStat *= 1.5;
+            }
             if (enemy.getSpecialDefenseStat() >= 0) {
                 //Ignore defense bonus on crit
                 if (!hasCrit) {
