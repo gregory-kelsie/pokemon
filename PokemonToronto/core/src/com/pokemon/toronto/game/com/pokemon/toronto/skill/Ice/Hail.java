@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
@@ -66,12 +67,12 @@ public class Hail extends Skill {
     }
 
     @Override
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.HAIL) {
-            return true;
+            return new FailResult("It failed...");
         }
-        return false;
+        return new FailResult(false);
     }
 }

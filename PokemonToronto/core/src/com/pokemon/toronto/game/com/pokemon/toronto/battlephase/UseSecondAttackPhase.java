@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.List;
@@ -20,9 +21,12 @@ public class UseSecondAttackPhase extends UseAttackPhase {
         firstAttack = false;
         if (pui.isUserPokemonFirstAttacker()) {
             attackerIsUser = false;
-            if (!pui.getEnemySkill().willFail(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false)) {
-                if (!pui.getEnemySkill().doesDamageToEnemy() || (pui.getEnemySkill().doesDamageToEnemy() &&
-                        pui.getUserPokemon().getResistances().get(pui.getEnemySkill().getType()) != 0)) {
+            FailResult failResult = pui.getEnemySkill().willFail(pui.getEnemyPokemon(),
+                    pui.getUserPokemon(), pui.getField(), false);
+            if (!failResult.hasFailed()) {
+                if (!pui.getEnemySkill().doesDamageToEnemy() || pui.getEnemySkill().continuesUseThroughNoEffect() ||
+                        (pui.getEnemySkill().doesDamageToEnemy() && pui.getUserPokemon().getResistances()
+                                .get(pui.getEnemySkill().getType()) != 0)) {
                     if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false)) {
                         usedSkill = pui.getEnemySkill();
                         battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false);
@@ -43,16 +47,19 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                     resetTextBox();
                 }
             } else {
-                missText = "It failed...";
+                missText = failResult.getFailResult();
                 updatingAnimation = false;
                 missed = true;
                 resetTextBox();
             }
         } else {
             attackerIsUser = true;
-            if (!pui.getUserSkill().willFail(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false)) {
-                if (!pui.getUserSkill().doesDamageToEnemy() || (pui.getUserSkill().doesDamageToEnemy() &&
-                        pui.getEnemyPokemon().getResistances().get(pui.getUserSkill().getType()) != 0)) {
+            FailResult failResult = pui.getUserSkill().willFail(pui.getUserPokemon(),
+                    pui.getEnemyPokemon(), pui.getField(), false);
+            if (!failResult.hasFailed()) {
+                if (!pui.getUserSkill().doesDamageToEnemy() || pui.getUserSkill().continuesUseThroughNoEffect() ||
+                        (pui.getUserSkill().doesDamageToEnemy() && pui.getEnemyPokemon().getResistances()
+                                .get(pui.getUserSkill().getType()) != 0)) {
                     if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false)) {
                         usedSkill = pui.getUserSkill();
                         battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false);
@@ -73,7 +80,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                     resetTextBox();
                 }
             } else {
-                missText = "It failed...";
+                missText = failResult.getFailResult();
                 updatingAnimation = false;
                 missed = true;
                 resetTextBox();

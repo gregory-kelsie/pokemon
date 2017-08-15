@@ -60,6 +60,7 @@ public abstract class DamageSkill extends Skill {
         this.crit = crit;
         this.damage = damage;
         recoilLevel = NO_RECOIL;
+        damagesEnemy = true;
     }
 
     /**
@@ -117,6 +118,20 @@ public abstract class DamageSkill extends Skill {
         fullList.add(firstList);
         fullList.add(secondList);
         return fullList;
+    }
+
+    /**
+     * Return whether or not the skill has an effect on the
+     * enemy Pokemon.
+     * @param enemy The enemy pokemon the skill is being tested on.
+     * @return Whether or not the skill has an effect on the
+     * enemy Pokemon.
+     */
+    protected boolean effectsEnemy(Pokemon enemy) {
+        if (enemy.getResistances().get(type) != 0) {
+            return true;
+        }
+        return false;
     }
 
 

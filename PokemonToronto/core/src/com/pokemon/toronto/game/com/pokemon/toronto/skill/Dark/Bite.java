@@ -38,8 +38,9 @@ public class Bite extends DamageSkill {
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
         //Use the damage part of the move.
         List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
-        if (isFirstAttack && (enemyPokemon.getAbility() != Pokemon.Ability.INNER_FOCUS &&
-                enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST)) {
+        if (isFirstAttack && (enemyPokemon.getAbility() !=
+                Pokemon.Ability.INNER_FOCUS && enemyPokemon.getAbility() !=
+                Pokemon.Ability.SHIELD_DUST)) {
             double rand = Math.random();
             if (rand <= .3) {
                 enemyPokemon.flinch();

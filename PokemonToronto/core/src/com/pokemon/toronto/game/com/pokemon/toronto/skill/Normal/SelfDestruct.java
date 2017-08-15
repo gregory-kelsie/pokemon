@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class SelfDestruct extends DamageSkill {
      */
     public SelfDestruct() {
         super("Self-Destruct", 5, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 200, 1);
+        continuesUseThroughNoEffect = true;
     }
 
 
@@ -37,11 +39,18 @@ public class SelfDestruct extends DamageSkill {
      * @return Thunder Shock's move results.
      */
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        List<List<String>> fullList = new ArrayList<List<String>>();
+        List<List<String>> fullList;
 
-        //Use the damage part of Thunder Shock.
-        fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
-
+        if (effectsEnemy(enemyPokemon)) {
+            fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        } else {
+            fullList = new ArrayList<List<String>>();
+            List<String> firstList = new ArrayList<String>();
+            List<String> secondList = new ArrayList<String>();
+            secondList.add("It does not effect " + enemyPokemon.getName() + "...");
+            fullList.add(firstList);
+            fullList.add(secondList);
+        }
         skillUser.subtractHealth(skillUser.getCurrentHealth());
 
         return fullList;
@@ -59,11 +68,11 @@ public class SelfDestruct extends DamageSkill {
     }
 
     @Override
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon,
-                            Field field, boolean isFirstAttack) {
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
+                               Field field, boolean isFirstAttack) {
         if (enemyPokemon.getAbility() == Pokemon.Ability.DAMP) {
-            return true;
+            return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents Self-Destruct.");
         }
-        return false;
+        return new FailResult(false);
     }
 }

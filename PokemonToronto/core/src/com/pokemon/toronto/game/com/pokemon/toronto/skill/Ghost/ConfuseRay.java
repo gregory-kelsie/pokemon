@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
@@ -59,11 +60,13 @@ public class ConfuseRay extends Skill {
     }
 
     @Override
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon,
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                             Field field, boolean isFirstAttack) {
-        if (enemyPokemon.isConfused() || enemyPokemon.getAbility() == Pokemon.Ability.OWN_TEMPO) {
-            return true;
+        if (enemyPokemon.isConfused()){
+            return new FailResult(enemyPokemon.getName() + " is already confused.");
+        } else if (enemyPokemon.getAbility() == Pokemon.Ability.OWN_TEMPO) {
+            return new FailResult(enemyPokemon.getName() + " cannot be confused\nbecause it has it's Own Tempo");
         }
-        return false;
+        return new FailResult(false);
     }
 }

@@ -39,6 +39,7 @@ public abstract class Skill {
     protected boolean isMultiStrikeMove;
     protected int strikesLeft;
     protected int damageTally; //Counter to tally up damage.
+    protected boolean continuesUseThroughNoEffect;
 
     /**
      * Create a Skill.
@@ -62,6 +63,7 @@ public abstract class Skill {
         isMultiStrikeMove = false;
         strikesLeft = -1;
         damageTally = 0;
+        continuesUseThroughNoEffect = false;
     }
 
     /**
@@ -247,9 +249,9 @@ public abstract class Skill {
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return Whether or not the skill will fail.
      */
-    public boolean willFail(Pokemon skillUser, Pokemon enemyPokemon,
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                             Field field, boolean isFirstAttack) {
-        return false;
+        return new FailResult(false);
     }
 
     /**
@@ -271,6 +273,17 @@ public abstract class Skill {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Return whether or not the skill gets used even if it doesn't
+     * effect the enemy.
+     * Ex: Self-Destruct gets used even if it's done on a Ghost type.
+     * It simply kills the user and doesn't effect the enemy.
+     * @return
+     */
+    public boolean continuesUseThroughNoEffect() {
+        return continuesUseThroughNoEffect;
     }
 
     /**

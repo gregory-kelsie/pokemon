@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamag
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +44,7 @@ public class DoubleSlap extends DamageSkill {
      * @return The results of using the move.
      */
     public List<List<String>> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+        List<List<String>> fullList;
         //Use the damage part of the move.
         if (strikesLeft == -1) {
 
@@ -59,7 +61,7 @@ public class DoubleSlap extends DamageSkill {
         }
         timesHit++;
         strikesLeft--;
-        List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
         fullList.get(1).remove(0); //Remove old single damage result.
         fullList.get(1).add("Dealt " + damageTally + " damage!");
         fullList.get(1).add("Hit " + timesHit + " times!");
@@ -76,6 +78,7 @@ public class DoubleSlap extends DamageSkill {
             timesHit = 0; //Reset times hit
             damageTally = 0;
         }
+
         return fullList;
     }
 
