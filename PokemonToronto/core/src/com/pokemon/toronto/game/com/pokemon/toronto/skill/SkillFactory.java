@@ -16,6 +16,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Growl;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Leer;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Scratch;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.SelfDestruct;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
@@ -47,6 +48,7 @@ public class SkillFactory {
     public static final int BITE = 17;
     public static final int FOCUS_ENERGY = 18;
     public static final int HAIL = 19;
+    public static final int SELF_DESTRUCT = 20;
 
     public SkillFactory() {
 
@@ -96,6 +98,8 @@ public class SkillFactory {
             return new FocusEnergy();
         } else if (skillId == HAIL) {
             return new Hail();
+        } else if (skillId == SELF_DESTRUCT) {
+            return new SelfDestruct();
         }
         else {
             return new Covet();
