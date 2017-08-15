@@ -1977,6 +1977,12 @@ public abstract class Pokemon {
         return new AbsorbResult(false);
     }
 
+    /**
+     * Return the AbsorbResults when Lightning Rod absorbs an
+     * attack successfully while gaining Lightning Rod's absorbtion
+     * effects.
+     * @return Volt Absorbs successful AbsorbResults.
+     */
     private AbsorbResult getLightningRodAbsorbEffect() {
         List<String> absorbText = new ArrayList<String>();
         absorbText.add(name + " takes no damage\ndue to their ability Lightning Rod.");
@@ -1989,6 +1995,12 @@ public abstract class Pokemon {
         return new AbsorbResult(absorbText);
     }
 
+    /**
+     * Return the AbsorbResults when Motor Drive absorbs an
+     * attack successfully while gaining Motor Drive's absorbtion
+     * effects.
+     * @return Motor Drive's successful AbsorbResults.
+     */
     private AbsorbResult getMotorDriveAbsorbEffect() {
         List<String> absorbText = new ArrayList<String>();
         absorbText.add(name + " takes no damage\ndue to their ability Motor Drive.");
@@ -2001,6 +2013,12 @@ public abstract class Pokemon {
         return new AbsorbResult(absorbText);
     }
 
+    /**
+     * Return the AbsorbResults when Dry Skin absorbs an
+     * attack successfully while gaining Dry Skin's absorbtion
+     * effects.
+     * @return Dry Skin's successful AbsorbResults.
+     */
     private AbsorbResult getDrySkinAbsorbEffect() {
         List<String> absorbText = new ArrayList<String>();
 
@@ -2013,6 +2031,12 @@ public abstract class Pokemon {
         return new AbsorbResult(absorbText);
     }
 
+    /**
+     * Return the AbsorbResults when Water Absorb absorbs an
+     * attack successfully while gaining Water Absorb's absorbtion
+     * effects.
+     * @return Water Absorbs successful AbsorbResults.
+     */
     private AbsorbResult getWaterAbsorbAbsorbEffect() {
         List<String> absorbText = new ArrayList<String>();
 
@@ -2025,6 +2049,12 @@ public abstract class Pokemon {
         return new AbsorbResult(absorbText);
     }
 
+    /**
+     * Return the AbsorbResults when Volt Absorb absorbs an
+     * attack successfully while gaining Volt Absorb's absorbtion
+     * effects.
+     * @return Volt Absorbs successful AbsorbResults.
+     */
     private AbsorbResult getVoltAbsorbAbsorbEffect() {
         List<String> absorbText = new ArrayList<String>();
 
