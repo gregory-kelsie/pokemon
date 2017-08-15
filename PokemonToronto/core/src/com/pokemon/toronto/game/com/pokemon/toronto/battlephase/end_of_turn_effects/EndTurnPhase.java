@@ -30,6 +30,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int DISPLAY_ENEMY_FAINT_TEXT = 10;
     private final int DISPLAY_PLAYER_FAINT_TEXT = 11;
     private final int USE_SAND = 12;
+    private final int USE_RAIN = 13;
 
 
     //End turn weather results
@@ -91,6 +92,8 @@ public class EndTurnPhase extends BattlePhase {
             updateUserFaintAnimation(dt);
         } else if (currentState == USE_SAND) {
             useSandstorm();
+        } else if (currentState == USE_RAIN) {
+            useRain();
         }
     }
 
@@ -229,6 +232,19 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void useRain() {
+        Pokemon pokemon = getCurrentPokemon();
+        if (pokemon.getAbility() == Pokemon.Ability.RAIN_DISH
+                && !pokemon.hasFullHealth()) {
+            recoverPokemonFromRain(pokemon, 16.0);
+        } else if (pokemon.getAbility() == Pokemon.Ability.DRY_SKIN
+                && !pokemon.hasFullHealth()) {
+            recoverPokemonFromRain(pokemon, 8.0);
+        } else {
+            weatherDoesNothing();
+        }
+    }
+
     private void useHail() {
         Pokemon pokemon = getCurrentPokemon();
         if (pokemon.getAbility() == Pokemon.Ability.ICE_BODY ||
@@ -258,6 +274,22 @@ public class EndTurnPhase extends BattlePhase {
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
             stateAfterHealthAdjustment = USE_HAIL;
+            usingOnEnemy = false;
+        } else {
+            stateAfterText = ADJUST_PLAYER_HEALTH;
+            stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+            usingOnEnemy = true;
+        }
+    }
+
+    private void recoverPokemonFromRain(Pokemon pokemon, double denominator) {
+        int recoverAmount = (int)Math.round(pokemon.getHealthStat() / denominator);
+        pokemon.addHealth(recoverAmount);
+        text = pokemon.getName() + " recovered health in the rain\nwith the ability Rain Dish.";
+        currentState = DISPLAY_TEXT;
+        if (usingOnEnemy) {
+            stateAfterText = ADJUST_ENEMY_HEALTH;
+            stateAfterHealthAdjustment = USE_RAIN;
             usingOnEnemy = false;
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;
@@ -333,6 +365,9 @@ public class EndTurnPhase extends BattlePhase {
         } else if (pui.getField().getWeatherType() == WeatherType.SAND) {
             usingOnEnemy = true;
             currentState = USE_SAND;
+        } else if (pui.getField().getWeatherType() == WeatherType.RAIN) {
+            usingOnEnemy = true;
+            currentState = USE_RAIN;
         }
     }
 

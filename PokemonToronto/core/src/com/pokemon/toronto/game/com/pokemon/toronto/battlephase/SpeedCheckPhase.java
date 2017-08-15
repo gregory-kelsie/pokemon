@@ -47,6 +47,10 @@ public class SpeedCheckPhase extends BattlePhase {
             if (userPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
                     pui.getField().getWeatherType() == WeatherType.SAND) {
                 userSpeed *= 2;
+            } else if (userPokemon.getAbility() == Pokemon.Ability.SWIFT_SWIM &&
+                    (pui.getField().getWeatherType() == WeatherType.RAIN ||
+                            pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
+                userSpeed *= 2;
             }
             double enemySpeed = enemyPokemon.getSpeedStat();
             stage = enemyPokemon.getSpeedStage();
@@ -60,6 +64,10 @@ public class SpeedCheckPhase extends BattlePhase {
             }
             if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
                     pui.getField().getWeatherType() == WeatherType.SAND) {
+                enemySpeed *= 2;
+            } else if (enemyPokemon.getAbility() == Pokemon.Ability.SWIFT_SWIM &&
+                    (pui.getField().getWeatherType() == WeatherType.RAIN ||
+                            pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
                 enemySpeed *= 2;
             }
             Gdx.app.log("Speedcheck", "enemy: " + enemySpeed + ", user: " + userSpeed);

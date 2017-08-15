@@ -525,7 +525,7 @@ public abstract class DamageSkill extends Skill {
         double ls = (((((2 * user.getLevel()) / 5) + 2) * (atkStat / defStat) * damage) / 50) + 2;
         double mod = getModifier(user, enemy, field, hasCrit);
         double dmg = ls * mod;
-        return (int)Math.round(dmg);
+        return (int)Math.ceil(dmg);
     }
 
 }

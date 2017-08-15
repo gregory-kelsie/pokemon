@@ -201,7 +201,8 @@ public abstract class Pokemon {
         LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
         POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
         SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
-        ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL
+        ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL, HYDRATION,
+        SWIFT_SWIM
     }
 
     /**
@@ -2298,6 +2299,11 @@ public abstract class Pokemon {
                 return "Sand Rush";
             case SAND_VEIL:
                 return "Sand Veil";
+            case HYDRATION:
+                return "Hydration";
+            case SWIFT_SWIM:
+                return "Swift Swim";
+
             default:
                 return "Ability Error";
 

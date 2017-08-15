@@ -86,13 +86,15 @@ public class Field {
 
     /**
      * Return whether or not the weather deals damage
-     * at the end of the turn.
+     * at the end of the turn or heals.
      * @return Whether or not the weather deals damage
      * at the end of the turn.
      */
     public boolean hasDamagingWeatherConditions() {
         if (weatherType == WeatherType.HAIL ||
-                weatherType == WeatherType.SAND) {
+                weatherType == WeatherType.SAND ||
+                weatherType == WeatherType.RAIN ||
+                weatherType == WeatherType.HEAVY_RAIN) {
             return true;
         }
         return false;
