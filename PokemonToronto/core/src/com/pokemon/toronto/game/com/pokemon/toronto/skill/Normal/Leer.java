@@ -47,7 +47,7 @@ public class Leer extends Skill {
             secondList.add(enemyPokemon.getName() + "'s defense can't be lowered.");
         } else {
             enemyPokemon.decreaseDefenseStage(1);
-            secondList.add(enemyPokemon.getName() + "'s defense was lowered.");
+            secondList.add(enemyPokemon.getName() + "'s defense fell!");
         }
         fullList.add(firstList);
         fullList.add(secondList);

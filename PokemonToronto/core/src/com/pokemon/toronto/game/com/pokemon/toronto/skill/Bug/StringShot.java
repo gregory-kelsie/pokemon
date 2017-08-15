@@ -43,7 +43,7 @@ public class StringShot extends Skill {
             secondList.add(enemyPokemon.getName() + "'s speed can't be lowered.");
         } else {
             enemyPokemon.decreaseSpeedStage(1);
-            secondList.add(enemyPokemon.getName() + "'s speed was lowered.");
+            secondList.add(enemyPokemon.getName() + "'s speed fell!");
         }
         fullList.add(firstList);
         fullList.add(secondList);

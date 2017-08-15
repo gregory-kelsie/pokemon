@@ -47,7 +47,7 @@ public class SandAttack extends Skill {
             secondList.add(enemyPokemon.getName() + "'s accuracy can't be lowered.");
         } else {
             enemyPokemon.decreaseAccuracyStage(1);
-            secondList.add(enemyPokemon.getName() + "'s accuracy was lowered.");
+            secondList.add(enemyPokemon.getName() + "'s accuracy fell!");
         }
 
         fullList.add(firstList);

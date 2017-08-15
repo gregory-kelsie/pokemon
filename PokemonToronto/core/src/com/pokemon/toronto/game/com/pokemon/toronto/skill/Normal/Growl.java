@@ -42,7 +42,7 @@ public class Growl extends Skill {
             secondList.add(enemyPokemon.getName() + "'s attack can't be lowered.");
         } else {
             enemyPokemon.decreaseAttackStage(1);
-            secondList.add(enemyPokemon.getName() + "'s attack was lowered.");
+            secondList.add(enemyPokemon.getName() + "'s attack fell!");
         }
         fullList.add(firstList);
         fullList.add(secondList);
