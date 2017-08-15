@@ -94,7 +94,9 @@ public class Field {
         if (weatherType == WeatherType.HAIL ||
                 weatherType == WeatherType.SAND ||
                 weatherType == WeatherType.RAIN ||
-                weatherType == WeatherType.HEAVY_RAIN) {
+                weatherType == WeatherType.HEAVY_RAIN ||
+                weatherType == WeatherType.HARSH_SUNSHINE ||
+                weatherType == WeatherType.SUN) {
             return true;
         }
         return false;

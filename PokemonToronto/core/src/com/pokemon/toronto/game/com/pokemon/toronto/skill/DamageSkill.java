@@ -218,7 +218,7 @@ public abstract class DamageSkill extends Skill {
         double crit = this.getCritMultiplier(user, hasCrit);
         double resistMod = getResistModifier(user, enemy);
         double stabMod = getStabModifier(user);
-        double abilityMod = getAbilityMod(user);
+        double abilityMod = getAbilityMod(user, field);
         double defenseAbilityMod = getDefenseAbilityMod(enemy);
         double weatherMod = getWeatherMod(field);
         double randVal = Math.random() * (0.15) + 0.85;
@@ -309,7 +309,7 @@ public abstract class DamageSkill extends Skill {
 	* 	Return the attacker's ability multiplier when determining the damage dealt.
 	*	@param user - The Attacker
 	*/
-    private double getAbilityMod (Pokemon user) {
+    private double getAbilityMod (Pokemon user, Field field) {
         //Health below 1/3 ability mods
         if (user.getCurrentHealth() <= user.getHealthStat() * 0.33) {
             if (this.getType() == Pokemon.Type.FIRE) {
@@ -337,6 +337,16 @@ public abstract class DamageSkill extends Skill {
                 return 1.3;
             }
         }
+
+        if (user.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+            if (field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
+                    field.getWeatherType() == WeatherType.SUN) {
+                if (category == SkillCategory.SPECIAL) {
+                    return 1.5;
+                }
+            }
+        }
+
         //Status ability mods
         if (user.getAbility() == Pokemon.Ability.GUTS && (user.getStatus() == Pokemon.Status.BURN
                 || user.getStatus() == Pokemon.Status.PARALYSIS || user.getStatus() == Pokemon.Status.POISON)) {

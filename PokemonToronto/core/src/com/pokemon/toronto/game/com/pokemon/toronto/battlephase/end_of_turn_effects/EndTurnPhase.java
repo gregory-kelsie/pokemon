@@ -31,6 +31,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int DISPLAY_PLAYER_FAINT_TEXT = 11;
     private final int USE_SAND = 12;
     private final int USE_RAIN = 13;
+    private final int USE_SUN = 14;
 
 
     //End turn weather results
@@ -94,6 +95,8 @@ public class EndTurnPhase extends BattlePhase {
             useSandstorm();
         } else if (currentState == USE_RAIN) {
             useRain();
+        } else if (currentState == USE_SUN) {
+            useSunlight();
         }
     }
 
@@ -245,6 +248,16 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void useSunlight() {
+        Pokemon pokemon = getCurrentPokemon();
+        if (pokemon.getAbility() == Pokemon.Ability.DRY_SKIN ||
+                pokemon.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+            damagePokemonFromSunlight(pokemon);
+        } else {
+            weatherDoesNothing();
+        }
+    }
+
     private void useHail() {
         Pokemon pokemon = getCurrentPokemon();
         if (pokemon.getAbility() == Pokemon.Ability.ICE_BODY ||
@@ -325,6 +338,39 @@ public class EndTurnPhase extends BattlePhase {
             }
         }
     }
+
+    private void damagePokemonFromSunlight(Pokemon pokemon) {
+        int damage = (int)Math.round(pokemon.getHealthStat() / 8.0);
+        pokemon.subtractHealth(damage);
+        if (pokemon.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+            text = pokemon.getName() + " is hurt \nfrom drawing in solar power.";
+        } else { //Having Dry skin is the only other way to get here.
+            text = pokemon.getName() + " is hurt by having\n Dry Skin in the sunlight";
+        }
+        currentState = DISPLAY_TEXT;
+        if (usingOnEnemy) {
+            stateAfterText = ADJUST_ENEMY_HEALTH;
+            if (pokemon.getCurrentHealth() != 0) {
+                stateAfterHealthAdjustment = USE_SUN;
+                usingOnEnemy = false;
+            } else {
+                stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = USE_SUN;
+                usingOnEnemy = false;
+            }
+        } else {
+            stateAfterText = ADJUST_PLAYER_HEALTH;
+            if (pokemon.getCurrentHealth() != 0) {
+                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+                usingOnEnemy = true;
+            } else {
+                stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = CHECK_FUTURE_SIGHT;
+                usingOnEnemy = true;
+            }
+        }
+    }
+
     /**
      * Damage a Pokemon that gets hit by hail.
      * @param pokemon The Pokemon getting buffetted by hail.
@@ -365,9 +411,14 @@ public class EndTurnPhase extends BattlePhase {
         } else if (pui.getField().getWeatherType() == WeatherType.SAND) {
             usingOnEnemy = true;
             currentState = USE_SAND;
-        } else if (pui.getField().getWeatherType() == WeatherType.RAIN) {
+        } else if (pui.getField().getWeatherType() == WeatherType.RAIN ||
+                pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN) {
             usingOnEnemy = true;
             currentState = USE_RAIN;
+        } else if (pui.getField().getWeatherType() == WeatherType.SUN ||
+                pui.getField().getWeatherType() == WeatherType.HARSH_SUNSHINE) {
+            usingOnEnemy = true;
+            currentState = USE_SUN;
         }
     }
 
