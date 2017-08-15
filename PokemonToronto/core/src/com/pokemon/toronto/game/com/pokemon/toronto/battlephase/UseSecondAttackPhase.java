@@ -21,71 +21,57 @@ public class UseSecondAttackPhase extends UseAttackPhase {
         firstAttack = false;
         if (pui.isUserPokemonFirstAttacker()) {
             attackerIsUser = false;
-            FailResult failResult = pui.getEnemySkill().willFail(pui.getEnemyPokemon(),
-                    pui.getUserPokemon(), pui.getField(), false);
-            if (!failResult.hasFailed()) {
-                if (!pui.getEnemySkill().doesDamageToEnemy() || pui.getEnemySkill().continuesUseThroughNoEffect() ||
-                        (pui.getEnemySkill().doesDamageToEnemy() && pui.getUserPokemon().getResistances()
-                                .get(pui.getEnemySkill().getType()) != 0)) {
-                    if (pui.getEnemySkill().willHitEnemy(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false)) {
-                        usedSkill = pui.getEnemySkill();
-                        battleListText = pui.getEnemySkill().use(pui.getEnemyPokemon(), pui.getUserPokemon(), pui.getField(), false);
-                        animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
-                        attacker = pui.getEnemyPokemon();
-                        receiver = pui.getUserPokemon();
-                        checkPokemonHealthAfterEnemyAttack();
+            attemptSkillUsage();
+        } else {
+            attackerIsUser = true;
+            attemptSkillUsage();
+        }
+    }
+    
+    private void attemptSkillUsage() {
+        attackerIsUser = false;
+        if (attackerIsUser) {
+            attacker = pui.getUserPokemon();
+            receiver = pui.getEnemyPokemon();
+            usedSkill = pui.getUserSkill();
+        } else {
+            attacker = pui.getEnemyPokemon();
+            receiver = pui.getUserPokemon();
+            usedSkill = pui.getEnemySkill();
+        }
+        FailResult failResult = usedSkill.willFail(attacker,
+                receiver, pui.getField(), false);
+        if (!failResult.hasFailed()) {
+            if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
+                    (usedSkill.doesDamageToEnemy() && receiver.getResistances()
+                            .get(usedSkill.getType()) != 0)) {
+                if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), false)) {
+                    battleListText = usedSkill.use(attacker, receiver, pui.getField(), false);
+                    if (attackerIsUser) {
+                        animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);
+                        checkPokemonHealthAfterUserAttack();
                     } else {
-                        missText = pui.getEnemyPokemon().getName() + "'s attack missed.";
-                        updatingAnimation = false;
-                        missed = true;
-                        resetTextBox();
+                        animation = pui.getEnemySkill().getAnimation(ENEMY_SIDE_ANIMATION);
+                        checkPokemonHealthAfterEnemyAttack();
                     }
                 } else {
-                    missText = "It had no effect...";
+                    missText = attacker.getName() + "'s attack missed.";
                     updatingAnimation = false;
                     missed = true;
                     resetTextBox();
                 }
             } else {
-                missText = failResult.getFailResult();
+                missText = "It had no effect...";
                 updatingAnimation = false;
                 missed = true;
                 resetTextBox();
             }
         } else {
-            attackerIsUser = true;
-            FailResult failResult = pui.getUserSkill().willFail(pui.getUserPokemon(),
-                    pui.getEnemyPokemon(), pui.getField(), false);
-            if (!failResult.hasFailed()) {
-                if (!pui.getUserSkill().doesDamageToEnemy() || pui.getUserSkill().continuesUseThroughNoEffect() ||
-                        (pui.getUserSkill().doesDamageToEnemy() && pui.getEnemyPokemon().getResistances()
-                                .get(pui.getUserSkill().getType()) != 0)) {
-                    if (pui.getUserSkill().willHitEnemy(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false)) {
-                        usedSkill = pui.getUserSkill();
-                        battleListText = pui.getUserSkill().use(pui.getUserPokemon(), pui.getEnemyPokemon(), pui.getField(), false);
-                        animation = pui.getUserSkill().getAnimation(PLAYER_SIDE_ANIMATION);
-                        attacker = pui.getUserPokemon();
-                        receiver = pui.getEnemyPokemon();
-                        checkPokemonHealthAfterUserAttack();
-                    } else {
-                        missText = pui.getUserPokemon().getName() + "'s attack missed.";
-                        updatingAnimation = false;
-                        missed = true;
-                        resetTextBox();
-                    }
-                } else {
-                    missText = "It had no effect...";
-                    updatingAnimation = false;
-                    missed = true;
-                    resetTextBox();
-                }
-            } else {
-                missText = failResult.getFailResult();
-                updatingAnimation = false;
-                missed = true;
-                resetTextBox();
-            }
-        }
+            missText = failResult.getFailResult();
+            updatingAnimation = false;
+            missed = true;
+            resetTextBox();
+        }       
     }
 
     @Override
