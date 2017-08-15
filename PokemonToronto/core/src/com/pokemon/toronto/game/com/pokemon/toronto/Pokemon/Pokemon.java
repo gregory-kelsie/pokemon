@@ -142,6 +142,9 @@ public abstract class Pokemon {
 
     private int sleepTime;
 
+    private Skill outrageSkill;
+    private int outrageTurns;
+
     /** Constants */
 
     //Mins and Maxes
@@ -320,6 +323,8 @@ public abstract class Pokemon {
         confusionTime = NOT_CONFUSED;
         confused = false;
         focused = false;
+        outrageTurns = 0;
+        outrageSkill = null;
     }
 
     /**
@@ -739,6 +744,62 @@ public abstract class Pokemon {
     public boolean isConfused() {
         return confused;
     }
+
+    /**
+     * Return whether or not the Pokemon is outraging.
+     * Ex: When they are locked into Thrash, Petal Dance, Outrage etc.
+     * @return Whether or not the Pokemon is outraging.
+     */
+    public boolean isOutraging() {
+        if (outrageTurns == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Set the outrage skill for the Pokemon.
+     * When the Pokemon first uses Outrage/Thrash this is called.
+     * @param outrageSkill The skill they are outraging with.
+     * @param outrageTurns The time left for the outrage.
+     */
+    public void activateOutrage(Skill outrageSkill, int outrageTurns) {
+        this.outrageSkill = outrageSkill;
+        this.outrageTurns = outrageTurns;
+    }
+
+    /**
+     * Reduce the amount of time the Pokemon is outraging for
+     * by 1 turn.
+     */
+    public void reduceOutrageTime() {
+        outrageTurns--;
+    }
+
+    /**
+     * Return the amount of turns left for the outrage.
+     * @return The amount of turns left for the outrage.
+     */
+    public int getOutrageTime() {
+        return outrageTurns;
+    }
+
+    /**
+     * Return the outrage skill, otherwise return null.
+     * @return The outraging skill.
+     */
+    public Skill getOutrageSkill() {
+        return outrageSkill;
+    }
+
+    /**
+     * Remove the outrage skill from the Pokemon.
+     * (They are no longer stuck in it!)
+     */
+    public void removeOutrageSkill() {
+        outrageSkill = null;
+    }
+
 
     /**
      * Reset the coordaintes of the Pokemon, both enemy and

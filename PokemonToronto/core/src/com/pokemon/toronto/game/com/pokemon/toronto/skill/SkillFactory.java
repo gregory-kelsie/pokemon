@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Hail;
@@ -49,6 +50,7 @@ public class SkillFactory {
     public static final int FOCUS_ENERGY = 18;
     public static final int HAIL = 19;
     public static final int SELF_DESTRUCT = 20;
+    public static final int PETAL_DANCE = 21;
 
     public SkillFactory() {
 
@@ -100,6 +102,8 @@ public class SkillFactory {
             return new Hail();
         } else if (skillId == SELF_DESTRUCT) {
             return new SelfDestruct();
+        } else if (skillId == PETAL_DANCE) {
+            return new PetalDance();
         }
         else {
             return new Covet();
