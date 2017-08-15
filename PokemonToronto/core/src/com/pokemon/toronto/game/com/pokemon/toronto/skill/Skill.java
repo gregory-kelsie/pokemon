@@ -217,6 +217,11 @@ public abstract class Skill {
                 attackerAccuracyMod *= 0.8;
             }
             int evasionStage = enemyPokemon.getEvasionStage();
+            if (enemyPokemon.isConfused() && enemyPokemon.getAbility() ==
+                    Pokemon.Ability.TANGLED_FEET) {
+                evasionStage++;
+                evasionStage = Math.min(6, evasionStage);
+            }
             double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
             double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;
 
