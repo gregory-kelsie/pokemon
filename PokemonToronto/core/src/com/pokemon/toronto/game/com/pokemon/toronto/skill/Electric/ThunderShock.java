@@ -41,10 +41,11 @@ public class ThunderShock extends DamageSkill {
         List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
 
         //Check if the enemy is able to receive paralysis after the damage
-        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {
+        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&
+                enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {
             double rand = Math.random(); //Roll the paralysis die
             boolean paralyzed = false;
-            if (rand <= 1) { //15% chance to paralyze.
+            if (rand <= .15) { //15% chance to paralyze.
                 paralyzed = true;
             }
             if (paralyzed) { //Enemy was paralyzed.

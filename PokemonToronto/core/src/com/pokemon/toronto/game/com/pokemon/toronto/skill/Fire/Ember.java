@@ -41,7 +41,8 @@ public class Ember extends DamageSkill {
         List<List<String>> fullList = super.use(skillUser, enemyPokemon, field, isFirstAttack);
 
         //Check if the user is able to receive burn.
-        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0) {
+        if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0  &&
+                enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {
             double rand = Math.random(); //Roll the burn die
             boolean burned = false;
             if (rand <= 1) { //10% chance
