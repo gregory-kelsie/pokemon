@@ -87,6 +87,7 @@ public class Squirtle extends Pokemon {
         levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCRATCH)));
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
         levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.SKULL_BASH)));
     }
 
     /**
