@@ -347,7 +347,7 @@ public class SentOutAbilityPhase extends BattlePhase {
             if (!immuneToStickyWeb()) {
                 if (abilityUser.getSpeedStage() > -6) {
                     abilityUser.decreaseSpeedStage(1);
-                    hazzardText.add(abilityUser.getName() + "'s was caught in Sticky Web\n" +
+                    hazzardText.add(abilityUser.getName() + " was caught in Sticky Web.\n" +
                             abilityUser.getName() + "'s Speed fell!");
                     currentState = HAZZARD_TEXT;
                     afterTextState = FINISHED;
