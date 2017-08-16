@@ -293,7 +293,7 @@ public class BattleState extends GameState implements BattleInterface {
             }
             if (!battleUpdater.started()) {
                 if (!battleUpdater.caughtThePokemon()) {
-                    if (!currentPokemon.isOutraging()) {
+                    if (!currentPokemon.isOutraging() && !currentPokemon.hasNextTurnSkill()) {
                         battleTextures.getRegularFont().draw(batch, "What will " + currentPokemon.getName() + " do?", 54, 1143);
                     }
                 }
@@ -523,6 +523,9 @@ public class BattleState extends GameState implements BattleInterface {
             } else {
                 if (currentPokemon.isOutraging()) {
                     battleUpdater.start(getParty(), currentPokemon, enemyPokemon, currentPokemon.getOutrageSkill(),
+                            getEnemyPokemon().getSkills().get(0), field);
+                } else if (currentPokemon.hasNextTurnSkill()) {
+                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon, currentPokemon.getNextTurnSkill(),
                             getEnemyPokemon().getSkills().get(0), field);
                 }
                 if (battleUpdater.caughtThePokemon()) {

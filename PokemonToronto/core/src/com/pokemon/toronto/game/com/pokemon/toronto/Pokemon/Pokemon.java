@@ -145,6 +145,10 @@ public abstract class Pokemon {
     private Skill outrageSkill;
     private int outrageTurns;
 
+    private Skill nextTurnSkill;
+    private boolean flying; //Fly
+    private boolean underground; //Dig
+
     /** Constants */
 
     //Mins and Maxes
@@ -325,6 +329,9 @@ public abstract class Pokemon {
         focused = false;
         outrageTurns = 0;
         outrageSkill = null;
+        nextTurnSkill = null;
+        flying = false; //Fly
+        underground = false; //Dig
     }
 
     /**
@@ -800,6 +807,62 @@ public abstract class Pokemon {
         outrageSkill = null;
     }
 
+    /**
+     * Return the skill that will be used next turn.
+     * Ex: When fly is first used the next turn skill is fly.
+     * @return The skill that will be used in the next turn.
+     */
+    public Skill getNextTurnSkill() {
+        return nextTurnSkill;
+    }
+
+    /**
+     * Return whether or not the Pokemon has a skill ready for
+     * the next turn.
+     * Ex: Fly, Dig, Sky Attack etc.
+     * @return Whether or not the Pokemon has a skill ready for
+     * the next turn.
+     */
+    public boolean hasNextTurnSkill() {
+        if (nextTurnSkill != null) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Remove the next turn skill.
+     */
+    public void removeNextTurnSkill() {
+        nextTurnSkill = null;
+    }
+
+    /**
+     * Set the next turn skill to the argument.
+     * @param nextTurnSkill The new next turn skill.
+     */
+    public void setNextTurnSkill(Skill nextTurnSkill) {
+        this.nextTurnSkill = nextTurnSkill;
+    }
+
+    /**
+     * Return whether or not the Pokemon is in the air after using
+     * Fly.
+     * @return Whether or not the Pokemon is in the air flying.
+     */
+    public boolean isFlying() {
+        return flying;
+    }
+
+    /**
+     * Return whether or not the Pokemon is underground after
+     * using Dig.
+     * @return Whether or not the Pokemon is underground.
+     */
+    public boolean isUnderground() {
+        return underground;
+    }
+
 
     /**
      * Reset the coordaintes of the Pokemon, both enemy and
@@ -1185,7 +1248,7 @@ public abstract class Pokemon {
      */
     public void increaseAttackStage(int amount) {
         attackStage += amount;
-        attackStage = Math.max(attackStage, 6);
+        attackStage = Math.min(attackStage, 6);
     }
 
     /**
@@ -1195,7 +1258,7 @@ public abstract class Pokemon {
      */
     public void increaseDefenseStage(int amount) {
         defenseStage += amount;
-        defenseStage = Math.max(defenseStage, 6);
+        defenseStage = Math.min(defenseStage, 6);
     }
 
     /**
@@ -1205,7 +1268,7 @@ public abstract class Pokemon {
      */
     public void increaseSpAttackStage(int amount) {
         specialAttackStage += amount;
-        specialAttackStage = Math.max(specialAttackStage, 6);
+        specialAttackStage = Math.min(specialAttackStage, 6);
     }
 
     /**
@@ -1215,7 +1278,7 @@ public abstract class Pokemon {
      */
     public void increaseSpDefenseStage(int amount) {
         specialDefenseStage += amount;
-        specialDefenseStage = Math.max(specialDefenseStage, 6);
+        specialDefenseStage = Math.min(specialDefenseStage, 6);
     }
 
     /**
