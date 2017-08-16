@@ -66,6 +66,7 @@ public class PoisonCheckPhase extends BattlePhase {
             }
         }
         if (counter >= 1.5) {
+            pui.playPoisonSound();
             if (poisonCheckState == DISPLAY_ENEMY_HURT_BY_POISON) {
                 poisonCheckState = DEPLETING_ENEMY;
                 textPosition = 0;

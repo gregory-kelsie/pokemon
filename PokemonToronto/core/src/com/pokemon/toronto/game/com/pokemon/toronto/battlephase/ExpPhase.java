@@ -42,6 +42,7 @@ public class ExpPhase extends BattlePhase {
 
     public ExpPhase(PhaseUpdaterInterface pui) {
         super(pui);
+        pui.playVictoryBgm();
         expGain = pui.getEnemyPokemon().calculateExp(1);
         fullBarofExp = pui.getUserPokemon().getNextLevelExp();
         expGainRate = fullBarofExp / 1.5;
@@ -90,6 +91,7 @@ public class ExpPhase extends BattlePhase {
         if (counter >= 1.5) {
             if (newSkillsForLevelUp.size() == 0) {
                 currentState = ADD_EXP;
+                pui.playExpSound();
             } else {
                 if (pui.getUserPokemon().getSkills().size() < 4) {
                     SkillFactory sf = new SkillFactory();
@@ -159,6 +161,7 @@ public class ExpPhase extends BattlePhase {
         if (counter >= 1.5) {
             if (newSkillsForLevelUp.size() == 0) {
                 currentState = ADD_EXP;
+                pui.playExpSound();
             } else {
                 if (pui.getUserPokemon().getSkills().size() < 4) {
                     SkillFactory sf = new SkillFactory();
@@ -200,6 +203,7 @@ public class ExpPhase extends BattlePhase {
         counter += dt;
         if (counter >= 2) {
             counter = 0;
+            pui.playExpSound();
             currentState = ADD_EXP;
         }
     }
@@ -213,6 +217,8 @@ public class ExpPhase extends BattlePhase {
                 //Overflown so add back to expGain
                 expGain = pui.getUserPokemon().getDisplayedExp() - pui.getUserPokemon().getNextLevelExp();
                 //Go to level up state
+                pui.stopExpSound();
+                pui.playLevelUpSound();
                 currentState = LEVEL_UP_STATE;
                 text = pui.getUserPokemon().getName() + " has leveled up!";
                 resetAllTextVariables();
@@ -221,6 +227,7 @@ public class ExpPhase extends BattlePhase {
                 expGainRate = fullBarofExp / 1.5;
             } else {
                 expGain = 0;
+                pui.stopExpSound();
                 //End the battle phase.
                 counter = 0;
                 currentState = DELAY_AFTER_EXP_GAIN;
@@ -233,6 +240,8 @@ public class ExpPhase extends BattlePhase {
                 //Overflown
                 expGain += pui.getUserPokemon().getDisplayedExp() - pui.getUserPokemon().getNextLevelExp();
                 //Go to level up state
+                pui.stopExpSound();
+                pui.playLevelUpSound();
                 text = pui.getUserPokemon().getName() + " has leveled up!";
                 resetAllTextVariables();
                 pui.getUserPokemon().levelUp();
@@ -258,6 +267,7 @@ public class ExpPhase extends BattlePhase {
             newSkillsForLevelUp = pui.getUserPokemon().getCurrentLevelUpSkills();
             if (newSkillsForLevelUp == null) {
                 currentState = ADD_EXP;
+                pui.playExpSound();
             } else {
                 Gdx.app.log("NEWSKILLS", "" + pui.getUserPokemon().getSkills().size());
                 SkillFactory sf = new SkillFactory();
@@ -309,6 +319,7 @@ public class ExpPhase extends BattlePhase {
                 resetAllTextVariables();
             } else {
                 currentState = ADD_EXP;
+                pui.playExpSound();
             }
         }
     }

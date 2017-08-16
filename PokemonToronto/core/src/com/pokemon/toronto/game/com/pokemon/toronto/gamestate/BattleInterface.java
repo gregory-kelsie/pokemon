@@ -9,12 +9,13 @@ import java.util.List;
  * Created by Gregory on 6/18/2017.
  */
 public interface BattleInterface {
-    public void setIsBattling(boolean battling);
-    public void setBattleTextList(List<List<String>> bList);
-    public boolean isBattling();
-    public void endBattle();
-    public void blackedOut();
-    public void setCurrentPokemon(Pokemon poke);
+    void setIsBattling(boolean battling);
+    void setBattleTextList(List<List<String>> bList);
+    boolean isBattling();
+    void endBattle();
+    void blackedOut();
+    void setCurrentPokemon(Pokemon poke);
     void switchUserPokemonTextures();
     void removeBattleVariablesFromCurrentPokemon();
+    void playVictoryBgm();
 }

@@ -46,18 +46,18 @@ public class PokemonFactory {
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getAbility());
-        } else if (preEvolution.getLevel() == PokemonId.BLASTOISE.getValue()) {
-            return new Blastoise(id, preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+        } else if (id == PokemonId.BLASTOISE.getValue()) {
+            return new Blastoise(preEvolution.getLevel(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getAbility());
-        } else if (preEvolution.getLevel() == PokemonId.CHARMELEON.getValue()) {
-            return new Charmeleon(id, preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+        } else if (id == PokemonId.CHARMELEON.getValue()) {
+            return new Charmeleon(preEvolution.getLevel(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getAbility());
-        } else if (preEvolution.getLevel() == PokemonId.CHARIZARD.getValue()) {
-            return new Charizard(id, preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+        } else if (id == PokemonId.CHARIZARD.getValue()) {
+            return new Charizard(preEvolution.getLevel(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getAbility());

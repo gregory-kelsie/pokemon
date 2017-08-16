@@ -57,6 +57,7 @@ public class BattleState extends GameState implements BattleInterface {
 
 
     private Music bgm;
+    private Music victoryBgm;
     private Sound clickSound;
     List<List<String>> battleTextList;
     //Move Animation Stuff
@@ -122,6 +123,7 @@ public class BattleState extends GameState implements BattleInterface {
         battleTextures = new BattleTextures(currentPokemon.getBackPath(),
                 enemyPokemon.getMapIconPath(), partyIconPaths, currentPokemon);
         this.bgm = bgm;
+        victoryBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/wildVictory.mp3"));
 
         clickSound = gsm.getLoader().get("sounds/click.wav");
 
@@ -253,6 +255,14 @@ public class BattleState extends GameState implements BattleInterface {
         renderEnemyStatus(batch);
 
 
+    }
+
+    @Override
+    public void playVictoryBgm() {
+        bgm.stop();
+        bgm.dispose();
+        victoryBgm.setLooping(true);
+        victoryBgm.play();
     }
 
     private void renderPlayerStatus(SpriteBatch batch) {
@@ -570,21 +580,37 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void endBattle() {
+        victoryBgm.stop();
         gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
-        if (gsm.getParty().get(currentPokemonPosition).hasJustLeveled() &&
-                gsm.getParty().get(currentPokemonPosition).getLevelUpEvolutionId() != -1) {
-            //TODO: Add to evolution list.
-
-            PokemonFactory pf = new PokemonFactory();
-            gsm.getParty().set(currentPokemonPosition,
-                    pf.createPokemon(gsm.getParty().get(currentPokemonPosition)
-                            .getLevelUpEvolutionId(), gsm.getParty().get(currentPokemonPosition)));
+        List<Pokemon> preEvolution = new ArrayList<Pokemon>();
+        List<Pokemon> evolvedPokemon = new ArrayList<Pokemon>();
+        PokemonFactory pf = new PokemonFactory();
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            if (gsm.getParty().get(i).hasJustLeveled() &&
+                    gsm.getParty().get(i).getLevelUpEvolutionId() != -1) {
+                preEvolution.add(gsm.getParty().get(i));
+                Pokemon temp = pf.createPokemon(gsm.getParty().get(i)
+                        .getLevelUpEvolutionId(), gsm.getParty().get(i));
+                Gdx.app.log("evolvename:", temp.getName());
+                evolvedPokemon.add(temp);
+                gsm.getParty().set(i, temp);
+            }
+            gsm.getParty().get(i).resetJustLeveled();
         }
-        gsm.getParty().get(currentPokemonPosition).resetJustLeveled();
+
         if (region != -1) {
-            gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+            if (evolvedPokemon.size() > 0) {
+                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon,
+                        startingRoute, region, isRoute));
+            } else {
+                gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+            }
         } else {
-            gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+            if (evolvedPokemon.size() > 0) {
+                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon));
+            } else {
+                gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+            }
         }
         dispose();
     }
@@ -598,6 +624,8 @@ public class BattleState extends GameState implements BattleInterface {
     @Override
     public void dispose() {
         battleTextures.dispose();
+        victoryBgm.stop();
+        victoryBgm.dispose();
         bgm.stop();
         bgm.dispose();
     }
@@ -820,6 +848,7 @@ public class BattleState extends GameState implements BattleInterface {
 
 
     //INTERFACE METHODS
+
 
     @Override
     public void setIsBattling(boolean battling) {

@@ -39,4 +39,9 @@ public interface PhaseUpdaterInterface {
     void resetYesNoResult();
     void resetDeletionResult();
     Field getField();
+    void playPoisonSound();
+    void playLevelUpSound();
+    void playExpSound();
+    void stopExpSound();
+    void playVictoryBgm();
 }

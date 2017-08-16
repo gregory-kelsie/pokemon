@@ -1,6 +1,8 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.stateupdater;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -72,6 +74,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     //Field
     private Field field;
 
+    //Battle Sound Effects
+    private Sound poisonSound;
+    private Music expGainSound;
+    private Sound levelUpSound;
+
 
     public BattleUpdater(BattleInterface battleState, BitmapFont font) {
         this.battleState = battleState;
@@ -84,6 +91,10 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
         moveDeletionResult = -1;
         yesNoResult = -1;
+
+        poisonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/poison.wav"));
+        levelUpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/levelup.wav"));
+        expGainSound = Gdx.audio.newMusic(Gdx.files.internal("sounds/expgain.wav"));
     }
 
     /*
@@ -150,7 +161,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
 
     public void dispose() {
-
+        poisonSound.dispose();
+        expGainSound.dispose();
+        levelUpSound.dispose();
     }
 
     /****************************************************************************************************
@@ -159,6 +172,38 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      *
      * *************************************************************************************************
      */
+
+    @Override
+    public void playVictoryBgm() {
+        battleState.playVictoryBgm();
+    }
+    @Override
+    public void playPoisonSound() {
+        poisonSound.play();
+    }
+
+    @Override
+    public void playExpSound() {
+        if (!expGainSound.isPlaying()) {
+            expGainSound.setPosition(0.0f); //Restart from start if playing again.
+            Gdx.app.log("expsound", "play");
+            expGainSound.play();
+        }
+    }
+
+    @Override
+    public void stopExpSound() {
+        if (expGainSound.isPlaying()) {
+            Gdx.app.log("expsound", "stop");
+            expGainSound.stop();
+
+        }
+    }
+
+    @Override
+    public void playLevelUpSound() {
+        levelUpSound.play();
+    }
 
     @Override
     public void setWaitingForMoveDeletion() {
