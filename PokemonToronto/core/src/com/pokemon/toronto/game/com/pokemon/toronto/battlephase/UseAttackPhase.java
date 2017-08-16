@@ -60,6 +60,8 @@ public class UseAttackPhase extends BattlePhase {
     private boolean enemyKilledUser;
     private boolean userKilledEnemy;
 
+    private boolean isGain;
+
     public UseAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
         updatingAnimation = true;
@@ -82,6 +84,7 @@ public class UseAttackPhase extends BattlePhase {
         enemyRecoilFaint = false;
         state = -1;
         contactResults = "";
+        isGain = false;
     }
 
     /**
@@ -156,7 +159,11 @@ public class UseAttackPhase extends BattlePhase {
         if (!attacker.matchingAnimationHealth()) {
             attacker.adjustAnimationHealth(1);
         } else {
-            recoilResults.add(attacker.getName() + " was hit by recoil.");
+            if (!isGain) {
+                recoilResults.add(attacker.getName() + " was hit by recoil.");
+            } else {
+                recoilResults.add(attacker.getName() + " drained health.");
+            }
             if (attacker.getCurrentHealth() == 0) {
                 recoilResults.add(attacker.getName() + " fainted.");
             }
@@ -214,13 +221,26 @@ public class UseAttackPhase extends BattlePhase {
                 //No results so go right into the recoil phase
                 if (hasRecoil()) {
                     //There is recoil, so update the health of the attacker.
+                    if (attacker.getCurrentHealth() < attacker.getAnimationHealth()) {
+                        isGain = false;
+                    } else {
+                        isGain = true;
+                    }
                     displayingResults = false;
                     if (attackerIsUser) {
                         if (enemyFainted) {
                             displayEnemyFaintAnimation = true;
+                        } else {
+                            updateAttackerHealth = true;
                         }
+                    } else {
+                         if (userFainted) {
+                            displayUserFaintAnimation = true;
+                        } else {
+                             updateAttackerHealth = true;
+                         }
                     }
-                    updateAttackerHealth = true;
+                    //updateAttackerHealth = true;
                 } else {
                     //No recoil so end the attack accordingly
                     if (pui.isUserPokemonFirstAttacker()) {

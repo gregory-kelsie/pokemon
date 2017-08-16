@@ -24,6 +24,7 @@ public abstract class DamageSkill extends Skill {
     protected final int ONE_FOURTH = 1;
     protected final int ONE_THIRD = 2;
     protected final int ONE_HALF = 3;
+    protected final int GAIN_HALF = 4;
 
     /**
      * Create a Damage oriented skill.
@@ -106,6 +107,8 @@ public abstract class DamageSkill extends Skill {
             skillUser.subtractHealth((int) Math.ceil(damage / 2.0));
         } else if (recoilLevel == ONE_FOURTH) {
             skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
+        } else if (recoilLevel == GAIN_HALF) {
+            skillUser.addHealth((int) Math.ceil(damage / 2.0));
         }
         return results;
     }

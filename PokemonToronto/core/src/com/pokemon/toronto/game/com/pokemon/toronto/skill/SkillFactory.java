@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
@@ -53,6 +54,7 @@ public class SkillFactory {
     public static final int SELF_DESTRUCT = 20;
     public static final int PETAL_DANCE = 21;
     public static final int SKULL_BASH = 22;
+    public static final int GIGA_DRAIN = 23;
 
     public SkillFactory() {
 
@@ -108,6 +110,8 @@ public class SkillFactory {
             return new PetalDance();
         } else if (skillId == SKULL_BASH) {
             return new SkullBash();
+        } else if (skillId == GIGA_DRAIN) {
+            return new GigaDrain();
         }
         else {
             return new Covet();
