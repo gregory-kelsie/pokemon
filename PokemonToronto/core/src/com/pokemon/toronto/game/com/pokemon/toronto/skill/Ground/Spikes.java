@@ -1,5 +1,6 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
+package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -12,44 +13,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gregory on 8/14/2017.
+ * Created by Gregory on 8/16/2017.
  */
 
-public class FocusEnergy extends Skill {
+public class Spikes extends Skill {
+
     /**
-     * - Name: Focus Energy
-     * - Type: Normal
-     * - PP: 30
+     * - Name: Spikes
+     * - Type: Ground
+     * - PP: 20
      * - Cat: Misc
      * - Accuracy: 100
      */
-    public FocusEnergy() {
-        super("Focus Energy", 30, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
+    public Spikes() {
+        super("Spikes", 20, Pokemon.Type.GROUND, Skill.SkillCategory.MISC, 100);
     }
 
     /**
-     * Use Focus Energy and return the move results
-     * Raise the Crit Stage 2 levels.
+     * Set up a layer of spikes on the opponent's field.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return The move results.
+     * @param field The field of the battle.
+     * @return Spikes' move results.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
+    @Override
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack) {
         List<String> results = new ArrayList<String>();
-        skillUser.focus();
-        results.add(skillUser.getName() + " is getting pumped up!!");
+        enemyField.addSpikeLayer();
+        results.add(skillUser.getName() + " added a layer of spikes.");
         return results;
     }
 
     /**
-     * Return Focus Energy's skill animation.
+     * Return Spikes' skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Focus Energy's skill animation.
+     * @return Spikes' skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {
@@ -60,8 +60,8 @@ public class FocusEnergy extends Skill {
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
                                boolean isFirstAttack) {
-        if (skillUser.isFocused()) {
-            return new FailResult(skillUser.getName() + " is already focused!");
+        if (enemyField.getNumberOfSpikeLayers() >= enemyField.getMaxSpikeLayers()) {
+            return new FailResult("It failed...");
         }
         return new FailResult(false);
     }

@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
@@ -43,7 +44,9 @@ public class DoubleSlap extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    @Override
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         List<String> results;
         //Use the damage part of the move.
         if (strikesLeft == -1) {
@@ -61,7 +64,8 @@ public class DoubleSlap extends DamageSkill {
         }
         timesHit++;
         strikesLeft--;
-        results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        results = super.use(skillUser, enemyPokemon, field, userField,
+                enemyField, isFirstAttack);
         results.remove(0); //Remove old single damage result.
         results.add("Dealt " + damageTally + " damage!");
         results.add("Hit " + timesHit + " times!");

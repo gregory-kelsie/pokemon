@@ -1,4 +1,4 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
+package com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
@@ -12,44 +12,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gregory on 8/14/2017.
+ * Created by Gregory on 8/16/2017.
  */
 
-public class FocusEnergy extends Skill {
+public class ToxicSpikes extends Skill {
+
     /**
-     * - Name: Focus Energy
-     * - Type: Normal
-     * - PP: 30
+     * - Name: Toxic Spikes
+     * - Type: Poison
+     * - PP: 20
      * - Cat: Misc
      * - Accuracy: 100
      */
-    public FocusEnergy() {
-        super("Focus Energy", 30, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
+    public ToxicSpikes() {
+        super("Toxic Spikes", 20, Pokemon.Type.POISON, Skill.SkillCategory.MISC, 100);
     }
 
     /**
-     * Use Focus Energy and return the move results
-     * Raise the Crit Stage 2 levels.
+     * Set up a layer of toxic spikes on the opponent's field.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return The move results.
+     * @param field The field of the battle.
+     * @return Toxic Spikes' move results.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
+    @Override
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack) {
         List<String> results = new ArrayList<String>();
-        skillUser.focus();
-        results.add(skillUser.getName() + " is getting pumped up!!");
+        enemyField.addToxicSpikeLayer();
+        results.add(skillUser.getName() + " added\na layer of Toxic Spikes.");
         return results;
     }
 
     /**
-     * Return Focus Energy's skill animation.
+     * Return Toxic Spikes' skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Focus Energy's skill animation.
+     * @return Toxic Spikes' skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {
@@ -60,8 +59,9 @@ public class FocusEnergy extends Skill {
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
                                boolean isFirstAttack) {
-        if (skillUser.isFocused()) {
-            return new FailResult(skillUser.getName() + " is already focused!");
+        if (enemyField.getNumberOfToxicSpikeLayers() >=
+                enemyField.getMaxToxicSpikeLayers()) {
+            return new FailResult("It failed...");
         }
         return new FailResult(false);
     }

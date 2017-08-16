@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
@@ -189,13 +190,16 @@ public abstract class Skill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
-     * @return A List of a List of Strings that display the result of
+     * @return List of Strings that display the result of
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon,
-                                  Field field, boolean isFirstAttack) {
+                            Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack) {
         return null;
     }
 
@@ -203,10 +207,14 @@ public abstract class Skill {
      * Return whether or not the move will hit the enemy.
      * @param skillUser The Pokemon using the skill.
      * @param enemyPokemon The Pokemon receiving the skill.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
+     * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return Whether or not the skill hits the enemy.
      */
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
-                                Field field, boolean isFirstAttack) {
+                                Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         if (accuracy != -1) {
             //Init Modifiers
             int accuracyStage = skillUser.getAccuracyStage();
@@ -246,11 +254,13 @@ public abstract class Skill {
      * @param skillUser The skill's user.
      * @param enemyPokemon The Pokemon on the receiving end.
      * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return Whether or not the skill will fail.
      */
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
-                            Field field, boolean isFirstAttack) {
+                            Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         return new FailResult(false);
     }
 

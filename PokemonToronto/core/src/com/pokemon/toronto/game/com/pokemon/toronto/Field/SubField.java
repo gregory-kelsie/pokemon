@@ -89,6 +89,35 @@ public class SubField {
     }
 
     /**
+     * Return whether or not the SubField has spikes laid out.
+     * @return Whether or not the SubField has spikes.
+     */
+    public boolean hasSpikes() {
+        if (spikeLayers == NO_SPIKES) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Return the maximum amount of spike layers that can
+     * be laid out.
+     * @return Maximum number of possible spike layers.
+     */
+    public int getMaxSpikeLayers() {
+        return MAX_SPIKE_LAYERS;
+    }
+
+    /**
+     * Return the maximum amount of toxic spike layers that can
+     * be laid out.
+     * @return Maximum number of possible toxic spike layers.
+     */
+    public int getMaxToxicSpikeLayers() {
+        return MAX_TOXIC_SPIKE_LAYERS;
+    }
+
+    /**
      * Return the number of toxic spike layers on the SubField.
      * @return The number of toxic spike layers on the SubField.
      */
@@ -109,6 +138,17 @@ public class SubField {
      */
     public void removeToxicSpikes() {
         toxicSpikeLayers = NO_TOXIC_SPIKES;
+    }
+
+    /**
+     * Return whether or not the SubField has toxic spikes laid out.
+     * @return Whether or not the SubField has toxic spikes.
+     */
+    public boolean hasToxicSpikes() {
+        if (toxicSpikeLayers == NO_TOXIC_SPIKES) {
+            return false;
+        }
+        return true;
     }
 
     /**

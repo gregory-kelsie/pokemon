@@ -211,7 +211,7 @@ public abstract class Pokemon {
         SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
         ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL, HYDRATION,
         SWIFT_SWIM, DAMP, DRIZZLE, SAND_STREAM, DROUGHT, SNOW_WARNING, CLOUD_NINE, MOLD_BREAKER,
-        PRESSURE, MOTOR_DRIVE, WATER_ABSORB, VOLT_ABSORB
+        PRESSURE, MOTOR_DRIVE, WATER_ABSORB, VOLT_ABSORB, LEVITATE, LEAF_GUARD, IMMUNITY
     }
 
     /**
@@ -2587,6 +2587,12 @@ public abstract class Pokemon {
                 return "Water Absorb";
             case VOLT_ABSORB:
                 return "Volt Absorb";
+            case LEVITATE:
+                return "Levitate";
+            case IMMUNITY:
+                return "Immunity";
+            case LEAF_GUARD:
+                return "Leaf Guard";
 
             default:
                 return "Ability Error";

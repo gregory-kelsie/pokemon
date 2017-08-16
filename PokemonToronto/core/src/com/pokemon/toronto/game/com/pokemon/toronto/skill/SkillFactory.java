@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StickyWeb;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Bite;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
@@ -10,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.Spikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Hail;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
@@ -24,6 +26,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.StealthRock;
 
 /**
  * Created by Gregory on 6/15/2017.
@@ -55,6 +59,10 @@ public class SkillFactory {
     public static final int PETAL_DANCE = 21;
     public static final int SKULL_BASH = 22;
     public static final int GIGA_DRAIN = 23;
+    public static final int STEALTH_ROCK = 24;
+    public static final int SPIKES = 25;
+    public static final int TOXIC_SPIKES = 26;
+    public static final int STICKY_WEB = 27;
 
     public SkillFactory() {
 
@@ -112,6 +120,14 @@ public class SkillFactory {
             return new SkullBash();
         } else if (skillId == GIGA_DRAIN) {
             return new GigaDrain();
+        } else if (skillId == STEALTH_ROCK) {
+            return new StealthRock();
+        } else if (skillId == SPIKES) {
+            return new Spikes();
+        } else if (skillId == TOXIC_SPIKES) {
+            return new ToxicSpikes();
+        } else if (skillId == STICKY_WEB) {
+            return new StickyWeb();
         }
         else {
             return new Covet();

@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -29,11 +30,14 @@ public class StringShot extends Skill {
      * Use String Shot and return the move results.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field the battle is on.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return String Shot's move results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         List<String> results = new ArrayList<String>();
 
         //Attempt to lower the enemy's speed by 1 stage.

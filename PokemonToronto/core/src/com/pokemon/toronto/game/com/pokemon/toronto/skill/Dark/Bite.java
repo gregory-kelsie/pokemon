@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -32,12 +33,16 @@ public class Bite extends DamageSkill {
      * Damage the enemy, but also has a 30% chance to flinch the enemy if bite goes first.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field of the battle.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         //Use the damage part of the move.
-        List<String> results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        List<String> results = super.use(skillUser, enemyPokemon, field, userField,
+                enemyField, isFirstAttack);
         if (isFirstAttack && (enemyPokemon.getAbility() !=
                 Pokemon.Ability.INNER_FOCUS && enemyPokemon.getAbility() !=
                 Pokemon.Ability.SHIELD_DUST)) {

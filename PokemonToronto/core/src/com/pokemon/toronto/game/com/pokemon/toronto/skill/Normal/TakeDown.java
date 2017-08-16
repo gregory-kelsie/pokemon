@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -35,12 +36,15 @@ public class TakeDown extends DamageSkill {
      * Damage the enemy and take 1/4 recoil damage.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field of the battle.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return The results of using the move.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        return super.use(skillUser, enemyPokemon, field, isFirstAttack);
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
+        return super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
     }
 
     /**

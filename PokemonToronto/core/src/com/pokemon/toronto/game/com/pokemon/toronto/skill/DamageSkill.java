@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
@@ -68,11 +69,16 @@ public abstract class DamageSkill extends Skill {
      * Use the damage skill on the enemy pokemon.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
+     * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return The skill results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
-        super.use(skillUser, enemyPokemon, field, isFirstAttack);
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack) {
+        super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         
         List<String> results = new ArrayList<String>();
 

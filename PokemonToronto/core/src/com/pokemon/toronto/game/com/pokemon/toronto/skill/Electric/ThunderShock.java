@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -33,13 +34,16 @@ public class ThunderShock extends DamageSkill {
      * Use Thunder Shock and return the move results.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field the battle is on.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return Thunder Shock's move results.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         List<String> results = new ArrayList<String>();
         //Use the damage part of Thunder Shock.
-        results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         //Check if the enemy is able to receive paralysis after the damage
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&
                 enemyPokemon.getAbility() != Pokemon.Ability.SHIELD_DUST) {

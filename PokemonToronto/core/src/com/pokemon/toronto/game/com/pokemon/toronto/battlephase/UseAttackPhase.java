@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -33,6 +34,8 @@ public class UseAttackPhase extends BattlePhase {
 
     protected boolean firstAttack;
     protected Pokemon attacker;
+    protected SubField attackerSubField;
+    protected SubField receiverSubField;
     protected Pokemon receiver;
     protected boolean enemyFainted;
     protected boolean userFainted;
@@ -423,7 +426,15 @@ public class UseAttackPhase extends BattlePhase {
     private void goToNextPhase() {
         contactResults = "";
         if (usedSkill.getStrikesLeft() > 0) {
-            battleResults = usedSkill.use(attacker, receiver, pui.getField(), firstAttack); //Override
+            if (attackerIsUser) {
+                attackerSubField = pui.getField().getPlayerField();
+                receiverSubField = pui.getField().getOpponentField();
+            } else {
+                attackerSubField = pui.getField().getOpponentField();
+                receiverSubField = pui.getField().getPlayerField();
+            }
+            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                    attackerSubField, receiverSubField, firstAttack); //Override
             updatingAnimation = true;
             state = -1; //reset state.
             if (attackerIsUser) {

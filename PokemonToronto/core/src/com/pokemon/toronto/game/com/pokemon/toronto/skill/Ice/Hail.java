@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
@@ -32,10 +33,13 @@ public class Hail extends Skill {
      * Sets the weather to hail.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field the battle is on.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return The move results.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         List<String> results = new ArrayList<String>();
         if (field.getWeatherType() == WeatherType.SAND) {
             results.add("The sandstorm subsided.");
@@ -61,7 +65,8 @@ public class Hail extends Skill {
     }
 
     @Override
-    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                               SubField userField, SubField enemyField, boolean isFirstAttack) {
         if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.HAIL) {

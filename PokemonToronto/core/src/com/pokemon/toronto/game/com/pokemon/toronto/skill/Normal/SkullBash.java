@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -31,14 +32,18 @@ public class SkullBash extends DamageSkill {
      * Raise defense by 1 stage and then attack the next turn.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
-     * @param field The field of the battle.
+     * @param field The field for the battle.
+     * @param userField The field for the battle.
+     * @param enemyField The field for the battle.
      * @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    @Override
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
 
         List<String> results;
         if (skillUser.hasNextTurnSkill()) {
-            results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+            results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
             skillUser.removeNextTurnSkill();
         } else {
             results = new ArrayList<String>();

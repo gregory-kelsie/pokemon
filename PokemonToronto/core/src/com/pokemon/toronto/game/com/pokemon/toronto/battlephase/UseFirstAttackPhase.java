@@ -34,23 +34,30 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             attacker = pui.getUserPokemon();
             receiver = pui.getEnemyPokemon();
             usedSkill = pui.getUserSkill();
+            attackerSubField = pui.getField().getPlayerField();
+            receiverSubField = pui.getField().getOpponentField();
         } else {
             attacker = pui.getEnemyPokemon();
             receiver = pui.getUserPokemon();
             usedSkill = pui.getEnemySkill();
+            attackerSubField = pui.getField().getOpponentField();
+            receiverSubField = pui.getField().getPlayerField();
         }
-        FailResult failResult = usedSkill.willFail(attacker, receiver, pui.getField(), true);
+        FailResult failResult = usedSkill.willFail(attacker, receiver, pui.getField(),
+                attackerSubField, receiverSubField, true);
         if (!failResult.hasFailed()) {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(), true)) {
+                if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                        attackerSubField, receiverSubField, true)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
                     if (absorbResult.hasAbsorbed()) {
                         List<String> blt = absorbResult.getAbsorbResult();
                         battleResults = blt;
                     } else {
-                        battleResults = usedSkill.use(attacker, receiver, pui.getField(), true);
+                        battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                                attackerSubField, receiverSubField, true);
                     }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);

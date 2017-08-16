@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -36,9 +37,11 @@ public class PoisonSting extends DamageSkill {
      * @param field The field of the battle.
      * @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack) {
         //Use the damage part of the move.
-        List<String> results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+        List<String> results = super.use(skillUser, enemyPokemon, field,
+                userField, enemyField, isFirstAttack);
 
         //Check if the user is able to receive poison.
         if (!enemyPokemon.isStatused() && enemyPokemon.getCurrentHealth() != 0 &&

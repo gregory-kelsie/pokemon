@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -38,11 +39,12 @@ public class SelfDestruct extends DamageSkill {
      * @param field The field the battle is on.
      * @return Thunder Shock's move results.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, boolean isFirstAttack) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack) {
         List<String> results;
 
         if (effectsEnemy(enemyPokemon)) {
-            results = super.use(skillUser, enemyPokemon, field, isFirstAttack);
+            results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         } else {
             results = new ArrayList<String>();
             results.add("It does not effect " + enemyPokemon.getName() + "...");
@@ -65,7 +67,8 @@ public class SelfDestruct extends DamageSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
-                               Field field, boolean isFirstAttack) {
+                               Field field, SubField userField, SubField enemyField,
+                               boolean isFirstAttack) {
         if (enemyPokemon.getAbility() == Pokemon.Ability.DAMP) {
             return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents Self-Destruct.");
         }
