@@ -141,7 +141,7 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             }
         } else if (!enemyFainted && userFainted) {
             if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                pui.setPhase(new EndTurnPhase(pui, true, false));
             } else if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));
             }

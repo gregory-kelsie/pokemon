@@ -32,6 +32,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int USE_SAND = 12;
     private final int USE_RAIN = 13;
     private final int USE_SUN = 14;
+    private final int DOUBLE_KNOCKOUT = 15;
 
 
     //End turn weather results
@@ -54,6 +55,10 @@ public class EndTurnPhase extends BattlePhase {
     private String enemyFaintText;
     private double counter;
     private int textPosition;
+
+    private boolean skipUser;
+    private boolean skipEnemy;
+
     public EndTurnPhase(PhaseUpdaterInterface pui) {
         super(pui);
         phaseName = "End Turn Phase";
@@ -63,6 +68,21 @@ public class EndTurnPhase extends BattlePhase {
         usingOnEnemy = true;
         playerFaintText = pui.getUserPokemon().getName() + " fainted.";
         enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
+        skipUser = false;
+        skipEnemy = false;
+    }
+
+    public EndTurnPhase(PhaseUpdaterInterface pui, boolean skipUser, boolean skipEnemy) {
+        super(pui);
+        phaseName = "End Turn Phase";
+        textPosition = 0;
+        counter = 0;
+        currentState = WEATHER;
+        usingOnEnemy = true;
+        playerFaintText = pui.getUserPokemon().getName() + " fainted.";
+        enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
+        this.skipUser = skipUser;
+        this.skipEnemy = skipEnemy;
     }
 
     @Override
@@ -97,6 +117,8 @@ public class EndTurnPhase extends BattlePhase {
             useRain();
         } else if (currentState == USE_SUN) {
             useSunlight();
+        } else if (currentState == DOUBLE_KNOCKOUT) {
+            pui.finishedBattle();
         }
     }
 
@@ -286,8 +308,12 @@ public class EndTurnPhase extends BattlePhase {
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
-            stateAfterHealthAdjustment = USE_HAIL;
-            usingOnEnemy = false;
+            if (skipUser) {
+                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+            } else {
+                stateAfterHealthAdjustment = USE_HAIL;
+                usingOnEnemy = false;
+            }
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;
             stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
@@ -302,8 +328,12 @@ public class EndTurnPhase extends BattlePhase {
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
-            stateAfterHealthAdjustment = USE_RAIN;
-            usingOnEnemy = false;
+            if (skipUser) {
+                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+            } else {
+                stateAfterHealthAdjustment = USE_RAIN;
+                usingOnEnemy = false;
+            }
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;
             stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
@@ -319,12 +349,21 @@ public class EndTurnPhase extends BattlePhase {
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
             if (pokemon.getCurrentHealth() != 0) {
-                stateAfterHealthAdjustment = USE_SAND;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+                } else {
+                    stateAfterHealthAdjustment = USE_SAND;
+                    usingOnEnemy = false;
+                }
             } else {
                 stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = USE_SAND;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    //TODO: End the battle.
+                    stateAfterFaint = DOUBLE_KNOCKOUT;
+                } else {
+                    stateAfterFaint = USE_SAND;
+                    usingOnEnemy = false;
+                }
             }
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;
@@ -351,12 +390,21 @@ public class EndTurnPhase extends BattlePhase {
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
             if (pokemon.getCurrentHealth() != 0) {
-                stateAfterHealthAdjustment = USE_SUN;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+                } else {
+                    stateAfterHealthAdjustment = USE_SUN;
+                    usingOnEnemy = false;
+                }
             } else {
                 stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = USE_SUN;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    //Todo: end the battle
+                    stateAfterFaint = DOUBLE_KNOCKOUT;
+                } else {
+                    stateAfterFaint = USE_SUN;
+                    usingOnEnemy = false;
+                }
             }
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;
@@ -384,12 +432,21 @@ public class EndTurnPhase extends BattlePhase {
         if (usingOnEnemy) {
             stateAfterText = ADJUST_ENEMY_HEALTH;
             if (pokemon.getCurrentHealth() != 0) {
-                stateAfterHealthAdjustment = USE_HAIL;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+                } else {
+                    stateAfterHealthAdjustment = USE_HAIL;
+                    usingOnEnemy = false;
+                }
             } else {
                 stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = USE_HAIL;
-                usingOnEnemy = false;
+                if (skipUser) {
+                    //TODO: end battle.
+                    stateAfterFaint = DOUBLE_KNOCKOUT;
+                } else {
+                    stateAfterFaint = USE_HAIL;
+                    usingOnEnemy = false;
+                }
             }
         } else {
             stateAfterText = ADJUST_PLAYER_HEALTH;

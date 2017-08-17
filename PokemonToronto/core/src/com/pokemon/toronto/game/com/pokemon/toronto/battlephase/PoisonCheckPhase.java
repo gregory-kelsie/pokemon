@@ -43,7 +43,15 @@ public class PoisonCheckPhase extends BattlePhase {
             damagePlayerFromBurn();
         }
         else {
-            pui.endBattle();
+            if (pui.getUserPokemon().isFainted()) {
+                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                } else if (!pui.playerHasMorePokemon()) {
+                    pui.setPhase(new BlackedOutPhase(pui));
+                }
+            } else {
+                pui.endBattle();
+            }
         }
     }
 
@@ -119,12 +127,11 @@ public class PoisonCheckPhase extends BattlePhase {
             updateFaintText(dt, true);
         } else if (poisonCheckState == INIT) {
             if (pui.getEnemyPokemon().isFainted()) {
-                pui.setPhase(new ExpPhase(pui));
-            } else if (pui.getUserPokemon().isFainted()) {
-                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
-                } else if (!pui.playerHasMorePokemon()) {
-                    pui.setPhase(new BlackedOutPhase(pui));
+                if (pui.getUserPokemon().isFainted()) {
+                    pui.finishedBattle();
+                } else {
+                    //TODO: probably should use poison on the player as well as it would help when trainers are implemented.
+                    pui.setPhase(new ExpPhase(pui));
                 }
             } else {
                 checkEnemyForPoison();
@@ -145,7 +152,15 @@ public class PoisonCheckPhase extends BattlePhase {
             int damage = (int)Math.round(pui.getEnemyPokemon().getHealthStat() / 16.0);
             pui.getEnemyPokemon().subtractHealth(damage);
         } else {
-            checkPlayerForPoison();
+            if (pui.getUserPokemon().isFainted()) {
+                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                } else if (!pui.playerHasMorePokemon()) {
+                    pui.setPhase(new BlackedOutPhase(pui));
+                }
+            } else {
+                checkPlayerForPoison();
+            }
         }
     }
 
@@ -187,7 +202,11 @@ public class PoisonCheckPhase extends BattlePhase {
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
             //Go to exp state.
-            pui.setPhase(new ExpPhase(pui));
+            if (!pui.getUserPokemon().isFainted()) {
+                pui.setPhase(new ExpPhase(pui));
+            } else {
+                pui.finishedBattle();
+            }
 
         }
     }

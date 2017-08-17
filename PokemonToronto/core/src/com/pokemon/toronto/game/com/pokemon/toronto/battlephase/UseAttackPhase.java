@@ -498,11 +498,11 @@ public class UseAttackPhase extends BattlePhase {
     private void useEffectSpore() {
         if (!attacker.isStatused()) {
             double rand = Math.random();
-            if (rand <= .9) {
+            if (rand <= .09) {
                 contactResults = attacker.getName() + " was poisoned\nfrom " +
                         receiver.getName() + "s Effect Spore.";
                 attacker.setPreStatus(Pokemon.Status.POISON);
-            } else if (rand > .9 && rand <= .19) {
+            } else if (rand > .09 && rand <= .19) {
                 contactResults = attacker.getName() + " was paralyzed\nfrom " +
                         receiver.getName() + "s Effect Spore.";
                 attacker.setPreStatus(Pokemon.Status.PARALYSIS);

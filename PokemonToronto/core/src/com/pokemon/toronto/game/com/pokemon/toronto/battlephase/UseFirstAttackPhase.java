@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -146,7 +147,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                 pui.setPhase(new MissAfterRecoilFaintPhase(pui));
             } else {
                 if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
-                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                    pui.setPhase(new EndTurnPhase(pui, true, false));
                 } else if (!pui.playerHasMorePokemon()) {
                     pui.setPhase(new BlackedOutPhase(pui));
                 }
