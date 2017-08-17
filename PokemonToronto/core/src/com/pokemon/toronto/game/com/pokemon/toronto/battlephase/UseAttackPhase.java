@@ -499,16 +499,16 @@ public class UseAttackPhase extends BattlePhase {
         if (!attacker.isStatused()) {
             double rand = Math.random();
             if (rand <= .9) {
-                contactResults = receiver.getName() + " was poisoned\nfrom " +
-                        attacker.getName() + "s Effect Spore.";
+                contactResults = attacker.getName() + " was poisoned\nfrom " +
+                        receiver.getName() + "s Effect Spore.";
                 attacker.setPreStatus(Pokemon.Status.POISON);
             } else if (rand > .9 && rand <= .19) {
-                contactResults = receiver.getName() + " was paralyzed\nfrom " +
-                        attacker.getName() + "s Effect Spore.";
+                contactResults = attacker.getName() + " was paralyzed\nfrom " +
+                        receiver.getName() + "s Effect Spore.";
                 attacker.setPreStatus(Pokemon.Status.PARALYSIS);
             } else if (rand > .19 && rand <= .3) {
-                contactResults = receiver.getName() + " was put to sleep\nfrom " +
-                        attacker.getName() + "s Effect Spore.";
+                contactResults = attacker.getName() + " was put to sleep\nfrom " +
+                        receiver.getName() + "s Effect Spore.";
                 attacker.setPreStatus(Pokemon.Status.SLEEP);
             }
         }

@@ -267,6 +267,7 @@ public class ExpPhase extends BattlePhase {
             newSkillsForLevelUp = pui.getUserPokemon().getCurrentLevelUpSkills();
             if (newSkillsForLevelUp == null) {
                 currentState = ADD_EXP;
+                Gdx.app.log("expsound", "nolvlupskillsshouldplay");
                 pui.playExpSound();
             } else {
                 Gdx.app.log("NEWSKILLS", "" + pui.getUserPokemon().getSkills().size());

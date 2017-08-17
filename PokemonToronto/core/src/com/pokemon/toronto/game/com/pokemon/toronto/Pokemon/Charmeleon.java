@@ -89,7 +89,9 @@ public class Charmeleon extends Pokemon {
         beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
+        initEvolutionSkills();
     }
+
 
     /**
      * Init Charmeleon's gender.

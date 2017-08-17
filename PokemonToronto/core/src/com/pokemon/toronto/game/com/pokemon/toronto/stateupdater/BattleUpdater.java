@@ -188,6 +188,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
             expGainSound.setPosition(0.0f); //Restart from start if playing again.
             Gdx.app.log("expsound", "play");
             expGainSound.play();
+        } else {
+            expGainSound.setPosition(0.0f); //Restart from start if playing again.
+            Gdx.app.log("expsound", "what");
         }
     }
 

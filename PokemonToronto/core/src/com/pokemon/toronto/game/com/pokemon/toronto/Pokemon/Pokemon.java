@@ -41,6 +41,7 @@ public abstract class Pokemon {
     protected String backPath;
     protected String miniPath;
     protected HashMap<Integer, List<Integer>> levelUpSkills;
+    protected List<Integer> evolutionSkills;
     protected List<Skill> skills;
 
     //Battle Variables
@@ -263,6 +264,7 @@ public abstract class Pokemon {
         currentExp = NO_EXP;
         displayedExp = NO_EXP;
         levelUpSkills = new HashMap<Integer, List<Integer>>();
+        evolutionSkills = new ArrayList<Integer>();
         skills = new ArrayList<Skill>();
         justLeveled = false;
         resetCoordinates();
@@ -881,9 +883,22 @@ public abstract class Pokemon {
     protected abstract void initLevelUpSkills();
 
     /**
+     * Init the Pokemon's evolution skills.
+     */
+    protected void initEvolutionSkills() {
+    }
+
+    /**
      * Init the Pokemon's gender.
      */
-    protected abstract void initGender();
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .5) {
+            gender = 'M';
+        } else {
+            gender = 'F';
+        }
+    }
 
     /**
      * Add evs to the Pokemon based on the enemyEvYield
@@ -1118,6 +1133,30 @@ public abstract class Pokemon {
             return levelUpSkills.get(level);
         }
         return null;
+    }
+
+    /**
+     * Return the evolution skills this Pokemon learns when
+     * a preevolution evolves into this Pokemon.
+     * @return A List of Skill id's that represent the evolution
+     * skills this Pokemon learns when a preevolution evolves
+     * into this Pokemon.
+     */
+    public List<Integer> getEvolutionSkills() {
+        return evolutionSkills;
+    }
+
+    /**
+     * Return whether or not the Pokemon learns a move when a
+     * preevolution evolves into this Pokemon.
+     * @return Whether or not the Pokemon learns a new move when
+     * their preevolution evolves into it.
+     */
+    public boolean hasEvolutionSkills() {
+        if (evolutionSkills.size() > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
