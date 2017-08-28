@@ -18,4 +18,7 @@ public interface BattleInterface {
     void switchUserPokemonTextures();
     void removeBattleVariablesFromCurrentPokemon();
     void playVictoryBgm();
+    void stopBgm();
+    void playEnemyCry();
+    void playUserPokemonCry();
 }

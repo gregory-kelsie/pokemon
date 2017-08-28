@@ -11,6 +11,10 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Rattata;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Clefairy;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ekans;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Oddish;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
 
 import java.util.Date;
 
@@ -58,8 +62,19 @@ public class WildPokemonCreator {
         } else if (number == PokemonId.NIDORANF.getValue()) {
             NidoranF p = new NidoranF(5);
             return new WildPokemon(p, latitude, longitude, date, dateString);
-        }
-        else {
+        } else if (number == PokemonId.ZUBAT.getValue()) {
+            Zubat z = new Zubat(5);
+            return new WildPokemon(z, latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CLEFAIRY.getValue()) {
+            Clefairy z = new Clefairy(5);
+            return new WildPokemon(z, latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ODDISH.getValue()) {
+            Oddish z = new Oddish(5);
+            return new WildPokemon(z, latitude, longitude, date, dateString);
+        } else if (number == PokemonId.EKANS.getValue()) {
+            Ekans z = new Ekans(5);
+            return new WildPokemon(z, latitude, longitude, date, dateString);
+        } else {
             Pikachu p = new Pikachu(5);
             return new WildPokemon(p, latitude, longitude, date, dateString);
         }

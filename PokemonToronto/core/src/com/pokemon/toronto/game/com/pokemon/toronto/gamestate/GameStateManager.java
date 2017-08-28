@@ -19,6 +19,35 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Beedrill;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Butterfree;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Diglett;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ekans;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Fearow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Gloom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Golbat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Kakuna;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Metapod;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoking;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoqueen;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorina;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorino;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ninetales;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Oddish;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Paras;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Parasect;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeotto;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raichu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandshrew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandslash;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Spearow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venonat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
 import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage;
@@ -30,9 +59,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import sun.rmi.runtime.Log;
 
 /**
  * Created by Gregory on 6/5/2017.
@@ -50,6 +76,7 @@ public class GameStateManager {
     private List<Pokemon> box;
     private Bag bag;
     private int kantoBadges;
+    private Music menubgm;
 
     private List<WildPokemon> nearbyPokemon;
     public GameStateManager() {
@@ -60,6 +87,7 @@ public class GameStateManager {
         gotCoordinates = true;
         loader = new AssetManager();
         loadData();
+        menubgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/menu.mp3"));
         wpc = new WildPokemonCreator();
         nearbyPokemon = new ArrayList<WildPokemon>();
         party = new ArrayList<Pokemon>();
@@ -68,7 +96,8 @@ public class GameStateManager {
         bag = new Bag();
         bag.addPokeball(Ball.POKEBALL, 5);
         kantoBadges = 0;
-
+        menubgm.setLooping(true);
+        //menubgm.play();
     }
 
     public int getNumKantoBadges() {
@@ -133,52 +162,61 @@ public class GameStateManager {
 
     public List<Pokemon> getBox() { return box; }
 
+    public void stopBgm() {
+        menubgm.pause();
+    }
+
+    public void playBgm() {
+        menubgm.play();
+    }
+
     private void loadMusic() {
 
     }
 
     public void setInitialState() {
-        //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
-        currentState = new LoadingState(this, LoadingState.MAIN_MENU);
-        addToParty(new Eevee(5));
+        currentState = new LoadingState(this, LoadingState.INTRODUCTION);
+        //currentState = new LoadingState(this, LoadingState.POKENAV_MENU);
+        addToParty(new Charmander(7));
+
         //getParty().get(0).setCurrentHealth(1);
         addToParty(new Weedle(5));
-        getParty().get(0).setExp(80);
+        getParty().get(0).setExp(70);
         //getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});
         /*addToParty(new Charizard(5));
         addToParty(new Venusaur(5));
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));*/
         //addToParty(new Charmander(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pikachu(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pikachu(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pikachu(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pikachu(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
-        addToBox(new Pidgey(5));
+        addToBox(new Pidgeotto(5));
+        addToBox(new Pidgeot(5));
+        addToBox(new Ekans(5));
+        addToBox(new Arbok(5));
+        addToBox(new Sandshrew(5));
+        addToBox(new Sandslash(5));
+        addToBox(new Raichu(5));
+        addToBox(new Nidorino(5));
+        addToBox(new Nidorina(5));
+        addToBox(new Nidoking(5));
+        addToBox(new Nidoqueen(5));
+        addToBox(new Vulpix(5));
+        addToBox(new Ninetales(5));
+        addToBox(new Zubat(5));
+        addToBox(new Golbat(5));
+        addToBox(new Diglett(5));
+        addToBox(new Venomoth(5));
+        addToBox(new Venonat(5));
+        addToBox(new Paras(5));
+        addToBox(new Parasect(30));
+        addToBox(new Oddish(5));
+        addToBox(new Gloom(5));
+        addToBox(new Vileplume(5));
+        addToBox(new Beedrill(5));
+        addToBox(new Kakuna(5));
+        addToBox(new Metapod(5));
+        addToBox(new Butterfree(5));
+        addToBox(new Spearow(5));
+        addToBox(new Fearow(5));
         //addToBox(new Pikachu(5));
     }
 
@@ -192,7 +230,6 @@ public class GameStateManager {
 
     public void addNewWildPokemon(double longitude, double latitude, String country,
                                   String state, String city) {
-
             PokemonLookup pl = new PokemonLookup(city, state, country, latitude, longitude, 5);
             List<PokemonLookupPackage> plp = pl.getPokemon();
             if (plp != null) {
@@ -211,7 +248,7 @@ public class GameStateManager {
                 Gdx.app.log("Expiration: ", nearbyPokemon.get(0).getExpirationString());
             } else {
                 Gdx.app.log("PLP ERROR: ", "NULL");
-                getGameCallBack().spawnNewGamePokemon();
+                //getGameCallBack().spawnNewGamePokemon();
             }
 
 
@@ -257,5 +294,7 @@ public class GameStateManager {
 
     public void dispose() {
         loader.dispose();
+        notificationSound.dispose();
+        menubgm.dispose();
     }
 }

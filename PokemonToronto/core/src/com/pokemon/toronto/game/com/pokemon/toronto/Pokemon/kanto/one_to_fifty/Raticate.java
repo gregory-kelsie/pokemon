@@ -16,7 +16,7 @@ import java.util.List;
 public class Raticate extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 19;
+    private static final int NUMBER = 20;
     private static final String NAME = "Raticate";
     private static final int BASE_EXP = 116;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
@@ -34,6 +34,7 @@ public class Raticate extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/raticate.png";
     private static final String BACK_PATH = "battle/backs/raticate.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/raticate.png";
+    private static final String CRY_PATH = "sounds/cry/020.wav";
 
     /**
      * Create a Raticate with the specified level.
@@ -43,7 +44,7 @@ public class Raticate extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.NONE, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +70,7 @@ public class Raticate extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Type.NONE, Ability.RUN_AWAY, Pokemon.ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

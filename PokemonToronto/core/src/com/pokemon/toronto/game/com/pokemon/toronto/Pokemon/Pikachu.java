@@ -33,6 +33,7 @@ public class Pikachu extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/pikachu/pikachu.png";
     private static final String BACK_PATH = "battle/backs/pikachu.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/pikachu.png";
+    private static final String CRY_PATH = "sounds/cry/025.wav";
 
     /**
      * Create a Pikachu with the specified level.
@@ -42,7 +43,7 @@ public class Pikachu extends Pokemon {
         super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CAPTURE_RATE);
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -68,7 +69,7 @@ public class Pikachu extends Pokemon {
         super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CAPTURE_RATE);
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);
@@ -85,7 +86,7 @@ public class Pikachu extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TAIL_WHIP);
+        beginnerSkills.add(SkillFactory.STICKY_WEB);
         beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));

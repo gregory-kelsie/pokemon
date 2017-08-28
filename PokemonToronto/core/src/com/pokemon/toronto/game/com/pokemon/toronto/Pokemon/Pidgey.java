@@ -32,6 +32,7 @@ public class Pidgey extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/pidgey/pidgey.png";
     private static final String BACK_PATH = "battle/backs/pidgey.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/pidgey.png";
+    private static final String CRY_PATH = "sounds/cry/016.wav";
 
     /**
      * Create a Pidgey with the specified level.
@@ -40,7 +41,8 @@ public class Pidgey extends Pokemon {
     public Pidgey(int level) {
         super(NUMBER, NAME, level, Type.NORMAL, Type.FLYING, Ability.KEEN_EYE, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -65,7 +67,8 @@ public class Pidgey extends Pokemon {
                     Status status, Nature nature, Ability ability) {
         super(NUMBER, NAME, level, Type.NORMAL, Type.FLYING, Ability.KEEN_EYE, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

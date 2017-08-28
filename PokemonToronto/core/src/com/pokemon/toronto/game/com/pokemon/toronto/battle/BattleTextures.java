@@ -209,16 +209,16 @@ public class BattleTextures {
         disposeItemTextures();
         if (hasFirstItem(pokeballBag, currentItemPage)) {
             firstItem = new Texture(pokeballBag
-                    .get(currentItemPage * 4).getIconPath());
+                    .get(currentItemPage * 4).getImage());
             if (hasSecondItem(pokeballBag, currentItemPage)) {
                 secondItem = new Texture(pokeballBag
-                        .get(currentItemPage * 4 + 1).getIconPath());
+                        .get(currentItemPage * 4 + 1).getImage());
                 if (hasThirdItem(pokeballBag, currentItemPage)) {
                     thirdItem = new Texture(pokeballBag
-                            .get(currentItemPage * 4 + 2).getIconPath());
+                            .get(currentItemPage * 4 + 2).getImage());
                     if (hasFourthItem(pokeballBag, currentItemPage)) {
                         fourthItem = new Texture(pokeballBag
-                                .get(currentItemPage * 4 + 3).getIconPath());
+                                .get(currentItemPage * 4 + 3).getImage());
                     }
                 }
             }
@@ -433,24 +433,35 @@ public class BattleTextures {
             fourthItem.dispose();
         } catch (Exception e) { }
     }
+
     public void dispose() {
         battleBackground.dispose();
         battlePanel.dispose();
         initPanel.dispose();
+        pokemonSelectPanel.dispose();
+        pokemonPanel.dispose();
         bagOptionPanel.dispose();
+        itemSlotPanel.dispose();
+
         leftArrow.dispose();
         rightArrow.dispose();
-        itemSlotPanel.dispose();
+
         textArea.dispose();
         itemDescFont.dispose();
         userPokemonTexture.dispose();
         enemyPokemonTexture.dispose();
+
+        healthBorder.dispose();
+        pokeSelectGreenHealth.dispose();
+        greenHealth.dispose();
         expBar.dispose();
         userHealthPanel.dispose();
         enemyHealthPanel.dispose();
+
         healthText.dispose();
         regularFont.dispose();
         smallFont.dispose();
+
         firstSkill.dispose();
         yesNo.dispose();
         try {
@@ -461,6 +472,12 @@ public class BattleTextures {
         for (int i = 0; i < iconTextures.size(); i++) {
             iconTextures.get(i).dispose();
         }
+
+        burnTexture.dispose();
+        frozenTexture.dispose();
+        sleepTexture.dispose();
+        poisonTexture.dispose();
+        paralysisTexture.dispose();
 
         disposeItemTextures();
     }

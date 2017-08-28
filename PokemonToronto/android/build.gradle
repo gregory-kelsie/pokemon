@@ -19,7 +19,7 @@ android {
     }
     defaultConfig {
         applicationId "com.pokemon.toronto.game"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 23
     }
 }
@@ -125,7 +125,9 @@ idea {
     }
 }
     dependencies {
-  compile 'com.google.android.gms:play-services-maps:9.2.0'
-  compile 'com.android.support:appcompat-v7:23.+'
-        compile 'com.google.android.gms:play-services-location:9.2.0'
+    compile 'com.google.android.gms:play-services-maps:11.2.0'
+    compile 'com.google.android.gms:play-services-places:11.2.0'
+        compile 'com.google.firebase:firebase-core:11.2.0'
+    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.google.android.gms:play-services-location:11.2.0'
 }

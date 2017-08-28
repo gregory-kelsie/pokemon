@@ -34,6 +34,7 @@ public class Sandshrew extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/sandshrew.png";
     private static final String BACK_PATH = "battle/backs/sandshrew.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/sandshrew.png";
+    private static final String CRY_PATH = "sounds/cry/027.wav";
 
     /**
      * Create a Sandshrew with the specified level.
@@ -43,7 +44,7 @@ public class Sandshrew extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +70,7 @@ public class Sandshrew extends Pokemon {
         super(NUMBER, NAME, level, Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

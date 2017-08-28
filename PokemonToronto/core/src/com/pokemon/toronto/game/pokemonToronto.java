@@ -55,7 +55,6 @@ public class pokemonToronto extends ApplicationAdapter {
 	public void create () {
 		initEssentials();
 		initGameStateManager();
-		initGameStateManager();
 	}
 
 	/**
@@ -83,7 +82,7 @@ public class pokemonToronto extends ApplicationAdapter {
 		//gsm.setNotificationSound();
 		gsm.setInitialState();
 		gsm.setGameCallBack(gameCallBack);
-		gsm.getGameCallBack().spawnNewGamePokemon();
+		//gsm.getGameCallBack().spawnNewGamePokemon();
 	}
 
 	/**

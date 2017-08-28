@@ -416,6 +416,7 @@ public class WildPokemonListState extends GameState {
         if (inBattlingRange(pos)) {
             initiateBattle = true;
             clickedPokemonPosition = pos;
+            gsm.stopBgm();
             wildBgm.play();
         } else {
             openMapActivity(pos);

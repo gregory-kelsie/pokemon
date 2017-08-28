@@ -34,6 +34,7 @@ public class Clefairy extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/clefairy.png";
     private static final String BACK_PATH = "battle/backs/clefairy.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/clefairy.png";
+    private static final String CRY_PATH = "sounds/cry/035.wav";
 
     /**
      * Create a Clefairy with the specified level.
@@ -43,7 +44,7 @@ public class Clefairy extends Pokemon {
         super(NUMBER, NAME, level, Type.FAIRY, Pokemon.Type.NONE, Ability.MAGIC_GUARD, ExpType.FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +70,7 @@ public class Clefairy extends Pokemon {
         super(NUMBER, NAME, level, Type.FAIRY, Pokemon.Type.NONE, Ability.MAGIC_GUARD, ExpType.FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

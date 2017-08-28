@@ -35,6 +35,7 @@ public class Ekans extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/ekans.png";
     private static final String BACK_PATH = "battle/backs/ekans.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/ekans.png";
+    private static final String CRY_PATH = "sounds/cry/023.wav";
 
     /**
      * Create a Ekans with the specified level.
@@ -44,7 +45,7 @@ public class Ekans extends Pokemon {
         super(NUMBER, NAME, level, Type.POISON, Pokemon.Type.NONE, Ability.INTIMIDATE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -70,7 +71,7 @@ public class Ekans extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.NONE, Ability.INTIMIDATE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

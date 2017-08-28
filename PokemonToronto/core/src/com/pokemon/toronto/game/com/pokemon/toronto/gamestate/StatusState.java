@@ -151,7 +151,7 @@ public class StatusState extends GameState {
         if (cameFromBox) {
             gsm.setState(new BoxState(gsm, false));
         } else {
-            gsm.setState(new LoadingState(gsm, LoadingState.POKEMON_MENU));
+            gsm.setState(new PokemonPartyState(gsm));
         }
         dispose();
     }

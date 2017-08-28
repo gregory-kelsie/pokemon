@@ -33,6 +33,8 @@ public class MainMenuState extends GameState{
                 clickedPokeNav();
             } else if (clickedPokemon(x, y)) {
                 clickedPokemon();
+            } else if (x >= 59 && x <= 736 && y >= 866 && y <= 1014) {
+                gsm.setState(new BagState(gsm, true));
             }
             Gdx.app.log("GDX LOGGERs - ", "X: " + MyInput.getX() + ", Y: " + MyInput.getY());
         }

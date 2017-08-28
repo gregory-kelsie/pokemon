@@ -38,6 +38,7 @@ public abstract class Pokemon {
 
     //Image Paths
     protected String mapIconPath;
+    protected String cryPath;
     protected String backPath;
     protected String miniPath;
     protected HashMap<Integer, List<Integer>> levelUpSkills;
@@ -243,7 +244,7 @@ public abstract class Pokemon {
      * @param captureRate The Pokemon's capture rate.
      */
     public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo, Ability ability, ExpType expType,
-                   int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath, int captureRate) {
+                   int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath, String cryPath, int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
         this.level = level;
@@ -254,6 +255,7 @@ public abstract class Pokemon {
         this.mapIconPath = mapIconPath;
         this.backPath = backPath;
         this.miniPath = miniPath;
+        this.cryPath = cryPath;
         this.typeOne = typeOne;
         this.typeTwo = typeTwo;
         this.ability = ability;
@@ -2399,6 +2401,14 @@ public abstract class Pokemon {
      */
     public String getMapIconPath() {
         return mapIconPath;
+    }
+
+    /**
+     * Return the Pokemon's Cry Sound path.
+     * @return The path for the Pokemon's cry sound.
+     */
+    public String getCryPath() {
+        return cryPath;
     }
 
     /**

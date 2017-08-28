@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.PokeballAnimation;
@@ -53,6 +54,7 @@ public class CatchingPhase extends BattlePhase {
             }
         }
         pokeballAnimation = new PokeballAnimation(catchResults);
+        pui.playThrowPokeballSound();
 
     }
 
@@ -116,6 +118,10 @@ public class CatchingPhase extends BattlePhase {
             pokeballAnimation.update(dt);
             if (pokeballAnimation.isFinished()) {
                 state = DISPLAY_CATCH_RESULTS;
+                if (catchResults.isCaught()) {
+                    pui.stopBgm();
+                    pui.playCatchSound();
+                }
             }
         } else if (state == DISPLAY_CATCH_RESULTS) {
             updateCatchResultsText(dt);
@@ -139,6 +145,7 @@ public class CatchingPhase extends BattlePhase {
             } else {
                 pui.setPhase(new SleepCheckPhase(pui, false));
             }
+            pokeballAnimation.dispose();
         }
     }
 

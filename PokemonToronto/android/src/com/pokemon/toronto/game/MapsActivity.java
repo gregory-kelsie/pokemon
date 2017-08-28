@@ -1,12 +1,24 @@
 package com.pokemon.toronto.game;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,7 +33,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     //Instance Variables
     private GoogleMap mMap;
@@ -31,6 +43,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] pokemonLongitude;
     private String[] pokemonIcon;
 
+    private Bitmap temp;
+
+
     /**
      * Create a Google Map Activity.
      * @param savedInstanceState
@@ -38,6 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initReceivedData();
         setContentView(R.layout.activity_maps);
 
@@ -114,7 +130,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Create a marker for the player's position
         LatLng sydney = new LatLng(latitude, longitude);
-        Bitmap temp = resizeBitmap("maletrainer.png", 78, 100);
+        temp = resizeBitmap("maletrainer.png", 78, 100);
+
+
         mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
                 .icon(BitmapDescriptorFactory.fromBitmap(
                 temp)));
@@ -123,6 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //notified of and hasn't ran into yet.
         for (int i = 0; i < pokemonLatitude.length; i++) {
             temp = resizeBitmap(pokemonIcon[i], 200, 200);
+            Marker m;
             mMap.addMarker(new MarkerOptions().position(new LatLng(
                     pokemonLatitude[i], pokemonLongitude[i]))
                     .title("Lat: " + pokemonLatitude[i] + ", Lon: " + pokemonLongitude[i])
@@ -133,7 +152,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Move the camera to the player's position and zoom in.
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14.0f));
     }
-
 
     /**
      * Return a resized Bitmap to the specified dimensions

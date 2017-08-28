@@ -596,6 +596,7 @@ public class BoxState extends GameState {
         logoutSound.play();
         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
         dispose();
+        gsm.playBgm();
     }
 
     public boolean selectedAPokemon() {

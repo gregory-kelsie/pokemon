@@ -18,130 +18,211 @@ public class PokemonPartyState extends GameState {
     private GameStateManager gsm;
     private Texture background;
     private Texture panel;
-    private Texture blankHealthBar;
-    private Texture greenBar;
-    private Texture healthCap;
-    private Texture grayButton;
-    private Texture greenButton;
-    private BitmapFont nameFont;
-    private BitmapFont levelFont;
+    private Texture emptyPanel;
+    private Texture healthBar;
+    private Texture greenHealth;
+    private Texture orangeHealth;
+    private Texture redHealth;
+    private Texture title;
     private List<Texture> pokemonIcons;
-    private boolean onSwitchButton;
-    private BitmapFont buttonFont;
+    private BitmapFont nameFont;
+    private Texture popupWindow;
+    private Texture selected;
+
     private int selectedPokemon;
+    private boolean openedWindow;
+
     public PokemonPartyState(GameStateManager gsm) {
         this.gsm = gsm;
-        background = gsm.getLoader().get("pokemonMenu/background.png", Texture.class);
-        panel = gsm.getLoader().get("pokemonMenu/panel.png", Texture.class);
-        blankHealthBar = gsm.getLoader().get("pokemonMenu/emptyHealthBar.png", Texture.class);
-        greenBar = gsm.getLoader().get("pokemonMenu/greenLife.png", Texture.class);
-        healthCap = gsm.getLoader().get("pokemonMenu/healthCap.png", Texture.class);
-        grayButton = gsm.getLoader().get("pokemonMenu/grayButton.png", Texture.class);
-        greenButton = gsm.getLoader().get("pokemonMenu/greenButton.png", Texture.class);
-        nameFont = new BitmapFont(Gdx.files.internal("pokemonMenu/name.fnt"));
-        levelFont = new BitmapFont(Gdx.files.internal("pokemonMenu/level.fnt"));
-        buttonFont = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
-        buttonFont.setColor(Color.WHITE);
+        initTextures();
+        nameFont = new BitmapFont(Gdx.files.internal("pokemonMenu/nameFont.fnt"));
+        nameFont.setColor(Color.WHITE);
+        selectedPokemon = -1;
+    }
+
+    private void initTextures() {
+        background = new Texture("simulator/background.png");
+        panel = new Texture("pokemonMenu/pokeball.png");
+        emptyPanel = new Texture("pokemonMenu/emptypokeball.png");
+        healthBar = new Texture("pokemonMenu/healthbar.png");
+        greenHealth = new Texture("pokemonMenu/green.png");
+        orangeHealth = new Texture("pokemonMenu/orange.png");
+        redHealth = new Texture("pokemonMenu/red.png");
+        title = new Texture("pokemonMenu/title.png");
+        popupWindow = new Texture("pokemonMenu/window.png");
+        selected = new Texture("pokemonMenu/selected.png");
         pokemonIcons = new ArrayList<Texture>();
         pokemonIcons.add(new Texture(gsm.getParty().get(0).getMapIconPath()));
         for (int i = 1; i < gsm.getParty().size(); i++) {
-                pokemonIcons.add(new Texture(gsm.getParty().get(i).getMapIconPath()));
+            pokemonIcons.add(new Texture(gsm.getParty().get(i).getMapIconPath()));
         }
-        nameFont.setColor(Color.BLACK);
-        levelFont.setColor(Color.BLACK);
-        onSwitchButton = false;
-        selectedPokemon = -1;
+        openedWindow = false;
     }
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(background, 0,0);
-
+        batch.draw(title, 238, 1760);
         //Draw First Panel
-        batch.draw(panel, 54, 1503);
-        drawButtons(batch);
-        batch.draw(blankHealthBar, 90,1551);
-        batch.draw(greenBar, 93, 1555, (int)(672 *
-                (1.0 * gsm.getParty().get(0).getCurrentHealth() / gsm.getParty().get(0).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(0).getName().toUpperCase(), 91,1700);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(0).getLevel()), 91,1661);
-        batch.draw(pokemonIcons.get(0), 758, 1465, 310, 310);
+        if (selectedPokemon == 0) {
+            batch.draw(selected, 40, 1156);
+        } else {
+            batch.draw(panel, 40, 1156);
+        }
+        nameFont.draw(batch, "Lv. " + Integer.toString(gsm.getParty().get(0).getLevel()) + " " + gsm.getParty().get(0).getName(),
+                formatNamePosition(0, "Lv. " + Integer.toString(gsm.getParty().get(0).getLevel()) + " " + gsm.getParty().get(0).getName()),1695);
+        batch.draw(pokemonIcons.get(0), 101, 1212, 350, 350);
+        int currentHealth = gsm.getParty().get(0).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(0).getHealthStat();
+        batch.draw(healthBar, 48,1146);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 57, 1156, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
 
         if (hasSecondPokemon()) {
             drawSecondPokemon(batch);
-            if (hasThirdPokemon()) {
-                drawThirdPokemon(batch);
-                if (hasFourthPokemon()) {
-                    drawFourthPokemon(batch);
-                    if (hasFifthPokemon()) {
-                        drawFifthPokemon(batch);
-                        if (hasSixthPokemon()) {
-                            drawSixthPokemon(batch);
-                        }
-                    }
-                }
-            }
+        } else {
+            batch.draw(emptyPanel, 592, 1156);
+        }
+
+        if (hasThirdPokemon()) {
+            drawThirdPokemon(batch);
+        } else {
+            batch.draw(emptyPanel, 40, 572);
+        }
+
+        if (hasFourthPokemon()) {
+            drawFourthPokemon(batch);
+        } else {
+            batch.draw(emptyPanel, 592, 572);
+        }
+
+        if (hasFifthPokemon()) {
+            drawFifthPokemon(batch);
+        } else {
+            batch.draw(emptyPanel, 40, 18);
+        }
+
+        if (hasSixthPokemon()) {
+            drawSixthPokemon(batch);
+        } else {
+            batch.draw(emptyPanel, 592, 18);
+        }
+
+        if (openedWindow) {
+            batch.draw(popupWindow, 274, 745);
         }
     }
 
-    private void drawButtons(SpriteBatch batch) {
-        if (onSwitchButton) {
-            batch.draw(greenButton, 432, 10);
-            batch.draw(grayButton, 39, 10);
+    private int formatNamePosition(int position, String nameText) {
+        int origin;
+        if (position == 0 || position == 2 || position == 4) {
+            origin = 284;
+            origin -= getTextSizeValue(nameText);
         } else {
-            batch.draw(greenButton, 39, 10);
-            batch.draw(grayButton, 432, 10);
+            origin = 816;
+            origin -= getTextSizeValue(nameText);
         }
-        buttonFont.draw(batch, "Status", 108, 75);
-        buttonFont.draw(batch, "Switch", 507, 75);
+        return origin;
+    }
+
+    private int getTextSizeValue(String text) {
+        int val = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == 'i' || text.charAt(i) == 'l' || text.charAt(i) == '.') {
+                val += 8;
+            } else {
+                val += 16;
+            }
+        }
+        return val;
     }
     private void drawSecondPokemon(SpriteBatch batch) {
-        batch.draw(panel, 54, 1239);
-        batch.draw(blankHealthBar, 90,1287);
-        batch.draw(greenBar, 93, 1291, (int)(672 *
-                (1.0 * gsm.getParty().get(1).getCurrentHealth() / gsm.getParty().get(1).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(1).getName().toUpperCase(), 91,1436);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(1).getLevel()), 91,1397);
-        batch.draw(pokemonIcons.get(1), 758, 1201, 310, 310);
+        if (selectedPokemon == 1) {
+            batch.draw(selected, 592, 1156);
+        } else {
+            batch.draw(panel, 592, 1156);
+        }
+
+        String nameText = "Lv. " + Integer.toString(gsm.getParty().get(1).getLevel()) +
+                " " + gsm.getParty().get(1).getName();
+        int currentHealth = gsm.getParty().get(1).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(1).getHealthStat();
+
+        nameFont.draw(batch, nameText, formatNamePosition(1, nameText),1695);
+        batch.draw(pokemonIcons.get(1), 640, 1212, 350, 350);
+        batch.draw(healthBar, 600,1146);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 609, 1156, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
     }
 
     private void drawThirdPokemon(SpriteBatch batch) {
-        batch.draw(panel, 54, 975);
-        batch.draw(blankHealthBar, 90,1023);
-        batch.draw(greenBar, 93, 1027, (int)(672 *
-                (1.0 * gsm.getParty().get(2).getCurrentHealth() / gsm.getParty().get(2).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(2).getName().toUpperCase(), 91,1172);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(2).getLevel()), 91,1133);
-        batch.draw(pokemonIcons.get(2), 758, 937, 310, 310);
+        if (selectedPokemon == 2) {
+            batch.draw(selected, 40, 578);
+        } else {
+            batch.draw(panel, 40, 578);
+        }
+        String name =  "Lv. " + Integer.toString(gsm.getParty().get(2).getLevel()) + " " + gsm.getParty().get(2).getName();
+        int currentHealth = gsm.getParty().get(2).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(2).getHealthStat();
+        nameFont.draw(batch, name, formatNamePosition(0, name), 1117);
+        batch.draw(pokemonIcons.get(2), 101, 634, 350, 350);
+        batch.draw(healthBar, 48, 568);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 57, 578, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
     }
 
     private void drawFourthPokemon(SpriteBatch batch) {
-        batch.draw(panel, 54, 711);
-        batch.draw(blankHealthBar, 90,759);
-        batch.draw(greenBar, 93, 763, (int)(672 *
-                (1.0 * gsm.getParty().get(3).getCurrentHealth() / gsm.getParty().get(3).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(3).getName().toUpperCase(), 91,908);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(3).getLevel()), 91,869);
-        batch.draw(pokemonIcons.get(3), 758, 673, 310, 310);
+        if (selectedPokemon == 3) {
+            batch.draw(selected, 592, 578);
+        } else {
+            batch.draw(panel, 592, 578);
+        }
+
+        String nameText = "Lv. " + Integer.toString(gsm.getParty().get(3).getLevel()) +
+                " " + gsm.getParty().get(3).getName();
+        int currentHealth = gsm.getParty().get(3).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(3).getHealthStat();
+
+        nameFont.draw(batch, nameText, formatNamePosition(3, nameText),1117);
+        batch.draw(pokemonIcons.get(3), 640, 634, 350, 350);
+        batch.draw(healthBar, 600, 568);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 609, 578, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
     }
 
+
     private void drawFifthPokemon(SpriteBatch batch) {
-        batch.draw(panel, 54, 447);
-        batch.draw(blankHealthBar, 90,495);
-        batch.draw(greenBar, 93, 499, (int)(672 *
-                (1.0 * gsm.getParty().get(4).getCurrentHealth() / gsm.getParty().get(4).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(4).getName().toUpperCase(), 91,644);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(4).getLevel()), 91,605);
-        batch.draw(pokemonIcons.get(4), 758, 409, 310, 310);
+        if (selectedPokemon == 4) {
+            batch.draw(selected, 40, 18);
+        } else {
+            batch.draw(panel, 40, 18);
+        }
+        String name =  "Lv. " + Integer.toString(gsm.getParty().get(4).getLevel()) + " " + gsm.getParty().get(4).getName();
+        int currentHealth = gsm.getParty().get(4).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(4).getHealthStat();
+        nameFont.draw(batch, name, formatNamePosition(4, name), 557);
+        batch.draw(pokemonIcons.get(4), 101, 74, 350, 350);
+        batch.draw(healthBar, 48, 8);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 57, 18, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
     }
 
     private void drawSixthPokemon(SpriteBatch batch) {
-        batch.draw(panel, 54, 183);
-        batch.draw(blankHealthBar, 90,231);
-        batch.draw(greenBar, 93, 235, (int)(672 *
-                (1.0 * gsm.getParty().get(5).getCurrentHealth() / gsm.getParty().get(5).getHealthStat())), 33);
-        nameFont.draw(batch, gsm.getParty().get(5).getName().toUpperCase(), 91,380);
-        nameFont.draw(batch, "Level: " + Integer.toString(gsm.getParty().get(5).getLevel()), 91,341);
-        batch.draw(pokemonIcons.get(5), 758, 145, 310, 310);
+        if (selectedPokemon == 5) {
+            batch.draw(selected, 592, 18);
+        } else {
+            batch.draw(panel, 592, 18);
+        }
+
+        String nameText = "Lv. " + Integer.toString(gsm.getParty().get(5).getLevel()) +
+                " " + gsm.getParty().get(5).getName();
+        int currentHealth = gsm.getParty().get(5).getCurrentHealth();
+        int totalHealth = gsm.getParty().get(5).getHealthStat();
+
+        nameFont.draw(batch, nameText, formatNamePosition(5, nameText), 557);
+        batch.draw(pokemonIcons.get(5), 640, 74, 350, 350);
+        batch.draw(healthBar, 600, 8);
+        batch.draw(getHealthTexture(currentHealth, totalHealth), 609, 18, (int)(465 *
+                (1.0 * currentHealth / totalHealth)), 51);
     }
 
     /**
@@ -157,98 +238,76 @@ public class PokemonPartyState extends GameState {
         pokemonIcons.set(position, textureTemp);
         selectedPokemon = -1;
     }
+
+    private Texture getHealthTexture(int currentHealth, int totalHealth) {
+        if (currentHealth > totalHealth * 0.4) {
+            return greenHealth;
+        } else if (currentHealth > totalHealth * 0.25) {
+            return orangeHealth;
+        } else {
+            return redHealth;
+        }
+    }
+
     @Override
     public void update(double dt) {
         if (MyInput.clicked()) {
             int x = MyInput.getX();
             int y = MyInput.getY();
-            if (x >= 814 && x <= 1068 && y >= 1673 && y <= 1890) {
-
-                    gsm.setState(new MainMenuState(gsm));
-                    dispose();
-            }  else if (x >= 8 && x <= 950 && y >= 218 && y <= 424) {
-                //First Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 0;
-                } else if (onSwitchButton && selectedPokemon != 0) {
-                    swapPokemon(0);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(0), false));
-                    dispose();
-                }
-            }   else if (x >= 8 && x <= 950 && y >= 462 && y <= 651 && hasSecondPokemon()) {
-                //Second Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 1;
-                } else if (onSwitchButton && selectedPokemon != 1) {
-                    swapPokemon(1);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(1), false));
-                    dispose();
-                }
-            }  else if (x >= 8 && x <= 950 && y >= 750 && y <= 909 && hasThirdPokemon()) {
-                //Third Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 2;
-                } else if (onSwitchButton && selectedPokemon != 2) {
-                    swapPokemon(2);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(2), false));
-                    dispose();
-                }
-            }  else if (x >= 8 && x <= 950 && y >= 1032 && y <= 1170 && hasFourthPokemon()) {
-                //Fourth Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 3;
-                } else if (onSwitchButton && selectedPokemon != 3) {
-                    swapPokemon(3);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(3), false));
-                    dispose();
-                }
-            }  else if (x >= 8 && x <= 950 && y >= 1309 && y <= 1433 && hasFifthPokemon()) {
-                //Fifth Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 4;
-                } else if (onSwitchButton && selectedPokemon != 4) {
-                    swapPokemon(4);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(4), false));
-                    dispose();
-                }
-            }  else if (x >= 8 && x <= 950 && y >= 1553 && y <= 1672 && hasSixthPokemon()) {
-                //Sixth Pokemon
-                if (onSwitchButton && selectedPokemon == -1) {
-                    selectedPokemon = 5;
-                } else if (onSwitchButton && selectedPokemon != 5) {
-                    swapPokemon(5);
-
-                } else {
-                    gsm.setState(new StatusState(gsm, gsm.getParty().get(5), false));
-                    dispose();
-                }
-            } else if (x >= 44 && x <= 340 && y >= 1836 && y <= 1905) {
-                if (onSwitchButton) {
-                    onSwitchButton = false;
+            Gdx.app.log("party", x + ", " + y);
+            if (x >= 980 && x <= 1080 && y >= 0 && y <= 100) {
+                gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                dispose();
+            } else if (x >= 15 && x <= 479 && y >= 331 && y <= 714 && !openedWindow) {
+                //clicked first pokemon
+                clickedPokemon(0);
+            } else if (x >= 579 && x <= 1080 && y >= 331 && y <= 714 && !openedWindow) {
+                //clicked second pokemon
+                clickedPokemon(1);
+            } else if (x >= 15 && x <= 479 && y >= 965 && y <= 1283 && !openedWindow) {
+                //clicked third pokemon
+                clickedPokemon(2);
+            } else if (x >= 579 && x <= 1080 && y >= 965 && y <= 1283 && !openedWindow) {
+                //clicked fourth pokemon
+                clickedPokemon(3);
+            } else if (x >= 15 && x <= 479 && y >= 1560 && y <= 1920 && !openedWindow) {
+                //clicked fifth pokemon
+                clickedPokemon(4);
+            } else if (x >= 579 && x <= 1080 && y >= 1560 && y <= 1920 && !openedWindow) {
+                //clicked fifth pokemon
+                clickedPokemon(5);
+            } else if (x >= 269 && x <= 765 && y>= 1080 && y <= 1194 && openedWindow) {
+                    openedWindow = false;
                     selectedPokemon = -1;
-                }
-            } else if (x >= 451 && x <= 775 && y >= 1832 && y <= 1902) {
-                if (!onSwitchButton) {
-                    onSwitchButton = true;
-                }
-            }
-
-            else {
-                Gdx.app.log("Screen Click", x + ", " + y);
+            } else if (x >= 269 && x <= 765 && y>= 924 && y <= 1031 && openedWindow) {
+                    openedWindow = false;
+            } else if (x >= 269 && x <= 765 && y>= 767 && y <= 900 && openedWindow) {
+                    openedWindow = false;
+                    gsm.setState(new StatusState(gsm, gsm.getParty().get(selectedPokemon), false));
+                    dispose();
             }
         }
     }
 
+    private void clickedPokemon(int position) {
+        if (hasPokemon(position)) {
+            if (selectedPokemon < 0) {
+                if (!openedWindow) {
+                    openedWindow = true;
+                    selectedPokemon = position;
+                }
+            } else {
+                swapPokemon(position);
+            }
+        }
+    }
+
+    private boolean hasPokemon(int position) {
+        if (gsm.getParty().size() > position) {
+            return true;
+        }
+        return false;
+    }
     private boolean hasSecondPokemon() {
         if (gsm.getParty().size() > 1) {
             return true;
@@ -286,17 +345,20 @@ public class PokemonPartyState extends GameState {
 
     @Override
     protected void dispose() {
+        background.dispose();
+        panel.dispose();
+        emptyPanel.dispose();
+        healthBar.dispose();
+        greenHealth.dispose();
+        orangeHealth.dispose();
+        redHealth.dispose();
+        title.dispose();
         nameFont.dispose();
-        levelFont.dispose();
         for (int i = 0; i < pokemonIcons.size(); i++) {
             pokemonIcons.get(i).dispose();
         }
-        gsm.getLoader().unload("pokemonMenu/background.png");
-        gsm.getLoader().unload("pokemonMenu/panel.png");
-        gsm.getLoader().unload("pokemonMenu/emptyHealthBar.png");
-        gsm.getLoader().unload("pokemonMenu/greenLife.png");
-        gsm.getLoader().unload("pokemonMenu/healthCap.png");
-        gsm.getLoader().unload("pokemonMenu/grayButton.png");
-        gsm.getLoader().unload("pokemonMenu/greenButton.png");
+        popupWindow.dispose();
+        selected.dispose();
+
     }
 }

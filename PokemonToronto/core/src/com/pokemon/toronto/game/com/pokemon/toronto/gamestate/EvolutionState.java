@@ -374,9 +374,11 @@ public class EvolutionState extends GameState {
         if (goToMapState) {
             //Go to Map State
             gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+            gsm.playBgm();
         } else {
             //Go back to last simulator page
             gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+            gsm.playBgm();
         }
         dispose();
     }

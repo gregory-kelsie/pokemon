@@ -175,8 +175,10 @@ public class PoisonCheckPhase extends BattlePhase {
         if (counter >= 1.5) {
             if (playerFainted) {
                 poisonCheckState = FAINT_PLAYER;
+                pui.playFaintSound();
             } else {
                 poisonCheckState = FAINT_ENEMY;
+                pui.playFaintSound();
             }
         }
     }

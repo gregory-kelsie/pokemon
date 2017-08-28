@@ -31,6 +31,7 @@ public class Caterpie extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/caterpie/caterpie.png";
     private static final String BACK_PATH = "battle/backs/caterpie.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/caterpie.png";
+    private static final String CRY_PATH = "sounds/cry/010.wav";
 
     /**
      * Create a Caterpie with the specified level.
@@ -40,7 +41,7 @@ public class Caterpie extends Pokemon {
         super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -66,7 +67,7 @@ public class Caterpie extends Pokemon {
         super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

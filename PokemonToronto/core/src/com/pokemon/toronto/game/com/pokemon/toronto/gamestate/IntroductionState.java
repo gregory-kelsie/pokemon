@@ -179,9 +179,9 @@ public class IntroductionState extends GameState {
      */
     private void initAudio() {
         clickSound = gsm.getLoader().get("sounds/click.wav");
-        bulbasaurCry = gsm.getLoader().get("sounds/cry/01.wav");
-        charmanderCry = gsm.getLoader().get("sounds/cry/04.wav");
-        squirtleCry = gsm.getLoader().get("sounds/cry/07.wav");
+        bulbasaurCry = gsm.getLoader().get("sounds/cry/001.wav");
+        charmanderCry = gsm.getLoader().get("sounds/cry/004.wav");
+        squirtleCry = gsm.getLoader().get("sounds/cry/007.wav");
         throwPokeballSound = gsm.getLoader().get("sounds/throwPokeball.wav");
         wooshSound = gsm.getLoader().get("sounds/woosh.wav");
         caughtPokemonSound = gsm.getLoader().get("sounds/caughtPokemon.wav");
@@ -797,7 +797,8 @@ public class IntroductionState extends GameState {
             if (fadingCounter >= 1) {
                 //Switch states
                 gsm.getGameCallBack().spawnNewGamePokemon();
-                gsm.setState(new LoadingState(gsm, LoadingState.MAIN_MENU));
+                gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                gsm.playBgm();
                 dispose();
             }
         }
@@ -884,9 +885,9 @@ public class IntroductionState extends GameState {
         gsm.getLoader().unload("closedPokeball.png");
         gsm.getLoader().unload("openPokeball.png");
 
-        gsm.getLoader().unload("sounds/cry/01.wav");
-        gsm.getLoader().unload("sounds/cry/04.wav");
-        gsm.getLoader().unload("sounds/cry/07.wav");
+        gsm.getLoader().unload("sounds/cry/001.wav");
+        gsm.getLoader().unload("sounds/cry/004.wav");
+        gsm.getLoader().unload("sounds/cry/007.wav");
         gsm.getLoader().unload("sounds/throwPokeball.wav");
         gsm.getLoader().unload("sounds/woosh.wav");
         gsm.getLoader().unload("sounds/caughtPokemon.wav");

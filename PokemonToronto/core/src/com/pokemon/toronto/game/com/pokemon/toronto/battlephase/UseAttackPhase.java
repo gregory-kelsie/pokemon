@@ -233,12 +233,14 @@ public class UseAttackPhase extends BattlePhase {
                     if (attackerIsUser) {
                         if (enemyFainted) {
                             displayEnemyFaintAnimation = true;
+                            pui.playFaintSound();
                         } else {
                             updateAttackerHealth = true;
                         }
                     } else {
                          if (userFainted) {
                             displayUserFaintAnimation = true;
+                             pui.playFaintSound();
                         } else {
                              updateAttackerHealth = true;
                          }
@@ -250,9 +252,11 @@ public class UseAttackPhase extends BattlePhase {
                         if (enemyFainted) {
                             displayingResults = false;
                             displayEnemyFaintAnimation = true;
+                            pui.playFaintSound();
                         } else if (userFainted) {
                             displayingResults = false;
                             displayUserFaintAnimation = true;
+                            pui.playFaintSound();
                         }
                         else {
                             displayingResults = false;
@@ -263,9 +267,11 @@ public class UseAttackPhase extends BattlePhase {
                         if (userFainted) {
                             displayingResults = false;
                             displayUserFaintAnimation = true;
+                            pui.playFaintSound();
                         } else if (enemyFainted) {
                             displayingResults = false;
                             displayEnemyFaintAnimation = true;
+                            pui.playFaintSound();
                         }
                         else {
                             displayingResults = false;
@@ -300,9 +306,11 @@ public class UseAttackPhase extends BattlePhase {
                 if (userRecoilFaint) {
                     displayRecoilResults = false;
                     displayUserFaintAnimation = true;
+                    pui.playFaintSound();
                 } else if (enemyRecoilFaint) {
                     displayRecoilResults = false;
                     displayEnemyFaintAnimation = true;
+                    pui.playFaintSound();
                 }
                 else {
                     displayRecoilResults = false;

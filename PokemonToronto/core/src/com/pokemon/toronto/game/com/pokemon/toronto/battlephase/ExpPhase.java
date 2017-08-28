@@ -23,6 +23,7 @@ public class ExpPhase extends BattlePhase {
     //Level Up Variables
     private List<Integer> newSkillsForLevelUp;
     private Skill newMove;
+    private boolean playedLevelUpSound;
 
     //Text Variables
     private double counter = 0;
@@ -52,6 +53,7 @@ public class ExpPhase extends BattlePhase {
         text = pui.getUserPokemon().getName() + " gained " +
                 pui.getEnemyPokemon().calculateExp(1) + " Exp. Points.";
         currentState = DISPLAY_EXP_GAIN;
+        playedLevelUpSound = false;
 
     }
 
@@ -260,17 +262,22 @@ public class ExpPhase extends BattlePhase {
             if (textPosition < text.length()) {
                 textPosition += 1;
                 counter = 0;
+            } else {
+                if (!playedLevelUpSound) {
+                    pui.playSecondLevelUpSound();
+                    playedLevelUpSound = true;
+                }
             }
         }
+
         if (counter >= 1.5) {
+            playedLevelUpSound = false;
             //Get the skills the Pokemon learns at this level.
             newSkillsForLevelUp = pui.getUserPokemon().getCurrentLevelUpSkills();
             if (newSkillsForLevelUp == null) {
                 currentState = ADD_EXP;
-                Gdx.app.log("expsound", "nolvlupskillsshouldplay");
                 pui.playExpSound();
             } else {
-                Gdx.app.log("NEWSKILLS", "" + pui.getUserPokemon().getSkills().size());
                 SkillFactory sf = new SkillFactory();
                 //Add the first new skill it learns at this level.
                 newMove = sf.createSkill(newSkillsForLevelUp.get(0));

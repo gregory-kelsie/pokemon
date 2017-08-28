@@ -59,6 +59,10 @@ public class BattleState extends GameState implements BattleInterface {
     private Music bgm;
     private Music victoryBgm;
     private Sound clickSound;
+
+    private Sound enemyPokemonCry;
+    private List<Sound> playerCries;
+
     List<List<String>> battleTextList;
     //Move Animation Stuff
     private boolean flashUserPokemon;
@@ -104,6 +108,8 @@ public class BattleState extends GameState implements BattleInterface {
 
     private void init(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         this.gsm = gsm;
+        enemyPokemonCry = Gdx.audio.newSound(Gdx.files.internal(enemyPokemon.getCryPath()));
+        Gdx.app.log("cry",enemyPokemon.getCryPath());
         justFinishedPta = false;
         this.battleType = WILD_BATTLE;
         panelPosition = FIRST_PANEL;
@@ -126,13 +132,21 @@ public class BattleState extends GameState implements BattleInterface {
         victoryBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/wildVictory.mp3"));
 
         clickSound = gsm.getLoader().get("sounds/click.wav");
-
+        loadCries();
         battling = false;
         flashUserPokemon = false;
 
         battleUpdater = new BattleUpdater(this, battleTextures.getRegularFont());
-        pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName());
+        pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName(), this);
         controller = new BattleClickController(this);
+    }
+
+    private void loadCries() {
+        playerCries = new ArrayList<Sound>();
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            playerCries.add(Gdx.audio.newSound(
+                    Gdx.files.internal(gsm.getParty().get(i).getCryPath())));
+        }
     }
 
     public void render(SpriteBatch batch) {
@@ -547,8 +561,10 @@ public class BattleState extends GameState implements BattleInterface {
                     }
                     if (region != -1) {
                         gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+                        gsm.playBgm();
                     } else {
                         gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
+                        gsm.playBgm();
                     }
                     dispose();
                 }
@@ -567,6 +583,8 @@ public class BattleState extends GameState implements BattleInterface {
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        playUserPokemonCry();
+
         battleTextures.resetSkillButtonTextures(currentPokemon);
 
     }
@@ -576,6 +594,7 @@ public class BattleState extends GameState implements BattleInterface {
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
         battleTextures.resetSkillButtonTextures(currentPokemon);
+        playUserPokemonCry();
         battleUpdater.finishedFaintSwitch(currentPokemon);
     }
 
@@ -603,12 +622,14 @@ public class BattleState extends GameState implements BattleInterface {
                 gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon,
                         startingRoute, region, isRoute));
             } else {
+                gsm.playBgm();
                 gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
             }
         } else {
             if (evolvedPokemon.size() > 0) {
                 gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon));
             } else {
+                gsm.playBgm();
                 gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
             }
         }
@@ -623,13 +644,27 @@ public class BattleState extends GameState implements BattleInterface {
 
     @Override
     public void dispose() {
+        battleUpdater.dispose();
         battleTextures.dispose();
+        pta.dispose();
         victoryBgm.stop();
         victoryBgm.dispose();
         bgm.stop();
         bgm.dispose();
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            playerCries.get(i).dispose();
+        }
+        enemyPokemonCry.dispose();
     }
 
+
+    public void playEnemyCry() {
+        enemyPokemonCry.play();
+    }
+
+    public void playUserPokemonCry() {
+        playerCries.get(currentPokemonPosition).play();
+    }
     public PlayerTrainerAnimation getPlayerTrainerAnimation() {
         return pta;
     }
@@ -761,11 +796,13 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void goToMainMenuState() {
-        gsm.setState(new MainMenuState(gsm));
+        gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+        gsm.playBgm();
     }
 
     public void goToRouteState() {
         gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+        gsm.playBgm();
     }
 
     public boolean cameFromSimulator() {
@@ -849,6 +886,9 @@ public class BattleState extends GameState implements BattleInterface {
 
     //INTERFACE METHODS
 
+    public void stopBgm() {
+        bgm.stop();
+    }
 
     @Override
     public void setIsBattling(boolean battling) {

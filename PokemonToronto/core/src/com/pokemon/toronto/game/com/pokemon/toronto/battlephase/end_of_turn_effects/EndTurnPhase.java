@@ -150,6 +150,7 @@ public class EndTurnPhase extends BattlePhase {
             counter = 0;
             textPosition = 0;
             currentState = FAINT_ENEMY_POKEMON;
+            pui.playFaintSound();
         }
     }
 
@@ -165,6 +166,7 @@ public class EndTurnPhase extends BattlePhase {
             counter = 0;
             textPosition = 0;
             currentState = FAINT_PLAYER_POKEMON;
+            pui.playFaintSound();
         }
     }
 

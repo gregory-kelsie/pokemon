@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.animation.skill;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -26,8 +27,10 @@ public class TackleAnimation extends SkillAnimation {
     private double counter;
 
     private Texture hitTexture;
+    private Sound hitSound;
     public TackleAnimation(boolean playerUser) {
         super(playerUser);
+        hitSound = Gdx.audio.newSound(Gdx.files.internal("sounds/hit.wav"));
         state = MOVE_SPRITE_PHASE;
         if (playerUser) {
             this.sda = new SpriteDynamicAnimation(playerX, true);
@@ -58,6 +61,7 @@ public class TackleAnimation extends SkillAnimation {
             playerX = sda.getX();
             if (sda.isFinished()) {
                 state = SHOW_ATTACK_TEXTURE;
+                hitSound.play();
                 sda.restart();
             }
         } else if (state == SHOW_ATTACK_TEXTURE) {
@@ -111,6 +115,7 @@ public class TackleAnimation extends SkillAnimation {
             enemyX = sda.getX();
             if (sda.isFinished()) {
                 state = SHOW_ATTACK_TEXTURE;
+                hitSound.play();
                 sda.restart();
             }
         } else if (state == SHOW_ATTACK_TEXTURE) {
@@ -161,5 +166,6 @@ public class TackleAnimation extends SkillAnimation {
 
     public void dispose() {
         hitTexture.dispose();
+        hitSound.dispose();
     }
 }

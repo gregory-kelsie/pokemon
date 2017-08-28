@@ -78,6 +78,10 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     private Sound poisonSound;
     private Music expGainSound;
     private Sound levelUpSound;
+    private Sound secondLevelUpSound;
+    private Sound catchSound;
+    private Sound throwPokeballSound;
+    private Sound faintSound;
 
 
     public BattleUpdater(BattleInterface battleState, BitmapFont font) {
@@ -94,7 +98,11 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
         poisonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/poison.wav"));
         levelUpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/levelup.wav"));
+        secondLevelUpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/levelup2.wav"));
         expGainSound = Gdx.audio.newMusic(Gdx.files.internal("sounds/expgain.wav"));
+        catchSound = Gdx.audio.newSound(Gdx.files.internal("sounds/caughtPokemon.wav"));
+        faintSound = Gdx.audio.newSound(Gdx.files.internal("sounds/faint.wav"));
+        throwPokeballSound = Gdx.audio.newSound(Gdx.files.internal("sounds/throwPokeball.wav"));
     }
 
     /*
@@ -164,6 +172,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         poisonSound.dispose();
         expGainSound.dispose();
         levelUpSound.dispose();
+        secondLevelUpSound.dispose();
+        catchSound.dispose();
+        throwPokeballSound.dispose();
     }
 
     /****************************************************************************************************
@@ -173,6 +184,15 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      * *************************************************************************************************
      */
 
+    @Override
+    public void stopBgm() {
+        battleState.stopBgm();
+    }
+
+    @Override
+    public void playThrowPokeballSound() {
+        throwPokeballSound.play();
+    }
     @Override
     public void playVictoryBgm() {
         battleState.playVictoryBgm();
@@ -195,6 +215,15 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     @Override
+    public void playCatchSound() {
+        catchSound.play();
+    }
+
+    public void playFaintSound() {
+        faintSound.play();
+    }
+
+    @Override
     public void stopExpSound() {
         if (expGainSound.isPlaying()) {
             Gdx.app.log("expsound", "stop");
@@ -207,6 +236,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     public void playLevelUpSound() {
         levelUpSound.play();
     }
+
+    @Override
+    public void playSecondLevelUpSound() { secondLevelUpSound.play(); }
 
     @Override
     public void setWaitingForMoveDeletion() {

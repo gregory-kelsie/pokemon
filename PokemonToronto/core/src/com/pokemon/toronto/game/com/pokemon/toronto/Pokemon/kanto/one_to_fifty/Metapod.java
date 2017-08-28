@@ -22,6 +22,7 @@ public class Metapod extends Pokemon {
     private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
     private static final int CAPTURE_RATE = 120;
 
+
     //Base Stats
     private static final int BASE_HEALTH = 50;
     private static final int BASE_ATTACK = 20;
@@ -34,6 +35,7 @@ public class Metapod extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/metapod.png";
     private static final String BACK_PATH = "battle/backs/metapod.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/metapod.png";
+    private static final String CRY_PATH = "sounds/cry/011.wav";
 
     /**
      * Create a Metapod with the specified level.
@@ -43,7 +45,7 @@ public class Metapod extends Pokemon {
         super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHED_SKIN, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +71,7 @@ public class Metapod extends Pokemon {
         super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHED_SKIN, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

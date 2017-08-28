@@ -11,9 +11,24 @@ import android.location.Geocoder;
 import android.location.Location;
 
 import com.google.android.gms.common.ConnectionResult;
+
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationListener;
+//Places
+
+import com.google.android.gms.location.places.GeoDataApi;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.PlaceDetectionClient;
+import com.google.android.gms.location.places.PlaceFilter;
+import com.google.android.gms.location.places.PlaceLikelihood;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
+import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
+import com.google.android.gms.location.places.PlaceReport;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.PlaceDetectionApi;
 //import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -28,10 +43,14 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.pokemon.toronto.game.pokemonToronto;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class AndroidLauncher extends AndroidApplication implements pokemonToronto.MyGameCallBack,
 		GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener{
@@ -56,6 +75,12 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	//The Player's coordinates
 	private double latitude;
 	private double longitude;
+
+	//Google Places
+	private GeoDataClient mGeoDataClient;
+	private PlaceDetectionClient pdc;
+
+	private String name;
 
 	/**
 	 * Called when starting up the application.
@@ -103,6 +128,12 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				.addOnConnectionFailedListener(this)
 				.addApi(LocationServices.API).build();
 		mGoogleApiClient.connect();
+		initGooglePlaces();
+	}
+
+	private void initGooglePlaces() {
+		mGeoDataClient = Places.getGeoDataClient(this, null);
+		pdc = Places.getPlaceDetectionClient(this, null);
 	}
 
 	/**
@@ -134,7 +165,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 		//https://libgdx.badlogicgames.com/nightlies/docs/api/com/
 		//badlogic/gdx/backends/android/AndroidApplicationConfiguration.html
 		config.a = 8;
-		pToronto= new pokemonToronto();
+		pToronto = new pokemonToronto();
 		pToronto.setGameCallBack(this);
 		initialize(pToronto, config);
 	}
@@ -260,7 +291,6 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			//                                          int[] grantResults)
 			// to handle the case where the user grants the permission. See the documentation
 			// for ActivityCompat#requestPermissions for more details.
-			Log.i("GOOF", "ya dun goofd boy");
 			return;
 		}
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -312,7 +342,6 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			openPokemonMapActivity.putExtra("pokemonLongitude", pokemonLongitude);
 			openPokemonMapActivity.putExtra("pokemonIcon", pokemonIcon);
 			openPokemonMapActivity.putExtra("distance", distance);
-
 			startActivity(openPokemonMapActivity);
 
 		} else {
@@ -353,14 +382,62 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 		String country = "";
 		String stateName = "";
 		String cityName = "";
+
 		try {
-			List<Address> address = gc.getFromLocation(latitude, longitude, 1);
+			List<Address> address = gc.getFromLocation(latitude, longitude, 3);
+			Log.i("Geocoder", "Addresses: " + address.size());
+
+
+			for (int i = 0; i < address.size(); i++) {
+				if (address.get(i) != null) {
+					Log.i("Geocoder", "zz-------------------------------------------------------");
+					for (int j = 0; i < address.get(i).getMaxAddressLineIndex(); j++) {
+						Log.i("Geocoder", "Addresses Line: " + address.get(i).getAddressLine(j));
+					}
+					Log.i("Geocoder", "Feature (" + i + "):" + address.get(i).getFeatureName());
+					Log.i("Geocoder", "Premises: " + address.get(i).getPremises());
+					Log.i("Geocoder", "Sub-Admin Area: " + address.get(i).getSubAdminArea());
+					Log.i("Geocoder", "Locality: " + address.get(i).getLocality());
+					Log.i("Geocoder", "Sub-Locality: " + address.get(i).getSubLocality());
+					Log.i("Geocoder", "SubthoroughFare: " + address.get(i).getSubThoroughfare());
+					Log.i("Geocoder", "ThoroughFare: " + address.get(i).getThoroughfare());
+					Log.i("Geocoder", "Address: " + address.get(i).getAddressLine(1));
+				}
+			}
+
+			if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+				Log.e("not granted", "Permission is not granted");
+
+				ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+				return;
+			}
+
+			Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+
+			placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
+				@Override
+				public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
+					PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
+					for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+						name = placeLikelihood.getPlace().getName().toString();
+						Log.i("osgh", String.format("Place '%s' has likelihood: %g",
+								placeLikelihood.getPlace().getName(),
+								placeLikelihood.getLikelihood()));
+					}
+					likelyPlaces.release();
+				}
+			});
+
 			country = address.get(0).getCountryName();
 			stateName = address.get(0).getAdminArea();
 			cityName = address.get(0).getAddressLine(1).substring(0,
 					address.get(0).getAddressLine(1).indexOf(","));
 
 		} catch (Exception e) { Log.i("WildRec Trycatch ", e.getMessage());}
+		try {
+			Log.i("Geocoder", cityName);
+		} catch (Exception e) { Log.i("Geocoder", e.getMessage());}
+		Log.i("Geocoder", "messed up baby");
 		pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
 	}
 

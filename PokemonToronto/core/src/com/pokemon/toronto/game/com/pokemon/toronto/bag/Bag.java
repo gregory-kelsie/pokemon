@@ -1,7 +1,10 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.bag;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.ItemFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokeballFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class Bag {
 
     //Instance variables
     private List<Ball> pokeballs;
+    private List<PlayerItem> stones;
 
     /**
      * Constructor
@@ -20,6 +24,7 @@ public class Bag {
      */
     public Bag() {
         pokeballs = new ArrayList<Ball>();
+        stones = new ArrayList<PlayerItem>();
     }
 
     /**
@@ -28,6 +33,42 @@ public class Bag {
      */
     public List<Ball> getPokeballBag() {
         return pokeballs;
+    }
+
+    /**
+     * Return the Stone portion of the bag.
+     * @return The Stones bag.
+     */
+    public List<PlayerItem> getStoneBag() { return stones; }
+
+    /**
+     * Return whether or not the Player has the stone with
+     * an id = stoneId
+     * @param stoneId The stone we are searching for.
+     * @return Whether or not the Player has the stone with
+     * stoneId in the bag.
+     */
+    public boolean hasStone(int stoneId) {
+        for (int i = 0; i < stones.size(); i++) {
+            if (stones.get(i).getItem().getId() == stoneId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addStone(int stoneId) {
+        boolean addedStone = false;
+        for (int i = 0; i < stones.size(); i++) {
+            if (stones.get(i).getItem().getId() == stoneId) {
+                stones.get(i).add(1);
+                addedStone = true;
+            }
+        }
+        if (!addedStone) {
+            ItemFactory stoneFactory = new ItemFactory();
+            stones.add(stoneFactory.createStone(stoneId, 1));
+        }
     }
 
     /**

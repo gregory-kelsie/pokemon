@@ -12,9 +12,13 @@ public class MapState extends GameState {
     private GameStateManager gsm;
     private Texture background;
 
+    private double refreshCounter;
+    private boolean mapOpened;
+
     public MapState(GameStateManager gsm) {
         this.gsm = gsm;
         background = gsm.getLoader().get("mapMenu.png", Texture.class);
+        refreshCounter = 0;
     }
 
     @Override
@@ -27,7 +31,6 @@ public class MapState extends GameState {
         if (MyInput.clicked()) {
             int x = MyInput.getX();
             int y = MyInput.getY();
-            Gdx.app.log("GDX LOGGERs - ", "X: " + MyInput.getX() + ", Y: " + MyInput.getY());
             if (clickedMapLocation(x, y)) {
                 openMap();
             } else if (clickedCheckPokemon(x, y)) {

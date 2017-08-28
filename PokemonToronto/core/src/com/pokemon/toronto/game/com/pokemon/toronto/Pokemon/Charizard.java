@@ -32,6 +32,7 @@ public class Charizard extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/charizard/charizard.png";
     private static final String BACK_PATH = "battle/backs/charizard.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/charizard.png";
+    private static final String CRY_PATH = "sounds/cry/006.wav";
 
     /**
      * Create a Charizard with the specified level.
@@ -41,7 +42,7 @@ public class Charizard extends Pokemon {
         super(NUMBER, NAME, level, Type.FIRE, Type.FLYING, Ability.BLAZE, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -67,7 +68,7 @@ public class Charizard extends Pokemon {
         super(NUMBER, NAME, level, Type.FIRE, Type.FLYING, Ability.BLAZE, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

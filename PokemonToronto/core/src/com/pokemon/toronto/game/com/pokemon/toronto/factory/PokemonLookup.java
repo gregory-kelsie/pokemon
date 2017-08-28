@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 
 import java.util.ArrayList;
@@ -73,6 +74,35 @@ public class PokemonLookup {
         return d;
     }
 
+    /**
+     * Calculate distance between two points in latitude and longitude taking
+     * into account height difference. If you are not interested in height
+     * difference pass 0.0. Uses Haversine method as its base.
+     *
+     * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
+     * el2 End altitude in meters
+     * @returns Distance in Meters
+     */
+    private double distance(double lat1, double lat2, double lon1,
+                           double lon2) {
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c * 1000; // convert to meters
+
+        //double height = el1 - el2;
+
+        distance = Math.pow(distance, 2);// + Math.pow(height, 2);
+
+        return Math.sqrt(distance);
+    }
+
 
     /**
      * Return a list of PokemonLookupPackages based on the player's location.
@@ -117,7 +147,6 @@ public class PokemonLookup {
         }
     }
 
-
     /**
      * Return a list of PokemonLookupPackages from Scarborough.
      * @return A list of PokemonLookupPackages from Scarborough.
@@ -125,6 +154,16 @@ public class PokemonLookup {
     private List<PokemonLookupPackage> getScarboroughPokemon() {
 
         List<PokemonLookupPackage> plp = new ArrayList<PokemonLookupPackage>();
+        Gdx.app.log("BAMBAM2", city);
+        if (distance(latitude, 43.72936731067151, longitude, -79.27721500396729) <= 1000) {
+            PokemonLookupPackage pokemon;
+            for (int i = 0; i < amount; i++) {
+                double[] pokemonLocation = getRandomLocation(43.72936731067151, -79.27721500396729, 1000);
+                pokemon = new PokemonLookupPackage(PokemonId.ZUBAT.getValue(), pokemonLocation[0], pokemonLocation[1]);
+                plp.add(pokemon);
+            }
+            return plp;
+        }
         //Create a random Pokemon amount times.
         for (int i = 0; i < amount; i++) {
             PokemonLookupPackage pokemon;

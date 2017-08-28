@@ -34,6 +34,7 @@ public class Vileplume extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/vileplume.png";
     private static final String BACK_PATH = "battle/backs/vileplume.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/vileplume.png";
+    private static final String CRY_PATH = "sounds/cry/045.wav";
 
     /**
      * Create a Vileplume with the specified level.
@@ -43,7 +44,7 @@ public class Vileplume extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.GRASS, Pokemon.Type.POISON, Ability.CHLOROPHYLL, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +70,7 @@ public class Vileplume extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.GRASS, Type.POISON, Ability.CHLOROPHYLL, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

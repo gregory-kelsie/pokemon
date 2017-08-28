@@ -1,21 +1,19 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Ball;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+
 /**
  * Created by Gregory on 6/17/2017.
  */
-public abstract class Ball {
+public abstract class Ball extends Item {
 
     //Ball Type Constants
     public static final int POKEBALL = 0;
 
     //Instance Variables
-    protected String name;
-    protected String description;
     protected int rate;
-    protected int price;
-    protected String iconPath;
-    protected int id;
     protected int quantity;
+
 
     /**
      * Constructor
@@ -24,50 +22,27 @@ public abstract class Ball {
      * @param description The description of the Pokeball
      * @param iconPath The image path of the Pokeball icon
      * @param rate The catching rate of the Pokeball.
-     * @param price The price of the Pokeball.
-     * @param quantity The quantity of Pokeballs.
      */
     public Ball(int id, String name, String description, String iconPath,
-                int rate, int price, int quantity) {
-        this.name = name;
-        this.description = description;
-        this.iconPath = iconPath;
+                int rate) {
+        super(id, name, description, iconPath);
         this.rate = rate;
-        this.price = price;
-        this.id = id;
+        this.quantity = 1;
+    }
+
+    /**
+     * Constructor
+     * @param id The Pokeball's id
+     * @param name The name of the Pokeball
+     * @param description The description of the Pokeball
+     * @param iconPath The image path of the Pokeball icon
+     * @param rate The catching rate of the Pokeball.
+     */
+    public Ball(int id, String name, String description, String iconPath,
+                int rate, int quantity) {
+        super(id, name, description, iconPath);
+        this.rate = rate;
         this.quantity = quantity;
-    }
-
-    /**
-     * Return the Pokeball's name.
-     * @return The String name of the Pokeball.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Return the Pokeball's description.
-     * @return The String description of the Pokeball.
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Return the price of a single Pokeball.
-     * @return The int price of a single Pokeball
-     */
-    public int getPrice() {
-        return price;
-    }
-
-    /**
-     * Return the Pokeball's image icon path.
-     * @return The Pokeball's icon path.
-     */
-    public String getIconPath() {
-        return iconPath;
     }
 
     /**
@@ -92,14 +67,6 @@ public abstract class Ball {
      */
     public void subtractQuantity(int amt) {
         quantity -= amt;
-    }
-
-    /**
-     * Return the Id of the Pokeball.
-     * @return The int id of the Pokeball.
-     */
-    public int getId() {
-        return id;
     }
 
     /**

@@ -2,11 +2,14 @@ package com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranim
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.Animation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.AnimationFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
 
 /**
  * Created by Gregory on 6/25/2017.
@@ -30,10 +33,9 @@ public class PlayerTrainerAnimation {
     private String sendOutText;
     private boolean finishedPauseText;
     private boolean startedPokeballToss;
+    private BattleInterface battleInterface;
 
-
-
-    public PlayerTrainerAnimation(AssetManager loader, String sentOutPokemonName, String enemyPokemonName) {
+    public PlayerTrainerAnimation(AssetManager loader, String sentOutPokemonName, String enemyPokemonName, BattleInterface battleInterface) {
         trainerAnimation = AnimationFactory.getPlayerTrainerAnimation();
         trainerAnimation.setLooping(false);
         pokeball = new Texture("battle/trainer/pokeball.png");
@@ -48,6 +50,7 @@ public class PlayerTrainerAnimation {
         sendOutText = "Go " + sentOutPokemonName + "!!";
         finishedPauseText = false;
         startedPokeballToss = false;
+        this.battleInterface = battleInterface;
     }
 
     public boolean isFinished() {
@@ -94,8 +97,6 @@ public class PlayerTrainerAnimation {
             updateStart(dt);
         } else if (state == TO_OFFSCREEN) {
             updateToOffscreen(dt);
-        } else if (state == THROWING_BALL) {
-            updateThrowingBall(dt);
         } else if (state == PAUSE) {
             updatePause(dt);
         }
@@ -108,6 +109,7 @@ public class PlayerTrainerAnimation {
             counter = 0;
             if (trainerAnimation.getX() <= 66) {
                 state = PAUSE;
+                battleInterface.playEnemyCry();
             }
         }
 
@@ -120,7 +122,10 @@ public class PlayerTrainerAnimation {
                 fontIndex++;
                 counter = 0;
             } else {
-                finishedPauseText = true;
+                if (!finishedPauseText) {
+                    finishedPauseText = true;
+
+                }
             }
         }
     }
@@ -133,7 +138,10 @@ public class PlayerTrainerAnimation {
                 pokeballX += 7;
                 pokeballY = (int) Math.round(-0.00069372181 * (Math.pow(pokeballX, 2)) + 1446);
             } else {
-                finished = true;
+                if (!finished) {
+                    finished = true;
+                    battleInterface.playUserPokemonCry();
+                }
             }
         }
         if (counter >= 0.0166667) {
@@ -145,7 +153,9 @@ public class PlayerTrainerAnimation {
         }
     }
 
-    private void updateThrowingBall(double dt) {
-
+    public void dispose() {
+        pokeball.dispose();
+        trainerAnimation.dispose();
+        font.dispose();
     }
 }

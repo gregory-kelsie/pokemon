@@ -119,9 +119,9 @@ public class LoadingState extends GameState {
         gsm.getLoader().load("closedPokeball.png", Texture.class);
         gsm.getLoader().load("openPokeball.png", Texture.class);
 
-        gsm.getLoader().load("sounds/cry/01.wav", Sound.class);
-        gsm.getLoader().load("sounds/cry/04.wav", Sound.class);
-        gsm.getLoader().load("sounds/cry/07.wav", Sound.class);
+        gsm.getLoader().load("sounds/cry/001.wav", Sound.class);
+        gsm.getLoader().load("sounds/cry/004.wav", Sound.class);
+        gsm.getLoader().load("sounds/cry/007.wav", Sound.class);
         gsm.getLoader().load("sounds/throwPokeball.wav", Sound.class);
         gsm.getLoader().load("sounds/woosh.wav", Sound.class);
         gsm.getLoader().load("sounds/caughtPokemon.wav", Sound.class);
@@ -145,6 +145,12 @@ public class LoadingState extends GameState {
         gsm.getLoader().load("pokeNav/pokemoncenter_text.png", Texture.class);
         gsm.getLoader().load("pokeNav/pokemart.png", Texture.class);
         gsm.getLoader().load("pokeNav/pokemart_text.png", Texture.class);
+        gsm.getLoader().load("pokeNav/bag.png", Texture.class);
+        gsm.getLoader().load("pokeNav/bag_text.png", Texture.class);
+        gsm.getLoader().load("pokeNav/party.png", Texture.class);
+        gsm.getLoader().load("pokeNav/party_text.png", Texture.class);
+        gsm.getLoader().load("pokeNav/profile.png", Texture.class);
+        gsm.getLoader().load("pokeNav/profile_text.png", Texture.class);
         gsm.getLoader().load("sounds/click.wav", Sound.class);
     }
     

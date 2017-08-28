@@ -74,6 +74,7 @@ public class PokeCenterState extends GameState{
                     if (currentTextBox == text.size() - 1) {
                         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                         dispose();
+                        gsm.playBgm();
                     } else {
                         if (currentTextBox == 1) {
                             startedJingle = true;

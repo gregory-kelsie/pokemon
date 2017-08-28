@@ -33,6 +33,7 @@ public class NidoranM extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/nidoran-m/nidoran-m.png";
     private static final String BACK_PATH = "battle/backs/nidoran-m.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/nidoran-m.png";
+    private static final String CRY_PATH = "sounds/cry/032.wav";
 
     /**
      * Create a Nidoran m with the specified level.
@@ -42,7 +43,7 @@ public class NidoranM extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.NONE, Pokemon.Ability.POISON_POINT, Pokemon.ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -68,7 +69,7 @@ public class NidoranM extends Pokemon {
         super(NUMBER, NAME, level, Type.POISON, Type.NONE, Ability.POISON_POINT, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

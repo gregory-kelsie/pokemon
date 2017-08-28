@@ -333,11 +333,13 @@ public class RouteState extends GameState {
     private void clickedGrassButton() {
         clickSound.play();
         startedABattle = true;
+        gsm.stopBgm();
         wildBgm.play();
         if (isRoute) {
             gsm.setState(new BattleState(gsm, currentRoute.getAPokemon(Route.GRASS), wildBgm, routeList[currentRoutePosition], region, isRoute));
         } else {
             gsm.setState(new BattleState(gsm, currentRoute.getAPokemon(Route.GRASS), wildBgm, routeList[currentRoutePosition], region, isRoute));
+
         }
         dispose();
     }

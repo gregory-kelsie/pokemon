@@ -44,4 +44,9 @@ public interface PhaseUpdaterInterface {
     void playExpSound();
     void stopExpSound();
     void playVictoryBgm();
+    void playSecondLevelUpSound();
+    void playCatchSound();
+    void stopBgm();
+    void playThrowPokeballSound();
+    void playFaintSound();
 }

@@ -19,12 +19,18 @@ public class PokeNavState extends GameState{
 
     //Screen Position Values
     private final int POKEDEX_SCREEN = 0;
-    private final int PC_SCREEN = 1;
-    private final int MAP_SCREEN = 2;
-    private final int SIMULATOR_SCREEN = 3;
-    private final int COMMUNITY_SCREEN = 4;
-    private final int POKECENTER_SCREEN = 5;
-    private final int POKEMART_SCREEN = 6;
+    private final int PARTY_SCREEN = 1;
+    private final int BAG_SCREEN = 2;
+    private final int MAP_SCREEN = 3;
+    private final int SIMULATOR_SCREEN = 4;
+    private final int COMMUNITY_SCREEN = 5;
+    private final int PROFILE_SCREEN = 6;
+    private final int PC_SCREEN = 7;
+    private final int POKECENTER_SCREEN = 8;
+    private final int POKEMART_SCREEN = 9;
+
+
+
 
     /** Instance Variables */
 
@@ -55,8 +61,11 @@ public class PokeNavState extends GameState{
                 .get("pokeNav/pokedex.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokedex_text.png", Texture.class)));
         pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
-                .get("pokeNav/pokemonpc.png", Texture.class),
-                gsm.getLoader().get("pokeNav/pokemonpc_text.png", Texture.class)));
+                .get("pokeNav/party.png", Texture.class),
+                gsm.getLoader().get("pokeNav/party_text.png", Texture.class)));
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/bag.png", Texture.class),
+                gsm.getLoader().get("pokeNav/bag_text.png", Texture.class)));
         pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
                 .get("pokeNav/worldmap.png", Texture.class),
                 gsm.getLoader().get("pokeNav/worldmap_text.png", Texture.class)));
@@ -66,6 +75,12 @@ public class PokeNavState extends GameState{
         pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
                 .get("pokeNav/community.png", Texture.class),
                 gsm.getLoader().get("pokeNav/community_text.png", Texture.class)));
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/profile.png", Texture.class),
+                gsm.getLoader().get("pokeNav/profile_text.png", Texture.class)));
+        pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
+                .get("pokeNav/pokemonpc.png", Texture.class),
+                gsm.getLoader().get("pokeNav/pokemonpc_text.png", Texture.class)));
         pokeNavScreens.add(new PokeNavScreen(gsm.getLoader()
                 .get("pokeNav/blissey.png", Texture.class),
                 gsm.getLoader().get("pokeNav/pokemoncenter_text.png", Texture.class)));
@@ -124,15 +139,6 @@ public class PokeNavState extends GameState{
     }
 
     /**
-     * Go to the main menu state.
-     */
-    private void clickedBack() {
-        clickSound.play();
-        gsm.setState(new LoadingState(gsm, LoadingState.MAIN_MENU));
-        dispose();
-    }
-
-    /**
      * Return whether or not the player clicked the red back button.
      * @param x The x coordinate the player clicked.
      * @param y The y coordinate the player clicked.
@@ -166,7 +172,17 @@ public class PokeNavState extends GameState{
                 break;
             case POKECENTER_SCREEN:
                 executePokeCenterScreen();
+                break;
             case POKEMART_SCREEN:
+                executePokeMartScreen();
+                break;
+            case PARTY_SCREEN:
+                executePartyScreen();
+                break;
+            case BAG_SCREEN:
+                executeBagScreen();
+                break;
+            case PROFILE_SCREEN:
                 break;
         }
     }
@@ -184,6 +200,16 @@ public class PokeNavState extends GameState{
      */
     private void executePokeCenterScreen() {
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
+        gsm.stopBgm();
+        dispose();
+    }
+
+    /**
+     * Go to PokeMart state to buy items.
+     */
+    private void executePokeMartScreen() {
+        gsm.stopBgm();
+        gsm.setState(new PokeMartState(gsm));
         dispose();
     }
 
@@ -192,6 +218,7 @@ public class PokeNavState extends GameState{
      */
     private void executePokemonBoxScreen() {
         gsm.setState(new BoxState(gsm, true));
+        gsm.stopBgm();
         dispose();
     }
 
@@ -201,6 +228,22 @@ public class PokeNavState extends GameState{
      */
     private void executeMapScreen() {
         gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+        dispose();
+    }
+
+    /**
+     * Go to the party state.
+     */
+    private void executePartyScreen() {
+        gsm.setState(new PokemonPartyState(gsm));
+        dispose();
+    }
+
+    /**
+     * Go to the bag state.
+     */
+    private void executeBagScreen() {
+        gsm.setState(new BagState(gsm, true));
         dispose();
     }
 
@@ -240,8 +283,6 @@ public class PokeNavState extends GameState{
                 clickedLeft();
             } else if (clickedRight(x, y)) {
                 clickedRight();
-            } else if (clickedBack(x, y)) {
-                clickedBack();
             } else if (clickedSelect(x, y)) {
                 clickedSelect();
             }
@@ -268,6 +309,12 @@ public class PokeNavState extends GameState{
         gsm.getLoader().unload("pokeNav/pokemoncenter_text.png");
         gsm.getLoader().unload("pokeNav/pokemart.png");
         gsm.getLoader().unload("pokeNav/pokemart_text.png");
+        gsm.getLoader().unload("pokeNav/party.png");
+        gsm.getLoader().unload("pokeNav/party_text.png");
+        gsm.getLoader().unload("pokeNav/bag.png");
+        gsm.getLoader().unload("pokeNav/bag_text.png");
+        gsm.getLoader().unload("pokeNav/profile.png");
+        gsm.getLoader().unload("pokeNav/profile_text.png");
         gsm.getLoader().unload("sounds/click.wav");
     }
 }

@@ -34,6 +34,7 @@ public class Nidoqueen extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/nidoqueen.png";
     private static final String BACK_PATH = "battle/backs/nidoqueen.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/nidoqueen.png";
+    private static final String CRY_PATH = "sounds/cry/031.wav";
 
     /**
      * Create a Nidoqueen with the specified level.
@@ -43,7 +44,7 @@ public class Nidoqueen extends Pokemon {
         super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.NONE, Ability.POISON_POINT, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -69,7 +70,7 @@ public class Nidoqueen extends Pokemon {
         super(NUMBER, NAME, level, Type.POISON, Pokemon.Type.NONE, Ability.POISON_POINT, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

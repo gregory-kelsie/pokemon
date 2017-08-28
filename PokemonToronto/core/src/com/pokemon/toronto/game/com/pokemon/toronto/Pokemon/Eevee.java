@@ -33,6 +33,7 @@ public class Eevee extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/eevee/eevee.png";
     private static final String BACK_PATH = "battle/backs/eevee.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/eevee.png";
+    private static final String CRY_PATH = "sounds/cry/133.wav";
 
     /**
      * Create a Eevee with the specified level.
@@ -42,7 +43,7 @@ public class Eevee extends Pokemon {
         super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -68,7 +69,7 @@ public class Eevee extends Pokemon {
         super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);

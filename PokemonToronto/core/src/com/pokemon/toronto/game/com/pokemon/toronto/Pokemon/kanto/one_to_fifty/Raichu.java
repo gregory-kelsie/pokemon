@@ -35,6 +35,7 @@ public class Raichu extends Pokemon {
     private static final String ICON_PATH = "pokemonSprites/raichu.png";
     private static final String BACK_PATH = "battle/backs/raichu.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/raichu.png";
+    private static final String CRY_PATH = "sounds/cry/026.wav";
 
     /**
      * Create a Raichu with the specified level.
@@ -44,7 +45,7 @@ public class Raichu extends Pokemon {
         super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CAPTURE_RATE);
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         initWildSkills();
     }
@@ -70,7 +71,7 @@ public class Raichu extends Pokemon {
         super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CAPTURE_RATE);
+                CRY_PATH, CAPTURE_RATE);
         initLevelUpSkills();
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         setHealthAndExp(currentHealth, currentExp);
