@@ -25,6 +25,7 @@ public abstract class Skill {
     protected final int MIN_PP = 0;
 
     //Instance Variables
+    protected int id;
     protected String name;
     protected int maxPP;
     protected int currentPP;
@@ -44,13 +45,15 @@ public abstract class Skill {
 
     /**
      * Create a Skill.
+     * @param id The skill's id
      * @param name The skill's name
      * @param maxPP The maximum PP for the skill
      * @param type The skill's type.
      * @param category The skill's category (physical, special or misc)
      * @param accuracy The accuracy level for the skill.
      */
-    public Skill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy) {
+    public Skill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy) {
+        this.id = id;
         this.name = name;
         this.maxPP = maxPP;
         this.currentPP = maxPP;
@@ -65,6 +68,14 @@ public abstract class Skill {
         strikesLeft = -1;
         damageTally = 0;
         continuesUseThroughNoEffect = false;
+    }
+
+    /**
+     * Return the skill's id
+     * @return The skill id.
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -124,6 +135,14 @@ public abstract class Skill {
      */
     public int getMaxPP() {
         return maxPP;
+    }
+
+    /**
+     * Set the current pp of the skill to the specified amount.
+     * @param newPP The new amount of current pp.
+     */
+    public void setCurrentPP(int newPP) {
+        this.currentPP = newPP;
     }
 
 

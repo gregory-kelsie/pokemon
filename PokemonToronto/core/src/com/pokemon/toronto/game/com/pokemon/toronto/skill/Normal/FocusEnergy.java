@@ -24,7 +24,7 @@ public class FocusEnergy extends Skill {
      * - Accuracy: 100
      */
     public FocusEnergy() {
-        super("Focus Energy", 30, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
+        super(18, "Focus Energy", 30, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
     }
 
     /**

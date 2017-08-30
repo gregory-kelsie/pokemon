@@ -25,7 +25,7 @@ public class Hail extends Skill {
      * - Accuracy: 100
      */
     public Hail() {
-        super("Hail", 5, Pokemon.Type.ICE, Skill.SkillCategory.MISC, 100);
+        super(19, "Hail", 5, Pokemon.Type.ICE, Skill.SkillCategory.MISC, 100);
     }
 
     /**

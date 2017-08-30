@@ -24,7 +24,7 @@ public class StickyWeb extends Skill {
      * - Accuracy: 100
      */
     public StickyWeb() {
-        super("Sticky Web", 20, Pokemon.Type.BUG, Skill.SkillCategory.MISC, 100);
+        super(27, "Sticky Web", 20, Pokemon.Type.BUG, Skill.SkillCategory.MISC, 100);
     }
 
     /**

@@ -26,7 +26,7 @@ public class PoisonSting extends DamageSkill {
      * - Accuracy: 100
      */
     public PoisonSting() {
-        super("Poison Sting", 35, Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 15, 1);
+        super(9, "Poison Sting", 35, Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 15, 1);
     }
 
 

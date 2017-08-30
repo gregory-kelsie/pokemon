@@ -25,7 +25,7 @@ public class ConfuseRay extends Skill {
      * - Accuracy: 100
      */
     public ConfuseRay() {
-        super("Confuse Ray", 10, Pokemon.Type.GHOST, SkillCategory.MISC, 100);
+        super(14, "Confuse Ray", 10, Pokemon.Type.GHOST, SkillCategory.MISC, 100);
     }
 
     /**

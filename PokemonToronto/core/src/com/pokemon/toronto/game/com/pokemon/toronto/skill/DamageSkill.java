@@ -29,6 +29,7 @@ public abstract class DamageSkill extends Skill {
 
     /**
      * Create a Damage oriented skill.
+     * @param id The skill id.
      * @param name The name of the skill
      * @param maxPP The maximum amount of PP for the skill
      * @param type The type of skill (Grass, Water, Fire etc)
@@ -39,8 +40,8 @@ public abstract class DamageSkill extends Skill {
      * @param recoilLevel The amount of recoil damage the user will take.
      *                    none, 1/2, 1/3, 1/4.
      */
-    public DamageSkill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
-        super(name, maxPP, type, category, accuracy);
+    public DamageSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
+        super(id, name, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
         this.recoilLevel = recoilLevel;
@@ -49,6 +50,7 @@ public abstract class DamageSkill extends Skill {
 
     /**
      * Create a Damage oriented skill.
+     * @param id The skill id
      * @param name The name of the skill
      * @param maxPP The maximum amount of PP for the skill
      * @param type The type of skill (Grass, Water, Fire etc)
@@ -57,8 +59,8 @@ public abstract class DamageSkill extends Skill {
      * @param crit The crit stage for the skill
      * @param accuracy The accuracy level for the skill.
      */
-    public DamageSkill(String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit) {
-        super(name, maxPP, type, category, accuracy);
+    public DamageSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit) {
+        super(id, name, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
         recoilLevel = NO_RECOIL;

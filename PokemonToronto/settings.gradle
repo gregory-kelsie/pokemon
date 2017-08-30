@@ -1,1 +1,1 @@
-include 'android', 'core'
+include 'android', 'core', ':java-json', ':apache-httpcomponents-httpclient', ':http-core-4.1', ':commons-logging-1.2'

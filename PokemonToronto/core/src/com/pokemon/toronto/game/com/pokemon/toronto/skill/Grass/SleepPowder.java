@@ -25,7 +25,7 @@ public class SleepPowder extends Skill {
      * - Accuracy: 75
      */
     public SleepPowder() {
-        super("Sleep Powder", 15, Pokemon.Type.GRASS, SkillCategory.MISC, 75);
+        super(15, "Sleep Powder", 15, Pokemon.Type.GRASS, SkillCategory.MISC, 75);
     }
 
     /**

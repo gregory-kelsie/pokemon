@@ -23,7 +23,7 @@ public class SandAttack extends Skill {
      * - Accuracy: 100
      */
     public SandAttack() {
-        super("Sand Attack", 15, Pokemon.Type.GROUND, SkillCategory.MISC, 100);
+        super(6, "Sand Attack", 15, Pokemon.Type.GROUND, SkillCategory.MISC, 100);
     }
 
     /**

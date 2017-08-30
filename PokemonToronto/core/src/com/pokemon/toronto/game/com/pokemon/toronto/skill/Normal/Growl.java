@@ -23,7 +23,7 @@ public class Growl extends Skill {
      * - Accuracy: 100
      */
     public Growl() {
-        super("Growl", 40, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
+        super(3, "Growl", 40, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
     }
 
     /**

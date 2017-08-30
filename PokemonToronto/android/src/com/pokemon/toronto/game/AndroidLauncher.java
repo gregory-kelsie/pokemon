@@ -82,6 +82,15 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 
 	private String name;
 
+	private double[] pokemonLatitude;
+	private double[] pokemonLongitude;
+	private String[] pokemonIcon;
+
+	private double pokemonLatitude2;
+	private double pokemonLongitude2;
+	private String pokemonIcon2;
+	private int distance2;
+
 	/**
 	 * Called when starting up the application.
 	 * Initialize the views, default coordinates for the user,
@@ -188,7 +197,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	 */
 	@Override
 	public void onBackPressed() {
-
+		initView();
 	}
 
 	/**
@@ -270,6 +279,42 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				this); //this is a LocationListener
 	}
 
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		switch (requestCode) {
+			case 1: {
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+					// permission was granted, yay! Do the
+					// contacts-related task you need to do.
+					startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon);
+
+				} else {
+					//permission denied.
+				}
+				return;
+			}
+			case 2: {
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+					// permission was granted, yay! Do the
+					// contacts-related task you need to do.
+					this.startPokemonMapActivity(pokemonLatitude2, pokemonLongitude2, pokemonIcon2, distance2);
+
+				} else {
+					//permission denied.
+				}
+				return;
+			}
+		}
+	}
+
 	/**
 	 * Start up the MapsActivity where it displays the player and all of the Wild Pokemon
 	 * that the user has been notified of.
@@ -291,6 +336,13 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			//                                          int[] grantResults)
 			// to handle the case where the user grants the permission. See the documentation
 			// for ActivityCompat#requestPermissions for more details.
+			ActivityCompat.requestPermissions(this,
+					new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+					1);
+			this.pokemonLatitude = pokemonLatitude;
+			this.pokemonLongitude = pokemonLongitude;
+			this.pokemonIcon = pokemonIcon;
+			Log.i("MapState", "Permission required");
 			return;
 		}
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -331,6 +383,14 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			//                                          int[] grantResults)
 			// to handle the case where the user grants the permission. See the documentation
 			// for ActivityCompat#requestPermissions for more details.
+			ActivityCompat.requestPermissions(this,
+					new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+					1);
+			this.pokemonLatitude2 = pokemonLatitude;
+			this.pokemonLongitude2 = pokemonLongitude;
+			this.pokemonIcon2 = pokemonIcon;
+			this.distance2 = distance;
+			Log.i("PokemonMapActivity", "Permission required");
 			return;
 		}
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);

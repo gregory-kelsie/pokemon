@@ -25,7 +25,7 @@ public class PetalDance extends DamageSkill {
      * - Accuracy: 100
      */
     public PetalDance() {
-        super("Petal Dance", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 120, 1);
+        super(21, "Petal Dance", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 120, 1);
     }
 
 

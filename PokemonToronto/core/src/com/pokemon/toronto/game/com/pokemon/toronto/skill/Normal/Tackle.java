@@ -24,7 +24,7 @@ public class Tackle extends DamageSkill {
      * - Accuracy: 100
      */
     public Tackle() {
-        super("Tackle", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 35, 1);
+        super(1, "Tackle", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 35, 1);
         makesPhysicalContact = true;
 
     }

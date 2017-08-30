@@ -23,7 +23,7 @@ public class Leer extends Skill {
      * - Accuracy: 100
      */
     public Leer() {
-        super("Leer", 30, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
+        super(4, "Leer", 30, Pokemon.Type.NORMAL, SkillCategory.MISC, 100);
     }
 
     /**

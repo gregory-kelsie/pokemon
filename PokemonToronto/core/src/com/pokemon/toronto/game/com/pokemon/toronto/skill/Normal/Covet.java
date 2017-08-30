@@ -21,7 +21,7 @@ public class Covet extends DamageSkill {
      * - Accuracy: 100
      */
     public Covet() {
-        super("Covet", 25, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 540 ,1);
+        super(10, "Covet", 25, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 540 ,1);
         makesPhysicalContact = true;
     }
 

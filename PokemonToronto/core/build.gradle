@@ -1,11 +1,13 @@
 apply plugin: "java"
-
 sourceCompatibility = 1.6
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-sourceSets.main.java.srcDirs = [ "src/" ]
-
-
+sourceSets.main.java.srcDirs = ["src/"]
 eclipse.project {
     name = appName + "-core"
+}
+dependencies {
+    compile project(':java-json')
+    compile project(':http-core-4.1')
+    compile project(':commons-logging-1.2')
+    compile project(':apache-httpcomponents-httpclient')
 }

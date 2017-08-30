@@ -52,7 +52,14 @@ import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
+import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
+import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 import com.pokemon.toronto.game.pokemonToronto;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -78,10 +85,9 @@ public class GameStateManager {
     private int kantoBadges;
     private Music menubgm;
 
+    private Player player;
     private List<WildPokemon> nearbyPokemon;
     public GameStateManager() {
-        //currentState = new IntroductionState(this);
-       // currentState = new MainMenuState(this);
         latitude = 0;
         longitude = 0;
         gotCoordinates = true;
@@ -100,10 +106,79 @@ public class GameStateManager {
         //menubgm.play();
     }
 
+    public void saveParty() {
+        JSONParser jp = new JSONParser();
+        List<NameValuePair> paramsDelete = new ArrayList<NameValuePair>();
+        int uid = player.getId();
+
+        int emptySlots = 6 - party.size();
+        int currentEmptySlot = 5;
+        while (emptySlots != 0) {
+            paramsDelete.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+            paramsDelete.add(new BasicNameValuePair("partyPosition", String.valueOf(currentEmptySlot)));
+            jp.makeHttpRequest("http://kelsiegr.com/pokemononline/deletePartyPokemon.php", "POST", paramsDelete);
+            emptySlots--;
+            currentEmptySlot--;
+        }
+
+        for (int i = 0; i < party.size(); i++) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+            params.add(new BasicNameValuePair("pid", Integer.toString(party.get(i).getId())));
+            params.add(new BasicNameValuePair("level", Integer.toString(party.get(i).getLevel())));
+            params.add(new BasicNameValuePair("health", Integer.toString(party.get(i).getCurrentHealth())));
+            params.add(new BasicNameValuePair("currentExp", Integer.toString((int)party.get(i).getDisplayedExp())));
+            params.add(new BasicNameValuePair("nature", Integer.toString(party.get(i).getNature().getValue())));
+            params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getAbility().getValue())));
+            params.add(new BasicNameValuePair("partyPosition", "0")); //first slot in party
+            params.add(new BasicNameValuePair("pokemonGender", "" + party.get(i).getGender()));
+            params.add(new BasicNameValuePair("status", Integer.toString(party.get(i).getStatus().getValue()))); //0 is status free
+            params.add(new BasicNameValuePair("iv_hp", Integer.toString(party.get(i).getHealthIV())));
+            params.add(new BasicNameValuePair("iv_atk", Integer.toString(party.get(i).getAttackIV())));
+            params.add(new BasicNameValuePair("iv_def", Integer.toString(party.get(i).getDefenseIV())));
+            params.add(new BasicNameValuePair("iv_spatk", Integer.toString(party.get(i).getSpAttackIV())));
+            params.add(new BasicNameValuePair("iv_spdef", Integer.toString(party.get(i).getSpDefenseIV())));
+            params.add(new BasicNameValuePair("iv_spd", Integer.toString(party.get(i).getSpeedIV())));
+            params.add(new BasicNameValuePair("ev_hp", Integer.toString(party.get(i).getHealthEV())));
+            params.add(new BasicNameValuePair("ev_atk", Integer.toString(party.get(i).getAttackEV())));
+            params.add(new BasicNameValuePair("ev_def", Integer.toString(party.get(i).getDefenseEV())));
+            params.add(new BasicNameValuePair("ev_spatk", Integer.toString(party.get(i).getSpAttackEV())));
+            params.add(new BasicNameValuePair("ev_spdef", Integer.toString(party.get(i).getSpDefenseEV())));
+            params.add(new BasicNameValuePair("ev_spd", Integer.toString(party.get(i).getSpeedEV())));
+            params.add(new BasicNameValuePair("skill1_id", Integer.toString(party.get(i).getSkills().get(0).getId())));
+            params.add(new BasicNameValuePair("skill1_pp", Integer.toString(party.get(i).getSkills().get(0).getCurrentPP())));
+            if (party.get(i).getSkills().size() > 1) {
+                params.add(new BasicNameValuePair("skill2_id", Integer.toString(party.get(i).getSkills().get(1).getId())));
+                params.add(new BasicNameValuePair("skill2_pp", Integer.toString(party.get(i).getSkills().get(1).getCurrentPP())));
+                if (party.get(i).getSkills().size() > 2) {
+                    params.add(new BasicNameValuePair("skill3_id", Integer.toString(party.get(i).getSkills().get(2).getId())));
+                    params.add(new BasicNameValuePair("skill3_pp", Integer.toString(party.get(i).getSkills().get(2).getCurrentPP())));
+                    if (party.get(i).getSkills().size() > 3) {
+                        params.add(new BasicNameValuePair("skill4_id", Integer.toString(party.get(i).getSkills().get(3).getId())));
+                        params.add(new BasicNameValuePair("skill4_pp", Integer.toString(party.get(i).getSkills().get(3).getCurrentPP())));
+                    }
+                }
+            }
+            JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/updatePartyPokemon.php", "POST", params);
+            try {
+                Gdx.app.log("Update", obj.getString("message"));
+            } catch (JSONException e) {
+                Gdx.app.log("Update", e.getMessage());
+            }
+        } // end for
+
+    }
     public int getNumKantoBadges() {
         return kantoBadges;
     }
 
+    public void setPlayer(Player p) {
+        this.player = p;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
     public Bag getBag() {
         return bag;
     }
@@ -175,13 +250,14 @@ public class GameStateManager {
     }
 
     public void setInitialState() {
-        currentState = new LoadingState(this, LoadingState.INTRODUCTION);
+        currentState = new LoginState(this);
+        //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
         //currentState = new LoadingState(this, LoadingState.POKENAV_MENU);
-        addToParty(new Charmander(7));
+        /*addToParty(new Charmander(7));
 
         //getParty().get(0).setCurrentHealth(1);
         addToParty(new Weedle(5));
-        getParty().get(0).setExp(70);
+        getParty().get(0).setExp(70);*/
         //getParty().get(0).addEvs(new int[]{255,0,0,0,0,254});
         /*addToParty(new Charizard(5));
         addToParty(new Venusaur(5));
@@ -286,6 +362,10 @@ public class GameStateManager {
     public void update(double dt) {
 
         currentState.update(dt);
+    }
+
+    public void drawStage() {
+        currentState.drawStage();
     }
 
     public void setState(GameState newState) {

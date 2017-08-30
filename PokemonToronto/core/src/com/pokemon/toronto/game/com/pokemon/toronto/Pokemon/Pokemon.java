@@ -199,21 +199,48 @@ public abstract class Pokemon {
      * STATUS_FREE is when the Pokemon has no condition.
      */
     public enum Status {
-        STATUS_FREE, POISON, BURN, PARALYSIS, FROZEN, SLEEP
+        STATUS_FREE(0), POISON(1), BURN(2), PARALYSIS(3), FROZEN(4), SLEEP(5);
+        private final int value;
+        private Status(int value) {
+            this.value = value;
+        }
+        public static Status fromInt(int i) {
+            for (Status n : Status.values()) {
+                if (n.getValue() == i) { return n; }
+            }
+            return null;
+        }
+        public int getValue() {
+            return value;
+        }
     }
 
     /**
      * Pokemon abilities
      */
     public enum Ability {
-        INTIMIDATE, SHED_SKIN, UNNERVE, RUN_AWAY, QUICK_FEET, RATTLED, GUTS, HUSTLE, SNIPER,
-        SUPER_LUCK, SWARM, INSOMNIA, INNER_FOCUS, STATIC, KEEN_EYE, TANGLED_FEET, BIG_PECKS,
-        LIGHTNINGROD, TORRENT, RAIN_DISH, BLAZE, SOLAR_POWER, OVERGROW, CHLOROPHYLL, SHIELD_DUST,
-        POISON_POINT, RIVALRY, ADAPTABILITY, THICK_FAT, DRY_SKIN, HEATPROOF, FILTER, TINTED_LENS,
-        SOLID_ROCK, POISON_TOUCH, FLAME_BODY, EFFECT_SPORE, OWN_TEMPO, BATTLE_ARMOR, SHELL_ARMOR,
-        ICE_BODY, SNOW_CLOAK, MAGIC_GUARD, OVERCOAT, SAND_FORCE, SAND_RUSH, SAND_VEIL, HYDRATION,
-        SWIFT_SWIM, DAMP, DRIZZLE, SAND_STREAM, DROUGHT, SNOW_WARNING, CLOUD_NINE, MOLD_BREAKER,
-        PRESSURE, MOTOR_DRIVE, WATER_ABSORB, VOLT_ABSORB, LEVITATE, LEAF_GUARD, IMMUNITY
+        INTIMIDATE(0), SHED_SKIN(1), UNNERVE(2), RUN_AWAY(3), QUICK_FEET(4), RATTLED(5), GUTS(6), HUSTLE(7), SNIPER(8),
+        SUPER_LUCK(9), SWARM(10), INSOMNIA(11), INNER_FOCUS(12), STATIC(13), KEEN_EYE(14), TANGLED_FEET(15), BIG_PECKS(16),
+        LIGHTNINGROD(17), TORRENT(18), RAIN_DISH(19), BLAZE(20), SOLAR_POWER(21), OVERGROW(22), CHLOROPHYLL(23), SHIELD_DUST(24),
+        POISON_POINT(25), RIVALRY(26), ADAPTABILITY(27), THICK_FAT(28), DRY_SKIN(29), HEATPROOF(30), FILTER(31), TINTED_LENS(32),
+        SOLID_ROCK(33), POISON_TOUCH(34), FLAME_BODY(35), EFFECT_SPORE(36), OWN_TEMPO(37), BATTLE_ARMOR(38), SHELL_ARMOR(39),
+        ICE_BODY(40), SNOW_CLOAK(41), MAGIC_GUARD(42), OVERCOAT(43), SAND_FORCE(44), SAND_RUSH(45), SAND_VEIL(46), HYDRATION(47),
+        SWIFT_SWIM(48), DAMP(49), DRIZZLE(50), SAND_STREAM(51), DROUGHT(52), SNOW_WARNING(53), CLOUD_NINE(54), MOLD_BREAKER(55),
+        PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62);
+        private final int value;
+        private Ability(int value) {
+            this.value = value;
+        }
+        public static Ability fromInt(int i) {
+            for (Ability n : Ability.values()) {
+                if (n.getValue() == i) { return n; }
+            }
+            return null;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     /**
@@ -903,6 +930,14 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the Pokemon's gender.
+     * @return The Pokemon's gender char.
+     */
+    public char getGender() {
+        return gender;
+    }
+
+    /**
      * Add evs to the Pokemon based on the enemyEvYield
      * @param enemyEvYield The enemy's evYield that gets added
      *                     to the Pokemons ev pool.
@@ -1102,6 +1137,7 @@ public abstract class Pokemon {
      */
     protected void addSkills(Skill firstSkill, Skill secondSkill, Skill thirdSkill,
                              Skill fourthSkill) {
+        skills.clear();
         skills.add(firstSkill);
         if (secondSkill != null) {
             skills.add(secondSkill);
@@ -1112,6 +1148,19 @@ public abstract class Pokemon {
                 }
             }
         }
+    }
+
+    public void addSkill(Skill s) {
+        if (skills.size() < 4) {
+            skills.add(s);
+        }
+    }
+
+    /**
+     * Empty the current skillset for the Pokemon.
+     */
+    public void clearSkills() {
+        skills.clear();
     }
 
     /**

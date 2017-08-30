@@ -26,7 +26,7 @@ public class Spikes extends Skill {
      * - Accuracy: 100
      */
     public Spikes() {
-        super("Spikes", 20, Pokemon.Type.GROUND, Skill.SkillCategory.MISC, 100);
+        super(25, "Spikes", 20, Pokemon.Type.GROUND, Skill.SkillCategory.MISC, 100);
     }
 
     /**

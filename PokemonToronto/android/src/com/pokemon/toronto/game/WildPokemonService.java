@@ -37,7 +37,7 @@ public class WildPokemonService extends Service {
                 while (true) {
                     try {
                         //10 minutes spawn a new set of Pokemon.
-                        long futureTime = System.currentTimeMillis() + (60000 * 10);
+                        long futureTime = System.currentTimeMillis() + (60000 * 5);
                         while (System.currentTimeMillis() < futureTime) {
                             synchronized (this) {
                                 try {

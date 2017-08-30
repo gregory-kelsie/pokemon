@@ -12,13 +12,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmander;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Squirtle;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.Animation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.AnimationFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.StraightLineAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
+import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.textbox.TextBoxFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.textbox.TextBoxText;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +109,7 @@ public class IntroductionState extends GameState {
     private ShapeRenderer shapeRenderer;
     private GameStateManager gsm;
     private char gender;
+    private Pokemon starter;
     private int currentTextBox;
 
     /**
@@ -112,6 +120,7 @@ public class IntroductionState extends GameState {
      */
     public IntroductionState(GameStateManager gsm) {
         this.gsm = gsm;
+        Gdx.input.setInputProcessor(new InputHandler());
         gsm.setNotificationSound();
         initTextBoxes();
         initAnimations();
@@ -394,7 +403,7 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    gsm.addToParty(new Charmander(5));
+                    starter = new Charmander(5);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -443,7 +452,7 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    gsm.addToParty(new Bulbasaur(5));
+                    starter = new Bulbasaur(5);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -489,7 +498,7 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    gsm.addToParty(new Squirtle(5));
+                    starter = new Squirtle(5);
                     drawYesNoOptions = false;
                     drawDroppingPokeballAnimation = true;
                     throwPokeballSound.play();
@@ -796,6 +805,8 @@ public class IntroductionState extends GameState {
             ivyTheme.setVolume(Math.max(0,1 - fadingCounter));
             if (fadingCounter >= 1) {
                 //Switch states
+                saveToDatabase();
+                gsm.addToParty(starter);
                 gsm.getGameCallBack().spawnNewGamePokemon();
                 gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                 gsm.playBgm();
@@ -842,6 +853,50 @@ public class IntroductionState extends GameState {
                 }
             }
         }
+    }
+
+    private void saveToDatabase() {
+        JSONParser jp = new JSONParser();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("uid", Integer.toString(gsm.getPlayer().getId())));
+        params.add(new BasicNameValuePair("gender", "" + gender));
+
+        params.add(new BasicNameValuePair("pid", Integer.toString(starter.getId())));
+        params.add(new BasicNameValuePair("level", Integer.toString(starter.getLevel())));
+        params.add(new BasicNameValuePair("health", Integer.toString(starter.getCurrentHealth())));
+        params.add(new BasicNameValuePair("currentExp", Integer.toString((int)starter.getDisplayedExp())));
+        params.add(new BasicNameValuePair("nature", Integer.toString(starter.getNature().getValue())));
+        params.add(new BasicNameValuePair("ability", Integer.toString(starter.getAbility().getValue())));
+        params.add(new BasicNameValuePair("partyPosition", "0")); //first slot in party
+        params.add(new BasicNameValuePair("pokemonGender", "" + starter.getGender()));
+        params.add(new BasicNameValuePair("status", "0")); //0 is status free
+        params.add(new BasicNameValuePair("iv_hp", Integer.toString(starter.getHealthIV())));
+        params.add(new BasicNameValuePair("iv_atk", Integer.toString(starter.getAttackIV())));
+        params.add(new BasicNameValuePair("iv_def", Integer.toString(starter.getDefenseIV())));
+        params.add(new BasicNameValuePair("iv_spatk", Integer.toString(starter.getSpAttackIV())));
+        params.add(new BasicNameValuePair("iv_spdef", Integer.toString(starter.getSpDefenseIV())));
+        params.add(new BasicNameValuePair("iv_spd", Integer.toString(starter.getSpeedIV())));
+        params.add(new BasicNameValuePair("ev_hp", "0"));
+        params.add(new BasicNameValuePair("ev_atk", "0"));
+        params.add(new BasicNameValuePair("ev_def", "0"));
+        params.add(new BasicNameValuePair("ev_spatk", "0"));
+        params.add(new BasicNameValuePair("ev_spdef", "0"));
+        params.add(new BasicNameValuePair("ev_spd", "0"));
+        params.add(new BasicNameValuePair("skill1_id", Integer.toString(starter.getSkills().get(0).getId())));
+        params.add(new BasicNameValuePair("skill1_pp", Integer.toString(starter.getSkills().get(0).getCurrentPP())));
+        if (starter.getSkills().size() > 1) {
+            params.add(new BasicNameValuePair("skill2_id", Integer.toString(starter.getSkills().get(1).getId())));
+            params.add(new BasicNameValuePair("skill2_pp", Integer.toString(starter.getSkills().get(1).getCurrentPP())));
+            if (starter.getSkills().size() > 2) {
+                params.add(new BasicNameValuePair("skill3_id", Integer.toString(starter.getSkills().get(2).getId())));
+                params.add(new BasicNameValuePair("skill3_pp", Integer.toString(starter.getSkills().get(2).getCurrentPP())));
+                if (starter.getSkills().size() > 3) {
+                    params.add(new BasicNameValuePair("skill4_id", Integer.toString(starter.getSkills().get(3).getId())));
+                    params.add(new BasicNameValuePair("skill4_pp", Integer.toString(starter.getSkills().get(3).getCurrentPP())));
+                }
+            }
+        }
+        JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/finishTutorial.php", "POST", params);
     }
 
     /**

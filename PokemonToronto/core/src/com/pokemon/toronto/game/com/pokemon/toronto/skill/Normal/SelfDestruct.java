@@ -26,7 +26,7 @@ public class SelfDestruct extends DamageSkill {
      * - Accuracy: 100
      */
     public SelfDestruct() {
-        super("Self-Destruct", 5, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 200, 1);
+        super(20, "Self-Destruct", 5, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 200, 1);
         continuesUseThroughNoEffect = true;
     }
 

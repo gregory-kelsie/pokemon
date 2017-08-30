@@ -30,7 +30,7 @@ public class DoubleSlap extends DamageSkill {
      * - Number of Hits: 2-5
      */
     public DoubleSlap() {
-        super("Double Slap", 10, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 85, 15, 1);
+        super(13, "Double Slap", 10, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 85, 15, 1);
         makesPhysicalContact = true;
         isMultiStrikeMove = true;
         timesHit = 0;

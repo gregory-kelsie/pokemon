@@ -154,9 +154,7 @@ public class pokemonToronto extends ApplicationAdapter {
 		batch.begin();
 		gsm.render(batch);
 		batch.end();
-
-		//Render the stage here.
-		//drawStage();
+		gsm.drawStage();
 
 		//End the rendering.
 		Gdx.gl.glDisable(GL20.GL_BLEND);
@@ -168,13 +166,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		gsm.dispose(); //fix
 	}
 
-	/**
-	 * Render the stage and their actors.
-	 */
-	protected void drawStage() {
-		/*stage.act();
-		stage.draw();*/
-	}
 }

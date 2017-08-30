@@ -11,125 +11,139 @@ public enum Nature {
     /**
     * Hardy Nature (Neutral)
      */
-    HARDY,
+    HARDY(0),
 
     /**
      * Lonely Nature (+ Atk, - Def)
      */
-    LONELY,
+    LONELY(1),
 
     /**
      * Brave Nature (+ Atk, - Speed)
      */
-    BRAVE,
+    BRAVE(2),
 
     /**
      * Adamant Nature (+ Atk, - Sp. Atk)
      */
-    ADAMANT,
+    ADAMANT(3),
 
     /**
      * Naughty Nature (+ Atk, - Sp. Def)
      */
-    NAUGHTY,
+    NAUGHTY(4),
 
     /**
      * Bold Nature (+ Def, - Atk)
      */
-    BOLD,
+    BOLD(5),
 
     /**
      * Docile Nature (Neutral)
      */
-    DOCILE,
+    DOCILE(6),
 
     /**
      * Relaxed Nature (+ Def, - Speed)
      */
-    RELAXED,
+    RELAXED(7),
 
     /**
      * Impish Nature (+ Def, - Sp Atk)
      */
-    IMPISH,
+    IMPISH(8),
 
     /**
      * Lax Nature (+ Def, - Sp Def)
      */
-    LAX,
+    LAX(9),
 
     /**
      * Timid Nature (+ Speed, - Atk)
      */
-    TIMID,
+    TIMID(10),
 
     /**
      * Hasty Nature (+ Speed, - Def)
      */
-    HASTY,
+    HASTY(11),
 
     /**
      * Serious Nature (Neutral)
      */
-    SERIOUS,
+    SERIOUS(12),
 
     /**
      * Jolly Nature (+ Speed, - Sp Atk)
      */
-    JOLLY,
+    JOLLY(13),
 
     /**
      * Naive Nature (+ Speed, - Sp Def)
      */
-    NAIVE,
+    NAIVE(14),
 
     /**
      * Modest Nature (+ Sp Atk, - Atk)
      */
-    MODEST,
+    MODEST(15),
 
     /**
      * Mild Nature (+ Sp Atk, - Def)
      */
-    MILD,
+    MILD(16),
 
     /**
      * Quiet Nature (+ Sp Atk, - Speed)
      */
-    QUIET,
+    QUIET(17),
 
     /**
      * Bashful Nature (Neutral)
      */
-    BASHFUL,
+    BASHFUL(18),
 
     /**
      * Rash Nature (+ Sp Atk, - Sp Def)
      */
-    RASH,
+    RASH(19),
 
     /**
      * Calm Nature (+ Sp Def, - Atk)
      */
-    CALM,
+    CALM(20),
 
     /**
      * Gentle Nature (+ Sp Def, - Def)
      */
-    GENTLE,
+    GENTLE(21),
 
     /**
      * Sassy Nature (+ Sp Def, - Speed)
      */
-    SASSY,
+    SASSY(22),
 
     /**
      * Careful Nature (+ Sp Def, - Sp Atk)
      */
-    CAREFUL,
+    CAREFUL(23),
 
     /**
      * Quirky Nature (Neutral)
      */
-    QUIRKY
+    QUIRKY(24);
+    private final int value;
+    private Nature(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+    public static Nature fromInt(int i) {
+        for (Nature n : Nature.values()) {
+            if (n.getValue() == i) { return n; }
+        }
+        return null;
+    }
 }

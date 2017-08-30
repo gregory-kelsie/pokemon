@@ -17,7 +17,7 @@ import java.util.List;
 
 public class HurtByConfusion extends DamageSkill {
     public HurtByConfusion() {
-        super("Hurt By Confusion", -1, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, -1, 40, 1);
+        super(-1, "Hurt By Confusion", -1, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, -1, 40, 1);
     }
 
     /**

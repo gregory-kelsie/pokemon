@@ -25,7 +25,7 @@ public class SkullBash extends DamageSkill {
      * - Accuracy: 100
      */
     public SkullBash() {
-        super("Skull Bash", 10, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 130, 1);
+        super(22, "Skull Bash", 10, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 130, 1);
     }
 
     /**

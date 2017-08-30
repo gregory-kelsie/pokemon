@@ -66,6 +66,7 @@ public class MapState extends GameState {
 
     private void openMap() {
         if (gsm.gotCoordinates()) {
+            Gdx.app.log("MapState", "Gsm has coordinates");
             double[] pokemonLatitude = new double[gsm.getNearbyPokemon().size()];
             double[] pokemonLongitude = new double[gsm.getNearbyPokemon().size()];
             String[] pokemonIcon = new String[gsm.getNearbyPokemon().size()];
@@ -77,6 +78,7 @@ public class MapState extends GameState {
             gsm.getGameCallBack().startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon);
         } else {
             //play error sound
+            Gdx.app.log("MapState", "Gsm doesnt have coordiantes");
         }
     }
 

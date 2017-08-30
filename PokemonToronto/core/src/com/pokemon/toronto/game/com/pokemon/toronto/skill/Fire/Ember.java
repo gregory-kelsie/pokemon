@@ -26,7 +26,7 @@ public class Ember extends DamageSkill {
      * - Accuracy: 100
      */
     public Ember() {
-        super("Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1);
+        super(16, "Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1);
     }
 
     /**

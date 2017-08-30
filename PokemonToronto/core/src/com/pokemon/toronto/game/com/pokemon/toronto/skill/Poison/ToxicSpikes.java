@@ -25,7 +25,7 @@ public class ToxicSpikes extends Skill {
      * - Accuracy: 100
      */
     public ToxicSpikes() {
-        super("Toxic Spikes", 20, Pokemon.Type.POISON, Skill.SkillCategory.MISC, 100);
+        super(26, "Toxic Spikes", 20, Pokemon.Type.POISON, Skill.SkillCategory.MISC, 100);
     }
 
     /**

@@ -23,7 +23,7 @@ public class StringShot extends Skill {
      * - Accuracy: 95
      */
     public StringShot() {
-        super("String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC, 95);
+        super(8, "String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC, 95);
     }
 
     /**

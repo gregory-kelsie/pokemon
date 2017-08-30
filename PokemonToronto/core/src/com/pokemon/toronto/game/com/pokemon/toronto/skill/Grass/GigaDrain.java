@@ -24,7 +24,7 @@ public class GigaDrain extends DamageSkill {
      * - 4 = Gain Half
      */
     public GigaDrain() {
-        super("Giga Drain", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 75, 1, 4);
+        super(23, "Giga Drain", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 75, 1, 4);
     }
 
 

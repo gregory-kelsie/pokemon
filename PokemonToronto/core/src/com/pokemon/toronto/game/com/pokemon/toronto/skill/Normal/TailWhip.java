@@ -24,7 +24,7 @@ public class TailWhip extends Skill {
      * - Accuracy: 100
      */
     public TailWhip() {
-        super("Tail Whip", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100);
+        super(5, "Tail Whip", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100);
     }
 
     /**

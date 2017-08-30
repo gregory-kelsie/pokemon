@@ -25,7 +25,7 @@ public class Bite extends DamageSkill {
      * - Accuracy: 100
      */
     public Bite() {
-        super("Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1);
+        super(17, "Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
     }
 

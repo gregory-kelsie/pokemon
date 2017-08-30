@@ -24,7 +24,7 @@ public class StealthRock extends Skill {
      * - Accuracy: 100
      */
     public StealthRock() {
-        super("Stealth Rock", 20, Pokemon.Type.ROCK, SkillCategory.MISC, 100);
+        super(24, "Stealth Rock", 20, Pokemon.Type.ROCK, SkillCategory.MISC, 100);
     }
 
     /**

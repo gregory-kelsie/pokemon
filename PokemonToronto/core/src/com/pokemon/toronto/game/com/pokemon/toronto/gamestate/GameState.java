@@ -9,4 +9,5 @@ public abstract class GameState {
     public abstract void render(SpriteBatch batch);
     public abstract void update(double dt);
     protected abstract void dispose();
+    public void drawStage() {}
 }

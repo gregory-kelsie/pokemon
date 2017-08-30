@@ -21,7 +21,7 @@ public class QuickAttack extends DamageSkill {
      * - Accuracy: 100
      */
     public QuickAttack() {
-        super("Quick Attack", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 40, 1);
+        super(2, "Quick Attack", 30, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
         setPriority(1); //Has a priority of +1
     }

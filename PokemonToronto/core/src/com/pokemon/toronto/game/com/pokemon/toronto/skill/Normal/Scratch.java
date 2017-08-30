@@ -21,7 +21,7 @@ public class Scratch extends DamageSkill {
      * - Accuracy: 100
      */
     public Scratch() {
-        super("Scratch", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 40, 1);
+        super(0, "Scratch", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
     }
 
