@@ -51,6 +51,10 @@ public class BagState extends GameState {
         initTextures();
         currentBag = ItemTab.POKEBALL;
         currentIndex = -1;
+        if (gsm.getBag().getPokeballBag().size() > 0) {
+            currentIndex = 0;
+            setItemIconTexture();
+        }
         scrollAmount = 0;
         font = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
