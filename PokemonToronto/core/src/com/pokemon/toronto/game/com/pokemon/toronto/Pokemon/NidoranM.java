@@ -100,4 +100,16 @@ public class NidoranM extends Pokemon {
     protected void initGender() {
         gender = 'M';
     }
+
+    /**
+     * Return Nidorino the Nidoran (m) is above level 16.
+     * @return Nidorino if Nidoran (m) is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 16) {
+            return PokemonId.NIDORINO.getValue();
+        }
+        return -1;
+    }
 }

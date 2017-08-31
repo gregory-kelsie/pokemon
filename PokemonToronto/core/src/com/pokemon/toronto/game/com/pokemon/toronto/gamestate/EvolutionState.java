@@ -22,8 +22,9 @@ public class EvolutionState extends GameState {
     private GameStateManager gsm;
     private List<Pokemon> preEvolutions;
     private List<Pokemon> evolvedPokemon;
-    private int evolvedListPosition;
-
+    private List<Integer> partyIndicies;
+    private int evolvedListPosition;//which index in the party is the pokemon evolving at
+    private int currentEvolutionCount; //how many pokemon evolved so far
     private Texture lowerPanel;
     private Texture textPanel;
     private Texture background;
@@ -70,6 +71,11 @@ public class EvolutionState extends GameState {
     private int region;
     private boolean isRoute;
 
+    //Flags determining if the Pokemon was evolved from
+    //the bag (stones) and which bag to go back to (main or store)
+    private boolean cameFromBag;
+    private boolean cameFromStore;
+
     //Move Indicies
     private int moveIndex;
     private boolean displayYesNoOptions;
@@ -94,32 +100,48 @@ public class EvolutionState extends GameState {
     private boolean startSoundFinished;
 
     public EvolutionState(GameStateManager gsm, List<Pokemon> preEvolutions,
-                          List<Pokemon> evolvedPokemon) {
-        init(gsm, preEvolutions, evolvedPokemon);
+                          List<Pokemon> evolvedPokemon, List<Integer> partyIndices) {
+        init(gsm, preEvolutions, evolvedPokemon, partyIndices);
         goToMapState = true;
         startingRoute = -1;
         region = -1;
         isRoute = false;
+        cameFromBag = false;
 
     }
 
+    //Open EvolutionState from Bag (A result of using stones)
     public EvolutionState(GameStateManager gsm, List<Pokemon> preEvolutions,
-                          List<Pokemon> evolvedPokemon, int startingRoute, int region, boolean isRoute) {
-        init(gsm, preEvolutions, evolvedPokemon);
+                          List<Pokemon> evolvedPokemon, List<Integer> partyIndices, boolean cameFromStore) {
+        init(gsm, preEvolutions, evolvedPokemon, partyIndices);
+        goToMapState = true;
+        startingRoute = -1;
+        region = -1;
+        isRoute = false;
+        cameFromBag = true;
+        this.cameFromStore = cameFromStore;
+    }
+
+    public EvolutionState(GameStateManager gsm, List<Pokemon> preEvolutions,
+                          List<Pokemon> evolvedPokemon, List<Integer> partyIndicies, int startingRoute, int region, boolean isRoute) {
+        init(gsm, preEvolutions, evolvedPokemon, partyIndicies);
         goToMapState = false;
         this.startingRoute = startingRoute;
         this.region = region;
         this.isRoute = isRoute;
+        cameFromBag = false;
 
     }
 
-    private void init(GameStateManager gsm, List<Pokemon> preEvolutions, List<Pokemon> evolvedPokemon) {
+    private void init(GameStateManager gsm, List<Pokemon> preEvolutions, List<Pokemon> evolvedPokemon, List<Integer> partyIndicies) {
         this.gsm = gsm;
         this.preEvolutions = preEvolutions;
         this.evolvedPokemon = evolvedPokemon;
-        evolvedListPosition = 0;
+        this.partyIndicies = partyIndicies;
+        evolvedListPosition = partyIndicies.get(0);
+        currentEvolutionCount = 0;
         moveIndex = 0;
-        text = "What?\n" + preEvolutions.get(0).getName() + " is evolving!";
+        text = "What?\n" + preEvolutions.get(currentEvolutionCount).getName() + " is evolving!";
         counter = 0;
         textPosition = 0;
         displayPokemon = DISPLAY_PREEVOLUTION;
@@ -144,8 +166,8 @@ public class EvolutionState extends GameState {
         textPanel = new Texture("battle/textarea.png");
         background = new Texture("battle/evolutionStage.png");
 
-        preEvolutionTexture = new Texture(preEvolutions.get(0).getMapIconPath());
-        evolutionTexture = new Texture(evolvedPokemon.get(0).getMapIconPath());
+        preEvolutionTexture = new Texture(preEvolutions.get(currentEvolutionCount).getMapIconPath());
+        evolutionTexture = new Texture(evolvedPokemon.get(currentEvolutionCount).getMapIconPath());
 
         yesNoTexture = new Texture("battle/yesno.png");
     }
@@ -371,7 +393,15 @@ public class EvolutionState extends GameState {
     }
 
     private void exit() {
-        if (goToMapState) {
+        if (cameFromBag) {
+            if (cameFromStore) {
+                gsm.setState(new BagState(gsm, true));
+
+            } else {
+                gsm.setState(new BagState(gsm, false));
+            }
+        }
+        else if (goToMapState) {
             //Go to Map State
             gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
             gsm.playBgm();
@@ -398,6 +428,7 @@ public class EvolutionState extends GameState {
                 currentState = ADD_LEVEL_UP_MOVES;
             } else {
                 //Exit
+                //TODO: Check next pokemon to evolve.
                 exit();
             }
         }
@@ -476,8 +507,8 @@ public class EvolutionState extends GameState {
                 }
                 evolutionFanfare.setLooping(false);
                 evolutionFanfare.play();
-                text = "Congratulations! Your " + preEvolutions.get(evolvedListPosition).getName() +
-                        "\nevolved into " + evolvedPokemon.get(evolvedListPosition).getName() + "!";
+                text = "Congratulations! Your " + preEvolutions.get(currentEvolutionCount).getName() +
+                        "\nevolved into " + evolvedPokemon.get(currentEvolutionCount).getName() + "!";
                 textPosition = 0;
                 counter = 0;
             }

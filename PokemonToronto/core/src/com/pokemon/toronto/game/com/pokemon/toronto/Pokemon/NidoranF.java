@@ -101,4 +101,16 @@ public class NidoranF extends Pokemon {
     protected void initGender() {
         gender = 'F';
     }
+
+    /**
+     * Return Nidorina if the Nidoran (f) is above level 16.
+     * @return Nidorina if Nidoran (f) is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 16) {
+            return PokemonId.NIDORINA.getValue();
+        }
+        return -1;
+    }
 }

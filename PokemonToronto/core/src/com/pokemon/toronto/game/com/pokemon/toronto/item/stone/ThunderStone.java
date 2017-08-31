@@ -20,4 +20,16 @@ public class ThunderStone extends Item {
             p = pf.createPokemon(p.getThunderStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getThunderStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getThunderStoneEvolutionId();
+    }
 }

@@ -101,4 +101,16 @@ public class Pidgey extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Pidgeotto if the Pidgey is above level 18.
+     * @return Pidgeotto if Pidgey is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 18) {
+            return PokemonId.PIDGEOTTO.getValue();
+        }
+        return -1;
+    }
 }

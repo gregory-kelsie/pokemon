@@ -20,4 +20,16 @@ public class ShinyStone extends Item {
             p = pf.createPokemon(p.getShinyStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getShinyStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getShinyStoneEvolutionId();
+    }
 }

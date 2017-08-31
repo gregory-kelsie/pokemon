@@ -104,4 +104,16 @@ public class Weedle extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Kakuna if the Weedle is above level 7.
+     * @return Kakuna if Weedle is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 7) {
+            return PokemonId.KAKUNA.getValue();
+        }
+        return -1;
+    }
 }

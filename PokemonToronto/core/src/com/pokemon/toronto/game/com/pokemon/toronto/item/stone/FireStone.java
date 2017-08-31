@@ -20,4 +20,16 @@ public class FireStone extends Item {
             p = pf.createPokemon(p.getFireStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getFireStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getFireStoneEvolutionId();
+    }
 }

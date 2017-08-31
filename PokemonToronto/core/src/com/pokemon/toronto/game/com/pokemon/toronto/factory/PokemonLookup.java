@@ -154,7 +154,6 @@ public class PokemonLookup {
     private List<PokemonLookupPackage> getScarboroughPokemon() {
 
         List<PokemonLookupPackage> plp = new ArrayList<PokemonLookupPackage>();
-        Gdx.app.log("BAMBAM2", city);
         if (distance(latitude, 43.72936731067151, longitude, -79.27721500396729) <= 1000) {
             PokemonLookupPackage pokemon;
             for (int i = 0; i < amount; i++) {

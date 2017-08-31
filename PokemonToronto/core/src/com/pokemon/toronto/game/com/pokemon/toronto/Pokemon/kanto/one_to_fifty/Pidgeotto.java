@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -92,5 +93,17 @@ public class Pidgeotto extends Pokemon {
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+    }
+
+    /**
+     * Return Pidgeot if the Pidgeotto is above level 36.
+     * @return Pidgeot if Pidgeotto is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 36) {
+            return PokemonId.PIDGEOT.getValue();
+        }
+        return -1;
     }
 }

@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -90,5 +91,17 @@ public class Paras extends Pokemon {
         beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
+    }
+
+    /**
+     * Return Parasect if the Paras is above level 24.
+     * @return Parasect if Paras is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 24) {
+            return PokemonId.PARASECT.getValue();
+        }
+        return -1;
     }
 }

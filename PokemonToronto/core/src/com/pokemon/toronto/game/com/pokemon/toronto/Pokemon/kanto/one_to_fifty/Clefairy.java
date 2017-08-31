@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -91,5 +92,14 @@ public class Clefairy extends Pokemon {
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
 
+    }
+
+    /**
+     * Return Clefable's id when a Moon Stone is used on Clefairy.
+     * @return Clefable's id
+     */
+    @Override
+    public int getMoonStoneEvolutionId() {
+        return PokemonId.CLEFABLE.getValue();
     }
 }

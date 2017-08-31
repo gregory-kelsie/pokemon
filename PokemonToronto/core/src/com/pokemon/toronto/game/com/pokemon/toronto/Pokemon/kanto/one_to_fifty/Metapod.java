@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -90,6 +91,18 @@ public class Metapod extends Pokemon {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
+    }
+
+    /**
+     * Return Butterfree if the Metapod is above level 10.
+     * @return Butterfree if Metapod is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 10) {
+            return PokemonId.BUTTERFREE.getValue();
+        }
+        return -1;
     }
 
 }

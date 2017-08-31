@@ -173,12 +173,6 @@ public class PokeMart {
         currentItem = -1;
     }
 
-    public void buyItem(Bag playerBag) {
-        if (currentTab == ItemTab.EVOLUTION_STONE) {
-            buyStone(playerBag);
-        }
-    }
-
     public void setCurrentTab(ItemTab newTab) {
         if (newTab == ItemTab.POKEBALL) {
             transferPokeballs();
@@ -193,11 +187,6 @@ public class PokeMart {
         currentItem = -1;
         currentPage = 0;
         currentTab = newTab;
-    }
-
-    public void buyStone(Bag playerBag) {
-        playerBag.addStone(evolutionStones
-                .get(currentPage * 4 + currentItem).getItemId());
     }
 
     public int getCurrentPage() {

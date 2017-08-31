@@ -606,13 +606,15 @@ public class BattleState extends GameState implements BattleInterface {
         List<Pokemon> preEvolution = new ArrayList<Pokemon>();
         List<Pokemon> evolvedPokemon = new ArrayList<Pokemon>();
         PokemonFactory pf = new PokemonFactory();
-        for (int i = 0; i < gsm.getParty().size(); i++) {
+        List<Integer> partyIndicies = new ArrayList<Integer>();
+            for (int i = 0; i < gsm.getParty().size(); i++) {
             if (gsm.getParty().get(i).hasJustLeveled() &&
                     gsm.getParty().get(i).getLevelUpEvolutionId() != -1) {
                 preEvolution.add(gsm.getParty().get(i));
                 Pokemon temp = pf.createPokemon(gsm.getParty().get(i)
                         .getLevelUpEvolutionId(), gsm.getParty().get(i));
                 Gdx.app.log("evolvename:", temp.getName());
+                partyIndicies.add(new Integer(i));
                 evolvedPokemon.add(temp);
                 gsm.getParty().set(i, temp);
             }
@@ -622,8 +624,7 @@ public class BattleState extends GameState implements BattleInterface {
         if (region != -1) {
             if (evolvedPokemon.size() > 0) {
                 gsm.saveParty();
-                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon,
-                        startingRoute, region, isRoute));
+                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon, partyIndicies, startingRoute, region, isRoute));
             } else {
                 gsm.saveParty();
                 gsm.playBgm();
@@ -632,7 +633,7 @@ public class BattleState extends GameState implements BattleInterface {
         } else {
             if (evolvedPokemon.size() > 0) {
                 gsm.saveParty();
-                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon));
+                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon, partyIndicies));
             } else {
                 gsm.saveParty();
                 gsm.playBgm();

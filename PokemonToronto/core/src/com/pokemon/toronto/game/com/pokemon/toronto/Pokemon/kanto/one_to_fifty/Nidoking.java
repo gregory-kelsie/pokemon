@@ -92,4 +92,5 @@ public class Nidoking extends Pokemon {
         beginnerSkills.add(SkillFactory.POISON_STING);
         levelUpSkills.put(0, beginnerSkills);
     }
+
 }

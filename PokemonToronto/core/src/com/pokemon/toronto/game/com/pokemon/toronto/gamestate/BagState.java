@@ -6,8 +6,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.ItemTab;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gregory on 8/18/2017.
@@ -46,9 +51,30 @@ public class BagState extends GameState {
 
     private boolean cameFromMenu;
 
+    private boolean displayPokemonPanel;
+
+    //Pokemon Part
+    private Texture pokemonSelectPanel;
+    private Texture pokemonPanel;
+    //Pokemon Icon Textures
+    private List<Texture> iconTextures;
+    private BitmapFont smallFont; //Pokemon panel font
+    private Texture healthBorder; //for pokemon select screen
+    private Texture pokeSelectGreenHealth;
+    private String panelText;
+
+    //Evolution Variables
+    List<Pokemon> preEvolution;
+    List<Pokemon> evolvedPokemon;
+    List<Integer> evolutionIndex;
+
+    private boolean waitEvolutionClick;
+    private boolean waitNoEffectClick;
+
     public BagState(GameStateManager gsm, boolean cameFromMenu) {
         this.gsm = gsm;
         initTextures();
+
         currentBag = ItemTab.POKEBALL;
         currentIndex = -1;
         if (gsm.getBag().getPokeballBag().size() > 0) {
@@ -60,6 +86,10 @@ public class BagState extends GameState {
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
         font.setColor(Color.WHITE);
         this.cameFromMenu = cameFromMenu;
+        displayPokemonPanel = false;
+        panelText = "";
+        waitEvolutionClick = false;
+        waitNoEffectClick = false;
     }
 
     private void initTextures() {
@@ -80,6 +110,16 @@ public class BagState extends GameState {
 
         itemNamePanel = new Texture("bag/gui/namepanel.png");
         selectedItemNamePanel = new Texture("bag/gui/selectednamepanel.png");
+
+        pokemonSelectPanel = new Texture("bag/gui/pokemonpanel.png");
+        pokemonPanel = new Texture("battle/pokemonSelect/pokemonPanel.png");
+        smallFont = new BitmapFont(Gdx.files.internal("battle/textFont.fnt"));
+        healthBorder = new Texture("battle/pokemonSelect/healthBorder.png");
+        pokeSelectGreenHealth = new Texture("battle/pokemonSelect/greenHealth.png");
+        iconTextures = new ArrayList<Texture>();
+        for (Pokemon p: gsm.getParty()) {
+            iconTextures.add(new Texture(p.getMiniIconPath()));
+        }
     }
 
     @Override
@@ -100,6 +140,12 @@ public class BagState extends GameState {
         drawItemPanels(batch);
 
         drawSelectedItem(batch);
+        if (displayPokemonPanel) {
+            batch.draw(pokemonSelectPanel, 0,0);
+            font.draw(batch, panelText, 20, 1030);
+            drawPokemonPanels(batch);
+            drawPokemonIcons(batch);
+        }
     }
 
     private void drawUseGiveButtons(SpriteBatch batch) {
@@ -223,22 +269,194 @@ public class BagState extends GameState {
         }
     }
 
+    private void drawPokemonIcons(SpriteBatch batch) {
+        for (int i = 0; i < iconTextures.size(); i++) {
+            int xPos;
+            int yPos;
+            if (i == 0 || i == 2 || i == 4) {
+                xPos = 124;
+                if (i == 0) {
+                    yPos = 653;
+                } else if (i == 2) {
+                    yPos = 431;
+                } else {
+                    yPos = 203;
+                }
+            } else {
+                xPos =  582;
+                if (i == 1) {
+                    yPos = 559;
+                } else if (i == 3) {
+                    yPos = 337;
+                } else {
+                    yPos = 104;
+                }
+
+            }
+            batch.draw(iconTextures.get(i),
+                    xPos, yPos, 128, 128);
+        }
+    }
+    private void drawPokemonPanels(SpriteBatch batch) {
+        batch.draw(pokemonPanel, 30, 577);
+        batch.draw(healthBorder, 146, 620);
+        batch.draw(pokeSelectGreenHealth, 147, 621, (int)(318 *
+                (1.0 * gsm.getParty().get(0).getCurrentHealth() / gsm.getParty().get(0).getHealthStat())), 25);
+        smallFont.draw(batch, gsm.getParty().get(0).getName() + "\nLv. " +
+                gsm.getParty().get(0).getLevel(), 239, 748);
+        if (gsm.getParty().size() > 1) {
+            batch.draw(pokemonPanel, 490, 477);
+            batch.draw(healthBorder, 600, 524);
+            batch.draw(pokeSelectGreenHealth, 601, 525,(int)(318 *
+                    (1.0 * gsm.getParty().get(1).getCurrentHealth() / gsm.getParty().get(1).getHealthStat())), 25);
+            smallFont.draw(batch, gsm.getParty().get(1).getName() + "\nLv. " +
+                    gsm.getParty().get(1).getLevel(), 700, 648);
+            if (gsm.getParty().size() > 2) {
+                batch.draw(pokemonPanel, 30, 352);
+                batch.draw(healthBorder, 146, 393);
+                batch.draw(pokeSelectGreenHealth, 147, 394,(int)(318 *
+                        (1.0 * gsm.getParty().get(2).getCurrentHealth() / gsm.getParty().get(2).getHealthStat())), 25);
+                smallFont.draw(batch, gsm.getParty().get(2).getName() + "\nLv. " +
+                        gsm.getParty().get(2).getLevel(), 239, 523);
+                if (gsm.getParty().size() > 3) {
+                    batch.draw(pokemonPanel, 490, 252);
+                    batch.draw(healthBorder, 600, 295);
+                    batch.draw(pokeSelectGreenHealth, 601, 296,(int)(318 *
+                            (1.0 * gsm.getParty().get(3).getCurrentHealth() / gsm.getParty().get(3).getHealthStat())), 25);
+                    smallFont.draw(batch, gsm.getParty().get(3).getName() + "\nLv. " +
+                            gsm.getParty().get(3).getLevel(), 700, 423);
+                    if (gsm.getParty().size() > 4) {
+                        batch.draw(pokemonPanel, 30, 127);
+                        batch.draw(healthBorder, 146, 165);
+                        batch.draw(pokeSelectGreenHealth, 147, 166,(int)(318 *
+                                (1.0 * gsm.getParty().get(4).getCurrentHealth() / gsm.getParty().get(4).getHealthStat())), 25);
+                        smallFont.draw(batch, gsm.getParty().get(4).getName() + "\nLv. " +
+                                gsm.getParty().get(4).getLevel(), 239, 298);
+                        if (gsm.getParty().size() > 5) {
+                            batch.draw(pokemonPanel, 490, 27);
+                            batch.draw(healthBorder, 600, 69);
+                            batch.draw(pokeSelectGreenHealth, 601, 70, (int)(318 *
+                                    (1.0 * gsm.getParty().get(5).getCurrentHealth() / gsm.getParty().get(5).getHealthStat())), 25);
+                            smallFont.draw(batch, gsm.getParty().get(5).getName() + "\nLv. " +
+                                    gsm.getParty().get(5).getLevel(), 700, 198);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void clickedTopRight() {
+        if (currentIndex != -1) {
+            //DISPLAY PARTY.
+            if (currentBag == ItemTab.EVOLUTION_STONE) {
+                displayPokemonPanel = true;
+                panelText = "Select a Pokemon to use the " +
+                        gsm.getBag().getStoneBag().get(currentIndex)
+                                .getItem().getName() + " on.";
+            }
+        }
+    }
+
+    private void clickedPokemon(int pokemonIndex) {
+        if (currentBag == ItemTab.EVOLUTION_STONE) {
+            if (gsm.getBag().getStoneBag().get(currentIndex)
+                    .getItem().ableToUse(gsm.getParty().get(pokemonIndex))) {
+                panelText = "What? " + gsm.getParty().get(pokemonIndex).getName() + " is evolving!";
+                gsm.getBag().getStoneBag().get(currentIndex).discard();
+                waitEvolutionClick = true;
+                preEvolution = new ArrayList<Pokemon>();
+                evolvedPokemon = new ArrayList<Pokemon>();
+                PokemonFactory pf = new PokemonFactory();
+                Pokemon temp = pf.createPokemon(gsm.getBag().getStoneBag()
+                        .get(currentIndex).getItem().getEvolutionId(gsm.getParty()
+                                .get(pokemonIndex)), gsm.getParty().get(pokemonIndex));
+                preEvolution.add(gsm.getParty().get(pokemonIndex));
+                evolvedPokemon.add(temp);
+                evolutionIndex = new ArrayList<Integer>();
+                evolutionIndex.add(pokemonIndex);
+                gsm.getParty().set(pokemonIndex, temp);
+                //Check if there are any more stones after using this one.
+                if (gsm.getBag().getStoneBag().get(currentIndex).getQuantity() == 0) {
+                    if (hasExtraStone()) {
+                        gsm.getBag().getStoneBag().remove(currentIndex);
+                        if (currentIndex != 0) {
+                            currentIndex--;
+                        } else {
+                            currentIndex = -1;
+                        }
+                    } else {
+                        gsm.getBag().getStoneBag().remove(currentIndex);
+                        currentIndex = -1;
+                    }
+                }
+            } else {
+                panelText = "The " + gsm.getBag().getStoneBag()
+                        .get(currentIndex).getItem().getName() + " has no effect.";
+                waitNoEffectClick = true;
+            }
+        }
+    }
+
+    private boolean hasExtraStone() {
+        if (gsm.getBag().getStoneBag().size() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+
     @Override
     public void update(double dt) {
         if (MyInput.clicked()) {
             int x = MyInput.getX();
             int y = MyInput.getY();
             Gdx.app.log("bagcoord", x + ", " + y);
-            if (x >= 0 && x <= 161 && y >= 1792 && y <= 1920) {
+            if (waitEvolutionClick) {
+                waitEvolutionClick = false;
+                gsm.stopBgm();
+                gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon, evolutionIndex, cameFromMenu));
+                dispose();
+            } else if (waitNoEffectClick) {
+                waitNoEffectClick = false;
+                panelText = "Select a Pokemon to use the " +
+                        gsm.getBag().getStoneBag().get(currentIndex)
+                                .getItem().getName() + " on.";
+
+            }
+            else if (x >= 0 && x <= 161 && y >= 1792 && y <= 1920 && !displayPokemonPanel) {
                 clickedLeft();
-            } else if (x >= 519 && x <= 680 && y >= 1792 && y <= 1920) {
+            } else if (x >= 519 && x <= 680 && y >= 1792 && y <= 1920 && !displayPokemonPanel) {
                 clickedRight();
-            } else if (x >= 885 && x <= 1080 && y >= 1835 && y <= 1920) {
+            } else if (x >= 885 && x <= 1080 && y >= 1835 && y <= 1920 && !displayPokemonPanel) {
                 clickedX();
-            } else if (x >= 734 && x <= 902 && y >= 1625 && y <= 1690) {
+            } else if (x >= 734 && x <= 902 && y >= 1625 && y <= 1690 && !displayPokemonPanel) {
                 clickedDown();
-            } else if (x >= 734 && x <= 902 && y >= 869 && y <= 948) {
+            } else if (x >= 734 && x <= 902 && y >= 869 && y <= 948 && !displayPokemonPanel) {
                 clickedUp();
+            } else if (x >= 760 && x <= 1080 && y >= 0 && y <= 165 && !displayPokemonPanel) {
+                //Clicked top right button.
+                clickedTopRight();
+            } else if (x >= 0 && x <= 147 && y >= 1786 && y <= 1920 && displayPokemonPanel) {
+                displayPokemonPanel = false;
+            } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && displayPokemonPanel) {
+                //First Pokemon
+                clickedPokemon(0);
+            } else if (x >= 594 && x <= 916 && y >= 1268 && y <= 1431 && displayPokemonPanel && gsm.getParty().size() > 1) {
+                //Second Pokemon
+                clickedPokemon(1);
+            } else if (x >= 88 && x <= 411 && y >= 1422 && y <= 1554 && displayPokemonPanel && gsm.getParty().size() > 2) {
+                //Third Pokemon
+                clickedPokemon(2);
+            } else if (x >= 594 && x <= 916 && y >= 1498 && y <= 1662 && displayPokemonPanel && gsm.getParty().size() > 3) {
+                //Fourth Pokemon
+                clickedPokemon(3);
+            } else if (x >= 88 && x <= 411 && y >= 1662 && y <= 1823 && displayPokemonPanel && gsm.getParty().size() > 4) {
+                //Fifth Pokemon
+                clickedPokemon(4);
+            } else if (x >= 594 && x <= 916 && y >= 1749 && y <= 1907 && displayPokemonPanel && gsm.getParty().size() > 5) {
+                //Sixth Pokemon
+                clickedPokemon(5);
             }
         }
     }
@@ -433,5 +651,15 @@ public class BagState extends GameState {
         }
         font.dispose();
         clickSound.dispose();
+        //Pokemon Part
+        pokemonSelectPanel.dispose();
+        pokemonPanel.dispose();
+        //Pokemon Icon Textures
+        for (Texture t: iconTextures) {
+            t.dispose();
+        }
+        smallFont.dispose();
+        healthBorder.dispose();
+        pokeSelectGreenHealth.dispose();
     }
 }

@@ -106,4 +106,16 @@ public class Rattata extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Raticate if the Rattata is above level 20.
+     * @return Raticate if Rattata is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 20) {
+            return PokemonId.RATICATE.getValue();
+        }
+        return -1;
+    }
 }

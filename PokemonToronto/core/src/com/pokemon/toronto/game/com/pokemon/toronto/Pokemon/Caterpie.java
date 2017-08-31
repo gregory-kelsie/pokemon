@@ -101,4 +101,16 @@ public class Caterpie extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Metapod if the Caterpie is above level 7.
+     * @return Metapod if Caterpie is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 7) {
+            return PokemonId.METAPOD.getValue();
+        }
+        return -1;
+    }
 }

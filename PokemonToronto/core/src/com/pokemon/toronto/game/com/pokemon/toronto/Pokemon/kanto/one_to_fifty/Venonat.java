@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -90,5 +91,17 @@ public class Venonat extends Pokemon {
         beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+    }
+
+    /**
+     * Return Venomoth if the Venonat is above level 31.
+     * @return Venomoth if Venonat is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 31) {
+            return PokemonId.VENOMOTH.getValue();
+        }
+        return -1;
     }
 }

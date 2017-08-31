@@ -105,4 +105,13 @@ public class Pikachu extends Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Return Raichu's id when a thunderstone is used on Pikachu
+     * @return Raichu's id.
+     */
+    @Override
+    public int getThunderStoneEvolutionId() {
+        return PokemonId.RAICHU.getValue();
+    }
 }

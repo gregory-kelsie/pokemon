@@ -97,6 +97,16 @@ public class PokeMartState extends GameState{
 
     }
 
+    private void initPokeballBubbleText() {
+        bubbleHeader = "Pokeballs";
+        bubbleText = "Capture wild Pokemon with\nthese! The balls won't work in\nthe simulator though...";
+    }
+
+    private void initEvolutionBubbleText() {
+        bubbleHeader = "Evolution Stones";
+        bubbleText = "Using these stones on certain\nPokemon will evolve them!";
+    }
+
     private void initItemTextures() {
         if (itemNameTextures.size() > 0) {
             itemNameTextures.get(0).dispose();
@@ -431,16 +441,6 @@ public class PokeMartState extends GameState{
             initItemTextures();
             initPokeballBubbleText();
         }
-    }
-
-    private void initPokeballBubbleText() {
-        bubbleHeader = "Pokeballs";
-        bubbleText = "Capture wild Pokemon with\nthese! The balls won't work in\nthe simulator though...";
-    }
-
-    private void initEvolutionBubbleText() {
-        bubbleHeader = "Evolution Stones";
-        bubbleText = "Using these stones on certain\nPokemon will evolve them!";
     }
 
     private void clickedEvolutionStoneTab() {

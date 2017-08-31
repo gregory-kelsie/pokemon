@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -94,5 +95,15 @@ public class Nidorina extends Pokemon {
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
         levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
         levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+    }
+
+    /**
+     * Return Nidoqueen's id when a Moon Stone is used
+     * on Nidorina
+     * @return Nidoqueen's id.
+     */
+    @Override
+    public int getMoonStoneEvolutionId() {
+        return PokemonId.NIDOQUEEN.getValue();
     }
 }

@@ -20,4 +20,16 @@ public class DuskStone extends Item {
             p = pf.createPokemon(p.getDuskStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getDuskStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getDuskStoneEvolutionId();
+    }
 }

@@ -20,4 +20,16 @@ public class SunStone extends Item {
             p = pf.createPokemon(p.getSunStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getSunStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getSunStoneEvolutionId();
+    }
 }

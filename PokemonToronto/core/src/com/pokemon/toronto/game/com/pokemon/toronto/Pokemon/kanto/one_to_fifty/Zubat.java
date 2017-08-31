@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -91,5 +92,17 @@ public class Zubat extends Pokemon {
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
         levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSE_RAY)));
+    }
+
+    /**
+     * Return Golbat if the Zubat is above level 22.
+     * @return Golbat if Zubat is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 22) {
+            return PokemonId.GOLBAT.getValue();
+        }
+        return -1;
     }
 }

@@ -41,4 +41,9 @@ public class Item {
     public boolean ableToUse(Pokemon p) {
         return false;
     }
+
+    public int getEvolutionId(Pokemon p) {
+        return -1;
+    }
+
 }

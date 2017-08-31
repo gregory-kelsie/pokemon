@@ -20,4 +20,16 @@ public class LeafStone extends Item {
             p = pf.createPokemon(p.getLeafStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getLeafStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getLeafStoneEvolutionId();
+    }
 }

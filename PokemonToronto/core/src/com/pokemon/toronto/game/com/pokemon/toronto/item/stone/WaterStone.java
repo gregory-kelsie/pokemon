@@ -20,4 +20,16 @@ public class WaterStone extends Item {
             p = pf.createPokemon(p.getWaterStoneEvolutionId(), p);
         }
     }
+
+    @Override
+    public boolean ableToUse(Pokemon p) {
+        if (p.getWaterStoneEvolutionId() != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getEvolutionId(Pokemon p) {
+        return p.getWaterStoneEvolutionId();
+    }
 }
