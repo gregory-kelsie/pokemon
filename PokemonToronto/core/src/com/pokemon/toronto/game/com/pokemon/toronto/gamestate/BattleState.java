@@ -560,9 +560,11 @@ public class BattleState extends GameState implements BattleInterface {
                         gsm.getBox().add(enemyPokemon);
                     }
                     if (region != -1) {
+                        gsm.saveParty();
                         gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
                         gsm.playBgm();
                     } else {
+                        gsm.saveParty();
                         gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
                         gsm.playBgm();
                     }
@@ -619,16 +621,20 @@ public class BattleState extends GameState implements BattleInterface {
 
         if (region != -1) {
             if (evolvedPokemon.size() > 0) {
+                gsm.saveParty();
                 gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon,
                         startingRoute, region, isRoute));
             } else {
+                gsm.saveParty();
                 gsm.playBgm();
                 gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
             }
         } else {
             if (evolvedPokemon.size() > 0) {
+                gsm.saveParty();
                 gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon));
             } else {
+                gsm.saveParty();
                 gsm.playBgm();
                 gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
             }
@@ -637,6 +643,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void blackedOut() {
+        gsm.saveParty();
         gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
         dispose();
@@ -651,7 +658,7 @@ public class BattleState extends GameState implements BattleInterface {
         victoryBgm.dispose();
         bgm.stop();
         bgm.dispose();
-        for (int i = 0; i < gsm.getParty().size(); i++) {
+        for (int i = 0; i < playerCries.size(); i++) {
             playerCries.get(i).dispose();
         }
         enemyPokemonCry.dispose();
@@ -796,11 +803,13 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     public void goToMainMenuState() {
+        gsm.saveParty();
         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
         gsm.playBgm();
     }
 
     public void goToRouteState() {
+        gsm.saveParty();
         gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
         gsm.playBgm();
     }

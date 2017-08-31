@@ -256,6 +256,7 @@ public class PokemonPartyState extends GameState {
             int y = MyInput.getY();
             Gdx.app.log("party", x + ", " + y);
             if (x >= 980 && x <= 1080 && y >= 0 && y <= 100) {
+                gsm.saveParty();
                 gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                 dispose();
             } else if (x >= 15 && x <= 479 && y >= 331 && y <= 714 && !openedWindow) {

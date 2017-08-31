@@ -1116,8 +1116,10 @@ public abstract class Pokemon {
             //Check if the Pokemon learns a move at the level i
             if (levelUpSkills.containsKey(i)) {
                 for (int j = 0; j < levelUpSkills.get(i).size(); j++) {
-                    skills.add(currentSkill, skillFactory.createSkill(levelUpSkills.get(i).get(j)));
-                    currentSkill++;
+                    if (!hasSkill(levelUpSkills.get(i).get(j))) {
+                        skills.add(currentSkill, skillFactory.createSkill(levelUpSkills.get(i).get(j)));
+                        currentSkill++;
+                    }
                     if (currentSkill == 4) {
                         //Start adding moves from the oldest to the newest since the
                         //move list is full.
@@ -1126,6 +1128,23 @@ public abstract class Pokemon {
                 }
             }
         }
+    }
+
+    /**
+     * Return whether or not the Pokemon has the skill with
+     * skill id.
+     * @param skillId The skill id that's being searched for in the Pokemon's
+     *                moveset.
+     * @return Whether or not the Pokemon has the skill with
+     * skill id.
+     */
+    public boolean hasSkill(int skillId) {
+        for (int i = 0; i < skills.size(); i++) {
+            if (skills.get(i).getId() == skillId) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

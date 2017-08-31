@@ -14,8 +14,10 @@ import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerItem;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.ItemTab;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.PokeMart;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Gregory on 8/18/2017.
@@ -173,7 +175,8 @@ public class PokeMartState extends GameState{
         batch.draw(bagPanelTexture, 126, 1827);
         batch.draw(headerTexture, 352, 1224);
         drawItems(batch);
-        currencyFont.draw(batch, "54,000", 144, 80);
+        currencyFont.draw(batch, NumberFormat.getNumberInstance(Locale.US)
+                .format(gsm.getPlayer().getMoney()), 144, 80);
         currencyFont.draw(batch, "25", 852, 80);
         bubbleHeaderFont.draw(batch, bubbleHeader, 483, 1824);
         bubbleFont.draw(batch, bubbleText, 480, 1773);

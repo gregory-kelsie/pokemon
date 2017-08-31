@@ -594,6 +594,7 @@ public class BoxState extends GameState {
 
     private void logOut() {
         logoutSound.play();
+        gsm.saveParty();
         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
         dispose();
         gsm.playBgm();

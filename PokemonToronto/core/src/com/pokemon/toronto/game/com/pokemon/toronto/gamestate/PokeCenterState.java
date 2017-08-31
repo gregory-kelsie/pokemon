@@ -72,6 +72,7 @@ public class PokeCenterState extends GameState{
             if (MyInput.getX() >= 0 && MyInput.getX() <= 1080 && MyInput.getY() >= 1324 && MyInput.getY() <= 1920) {
                 if (text.get(currentTextBox).finishedUpdating()) {
                     if (currentTextBox == text.size() - 1) {
+                        gsm.saveParty();
                         gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                         dispose();
                         gsm.playBgm();

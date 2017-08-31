@@ -122,6 +122,7 @@ public class GameStateManager {
         }
 
         for (int i = 0; i < party.size(); i++) {
+            Gdx.app.log("Update", "uid: " + uid + " partypos: " + i + "name: " + party.get(i).getName());
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("uid", String.valueOf(uid)));
             params.add(new BasicNameValuePair("pid", Integer.toString(party.get(i).getId())));
@@ -130,7 +131,7 @@ public class GameStateManager {
             params.add(new BasicNameValuePair("currentExp", Integer.toString((int)party.get(i).getDisplayedExp())));
             params.add(new BasicNameValuePair("nature", Integer.toString(party.get(i).getNature().getValue())));
             params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getAbility().getValue())));
-            params.add(new BasicNameValuePair("partyPosition", "0")); //first slot in party
+            params.add(new BasicNameValuePair("partyPosition", Integer.toString(i))); //first slot in party
             params.add(new BasicNameValuePair("pokemonGender", "" + party.get(i).getGender()));
             params.add(new BasicNameValuePair("status", Integer.toString(party.get(i).getStatus().getValue()))); //0 is status free
             params.add(new BasicNameValuePair("iv_hp", Integer.toString(party.get(i).getHealthIV())));
@@ -147,6 +148,7 @@ public class GameStateManager {
             params.add(new BasicNameValuePair("ev_spd", Integer.toString(party.get(i).getSpeedEV())));
             params.add(new BasicNameValuePair("skill1_id", Integer.toString(party.get(i).getSkills().get(0).getId())));
             params.add(new BasicNameValuePair("skill1_pp", Integer.toString(party.get(i).getSkills().get(0).getCurrentPP())));
+            Gdx.app.log("Update", "skillsetsize: " + party.get(i).getSkills().size());
             if (party.get(i).getSkills().size() > 1) {
                 params.add(new BasicNameValuePair("skill2_id", Integer.toString(party.get(i).getSkills().get(1).getId())));
                 params.add(new BasicNameValuePair("skill2_pp", Integer.toString(party.get(i).getSkills().get(1).getCurrentPP())));
@@ -160,6 +162,7 @@ public class GameStateManager {
                 }
             }
             JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/updatePartyPokemon.php", "POST", params);
+            Gdx.app.log("Update", "xyz");
             try {
                 Gdx.app.log("Update", obj.getString("message"));
             } catch (JSONException e) {
