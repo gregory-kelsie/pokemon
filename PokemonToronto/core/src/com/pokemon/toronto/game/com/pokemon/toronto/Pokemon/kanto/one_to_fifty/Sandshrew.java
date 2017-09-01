@@ -46,8 +46,6 @@ public class Sandshrew extends Pokemon {
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
-        initLevelUpSkills();
-        initWildSkills();
     }
 
     /**
@@ -65,21 +63,14 @@ public class Sandshrew extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Sandshrew(int level, int[] ivs, int [] evs, Skill firstSkill,
+    public Sandshrew(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Pokemon.Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
-        initLevelUpSkills();
-        addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
-        setHealthAndExp(currentHealth, currentExp);
-        this.evs = evs;
-        this.ivs = ivs;
-        this.status = status;
-        this.nature = nature;
-        this.ability = ability;
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
+                thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**

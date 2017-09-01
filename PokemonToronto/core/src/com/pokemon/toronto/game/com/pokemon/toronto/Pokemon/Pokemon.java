@@ -270,8 +270,41 @@ public abstract class Pokemon {
      * @param miniPath The mini Pokemon image path.
      * @param captureRate The Pokemon's capture rate.
      */
-    public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo, Ability ability, ExpType expType,
-                   int baseExp, int[] evYield, int[] baseStats, String mapIconPath, String backPath, String miniPath, String cryPath, int captureRate) {
+    public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
+                   Ability ability, ExpType expType, int baseExp, int[] evYield,
+                   int[] baseStats, String mapIconPath, String backPath, String miniPath,
+                   String cryPath, int captureRate) {
+        initRandomIVs();
+        initBlankEVs();
+        init(pokemonId, name, level, typeOne, typeTwo, ability, expType, baseExp,
+                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
+        setRandomNature();
+        initGender();
+        initWildSkills();
+    }
+
+    public Pokemon(int pokemonId, String name, int level, char gender, Status status,
+                   int[] ivs, int[] evs, Type typeOne, Type typeTwo, Ability ability,
+                   Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
+                   String mapIconPath, String backPath, String miniPath,
+                   String cryPath, int captureRate, Skill firstSkill, Skill secondSkill,
+                   Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp) {
+        this.gender = gender;
+        this.status = status;
+        this.ivs = ivs;
+        this.evs = evs;
+        this.nature = nature;
+        init(pokemonId, name, level, typeOne, typeTwo, ability, expType, baseExp,
+                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
+
+        setHealthAndExp(currentHealth, currentExp);
+        addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
+    }
+
+    private void init(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
+                      Ability ability, ExpType expType, int baseExp, int[] evYield,
+                      int[] baseStats, String mapIconPath, String backPath,
+                      String miniPath, String cryPath, int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
         this.level = level;
@@ -297,9 +330,7 @@ public abstract class Pokemon {
         skills = new ArrayList<Skill>();
         justLeveled = false;
         resetCoordinates();
-        setRandomNature();
-        initRandomIVs();
-        initBlankEVs();
+        initLevelUpSkills();
         initBattleVariables();
         initializeResistances();
     }
@@ -1065,6 +1096,9 @@ public abstract class Pokemon {
     protected void setHealthAndExp(int newHealth, int newExp) {
         currentHealth = newHealth;
         animationHealth = newHealth;
+        if (currentHealth == 0) {
+            fainted = true;
+        }
         currentExp = newExp;
         displayedExp = newExp;
     }

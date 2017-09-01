@@ -45,8 +45,6 @@ public class Wigglytuff extends Pokemon {
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
-        initLevelUpSkills();
-        initWildSkills();
     }
 
     /**
@@ -64,21 +62,14 @@ public class Wigglytuff extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Wigglytuff(int level, int[] ivs, int [] evs, Skill firstSkill,
+    public Wigglytuff(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                       Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                       Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, Type.NORMAL, Pokemon.Type.FAIRY, Ability.MAGIC_GUARD, ExpType.FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.NORMAL, Pokemon.Type.FAIRY, ability, nature, ExpType.FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
-        initLevelUpSkills();
-        addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
-        setHealthAndExp(currentHealth, currentExp);
-        this.evs = evs;
-        this.ivs = ivs;
-        this.status = status;
-        this.nature = nature;
-        this.ability = ability;
+                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
+                thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
