@@ -24,27 +24,12 @@ public class TakeDown extends DamageSkill {
      * - Cat: Physical
      * - Crit Stage: 1
      * - Accuracy: 85
-     * - Recoil: 1/4 of damage dealt
+     * - Recoil: 1/4 of damage dealt denoted by the last parameter of 1
      */
     public TakeDown() {
         //1/4 RECOIL
         super(12, "Take Down", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 90, 1, 1);
         makesPhysicalContact = true;
-    }
-
-    /**
-     * Damage the enemy and take 1/4 recoil damage.
-     * @param skillUser The Pokemon using the skill
-     * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return The results of using the move.
-     */
-    @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
-        return super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
     }
 
     /**

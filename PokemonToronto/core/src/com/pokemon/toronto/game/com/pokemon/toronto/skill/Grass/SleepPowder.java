@@ -5,8 +5,12 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SleepEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.List;
  * Created by Gregory on 8/13/2017.
  */
 
-public class SleepPowder extends Skill {
+public class SleepPowder extends EffectSkill {
 
     /**
      * - Name: Sleep Powder
@@ -25,7 +29,8 @@ public class SleepPowder extends Skill {
      * - Accuracy: 75
      */
     public SleepPowder() {
-        super(15, "Sleep Powder", 15, Pokemon.Type.GRASS, SkillCategory.MISC, 75);
+        super(15, "Sleep Powder", 15, Pokemon.Type.GRASS, 75);
+        effects.add(new SleepEffect(1, SecondaryEffect.Target.ENEMY));
     }
 
     /**

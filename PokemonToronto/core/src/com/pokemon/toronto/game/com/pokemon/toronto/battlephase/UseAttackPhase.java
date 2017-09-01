@@ -152,7 +152,12 @@ public class UseAttackPhase extends BattlePhase {
             if (usedSkill.makesPhysicalContact()) {
                 state = ABILITY_CONTACT;
             } else {
-                displayingResults = true;
+                if (battleResults.size() > 0) {
+                    displayingResults = true;
+                } else {
+                    noResults();
+                }
+
             }
 
         }
@@ -374,9 +379,13 @@ public class UseAttackPhase extends BattlePhase {
             pui.getFont().draw(batch, contactResults.substring(0, textPosition), 54, 1143);
         } else {
             if (displayingResults) {
-                pui.getFont().draw(batch, battleResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+                if (battleResults.size() > 0) {
+                    pui.getFont().draw(batch, battleResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+                }
             } else if (displayRecoilResults) {
-                pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+                if (recoilResults.size() > 0) {
+                    pui.getFont().draw(batch, recoilResults.get(resultsPosition).substring(0, textPosition), 54, 1143);
+                }
             } else if (missed) {
                 pui.getFont().draw(batch, missText.substring(0, textPosition), 54, 1143);
             }
@@ -455,7 +464,38 @@ public class UseAttackPhase extends BattlePhase {
         } else {
             state = -1;
             //There are results to be displayed
-            displayingResults = true;
+            if (battleResults.size() > 0) {
+                displayingResults = true;
+            } else {
+                noResults();
+            }
+        }
+    }
+
+    private void noResults() {
+        if (pui.isUserPokemonFirstAttacker()) {
+            if (enemyFainted) {
+                displayEnemyFaintAnimation = true;
+                pui.playFaintSound();
+            } else if (userFainted) {
+                displayUserFaintAnimation = true;
+                pui.playFaintSound();
+            }
+            else {
+                finishedDepletion = true;
+
+            }
+        } else {
+            if (userFainted) {
+                displayUserFaintAnimation = true;
+                pui.playFaintSound();
+            } else if (enemyFainted) {
+                displayEnemyFaintAnimation = true;
+                pui.playFaintSound();
+            }
+            else {
+                finishedDepletion = true;
+            }
         }
     }
 

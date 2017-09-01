@@ -111,7 +111,7 @@ public class Charmander extends Pokemon {
      */
     @Override
     public int getLevelUpEvolutionId() {
-        if (level >= 8) {
+        if (level >= 16) {
             return PokemonId.CHARMELEON.getValue();
         }
         return -1;

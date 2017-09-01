@@ -129,6 +129,7 @@ public abstract class DamageSkill extends Skill {
      * enemy Pokemon.
      */
     protected boolean effectsEnemy(Pokemon enemy) {
+        //TODO: Implement Odor Sleuth and the ability that hits ghost pokemon here.
         if (enemy.getResistances().get(type) != 0) {
             return true;
         }

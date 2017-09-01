@@ -5,8 +5,11 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,7 @@ import java.util.List;
  * Created by Gregory on 8/13/2017.
  */
 
-public class ConfuseRay extends Skill {
+public class ConfuseRay extends EffectSkill {
 
     /**
      * - Name: Confuse Ray
@@ -25,25 +28,8 @@ public class ConfuseRay extends Skill {
      * - Accuracy: 100
      */
     public ConfuseRay() {
-        super(14, "Confuse Ray", 10, Pokemon.Type.GHOST, SkillCategory.MISC, 100);
-    }
-
-    /**
-     * Use Confuse Ray and return the move results.
-     * The target is exposed to a sinister ray that triggers confusion.
-     * @param skillUser The Pokemon using the skill
-     * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return The move results.
-     */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
-        List<String> results = new ArrayList<String>();
-        enemyPokemon.induceConfusion();
-        results.add(enemyPokemon.getName() + " was confused!");
-        return results;
+        super(14, "Confuse Ray", 10, Pokemon.Type.GHOST, 100);
+        effects.add(new ConfusionEffect(1, SecondaryEffect.Target.ENEMY));
     }
 
     /**

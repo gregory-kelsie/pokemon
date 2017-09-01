@@ -6,7 +6,10 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
  * Created by Gregory on 8/14/2017.
  */
 
-public class Bite extends DamageSkill {
+public class Bite extends SecondaryEffectSkill {
     /**
      * - Name: Bite
      * - Type: Dark
@@ -27,32 +30,7 @@ public class Bite extends DamageSkill {
     public Bite() {
         super(17, "Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
-    }
-
-    /**
-     * Damage the enemy, but also has a 30% chance to flinch the enemy if bite goes first.
-     * @param skillUser The Pokemon using the skill
-     * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return The results of using the move.
-     */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
-        //Use the damage part of the move.
-        List<String> results = super.use(skillUser, enemyPokemon, field, userField,
-                enemyField, isFirstAttack);
-        if (isFirstAttack && (enemyPokemon.getAbility() !=
-                Pokemon.Ability.INNER_FOCUS && enemyPokemon.getAbility() !=
-                Pokemon.Ability.SHIELD_DUST)) {
-            double rand = Math.random();
-            if (rand <= .3) {
-                enemyPokemon.flinch();
-            }
-        }
-
-        return results;
+        secondaryEffects.add(new FlinchEffect(.3, SecondaryEffect.Target.ENEMY));
     }
 
     /**

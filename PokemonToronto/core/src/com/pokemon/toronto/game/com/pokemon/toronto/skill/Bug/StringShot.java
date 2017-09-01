@@ -5,7 +5,10 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.List;
 /**
  * Created by Gregory on 6/15/2017.
  */
-public class StringShot extends Skill {
+public class StringShot extends EffectSkill {
 
     /**
      * - Name: String Shot
@@ -23,31 +26,9 @@ public class StringShot extends Skill {
      * - Accuracy: 95
      */
     public StringShot() {
-        super(8, "String Shot", 35, Pokemon.Type.BUG, SkillCategory.MISC, 95);
-    }
-
-    /**
-     * Use String Shot and return the move results.
-     * @param skillUser The Pokemon using the skill
-     * @param enemyPokemon The enemy receiving the skill
-     * @param field The field for the battle.
-     * @param userField The field for the battle.
-     * @param enemyField The field for the battle.
-     * @return String Shot's move results.
-     */
-    @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
-        List<String> results = new ArrayList<String>();
-
-        //Attempt to lower the enemy's speed by 1 stage.
-        if (enemyPokemon.getSpeedStage() == -6) {
-            results.add(enemyPokemon.getName() + "'s speed can't be lowered.");
-        } else {
-            enemyPokemon.decreaseSpeedStage(1);
-            results.add(enemyPokemon.getName() + "'s speed fell!");
-        }
-        return results;
+        super(8, "String Shot", 35, Pokemon.Type.BUG, 95);
+        effects.add(new SpeedEffect(1,
+                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**
