@@ -127,6 +127,7 @@ public abstract class Pokemon {
 
     private boolean witnessedFutureSight;
     private int futureSightTime;
+    private Pokemon futureSightUser;
     private final int TOTAL_FUTURE_SIGHT_TIME = 2;
 
     private boolean witnessedDoomDesire;
@@ -382,6 +383,7 @@ public abstract class Pokemon {
         telekinesisTime = -1;
         magnetRisenTime = -1;
         futureSightTime = -1;
+        futureSightUser = null;
         doomDesireTime = -1;
         disabledSlot = -1;
         disabledTime = -1;
@@ -621,9 +623,41 @@ public abstract class Pokemon {
      * Set the Pokemon to receive Future Sight damage after
      * a few turns.
      */
-    public void receiveFutureSight() {
+    public void receiveFutureSight(Pokemon skillUser) {
         witnessedFutureSight = true;
         futureSightTime = TOTAL_FUTURE_SIGHT_TIME;
+        futureSightUser = skillUser;
+    }
+
+    /**
+     * Return the Pokemon who casted Future Sight on this one.
+     * @return The Pokemon who casted Future Sight on this Pokemon.
+     */
+    public Pokemon getFutureSightUser() {
+        return futureSightUser;
+    }
+
+    /**
+     * Return the number of turns left until future sight hits.
+     * @return The number of turns left until future sight hits.
+     */
+    public int getFutureSightTime() {
+        return futureSightTime;
+    }
+
+    /**
+     * Adjust the number of turns left until future sight
+     * hits.
+     */
+    public void adjustFutureSightTime() {
+        futureSightTime--;
+        futureSightTime = Math.max(0, futureSightTime);
+    }
+
+    public void removeFutureSight() {
+        witnessedFutureSight = false;
+        futureSightUser = null;
+        futureSightTime = -1;
     }
 
     /**
@@ -637,12 +671,36 @@ public abstract class Pokemon {
     }
 
     /**
+     * Adjust the number of turns left until Doom Desire
+     * hits.
+     */
+    public void adjustDoomDesireTime() {
+        doomDesireTime--;
+        doomDesireTime = Math.max(0, doomDesireTime);
+    }
+
+    /**
+     * Return the number of turns left until Doom Desire hits.
+     * @return The number of turns left until Doom Desire hits.
+     */
+    public int getDoomDesireTime() {
+        return doomDesireTime;
+    }
+
+    /**
      * Set the Pokemon to receive Doom Desire damage after
      * a few turns.
      */
-    public void receiveDoomDesire() {
+    public void receiveDoomDesire(Pokemon skillUser) {
         witnessedDoomDesire = true;
         doomDesireTime = TOTAL_DOOM_DESIRE_TIME;
+        futureSightUser = skillUser;
+    }
+
+    public void removeDoomDesire() {
+        witnessedDoomDesire = false;
+        futureSightUser = null;
+        doomDesireTime = -1;
     }
 
     /**

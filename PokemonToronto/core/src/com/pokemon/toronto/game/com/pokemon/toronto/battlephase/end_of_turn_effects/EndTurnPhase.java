@@ -10,6 +10,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.ExpPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PhaseUpdaterInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PlayerPokemonFaintPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PoisonCheckPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.HurtByFutureSight;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.HurtByDoomDesire;
 
 /**
  * Created by Gregory on 8/14/2017.
@@ -33,6 +35,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int USE_RAIN = 13;
     private final int USE_SUN = 14;
     private final int DOUBLE_KNOCKOUT = 15;
+    private final int END_GAME = 16;
 
 
     //End turn weather results
@@ -108,7 +111,7 @@ public class EndTurnPhase extends BattlePhase {
         } else if (currentState == CHECK_BLACK_OUT) {
             checkBlackout();
         } else if (currentState == CHECK_FUTURE_SIGHT) {
-            pui.setPhase(new PoisonCheckPhase(pui));
+            checkFutureSight();
         } else if (currentState == FAINT_PLAYER_POKEMON) {
             updateUserFaintAnimation(dt);
         } else if (currentState == USE_SAND) {
@@ -119,6 +122,8 @@ public class EndTurnPhase extends BattlePhase {
             useSunlight();
         } else if (currentState == DOUBLE_KNOCKOUT) {
             pui.finishedBattle();
+        } else if (currentState == END_GAME) {
+            pui.setPhase(new PoisonCheckPhase(pui));
         }
     }
 
@@ -183,6 +188,94 @@ public class EndTurnPhase extends BattlePhase {
             pui.getUserPokemon().adjustAnimationHealth(1);
         } else {
             currentState = stateAfterHealthAdjustment;
+        }
+    }
+
+    private void checkFutureSight() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0 &&
+                (currentPokemon.witnessedFutureSight() ||
+                        currentPokemon.witnessedDoomDesire())) {
+            if (currentPokemon.witnessedFutureSight()) {
+                useFutureSight(currentPokemon);
+            } else { //they witnessed doom desire.
+                //use doom desire
+                useDoomDesire(currentPokemon);
+            }
+        } else {
+            if (usingOnEnemy) {
+                usingOnEnemy = false;
+            } else {
+                currentState = END_GAME;
+            }
+        }
+    }
+
+    private void useFutureSight(Pokemon currentPokemon) {
+        if (currentPokemon.getFutureSightTime() == 0) {
+            HurtByFutureSight futureSight = new HurtByFutureSight();
+            if (futureSight.willHitEnemy(currentPokemon.getFutureSightUser(),
+                    currentPokemon, pui.getField(), null, null, false)) {
+                futureSight.use(currentPokemon.getFutureSightUser(), currentPokemon, pui.getField());
+                text = currentPokemon.getName() + " took the\nFuture Sight attack!";
+            } else {
+                text = currentPokemon.getFutureSightUser().getName()+ "'s future Sight failed.";
+            }
+            currentPokemon.removeFutureSight();
+            finishFutureSightOrDoomDesire(currentPokemon);
+        } else {
+            currentPokemon.adjustFutureSightTime();
+            if (!usingOnEnemy) {
+                currentState = END_GAME;
+            } else {
+                usingOnEnemy = false;
+            }
+        }
+    }
+
+    private void useDoomDesire(Pokemon currentPokemon) {
+        if (currentPokemon.getDoomDesireTime() == 0) {
+            HurtByDoomDesire doomDesire = new HurtByDoomDesire();
+            if (doomDesire.willHitEnemy(currentPokemon.getFutureSightUser(),
+                    currentPokemon, pui.getField(), null, null, false)) {
+                doomDesire.use(currentPokemon.getFutureSightUser(), currentPokemon, pui.getField());
+                text = currentPokemon.getName() + " took the\nDoom Desire attack!";
+            } else {
+                text = currentPokemon.getFutureSightUser().getName()+ "'s Doom Desire failed.";
+            }
+            currentPokemon.removeDoomDesire();
+            finishFutureSightOrDoomDesire(currentPokemon);
+        } else {
+            currentPokemon.adjustDoomDesireTime();
+            if (!usingOnEnemy) {
+                currentState = END_GAME;
+            } else {
+                usingOnEnemy = false;
+            }
+        }
+    }
+
+    private void finishFutureSightOrDoomDesire(Pokemon currentPokemon) {
+        //Determine where to go after using doom desire or future sight.
+        currentState = DISPLAY_TEXT;
+        if (usingOnEnemy) {
+            stateAfterText = ADJUST_ENEMY_HEALTH;
+            if (currentPokemon.getCurrentHealth() == 0) {
+                stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = CHECK_FUTURE_SIGHT;
+            } else {
+                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
+            }
+            usingOnEnemy = false;
+        } else {
+            stateAfterText = ADJUST_PLAYER_HEALTH;
+            if (currentPokemon.getCurrentHealth() == 0) {
+                stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = END_GAME;
+            } else {
+                stateAfterHealthAdjustment = END_GAME;
+            }
+            usingOnEnemy = true;
         }
     }
 

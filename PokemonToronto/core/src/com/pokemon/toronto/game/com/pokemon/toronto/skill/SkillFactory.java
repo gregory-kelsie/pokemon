@@ -28,7 +28,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.StealthRock;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.DoomDesire;
 
 /**
  * Created by Gregory on 6/15/2017.
@@ -65,6 +67,8 @@ public class SkillFactory {
     public static final int TOXIC_SPIKES = 26;
     public static final int STICKY_WEB = 27;
     public static final int HARDEN = 28;
+    public static final int FUTURE_SIGHT = 29;
+    public static final int DOOM_DESIRE = 30;
 
     public SkillFactory() {
 
@@ -132,6 +136,10 @@ public class SkillFactory {
             return new StickyWeb();
         } else if (skillId == HARDEN) {
             return new Harden();
+        } else if (skillId == FUTURE_SIGHT) {
+            return new FutureSight();
+        } else if (skillId == DOOM_DESIRE) {
+            return new DoomDesire();
         }
         else {
             return new Covet();
