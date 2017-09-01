@@ -26,6 +26,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.SkullBash;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Wish;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
@@ -69,6 +70,7 @@ public class SkillFactory {
     public static final int HARDEN = 28;
     public static final int FUTURE_SIGHT = 29;
     public static final int DOOM_DESIRE = 30;
+    public static final int WISH = 31;
 
     public SkillFactory() {
 
@@ -140,6 +142,8 @@ public class SkillFactory {
             return new FutureSight();
         } else if (skillId == DOOM_DESIRE) {
             return new DoomDesire();
+        } else if (skillId == WISH) {
+            return new Wish();
         }
         else {
             return new Covet();

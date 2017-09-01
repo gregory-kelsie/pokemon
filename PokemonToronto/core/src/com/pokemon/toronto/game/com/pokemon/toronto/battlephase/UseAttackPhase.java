@@ -557,7 +557,7 @@ public class UseAttackPhase extends BattlePhase {
             } else if (rand > .19 && rand <= .3) {
                 contactResults = attacker.getName() + " was put to sleep\nfrom " +
                         receiver.getName() + "s Effect Spore.";
-                attacker.setPreStatus(Pokemon.Status.SLEEP);
+                attacker.induceSleep();
             }
         }
     }

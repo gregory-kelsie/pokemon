@@ -105,6 +105,9 @@ public class LoginState extends GameState {
         stage.addActor(textButton);
         stage.addActor(usernameField);
         stage.addActor(passwordField);
+
+        usernameField.setText("spacejam");
+        passwordField.setText("jordans");
     }
 
     private void connectToDatabase() {
@@ -205,10 +208,9 @@ public class LoginState extends GameState {
                         thirdSkill,
                         fourthSkill
                         );
-
                 gsm.addToParty(p);
-                gsm.getGameCallBack().spawnNewGamePokemon();
             }
+            gsm.getGameCallBack().spawnNewGamePokemon();
         } catch (JSONException e) {
             Gdx.app.log("JSONException", e.getMessage());
         }

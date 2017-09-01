@@ -138,6 +138,10 @@ public abstract class Pokemon {
     private boolean isIngrained;
     private boolean isLeechSeeded;
     private boolean hasNightmares;
+    private boolean receivingWish;
+    private int wishTurns;
+    private String wishUser;
+    private final int TOTAL_WISH_TURNS = 1;
 
     private int confusionTime;
     private final int NOT_CONFUSED = 0;
@@ -375,6 +379,7 @@ public abstract class Pokemon {
         isIngrained = false;
         isLeechSeeded = false;
         hasNightmares = false;
+        removeWish();
         tauntTime = -1;
         embargoTime = -1;
         encoreTime = -1;
@@ -396,6 +401,77 @@ public abstract class Pokemon {
         nextTurnSkill = null;
         flying = false; //Fly
         underground = false; //Dig
+    }
+
+    public void receiveTransferrableBattleVariables(Pokemon transferPokemon) {
+        if (transferPokemon.isReceivingWish()) {
+            wishTurns = transferPokemon.getWishTurns();
+            wishUser = transferPokemon.getWishUser();
+            receivingWish = true;
+        }
+        if (transferPokemon.witnessedFutureSight()) {
+            futureSightTime = transferPokemon.getFutureSightTime();
+            witnessedFutureSight = true;
+            futureSightUser = transferPokemon.getFutureSightUser();
+        } else if (transferPokemon.witnessedDoomDesire()) {
+            doomDesireTime = transferPokemon.getDoomDesireTime();
+            witnessedDoomDesire = true;
+            futureSightUser = transferPokemon.getFutureSightUser();
+        }
+
+    }
+    /**
+     * Return whether or not this Pokemon will receive
+     * wish.
+     * @return Whether or not this Pokemon will receive Wish.
+     */
+    public boolean isReceivingWish() {
+        return receivingWish;
+    }
+
+    /**
+     * The number of turns until Wish effects the Pokemon.
+     * @return The number of turns until Wish effects the
+     * Pokemon.
+     */
+    public int getWishTurns() {
+        return wishTurns;
+    }
+
+    /**
+     * Adjust the number of turns left until Wish is
+     * activated.
+     */
+    public void adjustWishTurns() {
+        wishTurns--;
+        wishTurns = Math.max(0, wishTurns);
+    }
+
+    /**
+     * Remove the Wish effect from the Pokemon.
+     */
+    public void removeWish() {
+        receivingWish = false;
+        wishTurns = -1;
+        wishUser = "";
+    }
+
+    /**
+     * Return the name of the Pokemon who used Wish.
+     * @return The name of the Pokemon who used Wish;
+     */
+    public String getWishUser() {
+        return wishUser;
+    }
+
+    /**
+     * Use the Wish effect on the Pokemon.
+     * - They will receive the heal after a turn.
+     */
+    public void receiveWish(String wishUser) {
+        receivingWish = true;
+        wishTurns = TOTAL_WISH_TURNS;
+        this.wishUser = wishUser;
     }
 
     /**

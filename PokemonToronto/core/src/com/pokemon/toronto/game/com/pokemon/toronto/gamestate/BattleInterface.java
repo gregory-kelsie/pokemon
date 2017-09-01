@@ -17,6 +17,7 @@ public interface BattleInterface {
     void setCurrentPokemon(Pokemon poke);
     void switchUserPokemonTextures();
     void removeBattleVariablesFromCurrentPokemon();
+    void transferPositionalBattleVariables(int newCurrentPokemonPosition);
     void playVictoryBgm();
     void stopBgm();
     void playEnemyCry();

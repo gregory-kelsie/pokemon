@@ -923,6 +923,17 @@ public class BattleState extends GameState implements BattleInterface {
         gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
     }
 
+    /**
+     * Transfer the Battle Variables that say even when a Pokemon faints
+     * or switches out (Future Sight, Wish, Doom Desire, etc)
+     * @param newCurrentPokemonPosition The Pokemon receiving the Battle Variables
+     */
+    @Override
+    public void transferPositionalBattleVariables(int newCurrentPokemonPosition) {
+        gsm.getParty().get(newCurrentPokemonPosition).receiveTransferrableBattleVariables(
+                gsm.getParty().get(currentPokemonPosition));
+    }
+
 
 
 }
