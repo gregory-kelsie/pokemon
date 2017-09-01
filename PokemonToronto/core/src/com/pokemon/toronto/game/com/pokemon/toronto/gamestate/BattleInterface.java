@@ -22,4 +22,6 @@ public interface BattleInterface {
     void stopBgm();
     void playEnemyCry();
     void playUserPokemonCry();
+    void setNormalMoveSelectText();
+    void setIngrainText();
 }

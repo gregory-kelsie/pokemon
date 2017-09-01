@@ -38,6 +38,8 @@ public class EndTurnPhase extends BattlePhase {
     private final int END_GAME = 16;
     private final int WISH_STATE = 17;
     private final int HEALING_ABILITIES = 18;
+    private final int AQUA_RING_STATE = 19;
+    private final int INGRAIN_STATE = 20;
 
 
     //End turn weather results
@@ -130,6 +132,10 @@ public class EndTurnPhase extends BattlePhase {
             checkWish();
         } else if (currentState == HEALING_ABILITIES) {
             checkHealingAbilities();
+        } else if (currentState == AQUA_RING_STATE) {
+            checkAquaRing();
+        } else if (currentState == INGRAIN_STATE) {
+            checkIngrain();
         }
     }
 
@@ -199,6 +205,60 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkAquaRing() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0 &&
+                !currentPokemon.hasFullHealth() &&
+                currentPokemon.isEnvelopedInAquaRing()) {
+            text = currentPokemon.getName() + " recovered health\nfrom Aqua Ring.";
+            currentPokemon.addHealth((int)Math.ceil(currentPokemon.getHealthStat() / 16.0));
+            currentState = DISPLAY_TEXT;
+            if (usingOnEnemy) {
+                stateAfterText = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = AQUA_RING_STATE;
+                usingOnEnemy = false;
+            } else {
+                stateAfterText = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = INGRAIN_STATE;
+                usingOnEnemy = true;
+            }
+        } else {
+            if (usingOnEnemy) {
+                usingOnEnemy = false;
+            } else {
+                usingOnEnemy = true;
+                currentState = INGRAIN_STATE;
+            }
+        }
+    }
+
+    private void checkIngrain() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0 &&
+                !currentPokemon.hasFullHealth() &&
+                currentPokemon.isIngrained()) {
+            text = currentPokemon.getName() + " recovered health\nfrom Ingrain.";
+            currentPokemon.addHealth((int)Math.ceil(currentPokemon.getHealthStat() / 16.0));
+            currentState = DISPLAY_TEXT;
+            if (usingOnEnemy) {
+                stateAfterText = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = INGRAIN_STATE;
+                usingOnEnemy = false;
+            } else {
+                stateAfterText = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = END_GAME;
+                usingOnEnemy = true;
+            }
+        } else {
+            if (usingOnEnemy) {
+                usingOnEnemy = false;
+            } else {
+                usingOnEnemy = true;
+                currentState = END_GAME;
+            }
+        }
+    }
+
     private void checkHealingAbilities() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
@@ -228,7 +288,7 @@ public class EndTurnPhase extends BattlePhase {
             stateAfterText = HEALING_ABILITIES;
             usingOnEnemy = false;
         } else {
-            stateAfterText = END_GAME;
+            stateAfterText = AQUA_RING_STATE;
             usingOnEnemy = true;
         }
     }
@@ -238,7 +298,7 @@ public class EndTurnPhase extends BattlePhase {
             usingOnEnemy = false;
         } else {
             usingOnEnemy = true;
-            currentState = END_GAME;
+            currentState = AQUA_RING_STATE;
         }
     }
 

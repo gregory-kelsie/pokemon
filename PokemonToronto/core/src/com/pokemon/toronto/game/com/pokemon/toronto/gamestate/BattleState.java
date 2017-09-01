@@ -91,6 +91,8 @@ public class BattleState extends GameState implements BattleInterface {
     private BattleClickController controller;
     private Field field;
 
+    private String moveSelectText;
+
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         init(gsm, enemyPokemon, bgm);
         startingRoute = -1;
@@ -139,6 +141,7 @@ public class BattleState extends GameState implements BattleInterface {
         battleUpdater = new BattleUpdater(this, battleTextures.getRegularFont());
         pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName(), this);
         controller = new BattleClickController(this);
+        moveSelectText = "What will " + currentPokemon.getName() + " do?";
     }
 
     private void loadCries() {
@@ -318,7 +321,7 @@ public class BattleState extends GameState implements BattleInterface {
             if (!battleUpdater.started()) {
                 if (!battleUpdater.caughtThePokemon()) {
                     if (!currentPokemon.isOutraging() && !currentPokemon.hasNextTurnSkill()) {
-                        battleTextures.getRegularFont().draw(batch, "What will " + currentPokemon.getName() + " do?", 54, 1143);
+                        battleTextures.getRegularFont().draw(batch, moveSelectText, 54, 1143);
                     }
                 }
             } else {
@@ -586,7 +589,7 @@ public class BattleState extends GameState implements BattleInterface {
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
         playUserPokemonCry();
-
+        setNormalMoveSelectText();
         battleTextures.resetSkillButtonTextures(currentPokemon);
 
     }
@@ -596,6 +599,7 @@ public class BattleState extends GameState implements BattleInterface {
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
         battleTextures.resetSkillButtonTextures(currentPokemon);
+        setNormalMoveSelectText();
         playUserPokemonCry();
         battleUpdater.finishedFaintSwitch(currentPokemon);
     }
@@ -869,9 +873,7 @@ public class BattleState extends GameState implements BattleInterface {
         panelPosition = FIRST_PANEL;
     }
 
-    public void setCurrentPokemonPosition(int newPosition) {
-        currentPokemonPosition = newPosition;
-    }
+
 
     public void start(int partyPosition, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
@@ -915,8 +917,14 @@ public class BattleState extends GameState implements BattleInterface {
         return battling;
     }
 
+    public void setCurrentPokemonPosition(int newPosition) {
+        currentPokemonPosition = newPosition;
+    }
 
-    public void setCurrentPokemon(Pokemon poke) { this.currentPokemon = poke; }
+    public void setCurrentPokemon(Pokemon poke) {
+        this.currentPokemon = poke;
+        setNormalMoveSelectText();
+    }
 
     @Override
     public void removeBattleVariablesFromCurrentPokemon() {
@@ -932,6 +940,16 @@ public class BattleState extends GameState implements BattleInterface {
     public void transferPositionalBattleVariables(int newCurrentPokemonPosition) {
         gsm.getParty().get(newCurrentPokemonPosition).receiveTransferrableBattleVariables(
                 gsm.getParty().get(currentPokemonPosition));
+    }
+
+    @Override
+    public void setIngrainText() {
+        moveSelectText = currentPokemon.getName() + " cannot switch out due to Ingrain!";
+    }
+
+    @Override
+    public void setNormalMoveSelectText() {
+        moveSelectText = "What will " + currentPokemon.getName() + " do?";
     }
 
 

@@ -26,6 +26,7 @@ public class BattleClickController {
 
             if (x >= 309 && x <= 776 && y >= 1107 && y <= 1243) {
                 if (model.isOnMainPanel() && !model.startedAttack()) {
+                    model.setNormalMoveSelectText();
                     model.setPanelPosition(model.BATTLE_PANEL);
                     model.playClickSound();
                 }
@@ -40,6 +41,7 @@ public class BattleClickController {
             } else if (x >= 0 && x <= 180 && y >= 1830 && y <= 1920 && model.isOnPartyPanel()) {
                 //Clicked back on pokemon select screen
                 if (!model.isWaitingForNextPokemon()) {
+                    model.setNormalMoveSelectText();
                     model.setPanelPosition(model.FIRST_PANEL);
                     model.playClickSound();
                 }
@@ -136,39 +138,51 @@ public class BattleClickController {
                 }
             } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Run
-                if (model.cameFromSimulator()) { //came from simulator
-                    model.goToRouteState();
-                } else { // came from map
-                    model.goToMainMenuState();
+                if (!model.getCurrentPokemon().isIngrained()) {
+                    if (model.cameFromSimulator()) { //came from simulator
+                        model.goToRouteState();
+                    } else { // came from map
+                        model.goToMainMenuState();
+                    }
+                    model.dispose();
+                } else {
+                    model.setIngrainText();
                 }
-                model.dispose();
             } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && model.isOnPartyPanel() && !model.hasFirstPokemonOnField()) {
                 //First Pokemon
                 if (model.getParty().get(0).getCurrentHealth() > 0) {
-                    model.transferPositionalBattleVariables(0);
-                    model.removeBattleVariablesFromCurrentPokemon();
-                    model.setCurrentPokemonPosition(0);
-                    if (model.isWaitingForNextPokemon()) {
-                        model.switchCurrentPokemon();
+                    if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                        model.setIngrainText();
                     } else {
-                        model.start(0, model.getEnemyPokemon().getSkills().get(0));
+                        model.transferPositionalBattleVariables(0);
+                        model.removeBattleVariablesFromCurrentPokemon();
+                        model.setCurrentPokemonPosition(0);
+                        if (model.isWaitingForNextPokemon()) {
+                            model.switchCurrentPokemon();
+                        } else {
+                            model.start(0, model.getEnemyPokemon().getSkills().get(0));
+                        }
+                        model.setPanelPosition(model.FIRST_PANEL);
                     }
-                    model.setPanelPosition(model.FIRST_PANEL);
                     model.playClickSound();
                 }
             } else if (x >= 594 && x <= 916 && y >= 1268 && y <= 1431 && model.isOnPartyPanel() && !model.hasSecondPokemonOnField()) {
                 //Second Pokemon
                 if (model.getParty().size() > 1) {
                     if (model.getParty().get(1).getCurrentHealth() > 0) {
-                        model.transferPositionalBattleVariables(1);
-                        model.removeBattleVariablesFromCurrentPokemon();
-                        model.setCurrentPokemonPosition(1);
-                        if (model.isWaitingForNextPokemon()) {
-                            model.switchCurrentPokemon();
+                        if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                            model.setIngrainText();
                         } else {
-                            model.start(1, model.getEnemyPokemon().getSkills().get(0));
+                            model.transferPositionalBattleVariables(1);
+                            model.removeBattleVariablesFromCurrentPokemon();
+                            model.setCurrentPokemonPosition(1);
+                            if (model.isWaitingForNextPokemon()) {
+                                model.switchCurrentPokemon();
+                            } else {
+                                model.start(1, model.getEnemyPokemon().getSkills().get(0));
+                            }
+                            model.setPanelPosition(model.FIRST_PANEL);
                         }
-                        model.setPanelPosition(model.FIRST_PANEL);
                         model.playClickSound();
                     }
                 }
@@ -176,66 +190,81 @@ public class BattleClickController {
                 //Third Pokemon
                 if (model.getParty().size() > 2) {
                     if (model.getParty().get(2).getCurrentHealth() > 0) {
-                        model.transferPositionalBattleVariables(2);
-                        model.removeBattleVariablesFromCurrentPokemon();
-                        model.setCurrentPokemonPosition(2);
-                        if (model.isWaitingForNextPokemon()) {
-                            model.switchCurrentPokemon();
+                        if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                            model.setIngrainText();
                         } else {
-                            model.start(2, model.getEnemyPokemon().getSkills().get(0));
+                            model.transferPositionalBattleVariables(2);
+                            model.removeBattleVariablesFromCurrentPokemon();
+                            model.setCurrentPokemonPosition(2);
+                            if (model.isWaitingForNextPokemon()) {
+                                model.switchCurrentPokemon();
+                            } else {
+                                model.start(2, model.getEnemyPokemon().getSkills().get(0));
+                            }
+                            model.setPanelPosition(model.FIRST_PANEL);
                         }
                         model.playClickSound();
-                        model.setPanelPosition(model.FIRST_PANEL);
                     }
                 }
             } else if (x >= 594 && x <= 916 && y >= 1498 && y <= 1662 && model.isOnPartyPanel() && !model.hasFourthPokemonOnField()) {
                 //Fourth Pokemon
                 if (model.getParty().size() > 3) {
                     if (model.getParty().get(3).getCurrentHealth() > 0) {
-                        model.transferPositionalBattleVariables(3);
-                        model.removeBattleVariablesFromCurrentPokemon();
-                        model.setCurrentPokemonPosition(3);
-                        if (model.isWaitingForNextPokemon()) {
-                            model.switchCurrentPokemon();
+                        if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                            model.setIngrainText();
                         } else {
-                            model.start(3, model.getEnemyPokemon().getSkills().get(0));
+                            model.transferPositionalBattleVariables(3);
+                            model.removeBattleVariablesFromCurrentPokemon();
+                            model.setCurrentPokemonPosition(3);
+                            if (model.isWaitingForNextPokemon()) {
+                                model.switchCurrentPokemon();
+                            } else {
+                                model.start(3, model.getEnemyPokemon().getSkills().get(0));
 
+                            }
+                            model.setPanelPosition(model.FIRST_PANEL);
                         }
                         model.playClickSound();
-                        model.setPanelPosition(model.FIRST_PANEL);
                     }
                 }
             } else if (x >= 88 && x <= 411 && y >= 1662 && y <= 1823 && model.isOnPartyPanel() && !model.hasFifthPokemonOnField()) {
                 //Fifth Pokemon
                 if (model.getParty().size() > 4) {
                     if (model.getParty().get(4).getCurrentHealth() > 0) {
-                        model.transferPositionalBattleVariables(4);
-                        model.removeBattleVariablesFromCurrentPokemon();
-                        model.setCurrentPokemonPosition(4);
-                        if (model.isWaitingForNextPokemon()) {
-                            model.switchCurrentPokemon();
+                        if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                            model.setIngrainText();
                         } else {
-                            model.start(4, model.getEnemyPokemon().getSkills().get(0));
+                            model.transferPositionalBattleVariables(4);
+                            model.removeBattleVariablesFromCurrentPokemon();
+                            model.setCurrentPokemonPosition(4);
+                            if (model.isWaitingForNextPokemon()) {
+                                model.switchCurrentPokemon();
+                            } else {
+                                model.start(4, model.getEnemyPokemon().getSkills().get(0));
+                            }
+                            model.setPanelPosition(model.FIRST_PANEL);
                         }
                         model.playClickSound();
-                        model.setPanelPosition(model.FIRST_PANEL);
-
                     }
                 }
             } else if (x >= 594 && x <= 916 && y >= 1749 && y <= 1907 && model.isOnPartyPanel() && !model.hasSixthPokemonOnField()) {
                 //Sixth Pokemon
                 if (model.getParty().size() > 5) {
-                    model.transferPositionalBattleVariables(5);
                     if (model.getParty().get(5).getCurrentHealth() > 0) {
-                        model.removeBattleVariablesFromCurrentPokemon();
-                        model.setCurrentPokemonPosition(5);
-                        if (model.isWaitingForNextPokemon()) {
-                            model.switchCurrentPokemon();
+                        if (model.getCurrentPokemon().isIngrained() && !model.isWaitingForNextPokemon()) {
+                            model.setIngrainText();
                         } else {
-                            model.start(5, model.getEnemyPokemon().getSkills().get(0));
+                            model.transferPositionalBattleVariables(5);
+                            model.removeBattleVariablesFromCurrentPokemon();
+                            model.setCurrentPokemonPosition(5);
+                            if (model.isWaitingForNextPokemon()) {
+                                model.switchCurrentPokemon();
+                            } else {
+                                model.start(5, model.getEnemyPokemon().getSkills().get(0));
+                            }
+                            model.setPanelPosition(model.FIRST_PANEL);
                         }
                         model.playClickSound();
-                        model.setPanelPosition(model.FIRST_PANEL);
                     }
                 }
 

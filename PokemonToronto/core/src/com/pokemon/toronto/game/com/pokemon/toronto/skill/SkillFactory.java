@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
@@ -32,6 +33,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.StealthRock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.DoomDesire;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.AquaRing;
 
 /**
  * Created by Gregory on 6/15/2017.
@@ -71,6 +73,8 @@ public class SkillFactory {
     public static final int FUTURE_SIGHT = 29;
     public static final int DOOM_DESIRE = 30;
     public static final int WISH = 31;
+    public static final int AQUA_RING = 32;
+    public static final int INGRAIN = 33;
 
     public SkillFactory() {
 
@@ -144,6 +148,10 @@ public class SkillFactory {
             return new DoomDesire();
         } else if (skillId == WISH) {
             return new Wish();
+        } else if (skillId == AQUA_RING) {
+            return new AquaRing();
+        } else if (skillId == INGRAIN) {
+            return new Ingrain();
         }
         else {
             return new Covet();
