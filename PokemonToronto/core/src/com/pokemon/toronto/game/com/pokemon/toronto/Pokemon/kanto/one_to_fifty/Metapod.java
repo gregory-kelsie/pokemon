@@ -80,8 +80,14 @@ public class Metapod extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.HARDEN);
         levelUpSkills.put(0, beginnerSkills);
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.HARDEN);
     }
 
     /**

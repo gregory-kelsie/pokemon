@@ -17,6 +17,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.FocusEnergy;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Growl;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Harden;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Leer;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Scratch;
@@ -63,6 +64,7 @@ public class SkillFactory {
     public static final int SPIKES = 25;
     public static final int TOXIC_SPIKES = 26;
     public static final int STICKY_WEB = 27;
+    public static final int HARDEN = 28;
 
     public SkillFactory() {
 
@@ -128,6 +130,8 @@ public class SkillFactory {
             return new ToxicSpikes();
         } else if (skillId == STICKY_WEB) {
             return new StickyWeb();
+        } else if (skillId == HARDEN) {
+            return new Harden();
         }
         else {
             return new Covet();
