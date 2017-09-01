@@ -204,7 +204,7 @@ public abstract class Pokemon {
      * STATUS_FREE is when the Pokemon has no condition.
      */
     public enum Status {
-        STATUS_FREE(0), POISON(1), BURN(2), PARALYSIS(3), FROZEN(4), SLEEP(5);
+        STATUS_FREE(0), POISON(1), BURN(2), PARALYSIS(3), FROZEN(4), SLEEP(5), RECOVER(6);
         private final int value;
         private Status(int value) {
             this.value = value;
@@ -3008,7 +3008,12 @@ public abstract class Pokemon {
      */
     public void transferPreStatus() {
         if (preStatus != Status.STATUS_FREE) {
-            status = preStatus;
+            if (preStatus == Status.RECOVER) {
+                status = Status.STATUS_FREE;
+                sleepTime = 0;
+            } else {
+                status = preStatus;
+            }
             preStatus = Status.STATUS_FREE;
         }
     }

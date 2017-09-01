@@ -37,6 +37,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int DOUBLE_KNOCKOUT = 15;
     private final int END_GAME = 16;
     private final int WISH_STATE = 17;
+    private final int HEALING_ABILITIES = 18;
 
 
     //End turn weather results
@@ -127,6 +128,8 @@ public class EndTurnPhase extends BattlePhase {
             pui.setPhase(new PoisonCheckPhase(pui));
         } else if (currentState == WISH_STATE) {
             checkWish();
+        } else if (currentState == HEALING_ABILITIES) {
+            checkHealingAbilities();
         }
     }
 
@@ -140,6 +143,8 @@ public class EndTurnPhase extends BattlePhase {
             }
         }
         if (counter >= 1.5) {
+            pui.getEnemyPokemon().transferPreStatus();
+            pui.getUserPokemon().transferPreStatus();
             counter = 0;
             textPosition = 0;
             currentState = stateAfterText;
@@ -194,6 +199,49 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkHealingAbilities() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
+                currentPokemon.getAbility() == Pokemon.Ability.SHED_SKIN) {
+            double rand = Math.random();
+            if (rand <= .3) {
+                text = currentPokemon.getName() + " shed its skin\nand removed all status problems!";
+                currentPokemon.setPreStatus(Pokemon.Status.RECOVER);
+                setNextStateAfterHealingAbilityUse();
+            } else {
+              goToNextStateFromHealingAbilities();
+            }
+        } else if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
+                currentPokemon.getAbility() == Pokemon.Ability.HYDRATION &&
+                pui.getField().getWeatherType() == WeatherType.RAIN) {
+            text = currentPokemon.getName() + " removed its status problem\nusing the ability Hydration!";
+            currentPokemon.setPreStatus(Pokemon.Status.RECOVER);
+            setNextStateAfterHealingAbilityUse();
+        } else {
+            goToNextStateFromHealingAbilities();
+        }
+    }
+
+    private void setNextStateAfterHealingAbilityUse() {
+        currentState = DISPLAY_TEXT;
+        if (usingOnEnemy) {
+            stateAfterText = HEALING_ABILITIES;
+            usingOnEnemy = false;
+        } else {
+            stateAfterText = END_GAME;
+            usingOnEnemy = true;
+        }
+    }
+
+    private void goToNextStateFromHealingAbilities() {
+        if (usingOnEnemy) {
+            usingOnEnemy = false;
+        } else {
+            usingOnEnemy = true;
+            currentState = END_GAME;
+        }
+    }
+
     private void checkWish() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0 && currentPokemon.isReceivingWish()) {
@@ -209,7 +257,7 @@ public class EndTurnPhase extends BattlePhase {
 
                 } else {
                     stateAfterText = ADJUST_PLAYER_HEALTH;
-                    stateAfterHealthAdjustment = END_GAME;
+                    stateAfterHealthAdjustment = HEALING_ABILITIES;
                     usingOnEnemy = true;
                 }
 
@@ -227,7 +275,7 @@ public class EndTurnPhase extends BattlePhase {
             usingOnEnemy = false;
         } else {
             usingOnEnemy = true;
-            currentState = END_GAME;
+            currentState = HEALING_ABILITIES;
         }
     }
 
@@ -267,7 +315,7 @@ public class EndTurnPhase extends BattlePhase {
         } else {
             currentPokemon.adjustFutureSightTime();
             if (!usingOnEnemy) {
-                currentState = END_GAME;
+                currentState = WISH_STATE;
             } else {
                 usingOnEnemy = false;
             }
@@ -289,7 +337,7 @@ public class EndTurnPhase extends BattlePhase {
         } else {
             currentPokemon.adjustDoomDesireTime();
             if (!usingOnEnemy) {
-                currentState = END_GAME;
+                currentState = WISH_STATE;
             } else {
                 usingOnEnemy = false;
             }
@@ -312,9 +360,9 @@ public class EndTurnPhase extends BattlePhase {
             stateAfterText = ADJUST_PLAYER_HEALTH;
             if (currentPokemon.getCurrentHealth() == 0) {
                 stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = END_GAME;
+                stateAfterNotBlackingOut = WISH_STATE;
             } else {
-                stateAfterHealthAdjustment = END_GAME;
+                stateAfterHealthAdjustment = WISH_STATE;
             }
             usingOnEnemy = true;
         }
