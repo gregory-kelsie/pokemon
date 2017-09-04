@@ -37,9 +37,9 @@ public class SpeedCheckPhase extends BattlePhase {
             double userSpeed = userPokemon.getSpeedStat();
             int stage = userPokemon.getSpeedStage();
             if (stage > 0) {
-                userSpeed *= ((2 + stage) / 2);
+                userSpeed = userSpeed * ((2.0 + stage) / 2.0);
             } else if (stage < 0) {
-                userSpeed *= (2 / (Math.abs(stage) + 2));
+                userSpeed = userSpeed * (2.0 / (Math.abs(stage) + 2.0));
             }
             if (userPokemon.isParalyzed()) {
                 userSpeed *= 0.5;
