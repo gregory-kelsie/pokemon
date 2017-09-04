@@ -186,7 +186,11 @@ public class BattleTextures {
             return new Texture("battle/skillBorders/steel.png");
         } else if (type == Pokemon.Type.WATER) {
             return new Texture("battle/skillBorders/water.png");
-        } else {
+        }
+        else if (type == Pokemon.Type.FAIRY) {
+            return new Texture("battle/skillBorders/fairy.png");
+        }
+        else {
             return new Texture("battle/skillBorders/normal.png");
         }
     }

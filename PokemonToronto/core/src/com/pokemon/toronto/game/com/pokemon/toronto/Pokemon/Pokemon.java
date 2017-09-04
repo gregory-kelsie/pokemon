@@ -679,6 +679,13 @@ public abstract class Pokemon {
     }
 
     /**
+     * Remove Leech Seed from the Pokemon.
+     */
+    public void removeLeechSeed() {
+        isLeechSeeded = false;
+    }
+
+    /**
      * Envelop the Pokemon in Aqua Ring.
      */
     public void receiveAquaRing() {

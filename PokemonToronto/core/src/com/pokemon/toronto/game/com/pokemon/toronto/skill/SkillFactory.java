@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeechSeed;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
@@ -75,6 +76,7 @@ public class SkillFactory {
     public static final int WISH = 31;
     public static final int AQUA_RING = 32;
     public static final int INGRAIN = 33;
+    public static final int LEECH_SEED = 34;
 
     public SkillFactory() {
 
@@ -152,6 +154,8 @@ public class SkillFactory {
             return new AquaRing();
         } else if (skillId == INGRAIN) {
             return new Ingrain();
+        } else if (skillId == LEECH_SEED) {
+            return new LeechSeed();
         }
         else {
             return new Covet();

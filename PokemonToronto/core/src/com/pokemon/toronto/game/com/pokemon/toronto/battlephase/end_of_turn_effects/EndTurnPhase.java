@@ -40,6 +40,8 @@ public class EndTurnPhase extends BattlePhase {
     private final int HEALING_ABILITIES = 18;
     private final int AQUA_RING_STATE = 19;
     private final int INGRAIN_STATE = 20;
+    private final int LEECH_SEED = 21;
+    private final int RECEIVE_LEECH_SEED_DRAIN = 22;
 
 
     //End turn weather results
@@ -65,6 +67,10 @@ public class EndTurnPhase extends BattlePhase {
 
     private boolean skipUser;
     private boolean skipEnemy;
+
+    //Keep track of how much health was drained when
+    //leech seed was used.
+    private int leechSeedDrain;
 
     public EndTurnPhase(PhaseUpdaterInterface pui) {
         super(pui);
@@ -136,6 +142,10 @@ public class EndTurnPhase extends BattlePhase {
             checkAquaRing();
         } else if (currentState == INGRAIN_STATE) {
             checkIngrain();
+        } else if (currentState == LEECH_SEED) {
+            checkLeechSeed();
+        } else if (currentState == RECEIVE_LEECH_SEED_DRAIN) {
+            receiveLeechSeedDrain();
         }
     }
 
@@ -205,6 +215,78 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkLeechSeed() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0 && currentPokemon.isSeeded()) {
+            currentState = DISPLAY_TEXT;
+            text = currentPokemon.getName() + " lost health\nfrom Leech Seed.";
+            leechSeedDrain = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+            if (leechSeedDrain > currentPokemon.getCurrentHealth()) {
+                leechSeedDrain = currentPokemon.getCurrentHealth();
+            }
+            currentPokemon.subtractHealth(leechSeedDrain);
+            stateAfterText = ADJUST_ENEMY_HEALTH;
+            if (currentPokemon.getCurrentHealth() == 0) {
+                if (usingOnEnemy) {
+                    stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
+                    stateAfterFaint = RECEIVE_LEECH_SEED_DRAIN;
+                } else {
+                    stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
+                    stateAfterNotBlackingOut = RECEIVE_LEECH_SEED_DRAIN;
+                }
+            } else {
+                if (usingOnEnemy) {
+                    stateAfterHealthAdjustment = RECEIVE_LEECH_SEED_DRAIN;
+                } else {
+                    stateAfterHealthAdjustment = RECEIVE_LEECH_SEED_DRAIN;
+                }
+            }
+        } else {
+            if (usingOnEnemy) {
+                //No Leech seed on enemy so check it on the Player.
+                usingOnEnemy = false;
+            } else {
+                //No leech seed on player so go to next check.
+                currentState = END_GAME;
+            }
+        }
+    }
+
+    private void receiveLeechSeedDrain() {
+        Pokemon drainer;
+        if (usingOnEnemy) {
+            drainer = pui.getUserPokemon();
+        } else {
+            drainer = pui.getEnemyPokemon();
+        }
+
+        if (!drainer.hasFullHealth()) {
+            drainer.addHealth(leechSeedDrain);
+            currentState = DISPLAY_TEXT;
+            text = drainer.getName() + " recovered some health\nfrom Leech Seed.";
+            //Note that here usingOnEnemy means that the enemy takes damage from leech seed
+            if (usingOnEnemy) {
+                stateAfterText = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = LEECH_SEED;
+                usingOnEnemy = false;
+            } else {
+                stateAfterText = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = END_GAME;
+                usingOnEnemy = true;
+            }
+        } else {
+            //No drain is required so move to the next check.
+            if (usingOnEnemy) { //Check the other Pokemon
+                usingOnEnemy = false;
+                currentState = LEECH_SEED;
+            } else { //Go to the next check
+                usingOnEnemy = true;
+                currentState = END_GAME;
+            }
+        }
+
+    }
+
     private void checkAquaRing() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0 &&
@@ -246,7 +328,7 @@ public class EndTurnPhase extends BattlePhase {
                 usingOnEnemy = false;
             } else {
                 stateAfterText = ADJUST_PLAYER_HEALTH;
-                stateAfterHealthAdjustment = END_GAME;
+                stateAfterHealthAdjustment = LEECH_SEED;
                 usingOnEnemy = true;
             }
         } else {
@@ -254,7 +336,7 @@ public class EndTurnPhase extends BattlePhase {
                 usingOnEnemy = false;
             } else {
                 usingOnEnemy = true;
-                currentState = END_GAME;
+                currentState = LEECH_SEED;
             }
         }
     }
