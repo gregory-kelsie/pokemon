@@ -48,6 +48,7 @@ public class SleepCheckPhase extends BattlePhase {
         initUserAndSkill();
         if (sleepingPokemon.getStatus() == Pokemon.Status.SLEEP &&
                 sleepingPokemon.getSleepTime() == 0) {
+            sleepingPokemon.removeNightmare();
             currentState = WOKE_UP;
             text = sleepingPokemon.getName() + " woke up!";
         } else if (sleepingPokemon.getStatus() == Pokemon.Status.SLEEP &&

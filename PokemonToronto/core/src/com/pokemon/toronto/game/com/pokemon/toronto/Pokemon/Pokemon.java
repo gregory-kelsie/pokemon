@@ -637,6 +637,11 @@ public abstract class Pokemon {
     }
 
     /**
+     * Remove Nightmares from the Pokemon.
+     */
+    public void removeNightmare() { hasNightmares = false; }
+
+    /**
      * Return whether or not the Pokemon is effected by
      * Nightmare.
      * @return Whether or not the Pokemon is effected by
@@ -873,11 +878,11 @@ public abstract class Pokemon {
         preStatus = Status.SLEEP;
         double rand = Math.random();
         if (rand <= .33) {
-            sleepTime = 1;
-        } else if (rand <= .67) {
             sleepTime = 2;
-        } else {
+        } else if (rand <= .67) {
             sleepTime = 3;
+        } else {
+            sleepTime = 4;
         }
     }
 

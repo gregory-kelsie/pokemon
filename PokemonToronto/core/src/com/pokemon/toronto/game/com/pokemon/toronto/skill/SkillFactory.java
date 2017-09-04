@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Nightmare;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeechSeed;
@@ -29,6 +30,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TailWhip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Wish;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
@@ -77,6 +79,8 @@ public class SkillFactory {
     public static final int AQUA_RING = 32;
     public static final int INGRAIN = 33;
     public static final int LEECH_SEED = 34;
+    public static final int POISON_POWDER = 35;
+    public static final int NIGHTMARE = 36;
 
     public SkillFactory() {
 
@@ -156,6 +160,10 @@ public class SkillFactory {
             return new Ingrain();
         } else if (skillId == LEECH_SEED) {
             return new LeechSeed();
+        } else if (skillId == POISON_POWDER) {
+            return new PoisonPowder();
+        } else if (skillId == NIGHTMARE) {
+            return new Nightmare();
         }
         else {
             return new Covet();

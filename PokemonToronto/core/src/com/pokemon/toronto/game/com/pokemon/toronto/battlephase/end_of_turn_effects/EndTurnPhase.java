@@ -42,6 +42,8 @@ public class EndTurnPhase extends BattlePhase {
     private final int INGRAIN_STATE = 20;
     private final int LEECH_SEED = 21;
     private final int RECEIVE_LEECH_SEED_DRAIN = 22;
+    private final int NEGATIVE_STATUS = 23;
+    private final int NIGHTMARES = 24;
 
 
     //End turn weather results
@@ -133,7 +135,20 @@ public class EndTurnPhase extends BattlePhase {
         } else if (currentState == DOUBLE_KNOCKOUT) {
             pui.finishedBattle();
         } else if (currentState == END_GAME) {
-            pui.setPhase(new PoisonCheckPhase(pui));
+            //pui.setPhase(new PoisonCheckPhase(pui));
+            if (pui.getEnemyPokemon().getCurrentHealth() == 0 &&
+                    pui.getUserPokemon().getCurrentHealth() > 0) {
+                pui.setPhase(new ExpPhase(pui));
+            } else if (pui.getEnemyPokemon().getCurrentHealth() > 0 &&
+                    pui.getUserPokemon().getCurrentHealth() > 0) {
+                pui.endBattle();
+            } else {
+                if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
+                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                } else if (!pui.playerHasMorePokemon()) {
+                    pui.setPhase(new BlackedOutPhase(pui));
+                }
+            }
         } else if (currentState == WISH_STATE) {
             checkWish();
         } else if (currentState == HEALING_ABILITIES) {
@@ -146,6 +161,10 @@ public class EndTurnPhase extends BattlePhase {
             checkLeechSeed();
         } else if (currentState == RECEIVE_LEECH_SEED_DRAIN) {
             receiveLeechSeedDrain();
+        } else if (currentState == NEGATIVE_STATUS) {
+            checkNegativeStatus();
+        } else if (currentState == NIGHTMARES) {
+            checkNightmares();
         }
     }
 
@@ -215,6 +234,126 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkNightmares() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.hasNightmares()) {
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+                currentPokemon.subtractHealth(damage);
+                text = currentPokemon.getName() + " is locked in a nightmare!";
+                adjustNightmareStates(currentPokemon);
+            } else {
+                noNightmares();
+            }
+        } else {
+            noNightmares();
+        }
+    }
+    private void adjustNightmareStates(Pokemon currentPokemon) {
+        if (currentPokemon.getCurrentHealth() == 0) {
+            //Fainted.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = NIGHTMARES;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = END_GAME;
+                usingOnEnemy = true;
+            }
+        } else {
+            //Didn't faint.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = NIGHTMARES;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = END_GAME;
+                usingOnEnemy = true;
+            }
+        }
+    }
+
+    private void noNightmares() {
+        if (usingOnEnemy) {
+            usingOnEnemy = false;
+        } else {
+            usingOnEnemy = true;
+            currentState = END_GAME;
+        }
+    }
+    private void checkNegativeStatus() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            //TODO: Implement Poison Heal
+            if (currentPokemon.getStatus() == Pokemon.Status.POISON) {
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                currentPokemon.subtractHealth(damage);
+                text = currentPokemon.getName() + " was hurt by poison.";
+                adjustNegativeStatusStates(currentPokemon);
+            } else if (currentPokemon.getStatus() == Pokemon.Status.BURN) {
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                currentPokemon.subtractHealth(damage);
+                pui.playPoisonSound();
+                text = currentPokemon.getName() + " was hurt by burn.";
+                adjustNegativeStatusStates(currentPokemon);
+            } else {
+                noNegativeStatus();
+            }
+        } else {
+            noNegativeStatus();
+        }
+    }
+
+    private void adjustNegativeStatusStates(Pokemon currentPokemon) {
+        if (currentPokemon.getCurrentHealth() == 0) {
+            //Fainted.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = NEGATIVE_STATUS;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = NIGHTMARES;
+                usingOnEnemy = true;
+            }
+        } else {
+            //Didn't faint.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = NEGATIVE_STATUS;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = NIGHTMARES;
+                usingOnEnemy = true;
+            }
+        }
+        pui.playPoisonSound();
+    }
+
+    private void noNegativeStatus() {
+        if (usingOnEnemy) {
+            usingOnEnemy = false;
+        } else {
+            usingOnEnemy = true;
+            currentState = NIGHTMARES;
+        }
+    }
+
     private void checkLeechSeed() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0 && currentPokemon.isSeeded()) {
@@ -247,7 +386,8 @@ public class EndTurnPhase extends BattlePhase {
                 usingOnEnemy = false;
             } else {
                 //No leech seed on player so go to next check.
-                currentState = END_GAME;
+                usingOnEnemy = true;
+                currentState = NEGATIVE_STATUS;
             }
         }
     }
@@ -271,7 +411,7 @@ public class EndTurnPhase extends BattlePhase {
                 usingOnEnemy = false;
             } else {
                 stateAfterText = ADJUST_ENEMY_HEALTH;
-                stateAfterHealthAdjustment = END_GAME;
+                stateAfterHealthAdjustment = NEGATIVE_STATUS;
                 usingOnEnemy = true;
             }
         } else {
@@ -281,7 +421,7 @@ public class EndTurnPhase extends BattlePhase {
                 currentState = LEECH_SEED;
             } else { //Go to the next check
                 usingOnEnemy = true;
-                currentState = END_GAME;
+                currentState = NEGATIVE_STATUS;
             }
         }
 
