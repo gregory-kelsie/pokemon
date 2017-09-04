@@ -1,6 +1,5 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -450,8 +449,13 @@ public class UseAttackPhase extends BattlePhase {
                 attackerSubField = pui.getField().getOpponentField();
                 receiverSubField = pui.getField().getPlayerField();
             }
-            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                    attackerSubField, receiverSubField, firstAttack); //Override
+            if (attackerIsUser) {
+                battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                        attackerSubField, receiverSubField, firstAttack, pui.getPlayerParty()); //Override
+            } else {
+                battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                        attackerSubField, receiverSubField, firstAttack, new ArrayList<Pokemon>()); //Override
+            }
             updatingAnimation = true;
             state = -1; //reset state.
             if (attackerIsUser) {

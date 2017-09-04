@@ -37,14 +37,15 @@ public class SelfDestruct extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param field The field the battle is on.
+     * @param skillUserParty
      * @return Thunder Shock's move results.
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
         List<String> results;
 
         if (effectsEnemy(enemyPokemon)) {
-            results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
+            results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack, skillUserParty);
         } else {
             results = new ArrayList<String>();
             results.add("It does not effect " + enemyPokemon.getName() + "...");

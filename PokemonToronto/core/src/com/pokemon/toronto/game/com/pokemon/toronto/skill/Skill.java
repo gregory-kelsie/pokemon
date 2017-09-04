@@ -212,13 +212,14 @@ public abstract class Skill {
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
+     * @param skillUserParty The party for the skill user.
      * @return List of Strings that display the result of
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon,
                             Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack) {
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
         return null;
     }
 

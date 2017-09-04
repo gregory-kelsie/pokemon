@@ -7,7 +7,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Curse;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Nightmare;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Aromatherapy;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeechSeed;
@@ -81,6 +83,8 @@ public class SkillFactory {
     public static final int LEECH_SEED = 34;
     public static final int POISON_POWDER = 35;
     public static final int NIGHTMARE = 36;
+    public static final int CURSE = 37;
+    public static final int AROMATHERAPY = 38;
 
     public SkillFactory() {
 
@@ -164,6 +168,10 @@ public class SkillFactory {
             return new PoisonPowder();
         } else if (skillId == NIGHTMARE) {
             return new Nightmare();
+        } else if (skillId == CURSE) {
+            return new Curse();
+        } else if (skillId == AROMATHERAPY) {
+            return new Aromatherapy();
         }
         else {
             return new Covet();

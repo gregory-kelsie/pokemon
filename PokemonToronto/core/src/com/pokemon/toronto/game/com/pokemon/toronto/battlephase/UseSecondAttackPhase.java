@@ -1,15 +1,12 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
-import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Gregory on 7/31/2017.
@@ -56,8 +53,13 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                     if (absorbResult.hasAbsorbed()) {
                         battleResults = absorbResult.getAbsorbResult();
                     } else {
-                        battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                                attackerSubField, receiverSubField,false);
+                        if (attackerIsUser) {
+                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                                    attackerSubField, receiverSubField, false, pui.getPlayerParty());
+                        } else {
+                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
+                                    attackerSubField, receiverSubField, false, new ArrayList<Pokemon>());
+                        }
                     }
                     if (attackerIsUser) {
                         animation = usedSkill.getAnimation(PLAYER_SIDE_ANIMATION);

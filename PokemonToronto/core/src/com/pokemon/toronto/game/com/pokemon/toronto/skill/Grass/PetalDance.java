@@ -36,10 +36,11 @@ public class PetalDance extends DamageSkill {
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
+     * @param skillUserParty
      * @return The results of using the move.
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
         //Use the damage part of the move.
         if (!skillUser.isOutraging()) {
             double rand = Math.random();
@@ -52,7 +53,7 @@ public class PetalDance extends DamageSkill {
             skillUser.activateOutrage(this, turns);
         }
         List<String> results = super.use(skillUser, enemyPokemon, field,
-                userField, enemyField, isFirstAttack);
+                userField, enemyField, isFirstAttack, skillUserParty);
 
         skillUser.reduceOutrageTime();
         if (skillUser.getOutrageTime() == 0) {

@@ -44,6 +44,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int RECEIVE_LEECH_SEED_DRAIN = 22;
     private final int NEGATIVE_STATUS = 23;
     private final int NIGHTMARES = 24;
+    private final int CURSE = 25;
 
 
     //End turn weather results
@@ -165,6 +166,8 @@ public class EndTurnPhase extends BattlePhase {
             checkNegativeStatus();
         } else if (currentState == NIGHTMARES) {
             checkNightmares();
+        } else if (currentState == CURSE) {
+            checkCurse();
         }
     }
 
@@ -234,6 +237,63 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkCurse() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.isCursed()) {
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+                currentPokemon.subtractHealth(damage);
+                text = currentPokemon.getName() + " is afflicted by Curse!";
+                adjustCurseStates(currentPokemon);
+            } else {
+                noCurse();
+            }
+        } else {
+            noCurse();
+        }
+    }
+    private void adjustCurseStates(Pokemon currentPokemon) {
+        if (currentPokemon.getCurrentHealth() == 0) {
+            //Fainted.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
+                stateAfterFaint = CURSE;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
+                stateAfterNotBlackingOut = END_GAME;
+                usingOnEnemy = true;
+            }
+        } else {
+            //Didn't faint.
+            if (usingOnEnemy) {
+                currentState = ADJUST_ENEMY_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = CURSE;
+                usingOnEnemy = false;
+            } else {
+                currentState = ADJUST_PLAYER_HEALTH;
+                stateAfterHealthAdjustment = DISPLAY_TEXT;
+                stateAfterText = END_GAME;
+                usingOnEnemy = true;
+            }
+        }
+    }
+
+    private void noCurse() {
+        if (usingOnEnemy) {
+            usingOnEnemy = false;
+        } else {
+            usingOnEnemy = true;
+            currentState = END_GAME;
+        }
+    }
+
+
     private void checkNightmares() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0) {
@@ -262,7 +322,7 @@ public class EndTurnPhase extends BattlePhase {
                 currentState = ADJUST_PLAYER_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
                 stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = END_GAME;
+                stateAfterNotBlackingOut = CURSE;
                 usingOnEnemy = true;
             }
         } else {
@@ -275,7 +335,7 @@ public class EndTurnPhase extends BattlePhase {
             } else {
                 currentState = ADJUST_PLAYER_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = END_GAME;
+                stateAfterText = CURSE;
                 usingOnEnemy = true;
             }
         }
@@ -286,9 +346,10 @@ public class EndTurnPhase extends BattlePhase {
             usingOnEnemy = false;
         } else {
             usingOnEnemy = true;
-            currentState = END_GAME;
+            currentState = CURSE;
         }
     }
+
     private void checkNegativeStatus() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0) {

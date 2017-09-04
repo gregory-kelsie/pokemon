@@ -34,11 +34,12 @@ public class Ingrain extends Skill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param field The field of the battle.
+     * @param skillUserParty
      * @return Ingrain's move results.
      */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack) {
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
         List<String> results = new ArrayList<String>();
         skillUser.receiveIngrain();
         results.add(skillUser.getName() + " planted its roots!");

@@ -369,6 +369,20 @@ public class BattleState extends GameState implements BattleInterface {
                     xPos, yPos, 128, 128);
         }
     }
+
+    private void drawStatusTexture(SpriteBatch batch, int partyPosition, int statusX, int statusY) {
+        if (gsm.getParty().get(partyPosition).getStatus() == Pokemon.Status.BURN) {
+            batch.draw(battleTextures.getBurnTexture(), statusX, statusY, 80, 40);
+        } else if (gsm.getParty().get(partyPosition).getStatus() == Pokemon.Status.POISON) {
+            batch.draw(battleTextures.getPoisonTexture(), statusX, statusY, 80, 40);
+        } else if (gsm.getParty().get(partyPosition).getStatus() == Pokemon.Status.FROZEN) {
+            batch.draw(battleTextures.getFrozenTexture(), statusX, statusY, 80, 40);
+        } else if (gsm.getParty().get(partyPosition).getStatus() == Pokemon.Status.PARALYSIS) {
+            batch.draw(battleTextures.getParalysisTexture(), statusX, statusY, 80, 40);
+        } else if (gsm.getParty().get(partyPosition).getStatus() == Pokemon.Status.SLEEP) {
+            batch.draw(battleTextures.getSleepTexture(), statusX, statusY, 80, 40);
+        }
+    }
     private void drawPokemonPanels(SpriteBatch batch) {
         batch.draw(battleTextures.getPokemonPanel(), 30, 577);
         batch.draw(battleTextures.getHealthBorder(), 146, 620);
@@ -376,6 +390,7 @@ public class BattleState extends GameState implements BattleInterface {
                 (1.0 * gsm.getParty().get(0).getCurrentHealth() / gsm.getParty().get(0).getHealthStat())), 25);
         battleTextures.getSmallFont().draw(batch, gsm.getParty().get(0).getName() + "\nLv. " +
                 gsm.getParty().get(0).getLevel(), 239, 748);
+        drawStatusTexture(batch, 0, 380, 668);
         if (gsm.getParty().size() > 1) {
             batch.draw(battleTextures.getPokemonPanel(), 490, 477);
             batch.draw(battleTextures.getHealthBorder(), 600, 524);
@@ -383,6 +398,7 @@ public class BattleState extends GameState implements BattleInterface {
                     (1.0 * gsm.getParty().get(1).getCurrentHealth() / gsm.getParty().get(1).getHealthStat())), 25);
             battleTextures.getSmallFont().draw(batch, gsm.getParty().get(1).getName() + "\nLv. " +
                     gsm.getParty().get(1).getLevel(), 700, 648);
+            drawStatusTexture(batch, 1, 850, 568);
             if (gsm.getParty().size() > 2) {
                 batch.draw(battleTextures.getPokemonPanel(), 30, 352);
                 batch.draw(battleTextures.getHealthBorder(), 146, 393);
@@ -390,6 +406,7 @@ public class BattleState extends GameState implements BattleInterface {
                         (1.0 * gsm.getParty().get(2).getCurrentHealth() / gsm.getParty().get(2).getHealthStat())), 25);
                 battleTextures.getSmallFont().draw(batch, gsm.getParty().get(2).getName() + "\nLv. " +
                         gsm.getParty().get(2).getLevel(), 239, 523);
+                drawStatusTexture(batch, 2, 380, 443);
                 if (gsm.getParty().size() > 3) {
                     batch.draw(battleTextures.getPokemonPanel(), 490, 252);
                     batch.draw(battleTextures.getHealthBorder(), 600, 295);
@@ -397,6 +414,7 @@ public class BattleState extends GameState implements BattleInterface {
                             (1.0 * gsm.getParty().get(3).getCurrentHealth() / gsm.getParty().get(3).getHealthStat())), 25);
                     battleTextures.getSmallFont().draw(batch, gsm.getParty().get(3).getName() + "\nLv. " +
                             gsm.getParty().get(3).getLevel(), 700, 423);
+                    drawStatusTexture(batch, 3, 850, 343);
                     if (gsm.getParty().size() > 4) {
                         batch.draw(battleTextures.getPokemonPanel(), 30, 127);
                         batch.draw(battleTextures.getHealthBorder(), 146, 165);
@@ -404,6 +422,7 @@ public class BattleState extends GameState implements BattleInterface {
                                 (1.0 * gsm.getParty().get(4).getCurrentHealth() / gsm.getParty().get(4).getHealthStat())), 25);
                         battleTextures.getSmallFont().draw(batch, gsm.getParty().get(4).getName() + "\nLv. " +
                                 gsm.getParty().get(4).getLevel(), 239, 298);
+                        drawStatusTexture(batch, 4, 380, 218);
                         if (gsm.getParty().size() > 5) {
                             batch.draw(battleTextures.getPokemonPanel(), 490, 27);
                             batch.draw(battleTextures.getHealthBorder(), 600, 69);
@@ -411,6 +430,7 @@ public class BattleState extends GameState implements BattleInterface {
                                     (1.0 * gsm.getParty().get(5).getCurrentHealth() / gsm.getParty().get(5).getHealthStat())), 25);
                             battleTextures.getSmallFont().draw(batch, gsm.getParty().get(5).getName() + "\nLv. " +
                                     gsm.getParty().get(5).getLevel(), 700, 198);
+                            drawStatusTexture(batch, 0, 850, 118);
                         }
                     }
                 }

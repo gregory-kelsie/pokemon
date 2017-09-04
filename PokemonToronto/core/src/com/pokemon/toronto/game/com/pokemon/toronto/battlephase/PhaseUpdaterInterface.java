@@ -5,6 +5,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
+import java.util.List;
+
 /**
  * Created by Gregory on 7/30/2017.
  */
@@ -16,6 +18,7 @@ public interface PhaseUpdaterInterface {
     boolean isUserPokemonFirstAttacker();
     Pokemon getUserPokemon();
     Pokemon getEnemyPokemon();
+    List<Pokemon> getPlayerParty();
     Skill getUserSkill();
     Skill getEnemySkill();
     boolean playerHasMorePokemon();

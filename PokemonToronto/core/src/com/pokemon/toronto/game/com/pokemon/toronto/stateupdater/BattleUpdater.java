@@ -483,6 +483,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     @Override
+    public List<Pokemon> getPlayerParty() { return playerParty; }
+
+    @Override
     public Pokemon getEnemyPokemon() {
         return enemyPokemon;
     }
