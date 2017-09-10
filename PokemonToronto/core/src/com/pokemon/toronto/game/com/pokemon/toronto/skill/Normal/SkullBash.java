@@ -32,19 +32,21 @@ public class SkullBash extends DamageSkill {
      * Raise defense by 1 stage and then attack the next turn.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param skillUserParty
-     * @return The results of using the move.
+     * @param enemyPokemonParty      @return The results of using the move.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results;
         if (skillUser.hasNextTurnSkill()) {
-            results = super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack, skillUserParty);
+            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
             skillUser.removeNextTurnSkill();
         } else {
             results = new ArrayList<String>();

@@ -15,12 +15,14 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SpriteDynamicAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranimation.PlayerTrainerAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranimation.TrainerAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleClickController;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleTextures;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.stateupdater.BattleUpdater;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,7 @@ public class BattleState extends GameState implements BattleInterface {
     //States
     private int panelPosition;
     private Pokemon enemyPokemon;
+    private List<Pokemon> enemyParty;
     private Pokemon currentPokemon;
     private int currentPokemonPosition;
     private boolean battling;
@@ -62,28 +65,19 @@ public class BattleState extends GameState implements BattleInterface {
 
     private Sound enemyPokemonCry;
     private List<Sound> playerCries;
+    private List<Sound> trainerCries;
 
     List<List<String>> battleTextList;
-    //Move Animation Stuff
-    private boolean flashUserPokemon;
-    private int battleType;
-
-    //Beginning of a battle variables.
-    boolean inBeginning;
-    //Text for the beginning of the battle. "A wild x appeared!" "Go y!!"
-    private String beginningText;
-    private int beginningTextIndex;
-    private double beginningTextCounter;
-    //States for beginning
-    private int beginningState;
-    private final int WILD_POKEMON_APPEARS_TEXT = 0;
 
     //Variables for Battles from the Simulator
     private int startingRoute;
     private int region;
     private boolean isRoute;
 
+    private int battleType;
+
     private PlayerTrainerAnimation pta;
+    private TrainerAnimation trainerAnimation;
     private boolean justFinishedPta;
 
 
@@ -93,30 +87,61 @@ public class BattleState extends GameState implements BattleInterface {
 
     private String moveSelectText;
 
+    private Trainer trainer;
+    private int currentEnemyPosition;
+
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
-        init(gsm, enemyPokemon, bgm);
+        init(gsm, bgm);
+        this.enemyPokemon = enemyPokemon;
+        enemyPokemonCry = Gdx.audio.newSound(Gdx.files.internal(enemyPokemon.getCryPath()));
+        pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName(), this);
         startingRoute = -1;
         region = -1;
         field = new Field();
+        initBattleTextures();
+    }
+    public BattleState(GameStateManager gsm, Music bgm, Trainer trainer) {
+        init(gsm, bgm);
+        startingRoute = -1;
+        region = -1;
+        field = new Field();
+        this.trainer = trainer;
+        loadTrainerCries();
+        battleType = TRAINER_BATTLE;
+        currentEnemyPosition = 0;
+        trainerAnimation = new TrainerAnimation(this, gsm.getParty().get(currentPokemonPosition)
+                .getName(), trainer, new Texture(trainer.getIconPath()), trainer.getParty().size());
+        List<String> partyIconPaths = new ArrayList<String>();
+        for (Pokemon p: gsm.getParty()) {
+            partyIconPaths.add(p.getMiniIconPath());
+        }
+        enemyPokemon = trainer.getParty().get(0);
+        enemyParty = trainer.getParty();
+        battleTextures = new BattleTextures(currentPokemon.getBackPath(),
+                trainer.getParty().get(0).getMapIconPath(), partyIconPaths, currentPokemon);
+        battleUpdater = new BattleUpdater(this, battleTextures.getRegularFont());
     }
 
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm, int startingRoute, int region, boolean isRoute) {
-        init(gsm, enemyPokemon, bgm);
+        init(gsm, bgm);
+        this.enemyPokemon = enemyPokemon;
+        enemyPokemonCry = Gdx.audio.newSound(Gdx.files.internal(enemyPokemon.getCryPath()));
+        pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName(), this);
         this.startingRoute = startingRoute;
         this.region = region;
         this.isRoute = isRoute;
         field = new Field();
+        initBattleTextures();
     }
 
-    private void init(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
+    private void init(GameStateManager gsm, Music bgm) {
         this.gsm = gsm;
-        enemyPokemonCry = Gdx.audio.newSound(Gdx.files.internal(enemyPokemon.getCryPath()));
-        Gdx.app.log("cry",enemyPokemon.getCryPath());
+        enemyParty = new ArrayList<Pokemon>();
+
         justFinishedPta = false;
         this.battleType = WILD_BATTLE;
         panelPosition = FIRST_PANEL;
         currentItemPage = FIRST_ITEM_PAGE;
-        this.enemyPokemon = enemyPokemon;
         for (int i = 0; i < gsm.getParty().size(); i++) {
             if (gsm.getParty().get(i).getCurrentHealth() > 0) {
                 currentPokemon = gsm.getParty().get(i);
@@ -124,24 +149,23 @@ public class BattleState extends GameState implements BattleInterface {
                 break;
             }
         }
+        this.bgm = bgm;
+        victoryBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/wildVictory.mp3"));
+        clickSound = gsm.getLoader().get("sounds/click.wav");
+        loadCries();
+        battling = false;
+        controller = new BattleClickController(this);
+        moveSelectText = "What will " + currentPokemon.getName() + " do?";
+    }
+
+    private void initBattleTextures() {
         List<String> partyIconPaths = new ArrayList<String>();
         for (Pokemon p: gsm.getParty()) {
             partyIconPaths.add(p.getMiniIconPath());
         }
         battleTextures = new BattleTextures(currentPokemon.getBackPath(),
                 enemyPokemon.getMapIconPath(), partyIconPaths, currentPokemon);
-        this.bgm = bgm;
-        victoryBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/wildVictory.mp3"));
-
-        clickSound = gsm.getLoader().get("sounds/click.wav");
-        loadCries();
-        battling = false;
-        flashUserPokemon = false;
-
         battleUpdater = new BattleUpdater(this, battleTextures.getRegularFont());
-        pta = new PlayerTrainerAnimation(gsm.getLoader(), currentPokemon.getName(), enemyPokemon.getName(), this);
-        controller = new BattleClickController(this);
-        moveSelectText = "What will " + currentPokemon.getName() + " do?";
     }
 
     private void loadCries() {
@@ -149,6 +173,14 @@ public class BattleState extends GameState implements BattleInterface {
         for (int i = 0; i < gsm.getParty().size(); i++) {
             playerCries.add(Gdx.audio.newSound(
                     Gdx.files.internal(gsm.getParty().get(i).getCryPath())));
+        }
+    }
+
+    private void loadTrainerCries() {
+        trainerCries = new ArrayList<Sound>();
+        for (int i = 0; i < trainer.getParty().size(); i++) {
+            trainerCries.add(Gdx.audio.newSound(
+                    Gdx.files.internal(trainer.getParty().get(i).getCryPath())));
         }
     }
 
@@ -203,7 +235,8 @@ public class BattleState extends GameState implements BattleInterface {
 
     }
     private void renderBattlingPokemon(SpriteBatch batch) {
-        if (pta.isFinished()) {
+        if ((battleType == WILD_BATTLE && pta.isFinished()) ||
+                (battleType == TRAINER_BATTLE && trainerAnimation.isFinished())) {
             if (!battleUpdater.started() || battleUpdater.getSkillAnimation() == null
                     || battleUpdater.getSkillAnimation().displayEnemyPokemon()) {
 
@@ -235,8 +268,15 @@ public class BattleState extends GameState implements BattleInterface {
                 }
             }
         } else {
-            batch.draw(battleTextures.getEnemyPokemonTexture(), 591, 1460, 394, 394);
-            pta.render(batch);
+            if (battleType == WILD_BATTLE) {
+                batch.draw(battleTextures.getEnemyPokemonTexture(), 591, 1460, 394, 394);
+                pta.render(batch);
+            } else if (battleType == TRAINER_BATTLE) {
+                if (trainerAnimation.isDisplayingTrainerPokemon()) {
+                    batch.draw(battleTextures.getEnemyPokemonTexture(), 591, 1460, 394, 394);
+                }
+                trainerAnimation.render(batch);
+            }
         }
     }
     private void renderSkillAnimation(SpriteBatch batch) {
@@ -249,8 +289,8 @@ public class BattleState extends GameState implements BattleInterface {
 
     private void renderHealthUI(SpriteBatch batch) {
         //Draw Health HUD
-        batch.draw(battleTextures.getEnemyHealthPanel(), 15, 1779);
-        if (pta.isFinished()) {
+        if ((battleType == WILD_BATTLE &&  pta.isFinished()) ||
+                (battleType == TRAINER_BATTLE && trainerAnimation.isFinished())) {
             batch.draw(battleTextures.getUserHealthPanel(), 432, 1266);
             //User total health, current health, level
             battleTextures.getHealthText().draw(batch, Integer.toString(currentPokemon.getHealthStat()), 888,1325);
@@ -264,12 +304,15 @@ public class BattleState extends GameState implements BattleInterface {
             batch.draw(battleTextures.getExpBar(), 578, 1271, (int)((1.0 * currentPokemon.getDisplayedExp() / currentPokemon.getNextLevelExp()) * 441.0), 12); //439 14 width height
             renderPlayerStatus(batch);
         }
-        //Enemy level
-        battleTextures.getHealthText().draw(batch, Integer.toString(enemyPokemon.getLevel()), 488,1874);
-        //Enemy Healthbar
-        batch.draw(battleTextures.getGreenHealth(), 221, 1818,  Math.round(261 *((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
-        //Render the statuses
-        renderEnemyStatus(batch);
+        if (battleType != TRAINER_BATTLE || (battleType == TRAINER_BATTLE && trainerAnimation.isDisplayingTrainerPokemon() && !enemyPokemon.isFainted())) {
+            batch.draw(battleTextures.getEnemyHealthPanel(), 15, 1779);
+            //Enemy level
+            battleTextures.getHealthText().draw(batch, Integer.toString(enemyPokemon.getLevel()), 488, 1874);
+            //Enemy Healthbar
+            batch.draw(battleTextures.getGreenHealth(), 221, 1818, Math.round(261 * ((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
+            //Render the statuses
+            renderEnemyStatus(batch);
+        }
 
 
     }
@@ -280,6 +323,12 @@ public class BattleState extends GameState implements BattleInterface {
         bgm.dispose();
         victoryBgm.setLooping(true);
         victoryBgm.play();
+    }
+
+    @Override
+    public void disposeBgm() {
+        bgm.stop();
+        bgm.dispose();
     }
 
     private void renderPlayerStatus(SpriteBatch batch) {
@@ -313,7 +362,8 @@ public class BattleState extends GameState implements BattleInterface {
         //Render text panel in the middle
         batch.draw(battleTextures.getTextArea(), 0, 954);
 
-        if (pta.isFinished()) {
+        if ((battleType == WILD_BATTLE && pta.isFinished()) ||
+                (battleType == TRAINER_BATTLE && trainerAnimation.isFinished())) {
             if (!justFinishedPta) {
                 justFinishedPta = true;
                 battleUpdater.initiateFirstAbilities(currentPokemon, enemyPokemon, field);
@@ -328,7 +378,11 @@ public class BattleState extends GameState implements BattleInterface {
                 battleUpdater.renderText(batch);
             }
         } else {
-            pta.renderText(batch);
+            if (battleType == WILD_BATTLE) {
+                pta.renderText(batch);
+            } else { //Must be a trainer battle
+                trainerAnimation.renderText(batch);
+            }
         }
     }
     private void drawPokeballBag(SpriteBatch batch) {
@@ -554,8 +608,10 @@ public class BattleState extends GameState implements BattleInterface {
         if (bgm.getPosition() >= 113.979f) {
             bgm.setPosition(12.889f);
         }
-        if (!pta.isFinished()) {
+        if (battleType == WILD_BATTLE && !pta.isFinished()) {
            pta.update(dt);
+        } else if (battleType == TRAINER_BATTLE && !trainerAnimation.isFinished()) {
+            trainerAnimation.update(dt);
         }
         else {
             if (battleUpdater.started()) {
@@ -569,10 +625,12 @@ public class BattleState extends GameState implements BattleInterface {
 
             } else {
                 if (currentPokemon.isOutraging()) {
-                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon, currentPokemon.getOutrageSkill(),
+                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
+                            currentPokemonPosition, 0, currentPokemon.getOutrageSkill(),
                             getEnemyPokemon().getSkills().get(0), field);
                 } else if (currentPokemon.hasNextTurnSkill()) {
-                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon, currentPokemon.getNextTurnSkill(),
+                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
+                            currentPokemonPosition, 0, currentPokemon.getNextTurnSkill(),
                             getEnemyPokemon().getSkills().get(0), field);
                 }
                 if (battleUpdater.caughtThePokemon()) {
@@ -608,6 +666,7 @@ public class BattleState extends GameState implements BattleInterface {
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        enemyPokemon.freeFromBinds();
         playUserPokemonCry();
         setNormalMoveSelectText();
         battleTextures.resetSkillButtonTextures(currentPokemon);
@@ -618,6 +677,7 @@ public class BattleState extends GameState implements BattleInterface {
         battleTextures.setUserPokemonTexture(new Texture(
                 gsm.getParty().get(currentPokemonPosition).getBackPath()));
         currentPokemon = gsm.getParty().get(currentPokemonPosition);
+        enemyPokemon.freeFromBinds();
         battleTextures.resetSkillButtonTextures(currentPokemon);
         setNormalMoveSelectText();
         playUserPokemonCry();
@@ -678,7 +738,11 @@ public class BattleState extends GameState implements BattleInterface {
     public void dispose() {
         battleUpdater.dispose();
         battleTextures.dispose();
-        pta.dispose();
+        if (battleType == WILD_BATTLE) {
+            pta.dispose();
+        } else {
+            //DISPOSE TRAINER THINGS.
+        }
         victoryBgm.stop();
         victoryBgm.dispose();
         bgm.stop();
@@ -686,7 +750,9 @@ public class BattleState extends GameState implements BattleInterface {
         for (int i = 0; i < playerCries.size(); i++) {
             playerCries.get(i).dispose();
         }
-        enemyPokemonCry.dispose();
+        if (enemyPokemonCry != null) {
+            enemyPokemonCry.dispose();
+        }
     }
 
 
@@ -697,6 +763,8 @@ public class BattleState extends GameState implements BattleInterface {
     public void playUserPokemonCry() {
         playerCries.get(currentPokemonPosition).play();
     }
+
+    public void playTrainerEnemyCry() { trainerCries.get(currentEnemyPosition).play(); }
     public PlayerTrainerAnimation getPlayerTrainerAnimation() {
         return pta;
     }
@@ -897,17 +965,18 @@ public class BattleState extends GameState implements BattleInterface {
 
     public void start(int partyPosition, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                getParty().get(partyPosition), enemySkill, field);
+                currentPokemonPosition, 0, getParty().get(partyPosition),
+                enemySkill, field);
     }
 
     public void start(Skill userSkill, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                userSkill, enemySkill, field);
+                currentPokemonPosition, 0, userSkill, enemySkill, field);
     }
 
     public void startPokeballThrow(int pokeballType, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                pokeballType, enemySkill, field);// 0 is speedcheck phase
+                currentPokemonPosition, 0, pokeballType, enemySkill, field);// 0 is speedcheck phase
     }
 
     public BattleTextures getBattleTextures() {
@@ -970,6 +1039,69 @@ public class BattleState extends GameState implements BattleInterface {
     @Override
     public void setNormalMoveSelectText() {
         moveSelectText = "What will " + currentPokemon.getName() + " do?";
+    }
+
+    @Override
+    public boolean isFinishedIntroAnimation() {
+        if (battleType == WILD_BATTLE && pta.isFinished()) {
+            return true;
+        } else if (battleType == TRAINER_BATTLE && trainerAnimation.isFinished()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasWipedOutTrainer() {
+        for (int i = 0; i < enemyParty.size(); i++) {
+            if (enemyParty.get(i).getCurrentHealth() != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int getBattleType() {
+        return battleType;
+    }
+
+    @Override
+    public boolean isWildBattle() {
+        if (battleType == TRAINER_BATTLE) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    @Override
+    public String getNextPokemonName() {
+        for (int i = 0; i < 6; i++) {
+            if (enemyParty.get(i).getCurrentHealth() != 0) {
+                return enemyParty.get(i).getName();
+            }
+        }
+        return "error";
+    }
+
+    @Override
+    public void setNextEnemyPokemon() {
+        for (int i = 0; i < enemyParty.size(); i++) {
+            if (enemyParty.get(i).getCurrentHealth() != 0) {
+                currentEnemyPosition = i;
+                enemyPokemon = enemyParty.get(i);
+                battleTextures.disposeEnemyPokemonTexture();
+                battleTextures.setNewEnemyPokemonTexture(enemyPokemon.getMapIconPath());
+                trainerCries.get(i).play();
+                break;
+            }
+        }
     }
 
 

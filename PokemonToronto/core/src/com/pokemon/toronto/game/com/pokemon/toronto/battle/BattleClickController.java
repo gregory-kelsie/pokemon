@@ -14,7 +14,7 @@ public class BattleClickController {
     }
 
     public void clicked(int x, int y) {
-        if (model.getPlayerTrainerAnimation().isFinished()) {
+        if (model.isFinishedIntroAnimation()) {
             if (model.isDisplayingNewMoveYesNoOptions()) {
                 Gdx.app.log("Coords", "X: " + x + ", Y: " + y);
                 if (x >= 813 && x <= 1005 && y >= 754 && y <= 841) {
@@ -274,7 +274,7 @@ public class BattleClickController {
             }
         }
         else {
-            if (model.getPlayerTrainerAnimation().isPaused() && model.getPlayerTrainerAnimation().finishedPauseText()) {
+            if (model.getBattleType() == model.WILD_BATTLE && model.getPlayerTrainerAnimation().isPaused() && model.getPlayerTrainerAnimation().finishedPauseText()) {
                 model.getPlayerTrainerAnimation().unPause();
                 model.playClickSound();
             }

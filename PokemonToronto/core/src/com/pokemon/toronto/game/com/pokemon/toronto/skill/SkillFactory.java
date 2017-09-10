@@ -18,6 +18,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.Spikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Hail;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Bind;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.FocusEnergy;
@@ -85,6 +86,7 @@ public class SkillFactory {
     public static final int NIGHTMARE = 36;
     public static final int CURSE = 37;
     public static final int AROMATHERAPY = 38;
+    public static final int BIND = 39;
 
     public SkillFactory() {
 
@@ -172,6 +174,8 @@ public class SkillFactory {
             return new Curse();
         } else if (skillId == AROMATHERAPY) {
             return new Aromatherapy();
+        } else if (skillId == BIND) {
+            return new Bind();
         }
         else {
             return new Covet();

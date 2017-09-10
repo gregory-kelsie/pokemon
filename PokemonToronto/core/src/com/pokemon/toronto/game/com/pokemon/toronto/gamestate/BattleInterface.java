@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 import java.util.List;
 
@@ -24,4 +25,13 @@ public interface BattleInterface {
     void playUserPokemonCry();
     void setNormalMoveSelectText();
     void setIngrainText();
+    void playTrainerEnemyCry();
+    boolean isFinishedIntroAnimation();
+    int getBattleType();
+    boolean hasWipedOutTrainer();
+    boolean isWildBattle();
+    Trainer getTrainer();
+    String getNextPokemonName();
+    void setNextEnemyPokemon();
+    void disposeBgm();
 }

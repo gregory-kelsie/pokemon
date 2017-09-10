@@ -39,13 +39,15 @@ public class DoubleSlap extends DamageSkill {
      * Damage the enemy 2-5 times.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field of the battle.
      * @param skillUserParty
-     * @return The results of using the move.
+     * @param enemyPokemonParty    @return The results of using the move.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
         //Use the damage part of the move.
         if (strikesLeft == -1) {
@@ -63,8 +65,8 @@ public class DoubleSlap extends DamageSkill {
         }
         timesHit++;
         strikesLeft--;
-        results = super.use(skillUser, enemyPokemon, field, userField,
-                enemyField, isFirstAttack, skillUserParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
+                enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
         results.remove(0); //Remove old single damage result.
         results.add("Dealt " + damageTally + " damage!");
         results.add("Hit " + timesHit + " times!");

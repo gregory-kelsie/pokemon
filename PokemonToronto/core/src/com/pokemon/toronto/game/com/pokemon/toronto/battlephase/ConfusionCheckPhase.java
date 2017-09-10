@@ -268,6 +268,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
+            pui.getUserPokemon().freeFromBinds();
             pui.setPhase(new ExpPhase(pui));
         }
     }
@@ -282,6 +283,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getUserPokemon().setPlayerY(pui.getUserPokemon().getFaintedPlayerY());
             pui.getUserPokemon().setFaint(true);
+            pui.getEnemyPokemon().freeFromBinds();
             if (pui.playerHasMorePokemon() && !pui.waitingForNextPokemon()) {
                 pui.setPhase(new PlayerPokemonFaintPhase(pui));
             } else if (!pui.playerHasMorePokemon()) {

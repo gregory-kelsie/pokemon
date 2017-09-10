@@ -33,9 +33,11 @@ public class UseAttackPhase extends BattlePhase {
 
     protected boolean firstAttack;
     protected Pokemon attacker;
+    protected int attackerPartyPosition;
     protected SubField attackerSubField;
     protected SubField receiverSubField;
     protected Pokemon receiver;
+    protected int receiverPartyPosition;
     protected boolean enemyFainted;
     protected boolean userFainted;
     protected boolean attackerIsUser;
@@ -166,10 +168,12 @@ public class UseAttackPhase extends BattlePhase {
         if (!attacker.matchingAnimationHealth()) {
             attacker.adjustAnimationHealth(1);
         } else {
-            if (!isGain) {
-                recoilResults.add(attacker.getName() + " was hit by recoil.");
-            } else {
-                recoilResults.add(attacker.getName() + " drained health.");
+            if (usedSkill.hasRecoil()) {
+                if (!isGain) {
+                    recoilResults.add(attacker.getName() + " was hit by recoil.");
+                } else {
+                    recoilResults.add(attacker.getName() + " drained health.");
+                }
             }
             if (attacker.getCurrentHealth() == 0) {
                 recoilResults.add(attacker.getName() + " fainted.");
@@ -290,36 +294,50 @@ public class UseAttackPhase extends BattlePhase {
     }
 
     protected void displayRecoilResults(double dt) {
-        textCounter += dt;
-        if (textCounter >= 0.05) {
-            if (textPosition < recoilResults.get(resultsPosition).length() - 1) {
-                textPosition++;
-                textCounter = 0;
+        if (recoilResults.size() > 0) {
+            textCounter += dt;
+            if (textCounter >= 0.05) {
+                if (textPosition < recoilResults.get(resultsPosition).length() - 1) {
+                    textPosition++;
+                    textCounter = 0;
+                }
             }
-        }
-        if (textPosition == recoilResults.get(resultsPosition).length() - 1) {
-            //Update result timer if the text has finished rendering
-            resultsCounter += dt;
-        }
-        if (resultsCounter >= 1.5) {
-            if (resultsPosition < recoilResults.size() - 1) {
-                //There are still more results so go to the next one.
-                resultsPosition++;
-                resetTextBox();
+            if (textPosition == recoilResults.get(resultsPosition).length() - 1) {
+                //Update result timer if the text has finished rendering
+                resultsCounter += dt;
+            }
+            if (resultsCounter >= 1.5) {
+                if (resultsPosition < recoilResults.size() - 1) {
+                    //There are still more results so go to the next one.
+                    resultsPosition++;
+                    resetTextBox();
+                } else {
+                    if (userRecoilFaint) {
+                        displayRecoilResults = false;
+                        displayUserFaintAnimation = true;
+                        pui.playFaintSound();
+                    } else if (enemyRecoilFaint) {
+                        displayRecoilResults = false;
+                        displayEnemyFaintAnimation = true;
+                        pui.playFaintSound();
+                    } else {
+                        displayRecoilResults = false;
+                        finishedDepletion = true;
+                    }
+                }
+            }
+        } else {
+            if (userRecoilFaint) {
+                displayRecoilResults = false;
+                displayUserFaintAnimation = true;
+                pui.playFaintSound();
+            } else if (enemyRecoilFaint) {
+                displayRecoilResults = false;
+                displayEnemyFaintAnimation = true;
+                pui.playFaintSound();
             } else {
-                if (userRecoilFaint) {
-                    displayRecoilResults = false;
-                    displayUserFaintAnimation = true;
-                    pui.playFaintSound();
-                } else if (enemyRecoilFaint) {
-                    displayRecoilResults = false;
-                    displayEnemyFaintAnimation = true;
-                    pui.playFaintSound();
-                }
-                else {
-                    displayRecoilResults = false;
-                    finishedDepletion = true;
-                }
+                displayRecoilResults = false;
+                finishedDepletion = true;
             }
         }
     }
@@ -330,6 +348,7 @@ public class UseAttackPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
+            pui.getUserPokemon().freeFromBinds();
             displayEnemyFaintAnimation = false;
             //Check if the skill has recoil
             if (hasRecoil()) {
@@ -353,6 +372,7 @@ public class UseAttackPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getUserPokemon().setPlayerY(pui.getUserPokemon().getFaintedPlayerY());
             pui.getUserPokemon().setFaint(true);
+            pui.getEnemyPokemon().freeFromBinds();
             displayUserFaintAnimation = false;
             if (hasRecoil()) {
                 if (attackerIsUser) {
@@ -450,11 +470,11 @@ public class UseAttackPhase extends BattlePhase {
                 receiverSubField = pui.getField().getPlayerField();
             }
             if (attackerIsUser) {
-                battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                        attackerSubField, receiverSubField, firstAttack, pui.getPlayerParty()); //Override
+                battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
+                        pui.getField(), attackerSubField, receiverSubField, firstAttack, pui.getPlayerParty(), new ArrayList<Pokemon>()); //Override
             } else {
-                battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                        attackerSubField, receiverSubField, firstAttack, new ArrayList<Pokemon>()); //Override
+                battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
+                        pui.getField(), attackerSubField, receiverSubField, firstAttack, new ArrayList<Pokemon>(), pui.getPlayerParty()); //Override
             }
             updatingAnimation = true;
             state = -1; //reset state.

@@ -54,6 +54,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 import com.pokemon.toronto.game.pokemonToronto;
 
 import org.apache.http.NameValuePair;
@@ -132,7 +134,7 @@ public class GameStateManager {
             params.add(new BasicNameValuePair("nature", Integer.toString(party.get(i).getNature().getValue())));
             params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getAbility().getValue())));
             params.add(new BasicNameValuePair("partyPosition", Integer.toString(i))); //first slot in party
-            params.add(new BasicNameValuePair("pokemonGender", "" + party.get(i).getGender()));
+            params.add(new BasicNameValuePair("pokemonGender", String.valueOf(party.get(i).getGender())));
             params.add(new BasicNameValuePair("status", Integer.toString(party.get(i).getStatus().getValue()))); //0 is status free
             params.add(new BasicNameValuePair("iv_hp", Integer.toString(party.get(i).getHealthIV())));
             params.add(new BasicNameValuePair("iv_atk", Integer.toString(party.get(i).getAttackIV())));
@@ -291,7 +293,9 @@ public class GameStateManager {
         addToBox(new Gloom(5));
         addToBox(new Vileplume(5));
         addToBox(new Beedrill(5));
-        addToBox(new Kakuna(5));
+        Pokemon weedle = new Weedle(6);
+        weedle.setExp(100);
+        addToBox(weedle);
         addToBox(new Metapod(5));
         addToBox(new Butterfree(5));
         addToBox(new Spearow(5));

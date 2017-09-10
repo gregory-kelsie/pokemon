@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface PhaseUpdaterInterface {
     Pokemon getUserPokemon();
     Pokemon getEnemyPokemon();
     List<Pokemon> getPlayerParty();
+    int getUserPokemonPosition();
+    int getEnemyPokemonPosition();
     Skill getUserSkill();
     Skill getEnemySkill();
     boolean playerHasMorePokemon();
@@ -52,4 +55,10 @@ public interface PhaseUpdaterInterface {
     void stopBgm();
     void playThrowPokeballSound();
     void playFaintSound();
+    boolean hasWipedOutTrainer();
+    boolean isWildBattle();
+    Trainer getTrainer();
+    String getNextPokemonName();
+    void setNextEnemyPokemon();
+    void disposeBgm();
 }

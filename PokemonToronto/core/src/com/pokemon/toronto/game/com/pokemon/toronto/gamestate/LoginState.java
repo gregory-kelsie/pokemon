@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,6 +20,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;

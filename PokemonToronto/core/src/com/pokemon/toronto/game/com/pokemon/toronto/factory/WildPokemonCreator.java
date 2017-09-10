@@ -11,9 +11,33 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Rattata;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Beedrill;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Butterfree;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Clefable;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Clefairy;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Diglett;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ekans;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Fearow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Gloom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Jigglypuff;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Kakuna;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Metapod;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoqueen;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorina;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Oddish;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Paras;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Parasect;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeotto;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raticate;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandshrew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandslash;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Spearow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venonat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Wigglytuff;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
 
 import java.util.Date;
@@ -104,6 +128,62 @@ public class WildPokemonCreator {
             return new NidoranM(level);
         } else if (pokemonNumber == PokemonId.NIDORANF.getValue()) {
             return new NidoranF(level);
+        } else if (pokemonNumber == PokemonId.NIDORINA.getValue()) {
+            return new Nidorina(level);
+        } else if (pokemonNumber == PokemonId.NIDOQUEEN.getValue()) {
+            return new Nidoqueen(level);
+        } else if (pokemonNumber == PokemonId.METAPOD.getValue()) {
+            return new Metapod(level);
+        } else if (pokemonNumber == PokemonId.KAKUNA.getValue()) {
+            return new Kakuna(level);
+        } else if (pokemonNumber == PokemonId.BUTTERFREE.getValue()) {
+            return new Butterfree(level);
+        } else if (pokemonNumber == PokemonId.BEEDRILL.getValue()) {
+            return new Beedrill(level);
+        } else if (pokemonNumber == PokemonId.PARASECT.getValue()) {
+            return new Parasect(level);
+        } else if (pokemonNumber == PokemonId.VENOMOTH.getValue()) {
+            return new Venomoth(level);
+        } else if (pokemonNumber == PokemonId.VENONAT.getValue()) {
+            return new Venonat(level);
+        } else if (pokemonNumber == PokemonId.PARAS.getValue()) {
+            return new Paras(level);
+        } else if (pokemonNumber == PokemonId.PIDGEOTTO.getValue()) {
+            return new Pidgeotto(level);
+        } else if (pokemonNumber == PokemonId.PIDGEOT.getValue()) {
+            return new Pidgeot(level);
+        } else if (pokemonNumber == PokemonId.ARBOK.getValue()) {
+            return new Arbok(level);
+        } else if (pokemonNumber == PokemonId.EKANS.getValue()) {
+            return new Ekans(level);
+        } else if (pokemonNumber == PokemonId.RATICATE.getValue()) {
+            return new Raticate(level);
+        } else if (pokemonNumber == PokemonId.SPEAROW.getValue()) {
+            return new Spearow(level);
+        } else if (pokemonNumber == PokemonId.FEAROW.getValue()) {
+            return new Fearow(level);
+        } else if (pokemonNumber == PokemonId.SANDSHREW.getValue()) {
+            return new Sandshrew(level);
+        } else if (pokemonNumber == PokemonId.SANDSLASH.getValue()) {
+            return new Sandslash(level);
+        } else if (pokemonNumber == PokemonId.DIGLETT.getValue()) {
+            return new Diglett(level);
+        } else if (pokemonNumber == PokemonId.PIKACHU.getValue()) {
+            return new Pikachu(level);
+        } else if (pokemonNumber == PokemonId.ODDISH.getValue()) {
+            return new Oddish(level);
+        } else if (pokemonNumber == PokemonId.GLOOM.getValue()) {
+            return new Gloom(level);
+        } else if (pokemonNumber == PokemonId.VILEPLUME.getValue()) {
+            return new Vileplume(level);
+        } else if (pokemonNumber == PokemonId.JIGGLYPUFF.getValue()) {
+            return new Jigglypuff(level);
+        } else if (pokemonNumber == PokemonId.WIGGLYTUFF.getValue()) {
+            return new Wigglytuff(level);
+        } else if (pokemonNumber == PokemonId.CLEFAIRY.getValue()) {
+            return new Clefairy(level);
+        } else if (pokemonNumber == PokemonId.CLEFABLE.getValue()) {
+            return new Clefable(level);
         }
         else {
             return new Pikachu(level);

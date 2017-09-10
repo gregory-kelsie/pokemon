@@ -43,7 +43,9 @@ public class ExpPhase extends BattlePhase {
 
     public ExpPhase(PhaseUpdaterInterface pui) {
         super(pui);
-        pui.playVictoryBgm();
+        if (pui.isWildBattle()) {
+            pui.playVictoryBgm();
+        }
         expGain = pui.getEnemyPokemon().calculateExp(1);
         fullBarofExp = pui.getUserPokemon().getNextLevelExp();
         expGainRate = fullBarofExp / 1.5;
@@ -186,7 +188,16 @@ public class ExpPhase extends BattlePhase {
     private void updateDelayAfterExpGain(double dt) {
         counter += dt;
         if (counter >= 2) {
-            pui.finishedBattle();
+            if (pui.isWildBattle()) {
+                pui.finishedBattle();
+            } else {
+                if (!pui.hasWipedOutTrainer()) {
+                    pui.setPhase(new TrainerSendOutPhase(pui));
+                } else {
+                    //TODO: Go to end trainer phase.
+                    pui.setPhase(new EndTrainerBattle(pui));
+                }
+            }
         }
     }
     private void updateDisplayExpGain(double dt) {

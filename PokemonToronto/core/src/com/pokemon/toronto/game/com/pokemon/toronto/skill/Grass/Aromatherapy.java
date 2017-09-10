@@ -5,7 +5,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
@@ -32,13 +31,15 @@ public class Aromatherapy extends Skill {
      * - Remove all negative status ailments from the party.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field of the battle.
      * @param skillUserParty
-     * @return Aromatherapy's move results.
+     * @param enemyPokemonParty    @return Aromatherapy's move results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         results.add("A soothing aroma wafted\nthrough the area!");
         for (int i = 0; i < skillUserParty.size(); i++) {

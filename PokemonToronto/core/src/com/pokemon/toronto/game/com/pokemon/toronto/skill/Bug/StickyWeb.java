@@ -31,13 +31,15 @@ public class StickyWeb extends Skill {
      * Set up a sticky web on the opponent's field.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field of the battle.
      * @param skillUserParty
-     * @return Sticky Web's move results.
+     * @param enemyPokemonParty    @return Sticky Web's move results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyField.addStickyWeb();
         results.add(skillUser.getName() + " weaved a sticky web\naround the opponent's team!");

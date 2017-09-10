@@ -31,13 +31,17 @@ public class UseFirstAttackPhase extends UseAttackPhase {
     private void attemptSkillUsage() {
         if (attackerIsUser) {
             attacker = pui.getUserPokemon();
+            attackerPartyPosition = pui.getUserPokemonPosition();
             receiver = pui.getEnemyPokemon();
+            receiverPartyPosition = pui.getEnemyPokemonPosition();
             usedSkill = pui.getUserSkill();
             attackerSubField = pui.getField().getPlayerField();
             receiverSubField = pui.getField().getOpponentField();
         } else {
             attacker = pui.getEnemyPokemon();
+            attackerPartyPosition =  pui.getEnemyPokemonPosition();
             receiver = pui.getUserPokemon();
+            receiverPartyPosition = pui.getUserPokemonPosition();
             usedSkill = pui.getEnemySkill();
             attackerSubField = pui.getField().getOpponentField();
             receiverSubField = pui.getField().getPlayerField();
@@ -56,11 +60,11 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                         battleResults = blt;
                     } else {
                         if (attackerIsUser) {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                                    attackerSubField, receiverSubField, true, pui.getPlayerParty());
+                            battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, true, pui.getPlayerParty(), new ArrayList<Pokemon>());
                         } else {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                                    attackerSubField, receiverSubField, true, new ArrayList<Pokemon>());
+                            battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, true, new ArrayList<Pokemon>(), pui.getPlayerParty());
                         }
                     }
                     if (attackerIsUser) {

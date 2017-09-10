@@ -22,6 +22,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleState;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 import java.util.List;
 
@@ -33,7 +34,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     private boolean userPokemonIsFirstAttacker;
     private Pokemon userPokemon;
     private Pokemon sentOutPokemon;
+    private int userPokemonPosition;
     private Pokemon enemyPokemon;
+    private int enemyPokemonPosition;
     private List<Pokemon> playerParty;
     private Skill userSkill;
     private Skill enemySkill;
@@ -112,11 +115,13 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     * @param Skill userSkill The move the player is using in this phase.
     * @param Skill enemySkill The move the enemy is using in this phase.
      */
-    public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon,
-                      Skill userSkill, Skill enemySkill, Field field) {
+    public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon, int userPokemonPosition,
+                      int enemyPokemonPosition, Skill userSkill, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
+        this.userPokemonPosition = userPokemonPosition;
+        this.enemyPokemonPosition = enemyPokemonPosition;
         this.userSkill = userSkill;
         this.enemySkill = enemySkill;
         this.field = field;
@@ -125,12 +130,14 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         started = true;
     }
 
-    public void start(List<Pokemon> playerParty, Pokemon prevPokemon, Pokemon enemyPokemon,
-                      Pokemon sentOutPokemon, Skill enemySkill, Field field) {
+    public void start(List<Pokemon> playerParty, Pokemon prevPokemon, Pokemon enemyPokemon, int userPokemonPosition,
+                      int enemyPokemonPosition, Pokemon sentOutPokemon, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
         this.userPokemon = prevPokemon;
         this.enemyPokemon = enemyPokemon;
         this.sentOutPokemon = sentOutPokemon;
+        this.userPokemonPosition = userPokemonPosition;
+        this.enemyPokemonPosition = enemyPokemonPosition;
         this.enemySkill = enemySkill;
         this.field = field;
         userPokemonIsFirstAttacker = true;
@@ -148,10 +155,12 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      * @param pokeballType The type of Pokeball being thrown at the enemy pokemon
      * @param enemySkill The skill the enemy will use if the ball fails
      */
-    public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon,
-                      int pokeballType, Skill enemySkill, Field field) {
+    public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon, int userPokemonPosition,
+                      int enemyPokemonPosition, int pokeballType, Skill enemySkill, Field field) {
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
+        this.userPokemonPosition = userPokemonPosition;
+        this.enemyPokemonPosition = enemyPokemonPosition;
         this.enemySkill = enemySkill;
         this.field = field;
         userPokemonIsFirstAttacker = true;
@@ -190,6 +199,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     @Override
+    public void disposeBgm() { battleState.disposeBgm(); }
+
+    @Override
     public void playThrowPokeballSound() {
         throwPokeballSound.play();
     }
@@ -197,6 +209,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     public void playVictoryBgm() {
         battleState.playVictoryBgm();
     }
+
     @Override
     public void playPoisonSound() {
         poisonSound.play();
@@ -482,6 +495,14 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         return userPokemon;
     }
 
+    public int getUserPokemonPosition() {
+        return userPokemonPosition;
+    }
+
+    public int getEnemyPokemonPosition() {
+        return enemyPokemonPosition;
+    }
+
     @Override
     public List<Pokemon> getPlayerParty() { return playerParty; }
 
@@ -528,5 +549,30 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     @Override
     public void setWaitingForNextPokemon() {
         state = WAIT_FOR_NEXT_POKEMON;
+    }
+
+    @Override
+    public boolean hasWipedOutTrainer() {
+        return battleState.hasWipedOutTrainer();
+    }
+
+    @Override
+    public boolean isWildBattle() {
+        return battleState.isWildBattle();
+    }
+
+    @Override
+    public Trainer getTrainer() {
+        return battleState.getTrainer();
+    }
+
+    @Override
+    public String getNextPokemonName() {
+        return battleState.getNextPokemonName();
+    }
+
+    @Override
+    public void setNextEnemyPokemon() {
+        battleState.setNextEnemyPokemon();
     }
 }

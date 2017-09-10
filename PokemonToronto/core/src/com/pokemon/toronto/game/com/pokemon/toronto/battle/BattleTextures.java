@@ -438,6 +438,14 @@ public class BattleTextures {
         } catch (Exception e) { }
     }
 
+    public void disposeEnemyPokemonTexture() {
+        enemyPokemonTexture.dispose();
+    }
+
+    public void setNewEnemyPokemonTexture(String path) {
+        enemyPokemonTexture = new Texture(path);
+    }
+
     public void dispose() {
         battleBackground.dispose();
         battlePanel.dispose();

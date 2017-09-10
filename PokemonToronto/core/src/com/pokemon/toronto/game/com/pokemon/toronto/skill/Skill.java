@@ -205,21 +205,33 @@ public abstract class Skill {
     }
 
     /**
+     * Return whether or not the Skill has recoil.
+     * @return Whether or not the Skill has recoil
+     * or drain effects after usage.
+     */
+    public boolean hasRecoil() {
+        return false;
+    }
+
+    /**
      * Use the skill on an enemy pokemon.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition The position of the skill user in their party.
+     * @param enemyPokemonPartyPosition The position of the enemy pokemon in their party.
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @param skillUserParty The party for the skill user.
-     * @return List of Strings that display the result of
+     * @param enemyPokemonParty The party for the skill receiver.       @return List of Strings that display the result of
      * using the move. The first list displays misses, and the second
      * list displays the rest (crit, effectiveness, faints etc)
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon,
-                            Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+                            int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         return null;
     }
 
@@ -279,6 +291,8 @@ public abstract class Skill {
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @return Whether or not the skill will fail.
      */
+    //TODO: Refactor signature to include pokemon parties and a boolean to represent is a wild battle. (Whirlwind on 1 pokemon in a trainer battle will fail but will
+    //TODO: blow away the enemy in a wild battle.
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                             Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         return new FailResult(false);

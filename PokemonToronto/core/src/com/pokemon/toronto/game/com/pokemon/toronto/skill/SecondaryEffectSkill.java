@@ -54,15 +54,17 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * Damage the enemy, but also use the secondary effects.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field of the battle.
      * @param skillUserParty
-     * @return The results of using the move.
+     * @param enemyPokemonParty    @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
-        List<String> results = super.use(skillUser, enemyPokemon, field,
-                userField, enemyField, isFirstAttack, skillUserParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
+                userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
 
         for (int i = 0; i < secondaryEffects.size(); i++) {
             secondaryEffects.get(i).use(results, skillUser, enemyPokemon, isFirstAttack);

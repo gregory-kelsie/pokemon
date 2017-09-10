@@ -54,11 +54,11 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                         battleResults = absorbResult.getAbsorbResult();
                     } else {
                         if (attackerIsUser) {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                                    attackerSubField, receiverSubField, false, pui.getPlayerParty());
+                            battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, false, pui.getPlayerParty(), new ArrayList<Pokemon>());
                         } else {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getField(),
-                                    attackerSubField, receiverSubField, false, new ArrayList<Pokemon>());
+                            battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, false, new ArrayList<Pokemon>(), pui.getPlayerParty());
                         }
                     }
                     if (attackerIsUser) {

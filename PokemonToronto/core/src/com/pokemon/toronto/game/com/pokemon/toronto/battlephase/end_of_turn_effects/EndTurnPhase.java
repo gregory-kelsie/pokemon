@@ -45,6 +45,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int NEGATIVE_STATUS = 23;
     private final int NIGHTMARES = 24;
     private final int CURSE = 25;
+    private final int BIND_STATE = 26;
 
 
     //End turn weather results
@@ -168,6 +169,8 @@ public class EndTurnPhase extends BattlePhase {
             checkNightmares();
         } else if (currentState == CURSE) {
             checkCurse();
+        } else if (currentState == BIND_STATE) {
+            checkBind();
         }
     }
 
@@ -237,35 +240,54 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
-    private void checkCurse() {
+    private void checkBind() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0) {
-            if (currentPokemon.isCursed()) {
-                int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+            if (currentPokemon.getBindTurns() == 0 && currentPokemon.isBinded()) {
+                currentPokemon.removeBind();
+                text = currentPokemon.getName() + " was freed from Bind!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = BIND_STATE;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = END_GAME;
+                }
+            } else if (currentPokemon.isBinded()) {
+                text = currentPokemon.getName() + " was hurt by Bind.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 6.0);
                 currentPokemon.subtractHealth(damage);
-                text = currentPokemon.getName() + " is afflicted by Curse!";
-                adjustCurseStates(currentPokemon);
+                currentPokemon.adjustBindTurns();
+                adjustStates(currentPokemon, BIND_STATE, END_GAME);
             } else {
-                noCurse();
+                noStateUse(END_GAME);
             }
         } else {
-            noCurse();
+            noStateUse(END_GAME);
         }
     }
-    private void adjustCurseStates(Pokemon currentPokemon) {
+
+    /**
+     * Adjust the current damage dealing state
+     * @param currentPokemon The Pokemon we are using the state on.
+     * @param nextStateEnemy The next state if using on the enemy, usually the current state we're already on.
+     * @param nextStateUser The next state if using on the enemy, the actual next state.
+     */
+    private void adjustStates(Pokemon currentPokemon, int nextStateEnemy, int nextStateUser) {
         if (currentPokemon.getCurrentHealth() == 0) {
             //Fainted.
             if (usingOnEnemy) {
                 currentState = ADJUST_ENEMY_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
                 stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = CURSE;
+                stateAfterFaint = nextStateEnemy;
                 usingOnEnemy = false;
             } else {
                 currentState = ADJUST_PLAYER_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
                 stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = END_GAME;
+                stateAfterNotBlackingOut = nextStateUser;
                 usingOnEnemy = true;
             }
         } else {
@@ -273,25 +295,50 @@ public class EndTurnPhase extends BattlePhase {
             if (usingOnEnemy) {
                 currentState = ADJUST_ENEMY_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = CURSE;
+                stateAfterText = nextStateEnemy;
                 usingOnEnemy = false;
             } else {
                 currentState = ADJUST_PLAYER_HEALTH;
                 stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = END_GAME;
+                stateAfterText = nextStateUser;
                 usingOnEnemy = true;
             }
         }
     }
 
-    private void noCurse() {
+
+    /**
+     * Determine what state to go to if there is no effect on the current pokemon
+     * at the current state. If using on the enemy, the next state is always the
+     * current state being used on the user's pokemon. Go to the next state if
+     * it has no effect on the user pokemon.
+     * @param nextState
+     */
+    private void noStateUse(int nextState) {
         if (usingOnEnemy) {
             usingOnEnemy = false;
         } else {
             usingOnEnemy = true;
-            currentState = END_GAME;
+            currentState = nextState;
         }
     }
+
+    private void checkCurse() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.isCursed()) {
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+                currentPokemon.subtractHealth(damage);
+                text = currentPokemon.getName() + " is afflicted by Curse!";
+                adjustStates(currentPokemon, CURSE, BIND_STATE);
+            } else {
+                noStateUse(BIND_STATE);
+            }
+        } else {
+            noStateUse(BIND_STATE);
+        }
+    }
+
 
 
     private void checkNightmares() {
@@ -301,54 +348,15 @@ public class EndTurnPhase extends BattlePhase {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
                 currentPokemon.subtractHealth(damage);
                 text = currentPokemon.getName() + " is locked in a nightmare!";
-                adjustNightmareStates(currentPokemon);
+                adjustStates(currentPokemon, NIGHTMARES, CURSE);
             } else {
-                noNightmares();
+                noStateUse(CURSE);
             }
         } else {
-            noNightmares();
-        }
-    }
-    private void adjustNightmareStates(Pokemon currentPokemon) {
-        if (currentPokemon.getCurrentHealth() == 0) {
-            //Fainted.
-            if (usingOnEnemy) {
-                currentState = ADJUST_ENEMY_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = NIGHTMARES;
-                usingOnEnemy = false;
-            } else {
-                currentState = ADJUST_PLAYER_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = CURSE;
-                usingOnEnemy = true;
-            }
-        } else {
-            //Didn't faint.
-            if (usingOnEnemy) {
-                currentState = ADJUST_ENEMY_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = NIGHTMARES;
-                usingOnEnemy = false;
-            } else {
-                currentState = ADJUST_PLAYER_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = CURSE;
-                usingOnEnemy = true;
-            }
+            noStateUse(CURSE);
         }
     }
 
-    private void noNightmares() {
-        if (usingOnEnemy) {
-            usingOnEnemy = false;
-        } else {
-            usingOnEnemy = true;
-            currentState = CURSE;
-        }
-    }
 
     private void checkNegativeStatus() {
         Pokemon currentPokemon = getCurrentPokemon();
@@ -358,62 +366,21 @@ public class EndTurnPhase extends BattlePhase {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
                 currentPokemon.subtractHealth(damage);
                 text = currentPokemon.getName() + " was hurt by poison.";
-                adjustNegativeStatusStates(currentPokemon);
+                adjustStates(currentPokemon, NEGATIVE_STATUS, NIGHTMARES);
             } else if (currentPokemon.getStatus() == Pokemon.Status.BURN) {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
                 currentPokemon.subtractHealth(damage);
                 pui.playPoisonSound();
                 text = currentPokemon.getName() + " was hurt by burn.";
-                adjustNegativeStatusStates(currentPokemon);
+                adjustStates(currentPokemon, NEGATIVE_STATUS, NIGHTMARES);
             } else {
-                noNegativeStatus();
+                noStateUse(NIGHTMARES);
             }
         } else {
-            noNegativeStatus();
+            noStateUse(NIGHTMARES);
         }
     }
 
-    private void adjustNegativeStatusStates(Pokemon currentPokemon) {
-        if (currentPokemon.getCurrentHealth() == 0) {
-            //Fainted.
-            if (usingOnEnemy) {
-                currentState = ADJUST_ENEMY_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = NEGATIVE_STATUS;
-                usingOnEnemy = false;
-            } else {
-                currentState = ADJUST_PLAYER_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = NIGHTMARES;
-                usingOnEnemy = true;
-            }
-        } else {
-            //Didn't faint.
-            if (usingOnEnemy) {
-                currentState = ADJUST_ENEMY_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = NEGATIVE_STATUS;
-                usingOnEnemy = false;
-            } else {
-                currentState = ADJUST_PLAYER_HEALTH;
-                stateAfterHealthAdjustment = DISPLAY_TEXT;
-                stateAfterText = NIGHTMARES;
-                usingOnEnemy = true;
-            }
-        }
-        pui.playPoisonSound();
-    }
-
-    private void noNegativeStatus() {
-        if (usingOnEnemy) {
-            usingOnEnemy = false;
-        } else {
-            usingOnEnemy = true;
-            currentState = NIGHTMARES;
-        }
-    }
 
     private void checkLeechSeed() {
         Pokemon currentPokemon = getCurrentPokemon();
@@ -435,11 +402,7 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterNotBlackingOut = RECEIVE_LEECH_SEED_DRAIN;
                 }
             } else {
-                if (usingOnEnemy) {
-                    stateAfterHealthAdjustment = RECEIVE_LEECH_SEED_DRAIN;
-                } else {
-                    stateAfterHealthAdjustment = RECEIVE_LEECH_SEED_DRAIN;
-                }
+                stateAfterHealthAdjustment = RECEIVE_LEECH_SEED_DRAIN;
             }
         } else {
             if (usingOnEnemy) {
@@ -606,21 +569,13 @@ public class EndTurnPhase extends BattlePhase {
 
             } else {
                 currentPokemon.adjustWishTurns();
-                goToNextStateFromWish();
+                noStateUse(HEALING_ABILITIES);
             }
         } else {
-            goToNextStateFromWish();
+            noStateUse(HEALING_ABILITIES);
         }
     }
 
-    private void goToNextStateFromWish() {
-        if (usingOnEnemy) {
-            usingOnEnemy = false;
-        } else {
-            usingOnEnemy = true;
-            currentState = HEALING_ABILITIES;
-        }
-    }
 
     private void checkFutureSight() {
         Pokemon currentPokemon = getCurrentPokemon();
@@ -634,12 +589,7 @@ public class EndTurnPhase extends BattlePhase {
                 useDoomDesire(currentPokemon);
             }
         } else {
-            if (usingOnEnemy) {
-                usingOnEnemy = false;
-            } else {
-                usingOnEnemy = true;
-                currentState = WISH_STATE;
-            }
+            noStateUse(WISH_STATE);
         }
     }
 
@@ -654,14 +604,10 @@ public class EndTurnPhase extends BattlePhase {
                 text = currentPokemon.getFutureSightUser().getName()+ "'s future Sight failed.";
             }
             currentPokemon.removeFutureSight();
-            finishFutureSightOrDoomDesire(currentPokemon);
+            adjustStates(currentPokemon, CHECK_FUTURE_SIGHT, WISH_STATE);
         } else {
             currentPokemon.adjustFutureSightTime();
-            if (!usingOnEnemy) {
-                currentState = WISH_STATE;
-            } else {
-                usingOnEnemy = false;
-            }
+            noStateUse(WISH_STATE);
         }
     }
 
@@ -676,38 +622,10 @@ public class EndTurnPhase extends BattlePhase {
                 text = currentPokemon.getFutureSightUser().getName()+ "'s Doom Desire failed.";
             }
             currentPokemon.removeDoomDesire();
-            finishFutureSightOrDoomDesire(currentPokemon);
+            adjustStates(currentPokemon, CHECK_FUTURE_SIGHT, WISH_STATE);
         } else {
             currentPokemon.adjustDoomDesireTime();
-            if (!usingOnEnemy) {
-                currentState = WISH_STATE;
-            } else {
-                usingOnEnemy = false;
-            }
-        }
-    }
-
-    private void finishFutureSightOrDoomDesire(Pokemon currentPokemon) {
-        //Determine where to go after using doom desire or future sight.
-        currentState = DISPLAY_TEXT;
-        if (usingOnEnemy) {
-            stateAfterText = ADJUST_ENEMY_HEALTH;
-            if (currentPokemon.getCurrentHealth() == 0) {
-                stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
-                stateAfterFaint = CHECK_FUTURE_SIGHT;
-            } else {
-                stateAfterHealthAdjustment = CHECK_FUTURE_SIGHT;
-            }
-            usingOnEnemy = false;
-        } else {
-            stateAfterText = ADJUST_PLAYER_HEALTH;
-            if (currentPokemon.getCurrentHealth() == 0) {
-                stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
-                stateAfterNotBlackingOut = WISH_STATE;
-            } else {
-                stateAfterHealthAdjustment = WISH_STATE;
-            }
-            usingOnEnemy = true;
+            noStateUse(WISH_STATE);
         }
     }
 
@@ -725,6 +643,7 @@ public class EndTurnPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getUserPokemon().setPlayerY(pui.getUserPokemon().getFaintedPlayerY());
             pui.getUserPokemon().setFaint(true);
+            pui.getEnemyPokemon().freeFromBinds();
             currentState = CHECK_BLACK_OUT;
         }
     }
@@ -735,6 +654,7 @@ public class EndTurnPhase extends BattlePhase {
             //Make the pokemon faint when it went down to the right faint position
             pui.getEnemyPokemon().setEnemyY(pui.getEnemyPokemon().getFaintedEnemyY());
             pui.getEnemyPokemon().setFaint(true);
+            pui.getUserPokemon().freeFromBinds();
             currentState = stateAfterFaint;
 
         }

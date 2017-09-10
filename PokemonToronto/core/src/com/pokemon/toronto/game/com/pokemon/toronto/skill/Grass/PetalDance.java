@@ -33,14 +33,16 @@ public class PetalDance extends DamageSkill {
      * Damage the enemy for 2-3 turns. Once finished confuses the user.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param skillUserParty
-     * @return The results of using the move.
+     * @param enemyPokemonParty      @return The results of using the move.
      */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
         if (!skillUser.isOutraging()) {
             double rand = Math.random();
@@ -52,8 +54,8 @@ public class PetalDance extends DamageSkill {
             }
             skillUser.activateOutrage(this, turns);
         }
-        List<String> results = super.use(skillUser, enemyPokemon, field,
-                userField, enemyField, isFirstAttack, skillUserParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
+                userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
 
         skillUser.reduceOutrageTime();
         if (skillUser.getOutrageTime() == 0) {

@@ -1,11 +1,14 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokenav.PokeNavScreen;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -199,8 +202,17 @@ public class PokeNavState extends GameState{
      * Go to the PokemonCenter state to heal the player's pokemon.
      */
     private void executePokeCenterScreen() {
+        /*
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
+        */
         gsm.stopBgm();
+        TrainerFactory ttf = new TrainerFactory();
+        Trainer t = ttf.getTrainer(3);
+        Gdx.app.log("Trainer", t.toString());
+        Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/trainer.mp3"));
+        wildBgm.setVolume(0.5f);
+        wildBgm.play();
+        gsm.setState(new BattleState(gsm, wildBgm, t));
         dispose();
     }
 

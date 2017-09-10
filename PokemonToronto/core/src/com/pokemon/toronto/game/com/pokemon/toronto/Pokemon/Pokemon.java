@@ -136,6 +136,9 @@ public abstract class Pokemon {
 
     private boolean envelopedInAquaRing;
     private boolean isIngrained;
+    private boolean isCursed;
+    private boolean binded;
+    private int bindedTurns;
     private boolean isLeechSeeded;
     private boolean hasNightmares;
     private boolean receivingWish;
@@ -231,7 +234,8 @@ public abstract class Pokemon {
         SOLID_ROCK(33), POISON_TOUCH(34), FLAME_BODY(35), EFFECT_SPORE(36), OWN_TEMPO(37), BATTLE_ARMOR(38), SHELL_ARMOR(39),
         ICE_BODY(40), SNOW_CLOAK(41), MAGIC_GUARD(42), OVERCOAT(43), SAND_FORCE(44), SAND_RUSH(45), SAND_VEIL(46), HYDRATION(47),
         SWIFT_SWIM(48), DAMP(49), DRIZZLE(50), SAND_STREAM(51), DROUGHT(52), SNOW_WARNING(53), CLOUD_NINE(54), MOLD_BREAKER(55),
-        PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62);
+        PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62), STURDY(63),
+        ROCK_HEAD(64);
         private final int value;
         private Ability(int value) {
             this.value = value;
@@ -295,13 +299,12 @@ public abstract class Pokemon {
                    String cryPath, int captureRate, Skill firstSkill, Skill secondSkill,
                    Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp) {
         this.gender = gender;
-        this.status = status;
         this.ivs = ivs;
         this.evs = evs;
         this.nature = nature;
         init(pokemonId, name, level, typeOne, typeTwo, ability, expType, baseExp,
                 evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
-
+        this.status = status;
         setHealthAndExp(currentHealth, currentExp);
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
     }
@@ -377,9 +380,12 @@ public abstract class Pokemon {
         witnessedDoomDesire = false;
         envelopedInAquaRing = false;
         isIngrained = false;
+        isCursed = false;
         isLeechSeeded = false;
         hasNightmares = false;
         removeWish();
+        binded = false;
+        bindedTurns = 0;
         tauntTime = -1;
         embargoTime = -1;
         encoreTime = -1;
@@ -420,6 +426,59 @@ public abstract class Pokemon {
         }
 
     }
+
+    /**
+     * Return whether or not the Pokemon is Binded by
+     * the move Bind.
+     * @return
+     */
+    public boolean isBinded() {
+        return binded;
+    }
+
+    /**
+     * Bind the Pokemon with the skill effect from the move
+     * Bind.
+     */
+    public void bind() {
+        binded = true;
+        if (Math.random() < .5) {
+            bindedTurns = 4;
+        } else {
+            bindedTurns = 5;
+        }
+    }
+
+    /**
+     * Remove the Bind effect from the Pokemon.
+     */
+    public void removeBind() {
+        binded = false;
+    }
+
+    /**
+     * Remove all Bind effects from the Pokemon. (Bind, Wrap, Fire Spin etc)
+     */
+    public void freeFromBinds() {
+        binded = false;
+        bindedTurns = 0;
+    }
+
+    /**
+     * Return the number of turns left until Bind expires.
+     * @return The number of turns left until Bind expires.
+     */
+    public int getBindTurns() {
+        return bindedTurns;
+    }
+
+    /**
+     * Adjust the number of Bind turns left.
+     */
+    public void adjustBindTurns() {
+        bindedTurns--;
+    }
+
     /**
      * Return whether or not this Pokemon will receive
      * wish.
@@ -649,6 +708,29 @@ public abstract class Pokemon {
      */
     public boolean hasNightmares() {
         return hasNightmares;
+    }
+
+
+    /**
+     * Give the Pokemon the Curse effect.
+     */
+    public void giveCurse() {
+        isCursed = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon is affected by Curse.
+     * @return Whether or not the Pokemon is affected by Curse.
+     */
+    public boolean isCursed() {
+        return isCursed;
+    }
+
+    /**
+     * Remove curse from the Pokemon.
+     */
+    public void removeCurse() {
+        isCursed = false;
     }
 
     /**
@@ -2890,7 +2972,10 @@ public abstract class Pokemon {
                 return "Immunity";
             case LEAF_GUARD:
                 return "Leaf Guard";
-
+            case STURDY:
+                return "Sturdy";
+            case ROCK_HEAD:
+                return "Rock Head";
             default:
                 return "Ability Error";
 

@@ -65,24 +65,33 @@ public abstract class DamageSkill extends Skill {
         damagesEnemy = true;
     }
 
+    @Override
+    public boolean hasRecoil() {
+        if (recoilLevel != NO_RECOIL) {
+            return true;
+        }
+        return false;
+    }
     /**
      * Use the damage skill on the enemy pokemon.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @param skillUserParty
-     * @return The skill results.
+     * @param enemyPokemonParty       @return The skill results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
-        super.use(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack, skillUserParty);
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+        super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
         
         List<String> results = new ArrayList<String>();
-
+        boolean heldOnWithSturdy = false;
         boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results
@@ -100,19 +109,27 @@ public abstract class DamageSkill extends Skill {
         //Calculate the damage results
         int damage = getDamage(skillUser, enemyPokemon, field, hasCrit);
         //Prevent Overkill.
+
         if (damage > enemyPokemon.getCurrentHealth()) {
-            damage = enemyPokemon.getCurrentHealth();
+            if (enemyPokemon.hasFullHealth() && enemyPokemon.getAbility() == Pokemon.Ability.STURDY) {
+                damage = enemyPokemon.getCurrentHealth() - 1;
+                heldOnWithSturdy = true;
+            } else {
+                damage = enemyPokemon.getCurrentHealth();
+            }
         }
         enemyPokemon.subtractHealth(damage);
         damageTally += damage; //Keep record of damage for multi-hit-moves
         results.add("Dealt " + damage + " damage.");
-
+        if (heldOnWithSturdy) {
+            results.add(enemyPokemon.getName() + " held on\nwith Sturdy!");
+        }
         //Subtract recoil damage.
-        if (recoilLevel == ONE_THIRD) {
+        if (recoilLevel == ONE_THIRD && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 3.0));
-        } else if (recoilLevel == ONE_HALF) {
+        } else if (recoilLevel == ONE_HALF && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 2.0));
-        } else if (recoilLevel == ONE_FOURTH) {
+        } else if (recoilLevel == ONE_FOURTH && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
         } else if (recoilLevel == GAIN_HALF) {
             skillUser.addHealth((int) Math.ceil(damage / 2.0));

@@ -33,13 +33,15 @@ public class Ingrain extends Skill {
      * - Pokemon recovers 1/16 max hp per turn.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
+     * @param skillUserPartyPosition
+     *@param enemyPokemonPartyPosition
      * @param field The field of the battle.
      * @param skillUserParty
-     * @return Ingrain's move results.
+     * @param enemyPokemonParty    @return Ingrain's move results.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         skillUser.receiveIngrain();
         results.add(skillUser.getName() + " planted its roots!");

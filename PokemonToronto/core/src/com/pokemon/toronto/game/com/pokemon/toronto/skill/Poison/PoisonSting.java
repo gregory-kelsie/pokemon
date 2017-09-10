@@ -30,7 +30,7 @@ public class PoisonSting extends SecondaryEffectSkill {
      */
     public PoisonSting() {
         super(9, "Poison Sting", 35, Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 15, 1);
-        secondaryEffects.add(new PoisonEffect(1, SecondaryEffect.Target.ENEMY));
+        secondaryEffects.add(new PoisonEffect(.3, SecondaryEffect.Target.ENEMY));
     }
 
     /**
