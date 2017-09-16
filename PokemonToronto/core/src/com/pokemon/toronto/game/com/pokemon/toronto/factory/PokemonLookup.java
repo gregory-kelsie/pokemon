@@ -20,7 +20,7 @@ public class PokemonLookup {
     private double longitude;
 
     //The range in which Pokemon gets spawned. (in meters)
-    private final int POKEMON_RANGE = 500;
+    private final int POKEMON_RANGE = 200;
 
     /**
      * Look up a stated amount of Pokemon from a given location.
@@ -50,7 +50,7 @@ public class PokemonLookup {
      * @return A double array that contains a random set latitude and longitude
      * coordinates within the given radius.
      */
-    private double[] getRandomLocation(double y0, double x0, double radius) {
+    public static double[] getRandomLocation(double y0, double x0, double radius) {
         double d[] = new double[2];
         Random random = new Random();
 
@@ -110,12 +110,9 @@ public class PokemonLookup {
      */
     public List<PokemonLookupPackage> getPokemon() {
         if (country.equals("Canada")) {
-                return getCanadaPokemon();
-        } else if (country == null) {
-            return null;
-        }
-        else {
-            return null;
+            return getCanadaPokemon();
+        } else {
+            return getDefaultPokemon();
         }
     }
 
@@ -138,9 +135,7 @@ public class PokemonLookup {
      * @return
      */
     private List<PokemonLookupPackage> getOntarioPokemon() {
-        if (city.equals("Scarborough")) {
-            return getScarboroughPokemon();
-        } else if (city.equals("Toronto")) {
+        if (city.equals("Toronto")) {
             return getTorontoPokemon();
         } else {
             return getDefaultPokemon();
@@ -148,21 +143,11 @@ public class PokemonLookup {
     }
 
     /**
-     * Return a list of PokemonLookupPackages from Scarborough.
-     * @return A list of PokemonLookupPackages from Scarborough.
+     * Return a list of PokemonLookupPackages from Toronto.
+     * @return A list of PokemonLookupPackages from Toronto.
      */
-    private List<PokemonLookupPackage> getScarboroughPokemon() {
-
+    private List<PokemonLookupPackage> getTorontoPokemon() {
         List<PokemonLookupPackage> plp = new ArrayList<PokemonLookupPackage>();
-        if (distance(latitude, 43.72936731067151, longitude, -79.27721500396729) <= 1000) {
-            PokemonLookupPackage pokemon;
-            for (int i = 0; i < amount; i++) {
-                double[] pokemonLocation = getRandomLocation(43.72936731067151, -79.27721500396729, 1000);
-                pokemon = new PokemonLookupPackage(PokemonId.ZUBAT.getValue(), pokemonLocation[0], pokemonLocation[1]);
-                plp.add(pokemon);
-            }
-            return plp;
-        }
         //Create a random Pokemon amount times.
         for (int i = 0; i < amount; i++) {
             PokemonLookupPackage pokemon;
@@ -201,29 +186,6 @@ public class PokemonLookup {
             }
             plp.add(pokemon);
         }
-
-        return plp;
-    }
-
-    /**
-     * Return a list of PokemonLookupPackages from Toronto.
-     * @return A list of PokemonLookupPackages from Toronto.
-     */
-    private List<PokemonLookupPackage> getTorontoPokemon() {
-        List<PokemonLookupPackage> plp = new ArrayList<PokemonLookupPackage>();
-        for (int i = 0; i < amount; i++) {
-            PokemonLookupPackage pokemon;
-            double[] pokemonLocation = getRandomLocation(latitude, longitude, POKEMON_RANGE);
-            int rand = (int) (Math.random() * 100);
-            if (rand <= 50) {
-                pokemon = new PokemonLookupPackage(PokemonId.RATTATA.getValue(), pokemonLocation[0],
-                        pokemonLocation[1]);
-            } else {
-                pokemon = new PokemonLookupPackage(PokemonId.PIDGEY.getValue(), pokemonLocation[0],
-                        pokemonLocation[1]);
-            }
-            plp.add(pokemon);
-        }
         return plp;
     }
 
@@ -232,7 +194,7 @@ public class PokemonLookup {
      * @return A list of default PokemonLookupPackages.
      */
     private List<PokemonLookupPackage> getDefaultPokemon() {
-        return getScarboroughPokemon();
+        return getTorontoPokemon();
     }
 
 

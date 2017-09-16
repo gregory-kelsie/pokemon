@@ -55,6 +55,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 import com.pokemon.toronto.game.pokemonToronto;
 
@@ -87,8 +88,10 @@ public class GameStateManager {
     private int kantoBadges;
     private Music menubgm;
 
+    private boolean loggedIn;
     private Player player;
     private List<WildPokemon> nearbyPokemon;
+    private List<WildTrainer> nearbyTrainers;
     public GameStateManager() {
         latitude = 0;
         longitude = 0;
@@ -98,6 +101,7 @@ public class GameStateManager {
         menubgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/menu.mp3"));
         wpc = new WildPokemonCreator();
         nearbyPokemon = new ArrayList<WildPokemon>();
+        nearbyTrainers = new ArrayList<WildTrainer>();
         party = new ArrayList<Pokemon>();
         box = new ArrayList<Pokemon>();
         notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
@@ -256,6 +260,7 @@ public class GameStateManager {
 
     public void setInitialState() {
         currentState = new LoginState(this);
+        loggedIn = false;
         //currentState = new LoadingState(this, LoadingState.INTRODUCTION);
         //currentState = new LoadingState(this, LoadingState.POKENAV_MENU);
         /*addToParty(new Charmander(7));
@@ -311,6 +316,14 @@ public class GameStateManager {
         return gameCallBack;
     }
 
+    public void logIn() {
+        loggedIn = true;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
     public void addNewWildPokemon(double longitude, double latitude, String country,
                                   String state, String city) {
             PokemonLookup pl = new PokemonLookup(city, state, country, latitude, longitude, 5);
@@ -340,6 +353,8 @@ public class GameStateManager {
     public List<WildPokemon> getNearbyPokemon() {
         return nearbyPokemon;
     }
+
+    public List<WildTrainer> getNearbyTrainers() { return nearbyTrainers; }
     public AssetManager getLoader() {
         return loader;
     }

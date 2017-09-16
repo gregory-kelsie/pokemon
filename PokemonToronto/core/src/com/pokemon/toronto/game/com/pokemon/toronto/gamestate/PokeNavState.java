@@ -207,7 +207,7 @@ public class PokeNavState extends GameState{
         */
         gsm.stopBgm();
         TrainerFactory ttf = new TrainerFactory();
-        Trainer t = ttf.getTrainer(3);
+        Trainer t = ttf.getTrainer(3, gsm.getLatitude(), gsm.getLongitude());
         Gdx.app.log("Trainer", t.toString());
         Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/trainer.mp3"));
         wildBgm.setVolume(0.5f);

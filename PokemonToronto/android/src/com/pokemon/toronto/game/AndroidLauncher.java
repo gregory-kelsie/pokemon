@@ -6,10 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 
+import com.badlogic.gdx.Gdx;
 import com.google.android.gms.common.ConnectionResult;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -32,6 +37,7 @@ import com.google.android.gms.location.places.PlaceDetectionApi;
 //import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -43,17 +49,20 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.pokemon.toronto.game.com.pokemon.toronto.location.Place;
 import com.pokemon.toronto.game.pokemonToronto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class AndroidLauncher extends AndroidApplication implements pokemonToronto.MyGameCallBack,
-		GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener{
+		GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, SensorEventListener{
 
 	/** Instance Variables */
 
@@ -85,11 +94,20 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	private double[] pokemonLatitude;
 	private double[] pokemonLongitude;
 	private String[] pokemonIcon;
+	private double[] trainerLatitude;
+	private double[] trainerLongitude;
+	private String[] trainerIcon;
 
 	private double pokemonLatitude2;
 	private double pokemonLongitude2;
 	private String pokemonIcon2;
 	private int distance2;
+
+	//Sensor Variables
+	private SensorManager sensorManager;
+
+	//Steps
+	private int steps;
 
 	/**
 	 * Called when starting up the application.
@@ -101,10 +119,20 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initView();
+		initSensor();
 		initDefaultCoordinates();
 		initGoogleApi();
 		initReceiver();
 		initLibgdxApplication();
+	}
+
+	/**
+	 * Initialize the sensor for keeping track of
+	 * step count.
+	 */
+	private void initSensor() {
+		steps = 0;
+		sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 	}
 
 	/**
@@ -218,6 +246,10 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	protected void onResume() {
 		super.onResume();
 		decorView.setSystemUiVisibility(uiOptions);
+		Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+		if (countSensor != null) {
+			sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+		}
 	}
 
 	/**
@@ -291,7 +323,8 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 
 					// permission was granted, yay! Do the
 					// contacts-related task you need to do.
-					startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon);
+					startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon,
+							trainerLatitude, trainerLongitude, trainerIcon);
 
 				} else {
 					//permission denied.
@@ -321,10 +354,14 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	 * @param pokemonLatitude An array of Pokemon latitudes
 	 * @param pokemonLongitude An array of Pokemon longitudes
 	 * @param pokemonIcon A String array of Pokemon icon paths.
+	 * @param trainerLatitude An array of Trainer latitudes
+	 * @param trainerLongitude An array of Trainer longitudes
+	 * @param trainerLatitude An String array of Trainer icon paths.
 	 */
 	@Override
 	public void startMapActivity(double[] pokemonLatitude, double[] pokemonLongitude,
-								 String[] pokemonIcon) {
+								 String[] pokemonIcon, double[] trainerLatitude, double[] trainerLongitude,
+								 String[] trainerIcon) {
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
 				PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
 						this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
@@ -342,6 +379,9 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			this.pokemonLatitude = pokemonLatitude;
 			this.pokemonLongitude = pokemonLongitude;
 			this.pokemonIcon = pokemonIcon;
+			this.trainerLatitude = trainerLatitude;
+			this.trainerLongitude = trainerLongitude;
+			this.trainerIcon = trainerIcon;
 			Log.i("MapState", "Permission required");
 			return;
 		}
@@ -353,6 +393,9 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			openSecondActivity.putExtra("pokemonLatitude", pokemonLatitude);
 			openSecondActivity.putExtra("pokemonLongitude", pokemonLongitude);
 			openSecondActivity.putExtra("pokemonIcon", pokemonIcon);
+			openSecondActivity.putExtra("trainerLatitude", trainerLatitude);
+			openSecondActivity.putExtra("trainerLongitude", trainerLongitude);
+			openSecondActivity.putExtra("trainerIcon", trainerIcon);
 			startActivity(openSecondActivity);
 
 		} else {
@@ -438,6 +481,18 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	 */
 	@Override
 	public void spawnNewGamePokemon() {
+		latitude = mLastLocation.getLatitude();
+		longitude = mLastLocation.getLongitude();
+		try {
+			//Make sure the pokemonToronto's game state manager
+			//exists before updating the player's coordinates.
+			if (pToronto.getGsm() != null) {
+				pToronto.setLatitude(latitude);
+				pToronto.setLongitude(longitude);
+			}
+		} catch (Exception e) {
+			Log.i("Location", "Location Change Error: " + e.getMessage());
+		}
 		Geocoder gc = new Geocoder(getContext(), Locale.getDefault());
 		String country = "";
 		String stateName = "";
@@ -480,9 +535,21 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
 					for (PlaceLikelihood placeLikelihood : likelyPlaces) {
 						name = placeLikelihood.getPlace().getName().toString();
-						Log.i("osgh", String.format("Place '%s' has likelihood: %g",
-								placeLikelihood.getPlace().getName(),
-								placeLikelihood.getLikelihood()));
+						LatLng ln = placeLikelihood.getPlace().getLatLng();
+						List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+						Log.i("osgh", "Type List");
+						for (int i = 0; i < types.size(); i++) {
+							Log.i("osgh", "Type: " + types.get(i));
+						}
+						try {
+							Log.i("osgh", String.format("Place '%s' has likelihood: %g",
+									placeLikelihood.getPlace().getName(),
+									placeLikelihood.getLikelihood()));
+							Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
+						} catch (Exception e) {
+							Log.i("osgh", e.getMessage());
+						}
+						pToronto.createPlace(name, ln.latitude, ln.longitude, types);
 					}
 					likelyPlaces.release();
 				}
@@ -490,14 +557,13 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 
 			country = address.get(0).getCountryName();
 			stateName = address.get(0).getAdminArea();
-			cityName = address.get(0).getAddressLine(1).substring(0,
-					address.get(0).getAddressLine(1).indexOf(","));
+			cityName = address.get(0).getLocality();
+			Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
 
 		} catch (Exception e) { Log.i("WildRec Trycatch ", e.getMessage());}
 		try {
 			Log.i("Geocoder", cityName);
 		} catch (Exception e) { Log.i("Geocoder", e.getMessage());}
-		Log.i("Geocoder", "messed up baby");
 		pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
 	}
 
@@ -551,14 +617,70 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				List<Address> address = gc.getFromLocation(latitude, longitude, 1);
 				country = address.get(0).getCountryName();
 				stateName = address.get(0).getAdminArea();
-				cityName = address.get(0).getAddressLine(1).substring(0,
-						address.get(0).getAddressLine(1).indexOf(","));
+				cityName = address.get(0).getLocality();;
 
 			} catch (Exception e) { Log.i("WildReceiver", e.getMessage());}
-			pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
+			if (pToronto.isLoggedIn()) {
+				pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
+			}
 		}
 
 	}
 
+	/**
+	 * Update the step count.
+	 * @param event
+	 */
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		if (pToronto.isLoggedIn()) {
+			steps++;
+			if (steps >= 20) {
+				steps = 0;
+				spawnTrainer();
+			}
+			Gdx.app.log("Steps", "" + steps);
+		}
+	}
 
+	private void spawnTrainer() {
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			Log.e("not granted", "Permission is not granted");
+
+			ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+			return;
+		}
+
+		Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+
+		//Get nearby places
+		placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
+			@Override
+			public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
+				PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
+				List<Place> places = new ArrayList<Place>();
+				for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+					name = placeLikelihood.getPlace().getName().toString();
+					LatLng ln = placeLikelihood.getPlace().getLatLng();
+					List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+					places.add(new Place(name, ln.latitude, ln.longitude, types));
+				}
+				pToronto.spawnTrainer(places);
+				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+				// Vibrate for 500 milliseconds
+				v.vibrate(500);
+				likelyPlaces.release();
+			}
+		});
+	}
+
+	/**
+	 *
+	 * @param sensor
+	 * @param accuracy
+	 */
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+	}
 }

@@ -25,14 +25,6 @@ public class Trainer {
         this.party = party;
     }
 
-    public Trainer(double difficulty, String title, String name, String victoryText, String iconPath) {
-        this.difficulty = difficulty;
-        this.title = title;
-        this.name = name;
-        this.victoryText = victoryText;
-        this.iconPath = iconPath;
-    }
-
     public String toString() {
         String s = "";
         s += "Name: " + title + " " + name + "\n";

@@ -4,8 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.TrainerId;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -173,14 +176,28 @@ public class TrainerFactory {
         }
     }
 
-    public Trainer getTrainer(double difficulty) {
+    public WildTrainer getTrainer(double difficulty, double latitude, double longitude) {
         double rand = Math.random();
+        double[] latlng = PokemonLookup.getRandomLocation(latitude, longitude, 200);
         if (rand <= .33) {
-            return getBugCatcher(difficulty);
+            return getBugCatcher(difficulty, latlng[0], latlng[1]);
         } else if (rand <= .66) {
-            return getLass(difficulty);
+            return getLass(difficulty, latlng[0], latlng[1]);
         } else {
-            return getYoungster(difficulty);
+            return getYoungster(difficulty, latlng[0], latlng[1]);
+        }
+    }
+
+    public WildTrainer getTrainer(int id, double difficulty, double latitude, double longitude) {
+        double[] latlng = PokemonLookup.getRandomLocation(latitude, longitude, 200);
+        if (id == TrainerId.BUG_CATCHER.getValue()) {
+            return getBugCatcher(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.LASS.getValue()) {
+            return getLass(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.YOUNGSTER.getValue()) {
+            return getYoungster(difficulty, latlng[0], latlng[1]);
+        } else {
+            return getYoungster(difficulty, latlng[0], latlng[1]);
         }
     }
 
@@ -286,25 +303,46 @@ public class TrainerFactory {
         return bugCatcherPokemon;
     }
 
-    public Trainer getBugCatcher(double difficulty) {
+    public WildTrainer getBugCatcher(double difficulty, double latitude, double longitude) {
         String title = "Bug Catcher";
         String name = getMaleName();
         List<Integer> pool = getBugCatcherPokemon(difficulty);
-        return new Trainer(difficulty, title, name, getVictoryText(),"trainers/small/bugcatcher.png", initParty(pool, difficulty));
+        double rand = Math.random();
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(),"trainers/small/bugcatcher.png",
+                initParty(pool, difficulty));
     }
 
-    public Trainer getLass(double difficulty) {
+    public WildTrainer getLass(double difficulty, double latitude, double longitude) {
         String title = "Lass";
         String name = getFemaleName();
         List<Integer> pool = getLassPokemon(difficulty);
-        return new Trainer(difficulty, title, name, getVictoryText(),"trainers/small/lass.png", initParty(pool, difficulty));
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .33) {
+            iconPath = "trainers/small/lass.png";
+        } else if (rand <= .66) {
+            iconPath = "trainers/small/lass2.png";
+        } else {
+            iconPath = "trainers/small/lass3.png";
+        }
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(),iconPath, initParty(pool, difficulty));
     }
 
-    public Trainer getYoungster(double difficulty) {
+    public WildTrainer getYoungster(double difficulty, double latitude, double longitude) {
         String title = "Youngster";
         String name = getMaleName();
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .5) {
+            iconPath = "trainers/small/youngster.png";
+        } else {
+            iconPath = "trainers/small/youngster2.png";
+        }
         List<Integer> pool = getYoungsterPokemon(difficulty);
-        return new Trainer(difficulty, title, name, getVictoryText(),"trainers/small/youngster.png", initParty(pool, difficulty));
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
 
     }
 

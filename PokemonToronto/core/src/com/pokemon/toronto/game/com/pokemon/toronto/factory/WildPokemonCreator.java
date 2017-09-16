@@ -1,7 +1,13 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Blastoise;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Caterpie;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charizard;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmander;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmeleon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Eevee;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Ivysaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.NidoranF;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.NidoranM;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pidgey;
@@ -9,6 +15,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Rattata;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Squirtle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Wartortle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
@@ -20,16 +29,21 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.D
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ekans;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Fearow;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Gloom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Golbat;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Jigglypuff;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Kakuna;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Metapod;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoking;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoqueen;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorina;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorino;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ninetales;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Oddish;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Paras;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Parasect;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeotto;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raichu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raticate;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandshrew;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandslash;
@@ -37,8 +51,11 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.S
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venonat;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Wigglytuff;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Geodude;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Onix;
 
 import java.util.Date;
 
@@ -65,40 +82,114 @@ public class WildPokemonCreator {
      */
     public WildPokemon createPokemon(int number, double latitude, double longitude,
                                      Date date, String dateString) {
-        if (number == PokemonId.PIDGEY.getValue()) {
-            Pidgey p = new Pidgey(5);
-            return new WildPokemon(p, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RATTATA.getValue()) {
-            Rattata r = new Rattata(5);
-            return new WildPokemon(r, latitude, longitude, date, dateString);
+        if (number == PokemonId.BULBASAUR.getValue()) {
+            return new WildPokemon(new Bulbasaur(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.IVYSAUR.getValue()) {
+            return new WildPokemon(new Ivysaur(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.VENUSAUR.getValue()) {
+            return new WildPokemon(new Venusaur(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CHARMANDER.getValue()) {
+            return new WildPokemon(new Charmander(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CHARMELEON.getValue()) {
+            return new WildPokemon(new Charmeleon(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CHARIZARD.getValue()) {
+            return new WildPokemon(new Charizard(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.SQUIRTLE.getValue()) {
+            return new WildPokemon(new Squirtle(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.WARTORTLE.getValue()) {
+            return new WildPokemon(new Wartortle(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.BLASTOISE.getValue()) {
+            return new WildPokemon(new Blastoise(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.CATERPIE.getValue()) {
-            Caterpie c = new Caterpie(5);
-            return new WildPokemon(c, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.EEVEE.getValue()) {
-            Eevee e = new Eevee(5);
-            return new WildPokemon(e, latitude, longitude, date, dateString);
+            return new WildPokemon(new Caterpie(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.METAPOD.getValue()) {
+            return new WildPokemon(new Metapod(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.BUTTERFREE.getValue()) {
+            return new WildPokemon(new Butterfree(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.WEEDLE.getValue()) {
-            Weedle w = new Weedle(5);
-            return new WildPokemon(w, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORANM.getValue()) {
-            NidoranM p = new NidoranM(5);
-            return new WildPokemon(p, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORANF.getValue()) {
-            NidoranF p = new NidoranF(5);
-            return new WildPokemon(p, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ZUBAT.getValue()) {
-            Zubat z = new Zubat(5);
-            return new WildPokemon(z, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CLEFAIRY.getValue()) {
-            Clefairy z = new Clefairy(5);
-            return new WildPokemon(z, latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ODDISH.getValue()) {
-            Oddish z = new Oddish(5);
-            return new WildPokemon(z, latitude, longitude, date, dateString);
+            return new WildPokemon(new Weedle(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.KAKUNA.getValue()) {
+            return new WildPokemon(new Kakuna(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.BEEDRILL.getValue()) {
+            return new WildPokemon(new Beedrill(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PIDGEY.getValue()) {
+            return new WildPokemon(new Pidgey(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PIDGEOTTO.getValue()) {
+            return new WildPokemon(new Pidgeotto(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PIDGEOT.getValue()) {
+            return new WildPokemon(new Pidgeot(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.RATTATA.getValue()) {
+            return new WildPokemon(new Rattata(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.RATICATE.getValue()) {
+            return new WildPokemon(new Raticate(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.SPEAROW.getValue()) {
+            return new WildPokemon(new Spearow(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.FEAROW.getValue()) {
+            return new WildPokemon(new Fearow(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.EKANS.getValue()) {
-            Ekans z = new Ekans(5);
-            return new WildPokemon(z, latitude, longitude, date, dateString);
-        } else {
+            return new WildPokemon(new Ekans(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ARBOK.getValue()) {
+            return new WildPokemon(new Arbok(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PIKACHU.getValue()) {
+            return new WildPokemon(new Pikachu(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.RAICHU.getValue()) {
+            return new WildPokemon(new Raichu(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.SANDSHREW.getValue()) {
+            return new WildPokemon(new Sandshrew(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.SANDSLASH.getValue()) {
+            return new WildPokemon(new Sandslash(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDORANF.getValue()) {
+            return new WildPokemon(new NidoranF(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDORINA.getValue()) {
+            return new WildPokemon(new Nidorina(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDOQUEEN.getValue()) {
+            return new WildPokemon(new Nidoqueen(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDORANM.getValue()) {
+            return new WildPokemon(new NidoranM(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDORINO.getValue()) {
+            return new WildPokemon(new Nidorino(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NIDOKING.getValue()) {
+            return new WildPokemon(new Nidoking(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CLEFAIRY.getValue()) {
+            return new WildPokemon(new Clefairy(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.CLEFABLE.getValue()) {
+            return new WildPokemon(new Clefable(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.VULPIX.getValue()) {
+            return new WildPokemon(new Vulpix(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.NINETALES.getValue()) {
+            return new WildPokemon(new Ninetales(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.JIGGLYPUFF.getValue()) {
+            return new WildPokemon(new Jigglypuff(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.WIGGLYTUFF.getValue()) {
+            return new WildPokemon(new Wigglytuff(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ZUBAT.getValue()) {
+            return new WildPokemon(new Zubat(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.GOLBAT.getValue()) {
+            return new WildPokemon(new Golbat(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ODDISH.getValue()) {
+            return new WildPokemon(new Oddish(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.GLOOM.getValue()) {
+            return new WildPokemon(new Gloom(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.VILEPLUME.getValue()) {
+            return new WildPokemon(new Vileplume(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PARAS.getValue()) {
+            return new WildPokemon(new Paras(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.PARASECT.getValue()) {
+            return new WildPokemon(new Parasect(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.VENONAT.getValue()) {
+            return new WildPokemon(new Venonat(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.VENOMOTH.getValue()) {
+            return new WildPokemon(new Venomoth(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.DIGLETT.getValue()) {
+            return new WildPokemon(new Diglett(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.GEODUDE.getValue()) {
+            return new WildPokemon(new Geodude(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ONIX.getValue()) {
+            return new WildPokemon(new Onix(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.EEVEE.getValue()) {
+            return new WildPokemon(new Eevee(5), latitude, longitude, date, dateString);
+        }
+        else {
             Pikachu p = new Pikachu(5);
             return new WildPokemon(p, latitude, longitude, date, dateString);
         }
@@ -184,6 +275,10 @@ public class WildPokemonCreator {
             return new Clefairy(level);
         } else if (pokemonNumber == PokemonId.CLEFABLE.getValue()) {
             return new Clefable(level);
+        } else if (pokemonNumber == PokemonId.GEODUDE.getValue()) {
+            return new Geodude(level);
+        } else if (pokemonNumber == PokemonId.ONIX.getValue()) {
+            return new Onix(level);
         }
         else {
             return new Pikachu(level);

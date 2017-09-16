@@ -88,6 +88,7 @@ public class LoginState extends GameState {
                             } catch (Exception e2) {
                                 displayError = true;
                                 errorMessage = "Could not connect online.\n" + e2.getMessage();
+                                return false;
                             }
                         }
                     }
@@ -140,6 +141,7 @@ public class LoginState extends GameState {
                             obj.get("gender").toString().charAt(0)));
                     Gdx.input.setInputProcessor(new InputHandler());
                     loadParty();
+                    gsm.logIn();
                     gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                     dispose();
                 }
@@ -150,6 +152,7 @@ public class LoginState extends GameState {
             }
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
+            Gdx.app.log("LoginError", e1.getMessage());
             e1.printStackTrace();
         }
     }

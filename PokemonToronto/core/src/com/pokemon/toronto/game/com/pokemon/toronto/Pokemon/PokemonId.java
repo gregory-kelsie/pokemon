@@ -55,6 +55,8 @@ public enum PokemonId {
     VENONAT(48),
     VENOMOTH(49),
     DIGLETT(50),
+    GEODUDE(74),
+    ONIX(95),
     EEVEE(133);
     private final int value;
     private PokemonId(int value) {

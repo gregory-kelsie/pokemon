@@ -53,6 +53,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.V
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Wigglytuff;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Geodude;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Onix;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
@@ -224,6 +226,12 @@ public class PokemonFactory {
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.DIGLETT.getValue()) {
             return new Diglett(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GEODUDE.getValue()) {
+            return new Geodude(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ONIX.getValue()) {
+            return new Onix(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         }
         return null;
