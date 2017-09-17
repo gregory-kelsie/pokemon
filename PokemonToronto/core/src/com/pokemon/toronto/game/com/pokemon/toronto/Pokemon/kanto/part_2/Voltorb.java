@@ -1,4 +1,4 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -11,45 +11,45 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Gregory on 8/16/2017.
+ * Created by Gregory on 9/16/2017.
  */
 
-public class Diglett extends Pokemon {
+public class Voltorb extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 50;
-    private static final String NAME = "Diglett";
-    private static final int BASE_EXP = 53;
+    private static final int NUMBER = 100;
+    private static final String NAME = "Voltorb";
+    private static final int BASE_EXP = 103;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
+    private static final int CAPTURE_RATE = 190;
 
     //Base Stats
-    private static final int BASE_HEALTH = 10;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 25;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 95;
+    private static final int BASE_HEALTH = 40;
+    private static final int BASE_ATTACK = 30;
+    private static final int BASE_DEFENSE = 50;
+    private static final int BASE_SPECIAL_ATTACK = 55;
+    private static final int BASE_SPECIAL_DEFENSE = 55;
+    private static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/diglett.png";
-    private static final String BACK_PATH = "battle/backs/diglett.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/diglett.png";
-    private static final String CRY_PATH = "sounds/cry/050.wav";
+    private static final String ICON_PATH = "pokemonSprites/voltorb.png";
+    private static final String BACK_PATH = "battle/backs/voltorb.png";
+    private static final String MINI_PATH = "pokemonMenu/sprites/voltorb.png";
+    private static final String CRY_PATH = "sounds/cry/100.wav";
 
     /**
-     * Create a Diglett with the specified level.
-     * @param level The level of the Diglett.
+     * Create a Voltorb with the specified level.
+     * @param level The level of the Voltorb.
      */
-    public Diglett(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
+    public Voltorb(int level) {
+        super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
     }
 
     /**
-     * Create an Diglett from the database.
+     * Create an Voltorb from the database.
      * @param level The level of the Pokemon.
      * @param ivs  The array of set IVs
      * @param evs The array of set EVs
@@ -63,10 +63,10 @@ public class Diglett extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Diglett(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                    Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
+    public Voltorb(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
+                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
+                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.ELECTRIC, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
@@ -74,25 +74,24 @@ public class Diglett extends Pokemon {
     }
 
     /**
-     * Init Diglett's level up skills.
+     * Init Voltorb's level up skills.
      */
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SAND_ATTACK);
         beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
     }
 
     /**
-     * Return Arbok if the Ekans is above level 22.
-     * @return Arbok if Ekans is the right level.
+     * Return Electrode if Voltorb is 30
+     * @return Electrode if Voltorb is the right level.
      */
     @Override
     public int getLevelUpEvolutionId() {
-        if (level >= 26) {
-            return PokemonId.DUGTRIO.getValue();
+        if (level >= 30) {
+            return PokemonId.ELECTRODE.getValue();
         }
         return -1;
     }

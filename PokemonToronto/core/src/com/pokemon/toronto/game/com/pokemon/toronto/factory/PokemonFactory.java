@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Caterpie;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charizard;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmander;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmeleon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Eevee;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Ivysaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.NidoranF;
@@ -53,8 +54,57 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.V
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Wigglytuff;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Geodude;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two.Onix;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Abra;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Alakazam;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Arcanine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Bellsprout;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Cloyster;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Dewgong;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Dodrio;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Doduo;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Drowzee;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Dugtrio;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Farfetchd;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Gastly;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Gengar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Geodude;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Golduck;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Golem;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Graveler;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Grimer;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Growlithe;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Haunter;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Hypno;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Kadabra;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Kingler;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Krabby;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Machamp;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Machoke;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Machop;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magnemite;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magneton;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Mankey;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Meowth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Muk;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Onix;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Persian;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Poliwag;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Poliwhirl;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Poliwrath;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Ponyta;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Primeape;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Psyduck;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Rapidash;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Seel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Shellder;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Slowbro;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Slowpoke;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Tentacool;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Tentacruel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Victreebel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Voltorb;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Weepinbell;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Electrode;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
@@ -227,11 +277,161 @@ public class PokemonFactory {
         } else if (id == PokemonId.DIGLETT.getValue()) {
             return new Diglett(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUGTRIO.getValue()) {
+            return new Dugtrio(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MEOWTH.getValue()) {
+            return new Meowth(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PERSIAN.getValue()) {
+            return new Persian(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PSYDUCK.getValue()) {
+            return new Psyduck(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOLDUCK.getValue()) {
+            return new Golduck(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MANKEY.getValue()) {
+            return new Mankey(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PRIMEAPE.getValue()) {
+            return new Primeape(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GROWLITHE.getValue()) {
+            return new Growlithe(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ARCANINE.getValue()) {
+            return new Arcanine(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.POLIWAG.getValue()) {
+            return new Poliwag(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.POLIWHIRL.getValue()) {
+            return new Poliwhirl(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.POLIWRATH.getValue()) {
+            return new Poliwrath(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ABRA.getValue()) {
+            return new Abra(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KADABRA.getValue()) {
+            return new Kadabra(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ALAKAZAM.getValue()) {
+            return new Alakazam(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MACHOP.getValue()) {
+            return new Machop(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MACHOKE.getValue()) {
+            return new Machoke(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MACHAMP.getValue()) {
+            return new Machamp(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BELLSPROUT.getValue()) {
+            return new Bellsprout(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WEEPINBELL.getValue()) {
+            return new Weepinbell(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VICTREEBEL.getValue()) {
+            return new Victreebel(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TENTACOOL.getValue()) {
+            return new Tentacool(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TENTACRUEL.getValue()) {
+            return new Tentacruel(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.GEODUDE.getValue()) {
             return new Geodude(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GRAVELER.getValue()) {
+            return new Graveler(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOLEM.getValue()) {
+            return new Golem(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PONYTA.getValue()) {
+            return new Ponyta(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RAPIDASH.getValue()) {
+            return new Rapidash(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SLOWPOKE.getValue()) {
+            return new Slowpoke(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SLOWBRO.getValue()) {
+            return new Slowbro(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAGNEMITE.getValue()) {
+            return new Magnemite(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAGNETON.getValue()) {
+            return new Magneton(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FARFETCHD.getValue()) {
+            return new Farfetchd(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DODUO.getValue()) {
+            return new Doduo(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DODRIO.getValue()) {
+            return new Dodrio(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEEL.getValue()) {
+            return new Seel(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DEWGONG.getValue()) {
+            return new Dewgong(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GRIMER.getValue()) {
+            return new Grimer(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MUK.getValue()) {
+            return new Muk(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHELLDER.getValue()) {
+            return new Shellder(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CLOYSTER.getValue()) {
+            return new Cloyster(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GASTLY.getValue()) {
+            return new Gastly(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HAUNTER.getValue()) {
+            return new Haunter(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GENGAR.getValue()) {
+            return new Gengar(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.ONIX.getValue()) {
             return new Onix(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DROWZEE.getValue()) {
+            return new Drowzee(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HYPNO.getValue()) {
+            return new Hypno(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KRABBY.getValue()) {
+            return new Krabby(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KINGLER.getValue()) {
+            return new Kingler(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VOLTORB.getValue()) {
+            return new Voltorb(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ELECTRODE.getValue()) {
+            return new Electrode(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EEVEE.getValue()) {
+            return new Eevee(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         }
         return null;
@@ -386,6 +586,146 @@ public class PokemonFactory {
                     preEvolution.getNature(), preEvolution.getAbility());
         } else if (id == PokemonId.VENOMOTH.getValue()) {
             return new Venomoth(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.DUGTRIO.getValue()) {
+            return new Dugtrio(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.PERSIAN.getValue()) {
+            return new Persian(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.GOLDUCK.getValue()) {
+            return new Golduck(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.PRIMEAPE.getValue()) {
+            return new Primeape(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.ARCANINE.getValue()) {
+            return new Arcanine(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.POLIWHIRL.getValue()) {
+            return new Poliwhirl(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.POLIWRATH.getValue()) {
+            return new Poliwrath(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.KADABRA.getValue()) {
+            return new Kadabra(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.ALAKAZAM.getValue()) {
+            return new Alakazam(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.MACHOKE.getValue()) {
+            return new Machoke(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.MACHAMP.getValue()) {
+            return new Machamp(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.WEEPINBELL.getValue()) {
+            return new Weepinbell(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.VICTREEBEL.getValue()) {
+            return new Victreebel(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.TENTACRUEL.getValue()) {
+            return new Tentacruel(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.GRAVELER.getValue()) {
+            return new Graveler(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.GOLEM.getValue()) {
+            return new Golem(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.RAPIDASH.getValue()) {
+            return new Rapidash(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.SLOWBRO.getValue()) {
+            return new Slowbro(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.MAGNETON.getValue()) {
+            return new Magneton(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.DODRIO.getValue()) {
+            return new Dodrio(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.DEWGONG.getValue()) {
+            return new Dewgong(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.MUK.getValue()) {
+            return new Muk(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.CLOYSTER.getValue()) {
+            return new Cloyster(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.HAUNTER.getValue()) {
+            return new Haunter(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.GENGAR.getValue()) {
+            return new Gengar(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.HYPNO.getValue()) {
+            return new Hypno(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.KINGLER.getValue()) {
+            return new Kingler(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getAbility());
+        } else if (id == PokemonId.ELECTRODE.getValue()) {
+            return new Electrode(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getAbility());

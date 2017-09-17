@@ -1,4 +1,4 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_two;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -10,45 +10,45 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Gregory on 9/9/2017.
+ * Created by Gregory on 9/15/2017.
  */
 
-public class Onix extends Pokemon {
+public class Poliwrath extends Pokemon {
     /** Init Variables */
-
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 95;
-    private static final String NAME = "Onix";
-    private static final int BASE_EXP = 108;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    private static final int NUMBER = 62;
+    private static final String NAME = "Poliwrath";
+    private static final int BASE_EXP = 230;
+    private static final int[] EV_YIELD = {0, 0, 3, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 160;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
+    private static final int BASE_HEALTH = 90;
+    private static final int BASE_ATTACK = 95;
+    private static final int BASE_DEFENSE = 95;
+    private static final int BASE_SPECIAL_ATTACK = 70;
+    private static final int BASE_SPECIAL_DEFENSE = 90;
     private static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/onix.png";
-    private static final String BACK_PATH = "battle/backs/onix.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/onix.png";
-    private static final String CRY_PATH = "sounds/cry/095.wav";
+    private static final String ICON_PATH = "pokemonSprites/poliwrath.png";
+    private static final String BACK_PATH = "battle/backs/poliwrath.png";
+    private static final String MINI_PATH = "pokemonMenu/sprites/poliwrath.png";
+    private static final String CRY_PATH = "sounds/cry/062.wav";
+
     /**
-     * Create a Onix with the specified level.
-     * @param level The level of the Onix.
+     * Create a Poliwrath with the specified level.
+     * @param level The level of the Poliwrath.
      */
-    public Onix(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.ROCK, Pokemon.Type.GROUND, Pokemon.Ability.STURDY, ExpType.MEDIUM_FAST,
+    public Poliwrath(int level) {
+        super(NUMBER, NAME, level, Pokemon.Type.WATER, Type.FIGHTING, Ability.WATER_ABSORB, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
     }
 
     /**
-     * Create an Onix from the database or through evolution.
+     * Create an Poliwrath from the database.
      * @param level The level of the Pokemon.
      * @param ivs  The array of set IVs
      * @param evs The array of set EVs
@@ -62,10 +62,10 @@ public class Onix extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Onix(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
+    public Poliwrath(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                      Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.ROCK, Pokemon.Type.GROUND, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.WATER, Type.FIGHTING, ability, nature, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
@@ -73,28 +73,13 @@ public class Onix extends Pokemon {
     }
 
     /**
-     * Init Onix's level up skills.
+     * Init Poliwrath's level up skills.
      */
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.TACKLE);
-        beginnerSkills.add(SkillFactory.HARDEN);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.CURSE)));
-        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.STEALTH_ROCK)));
-    }
-
-    /**
-     * Determine Onix's gender.
-     */
-    @Override
-    protected void initGender() {
-        double genderProbability = Math.random();
-        if (genderProbability <= .875) {
-            gender = 'M';
-        } else {
-            gender = 'F';
-        }
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
     }
 }

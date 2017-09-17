@@ -48,6 +48,11 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.V
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Arcanine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Hypno;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Machamp;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magnemite;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magneton;
 import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage;
@@ -291,19 +296,19 @@ public class GameStateManager {
         addToBox(new Golbat(5));
         addToBox(new Diglett(5));
         addToBox(new Venomoth(5));
-        addToBox(new Venonat(5));
-        addToBox(new Paras(5));
+        addToBox(new Magnemite(5));
+        addToBox(new Magneton(5));
         addToBox(new Parasect(30));
-        addToBox(new Oddish(5));
+        addToBox(new Machamp(5));
         addToBox(new Gloom(5));
         addToBox(new Vileplume(5));
         addToBox(new Beedrill(5));
         Pokemon weedle = new Weedle(6);
         weedle.setExp(100);
         addToBox(weedle);
-        addToBox(new Metapod(5));
+        addToBox(new Arcanine(5));
         addToBox(new Butterfree(5));
-        addToBox(new Spearow(5));
+        addToBox(new Hypno(5));
         addToBox(new Fearow(5));
         //addToBox(new Pikachu(5));
     }

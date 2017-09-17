@@ -66,6 +66,7 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
                 userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
 
+
         for (int i = 0; i < secondaryEffects.size(); i++) {
             secondaryEffects.get(i).use(results, skillUser, enemyPokemon, isFirstAttack);
         }
