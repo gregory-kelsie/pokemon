@@ -47,6 +47,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String[] trainerIcon;
 
     private Bitmap temp;
+    private List<Marker> markers;
+    private List<Bitmap> icons;
+    private List<Bitmap> icons2;
 
 
     /**
@@ -56,7 +59,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        markers = new ArrayList<Marker>();
+        icons = new ArrayList<Bitmap>();
+        icons2 = new ArrayList<Bitmap>();
         initReceivedData();
         setContentView(R.layout.activity_maps);
 
@@ -125,6 +130,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        for (Marker m: markers) {
+            m.remove();
+        }
+        for (Bitmap b: icons) {
+            b.recycle();
+        }
+        for (Bitmap b: icons2) {
+            b.recycle();
+        }
+        markers.clear();
         finish();
     }
 
@@ -147,32 +162,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(latitude, longitude);
         temp = resizeBitmap("maletrainer.png", 78, 100);
 
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
+        markers.add(mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
                 .icon(BitmapDescriptorFactory.fromBitmap(
-                temp)));
+                temp))));
 
         //Create markers for each of the Wild Pokemon the player has been
         //notified of and hasn't ran into yet.
         for (int i = 0; i < pokemonLatitude.length; i++) {
             temp = resizeBitmap(pokemonIcon[i], 200, 200);
             Marker m;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(
+            markers.add(mMap.addMarker(new MarkerOptions().position(new LatLng(
                     pokemonLatitude[i], pokemonLongitude[i]))
                     .title("Lat: " + pokemonLatitude[i] + ", Lon: " + pokemonLongitude[i])
                     .icon(BitmapDescriptorFactory.fromBitmap(
-                            temp)));
+                            temp))));
         }
 
         //Create markers for each of the nearby Trainers
         for (int i = 0; i < trainerLatitude.length; i++) {
             temp = resizeBitmap(trainerIcon[i], 200, 200);
             Marker m;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(
+            markers.add(mMap.addMarker(new MarkerOptions().position(new LatLng(
                     trainerLatitude[i], trainerLongitude[i]))
                     .title("Trainer XYZ")
                     .snippet("Difficulty: 0.5")
                     .icon(BitmapDescriptorFactory.fromBitmap(
-                            temp)));
+                            temp))));
         }
 
         //Move the camera to the player's position and zoom in.
@@ -196,6 +211,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         Bitmap initialImage = BitmapFactory.decodeStream(istr);
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(initialImage, width, height, false);
+        icons2.add(initialImage);
+        icons.add(resizedBitmap);
         return resizedBitmap;
     }
 }

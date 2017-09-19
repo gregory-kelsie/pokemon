@@ -9,8 +9,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 public abstract class StatEffect extends SecondaryEffect {
     protected int amount;
     protected StatDirection statDirection;
-    public StatEffect(double chance, Target target, int amount, StatDirection statDirection) {
-        super(chance, target);
+    public StatEffect(Target target, int amount, StatDirection statDirection) {
+        super(target);
         this.amount = amount;
         this.statDirection = statDirection;
     }

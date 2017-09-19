@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public abstract class SecondaryEffectSkill extends DamageSkill {
     protected List<SecondaryEffect> secondaryEffects;
+    protected double chance;
 
     /**
      * Create a Secondary Effect skill for recoil/draining attacks. A skill that hits damage and also
@@ -26,10 +28,13 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * @param crit The crit stage for the skill
      * @param accuracy The accuracy level for the skill.
      * @param recoilLevel The amount of recoil damage the user will take.
+     * @param chance The chance the Secondary effect will occur
      *                    none, 1/2, 1/3, 1/4.
      */
-    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
+    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel,
+                                double chance) {
         super(id, name, maxPP, type, category, accuracy, damage, crit, recoilLevel);
+        this.chance = chance;
         secondaryEffects = new ArrayList<SecondaryEffect>();
     }
 
@@ -45,8 +50,9 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * @param crit The crit stage for the skill
      * @param accuracy The accuracy level for the skill.
      */
-    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit) {
+    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, double chance) {
         super(id, name, maxPP, type, category, accuracy, damage, crit);
+        this.chance = chance;
         secondaryEffects = new ArrayList<SecondaryEffect>();
     }
 
@@ -66,9 +72,11 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
                 userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
 
-
-        for (int i = 0; i < secondaryEffects.size(); i++) {
-            secondaryEffects.get(i).use(results, skillUser, enemyPokemon, isFirstAttack);
+        double rand = Math.random();
+        if (chance >= rand) {
+            for (int i = 0; i < secondaryEffects.size(); i++) {
+                secondaryEffects.get(i).use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
+            }
         }
         return results;
     }

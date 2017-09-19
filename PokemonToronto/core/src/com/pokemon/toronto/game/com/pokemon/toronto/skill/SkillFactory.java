@@ -17,7 +17,22 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.Spikes;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.AuroraBeam;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Avalanche;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Blizzard;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.FreezeDry;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.FrostBreath;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Hail;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Haze;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceBall;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceBeam;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceFang;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceHammer;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcePunch;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceShard;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcicleCrash;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcicleSpear;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcyWind;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Bind;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
@@ -37,9 +52,64 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonPowder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.PoisonSting;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Poison.ToxicSpikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.Accelerock;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.AncientPower;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.HeadSmash;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.PowerGem;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockBlast;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockPolish;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockSlide;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockThrow;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockTomb;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockWrecker;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.Rollout;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.Sandstorm;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.StealthRock;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.StoneEdge;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.Autotomize;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.BulletPunch;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.DoomDesire;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.FlashCannon;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.GearGrind;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.GyroBall;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronDefense;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronHead;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronTail;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MagnetBomb;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MetalBurst;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MetalClaw;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MetalSound;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MeteorMash;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.MirrorShot;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.ShiftGear;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.SmartStrike;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.SteelWing;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.AquaJet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.AquaRing;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.AquaTail;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Brine;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Bubble;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Bubblebeam;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Clamp;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Crabhammer;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Dive;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.HydroCannon;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.HydroPump;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Liquidation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.MuddyWater;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Octazooka;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.RainDance;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.RazorShell;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Scald;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.SparklingAria;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Surf;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterGun;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterPulse;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterShuriken;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterSport;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterSpout;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Waterfall;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Withdraw;
 
 /**
  * Created by Gregory on 6/15/2017.
@@ -87,6 +157,77 @@ public class SkillFactory {
     public static final int CURSE = 37;
     public static final int AROMATHERAPY = 38;
     public static final int BIND = 39;
+    public static final int SURF = 40;
+    public static final int WHIRLPOOL = 41;
+    public static final int AQUA_JET = 42;
+    public static final int AQUA_TAIL = 43;
+    public static final int BRINE = 44;
+    public static final int BUBBLE = 45;
+    public static final int BUBBLEBEAM = 46;
+    public static final int CLAMP = 47;
+    public static final int CRABHAMMER = 48;
+    public static final int DIVE = 49;
+    public static final int HYDRO_CANNON = 50;
+    public static final int HYDRO_PUMP = 51;
+    public static final int LIQUIDATION = 52;
+    public static final int MUDDY_WATER = 53;
+    public static final int OCTAZOOKA = 54;
+    public static final int RAIN_DANCE = 55;
+    public static final int RAZOR_SHELL = 56;
+    public static final int SCALD = 57;
+    public static final int SPARKLING_ARIA = 58;
+    public static final int WATER_GUN = 59;
+    public static final int WATER_PULSE = 60;
+    public static final int WATER_SHURIKEN = 61;
+    public static final int WATER_SPOUT = 62;
+    public static final int WATERFALL = 63;
+    public static final int WITHDRAW = 64;
+    public static final int WATER_SPORT = 65;
+    public static final int ACCELEROCK = 66;
+    public static final int ANCIENT_POWER = 67;
+    public static final int HEAD_SMASH = 68;
+    public static final int POWER_GEM = 69;
+    public static final int ROCK_BLAST = 70;
+    public static final int ROCK_POLISH = 71;
+    public static final int ROCK_SLIDE = 72;
+    public static final int ROCK_THROW = 73;
+    public static final int ROCK_TOMB = 74;
+    public static final int ROCK_WRECKER = 75;
+    public static final int ROLLOUT = 76;
+    public static final int SANDSTORM = 77;
+    public static final int STONE_EDGE = 78;
+    public static final int AUTOTOMIZE = 79;
+    public static final int BULLET_PUNCH = 80;
+    public static final int FLASH_CANNON = 81;
+    public static final int GEAR_GRIND = 82;
+    public static final int GYRO_BALL = 83;
+    public static final int IRON_DEFENSE = 84;
+    public static final int IRON_HEAD = 85;
+    public static final int IRON_TAIL = 86;
+    public static final int MAGNET_BOMB = 87;
+    public static final int METAL_BURST = 88;
+    public static final int METAL_CLAW = 89;
+    public static final int METAL_SOUND = 90;
+    public static final int METEOR_MASH = 91;
+    public static final int MIRROR_SHOT = 92;
+    public static final int SHIFT_GEAR = 93;
+    public static final int SMART_STRIKE = 94;
+    public static final int STEEL_WING = 95;
+    public static final int AURORA_BEAM = 96;
+    public static final int AVALANCHE = 97;
+    public static final int BLIZZARD = 98;
+    public static final int FREEZE_DRY = 99;
+    public static final int FROST_BREATH = 100;
+    public static final int HAZE = 101;
+    public static final int ICE_BALL = 102;
+    public static final int ICE_BEAM = 103;
+    public static final int ICE_FANG = 104;
+    public static final int ICE_HAMMER = 105;
+    public static final int ICE_PUNCH = 106;
+    public static final int ICE_SHARD = 107;
+    public static final int ICICLE_CRASH = 108;
+    public static final int ICICLE_SPEAR = 109;
+    public static final int ICY_WIND = 110;
 
     public SkillFactory() {
 
@@ -176,6 +317,146 @@ public class SkillFactory {
             return new Aromatherapy();
         } else if (skillId == BIND) {
             return new Bind();
+        } else if (skillId == AQUA_JET) {
+            return new AquaJet();
+        } else if (skillId == AQUA_TAIL) {
+            return new AquaTail();
+        } else if (skillId == BRINE) {
+            return new Brine();
+        } else if (skillId == BUBBLE) {
+            return new Bubble();
+        } else if (skillId == BUBBLEBEAM) {
+            return new Bubblebeam();
+        } else if (skillId == CLAMP) {
+            return new Clamp();
+        } else if (skillId == CRABHAMMER) {
+            return new Crabhammer();
+        } else if (skillId == DIVE) {
+            return new Dive();
+        } else if (skillId == HYDRO_CANNON) {
+            return new HydroCannon();
+        } else if (skillId == HYDRO_PUMP) {
+            return new HydroPump();
+        } else if (skillId == LIQUIDATION) {
+            return new Liquidation();
+        } else if (skillId == MUDDY_WATER) {
+            return new MuddyWater();
+        } else if (skillId == OCTAZOOKA) {
+            return new Octazooka();
+        } else if (skillId == RAIN_DANCE) {
+            return new RainDance();
+        } else if (skillId == RAZOR_SHELL) {
+            return new RazorShell();
+        } else if (skillId == SCALD) {
+            return new Scald();
+        } else if (skillId == SPARKLING_ARIA) {
+            return new SparklingAria();
+        } else if (skillId == SURF) {
+            return new Surf();
+        } else if (skillId == WATER_GUN) {
+            return new WaterGun();
+        } else if (skillId == WATER_PULSE) {
+            return new WaterPulse();
+        } else if (skillId == WATER_SHURIKEN) {
+            return new WaterShuriken();
+        } else if (skillId == WATER_SPOUT) {
+            return new WaterSpout();
+        } else if (skillId == WATERFALL) {
+            return new Waterfall();
+        } else if (skillId == WITHDRAW) {
+            return new Withdraw();
+        } else if (skillId == WATER_SPORT) {
+            return new WaterSport();
+        } else if (skillId == ACCELEROCK) {
+            return new Accelerock();
+        } else if (skillId == ANCIENT_POWER) {
+            return new AncientPower();
+        } else if (skillId == HEAD_SMASH) {
+            return new HeadSmash();
+        } else if (skillId == POWER_GEM) {
+            return new PowerGem();
+        } else if (skillId == ROCK_BLAST) {
+            return new RockBlast();
+        } else if (skillId == ROCK_POLISH) {
+            return new RockPolish();
+        } else if (skillId == ROCK_SLIDE) {
+            return new RockSlide();
+        } else if (skillId == ROCK_THROW) {
+            return new RockThrow();
+        } else if (skillId == ROCK_TOMB) {
+            return new RockTomb();
+        } else if (skillId == ROCK_WRECKER) {
+            return new RockWrecker();
+        } else if (skillId == ROLLOUT) {
+            return new Rollout();
+        } else if (skillId == SANDSTORM) {
+            return new Sandstorm();
+        } else if (skillId == STONE_EDGE) {
+            return new StoneEdge();
+        } else if (skillId == AUTOTOMIZE) {
+            return new Autotomize();
+        } else if (skillId == BULLET_PUNCH) {
+            return new BulletPunch();
+        } else if (skillId == FLASH_CANNON) {
+            return new FlashCannon();
+        } else if (skillId == GEAR_GRIND) {
+            return new GearGrind();
+        } else if (skillId == GYRO_BALL) {
+            return new GyroBall();
+        } else if (skillId == IRON_DEFENSE) {
+            return new IronDefense();
+        } else if (skillId == IRON_HEAD) {
+            return new IronHead();
+        } else if (skillId == IRON_TAIL) {
+            return new IronTail();
+        } else if (skillId == MAGNET_BOMB) {
+            return new MagnetBomb();
+        } else if (skillId == METAL_BURST) {
+            return new MetalBurst();
+        } else if (skillId == METAL_CLAW) {
+            return new MetalClaw();
+        } else if (skillId == METAL_SOUND) {
+            return new MetalSound();
+        } else if (skillId == METEOR_MASH) {
+            return new MeteorMash();
+        } else if (skillId == MIRROR_SHOT) {
+            return new MirrorShot();
+        } else if (skillId == SHIFT_GEAR) {
+            return new ShiftGear();
+        } else if (skillId == SMART_STRIKE) {
+            return new SmartStrike();
+        } else if (skillId == STEEL_WING) {
+            return new SteelWing();
+        } else if (skillId == AURORA_BEAM) {
+            return new AuroraBeam();
+        } else if (skillId == AVALANCHE) {
+            return new Avalanche();
+        } else if (skillId == BLIZZARD) {
+            return new Blizzard();
+        } else if (skillId == FREEZE_DRY) {
+            return new FreezeDry();
+        } else if (skillId == FROST_BREATH) {
+            return new FrostBreath();
+        } else if (skillId == HAZE) {
+            return new Haze();
+        } else if (skillId == ICE_BALL) {
+            return new IceBall();
+        } else if (skillId == ICE_BEAM) {
+            return new IceBeam();
+        } else if (skillId == ICE_FANG) {
+            return new IceFang();
+        } else if (skillId == ICE_HAMMER) {
+            return new IceHammer();
+        } else if (skillId == ICE_PUNCH) {
+            return new IcePunch();
+        } else if (skillId == ICE_SHARD) {
+            return new IceShard();
+        } else if (skillId == ICICLE_CRASH) {
+            return new IcicleCrash();
+        } else if (skillId == ICICLE_SPEAR) {
+            return new IcicleSpear();
+        } else if (skillId == ICY_WIND) {
+            return new IcyWind();
         }
         else {
             return new Covet();

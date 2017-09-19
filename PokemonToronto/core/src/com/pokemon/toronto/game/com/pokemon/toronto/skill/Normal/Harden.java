@@ -22,8 +22,9 @@ public class Harden extends EffectSkill {
      */
     public Harden() {
         super(28, "Harden", 30, Pokemon.Type.NORMAL, 100);
-        effects.add(new DefenseEffect(1,
-                SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        targetsEnemy = false;
     }
 
     /**

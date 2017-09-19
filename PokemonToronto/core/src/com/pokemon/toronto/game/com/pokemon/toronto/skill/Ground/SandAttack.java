@@ -28,8 +28,8 @@ public class SandAttack extends EffectSkill {
      */
     public SandAttack() {
         super(6, "Sand Attack", 15, Pokemon.Type.GROUND, 100);
-        effects.add(new AccuracyEffect(1,
-                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
 

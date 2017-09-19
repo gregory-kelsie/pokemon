@@ -46,6 +46,8 @@ public class EndTurnPhase extends BattlePhase {
     private final int NIGHTMARES = 24;
     private final int CURSE = 25;
     private final int BIND_STATE = 26;
+    private final int CLAMP_STATE = 27;
+    private final int WHIRLPOOL_STATE = 28;
 
 
     //End turn weather results
@@ -87,6 +89,7 @@ public class EndTurnPhase extends BattlePhase {
         enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
         skipUser = false;
         skipEnemy = false;
+        resetDamageTakenThisTurn();
     }
 
     public EndTurnPhase(PhaseUpdaterInterface pui, boolean skipUser, boolean skipEnemy) {
@@ -100,6 +103,17 @@ public class EndTurnPhase extends BattlePhase {
         enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
         this.skipUser = skipUser;
         this.skipEnemy = skipEnemy;
+        resetDamageTakenThisTurn();
+    }
+
+    /**
+     * Reset the Pokemon knowing how much damage they've taken for the
+     * turn because it is the End Turn phase where this doesn't have
+     * to be remembered anymore.
+     */
+    private void resetDamageTakenThisTurn() {
+        pui.getUserPokemon().resetDamageTakenThisTurn();
+        pui.getEnemyPokemon().resetDamageTakenThisTurn();
     }
 
     @Override
@@ -171,6 +185,10 @@ public class EndTurnPhase extends BattlePhase {
             checkCurse();
         } else if (currentState == BIND_STATE) {
             checkBind();
+        } else if (currentState == CLAMP_STATE) {
+            checkClamp();
+        } else if (currentState == WHIRLPOOL_STATE) {
+            checkWhirlpool();
         }
     }
 
@@ -240,6 +258,61 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void checkWhirlpool() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getWhirlpoolTurns() == 0 && currentPokemon.inWhirlpool()) {
+                currentPokemon.removeWhirlpool();
+                text = currentPokemon.getName() + " was freed from Whirlpool!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = WHIRLPOOL_STATE;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = END_GAME;
+                }
+            } else if (currentPokemon.inWhirlpool()) {
+                text = currentPokemon.getName() + " was hurt by Whirlpool.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustWhirlpoolTurns();
+                adjustStates(currentPokemon, WHIRLPOOL_STATE, END_GAME);
+            } else {
+                noStateUse(END_GAME);
+            }
+        } else {
+            noStateUse(END_GAME);
+        }
+    }
+
+    private void checkClamp() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getClampTurns() == 0 && currentPokemon.isClamped()) {
+                currentPokemon.removeClamp();
+                text = currentPokemon.getName() + " was freed from Clamp!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = CLAMP_STATE;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = WHIRLPOOL_STATE;
+                }
+            } else if (currentPokemon.isClamped()) {
+                text = currentPokemon.getName() + " was hurt by Clamp.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustClampTurns();
+                adjustStates(currentPokemon, CLAMP_STATE, WHIRLPOOL_STATE);
+            } else {
+                noStateUse(WHIRLPOOL_STATE);
+            }
+        } else {
+            noStateUse(WHIRLPOOL_STATE);
+        }
+    }
     private void checkBind() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0) {
@@ -252,19 +325,19 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterText = BIND_STATE;
                 } else {
                     usingOnEnemy = true;
-                    stateAfterText = END_GAME;
+                    stateAfterText = CLAMP_STATE;
                 }
             } else if (currentPokemon.isBinded()) {
                 text = currentPokemon.getName() + " was hurt by Bind.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 6.0);
                 currentPokemon.subtractHealth(damage);
                 currentPokemon.adjustBindTurns();
-                adjustStates(currentPokemon, BIND_STATE, END_GAME);
+                adjustStates(currentPokemon, BIND_STATE, CLAMP_STATE);
             } else {
-                noStateUse(END_GAME);
+                noStateUse(CLAMP_STATE);
             }
         } else {
-            noStateUse(END_GAME);
+            noStateUse(CLAMP_STATE);
         }
     }
 

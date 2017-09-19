@@ -14,8 +14,8 @@ import java.util.List;
 
 public interface PhaseUpdaterInterface {
     void setPhase(BattlePhase p);
-    void setUserFirstAttacker(Skill userSkill, Skill enemySkill);
-    void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill);
+    void setUserFirstAttacker();
+    void setEnemyFirstAttacker();
     boolean isUserPokemonFirstAttacker();
     Pokemon getUserPokemon();
     Pokemon getEnemyPokemon();

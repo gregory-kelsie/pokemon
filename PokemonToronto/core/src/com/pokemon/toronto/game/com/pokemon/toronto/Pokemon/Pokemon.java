@@ -1,6 +1,8 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
 
 import com.badlogic.gdx.Gdx;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -134,11 +136,20 @@ public abstract class Pokemon {
     private int doomDesireTime;
     private final int TOTAL_DOOM_DESIRE_TIME = 2;
 
+    //The amount of damage the Pokemon took this turn. This is used for counter, mirror coat and metal burst.
+    private int turnDamageTaken;
+    private Skill.SkillCategory damageTakenCategory;
+
+
     private boolean envelopedInAquaRing;
     private boolean isIngrained;
     private boolean isCursed;
     private boolean binded;
     private int bindedTurns;
+    private boolean clamped;
+    private int clampTurns;
+    private boolean inWhirlpool;
+    private int whirlpoolTurns;
     private boolean isLeechSeeded;
     private boolean hasNightmares;
     private boolean receivingWish;
@@ -152,12 +163,16 @@ public abstract class Pokemon {
 
     private int sleepTime;
 
+    private int rolloutTurns = 0;
+
     private Skill outrageSkill;
     private int outrageTurns;
 
     private Skill nextTurnSkill;
     private boolean flying; //Fly
     private boolean underground; //Dig
+    private boolean underwater; //Dive
+    private boolean recharging;
 
     /** Constants */
 
@@ -175,8 +190,8 @@ public abstract class Pokemon {
     //
     protected final int HEALTH = 0;
     protected final int ATTACK = 1;
-    protected final int SPECIAL_ATTACK = 2;
-    protected final int DEFENSE = 3;
+    protected final int SPECIAL_ATTACK = 3;
+    protected final int DEFENSE = 2;
     protected final int SPECIAL_DEFENSE = 4;
     protected final int SPEED = 5;
 
@@ -386,6 +401,10 @@ public abstract class Pokemon {
         removeWish();
         binded = false;
         bindedTurns = 0;
+        clamped = false;
+        clampTurns = 0;
+        inWhirlpool = false;
+        whirlpoolTurns = 0;
         tauntTime = -1;
         embargoTime = -1;
         encoreTime = -1;
@@ -407,6 +426,11 @@ public abstract class Pokemon {
         nextTurnSkill = null;
         flying = false; //Fly
         underground = false; //Dig
+        underwater = false; //Dive
+        recharging = false;
+        rolloutTurns = 0;
+        turnDamageTaken = 0;
+        damageTakenCategory = Skill.SkillCategory.MISC;
     }
 
     public void receiveTransferrableBattleVariables(Pokemon transferPokemon) {
@@ -427,6 +451,94 @@ public abstract class Pokemon {
 
     }
 
+    public void setTurnDamageTaken(int damageAmount, Skill.SkillCategory damageCategory) {
+        this.turnDamageTaken = damageAmount;
+        this.damageTakenCategory = damageCategory;
+    }
+
+    public boolean tookPhysicalDamageThisTurn() {
+        if (turnDamageTaken > 0 && damageTakenCategory == Skill.SkillCategory.PHYSICAL) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tookSpecialDamageThisTurn() {
+        if (turnDamageTaken > 0 && damageTakenCategory == Skill.SkillCategory.SPECIAL) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tookDamageThisTurn() {
+        if (turnDamageTaken > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getDamageTakenThisTurn() {
+        return turnDamageTaken;
+    }
+
+    public void resetDamageTakenThisTurn() {
+        turnDamageTaken = 0;
+        damageTakenCategory = Skill.SkillCategory.MISC;
+    }
+
+
+    /**
+     * Return the number of rollout turns left.
+     * 0 if there Pokemon hasn't started rolling out yet.
+     * @return The number of rollout turns left.
+     */
+    public int getRolloutTurns() {
+        return rolloutTurns;
+    }
+
+    /**
+     * Cancel the Pokemon from Rolling out if it is
+     * using rollout.
+     */
+    public void cancelRollout() {
+        if (rolloutTurns > 0) {
+            nextTurnSkill = null;
+            rolloutTurns = 0;
+        }
+    }
+
+    /**
+     * Add a turn to the rollout chain.
+     */
+    public void addRolloutTurn() {
+        rolloutTurns++;
+    }
+
+    /**
+     * Cancel the effects that get cancelled when the
+     * Pokemon misses their target. Ex: Rollout.
+     */
+    public void cancelMissSkills() {
+        cancelRollout();
+    }
+
+    /**
+     * Cancel the effects that get cancelled when the
+     * Pokemon flinches. Ex: Rollout
+     */
+    public void cancelFlinchSkills() {
+        cancelRollout();
+    }
+
+    /**
+     * Start using rollout.
+     * @param rollout The rollout skill that will be used on the next
+     *                turn.
+     */
+    public void startRollout(Skill rollout) {
+        rolloutTurns = 1;
+        nextTurnSkill = rollout;
+    }
     /**
      * Return whether or not the Pokemon is Binded by
      * the move Bind.
@@ -435,6 +547,14 @@ public abstract class Pokemon {
     public boolean isBinded() {
         return binded;
     }
+
+
+    /**
+     * Return whether or not the Pokemon is in a Whirlpool.
+     * @return Whether or not the Pokemon is in the Whirlpool
+     * vortex.
+     */
+    public boolean inWhirlpool() { return inWhirlpool; }
 
     /**
      * Bind the Pokemon with the skill effect from the move
@@ -449,6 +569,49 @@ public abstract class Pokemon {
         }
     }
 
+    public void whirlpool() {
+        inWhirlpool = true;
+        if (Math.random() < .5) {
+            whirlpoolTurns = 4;
+        } else {
+            whirlpoolTurns = 5;
+        }
+    }
+
+    /**
+     * Return whether or not the Pokemon is Clamped by
+     * the move Clamp.
+     * @return Whether or not the Pokemon is Clamped.
+     */
+    public boolean isClamped() {
+        return clamped;
+    }
+
+    /**
+     * Clamp the Pokemon with the skill effect from the move
+     * Clamp.
+     */
+    public void clamp() {
+        clamped = true;
+        double rand = Math.random();
+        if (rand < .375) {
+            clampTurns = 2;
+        } else if (rand <= .75) {
+            clampTurns = 3;
+        } else if (rand <= .875) {
+            clampTurns = 4;
+        } else {
+            clampTurns = 5;
+        }
+    }
+
+    /**
+     * Remove the clamp effect from the Pokemon.
+     */
+    public void removeClamp() {
+        clamped = false;
+    }
+
     /**
      * Remove the Bind effect from the Pokemon.
      */
@@ -456,12 +619,22 @@ public abstract class Pokemon {
         binded = false;
     }
 
+
+    /**
+     * Remove Whirlpool effect.
+     */
+    public void removeWhirlpool() { inWhirlpool = false; }
+
     /**
      * Remove all Bind effects from the Pokemon. (Bind, Wrap, Fire Spin etc)
      */
     public void freeFromBinds() {
         binded = false;
         bindedTurns = 0;
+        clamped = false;
+        clampTurns = 0;
+        inWhirlpool = false;
+        whirlpoolTurns = 0;
     }
 
     /**
@@ -473,11 +646,35 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the number of turns left until Clamp expires.
+     * @return The number of turns left until Clamp expires.
+     */
+    public int getClampTurns() { return clampTurns; }
+
+    /**
+     * Return the number of turns left until Whirlpool expires.
+     * @return The number of turns left until Whirlpool expires.
+     */
+    public int getWhirlpoolTurns() { return whirlpoolTurns; }
+
+    /**
+     * Adjust the number of Clamp turns left.
+     */
+    public void adjustClampTurns() {
+        clampTurns--;
+    }
+
+    /**
      * Adjust the number of Bind turns left.
      */
     public void adjustBindTurns() {
         bindedTurns--;
     }
+
+    /**
+     * Adjust the number of Whirlpool turns left.
+     */
+    public void adjustWhirlpoolTurns() { whirlpoolTurns--; }
 
     /**
      * Return whether or not this Pokemon will receive
@@ -1153,6 +1350,55 @@ public abstract class Pokemon {
         return underground;
     }
 
+    /**
+     * Return whether or not the Pokemon is underwater after using
+     * Dive.
+     * @return Whether or not the Pokemon is underwater.
+     */
+    public boolean isUnderwater() {
+        return underwater;
+    }
+
+    /**
+     * Finish using the Dive skill by removing the next turn skill
+     * and come up from underwater.
+     */
+    public void finishDive() {
+        setNextTurnSkill(null);
+        underwater = false;
+    }
+
+    /**
+     * Return whether or not the Pokemon is recharging after using
+     * a Hyper Beam or similar move.
+     * @return
+     */
+    public boolean isRecharging() {
+        return recharging;
+    }
+
+    /**
+     * Initiate recharging after using a Hyper Beam.
+     */
+    public void initiateRecharge() {
+        recharging = true;
+    }
+
+    /**
+     * Recharge the Pokemon from recharging after a Hyper Beam or
+     * similar move.
+     */
+    public void recharge() {
+        recharging = false;
+    }
+
+    /**
+     * Make the Pokemon go underwater using Dive's effect.
+     */
+    public void dive() {
+        underwater = true;
+    }
+
 
     /**
      * Reset the coordaintes of the Pokemon, both enemy and
@@ -1805,6 +2051,32 @@ public abstract class Pokemon {
      * @return The Pokemons IVs
      */
     public int[] getIVs() { return ivs; }
+
+    public double getTotalSpeed(Field field) {
+        double userSpeed = getSpeedStat();
+        int stage = getSpeedStage();
+        if (stage > 0) {
+            userSpeed = userSpeed * ((2.0 + stage) / 2.0);
+        } else if (stage < 0) {
+            userSpeed = userSpeed * (2.0 / (Math.abs(stage) + 2.0));
+        }
+        if (isParalyzed()) {
+            userSpeed *= 0.5;
+        }
+        if (ability == Pokemon.Ability.SAND_RUSH &&
+                field.getWeatherType() == WeatherType.SAND) {
+            userSpeed *= 2;
+        } else if (ability == Pokemon.Ability.SWIFT_SWIM &&
+                (field.getWeatherType() == WeatherType.RAIN ||
+                        field.getWeatherType() == WeatherType.HEAVY_RAIN)) {
+            userSpeed *= 2;
+        } else if (ability == Pokemon.Ability.CHLOROPHYLL &&
+                (field.getWeatherType() == WeatherType.SUN ||
+                        field.getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
+            userSpeed *= 2;
+        }
+        return userSpeed;
+    }
 
 
 
@@ -2663,6 +2935,7 @@ public abstract class Pokemon {
      */
     public void setFaint(boolean fainted) {
         this.fainted = fainted;
+        resetBattleVariables(); //They died to reset all variables for the battle.
         if (fainted) {
             //Remove all status conditions when fainted.
             status = Status.STATUS_FREE;

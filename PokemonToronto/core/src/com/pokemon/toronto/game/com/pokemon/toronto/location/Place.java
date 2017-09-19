@@ -431,17 +431,21 @@ public class Place {
          */
         commonPokemon.add(PokemonId.PIDGEY.getValue());
         commonPokemon.add(PokemonId.SPEAROW.getValue());
+        commonPokemon.add(PokemonId.MAGNEMITE.getValue());
+        rarePokemon.add(PokemonId.DODUO.getValue());
     }
 
     private void addAmusementParkPokemon() {
         /*
         Drowzee
         Abra
-        Growlithe
         Mr Mime
         Jinx
         Tauros - Rare
         */
+        commonPokemon.add(PokemonId.DROWZEE.getValue());
+        commonPokemon.add(PokemonId.ABRA.getValue());
+
     }
 
     private void addAquariumPokemon() {
@@ -455,7 +459,10 @@ public class Place {
         Vaporeon - Super rare
         Dratini - Super rare
          */
+        commonPokemon.add(PokemonId.TENTACOOL.getValue());
+        commonPokemon.add(PokemonId.SEEL.getValue());
         rarePokemon.add(PokemonId.SQUIRTLE.getValue());
+
     }
 
     private void addBakeryPokemon() {
@@ -499,7 +506,7 @@ public class Place {
         commonPokemon.add(PokemonId.EKANS.getValue());
         commonPokemon.add(PokemonId.VENONAT.getValue());
         commonPokemon.add(PokemonId.PARAS.getValue());
-
+        commonPokemon.add(PokemonId.PSYDUCK.getValue());
         rarePokemon.add(PokemonId.BULBASAUR.getValue());
     }
 
@@ -511,6 +518,7 @@ public class Place {
          */
         commonPokemon.add(PokemonId.PIKACHU.getValue());
         commonPokemon.add(PokemonId.SANDSHREW.getValue());
+        commonPokemon.add(PokemonId.MEOWTH.getValue());
 
         superRarePokemon.add(PokemonId.RAICHU.getValue());
     }
@@ -539,6 +547,8 @@ public class Place {
         commonPokemon.add(PokemonId.EKANS.getValue());
         commonPokemon.add(PokemonId.VENONAT.getValue());
         commonPokemon.add(PokemonId.PARAS.getValue());
+        commonPokemon.add(PokemonId.GASTLY.getValue());
+        commonPokemon.add(PokemonId.ABRA.getValue());
 
     }
 
@@ -548,6 +558,8 @@ public class Place {
         Abra
         Clefairy
          */
+        commonPokemon.add(PokemonId.GASTLY.getValue());
+        commonPokemon.add(PokemonId.ABRA.getValue());
         rarePokemon.add(PokemonId.CLEFAIRY.getValue());
     }
 
@@ -569,6 +581,8 @@ public class Place {
         Magnemite
         Electabuzz - Rare
         */
+        commonPokemon.add(PokemonId.VOLTORB.getValue());
+        commonPokemon.add(PokemonId.MAGNEMITE.getValue());
     }
 
     private void addFireStationPokemon() {
@@ -578,6 +592,7 @@ public class Place {
         Koffing
         Magmar
          */
+        commonPokemon.add(PokemonId.GROWLITHE.getValue());
         rarePokemon.add(PokemonId.CHARMANDER.getValue());
     }
 
@@ -587,6 +602,7 @@ public class Place {
         Bellsprout
          */
         commonPokemon.add(PokemonId.ODDISH.getValue());
+        commonPokemon.add(PokemonId.BELLSPROUT.getValue());
     }
 
     private void addGymPokemon() {
@@ -597,11 +613,13 @@ public class Place {
         Hitmonlee
         Snorlax - Rare
         */
+        commonPokemon.add(PokemonId.MACHOP.getValue());
+        commonPokemon.add(PokemonId.GRIMER.getValue());
 
     }
 
     private void addMovingPokemon() {
-
+        commonPokemon.add(PokemonId.MACHOP.getValue());
     }
 
     private void addMuseumPokemon() {
@@ -615,6 +633,8 @@ public class Place {
         Grimer
         Dratini - Super rare
         */
+        commonPokemon.add(PokemonId.GASTLY.getValue());
+        commonPokemon.add(PokemonId.GRIMER.getValue());
     }
 
     private void addNaturalFeaturePokemon() {
@@ -628,6 +648,10 @@ public class Place {
         Psyduck
         Magikarp
          */
+        commonPokemon.add(PokemonId.TENTACOOL.getValue());
+        commonPokemon.add(PokemonId.POLIWAG.getValue());
+        commonPokemon.add(PokemonId.PSYDUCK.getValue());
+        rarePokemon.add(PokemonId.KRABBY.getValue());
         rarePokemon.add(PokemonId.SQUIRTLE.getValue());
     }
 
@@ -645,6 +669,8 @@ public class Place {
         commonPokemon.add(PokemonId.PIDGEY.getValue());
         commonPokemon.add(PokemonId.ZUBAT.getValue());
         commonPokemon.add(PokemonId.GEODUDE.getValue());
+        commonPokemon.add(PokemonId.MAGNEMITE.getValue());
+        commonPokemon.add(PokemonId.VOLTORB.getValue());
         rarePokemon.add(PokemonId.ONIX.getValue());
     }
 
@@ -659,6 +685,13 @@ public class Place {
         Ditto - Rare
         Porygon - Rare
          */
+        commonPokemon.add(PokemonId.DROWZEE.getValue());
+        commonPokemon.add(PokemonId.VOLTORB.getValue());
+        commonPokemon.add(PokemonId.ABRA.getValue());
+        commonPokemon.add(PokemonId.MAGNEMITE.getValue());
+        commonPokemon.add(PokemonId.VOLTORB.getValue());
+        rarePokemon.add(PokemonId.SLOWPOKE.getValue());
+        superRarePokemon.add(PokemonId.FARFETCHD.getValue());
     }
 
     private void addZooPokemon() {
@@ -677,7 +710,13 @@ public class Place {
         Dratini - Super Rare
         Farfetch'd - Rare
          */
+        commonPokemon.add(PokemonId.PONYTA.getValue());
+        commonPokemon.add(PokemonId.VULPIX.getValue());
+        commonPokemon.add(PokemonId.MANKEY.getValue());
+        commonPokemon.add(PokemonId.DODUO.getValue());
+        commonPokemon.add(PokemonId.TENTACOOL.getValue());
         rarePokemon.add(PokemonId.EEVEE.getValue());
+        superRarePokemon.add(PokemonId.FARFETCHD.getValue());
     }
 
 }

@@ -26,7 +26,7 @@ public class PoisonPowder extends EffectSkill {
      */
     public PoisonPowder() {
         super(35, "Poison Powder", 35, Pokemon.Type.POISON, 75);
-        effects.add(new PoisonEffect(100, SecondaryEffect.Target.ENEMY));
+        effects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 
 

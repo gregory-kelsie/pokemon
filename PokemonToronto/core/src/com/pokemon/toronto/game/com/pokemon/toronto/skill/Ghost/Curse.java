@@ -29,12 +29,10 @@ public class Curse extends EffectSkill {
      */
     public Curse() {
         super(37, "Curse", 10, Pokemon.Type.GHOST, 100);
-        effects.add(new SpeedEffect(1,
-                SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.DECREASE));
-        effects.add(new AttackEffect(1,
-                SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        effects.add(new DefenseEffect(1,
-                SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        effects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        targetsEnemy = false;
     }
 
     /**

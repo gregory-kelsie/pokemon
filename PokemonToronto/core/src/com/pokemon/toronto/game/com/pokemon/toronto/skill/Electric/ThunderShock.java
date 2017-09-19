@@ -29,8 +29,8 @@ public class ThunderShock extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public ThunderShock() {
-        super(11, "Thunder Shock", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 100, 40, 1);
-        secondaryEffects.add(new ParalysisEffect(.15, SecondaryEffect.Target.ENEMY));
+        super(11, "Thunder Shock", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 100, 40, 1, .15);
+        secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 
     /**

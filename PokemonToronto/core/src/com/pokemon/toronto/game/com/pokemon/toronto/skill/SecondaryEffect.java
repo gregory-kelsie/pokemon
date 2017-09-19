@@ -1,5 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
 import java.util.List;
@@ -26,7 +28,6 @@ public abstract class SecondaryEffect {
     private final int INCREASE = 0;
     private final int DECREASE = 1;
 
-    protected double chance;
     protected Target target;
     protected int amount;
     protected StatDirection statDirection;
@@ -34,14 +35,12 @@ public abstract class SecondaryEffect {
     /**
      * Create a secondary effect for stats, atk, def, speed, accuracy etc where direction
      * and stage amount matters.
-     * @param chance The chance of the effect happening.
      * @param target The target for the effect.
      * @param amount The stage increase/decrease amount.
      * @param statDirection The direction determining whether or not to increase
      *                      or decrease the stage.
      */
-    public SecondaryEffect(double chance, Target target, int amount, StatDirection statDirection) {
-        this.chance = chance;
+    public SecondaryEffect(Target target, int amount, StatDirection statDirection) {
         this.target = target;
         this.amount = amount;
         this.statDirection = statDirection;
@@ -50,11 +49,9 @@ public abstract class SecondaryEffect {
     /**
      * Create a secondary effect for statuses, confusion or flinches where amount and stat direction
      * don't matter.
-     * @param chance The chance of the effect happening.
      * @param target The target for the effect.
      */
-    public SecondaryEffect(double chance, Target target) {
-        this.chance = chance;
+    public SecondaryEffect(Target target) {
         this.target = target;
         this.amount = 0;
         this.statDirection = null;
@@ -68,15 +65,9 @@ public abstract class SecondaryEffect {
         return target;
     }
 
-    /**
-     * Return the probability for the effect to occur.
-     * @return The effect's probability of occurence.
-     */
-    public double getEffectProbability() {
-        return chance;
-    }
 
     public abstract void use(List<String> results, Pokemon skillUser,
-                             Pokemon enemyPokemon, boolean isFirstAttack);
+                             Pokemon enemyPokemon, Field field, SubField userField,
+                             SubField enemyField, boolean isFirstAttack);
 
 }

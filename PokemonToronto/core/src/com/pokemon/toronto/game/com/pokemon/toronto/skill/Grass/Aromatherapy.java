@@ -24,6 +24,7 @@ public class Aromatherapy extends Skill {
      */
     public Aromatherapy() {
         super(38, "Aromatherapy", 5, Pokemon.Type.GRASS, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

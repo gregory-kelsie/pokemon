@@ -26,6 +26,7 @@ public class Hail extends Skill {
      */
     public Hail() {
         super(19, "Hail", 5, Pokemon.Type.ICE, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

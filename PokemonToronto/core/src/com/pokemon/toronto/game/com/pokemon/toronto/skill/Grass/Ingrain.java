@@ -25,6 +25,7 @@ public class Ingrain extends Skill {
      */
     public Ingrain() {
         super(33, "Ingrain", 20, Pokemon.Type.GRASS, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

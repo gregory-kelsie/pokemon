@@ -1,5 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 
@@ -10,8 +12,8 @@ import java.util.List;
  */
 
 public class ParalysisEffect extends SecondaryEffect {
-    public ParalysisEffect(double chance, SecondaryEffect.Target target) {
-        super(chance, target);
+    public ParalysisEffect(SecondaryEffect.Target target) {
+        super(target);
     }
 
     /**
@@ -19,10 +21,13 @@ public class ParalysisEffect extends SecondaryEffect {
      * @param results The results String list after using the effect.
      * @param skillUser The Pokemon using the skill that causes this effect.
      * @param enemyPokemon The Pokemon not using the skill.
+     * @param field
+     * @param userField
+     * @param enemyField
      * @param isFirstAttack Whether or not the effect is a result of the first attack.
      */
     @Override
-    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, boolean isFirstAttack) {
+    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
@@ -32,15 +37,8 @@ public class ParalysisEffect extends SecondaryEffect {
         //Check if the user is able to receive paralysis.
         if (!effectReceiver.isStatused() && effectReceiver.getCurrentHealth() != 0 &&
                 effectReceiver.getAbility() != Pokemon.Ability.SHIELD_DUST) {
-            double rand = Math.random(); //Roll the paralysis die
-            boolean paralyzed = false;
-            if (rand <= chance) {
-                paralyzed = true;
-            }
-            if (paralyzed) { //Inflict paralysis.
-                effectReceiver.setPreStatus(Pokemon.Status.PARALYSIS);
-                results.add(effectReceiver.getName() + " was paralyzed.");
-            }
+            effectReceiver.setPreStatus(Pokemon.Status.PARALYSIS);
+            results.add(effectReceiver.getName() + " was paralyzed.");
         }
     }
 }

@@ -28,9 +28,9 @@ public class Bite extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Bite() {
-        super(17, "Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1);
+        super(17, "Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1, .3);
         makesPhysicalContact = true;
-        secondaryEffects.add(new FlinchEffect(.3, SecondaryEffect.Target.ENEMY));
+        secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }
 
     /**

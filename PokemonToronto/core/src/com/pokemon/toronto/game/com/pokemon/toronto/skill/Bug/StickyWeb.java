@@ -25,6 +25,7 @@ public class StickyWeb extends Skill {
      */
     public StickyWeb() {
         super(27, "Sticky Web", 20, Pokemon.Type.BUG, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

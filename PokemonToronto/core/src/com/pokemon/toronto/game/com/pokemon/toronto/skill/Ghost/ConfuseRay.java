@@ -29,7 +29,7 @@ public class ConfuseRay extends EffectSkill {
      */
     public ConfuseRay() {
         super(14, "Confuse Ray", 10, Pokemon.Type.GHOST, 100);
-        effects.add(new ConfusionEffect(1, SecondaryEffect.Target.ENEMY));
+        effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 
     /**

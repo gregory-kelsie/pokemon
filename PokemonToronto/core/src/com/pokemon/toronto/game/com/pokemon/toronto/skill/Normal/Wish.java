@@ -25,6 +25,7 @@ public class Wish extends Skill {
      */
     public Wish() {
         super(31, "Wish", 10, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

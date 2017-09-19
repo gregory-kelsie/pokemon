@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -153,12 +154,7 @@ public class UseAttackPhase extends BattlePhase {
             if (usedSkill.makesPhysicalContact()) {
                 state = ABILITY_CONTACT;
             } else {
-                if (battleResults.size() > 0) {
-                    displayingResults = true;
-                } else {
-                    noResults();
-                }
-
+                goToNextPhase();
             }
 
         }

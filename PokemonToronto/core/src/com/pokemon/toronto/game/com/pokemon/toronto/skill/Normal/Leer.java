@@ -28,8 +28,8 @@ public class Leer extends EffectSkill {
      */
     public Leer() {
         super(4, "Leer", 30, Pokemon.Type.NORMAL, 100);
-        effects.add(new DefenseEffect(1,
-                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new DefenseEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

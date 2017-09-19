@@ -17,6 +17,8 @@ public class SubField {
     private final int DEFAULT_LIGHT_SCREEN_TURNS = 5;
     private final boolean HAS_STICKY_WEB = true;
     private final boolean NO_STICKY_WEB = false;
+    private final int NO_MIST = 0;
+    private final int TOTAL_MIST_TURNS = 5;
 
     //Instance Variables
     private boolean stealthRocked;
@@ -24,6 +26,7 @@ public class SubField {
     private int toxicSpikeLayers;
     private int reflect;
     private int lightScreen;
+    private int mist;
     private boolean stickyWeb;
 
     /**
@@ -39,6 +42,41 @@ public class SubField {
         reflect = NO_REFLECT;
         lightScreen = NO_LIGHT_SCREEN;
         stickyWeb = NO_STICKY_WEB;
+        mist = NO_MIST;
+    }
+
+    /**
+     * Return whether or not the subfield is protected by Mist.
+     * @return Whether or not the SubField is protected by Mist.
+     */
+    public boolean hasMist() {
+        if (mist != NO_MIST) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add Mist to the field to protect stats from being lowered.
+     */
+    public void addMist() {
+        mist = TOTAL_MIST_TURNS;
+    }
+
+    /**
+     * Return the number of remaining turns mist will last on the
+     * field.
+     * @return The remaining number of turns mist will last.
+     */
+    public int getRemainingMistTurns() {
+       return mist;
+    }
+
+    /**
+     * Remove mist from the SubField.
+     */
+    public void removeMist() {
+        mist = NO_MIST;
     }
 
     /**

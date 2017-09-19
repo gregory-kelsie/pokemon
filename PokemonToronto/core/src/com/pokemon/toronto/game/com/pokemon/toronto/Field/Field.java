@@ -8,6 +8,8 @@ public class Field {
     //CONSTANTS
     private final int NO_GRAVITY = 0;
     private final int DEFAULT_GRAVITY_TIME = 5;
+    private final int NO_WATER_SPORT = 0;
+    private final int DEFAULT_WATER_SPORT_TIME = 5;
     private final int NO_TIME_LIMIT = -1;
     private final int DEFAULT_WEATHER_LENGTH = 5; //5 turns
     private final int LAST_WEATHER_TURN = 0;
@@ -19,6 +21,7 @@ public class Field {
     private int weatherTimeLimit;
     private int terrainTimeLimit;
     private int gravity;
+    private int waterSport;
 
     private SubField playerField;
     private SubField opponentField;
@@ -35,6 +38,7 @@ public class Field {
         playerField = new SubField();
         opponentField = new SubField();
         gravity = NO_GRAVITY;
+        waterSport = NO_WATER_SPORT;
     }
 
     /**
@@ -192,6 +196,31 @@ public class Field {
             return true;
         }
 	}
+
+    /**
+     * Water Sport the entire field. Fire skills weaken.
+     */
+	public void applyWaterSport() { waterSport = DEFAULT_WATER_SPORT_TIME; }
+
+    /**
+     * Adjust the number of turns water sport is on the field.
+     */
+    public void adjustWaterSport() {
+        waterSport--;
+        waterSport = Math.max(waterSport, NO_WATER_SPORT);
+    }
+
+    /**
+     * Return whether or not the field is Water sported.
+     * @return Whether or not the field is water sported.
+     */
+    public boolean hasWaterSport() {
+        if (waterSport == NO_WATER_SPORT) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     /**
      * Return the remaining duration for the Field's gravity

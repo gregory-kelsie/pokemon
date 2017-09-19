@@ -130,6 +130,29 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         started = true;
     }
 
+        /*
+    * Start the battle phase while the userPokemon doesn't have a skill
+    * @param Pokemon userPokemon The player's pokemon in the battle
+    * @param Pokemon enemyPokemon The enemy's pokemon in the battle
+    * @param Skill userSkill The move the player is using in this phase.
+    * @param Skill enemySkill The move the enemy is using in this phase.
+     */
+    public void startNullUserSkill(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon, int userPokemonPosition,
+                      int enemyPokemonPosition, Skill enemySkill, Field field) {
+        this.playerParty = playerParty;
+        this.userPokemon = userPokemon;
+        this.enemyPokemon = enemyPokemon;
+        this.userPokemonPosition = userPokemonPosition;
+        this.enemyPokemonPosition = enemyPokemonPosition;
+        this.userSkill = null;
+        this.enemySkill = enemySkill;
+        this.field = field;
+        currentPhase = new SpeedCheckPhase(this, userPokemon, enemyPokemon, userSkill, enemySkill);
+        state = IDLE;
+        started = true;
+    }
+
+
     public void start(List<Pokemon> playerParty, Pokemon prevPokemon, Pokemon enemyPokemon, int userPokemonPosition,
                       int enemyPokemonPosition, Pokemon sentOutPokemon, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
@@ -157,6 +180,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      */
     public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon, int userPokemonPosition,
                       int enemyPokemonPosition, int pokeballType, Skill enemySkill, Field field) {
+        this.playerParty = playerParty;
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
         this.userPokemonPosition = userPokemonPosition;
@@ -393,6 +417,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     public boolean hidingUserPokemon() {
         if (currentPhase != null) {
+            if (userPokemon.isUnderground() || userPokemon.isFlying() || userPokemon.isUnderwater()) {
+                return true;
+            }
             return currentPhase.isHidingUserPokemon();
         }
         return false;
@@ -401,6 +428,9 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     public boolean isHidingEnemyPokemon() {
         if (currentPhase != null) {
+            if (enemyPokemon.isUnderground() || enemyPokemon.isFlying() || enemyPokemon.isUnderwater()) {
+                return true;
+            }
             return currentPhase.isHidingEnemyPokemon();
         } else {
             return false;
@@ -476,12 +506,12 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     }
 
     @Override
-    public void setUserFirstAttacker(Skill userSkill, Skill enemySkill) {
+    public void setUserFirstAttacker() {
         userPokemonIsFirstAttacker = true;
     }
 
     @Override
-    public void setEnemyFirstAttacker(Skill userSkill, Skill enemySkill) {
+    public void setEnemyFirstAttacker() {
         userPokemonIsFirstAttacker = false;
     }
 
@@ -533,7 +563,21 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     @Override
     public void endBattle() {
-        started = false;
+        if (userPokemon.isOutraging()) {
+            start(playerParty, userPokemon, enemyPokemon,
+                    userPokemonPosition, 0, userPokemon.getOutrageSkill(),
+                    getEnemyPokemon().getSkills().get(0), field);
+        } else if (userPokemon.isRecharging()) {
+            startNullUserSkill(playerParty, userPokemon, enemyPokemon,
+                    userPokemonPosition, 0,
+                    getEnemyPokemon().getSkills().get(0), field);
+        } else if (userPokemon.hasNextTurnSkill()) {
+            start(playerParty, userPokemon, enemyPokemon,
+                    userPokemonPosition, 0, userPokemon.getNextTurnSkill(),
+                    getEnemyPokemon().getSkills().get(0), field);
+        } else {
+            started = false;
+        }
     }
 
     @Override

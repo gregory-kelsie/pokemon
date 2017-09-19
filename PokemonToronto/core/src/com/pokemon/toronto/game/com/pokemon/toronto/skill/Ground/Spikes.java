@@ -26,6 +26,7 @@ public class Spikes extends Skill {
      */
     public Spikes() {
         super(25, "Spikes", 20, Pokemon.Type.GROUND, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

@@ -27,8 +27,8 @@ public class StringShot extends EffectSkill {
      */
     public StringShot() {
         super(8, "String Shot", 35, Pokemon.Type.BUG, 95);
-        effects.add(new SpeedEffect(1,
-                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

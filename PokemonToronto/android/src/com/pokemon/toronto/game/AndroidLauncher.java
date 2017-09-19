@@ -618,6 +618,41 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				country = address.get(0).getCountryName();
 				stateName = address.get(0).getAdminArea();
 				cityName = address.get(0).getLocality();;
+				country = address.get(0).getCountryName();
+				stateName = address.get(0).getAdminArea();
+				cityName = address.get(0).getLocality();
+				Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
+				try {
+					Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+					placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
+						@Override
+						public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
+							PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
+							for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+								name = placeLikelihood.getPlace().getName().toString();
+								LatLng ln = placeLikelihood.getPlace().getLatLng();
+								List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+								Log.i("osgh", "Type List");
+								for (int i = 0; i < types.size(); i++) {
+									Log.i("osgh", "Type: " + types.get(i));
+								}
+								try {
+									Log.i("osgh", String.format("Place '%s' has likelihood: %g",
+											placeLikelihood.getPlace().getName(),
+											placeLikelihood.getLikelihood()));
+									Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
+								} catch (Exception e) {
+									Log.i("osgh", e.getMessage());
+								}
+								pToronto.createPlace(name, ln.latitude, ln.longitude, types);
+							}
+							likelyPlaces.release();
+						}
+					});
+				} catch (SecurityException e) {
+					Log.i("SecurityException", e.getMessage());
+				}
+
 
 			} catch (Exception e) { Log.i("WildReceiver", e.getMessage());}
 			if (pToronto.isLoggedIn()) {

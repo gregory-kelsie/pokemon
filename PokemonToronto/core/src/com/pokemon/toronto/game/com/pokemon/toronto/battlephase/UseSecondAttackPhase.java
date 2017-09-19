@@ -47,10 +47,10 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                if (!usedSkill.targetsEnemy(attacker) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField,false)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
-                    if (absorbResult.hasAbsorbed()) {
+                    if (usedSkill.targetsEnemy(attacker) && absorbResult.hasAbsorbed()) {
                         battleResults = absorbResult.getAbsorbResult();
                     } else {
                         if (attackerIsUser) {
@@ -70,18 +70,21 @@ public class UseSecondAttackPhase extends UseAttackPhase {
                     }
                 } else {
                     missText = attacker.getName() + "'s attack missed.";
+                    attacker.cancelMissSkills();
                     updatingAnimation = false;
                     missed = true;
                     resetTextBox();
                 }
             } else {
                 missText = "It had no effect...";
+                attacker.cancelMissSkills();
                 updatingAnimation = false;
                 missed = true;
                 resetTextBox();
             }
         } else {
             missText = failResult.getFailResult();
+            attacker.cancelMissSkills();
             updatingAnimation = false;
             missed = true;
             resetTextBox();

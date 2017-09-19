@@ -52,10 +52,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                if (!usedSkill.targetsEnemy(attacker) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField, true)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
-                    if (absorbResult.hasAbsorbed()) {
+                    if (usedSkill.targetsEnemy(attacker) && absorbResult.hasAbsorbed()) {
                         List<String> blt = absorbResult.getAbsorbResult();
                         battleResults = blt;
                     } else {
@@ -76,6 +76,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                     }
                 } else {
                     missText = attacker.getName() + "'s attack missed.";
+                    attacker.cancelMissSkills();
                     updatingAnimation = false;
                     missed = true;
                     resetTextBox();
@@ -83,11 +84,13 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             } else {
                 missText = "It had no effect...";
                 updatingAnimation = false;
+                attacker.cancelMissSkills();
                 missed = true;
                 resetTextBox();
             }
         } else {
             missText = failResult.getFailResult();
+            attacker.cancelMissSkills();
             updatingAnimation = false;
             missed = true;
             resetTextBox();

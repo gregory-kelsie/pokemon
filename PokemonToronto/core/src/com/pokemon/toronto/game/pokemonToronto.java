@@ -140,19 +140,18 @@ public class pokemonToronto extends ApplicationAdapter {
 	public void createPlace(String name, double latitude, double longitude, List<Integer> types) {
 		Place p = new Place(name, latitude, longitude, types);
 		if (p.hasPokemon()) {
-			WildPokemonCreator wpc = new WildPokemonCreator();
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-			Date date = new Date();
-			String text = dateFormat.format(date);
-			for (int i = 0; i < 3; i++) {
-				int pokeID = p.getPokemon();
-				Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
-				if (pokeID != -1) {
-					double[] latlng = PokemonLookup.getRandomLocation(gsm.getLatitude(), gsm.getLongitude(), 200);
-					gsm.getNearbyPokemon().add(wpc.createPokemon(pokeID, latlng[0],
-							latlng[1], date, text));
-				}
+			int pokeID = p.getPokemon();
+			Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
+			if (pokeID != -1) {
+				WildPokemonCreator wpc = new WildPokemonCreator();
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				Date date = new Date();
+				String text = dateFormat.format(date);
+				double[] latlng = PokemonLookup.getRandomLocation(gsm.getLatitude(), gsm.getLongitude(), 200);
+				gsm.getNearbyPokemon().add(wpc.createPokemon(pokeID, latlng[0],
+						latlng[1], date, text));
 			}
+
 		}
 	}
 

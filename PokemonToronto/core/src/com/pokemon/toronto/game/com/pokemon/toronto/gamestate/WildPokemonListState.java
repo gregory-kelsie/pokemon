@@ -51,6 +51,9 @@ public class WildPokemonListState extends GameState {
     private int currentPage;
     private int clickedPokemonPosition;
 
+    private boolean hasMiddlePokemon;
+    private boolean hasBottomPokemon;
+
     /**
      * Create the screen where the Player looks at each of the wild pokemon
      * available to them for capture.
@@ -68,6 +71,9 @@ public class WildPokemonListState extends GameState {
         transitionRenderer = new ShapeRenderer();
         transitionHeight = 0;
         clickedPokemonPosition = -1;
+
+        hasMiddlePokemon = false;
+        hasBottomPokemon = false;
     }
 
     /**
@@ -100,10 +106,16 @@ public class WildPokemonListState extends GameState {
         if (currentPage * 3 + 1 < gsm.getNearbyPokemon().size()) {
             middleTexture = new Texture(gsm.getNearbyPokemon()
                     .get(currentPage * 3 + 1).getPokemon().getMapIconPath());
+            hasMiddlePokemon = true;
+        } else {
+            hasMiddlePokemon = false;
         }
         if (currentPage * 3 + 2 < gsm.getNearbyPokemon().size()) {
             bottomTexture = new Texture(gsm.getNearbyPokemon()
                     .get(currentPage * 3 + 2).getPokemon().getMapIconPath());
+            hasBottomPokemon = true;
+        } else {
+            hasBottomPokemon = false;
         }
     }
 
@@ -235,7 +247,15 @@ public class WildPokemonListState extends GameState {
                 gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getNatureString() +
                 "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getAbilityString() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 2).getExpirationString(), 30, 520);
-        batch.draw(bottomTexture,700,260, 394, 394);
+        if (hasBottomPokemon) {
+            batch.draw(bottomTexture, 700, 260, 394, 394);
+        } else {
+            hasBottomPokemon = true;
+            bottomTexture = new Texture(gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + 2).getPokemon().getMapIconPath());
+            batch.draw(bottomTexture, 700, 260, 394, 394);
+
+        }
     }
 
     /**
@@ -253,7 +273,15 @@ public class WildPokemonListState extends GameState {
                 gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getNatureString() +
                 "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getAbilityString() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 1).getExpirationString(), 30, 1070);
-        batch.draw(middleTexture,700,780, 394, 394);
+        if (hasMiddlePokemon) {
+            batch.draw(middleTexture, 700, 780, 394, 394);
+        } else {
+            hasMiddlePokemon = true;
+            middleTexture = new Texture(gsm.getNearbyPokemon()
+                    .get(currentPage * 3 + 1).getPokemon().getMapIconPath());
+            batch.draw(middleTexture, 700, 780, 394, 394);
+
+        }
     }
 
     /**
@@ -404,6 +432,8 @@ public class WildPokemonListState extends GameState {
         bottomTexture.dispose();
         bottomTexture = new Texture(gsm.getNearbyPokemon().get(currentPage * 3 + 2)
                 .getPokemon().getMapIconPath());
+        hasMiddlePokemon = true;
+        hasBottomPokemon = true;
     }
 
     /**

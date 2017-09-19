@@ -29,8 +29,8 @@ public class TailWhip extends EffectSkill {
      */
     public TailWhip() {
         super(5, "Tail Whip", 30, Pokemon.Type.NORMAL, 100);
-        effects.add(new DefenseEffect(1,
-                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new DefenseEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

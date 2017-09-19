@@ -34,7 +34,8 @@ public abstract class EffectSkill extends Skill {
                             SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         for (int i = 0; i < effects.size(); i++) {
-            effects.get(i).use(results, skillUser, enemyPokemon, isFirstAttack);
+            effects.get(i).use(results, skillUser, enemyPokemon, field, userField,
+                    enemyField, isFirstAttack);
         }
         return results;
     }

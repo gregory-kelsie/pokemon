@@ -28,8 +28,8 @@ public class Growl extends EffectSkill {
      */
     public Growl() {
         super(3, "Growl", 40, Pokemon.Type.NORMAL, 100);
-        effects.add(new AttackEffect(1,
-                SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

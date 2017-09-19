@@ -12,7 +12,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 public class SpeedCheckPhase extends BattlePhase {
 
-    private final boolean CHECK_FIRST_ATTACKER_PARALYSIS = true;
     private Pokemon userPokemon;
     private Pokemon enemyPokemon;
     private Skill userSkill;
@@ -27,65 +26,34 @@ public class SpeedCheckPhase extends BattlePhase {
         phaseName = "SpeedCheck";
 
     }
+
+
     @Override
     public void update(double dt) {
-        if (userSkill.getPriority() > enemySkill.getPriority()) {
-            pui.setUserFirstAttacker(userSkill, enemySkill);
-        } else if (userSkill.getPriority() < enemySkill.getPriority()) {
-            pui.setEnemyFirstAttacker(userSkill, enemySkill);
+        boolean nullSkills = false;
+        if (enemySkill == null && userSkill == null) {
+            nullSkills = true;
+        }
+
+        if (userSkill == null && enemySkill != null) {
+            pui.setEnemyFirstAttacker();
+        } else if (enemySkill == null && userSkill != null) {
+            pui.setUserFirstAttacker();
+        } else if (!nullSkills && userSkill.getPriority() > enemySkill.getPriority()) {
+            pui.setUserFirstAttacker();
+        } else if (!nullSkills && userSkill.getPriority() < enemySkill.getPriority()) {
+            pui.setEnemyFirstAttacker();
         } else {
-            double userSpeed = userPokemon.getSpeedStat();
-            int stage = userPokemon.getSpeedStage();
-            if (stage > 0) {
-                userSpeed = userSpeed * ((2.0 + stage) / 2.0);
-            } else if (stage < 0) {
-                userSpeed = userSpeed * (2.0 / (Math.abs(stage) + 2.0));
-            }
-            if (userPokemon.isParalyzed()) {
-                userSpeed *= 0.5;
-            }
-            if (userPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
-                    pui.getField().getWeatherType() == WeatherType.SAND) {
-                userSpeed *= 2;
-            } else if (userPokemon.getAbility() == Pokemon.Ability.SWIFT_SWIM &&
-                    (pui.getField().getWeatherType() == WeatherType.RAIN ||
-                            pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
-                userSpeed *= 2;
-            } else if (userPokemon.getAbility() == Pokemon.Ability.CHLOROPHYLL &&
-                    (pui.getField().getWeatherType() == WeatherType.SUN ||
-                            pui.getField().getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
-                userSpeed *= 2;
-            }
-            double enemySpeed = enemyPokemon.getSpeedStat();
-            stage = enemyPokemon.getSpeedStage();
-            if (stage > 0) {
-                enemySpeed *= ((2 + stage) / 2);
-            } else if (stage < 0) {
-                enemySpeed *= (2.0 / (Math.abs(stage) + 2));
-            }
-            if (enemyPokemon.isParalyzed()) {
-                enemySpeed *= 0.5;
-            }
-            if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_RUSH &&
-                    pui.getField().getWeatherType() == WeatherType.SAND) {
-                enemySpeed *= 2;
-            } else if (enemyPokemon.getAbility() == Pokemon.Ability.SWIFT_SWIM &&
-                    (pui.getField().getWeatherType() == WeatherType.RAIN ||
-                            pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
-                enemySpeed *= 2;
-            } else if (enemyPokemon.getAbility() == Pokemon.Ability.CHLOROPHYLL &&
-                    (pui.getField().getWeatherType() == WeatherType.SUN ||
-                            pui.getField().getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
-                enemySpeed *= 2;
-            }
+            double userSpeed = userPokemon.getTotalSpeed(pui.getField());
+            double enemySpeed = enemyPokemon.getTotalSpeed(pui.getField());
             Gdx.app.log("Speedcheck", "enemy: " + enemySpeed + ", user: " + userSpeed);
             if (userSpeed >= enemySpeed) {
-                pui.setUserFirstAttacker(userSkill, enemySkill);
+                pui.setUserFirstAttacker();
             } else {
-                pui.setEnemyFirstAttacker(userSkill, enemySkill);
+                pui.setEnemyFirstAttacker();
             }
         }
-        pui.setPhase(new SleepCheckPhase(pui, CHECK_FIRST_ATTACKER_PARALYSIS));
+        pui.setPhase(new SleepCheckPhase(pui, true));
     }
 
     @Override

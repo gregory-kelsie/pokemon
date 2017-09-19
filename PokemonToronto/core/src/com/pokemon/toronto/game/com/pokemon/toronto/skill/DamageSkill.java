@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
@@ -15,8 +16,9 @@ public abstract class DamageSkill extends Skill {
 
     //Instance Variables
     private int crit; //Initial Crit Stage
-    private int damage;
+    protected int damage;
     private int recoilLevel;
+    protected double extraMod; //For skills that double damage for certain conditions ex: Brine
 
     //Recoil Values
     protected final int NO_RECOIL = 0;
@@ -24,6 +26,8 @@ public abstract class DamageSkill extends Skill {
     protected final int ONE_THIRD = 2;
     protected final int ONE_HALF = 3;
     protected final int GAIN_HALF = 4;
+
+    protected final int DEFAULT_EXTRA_MOD = 1;
 
     /**
      * Create a Damage oriented skill.
@@ -44,6 +48,7 @@ public abstract class DamageSkill extends Skill {
         this.damage = damage;
         this.recoilLevel = recoilLevel;
         damagesEnemy = true;
+        extraMod = 1;
     }
 
     /**
@@ -63,6 +68,7 @@ public abstract class DamageSkill extends Skill {
         this.damage = damage;
         recoilLevel = NO_RECOIL;
         damagesEnemy = true;
+        extraMod = 1;
     }
 
     @Override
@@ -95,7 +101,8 @@ public abstract class DamageSkill extends Skill {
         boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results
-        if (moveIsSuperEffective(enemyPokemon)) {
+        if (moveIsSuperEffective(enemyPokemon) || (id == SkillFactory.FREEZE_DRY && (enemyPokemon.getTypeOne() == Pokemon.Type.WATER ||
+                enemyPokemon.getTypeTwo() == Pokemon.Type.WATER))) {
             results.add("It was super effective!");
         } else if (moveIsNotVeryEffective(enemyPokemon)) {
             results.add("It was not very effective...");
@@ -108,8 +115,8 @@ public abstract class DamageSkill extends Skill {
 
         //Calculate the damage results
         int damage = getDamage(skillUser, enemyPokemon, field, hasCrit);
-        //Prevent Overkill.
 
+        //Prevent Overkill.
         if (damage > enemyPokemon.getCurrentHealth()) {
             if (enemyPokemon.hasFullHealth() && enemyPokemon.getAbility() == Pokemon.Ability.STURDY) {
                 damage = enemyPokemon.getCurrentHealth() - 1;
@@ -117,6 +124,12 @@ public abstract class DamageSkill extends Skill {
             } else {
                 damage = enemyPokemon.getCurrentHealth();
             }
+        }
+
+        //Let the Pokemon know how much damage they've taken in case
+        //they can return 1.5x damage with a Counter/Metal Burst etc.
+        if (isFirstAttack) {
+            enemyPokemon.setTurnDamageTaken(damage, category);
         }
         enemyPokemon.subtractHealth(damage);
         damageTally += damage; //Keep record of damage for multi-hit-moves
@@ -193,6 +206,9 @@ public abstract class DamageSkill extends Skill {
                 enemy.getAbility() == Pokemon.Ability.BATTLE_ARMOR) {
             return false;
         }
+        if (crit == -1) { //-1 Means always crits.
+            return true;
+        }
         int critStage = crit;
         if (user.isFocused()) {
             critStage += 2;
@@ -255,7 +271,8 @@ public abstract class DamageSkill extends Skill {
         double weatherMod = getWeatherMod(field);
         double randVal = Math.random() * (0.15) + 0.85;
         double burnMod = getBurnMod(user);
-        return  (stabMod * resistMod * crit * abilityMod * defenseAbilityMod * weatherMod * randVal * burnMod);
+        Gdx.app.log("CritMod", "" + crit);
+        return  (stabMod * resistMod * crit * abilityMod * defenseAbilityMod * weatherMod * randVal * burnMod * extraMod);
     }
 
 	/**
@@ -280,7 +297,7 @@ public abstract class DamageSkill extends Skill {
 	*	@param user - The Attacker
 	*	@param enemy - The pokemon that gets attacked
 	*/
-    private double getResistModifier(Pokemon user, Pokemon enemy) {
+    protected double getResistModifier(Pokemon user, Pokemon enemy) {
         double resistMod = enemy.getResistances().get(this.getType());
         boolean superEffective = false;
         boolean notVeryEffective = false;
@@ -512,22 +529,22 @@ public abstract class DamageSkill extends Skill {
         else {
             atkStat = user.getSpecialAttackStat();
             //Attack stage is above the normal
-            if (user.getSpecialAttackStat() >= 0) {
-                atkStat = atkStat * (1 + (0.5 * user.getSpecialAttackStat()));
+            if (user.getSpecialAttackStage() >= 0) {
+                atkStat = atkStat * (1 + (0.5 * user.getSpecialAttackStage()));
             }
             //Attack stage is below the normal
             else {
                 //Ignore negative attack stage
                 if (!hasCrit) {
-                    if (user.getSpecialAttackStat() == -1) {
+                    if (user.getSpecialAttackStage() == -1) {
                         atkStat *= 0.66;
-                    } else if (user.getSpecialAttackStat() == -2) {
+                    } else if (user.getSpecialAttackStage() == -2) {
                         atkStat *= 0.5;
-                    } else if (user.getSpecialAttackStat() == -3) {
+                    } else if (user.getSpecialAttackStage() == -3) {
                         atkStat *= 0.4;
-                    } else if (user.getSpecialAttackStat() == -4) {
+                    } else if (user.getSpecialAttackStage() == -4) {
                         atkStat *= 0.33;
-                    } else if (user.getSpecialAttackStat() == -5) {
+                    } else if (user.getSpecialAttackStage() == -5) {
                         atkStat *= 0.29;
                     } else {
                         atkStat *= 0.25;
@@ -540,23 +557,23 @@ public abstract class DamageSkill extends Skill {
                             enemy.getTypeTwo() == Pokemon.Type.ROCK)) {
                 defStat *= 1.5;
             }
-            if (enemy.getSpecialDefenseStat() >= 0) {
+            if (enemy.getSpecialDefenseStage() >= 0) {
                 //Ignore defense bonus on crit
                 if (!hasCrit) {
-                    defStat = defStat * (1 + (0.5 * enemy.getSpecialDefenseStat()));
+                    defStat = defStat * (1 + (0.5 * enemy.getSpecialDefenseStage()));
                 }
             }
             //Defense stage is below normal
             else {
-                if (enemy.getSpecialDefenseStat() == -1) {
+                if (enemy.getSpecialDefenseStage() == -1) {
                     defStat *= 0.66;
-                } else if (enemy.getSpecialDefenseStat() == -2) {
+                } else if (enemy.getSpecialDefenseStage() == -2) {
                     defStat *= 0.5;
-                } else if (enemy.getSpecialDefenseStat() == -3) {
+                } else if (enemy.getSpecialDefenseStage() == -3) {
                     defStat *= 0.4;
-                } else if (enemy.getSpecialDefenseStat() == -4) {
+                } else if (enemy.getSpecialDefenseStage() == -4) {
                     defStat *= 0.33;
-                } else if (enemy.getSpecialDefenseStat() == -5) {
+                } else if (enemy.getSpecialDefenseStage() == -5) {
                     defStat *= 0.29;
                 } else {
                     defStat *= 0.25;
@@ -564,8 +581,14 @@ public abstract class DamageSkill extends Skill {
             }
         }
 
+        //Sport modifiers
+        double basePowerModifier = 1;
+        if (type == Pokemon.Type.FIRE && field.hasWaterSport()) {
+            basePowerModifier = .43;
+        }
+
         //Sub values into the formulas from bulbapedia.
-        double ls = (((((2 * user.getLevel()) / 5) + 2) * (atkStat / defStat) * damage) / 50) + 2;
+        double ls = (((((2 * user.getLevel()) / 5) + 2) * (atkStat / defStat) * damage * basePowerModifier) / 50) + 2;
         double mod = getModifier(user, enemy, field, hasCrit);
         double dmg = ls * mod;
         return (int)Math.ceil(dmg);

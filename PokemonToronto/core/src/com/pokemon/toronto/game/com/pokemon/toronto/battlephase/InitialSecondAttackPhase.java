@@ -18,6 +18,7 @@ public class InitialSecondAttackPhase extends TextPhase {
     private void init() {
         if (pui.isUserPokemonFirstAttacker()) {
             if (pui.getEnemyPokemon().hasFlinched()) {
+                pui.getEnemyPokemon().cancelFlinchSkills();
                 text = pui.getEnemyPokemon().getName() + " flinched.";
                 pui.getEnemyPokemon().removeFlinch();
                 nextPhase = new EndTurnPhase(pui);
@@ -28,6 +29,7 @@ public class InitialSecondAttackPhase extends TextPhase {
             }
         } else {
             if (pui.getUserPokemon().hasFlinched()) {
+                pui.getUserPokemon().cancelFlinchSkills();
                 text = pui.getUserPokemon().getName() + " flinched.";
                 pui.getUserPokemon().removeFlinch();
                 nextPhase = new EndTurnPhase(pui);

@@ -21,6 +21,7 @@ public class SleepCheckPhase extends BattlePhase {
     private final int INIT = 0;
     private final int WOKE_UP = 1;
     private final int SLEEPING = 2;
+    private final int RECHARGING = 3;
 
     /**
      * Create a sleep check
@@ -55,7 +56,14 @@ public class SleepCheckPhase extends BattlePhase {
                 sleepingPokemon.getSleepTime() > 0) {
             currentState = SLEEPING;
             text = sleepingPokemon.getName() + " is fast asleep.";
-        } else {
+            if (sleepingPokemon.isRecharging()) {
+                sleepingPokemon.recharge();
+            }
+        } else if (sleepingPokemon.isRecharging()) {
+            currentState = RECHARGING;
+            text = sleepingPokemon.getName() + " is recharging!";
+        }
+        else {
             goToConfusionCheck();
         }
     }
@@ -116,6 +124,8 @@ public class SleepCheckPhase extends BattlePhase {
             updateSleepingText(dt);
         } else if (currentState == WOKE_UP) {
             updateWakingUpText(dt);
+        } else if (currentState == RECHARGING) {
+            updateRechargingText(dt);
         }
     }
 
@@ -162,7 +172,38 @@ public class SleepCheckPhase extends BattlePhase {
         }
         if (textCounter >= 1.5) {
             sleepingPokemon.wakeUp();
-            goToConfusionCheck();
+            if (sleepingPokemon.isRecharging()) {
+                //Display Recharging Text
+                textCounter = 0;
+                textPosition = 0;
+                text = sleepingPokemon.getName() + " is recharging!";
+            } else {
+                goToConfusionCheck();
+            }
+        }
+    }
+
+    /**
+     * Update the recharging text from Hyper Beam-esque moves.
+     * @param dt The time elapsed.
+     */
+    private void updateRechargingText(double dt) {
+        textCounter += dt;
+        if (textCounter >= 0.05) {
+            if (textPosition < text.length()) {
+                textPosition++;
+                textCounter = 0;
+            }
+        }
+        if (textCounter >= 1.5) {
+            sleepingPokemon.recharge();
+            //Go to the next turn
+            if (isFirstMove) {
+                //Go to next turn
+                pui.setPhase(new SleepCheckPhase(pui, false));
+            } else { //End the turn
+                pui.setPhase(new EndTurnPhase(pui));
+            }
         }
     }
 
@@ -172,7 +213,7 @@ public class SleepCheckPhase extends BattlePhase {
      */
     @Override
     public void renderText(SpriteBatch batch) {
-        if (currentState == SLEEPING || currentState == WOKE_UP) {
+        if (currentState == SLEEPING || currentState == WOKE_UP || currentState == RECHARGING) {
             pui.getFont().draw(batch, text.substring(0, textPosition), 54, 1143);
         }
 

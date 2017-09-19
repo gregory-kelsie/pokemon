@@ -29,8 +29,8 @@ public class Ember extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Ember() {
-        super(16, "Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1);
-        secondaryEffects.add(new BurnEffect(0.1, SecondaryEffect.Target.ENEMY));
+        super(16, "Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1, .1);
+        secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 
     /**

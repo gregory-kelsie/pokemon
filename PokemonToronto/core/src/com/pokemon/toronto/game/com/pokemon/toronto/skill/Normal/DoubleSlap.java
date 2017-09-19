@@ -6,6 +6,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
  * Created by Gregory on 8/13/2017.
  */
 
-public class DoubleSlap extends DamageSkill {
+public class DoubleSlap extends MultiHitMove {
 
     private int timesHit;
 
@@ -28,65 +30,9 @@ public class DoubleSlap extends DamageSkill {
      * - Number of Hits: 2-5
      */
     public DoubleSlap() {
-        super(13, "Double Slap", 10, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 85, 15, 1);
+        super(13, "Double Slap", 10, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 15, 1, 0);
         makesPhysicalContact = true;
-        isMultiStrikeMove = true;
-        timesHit = 0;
     }
-
-
-    /**
-     * Damage the enemy 2-5 times.
-     * @param skillUser The Pokemon using the skill
-     * @param enemyPokemon The enemy receiving the skill
-     * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
-     * @param field The field of the battle.
-     * @param skillUserParty
-     * @param enemyPokemonParty    @return The results of using the move.
-     */
-    @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
-        List<String> results;
-        //Use the damage part of the move.
-        if (strikesLeft == -1) {
-
-            double rand = Math.random();
-            if (rand <= .375) {
-                strikesLeft = 2;
-            } else if (rand <= .75) {
-                strikesLeft = 3;
-            } else if (rand <= .875) {
-                strikesLeft = 4;
-            } else {
-                strikesLeft = 5;
-            }
-        }
-        timesHit++;
-        strikesLeft--;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
-                enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
-        results.remove(0); //Remove old single damage result.
-        results.add("Dealt " + damageTally + " damage!");
-        results.add("Hit " + timesHit + " times!");
-
-        if (strikesLeft == 0) {
-            strikesLeft = -1;
-            damageTally = 0;
-            timesHit = 0;
-        }
-
-        //Prevent using additional slaps while the enemy is already dead.
-        if (enemyPokemon.getCurrentHealth() == 0) {
-            strikesLeft = -1;
-            timesHit = 0; //Reset times hit
-            damageTally = 0;
-        }
-
-        return results;
-    }
-
 
     /**
      * Return Double Slap's skill animation.

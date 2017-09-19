@@ -25,6 +25,7 @@ public class FocusEnergy extends Skill {
      */
     public FocusEnergy() {
         super(18, "Focus Energy", 30, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
+        targetsEnemy = false;
     }
 
     /**

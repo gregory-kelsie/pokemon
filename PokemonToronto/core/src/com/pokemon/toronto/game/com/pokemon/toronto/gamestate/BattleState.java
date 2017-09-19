@@ -624,15 +624,7 @@ public class BattleState extends GameState implements BattleInterface {
                 }
 
             } else {
-                if (currentPokemon.isOutraging()) {
-                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                            currentPokemonPosition, 0, currentPokemon.getOutrageSkill(),
-                            getEnemyPokemon().getSkills().get(0), field);
-                } else if (currentPokemon.hasNextTurnSkill()) {
-                    battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
-                            currentPokemonPosition, 0, currentPokemon.getNextTurnSkill(),
-                            getEnemyPokemon().getSkills().get(0), field);
-                }
+
                 if (battleUpdater.caughtThePokemon()) {
                     if (!gsm.isPartyFull()) {
                         gsm.getParty().add(enemyPokemon);

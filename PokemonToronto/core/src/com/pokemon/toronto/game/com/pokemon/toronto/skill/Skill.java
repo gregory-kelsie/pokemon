@@ -33,9 +33,10 @@ public abstract class Skill {
     protected SkillCategory category;
     protected int priority;
     private int accuracy;
-    private boolean targetsEnemy;
+    protected boolean targetsEnemy;
     protected boolean makesPhysicalContact;
     protected boolean damagesEnemy;
+    protected boolean punchSkill;
 
     //Multi-Hit Move Variables
     protected boolean isMultiStrikeMove;
@@ -68,6 +69,7 @@ public abstract class Skill {
         strikesLeft = -1;
         damageTally = 0;
         continuesUseThroughNoEffect = false;
+        punchSkill = false;
     }
 
     /**
@@ -249,6 +251,11 @@ public abstract class Skill {
                                 Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         if (accuracy != -1) {
             //Init Modifiers
+            if (enemyPokemon.isUnderwater()) {
+                if (id != SkillFactory.SURF && id != SkillFactory.WHIRLPOOL) {
+                    return false;
+                }
+            }
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
             if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_VEIL &&
@@ -301,9 +308,10 @@ public abstract class Skill {
     /**
      * Return whether or not the skill targets the enemy.
      * For example, swords dance targets self, tackle targets enemy.
+     * @param skillUser The Pokemon using the Skill
      * @return Whether or not the skill targets the enemy.
      */
-    public boolean targetsEnemy() {
+    public boolean targetsEnemy(Pokemon skillUser) {
         return targetsEnemy;
     }
 
@@ -338,6 +346,12 @@ public abstract class Skill {
     public int getStrikesLeft() {
         return strikesLeft;
     }
+
+    /**
+     * Return whether or not the skill is a Punching skill.
+     * @return Whether or not the skill is a punching skill.
+     */
+    public boolean isPunchSkill() { return punchSkill; }
 
     /**
      * Return the animation of the Skill

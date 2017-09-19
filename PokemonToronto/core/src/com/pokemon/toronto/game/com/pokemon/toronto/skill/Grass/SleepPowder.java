@@ -28,7 +28,7 @@ public class SleepPowder extends EffectSkill {
      */
     public SleepPowder() {
         super(15, "Sleep Powder", 15, Pokemon.Type.GRASS, 75);
-        effects.add(new SleepEffect(1, SecondaryEffect.Target.ENEMY));
+        effects.add(new SleepEffect(SecondaryEffect.Target.ENEMY));
     }
 
     /**
