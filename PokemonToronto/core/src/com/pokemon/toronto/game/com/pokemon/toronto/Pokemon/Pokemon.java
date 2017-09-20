@@ -250,7 +250,7 @@ public abstract class Pokemon {
         ICE_BODY(40), SNOW_CLOAK(41), MAGIC_GUARD(42), OVERCOAT(43), SAND_FORCE(44), SAND_RUSH(45), SAND_VEIL(46), HYDRATION(47),
         SWIFT_SWIM(48), DAMP(49), DRIZZLE(50), SAND_STREAM(51), DROUGHT(52), SNOW_WARNING(53), CLOUD_NINE(54), MOLD_BREAKER(55),
         PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62), STURDY(63),
-        ROCK_HEAD(64);
+        ROCK_HEAD(64), LIMBER(65);
         private final int value;
         private Ability(int value) {
             this.value = value;
@@ -1366,6 +1366,13 @@ public abstract class Pokemon {
     public void finishDive() {
         setNextTurnSkill(null);
         underwater = false;
+    }
+
+    public boolean isSemiInvulnerable() {
+        if (underwater || underground || flying) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -3249,6 +3256,8 @@ public abstract class Pokemon {
                 return "Sturdy";
             case ROCK_HEAD:
                 return "Rock Head";
+            case LIMBER:
+                return "Limber";
             default:
                 return "Ability Error";
 

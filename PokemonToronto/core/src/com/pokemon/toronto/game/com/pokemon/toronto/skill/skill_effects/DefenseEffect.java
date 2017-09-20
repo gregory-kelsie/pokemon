@@ -31,10 +31,13 @@ public class DefenseEffect extends StatEffect {
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field,
                     SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField receiverField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            receiverField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            receiverField = enemyField;
         }
         if (statDirection == SecondaryEffect.StatDirection.DECREASE &&
                 !effectReceiver.isProtectedByDefenseLoweringEffects()) {
@@ -42,7 +45,9 @@ public class DefenseEffect extends StatEffect {
             if (effectReceiver.isProtectedByDefenseLoweringEffects()) {
                 results.add(effectReceiver.getName() + "'s defense can't be lowered\n" +
                         "Due to the ability " + effectReceiver.getAbilityString());
-            } else if (effectReceiver.getDefenseStage() == -6) {
+            } else if (receiverField.hasMist()) {
+                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing Defense!");
+            }else if (effectReceiver.getDefenseStage() == -6) {
                 results.add(effectReceiver.getName() + "'s defense can't be lowered.");
             } else {
                 effectReceiver.decreaseDefenseStage(amount);

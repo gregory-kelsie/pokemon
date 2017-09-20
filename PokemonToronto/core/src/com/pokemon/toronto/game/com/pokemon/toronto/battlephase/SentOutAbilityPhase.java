@@ -148,8 +148,18 @@ public class SentOutAbilityPhase extends BattlePhase {
 
     private void init() {
         currentState = DISPLAY_ABILITY;
+        SubField receiverField;
         if (abilityUser.getAbility() == Pokemon.Ability.INTIMIDATE) {
-            if (otherPokemon.getAttackStage() > -6) {
+            if (abilityUserIsPlayerPokemon) {
+                receiverField = field.getOpponentField();
+            } else {
+                receiverField = field.getPlayerField();
+            }
+            if (receiverField.hasMist()) {
+                text = abilityUser.getName() + "'s Intimidate!\n" +
+                        "Mist prevents the Attack from decreasing!";
+            }
+            else if (otherPokemon.getAttackStage() > -6) {
                 otherPokemon.decreaseAttackStage(1);
                 text = abilityUser.getName() + "'s Intimidate!\n" +
                         otherPokemon.getName() + "'s attack fell!";

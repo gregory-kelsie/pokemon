@@ -72,6 +72,13 @@ public class SubField {
        return mist;
     }
 
+    public void adjustMist() {
+        if (hasMist()) {
+            mist--;
+            mist = Math.max(0, mist);
+        }
+    }
+
     /**
      * Remove mist from the SubField.
      */

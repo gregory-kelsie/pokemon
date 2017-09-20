@@ -52,10 +52,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (!usedSkill.targetsEnemy(attacker) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                if (!usedSkill.targetsEnemy(attacker, pui.getField()) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField, true)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
-                    if (usedSkill.targetsEnemy(attacker) && absorbResult.hasAbsorbed()) {
+                    if (usedSkill.targetsEnemy(attacker, pui.getField()) && absorbResult.hasAbsorbed()) {
                         List<String> blt = absorbResult.getAbsorbResult();
                         battleResults = blt;
                     } else {

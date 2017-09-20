@@ -1,7 +1,8 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.skill.Water;
+package com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
@@ -12,27 +13,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gregory on 9/16/2017.
+ * Created by Gregory on 9/19/2017.
  */
 
-public class Dive extends DamageSkill {
+public class SolarBlade extends DamageSkill {
     /**
-     * - Name: Dive
-     * - Type: Water
-     * - Base Damage: 80
+     * - Name: Solar Blade
+     * - Type: Grass
+     * - Base Damage: 125
      * - PP: 10
      * - Cat: Physical
      * - Crit Stage: 1
      * - Accuracy: 100
      */
-    public Dive() {
-        super(SkillFactory.DIVE, "Dive", 10, Pokemon.Type.WATER, SkillCategory.PHYSICAL, 100, 80, 1);
-        makesPhysicalContact = true;
+    public SolarBlade() {
+        super(SkillFactory.SOLAR_BLADE, "Solar Blade", 10, Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 125, 1);
     }
 
 
     /**
-     * Damage the enemy for 2-3 turns. Once finished confuses the user.
+     * Damage the enemy, no charge in sun, half damage in rain, hail, fog
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
@@ -46,23 +46,36 @@ public class Dive extends DamageSkill {
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
                             SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
-        //Use the damage part of the move.
-        if (!skillUser.isUnderwater()) {
-            skillUser.dive();
-            skillUser.setNextTurnSkill(this);
-            List<String> results = new ArrayList<String>();
-            results.add(skillUser.getName() + " went underwater!");
-            return results;
+        List<String> results = new ArrayList<String>();
+        if (!skillUser.hasNextTurnSkill()) {
+            if (field.getWeatherType() == WeatherType.SUN) {
+                //Attack
+                return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
+                        userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+            } else {
+                //Charge
+                skillUser.setNextTurnSkill(this);
+                results.add(skillUser.getName() + " absorbed\nlight!");
+                return results;
+            }
         } else {
-            skillUser.finishDive();
-            return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
+            skillUser.setNextTurnSkill(null);
+            if (field.getWeatherType() == WeatherType.RAIN || field.getWeatherType() == WeatherType.HAIL ||
+                    field.getWeatherType() == WeatherType.SAND) {
+                extraMod = 0.5; //Half damage in rain, hail or sand
+            }
+            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
                     userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+            extraMod = 1; //Reset extraMod
+            return results;
         }
     }
 
     @Override
     public boolean targetsEnemy(Pokemon skillUser, Field field) {
-        if (skillUser.isUnderwater()) {
+        if (skillUser.hasNextTurnSkill() ||
+                (!skillUser.hasNextTurnSkill() &&
+                        field.getWeatherType() == WeatherType.SUN)) {
             return true;
         } else {
             return false;

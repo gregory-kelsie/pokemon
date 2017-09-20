@@ -9,12 +9,41 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Curse;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Nightmare;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Absorb;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Aromatherapy;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.BulletSeed;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.CottonGuard;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.CottonSpore;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.EnergyBall;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.FrenzyPlant;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GrassWhistle;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.HornLeech;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeafBlade;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeafStorm;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeafTornado;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Leafage;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.LeechSeed;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.MagicalLeaf;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.MegaDrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.NeedleArm;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalBlizzard;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PetalDance;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.PowerWhip;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.RazorLeaf;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SeedBomb;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SeedFlare;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SleepPowder;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SolarBeam;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SolarBlade;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Spore;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.StrengthSap;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.StunSpore;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Synthesis;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.TropKick;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.VineWhip;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.WoodHammer;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.Spikes;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.AuroraBeam;
@@ -33,6 +62,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IceShard;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcicleCrash;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcicleSpear;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.IcyWind;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.Mist;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.PowderSnow;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice.SheerCold;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Bind;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Covet;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.DoubleSlap;
@@ -228,6 +260,38 @@ public class SkillFactory {
     public static final int ICICLE_CRASH = 108;
     public static final int ICICLE_SPEAR = 109;
     public static final int ICY_WIND = 110;
+    public static final int MIST = 111;
+    public static final int POWDER_SNOW = 112;
+    public static final int SHEER_COLD = 113;
+    public static final int ABSORB = 114;
+    public static final int BULLET_SEED = 115;
+    public static final int COTTON_GUARD = 116;
+    public static final int COTTON_SPORE = 117;
+    public static final int ENERGY_BALL = 118;
+    public static final int FRENZY_PLANT = 119;
+    public static final int GRASS_WHISTLE = 120;
+    public static final int HORN_LEECH = 121;
+    public static final int LEAFAGE = 122;
+    public static final int LEAF_BLADE = 123;
+    public static final int LEAF_STORM = 124;
+    public static final int LEAF_TORNADO = 125;
+    public static final int MAGICAL_LEAF = 126;
+    public static final int MEGA_DRAIN = 127;
+    public static final int NEEDLE_ARM = 128;
+    public static final int PETAL_BLIZZARD = 129;
+    public static final int POWER_WHIP = 130;
+    public static final int RAZOR_LEAF = 131;
+    public static final int SEED_BOMB = 132;
+    public static final int SEED_FLARE = 133;
+    public static final int SOLAR_BEAM = 134;
+    public static final int SOLAR_BLADE = 135;
+    public static final int SPORE = 136;
+    public static final int SYNTHESIS = 137;
+    public static final int STRENGTH_SAP = 138;
+    public static final int STUN_SPORE = 139;
+    public static final int TROP_KICK = 140;
+    public static final int VINE_WHIP = 141;
+    public static final int WOOD_HAMMER = 142;
 
     public SkillFactory() {
 
@@ -457,6 +521,70 @@ public class SkillFactory {
             return new IcicleSpear();
         } else if (skillId == ICY_WIND) {
             return new IcyWind();
+        } else if (skillId == MIST) {
+            return new Mist();
+        } else if (skillId == POWDER_SNOW) {
+            return new PowderSnow();
+        } else if (skillId == SHEER_COLD) {
+            return new SheerCold();
+        } else if (skillId == ABSORB) {
+            return new Absorb();
+        } else if (skillId == BULLET_SEED) {
+            return new BulletSeed();
+        } else if (skillId == COTTON_GUARD) {
+            return new CottonGuard();
+        } else if (skillId == COTTON_SPORE) {
+            return new CottonSpore();
+        } else if (skillId == ENERGY_BALL) {
+            return new EnergyBall();
+        } else if (skillId == FRENZY_PLANT) {
+            return new FrenzyPlant();
+        } else if (skillId == GRASS_WHISTLE) {
+            return new GrassWhistle();
+        } else if (skillId == HORN_LEECH) {
+            return new HornLeech();
+        } else if (skillId == LEAFAGE) {
+            return new Leafage();
+        } else if (skillId == LEAF_BLADE) {
+            return new LeafBlade();
+        } else if (skillId == LEAF_STORM) {
+            return new LeafStorm();
+        } else if (skillId == LEAF_TORNADO) {
+            return new LeafTornado();
+        } else if (skillId == MAGICAL_LEAF) {
+            return new MagicalLeaf();
+        } else if (skillId == MEGA_DRAIN) {
+            return new MegaDrain();
+        } else if (skillId == NEEDLE_ARM) {
+            return new NeedleArm();
+        } else if (skillId == PETAL_BLIZZARD) {
+            return new PetalBlizzard();
+        } else if (skillId == POWER_WHIP) {
+            return new PowerWhip();
+        } else if (skillId == RAZOR_LEAF) {
+            return new RazorLeaf();
+        } else if (skillId == SEED_BOMB) {
+            return new SeedBomb();
+        } else if (skillId == SEED_FLARE) {
+            return new SeedFlare();
+        } else if (skillId == SOLAR_BEAM) {
+            return new SolarBeam();
+        } else if (skillId == SOLAR_BLADE) {
+            return new SolarBlade();
+        } else if (skillId == SPORE) {
+            return new Spore();
+        } else if (skillId == SYNTHESIS) {
+            return new Synthesis();
+        } else if (skillId == STRENGTH_SAP) {
+            return new StrengthSap();
+        } else if (skillId == STUN_SPORE) {
+            return new StunSpore();
+        } else if (skillId == TROP_KICK) {
+            return new TropKick();
+        } else if (skillId == VINE_WHIP) {
+            return new VineWhip();
+        } else if (skillId == WOOD_HAMMER) {
+            return new WoodHammer();
         }
         else {
             return new Covet();

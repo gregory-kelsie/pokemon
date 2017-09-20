@@ -30,14 +30,19 @@ public class SpecialAttackEffect extends StatEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField receiverField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            receiverField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            receiverField = enemyField;
         }
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the special attack stage.
-            if (effectReceiver.getSpecialAttackStage() == -6) {
+            if (receiverField.hasMist()) {
+                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing Special Attack!");
+            } else if (effectReceiver.getSpecialAttackStage() == -6) {
                 results.add(effectReceiver.getName() + "'s special attack can't be lowered.");
             } else {
                 effectReceiver.decreaseSpAttackStage(amount);

@@ -30,14 +30,20 @@ public class AttackEffect extends StatEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField receiverField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            receiverField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            receiverField = enemyField;
         }
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the attack stage.
-            if (effectReceiver.getAttackStage() == -6) {
+            if (receiverField.hasMist()) {
+                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing Attack!");
+            }
+            else if (effectReceiver.getAttackStage() == -6) {
                 results.add(effectReceiver.getName() + "'s attack can't be lowered.");
             } else {
                 effectReceiver.decreaseAttackStage(amount);

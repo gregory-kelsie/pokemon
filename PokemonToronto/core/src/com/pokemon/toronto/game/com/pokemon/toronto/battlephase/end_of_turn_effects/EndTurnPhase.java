@@ -48,6 +48,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int BIND_STATE = 26;
     private final int CLAMP_STATE = 27;
     private final int WHIRLPOOL_STATE = 28;
+    private final int MIST_STATE = 29;
 
 
     //End turn weather results
@@ -189,6 +190,8 @@ public class EndTurnPhase extends BattlePhase {
             checkClamp();
         } else if (currentState == WHIRLPOOL_STATE) {
             checkWhirlpool();
+        } else if (currentState == MIST_STATE) {
+            adjustMist();
         }
     }
 
@@ -258,6 +261,35 @@ public class EndTurnPhase extends BattlePhase {
         }
     }
 
+    private void adjustMist() {
+        if (usingOnEnemy) {
+            if (pui.getField().getOpponentField().hasMist()) {
+                pui.getField().getOpponentField().adjustMist();
+                if (!pui.getField().getOpponentField().hasMist()) {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterText = MIST_STATE;
+                    text = "The mist has faded...";
+                }
+            }
+            usingOnEnemy = false;
+        } else {
+            if (pui.getField().getPlayerField().hasMist()) {
+                pui.getField().getPlayerField().adjustMist();
+                if (!pui.getField().getPlayerField().hasMist()) {
+                    currentState = DISPLAY_TEXT;
+                    text = "The mist has faded...";
+                    stateAfterText = END_GAME;
+                } else {
+                    currentState = END_GAME;
+                }
+            } else {
+                currentState = END_GAME;
+            }
+            usingOnEnemy = true;
+
+        }
+    }
+
     private void checkWhirlpool() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0) {
@@ -270,19 +302,19 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterText = WHIRLPOOL_STATE;
                 } else {
                     usingOnEnemy = true;
-                    stateAfterText = END_GAME;
+                    stateAfterText = MIST_STATE;
                 }
             } else if (currentPokemon.inWhirlpool()) {
                 text = currentPokemon.getName() + " was hurt by Whirlpool.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
                 currentPokemon.subtractHealth(damage);
                 currentPokemon.adjustWhirlpoolTurns();
-                adjustStates(currentPokemon, WHIRLPOOL_STATE, END_GAME);
+                adjustStates(currentPokemon, WHIRLPOOL_STATE, MIST_STATE);
             } else {
-                noStateUse(END_GAME);
+                noStateUse(MIST_STATE);
             }
         } else {
-            noStateUse(END_GAME);
+            noStateUse(MIST_STATE);
         }
     }
 

@@ -30,17 +30,23 @@ public class AccuracyEffect extends StatEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField receiverField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            receiverField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            receiverField = enemyField;
         }
+
         if (statDirection == SecondaryEffect.StatDirection.DECREASE
                 && !effectReceiver.isProtectedByAccuracyLoweringEffects()) {
             //Attempt to lower the accuracy stage.
             if (effectReceiver.isProtectedByAccuracyLoweringEffects()) {
                 results.add(effectReceiver.getName() + "'s accuracy cannot be\nlowered due to " +
                         effectReceiver.getAbilityString() + ".");
+            } else if (receiverField.hasMist()) {
+                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing accuracy!");
             } else if (effectReceiver.getSpeedStage() == -6) {
                 results.add(effectReceiver.getName() + "'s accuracy can't be lowered.");
             } else {

@@ -31,14 +31,19 @@ public class SpecialDefenseEffect extends StatEffect {
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon,
                     Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField receiverField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            receiverField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            receiverField = enemyField;
         }
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the special defense stage.
-            if (effectReceiver.getSpecialDefenseStage() == -6) {
+            if (receiverField.hasMist()) {
+                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing Special Defense!");
+            } else if (effectReceiver.getSpecialDefenseStage() == -6) {
                 results.add(effectReceiver.getName() + "'s special defense can't be lowered.");
             } else {
                 effectReceiver.decreaseSpDefenseStage(amount);

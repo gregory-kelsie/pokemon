@@ -32,7 +32,7 @@ public abstract class Skill {
     protected Pokemon.Type type;
     protected SkillCategory category;
     protected int priority;
-    private int accuracy;
+    protected int accuracy;
     protected boolean targetsEnemy;
     protected boolean makesPhysicalContact;
     protected boolean damagesEnemy;
@@ -309,9 +309,10 @@ public abstract class Skill {
      * Return whether or not the skill targets the enemy.
      * For example, swords dance targets self, tackle targets enemy.
      * @param skillUser The Pokemon using the Skill
+     * @param field
      * @return Whether or not the skill targets the enemy.
      */
-    public boolean targetsEnemy(Pokemon skillUser) {
+    public boolean targetsEnemy(Pokemon skillUser, Field field) {
         return targetsEnemy;
     }
 

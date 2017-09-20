@@ -36,7 +36,8 @@ public class ParalysisEffect extends SecondaryEffect {
         }
         //Check if the user is able to receive paralysis.
         if (!effectReceiver.isStatused() && effectReceiver.getCurrentHealth() != 0 &&
-                effectReceiver.getAbility() != Pokemon.Ability.SHIELD_DUST) {
+                effectReceiver.getAbility() != Pokemon.Ability.SHIELD_DUST &&
+                effectReceiver.getAbility() != Pokemon.Ability.LIMBER) {
             effectReceiver.setPreStatus(Pokemon.Status.PARALYSIS);
             results.add(effectReceiver.getName() + " was paralyzed.");
         }

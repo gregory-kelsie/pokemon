@@ -47,10 +47,10 @@ public class UseSecondAttackPhase extends UseAttackPhase {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (!usedSkill.targetsEnemy(attacker) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                if (!usedSkill.targetsEnemy(attacker, pui.getField()) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField,false)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
-                    if (usedSkill.targetsEnemy(attacker) && absorbResult.hasAbsorbed()) {
+                    if (usedSkill.targetsEnemy(attacker, pui.getField()) && absorbResult.hasAbsorbed()) {
                         battleResults = absorbResult.getAbsorbResult();
                     } else {
                         if (attackerIsUser) {
