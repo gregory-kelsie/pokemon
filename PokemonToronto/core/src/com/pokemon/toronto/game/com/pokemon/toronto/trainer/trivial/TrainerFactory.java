@@ -196,6 +196,23 @@ public class TrainerFactory {
             return getLass(difficulty, latlng[0], latlng[1]);
         } else if (id == TrainerId.YOUNGSTER.getValue()) {
             return getYoungster(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.WAITER.getValue() ||
+                id == TrainerId.WAITRESS.getValue()) {
+            return getWaiter(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.DRAGON_TAMER.getValue()) {
+            return getDragonTamer(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.BAKER.getValue()) {
+            return getBaker(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.POLICEMAN.getValue()) {
+            return getPolice(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.CUE_BALL.getValue()) {
+            return getCueBall(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.BIKER.getValue()) {
+            return getBiker(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.BURGLAR.getValue()) {
+            return getBurglar(difficulty, latlng[0], latlng[1]);
+        } else if (id == TrainerId.JANITOR.getValue()) {
+            return getJanitor(difficulty, latlng[0], latlng[1]);
         } else {
             return getYoungster(difficulty, latlng[0], latlng[1]);
         }
@@ -228,8 +245,196 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.VENOMOTH.getValue());
         }
 
-
         return bugCatcherPokemon;
+    }
+
+    public List<Integer> getWaiterPokemon(double difficulty) {
+        List<Integer> waiterPokemon = new ArrayList<Integer>();
+        if (difficulty <= 3.5) {
+            waiterPokemon.add(PokemonId.KRABBY.getValue());
+        }
+        if (difficulty <= 4) {
+            waiterPokemon.add(PokemonId.SHELLDER.getValue());
+            waiterPokemon.add(PokemonId.EXEGGCUTE.getValue());
+        }
+        if (difficulty >= 3) {
+            waiterPokemon.add(PokemonId.KINGLER.getValue());
+        }
+        if (difficulty >= 3.5) {
+            waiterPokemon.add(PokemonId.CLOYSTER.getValue());
+            waiterPokemon.add(PokemonId.EXEGGUTOR.getValue());
+        }
+        return waiterPokemon;
+    }
+
+    public List<Integer> getDragonTamerPokemon(double difficulty) {
+        List<Integer> dragonTamerPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            dragonTamerPokemon.add(PokemonId.CHARMANDER.getValue());
+            dragonTamerPokemon.add(PokemonId.EKANS.getValue());
+        }
+        if (difficulty >= 1 && difficulty <= 5) {
+            dragonTamerPokemon.add(PokemonId.DRATINI.getValue());
+        }
+        if (difficulty >= 2 && difficulty <= 4.5) {
+            dragonTamerPokemon.add(PokemonId.CHARMELEON.getValue());
+        }
+        if (difficulty >= 2.5) {
+            dragonTamerPokemon.add(PokemonId.ARBOK.getValue());
+        }
+        if (difficulty >= 3) {
+            dragonTamerPokemon.add(PokemonId.SEADRA.getValue());
+            dragonTamerPokemon.add(PokemonId.GYARADOS.getValue());
+        }
+        if (difficulty >= 3.5) {
+            dragonTamerPokemon.add(PokemonId.DRAGONAIR.getValue());
+        }
+        if (difficulty >= 4) {
+            dragonTamerPokemon.add(PokemonId.CHARIZARD.getValue());
+        }
+        if (difficulty >= 5) {
+            dragonTamerPokemon.add(PokemonId.AERODACTYL.getValue());
+            dragonTamerPokemon.add(PokemonId.DRAGONITE.getValue());
+        }
+        return dragonTamerPokemon;
+    }
+
+    public List<Integer> getBakerPokemon(double difficulty) {
+        List<Integer> bakerPokemon = new ArrayList<Integer>();
+        if (difficulty <= 3.5) {
+            bakerPokemon.add(PokemonId.MEOWTH.getValue());
+            bakerPokemon.add(PokemonId.PIKACHU.getValue());
+        }
+        if (difficulty >= 3) {
+            bakerPokemon.add(PokemonId.PERSIAN.getValue());
+            bakerPokemon.add(PokemonId.RAICHU.getValue());
+        }
+        if (difficulty >= 3.5) {
+            bakerPokemon.add(PokemonId.LICKITUNG.getValue());
+            bakerPokemon.add(PokemonId.SNORLAX.getValue());
+        }
+        return bakerPokemon;
+    }
+
+    public List<Integer> getPolicePokemon(double difficulty) {
+        List<Integer> policePokemon = new ArrayList<Integer>();
+        if (difficulty <= 3.5) {
+            policePokemon.add(PokemonId.MACHOP.getValue());
+        }
+        if (difficulty <= 4.5) {
+            policePokemon.add(PokemonId.GROWLITHE.getValue());
+        }
+        if (difficulty >= 3) {
+            policePokemon.add(PokemonId.MACHOKE.getValue());
+        }
+        if (difficulty >= 3.5) {
+            policePokemon.add(PokemonId.ARCANINE.getValue());
+        }
+        if (difficulty >= 4.5) {
+            policePokemon.add(PokemonId.MACHAMP.getValue());
+        }
+        return policePokemon;
+    }
+
+    public List<Integer> getCueBallPokemon(double difficulty) {
+        List<Integer> cueBallPokemon = new ArrayList<Integer>();
+        if (difficulty <= 3.5) {
+            cueBallPokemon.add(PokemonId.MACHOP.getValue());
+            cueBallPokemon.add(PokemonId.MANKEY.getValue());
+        }
+        if (difficulty >= 3) {
+            cueBallPokemon.add(PokemonId.MACHOKE.getValue());
+            cueBallPokemon.add(PokemonId.PRIMEAPE.getValue());
+        }
+        if (difficulty <= 4.5) {
+            cueBallPokemon.add(PokemonId.GRIMER.getValue());
+            cueBallPokemon.add(PokemonId.KOFFING.getValue());
+        }
+        if (difficulty >= 3.5) {
+            cueBallPokemon.add(PokemonId.MUK.getValue());
+            cueBallPokemon.add(PokemonId.WEEZING.getValue());
+        }
+        if (difficulty >= 4.5) {
+            cueBallPokemon.add(PokemonId.MACHAMP.getValue());
+        }
+        if (difficulty >= 5) {
+            cueBallPokemon.add(PokemonId.GYARADOS.getValue());
+        }
+        return cueBallPokemon;
+    }
+
+    public List<Integer> getBikerPokemon(double difficulty) {
+        List<Integer> bikerPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            bikerPokemon.add(PokemonId.EKANS.getValue());
+        }
+        if (difficulty <= 4.5) {
+            bikerPokemon.add(PokemonId.GRIMER.getValue());
+            bikerPokemon.add(PokemonId.KOFFING.getValue());
+        }
+        if (difficulty >= 2 && difficulty <= 4.5) {
+            bikerPokemon.add(PokemonId.CHARMELEON.getValue());
+        }
+        if (difficulty >= 2.5) {
+            bikerPokemon.add(PokemonId.ARBOK.getValue());
+        }
+        if (difficulty >= 3.5) {
+            bikerPokemon.add(PokemonId.MUK.getValue());
+            bikerPokemon.add(PokemonId.WEEZING.getValue());
+        }
+        if (difficulty >= 4.5) {
+            bikerPokemon.add(PokemonId.TENTACRUEL.getValue());
+        }
+        if (difficulty >= 5) {
+            bikerPokemon.add(PokemonId.FLAREON.getValue());
+            bikerPokemon.add(PokemonId.MAGMAR.getValue());
+
+        }
+        return bikerPokemon;
+    }
+
+    public List<Integer> getBurglarPokemon(double difficulty) {
+        List<Integer> burglarPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            burglarPokemon.add(PokemonId.CHARMANDER.getValue());
+        }
+        if (difficulty <= 4.5) {
+            burglarPokemon.add(PokemonId.GROWLITHE.getValue());
+            burglarPokemon.add(PokemonId.VULPIX.getValue());
+        }
+        if (difficulty >= 3 && difficulty <= 4.5) {
+            burglarPokemon.add(PokemonId.PONYTA.getValue());
+        }
+        if (difficulty >= 3.5) {
+            burglarPokemon.add(PokemonId.ARCANINE.getValue());
+            burglarPokemon.add(PokemonId.NINETALES.getValue());
+
+        }
+        if (difficulty >= 4) {
+            burglarPokemon.add(PokemonId.RAPIDASH.getValue());
+            burglarPokemon.add(PokemonId.FLAREON.getValue());
+        }
+        if (difficulty >= 5) {
+            burglarPokemon.add(PokemonId.CHARIZARD.getValue());
+        }
+
+        return burglarPokemon;
+    }
+
+    public List<Integer> getJanitorPokemon(double difficulty) {
+        List<Integer> janitorPokemon = new ArrayList<Integer>();
+        if (difficulty <= 4.5) {
+            janitorPokemon.add(PokemonId.RATTATA.getValue());
+            janitorPokemon.add(PokemonId.GRIMER.getValue());
+        }
+        if (difficulty >= 2.5) {
+            janitorPokemon.add(PokemonId.RATICATE.getValue());
+        }
+        if (difficulty >= 3.5) {
+            janitorPokemon.add(PokemonId.MUK.getValue());
+
+        }
+        return janitorPokemon;
     }
 
     public List<Integer> getYoungsterPokemon(double difficulty) {
@@ -344,6 +549,112 @@ public class TrainerFactory {
         return new WildTrainer(latitude, longitude, difficulty, title, name,
                 getVictoryText(), iconPath, initParty(pool, difficulty));
 
+    }
+
+    public WildTrainer getWaiter(double difficulty, double latitude, double longitude) {
+        String title;
+        String name;
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .5) {
+            title = "Waiter";
+            name = getMaleName();
+            iconPath = "trainers/small/waiter.png";
+        } else {
+            title = "Waitress";
+            name = getFemaleName();
+            iconPath = "trainers/small/waitress.png";
+        }
+        List<Integer> pool = getWaiterPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getDragonTamer(double difficulty, double latitude, double longitude) {
+        String title = "Dragon Tamer";
+        String name = getMaleName();
+        String iconPath = "trainers/small/dragontamer.png";
+
+        List<Integer> pool = getDragonTamerPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getBaker(double difficulty, double latitude, double longitude) {
+        String title = "Baker";
+        String name = getFemaleName();
+        String iconPath = "trainers/small/baker.png";
+
+        List<Integer> pool = getBakerPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getPolice(double difficulty, double latitude, double longitude) {
+        String title = "Police Officer";
+        String name = getMaleName();
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .7) {
+            iconPath = "trainers/small/policeman2.png";
+        } else {
+            iconPath = "trainers/small/policeman.png";
+        }
+        List<Integer> pool = getPolicePokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getCueBall(double difficulty, double latitude, double longitude) {
+        String title = "Cue Ball";
+        String name = getMaleName();
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .5) {
+            iconPath = "trainers/small/cueball.png";
+        } else {
+            iconPath = "trainers/small/cueball2.png";
+        }
+
+        List<Integer> pool = getCueBallPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getBiker(double difficulty, double latitude, double longitude) {
+        String title = "Biker";
+        String name = getMaleName();
+        String iconPath;
+        double rand = Math.random();
+        if (rand <= .5) {
+            iconPath = "trainers/small/biker.png";
+        } else {
+            iconPath = "trainers/small/biker2.png";
+        }
+
+        List<Integer> pool = getBikerPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getBurglar(double difficulty, double latitude, double longitude) {
+        String title = "Burglar";
+        String name = getMaleName();
+        String iconPath = "trainers/small/burglar.png";
+
+        List<Integer> pool = getBurglarPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
+    }
+
+    public WildTrainer getJanitor(double difficulty, double latitude, double longitude) {
+        String title = "Janitor";
+        String name = getMaleName();
+        String iconPath = "trainers/small/janitor.png";
+
+        List<Integer> pool = getJanitorPokemon(difficulty);
+        return new WildTrainer(latitude, longitude, difficulty, title, name,
+                getVictoryText(), iconPath, initParty(pool, difficulty));
     }
 
     public void getPicnickerMale() {

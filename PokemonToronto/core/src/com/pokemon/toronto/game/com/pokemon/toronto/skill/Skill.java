@@ -256,6 +256,9 @@ public abstract class Skill {
                     return false;
                 }
             }
+            if (enemyPokemon.isFlying()) {
+                return false;
+            }
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
             if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_VEIL &&

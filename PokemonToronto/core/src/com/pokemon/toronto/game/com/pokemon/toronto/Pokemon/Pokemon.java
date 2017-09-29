@@ -520,6 +520,10 @@ public abstract class Pokemon {
      */
     public void cancelMissSkills() {
         cancelRollout();
+        nextTurnSkill = null;
+        flying = false;
+        underground = false;
+        underwater = false;
     }
 
     /**
@@ -1366,6 +1370,22 @@ public abstract class Pokemon {
     public void finishDive() {
         setNextTurnSkill(null);
         underwater = false;
+    }
+
+    /**
+     * Finish using Fly or Bounce by removing the next turn skill
+     * and come down.
+     */
+    public void flyDown() {
+        setNextTurnSkill(null);
+        flying = false;
+    }
+
+    /**
+     * Use fly or bounce
+     */
+    public void fly() {
+        flying = true;
     }
 
     public boolean isSemiInvulnerable() {

@@ -5,7 +5,23 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.StringShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Bite;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Ember;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Acrobatics;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.AerialAce;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Aeroblast;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.AirCutter;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.AirSlash;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Bounce;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.BraveBird;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Chatter;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Defog;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.DrillPeck;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.FeatherDance;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Fly;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Gust;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Hurricane;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Peck;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Pluck;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Roost;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.ConfuseRay;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Curse;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ghost.Nightmare;
@@ -292,6 +308,22 @@ public class SkillFactory {
     public static final int TROP_KICK = 140;
     public static final int VINE_WHIP = 141;
     public static final int WOOD_HAMMER = 142;
+    public static final int ACROBATICS = 143;
+    public static final int AERIAL_ACE = 144;
+    public static final int AEROBLAST = 145;
+    public static final int AIR_CUTTER = 146;
+    public static final int AIR_SLASH = 147;
+    public static final int BOUNCE = 148;
+    public static final int BRAVE_BIRD = 149;
+    public static final int CHATTER = 150;
+    public static final int DEFOG = 151;
+    public static final int DRILL_PECK = 152;
+    public static final int FEATHER_DANCE = 153;
+    public static final int FLY = 154;
+    public static final int GUST = 155;
+    public static final int HURRICANE = 156;
+    public static final int PLUCK = 157;
+    public static final int ROOST = 158;
 
     public SkillFactory() {
 
@@ -585,6 +617,38 @@ public class SkillFactory {
             return new VineWhip();
         } else if (skillId == WOOD_HAMMER) {
             return new WoodHammer();
+        } else if (skillId == ACROBATICS) {
+            return new Acrobatics();
+        } else if (skillId == AERIAL_ACE) {
+            return new AerialAce();
+        } else if (skillId == AEROBLAST) {
+            return new Aeroblast();
+        } else if (skillId == AIR_CUTTER) {
+            return new AirCutter();
+        } else if (skillId == AIR_SLASH) {
+            return new AirSlash();
+        } else if (skillId == BOUNCE) {
+            return new Bounce();
+        } else if (skillId == BRAVE_BIRD) {
+            return new BraveBird();
+        } else if (skillId == CHATTER) {
+            return new Chatter();
+        } else if (skillId == DEFOG) {
+            return new Defog();
+        } else if (skillId == DRILL_PECK) {
+            return new DrillPeck();
+        } else if (skillId == FEATHER_DANCE) {
+            return new FeatherDance();
+        } else if (skillId == FLY) {
+            return new Fly();
+        } else if (skillId == GUST) {
+            return new Gust();
+        } else if (skillId == HURRICANE) {
+            return new Hurricane();
+        } else if (skillId == PLUCK) {
+            return new Pluck();
+        } else if (skillId == ROOST) {
+            return new Roost();
         }
         else {
             return new Covet();

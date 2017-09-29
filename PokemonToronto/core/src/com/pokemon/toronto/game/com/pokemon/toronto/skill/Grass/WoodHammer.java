@@ -14,7 +14,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 public class WoodHammer extends DamageSkill {
     /**
      * - Name: Wood Hammer
-     * - Type: Normal
+     * - Type: Grass
      * - Base Damage: 90
      * - PP: 20
      * - Cat: Physical

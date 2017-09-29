@@ -214,7 +214,7 @@ public class SubField {
      * Return whether or not Reflect is up on the SubField.
      * @return Whether or not Reflect is up on the SubField.
      */
-    public boolean isReflectUp() {
+    public boolean hasReflect() {
         if (reflect != NO_REFLECT) {
             return true;
         }
@@ -239,7 +239,7 @@ public class SubField {
      * Return whether or not Light Screen is up on the SubField.
      * @return Whether or not Light Screen is up on the SubField.
      */
-    public boolean isLightScreenUp() {
+    public boolean hasLightScreen() {
         if (lightScreen != NO_LIGHT_SCREEN) {
             return true;
         }

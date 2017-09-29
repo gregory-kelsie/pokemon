@@ -139,7 +139,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	 */
 	public void createPlace(String name, double latitude, double longitude, List<Integer> types) {
 		Place p = new Place(name, latitude, longitude, types);
-		if (p.hasPokemon()) {
+		if (p.hasPokemon()) { //Skips all places that don't have Pokemon.
 			int pokeID = p.getPokemon();
 			Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
 			if (pokeID != -1) {
@@ -171,17 +171,17 @@ public class pokemonToronto extends ApplicationAdapter {
 		TrainerFactory tf = new TrainerFactory();
 		if (places.size() != 0) {
 			Set<Integer> trainers = new HashSet<Integer>();
-			//Fill the set of possible trainers that could be encountered
-			//from the nearby places.
 			for (Place place: places) {
+				//Fill the set of possible trainers that could be encountered
+				//from the nearby places.
 				for (Integer i: place.getTrainers()) {
 					trainers.add(i);
 				}
 			}
 			List<Integer> setToList = new ArrayList<Integer>(trainers);
 			if (setToList.size() != 0) {
+				//Get a random trainer from the set of possible trainers
 				int rand = (int)Math.floor(Math.random() * setToList.size());
-				Gdx.app.log("SpawnedTrainer", "" + setToList.get(rand));
 				gsm.getNearbyTrainers().add(tf.getTrainer(setToList.get(rand), 0.5, gsm.getLatitude(), gsm.getLongitude()));
 			} else {
 				//Spawn default trainers
