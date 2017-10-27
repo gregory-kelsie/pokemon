@@ -210,4 +210,14 @@ public class TrainerAnimation {
     public boolean isFinished() {
         return finished;
     }
+
+    public void dispose() {
+        trainerAnimation.dispose();
+        pokeball.dispose();
+        trainerPokeballBar.dispose();
+        trainerEmptyPokeball.dispose();
+        trainerPokeball.dispose();
+        font.dispose();
+
+    }
 }

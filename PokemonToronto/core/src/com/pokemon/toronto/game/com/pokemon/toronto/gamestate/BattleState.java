@@ -734,6 +734,12 @@ public class BattleState extends GameState implements BattleInterface {
             pta.dispose();
         } else {
             //DISPOSE TRAINER THINGS.
+            if (trainerAnimation != null) {
+                trainerAnimation.dispose();
+            }
+            for (Sound sound: trainerCries) {
+                sound.dispose();
+            }
         }
         victoryBgm.stop();
         victoryBgm.dispose();

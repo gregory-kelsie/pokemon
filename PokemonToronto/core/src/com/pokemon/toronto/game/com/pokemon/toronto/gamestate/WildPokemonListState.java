@@ -369,14 +369,17 @@ public class WildPokemonListState extends GameState {
             gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
                     .get(currentPage * 3 + TOP_POSITION).getPokemon(), wildBgm));
             gsm.getNearbyPokemon().remove(currentPage * 3 + TOP_POSITION);
+            dispose();
         } else if (clickedPokemonPosition == MID_POSITION) {
             gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
                     .get(currentPage * 3 + MID_POSITION).getPokemon(), wildBgm));
             gsm.getNearbyPokemon().remove(currentPage * 3 + MID_POSITION);
+            dispose();
         } else if (clickedPokemonPosition == BOT_POSITION) {
             gsm.setState(new BattleState(gsm, gsm.getNearbyPokemon()
                     .get(currentPage * 3 + BOT_POSITION).getPokemon(), wildBgm));
             gsm.getNearbyPokemon().remove(currentPage * 3 + BOT_POSITION);
+            dispose();
         }
     }
 
