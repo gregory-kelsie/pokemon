@@ -529,7 +529,7 @@ public class UseAttackPhase extends BattlePhase {
     }
 
     private void useStatic() {
-        if (!attacker.isStatused()) {
+        if (attacker.isParalyzable()) {
             double rand = Math.random();
             if (rand <= .3) {
                 contactResults = attacker.getName() + " was paralyzed\nfrom " +
@@ -540,7 +540,7 @@ public class UseAttackPhase extends BattlePhase {
     }
 
     private void usePoisonPoint() {
-        if (!attacker.isStatused()) {
+        if (attacker.isPoisonable()) {
             double rand = Math.random();
             if (rand <= .30) {
                 contactResults = attacker.getName() + " was poisoned\nfrom " +
@@ -551,7 +551,7 @@ public class UseAttackPhase extends BattlePhase {
     }
 
     private void usePoisonTouch() {
-        if (!receiver.isStatused()) {
+        if (receiver.isPoisonable()) {
             double rand = Math.random();
             if (rand <= .30) {
                 contactResults = receiver.getName() + " was poisoned\nfrom " +
@@ -562,7 +562,7 @@ public class UseAttackPhase extends BattlePhase {
     }
 
     private void useFlameBody() {
-        if (!attacker.isStatused()) {
+        if (attacker.isBurnable()) {
             double rand = Math.random();
             if (rand <= .30) {
                 contactResults = attacker.getName() + " was burned\nfrom " +
@@ -576,17 +576,23 @@ public class UseAttackPhase extends BattlePhase {
         if (!attacker.isStatused()) {
             double rand = Math.random();
             if (rand <= .09) {
-                contactResults = attacker.getName() + " was poisoned\nfrom " +
-                        receiver.getName() + "s Effect Spore.";
-                attacker.setPreStatus(Pokemon.Status.POISON);
+                if (attacker.isPoisonable()) {
+                    contactResults = attacker.getName() + " was poisoned\nfrom " +
+                            receiver.getName() + "s Effect Spore.";
+                    attacker.setPreStatus(Pokemon.Status.POISON);
+                }
             } else if (rand > .09 && rand <= .19) {
-                contactResults = attacker.getName() + " was paralyzed\nfrom " +
-                        receiver.getName() + "s Effect Spore.";
-                attacker.setPreStatus(Pokemon.Status.PARALYSIS);
+                if (attacker.isParalyzable()) {
+                    contactResults = attacker.getName() + " was paralyzed\nfrom " +
+                            receiver.getName() + "s Effect Spore.";
+                    attacker.setPreStatus(Pokemon.Status.PARALYSIS);
+                }
             } else if (rand > .19 && rand <= .3) {
-                contactResults = attacker.getName() + " was put to sleep\nfrom " +
-                        receiver.getName() + "s Effect Spore.";
-                attacker.induceSleep();
+                if (attacker.isSleepable()) {
+                    contactResults = attacker.getName() + " was put to sleep\nfrom " +
+                            receiver.getName() + "s Effect Spore.";
+                    attacker.induceSleep();
+                }
             }
         }
     }
