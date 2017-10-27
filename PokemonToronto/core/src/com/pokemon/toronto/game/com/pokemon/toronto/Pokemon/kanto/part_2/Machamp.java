@@ -78,8 +78,31 @@ public class Machamp extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        //TODO: WIDE GUARD
+        //TODO: LOW KICK
+        beginnerSkills.add(SkillFactory.LEER);
+        beginnerSkills.add(SkillFactory.FOCUS_ENERGY);
+        beginnerSkills.add(SkillFactory.KARATE_CHOP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.KARATE_CHOP)));
+        //TODO: FORESIGHT 9
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.LOW_SWEEP)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SEISMIC_TOSS)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.REVENGE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.KNOCK_OFF)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.VITAL_THROW)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.WAKE_UP_SLAP)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.DUAL_CHOP)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUBMISSION)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULK_UP)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.CROSS_CHOP)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.DYNAMIC_PUNCH)));
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.STRENGTH);
     }
 }

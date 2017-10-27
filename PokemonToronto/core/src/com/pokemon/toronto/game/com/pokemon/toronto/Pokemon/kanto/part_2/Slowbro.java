@@ -78,8 +78,28 @@ public class Slowbro extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.CURSE);
+        beginnerSkills.add(SkillFactory.YAWN);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_GUN)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSION)));
+        //TODO: DISABLE 19
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEADBUTT)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_PULSE)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZEN_HEADBUTT)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLACK_OFF)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AMNESIA)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
+        levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAIN_DANCE)));
+        levelUpSkills.put(62, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCH_UP)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.WITHDRAW);
     }
 }

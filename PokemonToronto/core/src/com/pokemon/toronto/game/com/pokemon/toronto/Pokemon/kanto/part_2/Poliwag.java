@@ -79,9 +79,20 @@ public class Poliwag extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.WATER_SPORT);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_GUN)));
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPNOSIS)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLE)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAIN_DANCE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLEBEAM)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SHOT)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.BELLY_DRUM)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.WAKE_UP_SLAP)));
+        levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_BOMB)));
     }
 
     /**

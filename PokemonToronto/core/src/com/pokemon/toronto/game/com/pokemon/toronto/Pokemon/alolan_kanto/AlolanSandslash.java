@@ -85,6 +85,7 @@ public class AlolanSandslash extends Pokemon {
         beginnerSkills.add(SkillFactory.ICE_BALL);
         beginnerSkills.add(SkillFactory.METAL_CLAW);
         levelUpSkills.put(0, beginnerSkills);
+        initEvolutionSkills();
     }
 
     @Override

@@ -80,11 +80,26 @@ public class Mankey extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.COVET);
         beginnerSkills.add(SkillFactory.SCRATCH);
+        //TODO: LOW KICK
         beginnerSkills.add(SkillFactory.LEER);
         beginnerSkills.add(SkillFactory.FOCUS_ENERGY);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.KARATE_CHOP)));
+        //TODO: PURSUIT: 12
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SEISMIC_TOSS)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWAGGER)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.CROSS_CHOP)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.PUNISHMENT)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.THRASH)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.CLOSE_COMBAT)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        //TODO: STOMPING TANTRUM 43
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.OUTRAGE)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.FINAL_GAMBIT)));
     }
 
     /**

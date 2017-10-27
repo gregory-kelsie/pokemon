@@ -78,8 +78,21 @@ public class Victreebel extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.STOCKPILE);
+        beginnerSkills.add(SkillFactory.SWALLOW);
+        beginnerSkills.add(SkillFactory.SPIT_UP);
+        beginnerSkills.add(SkillFactory.VINE_WHIP);
+        beginnerSkills.add(SkillFactory.SLEEP_POWDER);
+        beginnerSkills.add(SkillFactory.SWEET_SCENT);
+        beginnerSkills.add(SkillFactory.RAZOR_LEAF);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEAF_STORM)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEAF_BLADE)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.LEAF_TORNADO);
     }
 }

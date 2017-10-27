@@ -79,9 +79,30 @@ public class Hypno extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.FUTURE_SIGHT);
+        beginnerSkills.add(SkillFactory.NASTY_PLOT);
+        beginnerSkills.add(SkillFactory.NIGHTMARE);
+        //TODO: SWITCHEROO
+        beginnerSkills.add(SkillFactory.POUND);
+        beginnerSkills.add(SkillFactory.HYPNOSIS);
+        //TODO: DISABLE
+        beginnerSkills.add(SkillFactory.CONFUSION);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        //TODO: DISABLE 5
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSION)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEADBUTT)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_GAS)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEDITATE)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYBEAM)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEADBUTT)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCH_UP)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SYNCHRONOISE)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZEN_HEADBUTT)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWAGGER)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.NASTY_PLOT)));
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYSHOCK)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.FUTURE_SIGHT)));
     }
 
 }

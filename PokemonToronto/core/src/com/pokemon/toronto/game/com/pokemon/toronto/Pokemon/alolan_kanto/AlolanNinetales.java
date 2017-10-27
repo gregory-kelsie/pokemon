@@ -84,6 +84,7 @@ public class AlolanNinetales extends Pokemon {
         beginnerSkills.add(SkillFactory.CONFUSE_RAY);
         beginnerSkills.add(SkillFactory.SAFEGUARD);
         levelUpSkills.put(0, beginnerSkills);
+        initEvolutionSkills();
     }
 
     @Override

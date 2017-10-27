@@ -78,9 +78,24 @@ public class Geodude extends Pokemon {
      */
     @Override
     protected void initLevelUpSkills() {
-        levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
+        List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.DEFENSE_CURL);
+        levelUpSkills.put(0, beginnerSkills);
+        //TODO: MUD SPORT 4
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_POLISH)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLOUT)));
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.MAGNITUDE)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_THROW)));
+        //TODO: SMACK DOWN 18
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLDOZE)));
         levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.SELF_DESTRUCT)));
         levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.STEALTH_ROCK)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_BLAST)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTHQUAKE)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.EXPLOSION)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.STONE_EDGE)));
     }
 
     /**

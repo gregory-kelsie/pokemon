@@ -80,10 +80,23 @@ public class Growlithe extends Pokemon {
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.BITE);
+        //TODO: ROAR
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
         levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        //TODO: ODOR SLEUTH 10
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAME_WHEEL)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.REVERSAL)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_FANG)));
         levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAME_BURST)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        //TODO: RETALIATE 32
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAMETHROWER)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEAT_WAVE)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.OUTRAGE)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLARE_BLITZ)));
     }
 
     /**

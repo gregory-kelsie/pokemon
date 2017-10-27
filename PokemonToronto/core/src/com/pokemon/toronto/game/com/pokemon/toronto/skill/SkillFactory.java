@@ -62,6 +62,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.DualChop;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.Outrage;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.Twister;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.Charge;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ChargeBeam;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.Discharge;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.EerieImpulse;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ElectroBall;
@@ -892,6 +893,8 @@ public class SkillFactory {
     public static final int YAWN = 495;
     public static final int SPIKE_CANNON = 496;
     public static final int PLAY_NICE = 497;
+
+    public static final int CHARGE_BEAM = 498;
 
     public SkillFactory() {
 
@@ -1899,6 +1902,8 @@ public class SkillFactory {
             return new Yawn();
         } else if (skillId == PLAY_NICE) {
             return new PlayNice();
+        } else if (skillId == CHARGE_BEAM) {
+            return new ChargeBeam();
         }
         else {
             return new Covet();

@@ -79,9 +79,21 @@ public class Bellsprout extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.VINE_WHIP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWTH)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRAP)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_POWDER)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.STUN_SPORE)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.KNOCK_OFF)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWEET_SCENT)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.GASTRO_ACID)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAZOR_LEAF)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_JAB)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRING_OUT)));
     }
 
     /**

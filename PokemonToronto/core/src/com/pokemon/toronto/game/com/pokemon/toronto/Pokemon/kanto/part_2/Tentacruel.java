@@ -78,8 +78,28 @@ public class Tentacruel extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.REFLECT_TYPE);
+        beginnerSkills.add(SkillFactory.WRING_OUT);
+        beginnerSkills.add(SkillFactory.POISON_STING);
+        beginnerSkills.add(SkillFactory.SUPERSONIC);
+        beginnerSkills.add(SkillFactory.CONSTRICT);
+        beginnerSkills.add(SkillFactory.ACID);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONSTRICT)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_PULSE)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRAP)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID_SPRAY)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLEBEAM)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.BARRIER)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_JAB)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEX)));
+        levelUpSkills.put(48, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE_WAVE)));
+        levelUpSkills.put(52, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRING_OUT)));
     }
 }

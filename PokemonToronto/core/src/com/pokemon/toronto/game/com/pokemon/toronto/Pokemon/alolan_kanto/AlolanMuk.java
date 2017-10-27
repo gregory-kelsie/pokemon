@@ -98,6 +98,7 @@ public class AlolanMuk extends Pokemon {
         levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID_ARMOR)));
         //TODO: BELCH 52
         levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEMENTO)));
+        initEvolutionSkills();
     }
 
     @Override

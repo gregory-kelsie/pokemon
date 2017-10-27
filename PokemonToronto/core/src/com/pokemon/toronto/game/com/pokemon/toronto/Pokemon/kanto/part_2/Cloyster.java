@@ -79,8 +79,16 @@ public class Cloyster extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.HYDRO_PUMP);
+        beginnerSkills.add(SkillFactory.SHELL_SMASH);
+        beginnerSkills.add(SkillFactory.TOXIC_SPIKES);
+        beginnerSkills.add(SkillFactory.WITHDRAW);
+        beginnerSkills.add(SkillFactory.SUPERSONIC);
+        //TODO: PROTECT
+        beginnerSkills.add(SkillFactory.AURORA_BEAM);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPIKE_CANNON)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPIKES)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICICLE_CRASH)));
     }
 }

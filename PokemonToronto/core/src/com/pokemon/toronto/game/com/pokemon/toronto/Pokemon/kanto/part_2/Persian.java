@@ -79,10 +79,33 @@ public class Persian extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.PLAY_ROUGH);
+        //TODO: SWITCHEROO
         beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.BITE);
+        beginnerSkills.add(SkillFactory.FAKE_OUT);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.FAKE_OUT)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT_ATTACK)));
+        //TODO: TAUNT 25
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.POWER_GEM)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.NASTY_PLOT)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.NIGHT_SLASH)));
+        levelUpSkills.put(65, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(69, new ArrayList<Integer>(Arrays.asList(SkillFactory.DARK_PULSE)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SWIFT);
     }
 
 

@@ -87,6 +87,7 @@ public class AlolanExeggutor extends Pokemon {
         levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.EGG_BOMB)));
         levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.WOOD_HAMMER)));
         levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEAF_STORM)));
+        initEvolutionSkills();
 
     }
 

@@ -79,8 +79,13 @@ public class Arcanine extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.THUNDER_FANG);
         beginnerSkills.add(SkillFactory.BITE);
+        //TODO: ROAR
+        //TODO: ODOR SLEUTH
+        beginnerSkills.add(SkillFactory.FIRE_FANG);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.EXTREME_SPEED)));
     }
 
 }

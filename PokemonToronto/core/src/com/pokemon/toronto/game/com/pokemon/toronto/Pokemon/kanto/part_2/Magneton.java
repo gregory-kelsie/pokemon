@@ -78,8 +78,28 @@ public class Magneton extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.ZAP_CANNON);
+        //TODO: ELECTRIC TERRAIN
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.SUPERSONIC);
+        beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
+        beginnerSkills.add(SkillFactory.MAGNET_BOMB);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_SHOCK)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.MAGNET_BOMB)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.LIGHT_SCREEN)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.SONIC_BOOM)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPARK)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.MIRROR_SHOT)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.METAL_SOUND)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.ELECTRO_BALL)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLASH_CANNON)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.DISCHARGE)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.LOCK_ON)));
+        //TODO: MAGNET RISE 53
+        levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.GYRO_BALL)));
+        levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZAP_CANNON)));
     }
 }

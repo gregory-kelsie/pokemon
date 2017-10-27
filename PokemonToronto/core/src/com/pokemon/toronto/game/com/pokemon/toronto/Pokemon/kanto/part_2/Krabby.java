@@ -79,9 +79,22 @@ public class Krabby extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        //TODO: MUD SPORT
+        beginnerSkills.add(SkillFactory.BUBBLE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.VICEGRIP)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.HARDEN)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLEBEAM)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SHOT)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.METAL_CLAW)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.STOMP)));
+        //TODO: PROTECT 29
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUILLOTINE)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRABHAMMER)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAIL)));
     }
 
     /**

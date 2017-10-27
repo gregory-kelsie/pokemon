@@ -79,9 +79,24 @@ public class Shellder extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.WATER_GUN);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.WITHDRAW)));
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICICLE_SPEAR)));
+        //TODO: PROTECT 16
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.CLAMP)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_SHARD)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAZOR_SHELL)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.AURORA_BEAM)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.WHIRLPOOL)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.IRON_DEFENSE)));
+        levelUpSkills.put(52, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_BEAM)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.SHELL_SMASH)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
     }
 
     /**

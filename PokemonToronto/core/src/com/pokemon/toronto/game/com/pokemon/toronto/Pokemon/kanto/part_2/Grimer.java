@@ -79,9 +79,23 @@ public class Grimer extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.POUND);
+        beginnerSkills.add(SkillFactory.POISON_GAS);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.HARDEN)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SLAP)));
+        //TODO: DISABLE 12
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_BOMB)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.MINIMIZE)));
+        //TODO: FLING 26
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE_BOMB)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE_WAVE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUNK_SHOT)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID_ARMOR)));
+        //TODO: BELCH 46
+        levelUpSkills.put(48, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEMENTO)));
     }
 
     /**

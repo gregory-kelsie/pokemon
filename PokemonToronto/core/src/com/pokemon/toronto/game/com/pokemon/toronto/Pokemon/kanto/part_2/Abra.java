@@ -79,9 +79,9 @@ public class Abra extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        //TODO: REMOVE TACKLE AND PUT TELEPORT
         beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
     }
 
     /**

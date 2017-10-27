@@ -79,9 +79,24 @@ public class Seel extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.HEADBUTT);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_SPORT)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICY_WIND)));
+        //TODO: ENCORE 13
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_SHARD)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.REST)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_RING)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.AURORA_BEAM)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_JET)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.DIVE)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_BEAM)));
+        levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.HAIL)));
     }
 
     /**

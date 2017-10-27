@@ -78,8 +78,19 @@ public class Poliwrath extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        //TODO: CIRCLE THROW
+        beginnerSkills.add(SkillFactory.BUBBLEBEAM);
+        beginnerSkills.add(SkillFactory.HYPNOSIS);
+        beginnerSkills.add(SkillFactory.DOUBLE_SLAP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.DYNAMIC_PUNCH)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.MIND_READER)));
+        //TODO: CIRCLE THROW 53
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SUBMISSION);
     }
 }

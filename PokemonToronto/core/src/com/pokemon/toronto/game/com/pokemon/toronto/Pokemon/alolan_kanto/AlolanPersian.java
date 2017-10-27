@@ -99,6 +99,7 @@ public class AlolanPersian extends Pokemon {
         levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.NIGHT_SLASH)));
         levelUpSkills.put(65, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
         levelUpSkills.put(69, new ArrayList<Integer>(Arrays.asList(SkillFactory.DARK_PULSE)));
+        initEvolutionSkills();
     }
 
     @Override

@@ -78,8 +78,25 @@ public class Farfetchd extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.BRAVE_BIRD);
+        beginnerSkills.add(SkillFactory.POISON_JAB);
+        beginnerSkills.add(SkillFactory.PECK);
+        beginnerSkills.add(SkillFactory.SAND_ATTACK);
+        beginnerSkills.add(SkillFactory.LEER);
+        beginnerSkills.add(SkillFactory.FURY_CUTTER);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.AERIAL_ACE)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.KNOCK_OFF)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_CUTTER)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWORDS_DANCE)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.NIGHT_SLASH)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACROBATICS)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.FALSE_SWIPE)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
+        levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRAVE_BIRD)));
     }
 }

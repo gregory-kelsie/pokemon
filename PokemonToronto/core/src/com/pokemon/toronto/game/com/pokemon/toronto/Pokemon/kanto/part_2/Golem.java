@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Gregory on 9/16/2017.
@@ -77,9 +78,28 @@ public class Golem extends Pokemon {
      */
     @Override
     protected void initLevelUpSkills() {
-        levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
+        List<Integer> beginnerSkills = new ArrayList<Integer>();
+        //TODO: HEAVY SLAM
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.DEFENSE_CURL);
+        //TODO: MUD SPORT
+        beginnerSkills.add(SkillFactory.ROCK_POLISH);
+        levelUpSkills.put(0, beginnerSkills);
+        //TODO: MUD SPORT 4
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_POLISH)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.STEAMROLLER)));
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.MAGNITUDE)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_THROW)));
+        //TODO: SMACK DOWN 18
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLDOZE)));
         levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.SELF_DESTRUCT)));
-        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.STEALTH_ROCK)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.STEALTH_ROCK)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_BLAST)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTHQUAKE)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.EXPLOSION)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.STONE_EDGE)));
+        //TODO: HEAVY SLAM 60
     }
 
     /**
