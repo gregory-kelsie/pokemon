@@ -297,7 +297,15 @@ public abstract class DamageSkill extends Skill {
         double weatherMod = getWeatherMod(field);
         double randVal = Math.random() * (0.15) + 0.85;
         double burnMod = getBurnMod(user);
-        Gdx.app.log("CritMod", "" + crit);
+        Gdx.app.log("DamageMod", user.getName() + "\ncrit: " + crit + "\n" +
+                "resistMod: " + resistMod + "\n" +
+                "stabMod: " + stabMod + "\n" +
+                "abilityMod: " + abilityMod + "\n" +
+                "defenseAbilityMod: " + defenseAbilityMod + "\n" +
+                "weatherMod: " + weatherMod + "\n" +
+                "randVal: " + randVal + "\n" +
+                "burnMod: " + burnMod + "\n" +
+                "extraMod: " + extraMod);
         return  (stabMod * resistMod * crit * abilityMod * defenseAbilityMod * weatherMod * randVal * burnMod * extraMod);
     }
 
@@ -374,11 +382,15 @@ public abstract class DamageSkill extends Skill {
      * @return The burn modifier.
      */
     private double getBurnMod (Pokemon user) {
-        if (user.getBattleAbility() == Pokemon.Ability.GUTS ||
-                id == SkillFactory.FACADE || category != SkillCategory.PHYSICAL) {
+        if (user.isBurned()) {
+            if (user.getBattleAbility() == Pokemon.Ability.GUTS ||
+                    id == SkillFactory.FACADE || category != SkillCategory.PHYSICAL) {
+                return 1;
+            }
+            return 0.5;
+        } else {
             return 1;
         }
-        return 0.5;
     }
 	/**
 	* 	Return the attacker's ability multiplier when determining the damage dealt.
