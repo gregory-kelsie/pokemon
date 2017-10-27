@@ -4105,7 +4105,9 @@ public abstract class Pokemon {
 
     public boolean isPoisonable() {
         if (!isStatused() && currentHealth != 0 &&
-                battleAbility != Pokemon.Ability.SHIELD_DUST) {
+                battleAbility != Pokemon.Ability.SHIELD_DUST && battleTypeOne != Type.POISON &&
+                battleTypeTwo != Type.POISON && battleTypeOne != Type.STEEL &&
+                battleTypeTwo != Type.STEEL) {
             return true;
         }
         return false;
@@ -4113,7 +4115,8 @@ public abstract class Pokemon {
 
     public boolean isParalyzable() {
         if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
-                battleAbility != Pokemon.Ability.LIMBER) {
+                battleAbility != Pokemon.Ability.LIMBER && battleTypeOne != Type.ELECTRIC &&
+                battleTypeTwo != Type.ELECTRIC) {
             return true;
         }
         return false;
@@ -4126,14 +4129,16 @@ public abstract class Pokemon {
         return false;
     }
     public boolean isFreezable() {
-        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST) {
+        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
+                battleTypeOne != Type.ICE && battleTypeTwo != Type.ICE) {
             return true;
         }
         return false;
     }
 
     public boolean isBurnable() {
-        if (!isStatused() && currentHealth != 0 && battleAbility!= Pokemon.Ability.SHIELD_DUST) {
+        if (!isStatused() && currentHealth != 0 && battleAbility!= Pokemon.Ability.SHIELD_DUST &&
+                battleTypeOne != Type.FIRE && battleTypeTwo != Type.FIRE) {
             return true;
         }
         return false;
