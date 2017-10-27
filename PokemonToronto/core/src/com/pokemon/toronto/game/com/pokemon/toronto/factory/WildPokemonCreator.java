@@ -26,6 +26,18 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanE
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGeodude;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGolem;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGraveler;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGrimer;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanMarowak;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanMeowth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanMuk;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanNinetales;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanPersian;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanRaichu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanRaticate;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanRattata;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanSandshrew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanSandslash;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanVulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Beedrill;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Butterfree;
@@ -219,8 +231,12 @@ public class WildPokemonCreator {
             return new WildPokemon(new Pidgeot(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.RATTATA.getValue()) {
             return new WildPokemon(new Rattata(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_RATTATA.getValue()) {
+            return new WildPokemon(new AlolanRattata(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.RATICATE.getValue()) {
             return new WildPokemon(new Raticate(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_RATICATE.getValue()) {
+            return new WildPokemon(new AlolanRaticate(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.SPEAROW.getValue()) {
             return new WildPokemon(new Spearow(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.FEAROW.getValue()) {
@@ -233,10 +249,16 @@ public class WildPokemonCreator {
             return new WildPokemon(new Pikachu(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.RAICHU.getValue()) {
             return new WildPokemon(new Raichu(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_RAICHU.getValue()) {
+            return new WildPokemon(new AlolanRaichu(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.SANDSHREW.getValue()) {
             return new WildPokemon(new Sandshrew(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_SANDSHREW.getValue()) {
+            return new WildPokemon(new AlolanSandshrew(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.SANDSLASH.getValue()) {
             return new WildPokemon(new Sandslash(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_SANDSLASH.getValue()) {
+            return new WildPokemon(new AlolanSandslash(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.NIDORANF.getValue()) {
             return new WildPokemon(new NidoranF(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.NIDORINA.getValue()) {
@@ -255,8 +277,12 @@ public class WildPokemonCreator {
             return new WildPokemon(new Clefable(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.VULPIX.getValue()) {
             return new WildPokemon(new Vulpix(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_VULPIX.getValue()) {
+            return new WildPokemon(new AlolanVulpix(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.NINETALES.getValue()) {
             return new WildPokemon(new Ninetales(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_NINETALES.getValue()) {
+            return new WildPokemon(new AlolanNinetales(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.JIGGLYPUFF.getValue()) {
             return new WildPokemon(new Jigglypuff(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.WIGGLYTUFF.getValue()) {
@@ -289,8 +315,12 @@ public class WildPokemonCreator {
             return new WildPokemon(new AlolanDugtrio(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.MEOWTH.getValue()) {
             return new WildPokemon(new Meowth(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_MEOWTH.getValue()) {
+            return new WildPokemon(new AlolanMeowth(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.PERSIAN.getValue()) {
             return new WildPokemon(new Persian(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_PERSIAN.getValue()) {
+            return new WildPokemon(new AlolanPersian(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.PSYDUCK.getValue()) {
             return new WildPokemon(new Psyduck(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.GOLDUCK.getValue()) {
@@ -367,8 +397,12 @@ public class WildPokemonCreator {
             return new WildPokemon(new Dewgong(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.GRIMER.getValue()) {
             return new WildPokemon(new Grimer(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_GRIMER.getValue()) {
+            return new WildPokemon(new AlolanGrimer(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.MUK.getValue()) {
             return new WildPokemon(new Muk(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_MUK.getValue()) {
+            return new WildPokemon(new AlolanMuk(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.SHELLDER.getValue()) {
             return new WildPokemon(new Shellder(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.CLOYSTER.getValue()) {
@@ -403,6 +437,8 @@ public class WildPokemonCreator {
             return new WildPokemon(new Cubone(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.MAROWAK.getValue()) {
             return new WildPokemon(new Marowak(5), latitude, longitude, date, dateString);
+        } else if (number == PokemonId.ALOLAN_MAROWAK.getValue()) {
+            return new WildPokemon(new AlolanMarowak(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.HITMONLEE.getValue()) {
             return new WildPokemon(new Hitmonlee(5), latitude, longitude, date, dateString);
         } else if (number == PokemonId.HITMONCHAN.getValue()) {
@@ -540,8 +576,12 @@ public class WildPokemonCreator {
             return new Pidgeot(level);
         } else if (pokemonNumber == PokemonId.RATTATA.getValue()) {
             return new Rattata(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_RATTATA.getValue()) {
+            return new AlolanRattata(level);
         } else if (pokemonNumber == PokemonId.RATICATE.getValue()) {
             return new Raticate(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_RATICATE.getValue()) {
+            return new AlolanRaticate(level);
         } else if (pokemonNumber == PokemonId.SPEAROW.getValue()) {
             return new Spearow(level);
         } else if (pokemonNumber == PokemonId.FEAROW.getValue()) {
@@ -554,10 +594,16 @@ public class WildPokemonCreator {
             return new Pikachu(level);
         } else if (pokemonNumber == PokemonId.RAICHU.getValue()) {
             return new Raichu(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_RAICHU.getValue()) {
+            return new AlolanRaichu(level);
         } else if (pokemonNumber == PokemonId.SANDSHREW.getValue()) {
             return new Sandshrew(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_SANDSHREW.getValue()) {
+            return new AlolanSandshrew(level);
         } else if (pokemonNumber == PokemonId.SANDSLASH.getValue()) {
             return new Sandslash(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_SANDSLASH.getValue()) {
+            return new AlolanSandslash(level);
         } else if (pokemonNumber == PokemonId.NIDORANF.getValue()) {
             return new NidoranF(level);
         } else if (pokemonNumber == PokemonId.NIDORINA.getValue()) {
@@ -576,8 +622,12 @@ public class WildPokemonCreator {
             return new Clefable(level);
         } else if (pokemonNumber == PokemonId.VULPIX.getValue()) {
             return new Vulpix(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_VULPIX.getValue()) {
+            return new AlolanVulpix(level);
         } else if (pokemonNumber == PokemonId.NINETALES.getValue()) {
             return new Ninetales(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_NINETALES.getValue()) {
+            return new AlolanNinetales(level);
         } else if (pokemonNumber == PokemonId.JIGGLYPUFF.getValue()) {
             return new Jigglypuff(level);
         } else if (pokemonNumber == PokemonId.WIGGLYTUFF.getValue()) {
@@ -610,8 +660,12 @@ public class WildPokemonCreator {
             return new AlolanDugtrio(level);
         } else if (pokemonNumber == PokemonId.MEOWTH.getValue()) {
             return new Meowth(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_MEOWTH.getValue()) {
+            return new AlolanMeowth(level);
         } else if (pokemonNumber == PokemonId.PERSIAN.getValue()) {
             return new Persian(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_PERSIAN.getValue()) {
+            return new AlolanPersian(level);
         } else if (pokemonNumber == PokemonId.PSYDUCK.getValue()) {
             return new Psyduck(level);
         } else if (pokemonNumber == PokemonId.GOLDUCK.getValue()) {
@@ -688,8 +742,12 @@ public class WildPokemonCreator {
             return new Dewgong(level);
         } else if (pokemonNumber == PokemonId.GRIMER.getValue()) {
             return new Grimer(level);
+        }  else if (pokemonNumber == PokemonId.ALOLAN_GRIMER.getValue()) {
+            return new AlolanGrimer(level);
         } else if (pokemonNumber == PokemonId.MUK.getValue()) {
             return new Muk(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_MUK.getValue()) {
+            return new AlolanMuk(level);
         } else if (pokemonNumber == PokemonId.SHELLDER.getValue()) {
             return new Shellder(level);
         } else if (pokemonNumber == PokemonId.CLOYSTER.getValue()) {
@@ -724,6 +782,8 @@ public class WildPokemonCreator {
             return new Cubone(level);
         } else if (pokemonNumber == PokemonId.MAROWAK.getValue()) {
             return new Marowak(level);
+        } else if (pokemonNumber == PokemonId.ALOLAN_MAROWAK.getValue()) {
+            return new AlolanMarowak(level);
         } else if (pokemonNumber == PokemonId.HITMONLEE.getValue()) {
             return new Hitmonlee(level);
         } else if (pokemonNumber == PokemonId.HITMONCHAN.getValue()) {

@@ -586,6 +586,7 @@ public class TrainerFactory {
                 "the CascadeBadge to show that you beat me.";
         List<Pokemon> party = new ArrayList<Pokemon>();
         Staryu g = new Staryu(18);
+
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new Tackle());
         gSkills.add(new Harden());

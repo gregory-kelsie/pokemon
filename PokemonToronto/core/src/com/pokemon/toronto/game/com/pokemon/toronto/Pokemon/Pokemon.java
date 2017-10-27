@@ -4404,6 +4404,16 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the Pokemon's id that this Pokemon would evolve into using
+     * a Ice Stone. -1 if it doesn't evolve into a Pokemon using a Ice Stone.
+     * @return The id of the Pokemon this Pokemon would evolve into using
+     * a Ice Stone.
+     */
+    public int getIceStoneEvolutionId() {
+        return -1;
+    }
+
+    /**
      * Return the Pokemon's id that this Pokemon would evolve into through
      * a trade. -1 if it doesn't evolve into a Pokemon through a trade.
      * @return The id of the Pokemon this Pokemon would evolve into through

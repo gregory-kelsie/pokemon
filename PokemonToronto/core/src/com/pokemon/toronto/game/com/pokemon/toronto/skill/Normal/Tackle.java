@@ -17,14 +17,14 @@ public class Tackle extends DamageSkill {
     /**
      * - Name: Tackle
      * - Type: Normal
-     * - Base Damage: 35
+     * - Base Damage: 40
      * - PP: 35
      * - Cat: Physical
      * - Crit Stage: 1
      * - Accuracy: 100
      */
     public Tackle() {
-        super(1, "Tackle", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 35, 1);
+        super(1, "Tackle", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
 
     }
