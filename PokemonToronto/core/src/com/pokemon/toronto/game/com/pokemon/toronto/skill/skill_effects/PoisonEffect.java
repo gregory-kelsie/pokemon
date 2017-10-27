@@ -39,7 +39,7 @@ public class PoisonEffect extends SecondaryEffect {
             targetSubField = enemyField;
         }
         //Check if the user is able to receive poison.
-        if (effectReceiver.isPoisonable() && targetSubField.hasSafeguard()) {
+        if (effectReceiver.isPoisonable() && !targetSubField.hasSafeguard()) {
             effectReceiver.setPreStatus(Pokemon.Status.POISON);
             results.add(effectReceiver.getName() + " was poisoned.");
         }
