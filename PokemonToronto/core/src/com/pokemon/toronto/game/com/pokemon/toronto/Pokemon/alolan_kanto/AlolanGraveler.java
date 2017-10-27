@@ -120,7 +120,7 @@ public class AlolanGraveler extends Pokemon {
     @Override
     public int getLevelUpEvolutionId() {
         if (level >= 40) {
-            return PokemonId.GOLEM.getValue();
+            return PokemonId.ALOLAN_GOLEM.getValue();
         }
         return -1;
     }

@@ -93,4 +93,14 @@ public class Exeggcute extends Pokemon {
         return PokemonId.EXEGGUTOR.getValue();
 
     }
+
+    /**
+     * Return Exeggutor
+     * @return Exeggutor
+     */
+    @Override
+    public int getDawnStoneEvolutionId() {
+        return PokemonId.ALOLAN_EXEGGUTOR.getValue();
+
+    }
 }

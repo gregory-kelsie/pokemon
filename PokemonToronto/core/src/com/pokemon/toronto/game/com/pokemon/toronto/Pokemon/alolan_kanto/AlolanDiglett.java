@@ -103,7 +103,7 @@ public class AlolanDiglett extends Pokemon {
     @Override
     public int getLevelUpEvolutionId() {
         if (level >= 26) {
-            return PokemonId.DUGTRIO.getValue();
+            return PokemonId.ALOLAN_DUGTRIO.getValue();
         }
         return -1;
     }

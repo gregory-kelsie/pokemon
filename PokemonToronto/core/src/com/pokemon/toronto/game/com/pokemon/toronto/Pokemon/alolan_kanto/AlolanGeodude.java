@@ -118,7 +118,7 @@ public class AlolanGeodude extends Pokemon {
     @Override
     public int getLevelUpEvolutionId() {
         if (level >= 25) {
-            return PokemonId.GRAVELER.getValue();
+            return PokemonId.ALOLAN_GRAVELER.getValue();
         }
         return -1;
     }
