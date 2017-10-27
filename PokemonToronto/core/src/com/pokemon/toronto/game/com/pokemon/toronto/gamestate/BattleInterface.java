@@ -32,6 +32,6 @@ public interface BattleInterface {
     boolean isWildBattle();
     Trainer getTrainer();
     String getNextPokemonName();
-    void setNextEnemyPokemon();
+    Pokemon setNextEnemyPokemon();
     void disposeBgm();
 }

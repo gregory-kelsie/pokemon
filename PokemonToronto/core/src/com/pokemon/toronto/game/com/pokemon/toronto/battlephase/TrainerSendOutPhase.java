@@ -38,7 +38,9 @@ public class TrainerSendOutPhase extends BattlePhase {
                 pui.removeTrainerDoubleFaint();
                 pui.setPhase(new SentOutAbilityPhase(pui));
             } else {
-                pui.endBattle();
+                pui.setPhase(new SentOutAbilityPhase(pui, pui.getEnemyPokemon(),
+                        pui.getUserPokemon()));
+                //pui.endBattle();
             }
 
         }

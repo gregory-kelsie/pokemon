@@ -47,6 +47,7 @@ public class SentOutAbilityPhase extends BattlePhase {
     private boolean abilityUserIsPlayerPokemon;
 
     private boolean checkedOtherPokemonAbility;
+    private boolean trainerFainted; //For when the trainer's pokemon faints and they switch in the next one.
 
     /**
      * Called when a Pokemon switches in after they faint.
@@ -55,7 +56,8 @@ public class SentOutAbilityPhase extends BattlePhase {
      * @param enemyPokemon The pokemon waiting on the other side.
      * @param fainted Whether or not the previous pokemon fainted
      */
-    public SentOutAbilityPhase(PhaseUpdaterInterface pui, Pokemon sentOutPokemon, Pokemon enemyPokemon, boolean fainted) {
+    public SentOutAbilityPhase(PhaseUpdaterInterface pui, Pokemon sentOutPokemon,
+                               Pokemon enemyPokemon, boolean fainted) {
         super(pui);
         this.abilityUser = sentOutPokemon;
         this.otherPokemon = enemyPokemon;
@@ -64,6 +66,30 @@ public class SentOutAbilityPhase extends BattlePhase {
         justStartedBattle = false;
         currentState = INIT;
         this.fainted = fainted;
+        abilityUserIsPlayerPokemon = true;
+        hazzardText = new ArrayList<String>();
+        hazzardTextIndex = 0;
+        trainerFainted = false;
+    }
+
+    /**
+     * Called when a trainer sends in their next pokemon after their previous one fainted.
+     * @param pui Reference to the BattleUpdater
+     * @param sentOutPokemon The pokemon joining the battle.
+     * @param enemyPokemon The pokemon waiting on the other side.
+     */
+    public SentOutAbilityPhase(PhaseUpdaterInterface pui, Pokemon sentOutPokemon,
+                               Pokemon enemyPokemon) {
+        super(pui);
+        this.abilityUser = sentOutPokemon;
+        this.otherPokemon = enemyPokemon;
+        field = pui.getField();
+        checkedOtherPokemonAbility = true;
+        justStartedBattle = false;
+        trainerFainted = true;
+        currentState = INIT;
+        fainted = false;
+        trainerFainted = true;
         abilityUserIsPlayerPokemon = true;
         hazzardText = new ArrayList<String>();
         hazzardTextIndex = 0;
@@ -82,6 +108,7 @@ public class SentOutAbilityPhase extends BattlePhase {
         fainted = false;
         hazzardText = new ArrayList<String>();
         hazzardTextIndex = 0;
+        trainerFainted = false;
     }
     
     private void initFirstAbilityUser() {
@@ -480,7 +507,7 @@ public class SentOutAbilityPhase extends BattlePhase {
         } else if (currentState == DISPLAY_ABILITY) {
             displayAbility(dt);
         } else if (currentState == GO_TO_NEXT_PHASE) {
-            if (justStartedBattle) {
+            if (justStartedBattle || trainerFainted) {
                 pui.endBattle();
             } else {
                 //currentState = CHECK_ENTRY_HAZZARDS;

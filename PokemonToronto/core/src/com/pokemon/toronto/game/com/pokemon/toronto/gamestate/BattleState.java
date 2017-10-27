@@ -1083,7 +1083,7 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     @Override
-    public void setNextEnemyPokemon() {
+    public Pokemon setNextEnemyPokemon() {
         for (int i = 0; i < enemyParty.size(); i++) {
             if (enemyParty.get(i).getCurrentHealth() != 0) {
                 currentEnemyPosition = i;
@@ -1091,9 +1091,10 @@ public class BattleState extends GameState implements BattleInterface {
                 battleTextures.disposeEnemyPokemonTexture();
                 battleTextures.setNewEnemyPokemonTexture(enemyPokemon.getMapIconPath());
                 trainerCries.get(i).play();
-                break;
+                return enemyPokemon;
             }
         }
+        return null;
     }
 
 
