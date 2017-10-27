@@ -142,6 +142,7 @@ public class LoginState extends GameState {
                     Gdx.input.setInputProcessor(new InputHandler());
                     loadParty();
                     gsm.logIn();
+                    gsm.playBgm();
                     gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
                     dispose();
                 }

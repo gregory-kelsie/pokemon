@@ -202,6 +202,7 @@ public class PokeNavState extends GameState{
      * Go to the PokemonCenter state to heal the player's pokemon.
      */
     private void executePokeCenterScreen() {
+        gsm.stopBgm();
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
 
         /*

@@ -96,7 +96,6 @@ public class GameStateManager {
         bag.addPokeball(Ball.POKEBALL, 5);
         kantoBadges = 0;
         menubgm.setLooping(true);
-        //menubgm.play();
     }
 
     public void saveParty() {
@@ -234,10 +233,11 @@ public class GameStateManager {
     public List<Pokemon> getBox() { return box; }
 
     public void stopBgm() {
-        menubgm.pause();
+        menubgm.stop();
     }
 
     public void playBgm() {
+        Gdx.app.log("MAINBGM", "CALLED");
         menubgm.play();
     }
 
