@@ -78,10 +78,16 @@ public class Nidoking extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.LEER);
+        beginnerSkills.add(SkillFactory.MEGAHORN);
         beginnerSkills.add(SkillFactory.PECK);
+        beginnerSkills.add(SkillFactory.FOCUS_ENERGY);
+        beginnerSkills.add(SkillFactory.DOUBLE_KICK);
         beginnerSkills.add(SkillFactory.POISON_STING);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.CHIP_AWAY)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.THRASH)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTH_POWER)));
+        levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGAHORN)));
     }
 
 }

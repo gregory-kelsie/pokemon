@@ -194,7 +194,6 @@ public class ExpPhase extends BattlePhase {
                 if (!pui.hasWipedOutTrainer()) {
                     pui.setPhase(new TrainerSendOutPhase(pui));
                 } else {
-                    //TODO: Go to end trainer phase.
                     pui.setPhase(new EndTrainerBattle(pui));
                 }
             }

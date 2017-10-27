@@ -23,6 +23,7 @@ public class Gust extends DamageSkill {
      */
     public Gust() {
         super(SkillFactory.GUST, "Gust", 35, Pokemon.Type.FLYING, SkillCategory.SPECIAL, 100, 40, 1);
+        hitFlyingPokemon = true;
     }
 
     /**

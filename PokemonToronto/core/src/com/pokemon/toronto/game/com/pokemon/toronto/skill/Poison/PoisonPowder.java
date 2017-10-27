@@ -8,7 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
 /**
@@ -44,7 +44,7 @@ public class PoisonPowder extends EffectSkill {
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
-                               boolean isFirstAttack) {
+                               boolean isFirstAttack, Skill targetsSkill) {
         if (enemyPokemon.isStatused()) {
             return new FailResult("It failed...");
         }

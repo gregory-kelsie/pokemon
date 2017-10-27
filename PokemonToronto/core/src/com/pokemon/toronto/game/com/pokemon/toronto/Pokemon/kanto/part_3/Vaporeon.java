@@ -78,8 +78,25 @@ public class Vaporeon extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BABY_DOLL_EYES)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_PULSE)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.AURORA_BEAM)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_RING)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID_ARMOR)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.HAZE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUDDY_WATER)));
+        //TODO: LAST RESORT 41
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.WATER_GUN);
     }
 }

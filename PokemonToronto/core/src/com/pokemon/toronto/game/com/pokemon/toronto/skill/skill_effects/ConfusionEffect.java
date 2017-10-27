@@ -27,15 +27,21 @@ public class ConfusionEffect extends SecondaryEffect {
      * @param isFirstAttack Whether or not the effect is a result of the first attack.
      */
     @Override
-    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
+    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                    SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField targetSubField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            targetSubField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            targetSubField = enemyField;
         }
         //Check if the user is able to receive confusion.
-        if (!effectReceiver.isConfused() && effectReceiver.getAbility() != Pokemon.Ability.OWN_TEMPO) {
+        if (!effectReceiver.isConfused() &&
+                effectReceiver.getBattleAbility() != Pokemon.Ability.OWN_TEMPO &&
+                !targetSubField.hasSafeguard()) {
             effectReceiver.induceConfusion();
             results.add(effectReceiver.getName() + " was confused!");
         }

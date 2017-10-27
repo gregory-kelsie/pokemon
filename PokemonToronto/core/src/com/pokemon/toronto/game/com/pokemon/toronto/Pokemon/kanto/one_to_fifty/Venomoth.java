@@ -78,8 +78,32 @@ public class Venomoth extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.QUIVER_DANCE);
+        beginnerSkills.add(SkillFactory.BUG_BUZZ);
+        beginnerSkills.add(SkillFactory.SILVER_WIND);
         beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.SUPERSONIC);
+        //TODO: DISABLE
+        //TODO: FORESIGHT
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSION)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_POWDER)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYBEAM)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.STUN_SPORE)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SIGNAL_BEAM)));
         levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEECH_LIFE)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZEN_HEADBUTT)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_FANG)));
+        levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
+        levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BUZZ)));
+        levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUIVER_DANCE)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.GUST);
     }
 }

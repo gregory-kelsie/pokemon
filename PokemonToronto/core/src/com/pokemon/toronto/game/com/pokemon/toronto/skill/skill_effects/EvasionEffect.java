@@ -29,16 +29,7 @@ public class EvasionEffect extends StatEffect {
      */
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
-        Pokemon effectReceiver;
-        SubField receiverField;
-        if (target == SecondaryEffect.Target.SELF) {
-            effectReceiver = skillUser;
-            receiverField = userField;
-        } else {
-            effectReceiver = enemyPokemon;
-            receiverField = enemyField;
-        }
-
+        super.use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the accuracy stage.
             if (receiverField.hasMist()) {
@@ -46,7 +37,7 @@ public class EvasionEffect extends StatEffect {
             } else if (effectReceiver.getEvasionStage() == -6) {
                 results.add(effectReceiver.getName() + "'s evasion can't be lowered.");
             } else {
-                effectReceiver.decreaseEvasionStage(amount);
+                effectReceiver.decreaseEvasionStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s evasion" + getFallText());
             }
         } else {
@@ -54,7 +45,7 @@ public class EvasionEffect extends StatEffect {
             if (effectReceiver.getEvasionStage() == 6) {
                 results.add(effectReceiver.getName() + "'s evasion can't get higher.");
             } else {
-                effectReceiver.increaseEvasionStage(amount);
+                effectReceiver.increaseEvasionStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s evasion" + getRoseText());
             }
         }

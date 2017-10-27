@@ -79,10 +79,22 @@ public class Zubat extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE); //TODO: Implement right skills
+        beginnerSkills.add(SkillFactory.ABSORB);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASTONISH)));
         levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.WING_ATTACK)));
         levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSE_RAY)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_CUTTER)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWIFT)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_FANG)));
+        //TODO: MEAN LOOK 29
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEECH_LIFE)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.HAZE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.VENOSHOCK)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
+        //TODO: QUICK GUARD 43
     }
 
     /**

@@ -11,9 +11,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Gregory on 8/13/2017.
  */
@@ -45,11 +42,11 @@ public class ConfuseRay extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
-                            Field field, SubField userField, SubField enemyField,
-                               boolean isFirstAttack) {
+                               Field field, SubField userField, SubField enemyField,
+                               boolean isFirstAttack, Skill targetsSkill) {
         if (enemyPokemon.isConfused()){
             return new FailResult(enemyPokemon.getName() + " is already confused.");
-        } else if (enemyPokemon.getAbility() == Pokemon.Ability.OWN_TEMPO) {
+        } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.OWN_TEMPO) {
             return new FailResult(enemyPokemon.getName() + " cannot be confused\nbecause it has it's Own Tempo");
         }
         return new FailResult(false);

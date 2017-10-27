@@ -188,6 +188,7 @@ public class ConfusionCheckPhase extends BattlePhase {
         HurtByConfusion confusionSkill = new HurtByConfusion();
         confusionSkill.use(confusedPokemon, confusedPokemon, pui.getField());
         currentState = DEPLETE_HEALTH;
+        confusedPokemon.takeDamageThisTurn();
     }
 
     /**

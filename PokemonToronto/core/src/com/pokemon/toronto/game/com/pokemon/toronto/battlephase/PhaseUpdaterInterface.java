@@ -61,4 +61,7 @@ public interface PhaseUpdaterInterface {
     String getNextPokemonName();
     void setNextEnemyPokemon();
     void disposeBgm();
+    void setTrainerDoubleFaint();
+    boolean hasTrainerDoubleFaint();
+    void removeTrainerDoubleFaint();
 }

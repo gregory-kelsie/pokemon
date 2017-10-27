@@ -1024,8 +1024,8 @@ public class BattleState extends GameState implements BattleInterface {
     }
 
     @Override
-    public void setIngrainText() {
-        moveSelectText = currentPokemon.getName() + " cannot switch out due to Ingrain!";
+    public void setNoSwitchText() {
+        moveSelectText = currentPokemon.getName() + " cannot switch out!";
     }
 
     @Override

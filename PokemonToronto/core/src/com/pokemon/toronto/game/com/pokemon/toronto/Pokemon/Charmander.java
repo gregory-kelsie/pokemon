@@ -81,6 +81,15 @@ public class Charmander extends Pokemon {
         beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOKESCREEN)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RAGE)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_FANG)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAME_BURST)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAMETHROWER)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_SPIN)));
+        levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.INFERNO)));
     }
 
     /**

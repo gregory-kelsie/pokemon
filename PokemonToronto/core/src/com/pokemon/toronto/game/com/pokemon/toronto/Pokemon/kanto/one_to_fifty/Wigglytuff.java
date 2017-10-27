@@ -78,6 +78,11 @@ public class Wigglytuff extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.DOUBLE_EDGE);
+        beginnerSkills.add(SkillFactory.PLAY_ROUGH);
+        beginnerSkills.add(SkillFactory.SING);
+        beginnerSkills.add(SkillFactory.DEFENSE_CURL);
+        //TODO: DISABLE
         beginnerSkills.add(SkillFactory.DOUBLE_SLAP);
         levelUpSkills.put(0, beginnerSkills);
     }

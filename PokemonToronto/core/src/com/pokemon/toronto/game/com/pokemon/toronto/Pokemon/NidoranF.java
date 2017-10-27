@@ -81,8 +81,15 @@ public class NidoranF extends Pokemon {
         beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_KICK)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
         levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLATTER)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_FANG)));
     }
 
     /**

@@ -82,6 +82,7 @@ public class Raichu extends Pokemon {
         beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
         beginnerSkills.add(SkillFactory.TAIL_WHIP);
         beginnerSkills.add(SkillFactory.QUICK_ATTACK);
+        beginnerSkills.add(SkillFactory.THUNDERBOLT);
         levelUpSkills.put(0, beginnerSkills);
     }
 }

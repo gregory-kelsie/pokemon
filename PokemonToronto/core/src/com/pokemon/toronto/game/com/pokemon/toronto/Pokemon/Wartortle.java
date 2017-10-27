@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Gregory on 6/14/2017.
@@ -76,10 +77,24 @@ public class Wartortle extends Pokemon {
      */
     @Override
     protected void initLevelUpSkills() {
-        levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCRATCH)));
+        List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
+        beginnerSkills.add(SkillFactory.WATER_GUN);
+        levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_GUN)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.WITHDRAW)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLE)));
         levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
-        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.SKULL_BASH)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAPID_SPIN)));
+        //todo: protect at lvl 25
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_PULSE)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SKULL_BASH)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.IRON_DEFENSE)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAIN_DANCE)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
     }
 
     /**

@@ -24,7 +24,7 @@ public interface BattleInterface {
     void playEnemyCry();
     void playUserPokemonCry();
     void setNormalMoveSelectText();
-    void setIngrainText();
+    void setNoSwitchText();
     void playTrainerEnemyCry();
     boolean isFinishedIntroAnimation();
     int getBattleType();

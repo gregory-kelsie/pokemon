@@ -13,7 +13,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 public class WaterGun extends DamageSkill {
     /**
-     * - Name: WaterGun
+     * - Name: Water Gun
      * - Type: Water
      * - Base Damage: 40
      * - PP: 25
@@ -27,10 +27,10 @@ public class WaterGun extends DamageSkill {
     }
 
     /**
-     * Return Aqua Tail's skill animation.
+     * Return Water Gun's skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Aqua Tail's skill animation.
+     * @return Water Gun's skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

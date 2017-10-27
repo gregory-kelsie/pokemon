@@ -2,54 +2,32 @@ package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.AssetLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Blastoise;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Bulbasaur;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charizard;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Charmander;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Eevee;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pidgey;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Beedrill;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Butterfree;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Diglett;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ekans;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Fearow;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Gloom;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Golbat;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Kakuna;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Metapod;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoking;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidoqueen;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorina;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Nidorino;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ninetales;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Oddish;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Paras;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Parasect;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeotto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raichu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandshrew;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandslash;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Spearow;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venonat;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vulpix;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Zubat;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Arcanine;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Hypno;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Machamp;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magnemite;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Magneton;
@@ -65,9 +43,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 import com.pokemon.toronto.game.pokemonToronto;
 
 import org.apache.http.NameValuePair;
@@ -147,7 +123,7 @@ public class GameStateManager {
             params.add(new BasicNameValuePair("health", Integer.toString(party.get(i).getCurrentHealth())));
             params.add(new BasicNameValuePair("currentExp", Integer.toString((int)party.get(i).getDisplayedExp())));
             params.add(new BasicNameValuePair("nature", Integer.toString(party.get(i).getNature().getValue())));
-            params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getAbility().getValue())));
+            params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getBattleAbility().getValue())));
             params.add(new BasicNameValuePair("partyPosition", Integer.toString(i))); //first slot in party
             params.add(new BasicNameValuePair("pokemonGender", String.valueOf(party.get(i).getGender())));
             params.add(new BasicNameValuePair("status", Integer.toString(party.get(i).getStatus().getValue()))); //0 is status free
@@ -314,7 +290,9 @@ public class GameStateManager {
         addToBox(weedle);
         addToBox(new Scyther(5));
         addToBox(new Aerodactyl(5));
-        addToBox(new Dragonite(5));
+        Pokemon dragonite = new Dragonite(100);
+        dragonite.setCurrentHealth(1);
+        addToBox(dragonite);
         addToBox(new Kabutops(5));
         //addToBox(new Pikachu(5));
     }

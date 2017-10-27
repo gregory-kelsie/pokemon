@@ -9,7 +9,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,24 +35,25 @@ public class Brine extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field the battle is on.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
         if (enemyPokemon.getCurrentHealth() < enemyPokemon.getHealthStat()) {
             extraMod = 2;
             results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
                     enemyPokemonPartyPosition, field, userField, enemyField,
-                    isFirstAttack, skillUserParty, enemyPokemonParty);
+                    isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
             extraMod = DEFAULT_EXTRA_MOD; // Return to original state.
         } else {
             results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
                     enemyPokemonPartyPosition, field, userField, enemyField,
-                    isFirstAttack, skillUserParty, enemyPokemonParty);
+                    isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         }
         return results;
     }

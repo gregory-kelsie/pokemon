@@ -105,6 +105,7 @@ public class SleepCheckPhase extends BattlePhase {
      * can be used while they are asleep.
      * @return Whether or not the sleeping pokemon's skill is usable
      * in their sleep.
+     * TODO: Change to check id when the skills are implemented.
      */
     private boolean skillIsUsableInSleep() {
         if (skill.getName().equals("Snore") || skill.getName().equals("Sleep Talk")) {

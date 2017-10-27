@@ -81,7 +81,18 @@ public class Paras extends Pokemon {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
+        ArrayList<Integer> six = new ArrayList<Integer>();
+        six.add(SkillFactory.STUN_SPORE);
+        six.add(SkillFactory.POISON_POWDER);
+        levelUpSkills.put(6, six);
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.ABSORB)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_CUTTER)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPORE)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWTH)));
         levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AROMATHERAPY)));
+        levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.X_SCISSOR)));
     }
 
     /**

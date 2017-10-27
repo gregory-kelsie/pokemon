@@ -79,9 +79,22 @@ public class Oddish extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE); //TODO: Implement right skills
+        beginnerSkills.add(SkillFactory.ABSORB);
+        beginnerSkills.add(SkillFactory.GROWTH);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWEET_SCENT)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_POWDER)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.STUN_SPORE)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGA_DRAIN)));
+        //TODO: LUCKY CHANT 23
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.MOONLIGHT)));
         levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
+        //TODO: TOXIC 35
+        //TODO: NATURAL GIFT 39
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.MOONBLAST)));
+        //TODO: GRASSY TERRAIN 47
         levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_DANCE)));
     }
 

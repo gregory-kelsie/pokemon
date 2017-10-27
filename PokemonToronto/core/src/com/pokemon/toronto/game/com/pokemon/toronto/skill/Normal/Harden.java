@@ -31,7 +31,7 @@ public class Harden extends EffectSkill {
      * Return Harden's move animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Leer's move animation.
+     * @return Harden's move animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

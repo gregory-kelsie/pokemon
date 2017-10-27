@@ -83,7 +83,18 @@ public class Pidgeotto extends Pokemon {
         beginnerSkills.add(SkillFactory.SAND_ATTACK);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUST)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        //TODO: WHIRLWIND 17
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.TWISTER)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEATHER_DANCE)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.WING_ATTACK)));
+        levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROOST)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAILWIND)));
+        //TODO: MIRROR MOVE 52
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
+        levelUpSkills.put(62, new ArrayList<Integer>(Arrays.asList(SkillFactory.HURRICANE)));
     }
 
     /**

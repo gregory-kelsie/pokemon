@@ -16,9 +16,6 @@ import java.util.List;
  */
 
 public class DoubleSlap extends MultiHitMove {
-
-    private int timesHit;
-
     /**
      * - Name: Double Slap
      * - Type: Normal

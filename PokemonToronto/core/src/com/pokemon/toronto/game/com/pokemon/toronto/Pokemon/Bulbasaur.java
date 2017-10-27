@@ -20,6 +20,7 @@ public class Bulbasaur extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 6.9;
 
     //Base Stats
     private static final int BASE_HEALTH = 45;
@@ -78,7 +79,20 @@ public class Bulbasaur extends Pokemon {
     protected void initLevelUpSkills() {
         levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
         levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
-        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.VINE_WHIP)));
+        ArrayList<Integer> thirteen = new ArrayList<Integer>();
+        thirteen.add(SkillFactory.POISON_POWDER);
+        thirteen.add(SkillFactory.SLEEP_POWDER);
+        levelUpSkills.put(13, thirteen);
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAZOR_LEAF)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWEET_SCENT)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWTH)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        //todo: worry seed
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.SYNTHESIS)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SEED_BOMB)));
+
     }
 
     /**

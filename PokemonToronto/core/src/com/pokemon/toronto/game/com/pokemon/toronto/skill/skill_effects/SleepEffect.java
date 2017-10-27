@@ -29,12 +29,16 @@ public class SleepEffect extends SecondaryEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField targetSubField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            targetSubField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            targetSubField = enemyField;
         }
-        if (!effectReceiver.isStatused() && effectReceiver.getAbility() != Pokemon.Ability.INSOMNIA) {
+        if (effectReceiver.isSleepable() && !targetSubField.hasSafeguard() &&
+                !enemyPokemon.isUproaring()) {
             effectReceiver.induceSleep();
             results.add(effectReceiver.getName() + " fell asleep!");
         }

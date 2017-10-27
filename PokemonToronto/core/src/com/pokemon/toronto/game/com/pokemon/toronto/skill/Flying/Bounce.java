@@ -9,7 +9,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
 import java.util.ArrayList;
@@ -41,15 +40,16 @@ public class Bounce extends SecondaryEffectSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         //Use the damage part of the move.
         if (!skillUser.isFlying()) {
@@ -61,7 +61,7 @@ public class Bounce extends SecondaryEffectSkill {
         } else {
             skillUser.flyDown();
             return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                    userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                    userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         }
     }
 

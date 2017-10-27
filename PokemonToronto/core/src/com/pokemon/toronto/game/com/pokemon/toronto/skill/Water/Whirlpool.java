@@ -27,6 +27,7 @@ public class Whirlpool extends DamageSkill {
      */
     public Whirlpool() {
         super(SkillFactory.WHIRLPOOL, "Whirlpool", 15, Pokemon.Type.WATER, SkillCategory.SPECIAL, 85, 35, 1);
+        hitUnderwaterPokemon = true;
     }
 
     /**
@@ -34,20 +35,21 @@ public class Whirlpool extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty
      * @return The results of using the move.
      */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         if (!enemyPokemon.inWhirlpool()) {
             enemyPokemon.whirlpool();
             results.add(enemyPokemon.getName() + " became trapped\nby the vortex!");

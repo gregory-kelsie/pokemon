@@ -80,8 +80,20 @@ public class Venonat extends Pokemon {
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.TACKLE);
+        //TODO: DISABLE
+        //TODO: FORESIGHT
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSION)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_POWDER)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYBEAM)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.STUN_SPORE)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SIGNAL_BEAM)));
         levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEECH_LIFE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZEN_HEADBUTT)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_FANG)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
     }
 
     /**

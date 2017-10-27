@@ -78,8 +78,20 @@ public class Beedrill extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TWINEEDLE);
+        beginnerSkills.add(SkillFactory.FURY_ATTACK);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAGE)));
+        //TODO: PURSUIT 17
         levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.VENOSHOCK)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.PIN_MISSILE)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_JAB)));
+        levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.FELL_STINGER)));
     }
 }

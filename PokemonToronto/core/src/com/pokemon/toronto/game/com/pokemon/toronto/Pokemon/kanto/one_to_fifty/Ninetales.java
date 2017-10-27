@@ -78,8 +78,12 @@ public class Ninetales extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        //TODO: IMPRISON
+        beginnerSkills.add(SkillFactory.NASTY_PLOT);
+        beginnerSkills.add(SkillFactory.FLAMETHROWER);
         beginnerSkills.add(SkillFactory.QUICK_ATTACK);
         beginnerSkills.add(SkillFactory.CONFUSE_RAY);
+        beginnerSkills.add(SkillFactory.SAFEGUARD);
         levelUpSkills.put(0, beginnerSkills);
 
 

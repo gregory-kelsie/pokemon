@@ -29,15 +29,7 @@ public class SpecialAttackEffect extends StatEffect {
      */
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
-        Pokemon effectReceiver;
-        SubField receiverField;
-        if (target == SecondaryEffect.Target.SELF) {
-            effectReceiver = skillUser;
-            receiverField = userField;
-        } else {
-            effectReceiver = enemyPokemon;
-            receiverField = enemyField;
-        }
+        super.use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the special attack stage.
             if (receiverField.hasMist()) {
@@ -45,7 +37,7 @@ public class SpecialAttackEffect extends StatEffect {
             } else if (effectReceiver.getSpecialAttackStage() == -6) {
                 results.add(effectReceiver.getName() + "'s special attack can't be lowered.");
             } else {
-                effectReceiver.decreaseSpAttackStage(amount);
+                effectReceiver.decreaseSpAttackStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s special attack" + getFallText());
             }
         } else {
@@ -53,7 +45,7 @@ public class SpecialAttackEffect extends StatEffect {
             if (effectReceiver.getSpecialAttackStage() == 6) {
                 results.add(effectReceiver.getName() + "'s special attack can't get higher.");
             } else {
-                effectReceiver.increaseSpAttackStage(amount);
+                effectReceiver.increaseSpAttackStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s special attack" + getRoseText());
             }
         }

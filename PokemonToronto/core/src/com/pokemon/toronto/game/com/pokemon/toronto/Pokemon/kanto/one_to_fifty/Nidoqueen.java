@@ -78,9 +78,15 @@ public class Nidoqueen extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.SUPERPOWER);
         beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.TAIL_WHIP);
+        beginnerSkills.add(SkillFactory.DOUBLE_KICK);
         beginnerSkills.add(SkillFactory.POISON_STING);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.CHIP_AWAY)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTH_POWER)));
+        levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERPOWER)));
     }
 }

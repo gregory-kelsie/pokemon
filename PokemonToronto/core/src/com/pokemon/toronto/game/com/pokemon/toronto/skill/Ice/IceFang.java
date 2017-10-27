@@ -7,8 +7,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
 
 import java.util.List;
@@ -40,21 +40,22 @@ public class IceFang extends SecondaryEffectSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field of the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return The results of using the move.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
 
         if (Math.random() <= .1 && isFirstAttack) {
             //Flinch
-            if (enemyPokemon.getAbility() !=
-                    Pokemon.Ability.INNER_FOCUS && enemyPokemon.getAbility() !=
+            if (enemyPokemon.getBattleAbility() !=
+                    Pokemon.Ability.INNER_FOCUS && enemyPokemon.getBattleAbility() !=
                     Pokemon.Ability.SHIELD_DUST) {
                 enemyPokemon.flinch();
             }

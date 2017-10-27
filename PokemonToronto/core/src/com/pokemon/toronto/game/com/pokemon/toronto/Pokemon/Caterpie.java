@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -78,6 +79,7 @@ public class Caterpie extends Pokemon {
         beginnerSkills.add(SkillFactory.TACKLE);
         beginnerSkills.add(SkillFactory.STRING_SHOT);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BITE)));
     }
 
     /**

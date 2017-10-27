@@ -79,9 +79,28 @@ public class Clefairy extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.DISARMING_VOICE);
+        beginnerSkills.add(SkillFactory.POUND);
         beginnerSkills.add(SkillFactory.GROWL);
+        //TODO: ENCORE
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.SING)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.DEFENSE_CURL)));
+        //TODO: BESTOW 19
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.WAKE_UP_SLAP)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.MINIMIZE)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.STORED_POWER)));
+        //TODO: METRONOME 31
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.COSMIC_POWER)));
+        //TODO: LUCKY CHANT 37
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.MOONLIGHT)));
+        levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.MOONBLAST)));
+        //TODO: GRAVITY 49
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.METEOR_MASH)));
+        //TODO: HEALING WISH 55
+
 
     }
 

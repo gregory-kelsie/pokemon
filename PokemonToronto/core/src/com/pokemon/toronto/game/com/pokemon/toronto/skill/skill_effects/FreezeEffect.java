@@ -27,16 +27,19 @@ public class FreezeEffect extends SecondaryEffect {
      * @param isFirstAttack Whether or not the effect is a result of the first attack.
      */
     @Override
-    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
+    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                    SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField targetSubField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            targetSubField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            targetSubField = enemyField;
         }
         //Check if the user is able to receive freeze.
-        if (!effectReceiver.isStatused() && effectReceiver.getCurrentHealth() != 0 &&
-                effectReceiver.getAbility() != Pokemon.Ability.SHIELD_DUST) {
+        if (!effectReceiver.isFreezable() && !targetSubField.hasSafeguard()) {
                 effectReceiver.setPreStatus(Pokemon.Status.FROZEN);
                 results.add(effectReceiver.getName() + " was frozen.");
         }

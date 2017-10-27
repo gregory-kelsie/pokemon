@@ -78,7 +78,11 @@ public class Clefable extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.DISARMING_VOICE);
+        beginnerSkills.add(SkillFactory.SING);
         beginnerSkills.add(SkillFactory.DOUBLE_SLAP);
+        beginnerSkills.add(SkillFactory.MINIMIZE);
+        //TODO: METRONOME
         levelUpSkills.put(0, beginnerSkills);
 
     }

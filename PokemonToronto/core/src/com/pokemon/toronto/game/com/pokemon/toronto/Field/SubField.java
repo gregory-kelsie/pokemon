@@ -19,6 +19,10 @@ public class SubField {
     private final boolean NO_STICKY_WEB = false;
     private final int NO_MIST = 0;
     private final int TOTAL_MIST_TURNS = 5;
+    private final int NO_TAILWIND = 0;
+    private final int TOTAL_TAILWIND_TURNS = 4;
+    private final int NO_SAFEGUARD = 0;
+    private final int SAFEGUARD_TURNS = 5;
 
     //Instance Variables
     private boolean stealthRocked;
@@ -27,7 +31,9 @@ public class SubField {
     private int reflect;
     private int lightScreen;
     private int mist;
+    private int tailwind;
     private boolean stickyWeb;
+    private int safeguard;
 
     /**
      * Create a SubField. A SubField is the area in which a Pokemon
@@ -43,6 +49,74 @@ public class SubField {
         lightScreen = NO_LIGHT_SCREEN;
         stickyWeb = NO_STICKY_WEB;
         mist = NO_MIST;
+        tailwind = NO_TAILWIND;
+        safeguard = NO_SAFEGUARD;
+    }
+
+    /**
+     * Return whether or not the sub-field is protected by Safeguard.
+     * @return Whether or not the sub-field is protected by Safeguard.
+     */
+    public boolean hasSafeguard() {
+        if (safeguard != NO_SAFEGUARD) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Protect the Sub-Field with Safeguard.
+     */
+    public void addSafeguard() {
+        safeguard = SAFEGUARD_TURNS;
+    }
+
+    /**
+     * Reduce the number of turns left for Safeguard if it is protecting the field.
+     */
+    public void adjustSafeguard() {
+        if (hasSafeguard()) {
+            safeguard--;
+            safeguard = Math.max(safeguard, NO_SAFEGUARD);
+        }
+    }
+
+    /**
+     * Return whether or not this side of the field has a
+     * Tailwind effect activated.
+     * @return Whether or not this sub-field has a Tailwind
+     * effect activated.
+     */
+    public boolean hasTailwind() {
+        if (tailwind != NO_TAILWIND) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add tailwind to the SubField.
+     */
+    public void addTailwind() {
+        tailwind = TOTAL_TAILWIND_TURNS;
+    }
+
+    /**
+     * Remove tailwind from the SubField.
+     */
+    public void removeTailwind() {
+        tailwind = NO_TAILWIND;
+    }
+
+    /**
+     * Adjust the number of tailwind turns left
+     * for the SubField.
+     */
+    public void adjustTailwind() {
+        if (hasTailwind()) {
+            tailwind--;
+            tailwind = Math.max(NO_TAILWIND, tailwind);
+        }
     }
 
     /**
@@ -64,18 +138,40 @@ public class SubField {
     }
 
     /**
-     * Return the number of remaining turns mist will last on the
-     * field.
+     * Return the number of remaining turns mist will last on the field.
      * @return The remaining number of turns mist will last.
      */
     public int getRemainingMistTurns() {
        return mist;
     }
 
+    /**
+     * Adjust the number of turns left for the Mist effect.
+     */
     public void adjustMist() {
         if (hasMist()) {
             mist--;
-            mist = Math.max(0, mist);
+            mist = Math.max(NO_MIST, mist);
+        }
+    }
+
+    /**
+     * Adjust the number of turns left for the Light Screen effect.
+     */
+    public void adjustLightScreen() {
+        if (hasLightScreen()) {
+            lightScreen--;
+            lightScreen = Math.max(NO_LIGHT_SCREEN, lightScreen);
+        }
+    }
+
+    /**
+     * Adjust the number of turns left for the Reflect effect.
+     */
+    public void adjustReflect() {
+        if (hasReflect()) {
+            reflect--;
+            reflect = Math.max(NO_REFLECT, reflect);
         }
     }
 

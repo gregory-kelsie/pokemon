@@ -79,9 +79,28 @@ public class Jigglypuff extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE); //TODO: Implement proper skills
+        beginnerSkills.add(SkillFactory.SING);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.DEFENSE_CURL)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.POUND)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.PLAY_NICE)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.DISARMING_VOICE)));
+        //TODO: DISABLE 14
         levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLOUT)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROUND)));
+        ArrayList<Integer> stockpileSkills = new ArrayList<Integer>();
+        stockpileSkills.add(SkillFactory.STOCKPILE);
+        stockpileSkills.add(SkillFactory.SWALLOW);
+        stockpileSkills.add(SkillFactory.SPIT_UP);
+        levelUpSkills.put(25, stockpileSkills);
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.WAKE_UP_SLAP)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.REST)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.GYRO_BALL)));
+        //TODO: MIMIC 38
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_VOICE)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
     }
 
     /**

@@ -30,7 +30,7 @@ public class HurtByConfusion extends DamageSkill {
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, Field field) {
         //Use the damage part of the move.
         List<String> results = new ArrayList<String>();
-        int dmg = getDamage(skillUser, skillUser, field, false);
+        int dmg = getDamage(skillUser, skillUser, field, null, null, false);
         skillUser.subtractHealth(dmg);
         return results;
     }

@@ -2,11 +2,11 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
-import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -36,20 +36,21 @@ public class GyroBall extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field of the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return The results of using the move.
-     */
+     * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
 
-        damage = (int)(25 * (enemyPokemon.getTotalSpeed(field) / skillUser.getTotalSpeed(field)));
+        damage = (int)(25 * (enemyPokemon.getTotalSpeed(field, enemyField) / skillUser.getTotalSpeed(field, enemyField)));
 
         results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
-                enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         damage = 1; //Reset power back to normal.
         return results;
     }

@@ -1,6 +1,5 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
-import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -61,16 +60,17 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field of the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return The results of using the move.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
 
         double rand = Math.random();
         if (chance >= rand) {

@@ -82,9 +82,20 @@ public class Eevee extends Pokemon {
         beginnerSkills.add(SkillFactory.TACKLE);
         beginnerSkills.add(SkillFactory.TAIL_WHIP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BABY_DOLL_EYES)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
-        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        ArrayList<Integer> seventeen = new ArrayList<Integer>();
+        seventeen.add(SkillFactory.BITE);
+        seventeen.add(SkillFactory.SWIFT);
+        levelUpSkills.put(17, seventeen);
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.REFRESH)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.CHARM)));
+        //TODO: BATON PASS 33
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        //TODO: LAST RESORT 41
+        //TODO: TRUMP CARD 45
     }
 
     /**

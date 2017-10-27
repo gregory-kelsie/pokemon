@@ -23,6 +23,8 @@ public abstract class Skill {
 
     //Constants
     protected final int MIN_PP = 0;
+    protected final int NO_MISS_RECOIL = 0;
+    protected final int HALF_MISS_RECOIL = 1;
 
     //Instance Variables
     protected int id;
@@ -37,12 +39,18 @@ public abstract class Skill {
     protected boolean makesPhysicalContact;
     protected boolean damagesEnemy;
     protected boolean punchSkill;
+    protected int missRecoil;
 
     //Multi-Hit Move Variables
     protected boolean isMultiStrikeMove;
     protected int strikesLeft;
     protected int damageTally; //Counter to tally up damage.
     protected boolean continuesUseThroughNoEffect;
+
+    protected boolean ignoreTargetStatChanges; //Moves like Sacred Sword
+    protected boolean hitFlyingPokemon; //Moves like sky uppercut hit Pokemon if semi-invulnerable during fly
+    protected boolean hitUnderwaterPokemon;
+    protected boolean hitUndergroundPokemon;
 
     /**
      * Create a Skill.
@@ -70,6 +78,21 @@ public abstract class Skill {
         damageTally = 0;
         continuesUseThroughNoEffect = false;
         punchSkill = false;
+        missRecoil = NO_MISS_RECOIL;
+        ignoreTargetStatChanges = false;
+        hitFlyingPokemon = false;
+        hitUndergroundPokemon = false;
+        hitUnderwaterPokemon = false;
+    }
+
+    /**
+     * Return whether or not this skill ignores the target's stat
+     * changes when it is used. (Defense and Evasion)
+     * @return Whether or not this skill ignore's the target's stat
+     * changes when it it used.
+     */
+    public boolean ignoresTargetStatChanges() {
+        return ignoreTargetStatChanges;
     }
 
     /**
@@ -216,6 +239,17 @@ public abstract class Skill {
     }
 
     /**
+     * Return the amount of recoil damage the user will take
+     * if this skill misses.
+     * @return The amount of recoil damage the user will take
+     * if this skill misses. (0 = none, 1 = half etc)
+     */
+    public int getMissRecoil() {
+        return missRecoil;
+    }
+
+
+    /**
      * Use the skill on an enemy pokemon.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
@@ -225,15 +259,16 @@ public abstract class Skill {
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
+     * @param targetSkill
      * @param skillUserParty The party for the skill user.
      * @param enemyPokemonParty The party for the skill receiver.       @return List of Strings that display the result of
-     * using the move. The first list displays misses, and the second
-     * list displays the rest (crit, effectiveness, faints etc)
+ * using the move. The first list displays misses, and the second
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon,
                             int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
                             SubField enemyField, boolean isFirstAttack,
-                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+        skillUser.removeRage();
         return null;
     }
 
@@ -250,32 +285,36 @@ public abstract class Skill {
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
                                 Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         if (accuracy != -1) {
-            //Init Modifiers
-            if (enemyPokemon.isUnderwater()) {
-                if (id != SkillFactory.SURF && id != SkillFactory.WHIRLPOOL) {
-                    return false;
-                }
+            if (skillUser.isSkyDropped() && !hitFlyingPokemon) {
+                return false;
             }
-            if (enemyPokemon.isFlying()) {
+            //Init Modifiers
+            if (enemyPokemon.isUnderwater() && !hitUnderwaterPokemon) {
+                return false;
+            }
+            if (enemyPokemon.isFlying() && !hitFlyingPokemon) {
                 return false;
             }
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
-            if (enemyPokemon.getAbility() == Pokemon.Ability.SAND_VEIL &&
+            if (enemyPokemon.getBattleAbility() == Pokemon.Ability.SAND_VEIL &&
                     field.getWeatherType() == WeatherType.SAND) {
                 attackerAccuracyMod *= 0.8;
-            } else if (enemyPokemon.getAbility() == Pokemon.Ability.SNOW_CLOAK &&
+            } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.SNOW_CLOAK &&
                     field.getWeatherType() == WeatherType.HAIL) {
                 attackerAccuracyMod *= 0.8;
             }
-            if (skillUser.getAbility() == Pokemon.Ability.HUSTLE) {
+            if (skillUser.getBattleAbility() == Pokemon.Ability.HUSTLE) {
                 attackerAccuracyMod *= 0.8;
             }
-            int evasionStage = enemyPokemon.getEvasionStage();
-            if (enemyPokemon.isConfused() && enemyPokemon.getAbility() ==
-                    Pokemon.Ability.TANGLED_FEET) {
-                evasionStage++;
-                evasionStage = Math.min(6, evasionStage);
+            int evasionStage = 0;
+            if (!ignoreTargetStatChanges) {
+                evasionStage = enemyPokemon.getEvasionStage();
+                if (enemyPokemon.isConfused() && enemyPokemon.getBattleAbility() ==
+                        Pokemon.Ability.TANGLED_FEET) {
+                    evasionStage++;
+                    evasionStage = Math.min(6, evasionStage);
+                }
             }
             double enemyEvasionMod = enemyPokemon.getEvasionModifier(evasionStage);
             double result = getAccuracyMod() * attackerAccuracyMod * enemyEvasionMod;
@@ -299,13 +338,25 @@ public abstract class Skill {
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
+     * @param targetsSkill
      * @return Whether or not the skill will fail.
      */
     //TODO: Refactor signature to include pokemon parties and a boolean to represent is a wild battle. (Whirlwind on 1 pokemon in a trainer battle will fail but will
     //TODO: blow away the enemy in a wild battle.
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
-                            Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
+                               Field field, SubField userField, SubField enemyField,
+                               boolean isFirstAttack, Skill targetsSkill) {
         return new FailResult(false);
+    }
+
+    /**
+     * Cancel the effects that get cancelled when the
+     * Pokemon misses their target. Ex: Rollout.
+     * @param skillUser The Pokemon who missed.
+     * @param target The Pokemon who was targeted by the skill.
+     */
+    public void miss(Pokemon skillUser, Pokemon target) {
+        //TODO: Override for moves that do something when they miss Rollout, Fury Cutter, Surf, etc.
     }
 
     /**

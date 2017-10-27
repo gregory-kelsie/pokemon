@@ -8,12 +8,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SleepEffect;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Gregory on 9/19/2017.
@@ -46,12 +43,12 @@ public class StunSpore extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker) {
-        if (enemyPokemon.isStatused() || enemyPokemon.getAbility() == Pokemon.Ability.LIMBER ||
-                (enemyPokemon.getTypeOne() == Pokemon.Type.ELECTRIC ||
-                        enemyPokemon.getTypeTwo() == Pokemon.Type.ELECTRIC ||
-                enemyPokemon.getTypeOne() == Pokemon.Type.GRASS ||
-                enemyPokemon.getTypeTwo() == Pokemon.Type.GRASS)) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+        if (enemyPokemon.isStatused() || enemyPokemon.getBattleAbility() == Pokemon.Ability.LIMBER ||
+                (enemyPokemon.getBattleTypeOne() == Pokemon.Type.ELECTRIC ||
+                        enemyPokemon.getBattleTypeTwo() == Pokemon.Type.ELECTRIC ||
+                enemyPokemon.getBattleTypeOne() == Pokemon.Type.GRASS ||
+                enemyPokemon.getBattleTypeTwo() == Pokemon.Type.GRASS)) {
             return new FailResult("It failed...");
         }
         return new FailResult(false);

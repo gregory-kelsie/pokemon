@@ -19,6 +19,7 @@ public class TrainerSendOutPhase extends BattlePhase {
                 pui.getTrainer().getName() + " sent out\n" + sentOutPokemonName + "!!";
         counter = 0;
         textIndex = 0;
+        pui.getUserPokemon().removeLockOn(); //Lock on ends when there is a switch.
         Gdx.app.log("trainersendout", sendOutText);
     }
 
@@ -33,7 +34,12 @@ public class TrainerSendOutPhase extends BattlePhase {
         }
         if (counter >= 1.5) {
             pui.setNextEnemyPokemon();
-            pui.endBattle();
+            if (pui.hasTrainerDoubleFaint()) {
+                pui.removeTrainerDoubleFaint();
+                pui.setPhase(new SentOutAbilityPhase(pui));
+            } else {
+                pui.endBattle();
+            }
 
         }
     }

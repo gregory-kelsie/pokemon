@@ -78,8 +78,13 @@ public class Vileplume extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE); //TODO: Implement right skills
+        beginnerSkills.add(SkillFactory.MEGA_DRAIN);
+        beginnerSkills.add(SkillFactory.AROMATHERAPY);
+        beginnerSkills.add(SkillFactory.POISON_POWDER);
+        beginnerSkills.add(SkillFactory.STUN_SPORE);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_BLIZZARD)));
         levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_DANCE)));
+        levelUpSkills.put(69, new ArrayList<Integer>(Arrays.asList(SkillFactory.SOLAR_BEAM)));
     }
 }

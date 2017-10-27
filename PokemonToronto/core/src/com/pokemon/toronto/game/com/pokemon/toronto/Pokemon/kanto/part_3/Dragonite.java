@@ -81,7 +81,7 @@ public class Dragonite extends Pokemon {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
     }
 
 }

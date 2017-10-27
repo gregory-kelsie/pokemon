@@ -79,10 +79,24 @@ public class Gloom extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE); //TODO: Implement right skills
+        beginnerSkills.add(SkillFactory.ABSORB);
+        beginnerSkills.add(SkillFactory.GROWTH);
+        beginnerSkills.add(SkillFactory.SWEET_SCENT);
+        beginnerSkills.add(SkillFactory.ACID);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWEET_SCENT)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_POWDER)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.STUN_SPORE)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGA_DRAIN)));
+        //TODO: LUCKY CHANT 24
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.MOONLIGHT)));
         levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
+        //TODO: TOXIC 39
+        //TODO: NATURAL GIFT 44
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_BLIZZARD)));
+        //TODO: GRASSY TERRAIN 54
         levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_DANCE)));
     }
 

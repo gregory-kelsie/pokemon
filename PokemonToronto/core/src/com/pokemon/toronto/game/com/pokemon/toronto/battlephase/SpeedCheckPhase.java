@@ -17,7 +17,8 @@ public class SpeedCheckPhase extends BattlePhase {
     private Skill userSkill;
     private Skill enemySkill;
 
-    public SpeedCheckPhase(PhaseUpdaterInterface pui, Pokemon userPokemon, Pokemon enemyPokemon, Skill userSkill, Skill enemySkill) {
+    public SpeedCheckPhase(PhaseUpdaterInterface pui, Pokemon userPokemon, Pokemon enemyPokemon,
+                           Skill userSkill, Skill enemySkill) {
         super(pui);
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;
@@ -26,7 +27,6 @@ public class SpeedCheckPhase extends BattlePhase {
         phaseName = "SpeedCheck";
 
     }
-
 
     @Override
     public void update(double dt) {
@@ -44,10 +44,12 @@ public class SpeedCheckPhase extends BattlePhase {
         } else if (!nullSkills && userSkill.getPriority() < enemySkill.getPriority()) {
             pui.setEnemyFirstAttacker();
         } else {
-            double userSpeed = userPokemon.getTotalSpeed(pui.getField());
-            double enemySpeed = enemyPokemon.getTotalSpeed(pui.getField());
+            double userSpeed = userPokemon.getTotalSpeed(pui.getField(),
+                    pui.getField().getPlayerField());
+            double enemySpeed = enemyPokemon.getTotalSpeed(pui.getField(),
+                    pui.getField().getOpponentField());
             Gdx.app.log("Speedcheck", "enemy: " + enemySpeed + ", user: " + userSpeed);
-            if (userSpeed >= enemySpeed) {
+            if ((userSpeed >= enemySpeed) && !pui.getField().hasTrickRoom()) {
                 pui.setUserFirstAttacker();
             } else {
                 pui.setEnemyFirstAttacker();

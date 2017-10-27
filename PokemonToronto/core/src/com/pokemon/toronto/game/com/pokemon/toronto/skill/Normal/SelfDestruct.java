@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +38,18 @@ public class SelfDestruct extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field the battle is on.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
 
         if (effectsEnemy(enemyPokemon)) {
-            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         } else {
             results = new ArrayList<String>();
             results.add("It does not effect " + enemyPokemon.getName() + "...");
@@ -71,8 +73,8 @@ public class SelfDestruct extends DamageSkill {
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
-                               boolean isFirstAttack) {
-        if (enemyPokemon.getAbility() == Pokemon.Ability.DAMP) {
+                               boolean isFirstAttack, Skill targetsSkill) {
+        if (enemyPokemon.getBattleAbility() == Pokemon.Ability.DAMP) {
             return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents Self-Destruct.");
         }
         return new FailResult(false);

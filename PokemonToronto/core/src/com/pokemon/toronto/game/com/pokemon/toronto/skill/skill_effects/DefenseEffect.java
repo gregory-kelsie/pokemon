@@ -30,15 +30,7 @@ public class DefenseEffect extends StatEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field,
                     SubField userField, SubField enemyField, boolean isFirstAttack) {
-        Pokemon effectReceiver;
-        SubField receiverField;
-        if (target == SecondaryEffect.Target.SELF) {
-            effectReceiver = skillUser;
-            receiverField = userField;
-        } else {
-            effectReceiver = enemyPokemon;
-            receiverField = enemyField;
-        }
+        super.use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         if (statDirection == SecondaryEffect.StatDirection.DECREASE &&
                 !effectReceiver.isProtectedByDefenseLoweringEffects()) {
             //Attempt to lower the defense stage.
@@ -50,7 +42,7 @@ public class DefenseEffect extends StatEffect {
             }else if (effectReceiver.getDefenseStage() == -6) {
                 results.add(effectReceiver.getName() + "'s defense can't be lowered.");
             } else {
-                effectReceiver.decreaseDefenseStage(amount);
+                effectReceiver.decreaseDefenseStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s defense" + getFallText());
             }
         } else {
@@ -58,7 +50,7 @@ public class DefenseEffect extends StatEffect {
             if (effectReceiver.getDefenseStage() == 6) {
                 results.add(effectReceiver.getName() + "'s defense can't get higher.");
             } else {
-                effectReceiver.increaseDefenseStage(amount);
+                effectReceiver.increaseDefenseStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s defense" + getRoseText());
             }
         }

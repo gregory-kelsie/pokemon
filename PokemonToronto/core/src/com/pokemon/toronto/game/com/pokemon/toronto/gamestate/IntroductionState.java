@@ -3,11 +3,8 @@ package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Bulbasaur;
@@ -866,7 +863,7 @@ public class IntroductionState extends GameState {
         params.add(new BasicNameValuePair("health", Integer.toString(starter.getCurrentHealth())));
         params.add(new BasicNameValuePair("currentExp", Integer.toString((int)starter.getDisplayedExp())));
         params.add(new BasicNameValuePair("nature", Integer.toString(starter.getNature().getValue())));
-        params.add(new BasicNameValuePair("ability", Integer.toString(starter.getAbility().getValue())));
+        params.add(new BasicNameValuePair("ability", Integer.toString(starter.getBattleAbility().getValue())));
         params.add(new BasicNameValuePair("partyPosition", "0")); //first slot in party
         params.add(new BasicNameValuePair("pokemonGender", "" + starter.getGender()));
         params.add(new BasicNameValuePair("status", "0")); //0 is status free

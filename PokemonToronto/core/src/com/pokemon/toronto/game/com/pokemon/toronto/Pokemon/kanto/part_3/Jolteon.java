@@ -78,8 +78,25 @@ public class Jolteon extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BABY_DOLL_EYES)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_KICK)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_FANG)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.PIN_MISSILE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.DISCHARGE)));
+        //TODO: LAST RESORT 41
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.THUNDER_SHOCK);
     }
 }

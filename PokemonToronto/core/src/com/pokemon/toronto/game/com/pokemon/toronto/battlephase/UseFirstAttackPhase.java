@@ -35,6 +35,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             receiver = pui.getEnemyPokemon();
             receiverPartyPosition = pui.getEnemyPokemonPosition();
             usedSkill = pui.getUserSkill();
+            targetsSkill = pui.getEnemySkill();
             attackerSubField = pui.getField().getPlayerField();
             receiverSubField = pui.getField().getOpponentField();
         } else {
@@ -43,28 +44,35 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             receiver = pui.getUserPokemon();
             receiverPartyPosition = pui.getUserPokemonPosition();
             usedSkill = pui.getEnemySkill();
+            targetsSkill = pui.getUserSkill();
             attackerSubField = pui.getField().getOpponentField();
             receiverSubField = pui.getField().getPlayerField();
         }
         FailResult failResult = usedSkill.willFail(attacker, receiver, pui.getField(),
-                attackerSubField, receiverSubField, true);
+                attackerSubField, receiverSubField, true, targetsSkill);
         if (!failResult.hasFailed()) {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
                     (usedSkill.doesDamageToEnemy() && receiver.getResistances()
                             .get(usedSkill.getType()) != 0)) {
-                if (!usedSkill.targetsEnemy(attacker, pui.getField()) || usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
+                if (!usedSkill.targetsEnemy(attacker, pui.getField()) ||
+                        usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField, true)) {
                     AbsorbResult absorbResult = receiver.getAbsorbResults(usedSkill);
-                    if (usedSkill.targetsEnemy(attacker, pui.getField()) && absorbResult.hasAbsorbed()) {
+                    if (usedSkill.targetsEnemy(attacker, pui.getField()) &&
+                            absorbResult.hasAbsorbed()) {
                         List<String> blt = absorbResult.getAbsorbResult();
                         battleResults = blt;
                     } else {
                         if (attackerIsUser) {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
-                                    pui.getField(), attackerSubField, receiverSubField, true, pui.getPlayerParty(), new ArrayList<Pokemon>());
+                            battleResults = usedSkill.use(attacker, receiver,
+                                    pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, true,
+                                    targetsSkill, pui.getPlayerParty(), new ArrayList<Pokemon>());
                         } else {
-                            battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
-                                    pui.getField(), attackerSubField, receiverSubField, true, new ArrayList<Pokemon>(), pui.getPlayerParty());
+                            battleResults = usedSkill.use(attacker, receiver,
+                                    pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
+                                    pui.getField(), attackerSubField, receiverSubField, true,
+                                    targetsSkill, new ArrayList<Pokemon>(), pui.getPlayerParty());
                         }
                     }
                     if (attackerIsUser) {
@@ -76,7 +84,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                     }
                 } else {
                     missText = attacker.getName() + "'s attack missed.";
-                    attacker.cancelMissSkills();
+                    attacker.cancelMissSkills(receiver);
                     updatingAnimation = false;
                     missed = true;
                     resetTextBox();
@@ -84,13 +92,13 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             } else {
                 missText = "It had no effect...";
                 updatingAnimation = false;
-                attacker.cancelMissSkills();
+                attacker.cancelMissSkills(receiver);
                 missed = true;
                 resetTextBox();
             }
         } else {
             missText = failResult.getFailResult();
-            attacker.cancelMissSkills();
+            attacker.cancelMissSkills(receiver);
             updatingAnimation = false;
             missed = true;
             resetTextBox();
@@ -134,7 +142,19 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             }
         }
         if (textCounter >= 1.5) {
-            pui.setPhase(new SleepCheckPhase(pui, false));
+            //TODO: Check if the Pokemon damages themself with a miss
+            int missRecoil = usedSkill.getMissRecoil();
+            if (missRecoil == 0) {
+                pui.setPhase(new SleepCheckPhase(pui, false));
+            }
+            else {
+                if (missRecoil == 1) {
+                    attacker.subtractHealth((int)Math
+                            .round(attacker.getHealthStat() / 2.0));
+                    missed = false;
+                    updateAttackerHealth = true;
+                }
+            }
         }
 
     }
@@ -148,7 +168,16 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             if (!pui.playerHasMorePokemon()) {
                 pui.setPhase(new BlackedOutPhase(pui));
             } else {
-                pui.finishedBattle();
+                if (pui.isWildBattle()) {
+                    pui.finishedBattle();
+                } else {
+                    if (pui.hasWipedOutTrainer()) {
+                        pui.setPhase(new EndTrainerBattle(pui));
+                    } else {
+                        pui.setTrainerDoubleFaint();
+                        pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                    }
+                }
             }
         } else if (!enemyFainted && userFainted) {
             if (pui.isUserPokemonFirstAttacker()) {

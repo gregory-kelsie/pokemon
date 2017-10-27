@@ -78,9 +78,30 @@ public class Dugtrio extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SAND_ATTACK);
+        //TODO: ROTOTILLER
+        beginnerSkills.add(SkillFactory.NIGHT_SLASH);
+        beginnerSkills.add(SkillFactory.TRI_ATTACK);
         beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.SAND_ATTACK);
+        beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASTONISH)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SLAP)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.MAGNITUDE)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLDOZE)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUCKER_PUNCH)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_BOMB)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTH_POWER)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.DIG)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTHQUAKE)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.FISSURE)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SAND_TOMB);
     }
 }

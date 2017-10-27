@@ -76,8 +76,20 @@ public class Pidgey extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
-        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUST)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        //TODO: WHIRLWIND 17
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.TWISTER)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEATHER_DANCE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.WING_ATTACK)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROOST)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAILWIND)));
+        //TODO: MIRROR MOVE 45
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.HURRICANE)));
+
     }
 
     /**

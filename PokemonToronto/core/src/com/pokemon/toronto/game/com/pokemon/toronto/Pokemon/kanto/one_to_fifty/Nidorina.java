@@ -79,13 +79,19 @@ public class Nidorina extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.SCRATCH);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_KICK)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
         levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
         levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+        levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLATTER)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
+        levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_FANG)));
     }
 
     /**

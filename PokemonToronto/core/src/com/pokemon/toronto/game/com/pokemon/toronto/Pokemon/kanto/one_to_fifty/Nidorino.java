@@ -83,8 +83,15 @@ public class Nidorino extends Pokemon {
         beginnerSkills.add(SkillFactory.PECK);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_KICK)));
         levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.HORN_ATTACK)));
         levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.TOXIC_SPIKES)));
+        levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLATTER)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_JAB)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
+        levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.HORN_DRILL)));
     }
 
     /**

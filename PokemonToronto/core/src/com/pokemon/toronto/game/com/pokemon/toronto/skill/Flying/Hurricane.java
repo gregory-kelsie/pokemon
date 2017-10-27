@@ -29,6 +29,7 @@ public class Hurricane extends SecondaryEffectSkill {
     public Hurricane() {
         super(SkillFactory.HURRICANE, "Hurricane", 10, Pokemon.Type.FLYING, Skill.SkillCategory.SPECIAL, 70, 110, 1, .3);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
+        hitFlyingPokemon = true;
     }
 
     /**

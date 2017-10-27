@@ -78,11 +78,36 @@ public class Arbok extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.ICE_FANG);
+        beginnerSkills.add(SkillFactory.THUNDER_FANG);
+        beginnerSkills.add(SkillFactory.FIRE_FANG);
+        beginnerSkills.add(SkillFactory.WRAP);
         beginnerSkills.add(SkillFactory.LEER);
         beginnerSkills.add(SkillFactory.POISON_STING);
         beginnerSkills.add(SkillFactory.BITE);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.POISON_STING)));
         levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.GLARE)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID)));
+        ArrayList<Integer> stockpileSkills = new ArrayList<Integer>();
+        stockpileSkills.add(SkillFactory.STOCKPILE);
+        stockpileSkills.add(SkillFactory.SWALLOW);
+        stockpileSkills.add(SkillFactory.SPIT_UP);
+        levelUpSkills.put(27, stockpileSkills);
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.ACID_SPRAY)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_BOMB)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.GASTRO_ACID)));
+        //TODO: BELCH 48
+        levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.HAZE)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.COIL)));
+        levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUNK_SHOT)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.CRUNCH);
     }
 }

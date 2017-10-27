@@ -78,8 +78,25 @@ public class Flareon extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BABY_DOLL_EYES)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_FANG)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_SPIN)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOG)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.LAVA_PLUME)));
+        //TODO: LAST RESORT 41
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLARE_BLITZ)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.EMBER);
     }
 }

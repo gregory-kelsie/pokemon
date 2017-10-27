@@ -35,15 +35,16 @@ public class Hail extends Skill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         if (field.getWeatherType() == WeatherType.SAND) {
             results.add("The sandstorm subsided.");
@@ -70,12 +71,12 @@ public class Hail extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
         if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.HAIL) {
             return new FailResult("It failed...");
-        } else if (enemyPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+        } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
             return new FailResult(enemyPokemon.getName() + " prevents weather changes\n" +
                     "with ability Cloud Nine!");
         }

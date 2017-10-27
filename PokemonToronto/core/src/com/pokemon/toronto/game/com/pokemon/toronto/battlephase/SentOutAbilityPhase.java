@@ -1,12 +1,10 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,14 +97,14 @@ public class SentOutAbilityPhase extends BattlePhase {
             if (pui.getUserPokemon().isParalyzed()) {
                 userSpeed *= 0.5;
             }
-            if (pui.getUserPokemon().getAbility() == Pokemon.Ability.SAND_RUSH &&
+            if (pui.getUserPokemon().getBattleAbility() == Pokemon.Ability.SAND_RUSH &&
                     pui.getField().getWeatherType() == WeatherType.SAND) {
                 userSpeed *= 2;
-            } else if (pui.getUserPokemon().getAbility() == Pokemon.Ability.SWIFT_SWIM &&
+            } else if (pui.getUserPokemon().getBattleAbility() == Pokemon.Ability.SWIFT_SWIM &&
                     (pui.getField().getWeatherType() == WeatherType.RAIN ||
                             pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
                 userSpeed *= 2;
-            } else if (pui.getUserPokemon().getAbility() == Pokemon.Ability.CHLOROPHYLL &&
+            } else if (pui.getUserPokemon().getBattleAbility() == Pokemon.Ability.CHLOROPHYLL &&
                     (pui.getField().getWeatherType() == WeatherType.SUN ||
                             pui.getField().getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
                 userSpeed *= 2;
@@ -121,14 +119,14 @@ public class SentOutAbilityPhase extends BattlePhase {
             if (pui.getEnemyPokemon().isParalyzed()) {
                 enemySpeed *= 0.5;
             }
-            if (pui.getEnemyPokemon().getAbility() == Pokemon.Ability.SAND_RUSH &&
+            if (pui.getEnemyPokemon().getBattleAbility() == Pokemon.Ability.SAND_RUSH &&
                     pui.getField().getWeatherType() == WeatherType.SAND) {
                 enemySpeed *= 2;
-            } else if (pui.getEnemyPokemon().getAbility() == Pokemon.Ability.SWIFT_SWIM &&
+            } else if (pui.getEnemyPokemon().getBattleAbility() == Pokemon.Ability.SWIFT_SWIM &&
                     (pui.getField().getWeatherType() == WeatherType.RAIN ||
                             pui.getField().getWeatherType() == WeatherType.HEAVY_RAIN)) {
                 enemySpeed *= 2;
-            } else if (pui.getEnemyPokemon().getAbility() == Pokemon.Ability.CHLOROPHYLL &&
+            } else if (pui.getEnemyPokemon().getBattleAbility() == Pokemon.Ability.CHLOROPHYLL &&
                     (pui.getField().getWeatherType() == WeatherType.SUN ||
                             pui.getField().getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
                 enemySpeed *= 2;
@@ -149,7 +147,7 @@ public class SentOutAbilityPhase extends BattlePhase {
     private void init() {
         currentState = DISPLAY_ABILITY;
         SubField receiverField;
-        if (abilityUser.getAbility() == Pokemon.Ability.INTIMIDATE) {
+        if (abilityUser.getBattleAbility() == Pokemon.Ability.INTIMIDATE) {
             if (abilityUserIsPlayerPokemon) {
                 receiverField = field.getOpponentField();
             } else {
@@ -169,13 +167,13 @@ public class SentOutAbilityPhase extends BattlePhase {
                         otherPokemon.getName() + "'s attack cannot be lowered.";
             }
 
-        } else if (abilityUser.getAbility() == Pokemon.Ability.DRIZZLE) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.DRIZZLE) {
             if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                     field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.RAIN) {
                 text = abilityUser.getName() + "'s Drizzle!\n" +
                         "It had no effect...";
-            } else if (otherPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+            } else if (otherPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
                 text = otherPokemon.getName() + " prevents " + abilityUser.getName() +"'s\n" +
                         "Drizzle with the ability Cloud Nine!";
             }  else {
@@ -183,13 +181,13 @@ public class SentOutAbilityPhase extends BattlePhase {
                 text = abilityUser.getName() + "'s Drizzle!\n" +
                         "It started to rain!";
             }
-        } else if (abilityUser.getAbility() == Pokemon.Ability.DROUGHT) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.DROUGHT) {
             if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                     field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.SUN) {
                 text = abilityUser.getName() + "'s Drought!\n" +
                         "It had no effect...";
-            } else if (otherPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+            } else if (otherPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
                 text = otherPokemon.getName() + " prevents " + abilityUser.getName() +"'s\n" +
                         "Drought with the ability Cloud Nine!";
             }  else {
@@ -197,13 +195,13 @@ public class SentOutAbilityPhase extends BattlePhase {
                 text = abilityUser.getName() + "'s Drought!\n" +
                         "The sunlight turned harsh!";
             }
-        } else if (abilityUser.getAbility() == Pokemon.Ability.SAND_STREAM) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.SAND_STREAM) {
             if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                     field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.SAND) {
                 text = abilityUser.getName() + "'s Sand Stream!\n" +
                         "It had no effect...";
-            } else if (otherPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+            } else if (otherPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
                 text = otherPokemon.getName() + " prevents " + abilityUser.getName() +"'s\n" +
                         "Sand Stream with the ability Cloud Nine!";
             }  else {
@@ -211,13 +209,13 @@ public class SentOutAbilityPhase extends BattlePhase {
                 text = abilityUser.getName() + "'s Sand Stream!\n" +
                         "A sandstorm kicked up!";
             }
-        } else if (abilityUser.getAbility() == Pokemon.Ability.SNOW_WARNING) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.SNOW_WARNING) {
             if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                     field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.HAIL) {
                 text = abilityUser.getName() + "'s Snow Warning!\n" +
                         "It had no effect...";
-            } else if (otherPokemon.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+            } else if (otherPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
                 text = otherPokemon.getName() + " prevents " + abilityUser.getName() +"'s\n" +
                         "Snow Warning with the ability Cloud Nine!";
             } else {
@@ -225,14 +223,14 @@ public class SentOutAbilityPhase extends BattlePhase {
                 text = abilityUser.getName() + "'s Snow Warning!\n" +
                         "It started to hail!";
             }
-        } else if (abilityUser.getAbility() == Pokemon.Ability.PRESSURE) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.PRESSURE) {
             text = abilityUser.getName() + " is exerting its Pressure!";
-        } else if (abilityUser.getAbility() == Pokemon.Ability.UNNERVE) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.UNNERVE) {
             text = abilityUser.getName() + "'s Unnerve!\n" +
                     "Enemies cannot eat berries in their presence!";
-        } else if (abilityUser.getAbility() == Pokemon.Ability.MOLD_BREAKER) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.MOLD_BREAKER) {
             text = abilityUser.getName() + " breaks the mold!";
-        } else if (abilityUser.getAbility() == Pokemon.Ability.CLOUD_NINE) {
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
             if (field.getWeatherType() != WeatherType.NORMAL) {
                 text = abilityUser.getName() + "'s Cloud Nine!\n" +
                         "The effects of weather disappeared.";
@@ -304,7 +302,7 @@ public class SentOutAbilityPhase extends BattlePhase {
     private void checkStealthRocks() {
         if (subfield.hasStealthRocks()) {
             afterTextState = TOXIC_SPIKES;
-            if (abilityUser.getAbility() == Pokemon.Ability.MAGIC_GUARD) {
+            if (abilityUser.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD) {
                 hazzardText.add(abilityUser.getName() + " is immune to Stealth Rocks" +
                         "\n" + "due to the ability Magic Guard.");
                 currentState = HAZZARD_TEXT;
@@ -400,21 +398,21 @@ public class SentOutAbilityPhase extends BattlePhase {
     }
 
     private boolean immuneToStickyWeb() {
-        if (abilityUser.getTypeOne() == Pokemon.Type.FLYING ||
-                abilityUser.getTypeTwo() == Pokemon.Type.FLYING ||
-                abilityUser.getAbility() == Pokemon.Ability.LEVITATE) {
+        if (abilityUser.getBattleTypeOne() == Pokemon.Type.FLYING ||
+                abilityUser.getBattleTypeTwo() == Pokemon.Type.FLYING ||
+                abilityUser.getBattleAbility() == Pokemon.Ability.LEVITATE) {
             return true;
         }
         return false;
     }
 
     private boolean immuneToSpikes() {
-        if (abilityUser.getAbility() == Pokemon.Ability.MAGIC_GUARD) {
+        if (abilityUser.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD) {
             //IMMUNE
             return true;
-        } else if (abilityUser.getAbility() == Pokemon.Ability.LEVITATE ||
-                abilityUser.getTypeOne() == Pokemon.Type.FLYING ||
-                abilityUser.getTypeTwo() == Pokemon.Type.FLYING ||
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.LEVITATE ||
+                abilityUser.getBattleTypeOne() == Pokemon.Type.FLYING ||
+                abilityUser.getBattleTypeTwo() == Pokemon.Type.FLYING ||
                 abilityUser.isMagnetRisen()) {
             if (abilityUser.isIngrained() || field.hasGravity()) {
                 //TAKES DAMAGE ANYWAYS
@@ -428,13 +426,13 @@ public class SentOutAbilityPhase extends BattlePhase {
     }
 
     private boolean immuneToPoison() {
-        if (abilityUser.getTypeOne() == Pokemon.Type.POISON ||
-                abilityUser.getTypeTwo() == Pokemon.Type.POISON ||
-                abilityUser.getTypeOne() == Pokemon.Type.STEEL ||
-                abilityUser.getTypeTwo() == Pokemon.Type.STEEL) {
+        if (abilityUser.getBattleTypeOne() == Pokemon.Type.POISON ||
+                abilityUser.getBattleTypeTwo() == Pokemon.Type.POISON ||
+                abilityUser.getBattleTypeOne() == Pokemon.Type.STEEL ||
+                abilityUser.getBattleTypeTwo() == Pokemon.Type.STEEL) {
             return true;
-        } else if (abilityUser.getAbility() == Pokemon.Ability.IMMUNITY ||
-                (abilityUser.getAbility() == Pokemon.Ability.LEAF_GUARD &&
+        } else if (abilityUser.getBattleAbility() == Pokemon.Ability.IMMUNITY ||
+                (abilityUser.getBattleAbility() == Pokemon.Ability.LEAF_GUARD &&
                 pui.getField().getWeatherType() == WeatherType.SUN)) {
             return true;
         }
@@ -454,11 +452,11 @@ public class SentOutAbilityPhase extends BattlePhase {
     }
 
     private boolean absorbsToxicSpikes() {
-        if ((abilityUser.getTypeOne() == Pokemon.Type.POISON ||
-                abilityUser.getTypeTwo() == Pokemon.Type.POISON) &&
-                (abilityUser.getTypeOne() != Pokemon.Type.FLYING ||
-                abilityUser.getTypeTwo() != Pokemon.Type.FLYING ||
-                abilityUser.getAbility() != Pokemon.Ability.LEVITATE)) {
+        if ((abilityUser.getBattleTypeOne() == Pokemon.Type.POISON ||
+                abilityUser.getBattleTypeTwo() == Pokemon.Type.POISON) &&
+                (abilityUser.getBattleTypeOne() != Pokemon.Type.FLYING ||
+                abilityUser.getBattleTypeTwo() != Pokemon.Type.FLYING ||
+                abilityUser.getBattleAbility() != Pokemon.Ability.LEVITATE)) {
             return true;
         }
         return false;

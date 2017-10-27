@@ -41,7 +41,7 @@ public class Parasect extends Pokemon {
      * @param level The level of the Parasect.
      */
     public Parasect(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.BUG, Pokemon.Type.GRASS, Ability.EFFECT_SPORE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.BUG, Type.GRASS, Ability.EFFECT_SPORE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
@@ -65,7 +65,7 @@ public class Parasect extends Pokemon {
     public Parasect(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
@@ -78,8 +78,23 @@ public class Parasect extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.CROSS_POISON);
         beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.STUN_SPORE);
+        beginnerSkills.add(SkillFactory.POISON_POWDER);
+        beginnerSkills.add(SkillFactory.ABSORB);
         levelUpSkills.put(0, beginnerSkills);
+        ArrayList<Integer> six = new ArrayList<Integer>();
+        six.add(SkillFactory.STUN_SPORE);
+        six.add(SkillFactory.POISON_POWDER);
+        levelUpSkills.put(6, six);
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.ABSORB)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_CUTTER)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPORE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWTH)));
         levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
+        levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.AROMATHERAPY)));
+        levelUpSkills.put(66, new ArrayList<Integer>(Arrays.asList(SkillFactory.X_SCISSOR)));
     }
 }

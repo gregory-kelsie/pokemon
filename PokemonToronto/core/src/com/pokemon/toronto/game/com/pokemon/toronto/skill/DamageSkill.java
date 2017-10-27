@@ -19,6 +19,8 @@ public abstract class DamageSkill extends Skill {
     protected int damage;
     private int recoilLevel;
     protected double extraMod; //For skills that double damage for certain conditions ex: Brine
+    protected boolean reverseCategory; //For Secred Sword (calculates user's special attack and hits defense instead of sp def)
+    protected boolean usesEnemyAttack; //For moves like Foul play.
 
     //Recoil Values
     protected final int NO_RECOIL = 0;
@@ -26,6 +28,7 @@ public abstract class DamageSkill extends Skill {
     protected final int ONE_THIRD = 2;
     protected final int ONE_HALF = 3;
     protected final int GAIN_HALF = 4;
+    protected final int GAIN_THREE_QUARTERS = 5;
 
     protected final int DEFAULT_EXTRA_MOD = 1;
 
@@ -49,6 +52,9 @@ public abstract class DamageSkill extends Skill {
         this.recoilLevel = recoilLevel;
         damagesEnemy = true;
         extraMod = 1;
+        ignoreTargetStatChanges = false;
+        reverseCategory = false;
+        usesEnemyAttack = false;
     }
 
     /**
@@ -69,6 +75,9 @@ public abstract class DamageSkill extends Skill {
         recoilLevel = NO_RECOIL;
         damagesEnemy = true;
         extraMod = 1;
+        ignoreTargetStatChanges = false;
+        reverseCategory = false;
+        usesEnemyAttack = false;
     }
 
     @Override
@@ -83,26 +92,28 @@ public abstract class DamageSkill extends Skill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
      * @param isFirstAttack Whether or not the skill was used first in the clash
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty       @return The skill results.
-     */
+     * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
-        super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+        super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         
         List<String> results = new ArrayList<String>();
         boolean heldOnWithSturdy = false;
         boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results
-        if (moveIsSuperEffective(enemyPokemon) || (id == SkillFactory.FREEZE_DRY && (enemyPokemon.getTypeOne() == Pokemon.Type.WATER ||
-                enemyPokemon.getTypeTwo() == Pokemon.Type.WATER))) {
+        if (moveIsSuperEffective(enemyPokemon) || (id == SkillFactory.FREEZE_DRY &&
+                (enemyPokemon.getBattleTypeOne() == Pokemon.Type.WATER ||
+                enemyPokemon.getBattleTypeTwo() == Pokemon.Type.WATER))) {
             results.add("It was super effective!");
         } else if (moveIsNotVeryEffective(enemyPokemon)) {
             results.add("It was not very effective...");
@@ -114,11 +125,11 @@ public abstract class DamageSkill extends Skill {
         }
 
         //Calculate the damage results
-        int damage = getDamage(skillUser, enemyPokemon, field, hasCrit);
+        int damage = getDamage(skillUser, enemyPokemon, field, userField, enemyField, hasCrit);
 
         //Prevent Overkill.
         if (damage > enemyPokemon.getCurrentHealth()) {
-            if (enemyPokemon.hasFullHealth() && enemyPokemon.getAbility() == Pokemon.Ability.STURDY) {
+            if (enemyPokemon.hasFullHealth() && enemyPokemon.getBattleAbility() == Pokemon.Ability.STURDY) {
                 damage = enemyPokemon.getCurrentHealth() - 1;
                 heldOnWithSturdy = true;
             } else {
@@ -134,18 +145,33 @@ public abstract class DamageSkill extends Skill {
         enemyPokemon.subtractHealth(damage);
         damageTally += damage; //Keep record of damage for multi-hit-moves
         results.add("Dealt " + damage + " damage.");
+
+        //Increase attack if the enemy previously used rage.
+        if (enemyPokemon.usedRage()) {
+            //Attempt to increase the attack stage.
+            if (enemyPokemon.getAttackStage() < 6) {
+                enemyPokemon.increaseAttackStage(1);
+                results.add(enemyPokemon.getName() + "'s attack rose!");
+            }
+        }
+
         if (heldOnWithSturdy) {
             results.add(enemyPokemon.getName() + " held on\nwith Sturdy!");
         }
         //Subtract recoil damage.
-        if (recoilLevel == ONE_THIRD && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
+        if (recoilLevel == ONE_THIRD && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 3.0));
-        } else if (recoilLevel == ONE_HALF && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
+            skillUser.takeDamageThisTurn();
+        } else if (recoilLevel == ONE_HALF && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 2.0));
-        } else if (recoilLevel == ONE_FOURTH && skillUser.getAbility() != Pokemon.Ability.ROCK_HEAD) {
+            skillUser.takeDamageThisTurn();
+        } else if (recoilLevel == ONE_FOURTH && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
+            skillUser.takeDamageThisTurn();
         } else if (recoilLevel == GAIN_HALF) {
             skillUser.addHealth((int) Math.ceil(damage / 2.0));
+        } else if (recoilLevel == GAIN_THREE_QUARTERS) {
+            skillUser.addHealth((int) Math.ceil(damage * 0.75));
         }
         return results;
     }
@@ -202,18 +228,18 @@ public abstract class DamageSkill extends Skill {
      * @return Whether or not the move crit.
      */
     private boolean calcCrit(Pokemon user, Pokemon enemy, Field field) {
-        if (enemy.getAbility() == Pokemon.Ability.SHELL_ARMOR ||
-                enemy.getAbility() == Pokemon.Ability.BATTLE_ARMOR) {
+        if (enemy.getBattleAbility() == Pokemon.Ability.SHELL_ARMOR ||
+                enemy.getBattleAbility() == Pokemon.Ability.BATTLE_ARMOR) {
             return false;
         }
-        if (crit == -1) { //-1 Means always crits.
+        if (crit == -1 || user.hasCrit()) { //-1 Means always crits.
             return true;
         }
         int critStage = crit;
         if (user.isFocused()) {
             critStage += 2;
         }
-        if (user.getAbility() == Pokemon.Ability.SUPER_LUCK) {
+        if (user.getBattleAbility() == Pokemon.Ability.SUPER_LUCK) {
             critStage *= 2;
         }
         //TODO: Add hold item bonus, add lucky chant prevention.
@@ -281,8 +307,8 @@ public abstract class DamageSkill extends Skill {
 	*/
     public double getStabModifier(Pokemon user) {
         //Check if the user's type is the same as the move type.
-        if (user.getTypeOne() == this.getType() || user.getTypeTwo() == this.getType()) {
-            if (user.getAbility() == Pokemon.Ability.ADAPTABILITY) {
+        if (user.getBattleTypeOne() == this.getType() || user.getBattleTypeTwo() == this.getType()) {
+            if (user.getBattleAbility() == Pokemon.Ability.ADAPTABILITY) {
                 //Adaptability makes the STAB bonus 2 instead of 1
                 return 2;
             }
@@ -306,13 +332,13 @@ public abstract class DamageSkill extends Skill {
         } else if (resistMod < 1) {
             notVeryEffective = true;
         }
-        if (enemy.getAbility() == Pokemon.Ability.FILTER || enemy.getAbility() == Pokemon.Ability.SOLID_ROCK) {
+        if (enemy.getBattleAbility() == Pokemon.Ability.FILTER || enemy.getBattleAbility() == Pokemon.Ability.SOLID_ROCK) {
             //Filter and Solid Rock reduce super effective moves by 1/4
             if (superEffective) {
                 resistMod *= 0.75;
             }
         }
-        if (user.getAbility() == Pokemon.Ability.TINTED_LENS) {
+        if (user.getBattleAbility() == Pokemon.Ability.TINTED_LENS) {
             //Power of not very effective moves is doubled.
             if (notVeryEffective) {
                 resistMod *= 2;
@@ -329,7 +355,7 @@ public abstract class DamageSkill extends Skill {
 	 */
     private double getCritMultiplier(Pokemon user, boolean hasCrit) {
         if (hasCrit) {
-            if (user.getAbility() == Pokemon.Ability.SNIPER) {
+            if (user.getBattleAbility() == Pokemon.Ability.SNIPER) {
                 return 2.25;
             }  else {
                 return 1.5;
@@ -348,8 +374,8 @@ public abstract class DamageSkill extends Skill {
      * @return The burn modifier.
      */
     private double getBurnMod (Pokemon user) {
-        if (user.getAbility() == Pokemon.Ability.GUTS ||
-                name.equals("Facade") || category != SkillCategory.PHYSICAL) {
+        if (user.getBattleAbility() == Pokemon.Ability.GUTS ||
+                id == SkillFactory.FACADE || category != SkillCategory.PHYSICAL) {
             return 1;
         }
         return 0.5;
@@ -362,24 +388,24 @@ public abstract class DamageSkill extends Skill {
         //Health below 1/3 ability mods
         if (user.getCurrentHealth() <= user.getHealthStat() * 0.33) {
             if (this.getType() == Pokemon.Type.FIRE) {
-                if (user.getAbility() == Pokemon.Ability.BLAZE) {
+                if (user.getBattleAbility() == Pokemon.Ability.BLAZE) {
                     return 1.5;
                 }
             } else if (this.getType() == Pokemon.Type.WATER) {
-                if (user.getAbility() == Pokemon.Ability.TORRENT) {
+                if (user.getBattleAbility() == Pokemon.Ability.TORRENT) {
                     return 1.5;
                 }
             }	else if (this.getType() == Pokemon.Type.GRASS) {
-                if (user.getAbility() == Pokemon.Ability.OVERGROW) {
+                if (user.getBattleAbility() == Pokemon.Ability.OVERGROW) {
                     return 1.5;
                 }
             }	else if (this.getType()== Pokemon.Type.BUG) {
-                if (user.getAbility() == Pokemon.Ability.SWARM) {
+                if (user.getBattleAbility() == Pokemon.Ability.SWARM) {
                     return 1.5;
                 }
             }
         }
-        if (user.getAbility() == Pokemon.Ability.SAND_FORCE) {
+        if (user.getBattleAbility() == Pokemon.Ability.SAND_FORCE) {
             if (type == Pokemon.Type.GROUND ||
                     type == Pokemon.Type.STEEL ||
                     type == Pokemon.Type.ROCK) {
@@ -387,7 +413,7 @@ public abstract class DamageSkill extends Skill {
             }
         }
 
-        if (user.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (user.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
             if (field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.SUN) {
                 if (category == SkillCategory.SPECIAL) {
@@ -397,13 +423,13 @@ public abstract class DamageSkill extends Skill {
         }
 
         //Status ability mods
-        if (user.getAbility() == Pokemon.Ability.GUTS && (user.getStatus() == Pokemon.Status.BURN
+        if (user.getBattleAbility() == Pokemon.Ability.GUTS && (user.getStatus() == Pokemon.Status.BURN
                 || user.getStatus() == Pokemon.Status.PARALYSIS || user.getStatus() == Pokemon.Status.POISON)) {
             return 1.5;
         }
 
         //Regular ability mods.
-        if (user.getAbility() == Pokemon.Ability.HUSTLE) {
+        if (user.getBattleAbility() == Pokemon.Ability.HUSTLE) {
             return 1.5;
         }
 
@@ -418,15 +444,15 @@ public abstract class DamageSkill extends Skill {
     private double getDefenseAbilityMod(Pokemon enemy) {
         //Ability mods when getting hit by fire
         if (this.getType() == Pokemon.Type.FIRE) {
-            if (enemy.getAbility() == Pokemon.Ability.THICK_FAT || enemy.getAbility() == Pokemon.Ability.HEATPROOF) {
+            if (enemy.getBattleAbility() == Pokemon.Ability.THICK_FAT || enemy.getBattleAbility() == Pokemon.Ability.HEATPROOF) {
                 return 0.5;
-            } else if (enemy.getAbility() == Pokemon.Ability.DRY_SKIN) {
+            } else if (enemy.getBattleAbility() == Pokemon.Ability.DRY_SKIN) {
                 return 1.25;
             }
         }
         //Ability mods when getting hit by ice
         else if (this.getType() == Pokemon.Type.ICE) {
-            if (enemy.getAbility() == Pokemon.Ability.THICK_FAT) {
+            if (enemy.getBattleAbility() == Pokemon.Ability.THICK_FAT) {
                 return 0.5;
             }
         }
@@ -462,6 +488,41 @@ public abstract class DamageSkill extends Skill {
     }
 
     /**
+     * Calculate the Physical attack stat of the Pokemon after taking into account
+     * stages and crit.
+     * @param user The Pokemon's attack stat being calculated.
+     * @param hasCrit Whether or not the attack crits.
+     * @return The working attack stat of the attacker.
+     */
+    protected double getPhysicalAttack(Pokemon user, boolean hasCrit) {
+        double atkStat = user.getAttackStat();
+        //Attack stage is above the normal
+        if (user.getAttackStage() >= 0) {
+            atkStat = atkStat * (1 + (0.5 * user.getAttackStage()));
+        }
+        //Attack stage is below the normal
+        else {
+            //Ignore negative attack stage
+            if (!hasCrit) {
+                if (user.getAttackStage() == -1) {
+                    atkStat *= 0.66;
+                } else if (user.getAttackStage() == -2) {
+                    atkStat *= 0.5;
+                } else if (user.getAttackStage() == -3) {
+                    atkStat *= 0.4;
+                } else if (user.getAttackStage() == -4) {
+                    atkStat *= 0.33;
+                } else if (user.getAttackStage() == -5) {
+                    atkStat *= 0.29;
+                } else {
+                    atkStat *= 0.25;
+                }
+            }
+        }
+        return atkStat;
+    }
+
+    /**
      * Return the amount of damage the skill will do to the enemy on the current
      * field.
      * @param user The skill user
@@ -470,63 +531,19 @@ public abstract class DamageSkill extends Skill {
      * @param hasCrit Whether or not the skill will crit.
      * @return
      */
-    protected int getDamage(Pokemon user, Pokemon enemy, Field field, boolean hasCrit) {
+    protected int getDamage(Pokemon user, Pokemon enemy, Field field, SubField userField,
+                            SubField targetField, boolean hasCrit) {
         double atkStat;
         double defStat;
 
+        //CALCULATE ATTACK STAT
         if (this.category == SkillCategory.PHYSICAL) {
-            atkStat = user.getAttackStat();
-            //Attack stage is above the normal
-            if (user.getAttackStage() >= 0) {
-                atkStat = atkStat * (1 + (0.5 * user.getAttackStage()));
-            }
-            //Attack stage is below the normal
-            else {
-                //Ignore negative attack stage
-                if (!hasCrit) {
-                    if (user.getAttackStage() == -1) {
-                        atkStat *= 0.66;
-                    } else if (user.getAttackStage() == -2) {
-                        atkStat *= 0.5;
-                    } else if (user.getAttackStage() == -3) {
-                        atkStat *= 0.4;
-                    } else if (user.getAttackStage() == -4) {
-                        atkStat *= 0.33;
-                    } else if (user.getAttackStage() == -5) {
-                        atkStat *= 0.29;
-                    } else {
-                        atkStat *= 0.25;
-                    }
-                }
-            }
-
-            defStat = enemy.getDefenseStat();
-            //Defense stage is above normal
-            if (enemy.getDefenseStage() >= 0) {
-                //Ignore defense bonus on crit
-                if (!hasCrit) {
-                    defStat = defStat * (1 + (0.5 * enemy.getDefenseStage()));
-                }
-            }
-            //Defense stage is below normal
-            else {
-                if (enemy.getDefenseStage() == -1) {
-                    defStat *= 0.66;
-                } else if (enemy.getDefenseStage() == -2) {
-                    defStat *= 0.5;
-                } else if (enemy.getDefenseStage() == -3) {
-                    defStat *= 0.4;
-                } else if (enemy.getDefenseStage() == -4) {
-                    defStat *= 0.33;
-                } else if (enemy.getDefenseStage() == -5) {
-                    defStat *= 0.29;
-                } else {
-                    defStat *= 0.25;
-                }
-            }
-        }
-        //The skill is in the special attack category
-        else {
+           if (usesEnemyAttack) {
+               atkStat = getPhysicalAttack(enemy, hasCrit);
+           } else {
+               atkStat = getPhysicalAttack(user, hasCrit);
+           }
+        } else {
             atkStat = user.getSpecialAttackStat();
             //Attack stage is above the normal
             if (user.getSpecialAttackStage() >= 0) {
@@ -551,32 +568,73 @@ public abstract class DamageSkill extends Skill {
                     }
                 }
             }
-            defStat = enemy.getSpecialDefenseStat();
-            if (field.getWeatherType() == WeatherType.SAND &&
-                    (enemy.getTypeOne() == Pokemon.Type.ROCK ||
-                            enemy.getTypeTwo() == Pokemon.Type.ROCK)) {
-                defStat *= 1.5;
+        }
+
+        //CALCULATE DEFENSE STAT
+        if ((category == SkillCategory.PHYSICAL && !reverseCategory) ||
+                (category == SkillCategory.SPECIAL && reverseCategory)) {
+            defStat = enemy.getDefenseStat();
+            if (targetField != null && targetField.hasReflect()) {
+                defStat *= 2;
             }
-            if (enemy.getSpecialDefenseStage() >= 0) {
-                //Ignore defense bonus on crit
-                if (!hasCrit) {
-                    defStat = defStat * (1 + (0.5 * enemy.getSpecialDefenseStage()));
+            if (!ignoreTargetStatChanges) {
+                //Defense stage is above normal
+                if (enemy.getDefenseStage() >= 0) {
+                    //Ignore defense bonus on crit
+                    if (!hasCrit) {
+                        defStat = defStat * (1 + (0.5 * enemy.getDefenseStage()));
+                    }
+                }
+                //Defense stage is below normal
+                else {
+                    if (enemy.getDefenseStage() == -1) {
+                        defStat *= 0.66;
+                    } else if (enemy.getDefenseStage() == -2) {
+                        defStat *= 0.5;
+                    } else if (enemy.getDefenseStage() == -3) {
+                        defStat *= 0.4;
+                    } else if (enemy.getDefenseStage() == -4) {
+                        defStat *= 0.33;
+                    } else if (enemy.getDefenseStage() == -5) {
+                        defStat *= 0.29;
+                    } else {
+                        defStat *= 0.25;
+                    }
                 }
             }
-            //Defense stage is below normal
-            else {
-                if (enemy.getSpecialDefenseStage() == -1) {
-                    defStat *= 0.66;
-                } else if (enemy.getSpecialDefenseStage() == -2) {
-                    defStat *= 0.5;
-                } else if (enemy.getSpecialDefenseStage() == -3) {
-                    defStat *= 0.4;
-                } else if (enemy.getSpecialDefenseStage() == -4) {
-                    defStat *= 0.33;
-                } else if (enemy.getSpecialDefenseStage() == -5) {
-                    defStat *= 0.29;
-                } else {
-                    defStat *= 0.25;
+        }
+        else {
+            defStat = enemy.getSpecialDefenseStat();
+            if (targetField != null && targetField.hasLightScreen()) {
+                defStat *= 2;
+            }
+            if (field.getWeatherType() == WeatherType.SAND &&
+                    (enemy.getBattleTypeOne() == Pokemon.Type.ROCK ||
+                            enemy.getBattleTypeTwo() == Pokemon.Type.ROCK)) {
+                defStat *= 1.5;
+            }
+            if (!ignoreTargetStatChanges) {
+                if (enemy.getSpecialDefenseStage() >= 0) {
+                    //Ignore defense bonus on crit
+                    if (!hasCrit) {
+                        defStat = defStat * (1 + (0.5 * enemy.getSpecialDefenseStage()));
+                    }
+                }
+                //Defense stage is below normal
+                else {
+                    if (enemy.getSpecialDefenseStage() == -1) {
+                        defStat *= 0.66;
+                    } else if (enemy.getSpecialDefenseStage() == -2) {
+                        defStat *= 0.5;
+                    } else if (enemy.getSpecialDefenseStage() == -3) {
+                        defStat *= 0.4;
+                    } else if (enemy.getSpecialDefenseStage() == -4) {
+                        defStat *= 0.33;
+                    } else if (enemy.getSpecialDefenseStage() == -5) {
+                        defStat *= 0.29;
+                    } else {
+                        defStat *= 0.25;
+                    }
                 }
             }
         }

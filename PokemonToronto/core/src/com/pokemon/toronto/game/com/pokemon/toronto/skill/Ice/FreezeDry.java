@@ -1,18 +1,12 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice;
 
-import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
-import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Gregory on 9/19/2017.
@@ -40,12 +34,12 @@ public class FreezeDry extends SecondaryEffectSkill {
      */
     @Override
     protected double getResistModifier(Pokemon user, Pokemon enemy) {
-        if (enemy.getTypeOne() == Pokemon.Type.WATER ||
-                enemy.getTypeTwo() == Pokemon.Type.WATER) {
+        if (enemy.getBattleTypeOne() == Pokemon.Type.WATER ||
+                enemy.getBattleTypeTwo() == Pokemon.Type.WATER) {
             //Make the hit super effective against water types.
             double resistMod = 2;
-            if (enemy.getAbility() == Pokemon.Ability.FILTER ||
-                    enemy.getAbility() == Pokemon.Ability.SOLID_ROCK) {
+            if (enemy.getBattleAbility() == Pokemon.Ability.FILTER ||
+                    enemy.getBattleAbility() == Pokemon.Ability.SOLID_ROCK) {
                 //Filter and Solid Rock reduce super effective damage.
                resistMod *= 0.75;
             }

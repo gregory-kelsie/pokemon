@@ -76,10 +76,33 @@ public class Charizard extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.FLARE_BLITZ);
+        beginnerSkills.add(SkillFactory.HEAT_WAVE);
+        beginnerSkills.add(SkillFactory.DRAGON_CLAW);
+        beginnerSkills.add(SkillFactory.SHADOW_CLAW);
+        beginnerSkills.add(SkillFactory.AIR_SLASH);
         beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.EMBER);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOKESCREEN)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RAGE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_FANG)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAME_BURST)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAMETHROWER)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_SPIN)));
+        levelUpSkills.put(62, new ArrayList<Integer>(Arrays.asList(SkillFactory.INFERNO)));
+        levelUpSkills.put(71, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEAT_WAVE)));
+        levelUpSkills.put(77, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLARE_BLITZ)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.WING_ATTACK);
     }
 
     /**

@@ -28,17 +28,9 @@ public class AccuracyEffect extends StatEffect {
      * @param isFirstAttack Whether or not the effect is a result of the first attack.
      */
     @Override
-    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
-        Pokemon effectReceiver;
-        SubField receiverField;
-        if (target == SecondaryEffect.Target.SELF) {
-            effectReceiver = skillUser;
-            receiverField = userField;
-        } else {
-            effectReceiver = enemyPokemon;
-            receiverField = enemyField;
-        }
-
+    public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                    SubField userField, SubField enemyField, boolean isFirstAttack) {
+        super.use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         if (statDirection == SecondaryEffect.StatDirection.DECREASE
                 && !effectReceiver.isProtectedByAccuracyLoweringEffects()) {
             //Attempt to lower the accuracy stage.
@@ -46,19 +38,20 @@ public class AccuracyEffect extends StatEffect {
                 results.add(effectReceiver.getName() + "'s accuracy cannot be\nlowered due to " +
                         effectReceiver.getAbilityString() + ".");
             } else if (receiverField.hasMist()) {
-                results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing accuracy!");
+                results.add("Mist prevents " + effectReceiver.getName() +
+                        "\nfrom losing accuracy!");
             } else if (effectReceiver.getAccuracyStage() == -6) {
                 results.add(effectReceiver.getName() + "'s accuracy can't be lowered.");
             } else {
-                effectReceiver.decreaseAccuracyStage(amount);
-                results.add(effectReceiver.getName() + "'s accuracy" + getFallText());
+                    effectReceiver.decreaseAccuracyStage(finalAmount);
+                    results.add(effectReceiver.getName() + "'s accuracy" + getFallText());
             }
         } else {
             //Attempt to increase the accuracy stage.
             if (effectReceiver.getAccuracyStage() == 6) {
                 results.add(effectReceiver.getName() + "'s accuracy can't get higher.");
             } else {
-                effectReceiver.increaseAccuracyStage(amount);
+                effectReceiver.increaseAccuracyStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s accuracy" + getRoseText());
             }
         }

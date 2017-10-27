@@ -29,15 +29,7 @@ public class SpeedEffect extends StatEffect {
      */
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
-        Pokemon effectReceiver;
-        SubField receiverField;
-        if (target == SecondaryEffect.Target.SELF) {
-            effectReceiver = skillUser;
-            receiverField = userField;
-        } else {
-            effectReceiver = enemyPokemon;
-            receiverField = enemyField;
-        }
+        super.use(results, skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
         if (statDirection == SecondaryEffect.StatDirection.DECREASE) {
             //Attempt to lower the speed stage.
             if (receiverField.hasMist()) {
@@ -46,7 +38,7 @@ public class SpeedEffect extends StatEffect {
             else if (effectReceiver.getSpeedStage() == -6) {
                 results.add(effectReceiver.getName() + "'s speed can't be lowered.");
             } else {
-                effectReceiver.decreaseSpeedStage(amount);
+                effectReceiver.decreaseSpeedStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s speed" + getFallText());
             }
         } else {
@@ -54,7 +46,7 @@ public class SpeedEffect extends StatEffect {
             if (effectReceiver.getSpeedStage() == 6) {
                 results.add(effectReceiver.getName() + "'s speed can't get higher.");
             } else {
-                effectReceiver.increaseSpeedStage(amount);
+                effectReceiver.increaseSpeedStage(finalAmount);
                 results.add(effectReceiver.getName() + "'s speed" + getRoseText());
             }
         }

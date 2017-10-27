@@ -1,6 +1,5 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -44,6 +43,8 @@ public class UseAttackPhase extends BattlePhase {
     protected boolean attackerIsUser;
 
     protected Skill usedSkill;
+    //For moves like Sucker Punch the usedSkill needs to know what the target used.
+    protected Skill targetsSkill;
 
     protected int textPosition;
     protected int resultsPosition;
@@ -66,6 +67,7 @@ public class UseAttackPhase extends BattlePhase {
     private boolean userKilledEnemy;
 
     private boolean isGain;
+    protected boolean powdered;
 
     public UseAttackPhase(PhaseUpdaterInterface pui) {
         super(pui);
@@ -90,6 +92,7 @@ public class UseAttackPhase extends BattlePhase {
         state = -1;
         contactResults = "";
         isGain = false;
+        powdered = false;
     }
 
     /**
@@ -170,6 +173,8 @@ public class UseAttackPhase extends BattlePhase {
                 } else {
                     recoilResults.add(attacker.getName() + " drained health.");
                 }
+            } else if (powdered) {
+                recoilResults.add("When the flame touched the powder on the Pokemon,\nit exploded!");
             }
             if (attacker.getCurrentHealth() == 0) {
                 recoilResults.add(attacker.getName() + " fainted.");
@@ -417,15 +422,15 @@ public class UseAttackPhase extends BattlePhase {
 
 
     protected void checkAbilityContact(double dt) {
-        if (receiver.getAbility() == Pokemon.Ability.STATIC) {
+        if (receiver.getBattleAbility() == Pokemon.Ability.STATIC) {
             useStatic();
-        } else if (receiver.getAbility() == Pokemon.Ability.POISON_POINT) {
+        } else if (receiver.getBattleAbility() == Pokemon.Ability.POISON_POINT) {
             usePoisonPoint();
-        } else if (receiver.getAbility() == Pokemon.Ability.POISON_TOUCH) {
+        } else if (receiver.getBattleAbility() == Pokemon.Ability.POISON_TOUCH) {
             usePoisonTouch();
-        } else if (receiver.getAbility() == Pokemon.Ability.FLAME_BODY) {
+        } else if (receiver.getBattleAbility() == Pokemon.Ability.FLAME_BODY) {
             useFlameBody();
-        } else if (receiver.getAbility() == Pokemon.Ability.EFFECT_SPORE) {
+        } else if (receiver.getBattleAbility() == Pokemon.Ability.EFFECT_SPORE) {
             useEffectSpore();
         }
 
@@ -466,11 +471,15 @@ public class UseAttackPhase extends BattlePhase {
                 receiverSubField = pui.getField().getPlayerField();
             }
             if (attackerIsUser) {
-                battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
-                        pui.getField(), attackerSubField, receiverSubField, firstAttack, pui.getPlayerParty(), new ArrayList<Pokemon>()); //Override
+                battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(),
+                        pui.getEnemyPokemonPosition(), pui.getField(), attackerSubField,
+                        receiverSubField, firstAttack, targetsSkill, pui.getPlayerParty(),
+                        new ArrayList<Pokemon>()); //Override
             } else {
-                battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
-                        pui.getField(), attackerSubField, receiverSubField, firstAttack, new ArrayList<Pokemon>(), pui.getPlayerParty()); //Override
+                battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(),
+                        pui.getUserPokemonPosition(), pui.getField(), attackerSubField,
+                        receiverSubField, firstAttack, targetsSkill, new ArrayList<Pokemon>(),
+                        pui.getPlayerParty()); //Override
             }
             updatingAnimation = true;
             state = -1; //reset state.

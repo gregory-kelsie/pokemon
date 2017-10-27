@@ -72,6 +72,8 @@ public class Raticate extends Pokemon {
                 thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
+
+
     /**
      * Init Raticate's level up skills.
      */
@@ -86,5 +88,19 @@ public class Raticate extends Pokemon {
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        //TODO: PURSUIT 13
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_FANG)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUCKER_PUNCH)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPER_FANG)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SCARY_FACE);
     }
 }

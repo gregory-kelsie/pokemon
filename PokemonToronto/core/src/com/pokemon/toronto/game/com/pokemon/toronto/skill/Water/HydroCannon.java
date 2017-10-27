@@ -6,9 +6,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,19 +35,20 @@ public class HydroCannon extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field for the battle.
      * @param userField The field for the battle.
      * @param enemyField The field for the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         skillUser.initiateRecharge();
         return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                    userField, enemyField, isFirstAttack, skillUserParty, enemyPokemonParty);
+                    userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
     }
 
     /**

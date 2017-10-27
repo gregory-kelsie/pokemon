@@ -79,11 +79,23 @@ public class Fearow extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.DRILL_RUN);
+        beginnerSkills.add(SkillFactory.PLUCK);
         beginnerSkills.add(SkillFactory.PECK);
         beginnerSkills.add(SkillFactory.GROWL);
         beginnerSkills.add(SkillFactory.LEER);
+        //TODO: PURSUIT BEGINNER SKILL
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        //TODO: PURSUIT 8
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.AERIAL_ACE)));
+        //TODO: MIRROR MOVE 18
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
         levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROOST)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRILL_PECK)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRILL_RUN)));
     }
 }

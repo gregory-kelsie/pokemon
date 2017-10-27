@@ -78,8 +78,31 @@ public class Butterfree extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.CONFUSION);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSION)));
+        ArrayList<Integer> thirteen = new ArrayList<Integer>();
+        thirteen.add(SkillFactory.POISON_POWDER);
+        thirteen.add(SkillFactory.STUN_SPORE);
+        thirteen.add(SkillFactory.SLEEP_POWDER);
+        levelUpSkills.put(13, thirteen);
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYBEAM)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SILVER_WIND)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+        //TODO: WHIRLWIND 29
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BUZZ)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAILWIND)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUIVER_DANCE)));
+    }
+
+    /**
+     * Butterfree learns Gust when Metapod evolves into it.
+     */
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.GUST);
     }
 }

@@ -79,9 +79,18 @@ public class Charmeleon extends Pokemon {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.EMBER);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.EMBER)));
-        initEvolutionSkills();
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOKESCREEN)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RAGE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_FANG)));
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAME_BURST)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAMETHROWER)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_SPIN)));
+        levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.INFERNO)));
     }
 
 

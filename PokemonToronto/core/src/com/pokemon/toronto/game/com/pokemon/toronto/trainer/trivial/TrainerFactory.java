@@ -2,10 +2,62 @@ package com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raichu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Vileplume;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Alakazam;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Arcanine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Geodude;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Growlithe;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Kadabra;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Muk;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Onix;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Ponyta;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Rapidash;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Victreebel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Voltorb;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Exeggutor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Gyarados;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Koffing;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.MrMime;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Rhydon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Starmie;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Staryu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Tangela;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Weezing;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.LeechLife;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Bite;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.Twister;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ThunderShock;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.FireBlast;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.FireSpin;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Flamethrower;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.SunnyDay;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Bounce;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.Gust;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Flying.WingAttack;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.SolarBeam;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Bind;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Harden;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.QuickAttack;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.SelfDestruct;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.Tackle;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.TakeDown;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.FutureSight;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockSlide;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.RockTomb;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Rock.Sandstorm;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.HydroPump;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.RainDance;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.WaterPulse;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.TrainerId;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
@@ -506,6 +558,248 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.NIDOQUEEN.getValue());
         }
         return bugCatcherPokemon;
+    }
+
+    public Trainer getGymLeaderBrock() {
+        String victoryText = "I took you for granted, and so I lost. As proof of\nyour victory" +
+                "I confer on you this...the official\nPokémon League BoulderBadge.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Geodude g = new Geodude(12);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new Tackle());
+        g.setSkillset(gSkills);
+
+        Onix o = new Onix(14);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new Tackle());
+        oSkills.add(new Bind());
+        oSkills.add(new RockTomb());
+        o.setSkillset(oSkills);
+
+        party.add(g);
+        party.add(o);
+        return new Trainer(0, "Gym Leader", "Brock", victoryText, "trainers/small/brock.png", party);
+    }
+
+    public Trainer getGymLeaderMisty() {
+        String victoryText = "Wow! You're too much, all right! You can have\n" +
+                "the CascadeBadge to show that you beat me.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Staryu g = new Staryu(18);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new Tackle());
+        gSkills.add(new Harden());
+        gSkills.add(new WaterPulse());
+        g.setSkillset(gSkills);
+
+        Starmie o = new Starmie(21);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new WaterPulse());
+        o.setSkillset(oSkills);
+
+        party.add(g);
+        party.add(o);
+        return new Trainer(0, "Gym Leader", "Misty", victoryText, "trainers/small/misty.png", party);
+    }
+
+    public Trainer getGymLeaderLtSurge() {
+        String victoryText = "Now that's a shocker! You're the real deal, kid!\n" +
+                " Fine, then, take the ThunderBadge!";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Voltorb g = new Voltorb(21);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new ThunderShock());
+        g.setSkillset(gSkills);
+
+        Pikachu o = new Pikachu(18);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new WaterPulse());
+        o.setSkillset(oSkills);
+
+        Raichu r = new Raichu(24);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new ThunderShock());
+        r.setSkillset(rSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        return new Trainer(0, "Gym Leader", "Lt. Surge", victoryText, "trainers/small/ltsurge.png", party);
+    }
+
+    public Trainer getGymLeaderErika() {
+        String victoryText = "Oh! I concede defeat. You are remarkably strong.\n" +
+                "I must confer on you the RainbowBadge.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Victreebel g = new Victreebel(29);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new GigaDrain());
+        g.setSkillset(gSkills);
+
+        Tangela o = new Tangela(24);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new WaterPulse());
+        o.setSkillset(oSkills);
+
+        Vileplume r = new Vileplume(29);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new GigaDrain());
+        r.setSkillset(rSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        return new Trainer(0, "Gym Leader", "Erika", victoryText, "trainers/small/erika.png", party);
+    }
+
+    public Trainer getGymLeaderSabrina() {
+        String victoryText = "This loss shocks me! But a loss is a loss. I admit\n" +
+                "I didn't work hard enough to win. You earned the MarshBadge.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Kadabra g = new Kadabra(38);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new FutureSight());
+        g.setSkillset(gSkills);
+
+        MrMime o = new MrMime(37);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new Tackle());
+        o.setSkillset(oSkills);
+
+        Venomoth r = new Venomoth(38);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new LeechLife());
+        rSkills.add(new Gust());
+        r.setSkillset(rSkills);
+
+        Alakazam alakazam = new Alakazam(43);
+        List<Skill> alakazamSkills = new ArrayList<Skill>();
+        alakazamSkills.add(new FutureSight());
+        alakazam.setSkillset(alakazamSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        party.add(alakazam);
+        return new Trainer(0, "Gym Leader", "Sabrina", victoryText, "trainers/small/sabrina.png", party);
+    }
+
+    public Trainer getGymLeaderJanine() {
+        String victoryText = "...!!! So... So strong!";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Koffing g = new Koffing(37);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new SelfDestruct());
+        g.setSkillset(gSkills);
+
+        Muk o = new Muk(39);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new Tackle());
+        o.setSkillset(oSkills);
+
+        Koffing r = new Koffing(37);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new SelfDestruct());
+        r.setSkillset(rSkills);
+
+        Weezing weezing = new Weezing(43);
+        List<Skill> weezingSkills = new ArrayList<Skill>();
+        weezingSkills.add(new Tackle());
+        weezing.setSkillset(weezingSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        party.add(weezing);
+        return new Trainer(0, "Gym Leader", "Janine", victoryText, "trainers/small/janine.png", party);
+    }
+
+    public Trainer getGymLeaderBlaine() {
+        String victoryText = "I have burned down to nothing! Not even ashes remain!\n" +
+                "You have earned the VolcanoBadge.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Growlithe g = new Growlithe(42);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new Bite());
+        gSkills.add(new TakeDown());
+        gSkills.add(new FireBlast());
+        g.setSkillset(gSkills);
+
+        Ponyta o = new Ponyta(40);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new Bounce());
+        oSkills.add(new FireSpin());
+        oSkills.add(new FireBlast());
+        o.setSkillset(oSkills);
+
+        Rapidash r = new Rapidash(42);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new Bounce());
+        rSkills.add(new FireSpin());
+        rSkills.add(new FireBlast());
+        r.setSkillset(rSkills);
+
+        Arcanine arcanine = new Arcanine(47);
+        List<Skill> arcanineSkills = new ArrayList<Skill>();
+        arcanineSkills.add(new Bite());
+        arcanineSkills.add(new TakeDown());
+        arcanineSkills.add(new FireBlast());
+        arcanine.setSkillset(arcanineSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        party.add(arcanine);
+        return new Trainer(0, "Gym Leader", "Blaine", victoryText, "trainers/small/blaine.png", party);
+    }
+
+    public Trainer getGymLeaderBlue() {
+        String victoryText = "What? How the heck did I lose to you? … \n" +
+                "Tch, all right… Here, take this-- it's EarthBadge.";
+        List<Pokemon> party = new ArrayList<Pokemon>();
+        Pidgeot g = new Pidgeot(56);
+        List<Skill> gSkills = new ArrayList<Skill>();
+        gSkills.add(new QuickAttack());
+        gSkills.add(new WingAttack());
+        g.setSkillset(gSkills);
+
+        Alakazam o = new Alakazam(54);
+        List<Skill> oSkills = new ArrayList<Skill>();
+        oSkills.add(new Tackle());
+        o.setSkillset(oSkills);
+
+        Rhydon r = new Rhydon(56);
+        List<Skill> rSkills = new ArrayList<Skill>();
+        rSkills.add(new Sandstorm());
+        rSkills.add(new RockSlide());
+        r.setSkillset(rSkills);
+
+        Gyarados gyarados = new Gyarados(58);
+        List<Skill> gyaradosSkills = new ArrayList<Skill>();
+        gyaradosSkills.add(new Twister());
+        gyaradosSkills.add(new HydroPump());
+        gyaradosSkills.add(new RainDance());
+        gyarados.setSkillset(gyaradosSkills);
+
+        Exeggutor exeggutor = new Exeggutor(58);
+        List<Skill> exeggutorSkills = new ArrayList<Skill>();
+        exeggutorSkills.add(new SunnyDay());
+        exeggutorSkills.add(new LeechLife());
+        exeggutorSkills.add(new SolarBeam());
+        exeggutor.setSkillset(exeggutorSkills);
+
+        Arcanine arcanine = new Arcanine(58);
+        List<Skill> arcanineSkills = new ArrayList<Skill>();
+        arcanineSkills.add(new Flamethrower());
+        arcanine.setSkillset(arcanineSkills);
+
+        party.add(g);
+        party.add(o);
+        party.add(r);
+        party.add(gyarados);
+        party.add(exeggutor);
+        party.add(arcanine);
+        return new Trainer(0, "Gym Leader", "Blue", victoryText, "trainers/small/blue.png", party);
     }
 
     public WildTrainer getBugCatcher(double difficulty, double latitude, double longitude) {

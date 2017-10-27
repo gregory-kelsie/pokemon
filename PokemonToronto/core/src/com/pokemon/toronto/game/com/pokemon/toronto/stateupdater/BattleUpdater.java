@@ -16,6 +16,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PhaseUpdaterInte
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SentOutAbilityPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SpeedCheckPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.SwitchPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.TrainerSendOutPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.UseAttackPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
@@ -46,6 +47,8 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     private boolean doneDisplayingExpText;
 
     private boolean displayingYesNo;
+
+    private boolean trainerDoubleFaint;
 
     private int state;
 
@@ -98,6 +101,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
         moveDeletionResult = -1;
         yesNoResult = -1;
+        trainerDoubleFaint = false;
 
         poisonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/poison.wav"));
         levelUpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/levelup.wav"));
@@ -130,7 +134,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         started = true;
     }
 
-        /*
+    /*
     * Start the battle phase while the userPokemon doesn't have a skill
     * @param Pokemon userPokemon The player's pokemon in the battle
     * @param Pokemon enemyPokemon The enemy's pokemon in the battle
@@ -165,6 +169,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         this.field = field;
         userPokemonIsFirstAttacker = true;
         started = true;
+        enemyPokemon.removeLockOn(); //Lock on cancels when opponent switches out.
         currentPhase = new SwitchPhase(this, sentOutPokemon);
     }
 
@@ -324,8 +329,24 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     public void finishedFaintSwitch(Pokemon currentPokemon) {
         state = IDLE;
         userPokemon = currentPokemon;
-        setPhase(new SentOutAbilityPhase(this, userPokemon, enemyPokemon, true));
+        if (trainerDoubleFaint) {
+            setPhase(new TrainerSendOutPhase(this));
+        } else {
+            setPhase(new SentOutAbilityPhase(this, userPokemon, enemyPokemon, true));
+        }
         //started = false;
+    }
+
+    public void setTrainerDoubleFaint() {
+        trainerDoubleFaint = true;
+    }
+
+    public boolean hasTrainerDoubleFaint() {
+        return trainerDoubleFaint;
+    }
+
+    public void removeTrainerDoubleFaint() {
+        trainerDoubleFaint = false;
     }
 
     public boolean waitingForNextPokemon() {

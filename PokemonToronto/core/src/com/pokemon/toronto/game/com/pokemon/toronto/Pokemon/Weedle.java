@@ -80,6 +80,7 @@ public class Weedle extends Pokemon {
         beginnerSkills.add(SkillFactory.POISON_STING);
         beginnerSkills.add(SkillFactory.STRING_SHOT);
         levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BITE)));
     }
 
     /**

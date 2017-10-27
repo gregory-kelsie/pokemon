@@ -15,6 +15,8 @@ public class Field {
     private final int LAST_WEATHER_TURN = 0;
     private final int DEFAULT_TERRAIN_LENGTH = 5;
     private final int LAST_TERRAIN_TURN = -1;
+    private final int DEFAULT_TRICK_ROOM_LENGTH = 5;
+    private final int NO_TRICK_ROOM = 0;
     
     private WeatherType weatherType;
     private TerrainType terrainType;
@@ -22,6 +24,7 @@ public class Field {
     private int terrainTimeLimit;
     private int gravity;
     private int waterSport;
+    private int trickRoom;
 
     private SubField playerField;
     private SubField opponentField;
@@ -39,6 +42,7 @@ public class Field {
         opponentField = new SubField();
         gravity = NO_GRAVITY;
         waterSport = NO_WATER_SPORT;
+        trickRoom = NO_TRICK_ROOM;
     }
 
     /**
@@ -178,11 +182,37 @@ public class Field {
     }
 
     /**
+     * Apply Trick Room to the field.
+     */
+    public void setupTrickRoom() {
+        trickRoom = DEFAULT_TRICK_ROOM_LENGTH;
+    }
+
+    /**
      * Adjust gravity after a turn has passed.
      */
     public void adjustGravity () {
         gravity--;
         gravity = Math.max(gravity, NO_GRAVITY);
+    }
+
+    /**
+     * Adjust Trick Room after the turn passed.
+     */
+    public void adjustTrickRoom() {
+        trickRoom--;
+        trickRoom = Math.max(trickRoom, NO_TRICK_ROOM);
+    }
+
+    /**
+     * Return whether or not the field has Trick Room set up.
+     * @return Whether or not Trick Room is on the field.
+     */
+    public boolean hasTrickRoom() {
+        if (trickRoom == NO_TRICK_ROOM) {
+            return false;
+        }
+        return true;
     }
 
     /**

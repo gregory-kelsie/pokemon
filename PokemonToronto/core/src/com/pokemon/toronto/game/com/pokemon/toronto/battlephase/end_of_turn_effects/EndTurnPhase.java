@@ -6,10 +6,12 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BattlePhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BlackedOutPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.EndTrainerBattle;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.ExpPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PhaseUpdaterInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PlayerPokemonFaintPhase;
-import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.PoisonCheckPhase;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.Infestation;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.PerishSong;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.HurtByFutureSight;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.HurtByDoomDesire;
 
@@ -49,6 +51,16 @@ public class EndTurnPhase extends BattlePhase {
     private final int CLAMP_STATE = 27;
     private final int WHIRLPOOL_STATE = 28;
     private final int MIST_STATE = 29;
+    private final int TAILWIND = 30;
+    private final int FIRE_SPIN = 31;
+    private final int INFESTATION = 32;
+    private final int SAND_TOMB = 33;
+    private final int REFLECT = 34;
+    private final int LIGHT_SCREEN = 35;
+    private final int TRICK_ROOM = 36;
+    private final int PERISH_SONG = 37;
+    private final int YAWN = 38;
+    private final int WRAP = 39;
 
 
     //End turn weather results
@@ -90,7 +102,7 @@ public class EndTurnPhase extends BattlePhase {
         enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
         skipUser = false;
         skipEnemy = false;
-        resetDamageTakenThisTurn();
+        adjustEndTurnEffects();
     }
 
     public EndTurnPhase(PhaseUpdaterInterface pui, boolean skipUser, boolean skipEnemy) {
@@ -104,7 +116,27 @@ public class EndTurnPhase extends BattlePhase {
         enemyFaintText = pui.getEnemyPokemon().getName() + " fainted.";
         this.skipUser = skipUser;
         this.skipEnemy = skipEnemy;
+        adjustEndTurnEffects();
+    }
+
+    private void adjustEndTurnEffects() {
+        removePowder();
+        pui.getUserPokemon().adjustCharge();
+        pui.getUserPokemon().setFirstTurn(false);
+        pui.getEnemyPokemon().setFirstTurn(false);
+        pui.getUserPokemon().adjustLaserFocus();
+        pui.getEnemyPokemon().adjustLaserFocus();
+        pui.getEnemyPokemon().adjustCharge();
         resetDamageTakenThisTurn();
+    }
+
+    /**
+     * Remove the powder effect from the battling Pokemon since
+     * it lasts only 1 turn.
+     */
+    private void removePowder() {
+        pui.getUserPokemon().removePowder();
+        pui.getEnemyPokemon().removePowder();
     }
 
     /**
@@ -119,6 +151,7 @@ public class EndTurnPhase extends BattlePhase {
 
     @Override
     public void update(double dt) {
+        Gdx.app.log("endphase", "" + currentState);
         if (currentState == WEATHER) {
             updateWeather();
         } else if (currentState == DISPLAY_TEXT) {
@@ -150,9 +183,17 @@ public class EndTurnPhase extends BattlePhase {
         } else if (currentState == USE_SUN) {
             useSunlight();
         } else if (currentState == DOUBLE_KNOCKOUT) {
-            pui.finishedBattle();
+            if (pui.isWildBattle()) {
+                pui.finishedBattle();
+            } else {
+                if (pui.hasWipedOutTrainer()) {
+                    pui.setPhase(new EndTrainerBattle(pui));
+                } else {
+                    pui.setTrainerDoubleFaint();
+                    pui.setPhase(new PlayerPokemonFaintPhase(pui));
+                }
+            }
         } else if (currentState == END_GAME) {
-            //pui.setPhase(new PoisonCheckPhase(pui));
             if (pui.getEnemyPokemon().getCurrentHealth() == 0 &&
                     pui.getUserPokemon().getCurrentHealth() > 0) {
                 pui.setPhase(new ExpPhase(pui));
@@ -192,6 +233,26 @@ public class EndTurnPhase extends BattlePhase {
             checkWhirlpool();
         } else if (currentState == MIST_STATE) {
             adjustMist();
+        } else if (currentState == TAILWIND) {
+            adjustTailwind();
+        } else if (currentState == FIRE_SPIN) {
+            checkFireSpin();
+        } else if (currentState == INFESTATION) {
+            checkInfestation();
+        } else if (currentState == SAND_TOMB) {
+            checkSandTomb();
+        } else if (currentState == TRICK_ROOM) {
+            adjustTrickRoom();
+        } else if (currentState == PERISH_SONG) {
+            adjustPerishSong();
+        } else if (currentState == YAWN) {
+            adjustYawn();
+        } else if (currentState == WRAP) {
+            adjustWrap();
+        } else if (currentState == LIGHT_SCREEN) {
+            adjustLightScreen();
+        } else if (currentState == REFLECT) {
+            adjustReflect();
         }
     }
 
@@ -278,15 +339,289 @@ public class EndTurnPhase extends BattlePhase {
                 if (!pui.getField().getPlayerField().hasMist()) {
                     currentState = DISPLAY_TEXT;
                     text = "The mist has faded...";
-                    stateAfterText = END_GAME;
+                    stateAfterText = TAILWIND;
                 } else {
-                    currentState = END_GAME;
+                    currentState = TAILWIND;
                 }
+            } else {
+                currentState = TAILWIND;
+            }
+            usingOnEnemy = true;
+        }
+    }
+
+    private void adjustYawn() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (usingOnEnemy) {
+            if (currentPokemon.justReceivedYawn()) {
+                currentPokemon.passFirstYawnTurn();
+            } else if (currentPokemon.isYawned() && currentPokemon.isSleepable() &&
+                    !pui.getUserPokemon().isUproaring()) {
+                text = currentPokemon.getName() + " fell asleep!";
+                currentPokemon.induceSleep();
+                currentState = DISPLAY_TEXT;
+                stateAfterText = YAWN;
+            }
+            usingOnEnemy = false;
+        } else {
+            if (currentPokemon.justReceivedYawn()) {
+                currentPokemon.passFirstYawnTurn();
+                currentState = END_GAME;
+            } else if (currentPokemon.isYawned() && currentPokemon.isSleepable() &&
+                    !pui.getEnemyPokemon().isUproaring()) {
+                text = currentPokemon.getName() + " fell asleep!";
+                currentPokemon.induceSleep();
+                currentState = DISPLAY_TEXT;
+                stateAfterText = END_GAME;
             } else {
                 currentState = END_GAME;
             }
             usingOnEnemy = true;
+        }
+    }
 
+    private void adjustTrickRoom() {
+        if (pui.getField().hasTrickRoom()) {
+            pui.getField().adjustTrickRoom();
+            if (!pui.getField().hasTrickRoom()) {
+                currentState = DISPLAY_TEXT;
+                stateAfterText = YAWN;
+                text = "Trick Room has ended...";
+            } else {
+                currentState = YAWN;
+            }
+        } else {
+            currentState = YAWN;
+        }
+    }
+
+    private void adjustTailwind() {
+        if (usingOnEnemy) {
+            if (pui.getField().getOpponentField().hasTailwind()) {
+                pui.getField().getOpponentField().adjustTailwind();
+                if (!pui.getField().getOpponentField().hasTailwind()) {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterText = TAILWIND;
+                    text = "The Tailwind has faded...";
+                }
+            }
+            usingOnEnemy = false;
+        } else {
+            if (pui.getField().getPlayerField().hasTailwind()) {
+                pui.getField().getPlayerField().adjustTailwind();
+                if (!pui.getField().getPlayerField().hasTailwind()) {
+                    currentState = DISPLAY_TEXT;
+                    text = "The Tailwind has faded...";
+                    stateAfterText = TRICK_ROOM;
+                } else {
+                    currentState = TRICK_ROOM;
+                }
+            } else {
+                currentState = TRICK_ROOM;
+            }
+            usingOnEnemy = true;
+
+        }
+    }
+
+    private void adjustPerishSong() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getPerishSongTime() == 1 && currentPokemon.heardPerishSong()) {
+                currentPokemon.removePerishSong();
+                text = currentPokemon.getName() + "'s Perish Count fell to 0!";
+                if (usingOnEnemy) {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;
+                    stateAfterText = ADJUST_ENEMY_HEALTH;
+                    stateAfterFaint = PERISH_SONG;
+                    usingOnEnemy = false;
+                } else {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterHealthAdjustment = DISPLAY_PLAYER_FAINT_TEXT;
+                    stateAfterText = ADJUST_PLAYER_HEALTH;
+                    stateAfterNotBlackingOut = REFLECT;
+                    usingOnEnemy = true;
+                }
+            } else if (currentPokemon.heardPerishSong()) {
+                text = currentPokemon.getName() + "'s Perish Count fell to" +
+                        currentPokemon.getPerishSongTime() + "!";
+                currentPokemon.adjustPerishSongDuration();
+                adjustStates(currentPokemon, PERISH_SONG, REFLECT);
+            } else {
+                noStateUse(REFLECT);
+            }
+        } else {
+            noStateUse(REFLECT);
+        }
+    }
+
+    private void adjustLightScreen() {
+        if (usingOnEnemy) {
+            if (pui.getField().getOpponentField().hasLightScreen()) {
+                pui.getField().getOpponentField().adjustLightScreen();
+                if (!pui.getField().getOpponentField().hasLightScreen()) {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterText = LIGHT_SCREEN;
+                    text = "The Light Screen has faded...";
+                }
+            }
+            usingOnEnemy = false;
+        } else {
+            if (pui.getField().getPlayerField().hasLightScreen()) {
+                pui.getField().getPlayerField().adjustLightScreen();
+                if (!pui.getField().getPlayerField().hasLightScreen()) {
+                    currentState = DISPLAY_TEXT;
+                    text = "The Light Screen has faded...";
+                    stateAfterText = MIST_STATE;
+                } else {
+                    currentState = MIST_STATE;
+                }
+            } else {
+                currentState = MIST_STATE;
+            }
+            usingOnEnemy = true;
+
+        }
+    }
+
+    private void adjustReflect() {
+        if (usingOnEnemy) {
+            if (pui.getField().getOpponentField().hasReflect()) {
+                pui.getField().getOpponentField().adjustReflect();
+                if (!pui.getField().getOpponentField().hasReflect()) {
+                    currentState = DISPLAY_TEXT;
+                    stateAfterText = REFLECT;
+                    text = "The Reflect has faded...";
+                }
+            }
+            usingOnEnemy = false;
+        } else {
+            if (pui.getField().getPlayerField().hasReflect()) {
+                pui.getField().getPlayerField().adjustReflect();
+                if (!pui.getField().getPlayerField().hasReflect()) {
+                    currentState = DISPLAY_TEXT;
+                    text = "The Light Screen has faded...";
+                    stateAfterText = LIGHT_SCREEN;
+                } else {
+                    currentState = LIGHT_SCREEN;
+                }
+            } else {
+                currentState = LIGHT_SCREEN;
+            }
+            usingOnEnemy = true;
+        }
+    }
+
+    private void checkInfestation() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getInfestationTurns() == 0 && currentPokemon.isInfested()) {
+                currentPokemon.removeInfestation();
+                text = currentPokemon.getName() + " was freed from Infestation!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = INFESTATION;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = WHIRLPOOL_STATE;
+                }
+            } else if (currentPokemon.isInfested()) {
+                text = currentPokemon.getName() + " was hurt by Infestation.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustInfestationTurns();
+                adjustStates(currentPokemon, INFESTATION, WHIRLPOOL_STATE);
+            } else {
+                noStateUse(WHIRLPOOL_STATE);
+            }
+        } else {
+            noStateUse(WHIRLPOOL_STATE);
+        }
+    }
+
+    private void adjustWrap() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getWrapTurns() == 0 && currentPokemon.isWrapped()) {
+                currentPokemon.removeWrap();
+                text = currentPokemon.getName() + " was freed from Wrap!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = WRAP;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = REFLECT;
+                }
+            } else if (currentPokemon.isWrapped()) {
+                text = currentPokemon.getName() + " was hurt by Wrap.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustWrapTurns();
+                adjustStates(currentPokemon, WRAP, REFLECT);
+            } else {
+                noStateUse(REFLECT);
+            }
+        } else {
+            noStateUse(REFLECT);
+        }
+    }
+
+    private void checkFireSpin() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getFireSpinTurns() == 0 && currentPokemon.inFireSpin()) {
+                currentPokemon.removeFireSpin();
+                text = currentPokemon.getName() + " was freed from Fire Spin!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = FIRE_SPIN;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = SAND_TOMB;
+                }
+            } else if (currentPokemon.inFireSpin()) {
+                text = currentPokemon.getName() + " was hurt by Fire Spin.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustFireSpinTurns();
+                adjustStates(currentPokemon, FIRE_SPIN, SAND_TOMB);
+            } else {
+                noStateUse(SAND_TOMB);
+            }
+        } else {
+            noStateUse(SAND_TOMB);
+        }
+    }
+
+    private void checkSandTomb() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getSandTombTurns() == 0 && currentPokemon.inSandTomb()) {
+                currentPokemon.removeSandTomb();
+                text = currentPokemon.getName() + " was freed from the Sand Tomb!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = SAND_TOMB;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = INFESTATION;
+                }
+            } else if (currentPokemon.inSandTomb()) {
+                text = currentPokemon.getName() + " was hurt by Sand Tomb.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                currentPokemon.subtractHealth(damage);
+                currentPokemon.adjustSandTombTurns();
+                adjustStates(currentPokemon, SAND_TOMB, INFESTATION);
+            } else {
+                noStateUse(INFESTATION);
+            }
+        } else {
+            noStateUse(INFESTATION);
         }
     }
 
@@ -302,19 +637,19 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterText = WHIRLPOOL_STATE;
                 } else {
                     usingOnEnemy = true;
-                    stateAfterText = MIST_STATE;
+                    stateAfterText = WRAP;
                 }
             } else if (currentPokemon.inWhirlpool()) {
                 text = currentPokemon.getName() + " was hurt by Whirlpool.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
                 currentPokemon.subtractHealth(damage);
                 currentPokemon.adjustWhirlpoolTurns();
-                adjustStates(currentPokemon, WHIRLPOOL_STATE, MIST_STATE);
+                adjustStates(currentPokemon, WHIRLPOOL_STATE, WRAP);
             } else {
-                noStateUse(MIST_STATE);
+                noStateUse(WRAP);
             }
         } else {
-            noStateUse(MIST_STATE);
+            noStateUse(WRAP);
         }
     }
 
@@ -330,19 +665,19 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterText = CLAMP_STATE;
                 } else {
                     usingOnEnemy = true;
-                    stateAfterText = WHIRLPOOL_STATE;
+                    stateAfterText = FIRE_SPIN;
                 }
             } else if (currentPokemon.isClamped()) {
                 text = currentPokemon.getName() + " was hurt by Clamp.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
                 currentPokemon.subtractHealth(damage);
                 currentPokemon.adjustClampTurns();
-                adjustStates(currentPokemon, CLAMP_STATE, WHIRLPOOL_STATE);
+                adjustStates(currentPokemon, CLAMP_STATE, FIRE_SPIN);
             } else {
-                noStateUse(WHIRLPOOL_STATE);
+                noStateUse(FIRE_SPIN);
             }
         } else {
-            noStateUse(WHIRLPOOL_STATE);
+            noStateUse(FIRE_SPIN);
         }
     }
     private void checkBind() {
@@ -613,7 +948,7 @@ public class EndTurnPhase extends BattlePhase {
     private void checkHealingAbilities() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
-                currentPokemon.getAbility() == Pokemon.Ability.SHED_SKIN) {
+                currentPokemon.getBattleAbility() == Pokemon.Ability.SHED_SKIN) {
             double rand = Math.random();
             if (rand <= .3) {
                 text = currentPokemon.getName() + " shed its skin\nand removed all status problems!";
@@ -623,7 +958,7 @@ public class EndTurnPhase extends BattlePhase {
               goToNextStateFromHealingAbilities();
             }
         } else if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
-                currentPokemon.getAbility() == Pokemon.Ability.HYDRATION &&
+                currentPokemon.getBattleAbility() == Pokemon.Ability.HYDRATION &&
                 pui.getField().getWeatherType() == WeatherType.RAIN) {
             text = currentPokemon.getName() + " removed its status problem\nusing the ability Hydration!";
             currentPokemon.setPreStatus(Pokemon.Status.RECOVER);
@@ -790,17 +1125,17 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useSandstorm() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getAbility() == Pokemon.Ability.SAND_FORCE ||
-                pokemon.getAbility() == Pokemon.Ability.SAND_RUSH ||
-                pokemon.getAbility() == Pokemon.Ability.SAND_VEIL ||
-                pokemon.getAbility() == Pokemon.Ability.MAGIC_GUARD ||
-                pokemon.getAbility() == Pokemon.Ability.OVERCOAT ||
-                pokemon.getTypeOne() == Pokemon.Type.ROCK ||
-                pokemon.getTypeOne() == Pokemon.Type.GROUND ||
-                pokemon.getTypeOne() == Pokemon.Type.STEEL ||
-                pokemon.getTypeTwo() == Pokemon.Type.ROCK ||
-                pokemon.getTypeTwo() == Pokemon.Type.GROUND ||
-                pokemon.getTypeTwo() == Pokemon.Type.STEEL) { //TODO: Check for holding safety goggles
+        if (pokemon.getBattleAbility() == Pokemon.Ability.SAND_FORCE ||
+                pokemon.getBattleAbility() == Pokemon.Ability.SAND_RUSH ||
+                pokemon.getBattleAbility() == Pokemon.Ability.SAND_VEIL ||
+                pokemon.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD ||
+                pokemon.getBattleAbility() == Pokemon.Ability.OVERCOAT ||
+                pokemon.getBattleTypeOne() == Pokemon.Type.ROCK ||
+                pokemon.getBattleTypeOne() == Pokemon.Type.GROUND ||
+                pokemon.getBattleTypeOne() == Pokemon.Type.STEEL ||
+                pokemon.getBattleTypeTwo() == Pokemon.Type.ROCK ||
+                pokemon.getBattleTypeTwo() == Pokemon.Type.GROUND ||
+                pokemon.getBattleTypeTwo() == Pokemon.Type.STEEL) { //TODO: Check for holding safety goggles
             //Nothing happens -- Switch to use on next pokemon or go to next state.
             weatherDoesNothing();
         } else {
@@ -811,10 +1146,10 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useRain() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getAbility() == Pokemon.Ability.RAIN_DISH
+        if (pokemon.getBattleAbility() == Pokemon.Ability.RAIN_DISH
                 && !pokemon.hasFullHealth()) {
             recoverPokemonFromRain(pokemon, 16.0);
-        } else if (pokemon.getAbility() == Pokemon.Ability.DRY_SKIN
+        } else if (pokemon.getBattleAbility() == Pokemon.Ability.DRY_SKIN
                 && !pokemon.hasFullHealth()) {
             recoverPokemonFromRain(pokemon, 8.0);
         } else {
@@ -824,8 +1159,8 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useSunlight() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getAbility() == Pokemon.Ability.DRY_SKIN ||
-                pokemon.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (pokemon.getBattleAbility() == Pokemon.Ability.DRY_SKIN ||
+                pokemon.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
             damagePokemonFromSunlight(pokemon);
         } else {
             weatherDoesNothing();
@@ -834,13 +1169,13 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useHail() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getAbility() == Pokemon.Ability.ICE_BODY ||
-                pokemon.getAbility() == Pokemon.Ability.SNOW_CLOAK ||
-                pokemon.getAbility() == Pokemon.Ability.MAGIC_GUARD ||
-                pokemon.getAbility() == Pokemon.Ability.OVERCOAT ||
-                pokemon.getTypeOne() == Pokemon.Type.ICE ||
-                pokemon.getTypeTwo() == Pokemon.Type.ICE) { //TODO: Check for holding safety goggles
-            if (pokemon.getAbility() == Pokemon.Ability.ICE_BODY && !pokemon.hasFullHealth()){
+        if (pokemon.getBattleAbility() == Pokemon.Ability.ICE_BODY ||
+                pokemon.getBattleAbility() == Pokemon.Ability.SNOW_CLOAK ||
+                pokemon.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD ||
+                pokemon.getBattleAbility() == Pokemon.Ability.OVERCOAT ||
+                pokemon.getBattleTypeOne() == Pokemon.Type.ICE ||
+                pokemon.getBattleTypeTwo() == Pokemon.Type.ICE) { //TODO: Check for holding safety goggles
+            if (pokemon.getBattleAbility() == Pokemon.Ability.ICE_BODY && !pokemon.hasFullHealth()){
                 //Recover
                 recoverPokemonFromHail(pokemon);
             } else {
@@ -933,7 +1268,7 @@ public class EndTurnPhase extends BattlePhase {
     private void damagePokemonFromSunlight(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 8.0);
         pokemon.subtractHealth(damage);
-        if (pokemon.getAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (pokemon.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
             text = pokemon.getName() + " is hurt \nfrom drawing in solar power.";
         } else { //Having Dry skin is the only other way to get here.
             text = pokemon.getName() + " is hurt by having\n Dry Skin in the sunlight";

@@ -77,11 +77,25 @@ public class Pikachu extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.STICKY_WEB);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
         beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.PLAY_NICE)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.ELECTRO_BALL)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_TEAM)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.SPARK)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.NUZZLE)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.DISCHARGE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDERBOLT)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.WILD_CHARGE)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.LIGHT_SCREEN)));
+        levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER)));
     }
 
     /**

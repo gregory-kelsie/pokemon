@@ -83,6 +83,14 @@ public class Rattata extends Pokemon {
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        //TODO: PURSUIT 13
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_FANG)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUCKER_PUNCH)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPER_FANG)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
     }
 
     /**

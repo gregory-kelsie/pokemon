@@ -33,14 +33,15 @@ public class LeechSeed extends Skill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field of the battle.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return Leech Seed's move results.
-     */
+     * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyPokemon.receiveLeechSeed();
         results.add(enemyPokemon.getName() + " was seeded!");
@@ -61,11 +62,11 @@ public class LeechSeed extends Skill {
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
-                               boolean isFirstAttack) {
+                               boolean isFirstAttack, Skill targetsSkill) {
         if (enemyPokemon.isSeeded()) {
             return new FailResult("It failed...");
-        } else if (enemyPokemon.getTypeOne() == Pokemon.Type.GRASS ||
-                enemyPokemon.getTypeTwo() == Pokemon.Type.GRASS) {
+        } else if (enemyPokemon.getBattleTypeOne() == Pokemon.Type.GRASS ||
+                enemyPokemon.getBattleTypeTwo() == Pokemon.Type.GRASS) {
             return new FailResult("Leech Seed does not affect Grass types.");
         }
         return new FailResult(false);

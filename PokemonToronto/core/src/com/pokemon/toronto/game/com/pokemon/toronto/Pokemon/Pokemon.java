@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
 
 import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
+import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
@@ -28,6 +29,14 @@ public abstract class Pokemon {
     protected char gender;
     protected Type typeOne;
     protected Type typeTwo;
+    protected double weight;
+
+    //Some moves override the actual types and abilities
+    //during battle.
+    protected Type battleTypeOne;
+    protected Type battleTypeTwo;
+    protected Ability battleAbility;
+
     protected int level;
     protected int captureRate;
 
@@ -125,7 +134,7 @@ public abstract class Pokemon {
 
     private boolean heardPerishSong;
     private int perishSongTime;
-    private final int TOTAL_PERISH_SONG_TIME = 3;
+    private final int TOTAL_PERISH_SONG_TIME = 4;
 
     private boolean witnessedFutureSight;
     private int futureSightTime;
@@ -139,17 +148,26 @@ public abstract class Pokemon {
     //The amount of damage the Pokemon took this turn. This is used for counter, mirror coat and metal burst.
     private int turnDamageTaken;
     private Skill.SkillCategory damageTakenCategory;
+    private boolean tookDamageThisTurn; //For Assurance
 
 
     private boolean envelopedInAquaRing;
     private boolean isIngrained;
     private boolean isCursed;
+
     private boolean binded;
     private int bindedTurns;
     private boolean clamped;
     private int clampTurns;
     private boolean inWhirlpool;
     private int whirlpoolTurns;
+    private boolean fireSpin;
+    private int fireSpinTurns;
+    private boolean infested;
+    private int infestationTurns;
+    private boolean sandTomb;
+    private int sandTombTurns;
+
     private boolean isLeechSeeded;
     private boolean hasNightmares;
     private boolean receivingWish;
@@ -168,11 +186,25 @@ public abstract class Pokemon {
     private Skill outrageSkill;
     private int outrageTurns;
 
+    private int furyCutterStacks;
+    private int echoedVoiceStacks;
+    private int chargeTurns; //For move Charge
+
+    private boolean powdered;
+
     private Skill nextTurnSkill;
     private boolean flying; //Fly
     private boolean underground; //Dig
     private boolean underwater; //Dive
     private boolean recharging;
+    private boolean skyDrop;
+    private boolean spiderWebbed;
+    private boolean firstTurn;
+    private int laserFocusTurns;
+    private int lockOnTurns;
+    private boolean usedRage;
+    private int stockpileStacks;
+    private boolean uproaring;
 
     /** Constants */
 
@@ -250,7 +282,7 @@ public abstract class Pokemon {
         ICE_BODY(40), SNOW_CLOAK(41), MAGIC_GUARD(42), OVERCOAT(43), SAND_FORCE(44), SAND_RUSH(45), SAND_VEIL(46), HYDRATION(47),
         SWIFT_SWIM(48), DAMP(49), DRIZZLE(50), SAND_STREAM(51), DROUGHT(52), SNOW_WARNING(53), CLOUD_NINE(54), MOLD_BREAKER(55),
         PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62), STURDY(63),
-        ROCK_HEAD(64), LIMBER(65);
+        ROCK_HEAD(64), LIMBER(65), SIMPLE(66), NONE(66);
         private final int value;
         private Ability(int value) {
             this.value = value;
@@ -273,7 +305,51 @@ public abstract class Pokemon {
      */
     public enum Type {
         NONE, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FIGHTING, FIRE, FLYING, GHOST, GRASS, GROUND,
-        ICE, NORMAL, POISON, PSYCHIC, ROCK, STEEL, WATER
+        ICE, NORMAL, POISON, PSYCHIC, ROCK, STEEL, WATER;
+
+        public static String toString(Type t) {
+            if (t == NONE) {
+                return "None";
+            } else if (t == BUG) {
+                return "Bug";
+            } else if (t == DARK) {
+                return "Dark";
+            } else if (t == DRAGON) {
+                return "Dragon";
+            } else if (t == ELECTRIC) {
+                return "Electric";
+            } else if (t == FAIRY) {
+                return "Fairy";
+            } else if (t == FIGHTING) {
+                return "Fighting";
+            } else if (t == FIRE) {
+                return "Fire";
+            } else if (t == FLYING) {
+                return "Flying";
+            } else if (t == GHOST) {
+                return "Ghost";
+            } else if (t == GRASS) {
+                return "Grass";
+            } else if (t == GROUND) {
+                return "Ground";
+            } else if (t == ICE) {
+                return "Ice";
+            } else if (t == NORMAL) {
+                return "Normal";
+            } else if (t == POISON) {
+                return "Poison";
+            } else if (t == PSYCHIC) {
+                return "Psychic";
+            } else if (t == ROCK) {
+                return "Rock";
+            } else if (t == STEEL) {
+                return "Steel";
+            } else if (t == WATER) {
+                return "Water";
+            }
+            return "None";
+        }
+
     }
 
     /**
@@ -341,6 +417,8 @@ public abstract class Pokemon {
         this.cryPath = cryPath;
         this.typeOne = typeOne;
         this.typeTwo = typeTwo;
+        battleTypeOne = typeOne;
+        battleTypeTwo = typeTwo;
         this.ability = ability;
         this.captureRate = captureRate;
         this.fainted = false;
@@ -399,12 +477,21 @@ public abstract class Pokemon {
         isLeechSeeded = false;
         hasNightmares = false;
         removeWish();
+
+        //Trap Effects
         binded = false;
         bindedTurns = 0;
         clamped = false;
         clampTurns = 0;
         inWhirlpool = false;
         whirlpoolTurns = 0;
+        fireSpin = false;
+        fireSpinTurns = 0;
+        infested = false;
+        infestationTurns = 0;
+        sandTomb = false;
+        sandTombTurns = 0;
+
         tauntTime = -1;
         embargoTime = -1;
         encoreTime = -1;
@@ -427,10 +514,180 @@ public abstract class Pokemon {
         flying = false; //Fly
         underground = false; //Dig
         underwater = false; //Dive
+        skyDrop = false;
         recharging = false;
         rolloutTurns = 0;
+        furyCutterStacks = 0;
+        echoedVoiceStacks = 0;
+        powdered = false;
         turnDamageTaken = 0;
+        tookDamageThisTurn = false;
+        spiderWebbed = false;
+        chargeTurns = 0;
+        laserFocusTurns = 0;
+        lockOnTurns = 0;
+        stockpileStacks = 0;
+        firstTurn = true;
         damageTakenCategory = Skill.SkillCategory.MISC;
+        usedRage = false;
+        uproaring = false;
+        //Reset the battle types and resistances if they were changed.
+        if (battleTypeOne != typeOne || battleTypeTwo != typeTwo) {
+            battleTypeOne = typeOne;
+            battleTypeTwo = typeTwo;
+            initializeResistances();
+        }
+        battleAbility = ability;
+    }
+
+    public int getFuryCutterStacks() {
+        return furyCutterStacks;
+    }
+
+    public int getEchoedVoiceStacks() { return echoedVoiceStacks; }
+
+    /**
+     * Return whether or not the Pokemon is powered up by the move Charge.
+     * @return Whether or not the Pokemon is powered up by the move Charge.
+     */
+    public boolean isCharged() {
+        if (chargeTurns > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Start uproar, prevents sleep for all Pokemon on the field.
+     */
+    public void uproar() {
+        uproaring = true;
+    }
+
+    /**
+     * Stop the uproar.
+     */
+    public void stopUproar() {
+        uproaring = false;
+    }
+
+    /**
+     * Return whether or not the Pokemon is Uproaring.
+     * @return Whether or not the Pokemon is Uproaring.
+     */
+    public boolean isUproaring() {
+        return uproaring;
+    }
+    /**
+     * Return whether or not the Pokemon just used the move Rage.
+     * @return Whether or not the Pokemon just used the move Rage.
+     */
+    public boolean usedRage() {
+        return usedRage;
+    }
+
+
+    /**
+     * Set that the Pokemon just used the move Rage.
+     */
+    public void useRage() {
+        usedRage = true;
+    }
+
+    /**
+     * Remove the Rage effect from the move Rage from the Pokemon
+     */
+    public void removeRage() {
+        usedRage = false;
+    }
+
+    /**
+     * Adjust the Pokemon's Charge from the move charge if they have the Charge.
+     */
+    public void adjustCharge() {
+        if (chargeTurns > 0) {
+            chargeTurns--;
+        }
+    }
+
+    /**
+     * Apply Charge effect to the Pokemon.
+     */
+    public void applyCharge() {
+        chargeTurns = 2; //Two turns, one for charge, one for the next move.
+    }
+
+    /**
+     * Return whether or not this will be/is the first turn the Pokemon is on the Field.
+     * @return Whether or not this will be/is the first turn the Pokemon is on the Field.
+     */
+    public boolean isFirstTurn() {
+        return firstTurn;
+    }
+
+    /**
+     * Return whether or not the Pokemon has a crit available for their next attack.
+     * @return Whether or not the Pokemon will crit their next attack.
+     */
+    public boolean hasCrit() {
+        if (laserFocusTurns > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Set the amount of turns laser focus is active. 2 because laser focus uses the first turn
+     * and the second turn is the crit turn.
+     */
+    public void useLaserFocus() {
+        laserFocusTurns = 2;
+    }
+
+    /**
+     * Adjust the Laser Focus effect duration.
+     */
+    public void adjustLaserFocus() {
+        if (laserFocusTurns > 0) {
+            laserFocusTurns--;
+        }
+    }
+
+    public boolean isLockedOn() {
+        if (lockOnTurns > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void lockOn() {
+        lockOnTurns = 2;
+    }
+
+    public void removeLockOn() {
+        lockOnTurns = 0;
+    }
+
+    public void adjustLockOn() {
+        if (lockOnTurns > 0) {
+            lockOnTurns--;
+        }
+    }
+
+    /**
+     * Set whether or not this is this first turn the Pokemon is on the Field.
+     * @param firstTurn Whether or not this is the first turn the Pokemon is on the Field.
+     */
+    public void setFirstTurn(boolean firstTurn) {
+        this.firstTurn = firstTurn;
+    }
+
+    public void setFuryCutterStacks(int stacks) {
+        furyCutterStacks = Math.min(3, stacks);
+    }
+
+    public void setEchoedVoiceStacks(int stacks) {
+        echoedVoiceStacks = Math.min(4, stacks);
     }
 
     public void receiveTransferrableBattleVariables(Pokemon transferPokemon) {
@@ -454,6 +711,7 @@ public abstract class Pokemon {
     public void setTurnDamageTaken(int damageAmount, Skill.SkillCategory damageCategory) {
         this.turnDamageTaken = damageAmount;
         this.damageTakenCategory = damageCategory;
+        tookDamageThisTurn = true;
     }
 
     public boolean tookPhysicalDamageThisTurn() {
@@ -470,20 +728,108 @@ public abstract class Pokemon {
         return false;
     }
 
-    public boolean tookDamageThisTurn() {
+    public boolean tookEnemyDamageThisTurn() {
         if (turnDamageTaken > 0) {
             return true;
         }
         return false;
     }
 
+    public boolean tookDamageThisTurn() {
+        return tookDamageThisTurn;
+    }
+
+    public void takeDamageThisTurn() {
+        tookDamageThisTurn = true;
+    }
+
     public int getDamageTakenThisTurn() {
         return turnDamageTaken;
+    }
+
+    /**
+     * Apply the move Powder to the Pokemon.
+     */
+    public void applyPowder() {
+        powdered = true;
+    }
+    /**
+     * Return whether or not this Pokemon is affected by the move
+     * Powder.
+     * @return
+     */
+    public boolean isPowdered() {
+        return powdered;
+    }
+
+    /**
+     * Remove the Powder effect from the Pokemon.
+     */
+    public void removePowder() {
+        powdered = false;
+    }
+
+    /**
+     * Remove all of the Stockpile stacks.
+     */
+    public void removeStockpileStacks() {
+        stockpileStacks = 0;
+    }
+
+    /**
+     * Add a Stockpile stack. Maxes out at 3.
+     */
+    public void stockpile() {
+        stockpileStacks++;
+        stockpileStacks = Math.min(stockpileStacks, 3);
+    }
+
+    /**
+     * Return whether or not the Pokemon has any Stockpile stacks.
+     * @return Whether or not the Pokemon has any Stockpile stacks.
+     */
+    public boolean hasStockpileStacks() {
+        if (stockpileStacks > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return the number of stockpile stacks the Pokemon has.
+     * @return
+     */
+    public int getStockpileStacks() {
+        return stockpileStacks;
     }
 
     public void resetDamageTakenThisTurn() {
         turnDamageTaken = 0;
         damageTakenCategory = Skill.SkillCategory.MISC;
+    }
+
+    /**
+     * Set the Pokemon to be sky dropped for the next turn.
+     */
+    public void setSkyDrop() {
+        skyDrop = true;
+    }
+
+    /**
+     * Remove the Pokemon from being sky dropped the next turn.
+     */
+    public void removeSkyDrop() {
+        skyDrop = false;
+    }
+
+    /**
+     * Return whether or not the Pokemon is in the air after being
+     * hit by Sky Drop.
+     * @return Whether or not the Pokemon is in the air after being
+     * hit by Sky Drop.
+     */
+    public boolean isSkyDropped() {
+        return skyDrop;
     }
 
 
@@ -518,12 +864,14 @@ public abstract class Pokemon {
      * Cancel the effects that get cancelled when the
      * Pokemon misses their target. Ex: Rollout.
      */
-    public void cancelMissSkills() {
+    public void cancelMissSkills(Pokemon target) {
         cancelRollout();
+        furyCutterStacks = 0;
         nextTurnSkill = null;
         flying = false;
         underground = false;
         underwater = false;
+        target.removeSkyDrop();
     }
 
     /**
@@ -561,6 +909,43 @@ public abstract class Pokemon {
     public boolean inWhirlpool() { return inWhirlpool; }
 
     /**
+     * Return whether or not the Pokemon is in a Fire Spin.
+     * @return Whether or not the Pokemon is trapped in Fire
+     * Spin.
+     */
+    public boolean inFireSpin() { return fireSpin; }
+
+
+    /**
+     * Return whether or not the Pokemon is infested by Infestation
+     * @return Whether or not the Pokemon is infested by
+     * the move Infestation.
+     */
+    public boolean isInfested() { return infested; }
+
+
+    /**
+     * Return whether or not the Pokemon is trapped in Sand Tomb.
+     * @return Whether or not the Pokemon is trapped in Sand Tomb.
+     */
+    public boolean inSandTomb() { return sandTomb; }
+
+
+    /**
+     * Return whether or not the Pokemon is Clamped by the move Clamp.
+     * @return Whether or not the Pokemon is Clamped.
+     */
+    public boolean isClamped() {
+        return clamped;
+    }
+
+    /**
+     * Return whether or not the Pokemon is wrapped.
+     * @return Whether or not the Pokemon is wrapped.
+     */
+    public boolean isWrapped() { return wrapped; }
+
+    /**
      * Bind the Pokemon with the skill effect from the move
      * Bind.
      */
@@ -583,15 +968,6 @@ public abstract class Pokemon {
     }
 
     /**
-     * Return whether or not the Pokemon is Clamped by
-     * the move Clamp.
-     * @return Whether or not the Pokemon is Clamped.
-     */
-    public boolean isClamped() {
-        return clamped;
-    }
-
-    /**
      * Clamp the Pokemon with the skill effect from the move
      * Clamp.
      */
@@ -606,6 +982,54 @@ public abstract class Pokemon {
             clampTurns = 4;
         } else {
             clampTurns = 5;
+        }
+    }
+
+    /**
+     * Trap the Pokemon in Fire Spin.
+     */
+    public void trapInFireSpin() {
+        fireSpin = true;
+        if (Math.random() < .5) {
+            fireSpinTurns = 4;
+        } else {
+            fireSpinTurns = 5;
+        }
+    }
+
+    /**
+     * Trap the Pokemon in Infestation
+     */
+    public void trapInInfestation() {
+        infested = true;
+        if (Math.random() < .5) {
+            infestationTurns = 4;
+        } else {
+            infestationTurns = 5;
+        }
+    }
+
+    /**
+     * Trap the Pokemon in Sand Tomb.
+     */
+    public void trapInSandTomb() {
+        sandTomb = true;
+        if (Math.random() < .5) {
+            sandTombTurns = 4;
+        } else {
+            sandTombTurns = 5;
+        }
+    }
+
+    /**
+     * Trap the Pokemon in Wrap.
+     */
+    public void wrap() {
+        wrapped = true;
+        if (Math.random() < .5) {
+            wrapTurns = 4;
+        } else {
+            wrapTurns = 5;
         }
     }
 
@@ -630,6 +1054,32 @@ public abstract class Pokemon {
     public void removeWhirlpool() { inWhirlpool = false; }
 
     /**
+     * Remove the Pokemon from Fire Spin.
+     */
+    public void removeFireSpin() {
+        fireSpin = false;
+    }
+
+    /**
+     * Remove the Pokemon from Infestation.
+      */
+    public void removeInfestation() {
+        infested = false;
+    }
+
+    /**
+     * Remove the Pokemon from Sand Tomb.
+     */
+    public void removeSandTomb() {
+        sandTomb = false;
+    }
+
+    /**
+     * Remove the Pokemon from Wrap.
+     */
+    public void removeWrap() { wrapped = false; }
+
+    /**
      * Remove all Bind effects from the Pokemon. (Bind, Wrap, Fire Spin etc)
      */
     public void freeFromBinds() {
@@ -639,6 +1089,14 @@ public abstract class Pokemon {
         clampTurns = 0;
         inWhirlpool = false;
         whirlpoolTurns = 0;
+        fireSpin = false;
+        fireSpinTurns = 0;
+        infested = false;
+        infestationTurns = 0;
+        sandTomb = false;
+        sandTombTurns = 0;
+        wrapped = false;
+        wrapTurns = 0;
     }
 
     /**
@@ -662,6 +1120,30 @@ public abstract class Pokemon {
     public int getWhirlpoolTurns() { return whirlpoolTurns; }
 
     /**
+     * Return the number of turns left until Fire Spin expires.
+     * @return The number of turns left until Fire Spin expires.
+     */
+    public int getFireSpinTurns() { return fireSpinTurns; }
+
+    /**
+     * Return the number of turns left until Infestation expires.
+     * @return The number of turns left until Infestation expires.
+     */
+    public int getInfestationTurns() { return infestationTurns; }
+
+    /**
+     * Return the number of turns left until Sand Tomb expires.
+     * @return The number of turns left until Sand Tomb expires.
+     */
+    public int getSandTombTurns() { return sandTombTurns; }
+
+    /**
+     * Return the number of turns left until Wrap expires.
+     * @return The number of turns left until Wrap expires.
+     */
+    public int getWrapTurns() { return wrapTurns; }
+
+    /**
      * Adjust the number of Clamp turns left.
      */
     public void adjustClampTurns() {
@@ -679,6 +1161,28 @@ public abstract class Pokemon {
      * Adjust the number of Whirlpool turns left.
      */
     public void adjustWhirlpoolTurns() { whirlpoolTurns--; }
+
+    /**
+     * Adjust the number of Fire Spin turns left.
+     */
+    public void adjustFireSpinTurns() { fireSpinTurns--; }
+
+    /**
+     * Adjust the number of Infestation turns left.
+     */
+    public void adjustInfestationTurns() { infestationTurns--; }
+
+    /**
+     * Adjust the number of Sand Tomb turns left.
+     */
+    public void adjustSandTombTurns() {
+        sandTombTurns--;
+    }
+
+    /**
+     * Adjust the number of Wrap turns left.
+     */
+    public void adjustWrapTurns() { wrapTurns--; }
 
     /**
      * Return whether or not this Pokemon will receive
@@ -880,13 +1384,27 @@ public abstract class Pokemon {
     }
 
     /**
-     * Return whether or not the Pokemon just received
-     * the yawn effect.
-     * @return Whether or not the Pokemon just received
-     * the yawn effect.
+     * Return whether or not the Pokemon is effected by Yawn.
+     * @return Whether or not the Pokemon is effected by Yawn.
      */
     public boolean isYawned() {
+        return (justReceivedYawn || fallAsleepDueToYawnThisTurn);
+    }
+
+    /**
+     * Return whether or not the Pokemon just received the yawn effect.
+     * @return Whether or not the Pokemon just received the yawn effect.
+     */
+    public boolean justReceivedYawn() {
         return justReceivedYawn;
+    }
+
+    /**
+     * Change the yawn variables so that when the next turn ends, the Pokemon will fall asleep.
+     */
+    public void passFirstYawnTurn() {
+        justReceivedYawn = false;
+        fallAsleepDueToYawnThisTurn = true;
     }
 
     /**
@@ -947,6 +1465,29 @@ public abstract class Pokemon {
      */
     public boolean isIngrained() {
         return isIngrained;
+    }
+
+    /**
+     * Apply the Spider Web to the Pokemon.
+     */
+    public void applySpiderWeb() {
+        spiderWebbed = true;
+    }
+
+    /**
+     * Return whether or not the Pokemon is trapped in
+     * Spider Web.
+     * @return
+     */
+    public boolean isSpiderWebbed() {
+        return spiderWebbed;
+    }
+
+    /**
+     * Remove the Spider Web effect from the Pokemon.
+     */
+    public void removeSpiderWeb() {
+        spiderWebbed = false;
     }
 
     /**
@@ -1153,6 +1694,19 @@ public abstract class Pokemon {
         return heardPerishSong;
     }
 
+    public int getPerishSongTime() {
+        return perishSongTime;
+    }
+
+    public void adjustPerishSongDuration() {
+        perishSongTime--;
+    }
+
+    public void removePerishSong() {
+        perishSongTime = -1;
+        heardPerishSong = false;
+    }
+
 
     /**
      * Put the Pokemon to sleep and give it a random sleep time.
@@ -1167,6 +1721,14 @@ public abstract class Pokemon {
         } else {
             sleepTime = 4;
         }
+    }
+
+    /**
+     * Put the Pokemon to sleep for 2 turns.
+     */
+    public void induceRestSleep() {
+        preStatus = Status.SLEEP;
+        sleepTime = 2; //Sleep for rest is always 2 turns.
     }
 
     /**
@@ -1373,12 +1935,19 @@ public abstract class Pokemon {
     }
 
     /**
-     * Finish using Fly or Bounce by removing the next turn skill
-     * and come down.
+     * Finish using Fly or Bounce by removing the next turn skill and come down.
      */
     public void flyDown() {
         setNextTurnSkill(null);
         flying = false;
+    }
+
+    /**
+     * Finish using Dig by removing the next turn skill and come up.
+     */
+    public void finishDig() {
+        setNextTurnSkill(null);
+        underground = false;
     }
 
     /**
@@ -1387,6 +1956,11 @@ public abstract class Pokemon {
     public void fly() {
         flying = true;
     }
+
+    /**
+     * Use dig.
+     */
+    public void dig() { underground = true; }
 
     public boolean isSemiInvulnerable() {
         if (underwater || underground || flying) {
@@ -1955,6 +2529,104 @@ public abstract class Pokemon {
         evasionStage = Math.min(evasionStage, 6);
     }
 
+    /**
+     * Set the attack stage by amount stages.
+     * The stage can't go above 6
+     * @param amount The new stage amount
+     */
+    public void setAttackStage(int amount) {
+        attackStage = amount;
+        if (amount < 0) {
+            attackStage = Math.max(-6, attackStage);
+        } else {
+            attackStage = Math.min(6, attackStage);
+        }
+    }
+
+    /**
+     * Set the defense stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setDefenseStage(int amount) {
+        defenseStage = amount;
+        if (amount < 0) {
+            defenseStage = Math.max(-6, defenseStage);
+        } else {
+            defenseStage = Math.min(6, defenseStage);
+        }
+    }
+
+    /**
+     * Set the special attack stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setSpAttackStage(int amount) {
+        specialAttackStage = amount;
+        if (amount < 0) {
+            specialAttackStage = Math.max(-6, specialAttackStage);
+        } else {
+            specialAttackStage = Math.min(6, specialAttackStage);
+        }
+    }
+
+    /**
+     * Set the special defense stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setSpDefenseStage(int amount) {
+        specialDefenseStage = amount;
+        if (amount < 0) {
+            specialDefenseStage = Math.max(-6, specialDefenseStage);
+        } else {
+            specialDefenseStage = Math.min(6, specialDefenseStage);
+        }
+    }
+
+    /**
+     * Set the speed stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setSpeedStage(int amount) {
+        speedStage = amount;
+        if (amount < 0) {
+            speedStage = Math.max(-6, speedStage);
+        } else {
+            speedStage = Math.min(6, speedStage);
+        }
+    }
+
+    /**
+     * Set the accuracy stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setAccuracyStage(int amount) {
+        accuracyStage = amount;
+        if (amount < 0) {
+            accuracyStage = Math.max(-6, accuracyStage);
+        } else {
+            accuracyStage = Math.min(6, accuracyStage);
+        }
+    }
+
+    /**
+     * Set the evasion stage by amount stages.
+     * The stage can't go above 6 or below -6
+     * @param amount The new stage amount
+     */
+    public void setEvasionStage(int amount) {
+        evasionStage = amount;
+        if (amount < 0) {
+            evasionStage = Math.max(-6, evasionStage);
+        } else {
+            evasionStage = Math.min(6, evasionStage);
+        }
+    }
+
 
     /**
      * Initialize the Nature multipliers
@@ -2079,7 +2751,15 @@ public abstract class Pokemon {
      */
     public int[] getIVs() { return ivs; }
 
-    public double getTotalSpeed(Field field) {
+    /**
+     * Return the total speed this Pokemon has at the time of an
+     * attack.
+     * @param field The total field at the time of the attack.
+     * @param pokemonField The Pokemon's side of the field at the time
+     *                     of the attack.
+     * @return The total speed this Pokemon has when it attacks.
+     */
+    public double getTotalSpeed(Field field, SubField pokemonField) {
         double userSpeed = getSpeedStat();
         int stage = getSpeedStage();
         if (stage > 0) {
@@ -2100,6 +2780,9 @@ public abstract class Pokemon {
         } else if (ability == Pokemon.Ability.CHLOROPHYLL &&
                 (field.getWeatherType() == WeatherType.SUN ||
                         field.getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
+            userSpeed *= 2;
+        }
+        if (pokemonField.hasTailwind()) {
             userSpeed *= 2;
         }
         return userSpeed;
@@ -2130,9 +2813,9 @@ public abstract class Pokemon {
         resistances.put(Pokemon.Type.ICE, 1.0);
         resistances.put(Pokemon.Type.DRAGON, 1.0);
         resistances.put(Pokemon.Type.DARK, 1.0);
-        initializeResistances(typeOne);
+        initializeResistances(battleTypeOne);
         if (typeTwo != Type.NONE) {
-            initializeResistances(typeTwo);
+            initializeResistances(battleTypeTwo);
         }
     }
 
@@ -2285,7 +2968,14 @@ public abstract class Pokemon {
             resistances.put(Pokemon.Type.FAIRY, resistances.get(Pokemon.Type.FAIRY) * 2);
             resistances.put(Pokemon.Type.PSYCHIC,  0.0);
             resistances.put(Pokemon.Type.DARK, resistances.get(Pokemon.Type.DARK) * 0.5);
-        }        
+        } else if (type == Type.FAIRY) {
+            resistances.put(Pokemon.Type.FIGHTING, resistances.get(Pokemon.Type.FIGHTING) * 0.5);
+            resistances.put(Type.POISON, resistances.get(Type.POISON) * 2);
+            resistances.put(Type.BUG, resistances.get(Type.BUG) * 0.5);
+            resistances.put(Type.DRAGON, 0.0);
+            resistances.put(Type.STEEL,  resistances.get(Type.STEEL) * 2);
+            resistances.put(Pokemon.Type.DARK, resistances.get(Pokemon.Type.DARK) * 0.5);
+        }
     }
 
     /**
@@ -2978,6 +3668,10 @@ public abstract class Pokemon {
         return fainted;
     }
 
+    public void setSkillset(List<Skill> newSkills) {
+        skills = newSkills;
+    }
+
     /**
      * Return the Pokemon's list of skills.
      * @return The Pokemon's list of moves.
@@ -3278,6 +3972,10 @@ public abstract class Pokemon {
                 return "Rock Head";
             case LIMBER:
                 return "Limber";
+            case SIMPLE:
+                return "Simple";
+            case NONE:
+                return "No Ability";
             default:
                 return "Ability Error";
 
@@ -3289,6 +3987,23 @@ public abstract class Pokemon {
      * @return The Pokemon's ability
      */
     public Ability getAbility() { return ability; }
+
+    /**
+     * Return the Pokemon's battle ability.
+     * @return The Pokemon's battle ability.
+     */
+    public Ability getBattleAbility() { return battleAbility; }
+
+
+    /**
+     * Set the Pokemon's current battling ability to
+     * ability.
+     * @param ability The ability the battle ability will be
+     *                set to.
+     */
+    public void setBattleAbility(Ability ability) {
+        this.battleAbility = ability;
+    }
 
     /**
      * Return the Pokemon's nature.
@@ -3388,6 +4103,42 @@ public abstract class Pokemon {
         }
     }
 
+    public boolean isPoisonable() {
+        if (!isStatused() && currentHealth != 0 &&
+                battleAbility != Pokemon.Ability.SHIELD_DUST) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isParalyzable() {
+        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
+                battleAbility != Pokemon.Ability.LIMBER) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSleepable() {
+        if (!isStatused() && battleAbility != Pokemon.Ability.INSOMNIA && !uproaring) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isFreezable() {
+        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBurnable() {
+        if (!isStatused() && currentHealth != 0 && battleAbility!= Pokemon.Ability.SHIELD_DUST) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Set the Pokemon's status to newStatus
      * @param newStatus The status that will override the current status.
@@ -3438,6 +4189,42 @@ public abstract class Pokemon {
      * @return The Pokemon's second type.
      */
     public Type getTypeTwo() { return typeTwo; }
+
+    /**
+     * Return the Pokemon's battling second type.
+     * @return The Pokemon's battling second type.
+     */
+    public Type getBattleTypeTwo() {
+        return battleTypeTwo;
+    }
+
+    /**
+     * Return the Pokemon's battling first type.
+     * @return The Pokemon's battling first type.
+     */
+    public Type getBattleTypeOne() {
+        return battleTypeOne;
+    }
+
+    /**
+     * Set the battling first type to a new type.
+     * @param newType The new type of the first battling
+     *                type.
+     */
+    public void setBattleTypeOne(Type newType) {
+        battleTypeOne = newType;
+        initializeResistances();
+    }
+
+    /**
+     * set the battling second type to a new type.
+     * @param newType The new type of the second battling
+     *                type.
+     */
+    public void setBattleTypeTwo(Type newType) {
+        battleTypeTwo = newType;
+        initializeResistances();
+    }
 
     /**
      * Return the Pokemon's ID (0 for Bulbasaur etc)

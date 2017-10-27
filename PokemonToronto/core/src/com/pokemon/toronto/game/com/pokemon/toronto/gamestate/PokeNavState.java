@@ -202,9 +202,9 @@ public class PokeNavState extends GameState{
      * Go to the PokemonCenter state to heal the player's pokemon.
      */
     private void executePokeCenterScreen() {
-        /*
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
-        */
+
+        /*
         gsm.stopBgm();
         TrainerFactory ttf = new TrainerFactory();
         Trainer t = ttf.getTrainer(3, gsm.getLatitude(), gsm.getLongitude());
@@ -213,7 +213,7 @@ public class PokeNavState extends GameState{
         wildBgm.setVolume(0.5f);
         wildBgm.play();
         gsm.setState(new BattleState(gsm, wildBgm, t));
-        dispose();
+        */
     }
 
     /**

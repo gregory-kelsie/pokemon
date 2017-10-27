@@ -35,20 +35,21 @@ public class WaterSpout extends DamageSkill {
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
-     *@param enemyPokemonPartyPosition
+     * @param enemyPokemonPartyPosition
      * @param field The field the battle is on.
+     * @param targetSkill
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
-     */
+     * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         damage = (int)Math.round((1.0 * damage * skillUser.getCurrentHealth()) /
                 skillUser.getHealthStat());
         List<String> results;
 
         results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
                 enemyPokemonPartyPosition, field, userField, enemyField,
-                isFirstAttack, skillUserParty, enemyPokemonParty);
+                isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
         damage = 150; //Set it back to 150 base power.
         return results;
     }

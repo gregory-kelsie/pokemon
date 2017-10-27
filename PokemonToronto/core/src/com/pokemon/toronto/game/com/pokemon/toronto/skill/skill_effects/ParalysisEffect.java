@@ -29,15 +29,16 @@ public class ParalysisEffect extends SecondaryEffect {
     @Override
     public void use(List<String> results, Pokemon skillUser, Pokemon enemyPokemon, Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
         Pokemon effectReceiver;
+        SubField targetSubField;
         if (target == SecondaryEffect.Target.SELF) {
             effectReceiver = skillUser;
+            targetSubField = userField;
         } else {
             effectReceiver = enemyPokemon;
+            targetSubField = enemyField;
         }
         //Check if the user is able to receive paralysis.
-        if (!effectReceiver.isStatused() && effectReceiver.getCurrentHealth() != 0 &&
-                effectReceiver.getAbility() != Pokemon.Ability.SHIELD_DUST &&
-                effectReceiver.getAbility() != Pokemon.Ability.LIMBER) {
+        if (!effectReceiver.isParalyzable() && !targetSubField.hasSafeguard()) {
             effectReceiver.setPreStatus(Pokemon.Status.PARALYSIS);
             results.add(effectReceiver.getName() + " was paralyzed.");
         }

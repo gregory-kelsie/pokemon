@@ -76,9 +76,26 @@ public class Ivysaur extends Pokemon {
      */
     @Override
     protected void initLevelUpSkills() {
-        levelUpSkills.put(0, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
+        List<Integer> initSkills = new ArrayList<Integer>();
+        initSkills.add(SkillFactory.TACKLE);
+        initSkills.add(SkillFactory.GROWL);
+        initSkills.add(SkillFactory.LEECH_SEED);
+        levelUpSkills.put(0, initSkills);
         levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
-        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLEEP_POWDER)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEECH_SEED)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.VINE_WHIP)));
+        ArrayList<Integer> thirteen = new ArrayList<Integer>();
+        thirteen.add(SkillFactory.POISON_POWDER);
+        thirteen.add(SkillFactory.SLEEP_POWDER);
+        levelUpSkills.put(13, thirteen);
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAZOR_LEAF)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWEET_SCENT)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWTH)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        //todo: worry seed
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.SYNTHESIS)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.SOLAR_BEAM)));
     }
 
     /**
