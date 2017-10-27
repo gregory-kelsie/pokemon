@@ -20,6 +20,12 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Squirtle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Venusaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Wartortle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Weedle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanDiglett;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanDugtrio;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanExeggutor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGeodude;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGolem;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanGraveler;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Arbok;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Beedrill;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Butterfree;
@@ -321,10 +327,16 @@ public class PokemonFactory {
         } else if (id == PokemonId.DIGLETT.getValue()) {
             return new Diglett(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.DUGTRIO.getValue()) {
+        } else if (id == PokemonId.ALOLAN_DIGLETT.getValue()) {
+            return new AlolanDiglett(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.DUGTRIO.getValue()) {
             return new Dugtrio(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.MEOWTH.getValue()) {
+        } else if (id == PokemonId.ALOLAN_DUGTRIO.getValue()) {
+            return new AlolanDugtrio(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.MEOWTH.getValue()) {
             return new Meowth(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.PERSIAN.getValue()) {
@@ -393,13 +405,22 @@ public class PokemonFactory {
         } else if (id == PokemonId.GEODUDE.getValue()) {
             return new Geodude(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.GRAVELER.getValue()) {
+        } else if (id == PokemonId.ALOLAN_GEODUDE.getValue()) {
+            return new AlolanGeodude(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.GRAVELER.getValue()) {
             return new Graveler(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.GOLEM.getValue()) {
+        } else if (id == PokemonId.ALOLAN_GRAVELER.getValue()) {
+            return new AlolanGraveler(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.GOLEM.getValue()) {
             return new Golem(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.PONYTA.getValue()) {
+        } else if (id == PokemonId.ALOLAN_GOLEM.getValue()) {
+            return new AlolanGolem(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.PONYTA.getValue()) {
             return new Ponyta(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.RAPIDASH.getValue()) {
@@ -480,7 +501,10 @@ public class PokemonFactory {
         } else if (id == PokemonId.EXEGGUTOR.getValue()) {
             return new Exeggutor(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
-        } else if (id == PokemonId.CUBONE.getValue()) {
+        } else if (id == PokemonId.ALOLAN_EXEGGUTOR.getValue()) {
+            return new AlolanExeggutor(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
+                    fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }  else if (id == PokemonId.CUBONE.getValue()) {
             return new Cubone(DATABASE, level, gender, ivs, evs, firstSkill, secondSkill, thirdSkill,
                     fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.MAROWAK.getValue()) {
@@ -770,7 +794,12 @@ public class PokemonFactory {
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getBattleAbility());
-        } else if (id == PokemonId.PERSIAN.getValue()) {
+        }  else if (id == PokemonId.ALOLAN_DUGTRIO.getValue()) {
+            return new AlolanDugtrio(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getBattleAbility());
+        }  else if (id == PokemonId.PERSIAN.getValue()) {
             return new Persian(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
@@ -840,8 +869,18 @@ public class PokemonFactory {
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getBattleAbility());
+        } else if (id == PokemonId.ALOLAN_GRAVELER.getValue()) {
+            return new AlolanGraveler(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getBattleAbility());
         } else if (id == PokemonId.GOLEM.getValue()) {
             return new Golem(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getBattleAbility());
+        } else if (id == PokemonId.ALOLAN_GOLEM.getValue()) {
+            return new AlolanGolem(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getBattleAbility());
@@ -907,6 +946,11 @@ public class PokemonFactory {
                     preEvolution.getNature(), preEvolution.getBattleAbility());
         } else if (id == PokemonId.EXEGGUTOR.getValue()) {
             return new Exeggutor(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
+                    preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
+                    preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
+                    preEvolution.getNature(), preEvolution.getBattleAbility());
+        } else if (id == PokemonId.ALOLAN_EXEGGUTOR.getValue()) {
+            return new AlolanExeggutor(PREEVOLUTION, preEvolution.getLevel(), preEvolution.getGender(), preEvolution.getIVs(), preEvolution.getEVs(), preEvolution.getFirstSkill(),
                     preEvolution.getSecondSkill(), preEvolution.getThirdSkill(), preEvolution.getFourthSkill(),
                     preEvolution.getCurrentHealth(), (int)preEvolution.getDisplayedExp(), preEvolution.getStatus(),
                     preEvolution.getNature(), preEvolution.getBattleAbility());

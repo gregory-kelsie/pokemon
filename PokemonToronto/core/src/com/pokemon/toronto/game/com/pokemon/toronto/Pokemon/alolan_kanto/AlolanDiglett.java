@@ -1,7 +1,8 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -10,38 +11,38 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Gregory on 9/15/2017.
+ * Created by Gregory on 10/27/2017.
  */
 
-public class Dugtrio extends Pokemon {
+public class AlolanDiglett extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 51;
-    private static final String NAME = "Dugtrio";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 50;
+    private static final int NUMBER = -50;
+    private static final String NAME = "Diglett";
+    private static final int BASE_EXP = 53;
+    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    private static final int CAPTURE_RATE = 255;
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 120;
+    private static final int BASE_HEALTH = 10;
+    private static final int BASE_ATTACK = 55;
+    private static final int BASE_DEFENSE = 30;
+    private static final int BASE_SPECIAL_ATTACK = 35;
+    private static final int BASE_SPECIAL_DEFENSE = 45;
+    private static final int BASE_SPEED = 90;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/dugtrio.png";
-    private static final String BACK_PATH = "battle/backs/dugtrio.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/dugtrio.png";
-    private static final String CRY_PATH = "sounds/cry/051.wav";
+    private static final String ICON_PATH = "pokemonSprites/alolan_kanto/diglett.png";
+    private static final String BACK_PATH = "battle/backs/alolan_kanto/diglett.png";
+    private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/diglett.png";
+    private static final String CRY_PATH = "sounds/cry/050.wav";
 
     /**
-     * Create a Dugtrio with the specified level.
-     * @param level The level of the Dugtrio.
+     * Create a Diglett with the specified level.
+     * @param level The level of the Diglett.
      */
-    public Dugtrio(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, Pokemon.Ability.SAND_VEIL, Pokemon.ExpType.MEDIUM_FAST,
+    public AlolanDiglett(int level) {
+        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Type.STEEL, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
@@ -62,10 +63,10 @@ public class Dugtrio extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Dugtrio(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
+    public AlolanDiglett(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                    Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.GROUND, Pokemon.Type.NONE, ability, nature, Pokemon.ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Type.STEEL, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
                 BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
@@ -73,17 +74,13 @@ public class Dugtrio extends Pokemon {
     }
 
     /**
-     * Init Dugtrio's level up skills.
+     * Init Diglett's level up skills.
      */
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        //TODO: ROTOTILLER
-        beginnerSkills.add(SkillFactory.NIGHT_SLASH);
-        beginnerSkills.add(SkillFactory.TRI_ATTACK);
-        beginnerSkills.add(SkillFactory.SCRATCH);
         beginnerSkills.add(SkillFactory.SAND_ATTACK);
-        beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.METAL_CLAW);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.GROWL)));
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASTONISH)));
@@ -92,16 +89,22 @@ public class Dugtrio extends Pokemon {
         levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLDOZE)));
         levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUCKER_PUNCH)));
         levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_BOMB)));
-        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTH_POWER)));
-        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.DIG)));
-        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLASH)));
-        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTHQUAKE)));
-        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.FISSURE)));
-        initEvolutionSkills();
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTH_POWER)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.DIG)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.IRON_HEAD)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.EARTHQUAKE)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.FISSURE)));
     }
 
+    /**
+     * Return Alolan Dugtrio if the Alolan Diglett is 26+.
+     * @return Alolan Dugtrio if the Alolan Diglett is 26+.
+     */
     @Override
-    protected void initEvolutionSkills() {
-        evolutionSkills.add(SkillFactory.SAND_TOMB);
+    public int getLevelUpEvolutionId() {
+        if (level >= 26) {
+            return PokemonId.DUGTRIO.getValue();
+        }
+        return -1;
     }
 }
