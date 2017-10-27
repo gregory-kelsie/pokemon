@@ -426,7 +426,7 @@ public class UseAttackPhase extends BattlePhase {
             useStatic();
         } else if (receiver.getBattleAbility() == Pokemon.Ability.POISON_POINT) {
             usePoisonPoint();
-        } else if (receiver.getBattleAbility() == Pokemon.Ability.POISON_TOUCH) {
+        } else if (attacker.getBattleAbility() == Pokemon.Ability.POISON_TOUCH) {
             usePoisonTouch();
         } else if (receiver.getBattleAbility() == Pokemon.Ability.FLAME_BODY) {
             useFlameBody();
