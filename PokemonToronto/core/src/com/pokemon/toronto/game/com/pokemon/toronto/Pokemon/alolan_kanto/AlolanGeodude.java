@@ -1,8 +1,8 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto;
 
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 

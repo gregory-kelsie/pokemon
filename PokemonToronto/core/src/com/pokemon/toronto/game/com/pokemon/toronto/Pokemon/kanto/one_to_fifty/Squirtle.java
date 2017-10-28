@@ -1,11 +1,13 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Gregory on 6/14/2017.
@@ -62,8 +64,8 @@ public class Squirtle extends Pokemon {
      * @param ability The Pokemon's ability.
      */
     public Squirtle(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                   Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                   Status status, Nature nature, Ability ability) {
+                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
+                    Status status, Nature nature, Ability ability) {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.WATER, Type.NONE, ability, nature, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,

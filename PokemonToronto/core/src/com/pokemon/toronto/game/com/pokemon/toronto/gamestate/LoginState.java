@@ -1,7 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
@@ -20,8 +19,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;

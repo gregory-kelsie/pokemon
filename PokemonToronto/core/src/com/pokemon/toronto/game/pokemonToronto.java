@@ -12,8 +12,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.GameStateManager;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.location.Place;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.TrainerFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

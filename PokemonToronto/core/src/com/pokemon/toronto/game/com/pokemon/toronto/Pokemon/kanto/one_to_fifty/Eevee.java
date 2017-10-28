@@ -1,5 +1,7 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -62,8 +64,8 @@ public class Eevee extends Pokemon {
      * @param ability The Pokemon's ability.
      */
     public Eevee(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                      Status status, Nature nature, Ability ability) {
+                 Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
+                 Status status, Nature nature, Ability ability) {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.NORMAL, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,

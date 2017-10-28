@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.factory.TrainerFactory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,10 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.gamestate;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokenav.PokeNavScreen;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
-import com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial.TrainerFactory;
 
 import java.util.ArrayList;
 import java.util.List;

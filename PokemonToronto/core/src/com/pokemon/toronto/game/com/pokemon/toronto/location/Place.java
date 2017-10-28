@@ -1,6 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.location;
 
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.TrainerId;
 
 import java.util.ArrayList;

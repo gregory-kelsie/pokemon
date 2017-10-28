@@ -1,5 +1,8 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -20,7 +23,6 @@ public class Bulbasaur extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
     private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 6.9;
 
     //Base Stats
     private static final int BASE_HEALTH = 45;

@@ -1,4 +1,4 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes;
 
 /**
  * Created by Gregory on 6/21/2017.

@@ -2,7 +2,6 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Rattata;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 

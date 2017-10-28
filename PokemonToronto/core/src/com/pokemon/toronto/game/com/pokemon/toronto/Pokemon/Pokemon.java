@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
-import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -23,7 +22,7 @@ public abstract class Pokemon {
     //Basic
     protected int pokemonId;
     protected String name;
-    protected Nature nature;
+    protected com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature nature;
     protected ExpType expType;
     protected Ability ability;
     protected char gender;
@@ -385,7 +384,7 @@ public abstract class Pokemon {
 
     public Pokemon(int pokemonId, String name, int level, char gender, Status status,
                    int[] ivs, int[] evs, Type typeOne, Type typeTwo, Ability ability,
-                   Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
+                   com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
                    String mapIconPath, String backPath, String miniPath,
                    String cryPath, int captureRate, Skill firstSkill, Skill secondSkill,
                    Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp) {
@@ -2638,49 +2637,49 @@ public abstract class Pokemon {
         natureSpecialDefenseMultiplier = NORMAL_MULTIPLIER;
         natureSpeedMultiplier = NORMAL_MULTIPLIER;
         //Attack Bonus
-        if(nature  == Nature.LONELY) { natureAttackMultiplier = INCREASED_MULTIPLIER;
+        if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.LONELY) { natureAttackMultiplier = INCREASED_MULTIPLIER;
             natureDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.ADAMANT) { natureAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.ADAMANT) { natureAttackMultiplier = INCREASED_MULTIPLIER;
             natureSpecialAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.NAUGHTY) { natureAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.NAUGHTY) { natureAttackMultiplier = INCREASED_MULTIPLIER;
             natureSpecialDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.BRAVE) { natureAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.BRAVE) { natureAttackMultiplier = INCREASED_MULTIPLIER;
             natureSpeedMultiplier = REDUCED_MULTIPLIER; }
         //Defense Bonus
-        else if(nature  == Nature.BOLD) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.BOLD) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
             natureAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.IMPISH) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.IMPISH) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
             natureSpecialAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.LAX) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.LAX) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
             natureSpecialDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.RELAXED) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.RELAXED) { natureDefenseMultiplier = INCREASED_MULTIPLIER;
             natureSpeedMultiplier = REDUCED_MULTIPLIER; }
         //Sp Attack Bonus
-        else if(nature  == Nature.MODEST) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.MODEST) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
             natureAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.MILD) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.MILD) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
             natureDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.RASH) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.RASH) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
             natureSpecialDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.QUIET) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.QUIET) { natureSpecialAttackMultiplier = INCREASED_MULTIPLIER;
             natureSpeedMultiplier = REDUCED_MULTIPLIER; }
         //Sp Defense Bonus
-        else if(nature  == Nature.CALM) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.CALM) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
             natureAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.GENTLE) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.GENTLE) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
             natureDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.CAREFUL) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.CAREFUL) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
             natureSpecialAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.SASSY) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.SASSY) { natureSpecialDefenseMultiplier = INCREASED_MULTIPLIER;
             natureSpeedMultiplier = REDUCED_MULTIPLIER; }
         //Speed Bonus
-        else if(nature  == Nature.TIMID) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.TIMID) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
             natureAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.HASTY) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.HASTY) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
             natureDefenseMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.JOLLY) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.JOLLY) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
             natureSpecialAttackMultiplier = REDUCED_MULTIPLIER; }
-        else if(nature  == Nature.NAIVE) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
+        else if(nature  == com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.NAIVE) { natureSpeedMultiplier = INCREASED_MULTIPLIER;
             natureSpecialDefenseMultiplier = REDUCED_MULTIPLIER; }
     }
 
@@ -3068,7 +3067,7 @@ public abstract class Pokemon {
      * Set a random nature for the Pokemon.
      */
     private void setRandomNature() {
-        Nature[] natureList = Nature.values();
+        com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature[] natureList = com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature.values();
         int value = (int)Math.round(Math.random() * (natureList.length - 1));
         nature = natureList[value];
     }
@@ -4009,7 +4008,7 @@ public abstract class Pokemon {
      * Return the Pokemon's nature.
      * @return The Pokemon's nature.
      */
-    public Nature getNature() { return nature; }
+    public com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature getNature() { return nature; }
 
     /**
      * Return the Pokemon's current health.

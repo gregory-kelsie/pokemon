@@ -4,7 +4,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.factory;
  * Created by Gregory on 7/25/2017.
  */
 
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.RoutePokemon;
 
 import java.util.ArrayList;

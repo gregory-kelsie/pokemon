@@ -1,10 +1,10 @@
-package com.pokemon.toronto.game.com.pokemon.toronto.trainer.trivial;
+package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pikachu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pikachu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Raichu;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Venomoth;
@@ -62,8 +62,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.TrainerId;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

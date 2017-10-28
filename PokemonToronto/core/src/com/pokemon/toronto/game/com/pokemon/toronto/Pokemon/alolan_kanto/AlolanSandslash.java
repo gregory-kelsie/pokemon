@@ -1,12 +1,11 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto;
 
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

@@ -1,7 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
-import com.badlogic.gdx.Gdx;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 
 import java.util.ArrayList;
 import java.util.List;
