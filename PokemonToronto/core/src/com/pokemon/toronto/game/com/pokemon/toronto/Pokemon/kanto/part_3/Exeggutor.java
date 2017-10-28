@@ -79,9 +79,21 @@ public class Exeggutor extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.SEED_BOMB);
+        beginnerSkills.add(SkillFactory.BARRAGE);
+        beginnerSkills.add(SkillFactory.HYPNOSIS);
+        beginnerSkills.add(SkillFactory.CONFUSION);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYSHOCK)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.EGG_BOMB)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.WOOD_HAMMER)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEAF_STORM)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.STOMP);
     }
 
 }

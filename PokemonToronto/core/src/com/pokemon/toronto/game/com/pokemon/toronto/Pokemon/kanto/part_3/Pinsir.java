@@ -78,8 +78,22 @@ public class Pinsir extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.VICEGRIP);
+        beginnerSkills.add(SkillFactory.FOCUS_ENERGY);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.BIND)));
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.SEISMIC_TOSS)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.HARDEN)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.REVENGE)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.VITAL_THROW)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_HIT)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRICK_BREAK)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.X_SCISSOR)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUBMISSION)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.STORM_THROW)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWORDS_DANCE)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.THRASH)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERPOWER)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.GUILLOTINE)));
     }
 }

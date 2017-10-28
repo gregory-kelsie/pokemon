@@ -79,9 +79,26 @@ public class Omastar extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.CONSTRICT);
+        beginnerSkills.add(SkillFactory.WITHDRAW);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_GUN)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLOUT)));
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SHOT)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        //TODO: PROTECT 34
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.ANCIENT_POWER)));
+        levelUpSkills.put(48, new ArrayList<Integer>(Arrays.asList(SkillFactory.TICKLE)));
+        levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_BLAST)));
+        levelUpSkills.put(67, new ArrayList<Integer>(Arrays.asList(SkillFactory.SHELL_SMASH)));
+        levelUpSkills.put(75, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+        initEvolutionSkills();
     }
-    
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SPIKE_CANNON);
+    }
 }

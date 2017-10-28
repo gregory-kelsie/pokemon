@@ -79,9 +79,34 @@ public class Dragonite extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.HURRICANE);
+        beginnerSkills.add(SkillFactory.FIRE_PUNCH);
+        beginnerSkills.add(SkillFactory.THUNDER_PUNCH);
+        beginnerSkills.add(SkillFactory.ROOST);
+        beginnerSkills.add(SkillFactory.WRAP);
+        beginnerSkills.add(SkillFactory.LEER);
+        beginnerSkills.add(SkillFactory.THUNDER_WAVE);
+        beginnerSkills.add(SkillFactory.TWISTER);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.TWISTER)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RAGE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        //TODO: DRAGON TAIL 33
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RUSH)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_DANCE)));
+        levelUpSkills.put(67, new ArrayList<Integer>(Arrays.asList(SkillFactory.OUTRAGE)));
+        levelUpSkills.put(75, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_BEAM)));
+        levelUpSkills.put(81, new ArrayList<Integer>(Arrays.asList(SkillFactory.HURRICANE)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.WING_ATTACK);
     }
 
 }

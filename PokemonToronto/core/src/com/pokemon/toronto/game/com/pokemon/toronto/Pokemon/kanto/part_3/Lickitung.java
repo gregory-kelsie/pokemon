@@ -78,8 +78,20 @@ public class Lickitung extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.LICK);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERSONIC)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.DEFENSE_CURL)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.KNOCK_OFF)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRAP)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.STOMP)));
+        //TODO: DISABLE 25
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLOUT)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.CHIP_AWAY)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.REFRESH)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCREECH)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.POWER_WHIP)));
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRING_OUT)));
     }
 }

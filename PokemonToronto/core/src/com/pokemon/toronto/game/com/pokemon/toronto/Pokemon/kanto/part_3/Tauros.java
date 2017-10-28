@@ -78,8 +78,20 @@ public class Tauros extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAGE)));
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.HORN_ATTACK)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.SCARY_FACE)));
+        //TODO: PURSUIT 15
+        levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.REST)));
+        levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.PAYBACK)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.WORK_UP)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.ZEN_HEADBUTT)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(48, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWAGGER)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.THRASH)));
+        levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_IMPACT)));
     }
 }

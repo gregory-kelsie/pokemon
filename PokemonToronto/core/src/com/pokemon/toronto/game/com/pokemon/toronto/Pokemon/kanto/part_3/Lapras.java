@@ -78,8 +78,21 @@ public class Lapras extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.SING);
+        beginnerSkills.add(SkillFactory.GROWL);
+        beginnerSkills.add(SkillFactory.WATER_GUN);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.MIST)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSE_RAY)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_SHARD)));
+        levelUpSkills.put(14, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_PULSE)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAIN_DANCE)));
+        //TODO: PERISH SONG 27
+        levelUpSkills.put(32, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_BEAM)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.SHEER_COLD)));
     }
 }

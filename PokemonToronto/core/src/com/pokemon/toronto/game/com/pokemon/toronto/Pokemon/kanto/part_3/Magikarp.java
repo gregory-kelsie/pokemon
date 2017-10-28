@@ -79,9 +79,11 @@ public class Magikarp extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.SPLASH);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.TACKLE)));
+        levelUpSkills.put(30, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAIL)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.BOUNCE)));
     }
 
     /**

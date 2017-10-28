@@ -79,9 +79,22 @@ public class Koffing extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.POISON_GAS);
+        beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOG)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.SMOKESCREEN)));
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.CLEAR_SMOG)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.SELF_DESTRUCT)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.HAZE)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.GYRO_BALL)));
+        levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLUDGE_BOMB)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.EXPLOSION)));
+        //TODO: DESTINY BOND 40
+        //TODO: BELCH 42
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEMENTO)));
     }
 
     /**

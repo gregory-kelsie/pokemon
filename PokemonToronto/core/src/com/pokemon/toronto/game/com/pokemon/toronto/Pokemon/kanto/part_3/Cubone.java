@@ -79,9 +79,23 @@ public class Cubone extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.GROWL);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(3, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.BONE_CLUB)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEADBUTT)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.BONEMERANG)));
+        levelUpSkills.put(23, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAGE)));
+        levelUpSkills.put(27, new ArrayList<Integer>(Arrays.asList(SkillFactory.FALSE_SWIPE)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.THRASH)));
+        //TODO: FLING 33
+        //TODO: STOMPING TANTRUM 37
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        //TODO: RETALIATE 47
+        levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.BONE_RUSH)));
     }
 
     /**

@@ -79,9 +79,34 @@ public class MrMime extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        //TODO: MISTY TERRAIN
+        beginnerSkills.add(SkillFactory.MAGICAL_LEAF);
+        //TODO: QUICK GUARD
+        //TODO: WIDE GUARD
+        //TODO: POWER SWAP
+        //TODO: GUARD SWAP
+        beginnerSkills.add(SkillFactory.BARRIER);
+        beginnerSkills.add(SkillFactory.CONFUSION);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        //TODO: COPYCAT 4
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEDITATE)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
+        //TODO: MIMIC 15
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYWAVE)));
+        //TODO: ENCORE 18
+        ArrayList<Integer> screens = new ArrayList<Integer>();
+        screens.add(SkillFactory.LIGHT_SCREEN);
+        screens.add(SkillFactory.REFLECT);
+        levelUpSkills.put(22, screens);
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYBEAM)));
+        //TODO: SUBSTITUTE 29
+        //TODO: RECYCLE 32
+        //TODO: TRICK 36
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
+        levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLE_PLAY)));
+        //TODO: BATON PASS 46
+        levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+
     }
 
 }

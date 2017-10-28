@@ -79,9 +79,30 @@ public class Kabutops extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.NIGHT_SLASH);
+        beginnerSkills.add(SkillFactory.FEINT);
         beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.HARDEN);
+        beginnerSkills.add(SkillFactory.ABSORB);
+        beginnerSkills.add(SkillFactory.LEER);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.ABSORB)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.MUD_SHOT)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAND_ATTACK)));
+        //TODO: ENDURE 26
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_JET)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGA_DRAIN)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.METAL_SOUND)));
+        levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.ANCIENT_POWER)));
+        levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRING_OUT)));
+        levelUpSkills.put(72, new ArrayList<Integer>(Arrays.asList(SkillFactory.NIGHT_SLASH)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.SLASH);
     }
 
 }

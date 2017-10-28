@@ -78,8 +78,34 @@ public class Hitmonlee extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.REVERSAL);
+        beginnerSkills.add(SkillFactory.CLOSE_COMBAT);
+        beginnerSkills.add(SkillFactory.MEGA_KICK);
+        beginnerSkills.add(SkillFactory.REVENGE);
+        beginnerSkills.add(SkillFactory.MEDITATE);
+        beginnerSkills.add(SkillFactory.ROLLING_KICK);
+        beginnerSkills.add(SkillFactory.JUMP_KICK);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEDITATE)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLING_KICK)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.JUMP_KICK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRICK_BREAK)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(29, new ArrayList<Integer>(Arrays.asList(SkillFactory.HIGH_JUMP_KICK)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.MIND_READER)));
+        //TODO: FORESIGHT 37
+        //TODO: WIDE GUARD 41
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.BLAZE_KICK)));
+        //TODO: ENDURE 49
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGA_KICK)));
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.CLOSE_COMBAT)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.REVERSAL)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.DOUBLE_KICK);
     }
 }

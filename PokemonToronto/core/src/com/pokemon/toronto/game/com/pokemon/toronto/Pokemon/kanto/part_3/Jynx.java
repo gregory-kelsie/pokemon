@@ -79,9 +79,27 @@ public class Jynx extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.DRAINING_KISS);
+        //TODO: PERISH SONG
+        beginnerSkills.add(SkillFactory.POUND);
+        beginnerSkills.add(SkillFactory.LICK);
+        beginnerSkills.add(SkillFactory.LOVELY_KISS);
+        beginnerSkills.add(SkillFactory.POWDER_SNOW);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.LICK)));
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.LOVELY_KISS)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.POWDER_SNOW)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_SLAP)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.ICE_PUNCH)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.HEART_STAMP)));
+        //TODO: MEAN LOOK 25
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.FAKE_TEARS)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.WAKE_UP_SLAP)));
+        levelUpSkills.put(39, new ArrayList<Integer>(Arrays.asList(SkillFactory.AVALANCHE)));
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.WRING_OUT)));
+        //TODO: PERISH SONG 55
+        levelUpSkills.put(60, new ArrayList<Integer>(Arrays.asList(SkillFactory.BLIZZARD)));
     }
 
 }

@@ -79,9 +79,26 @@ public class Staryu extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.HARDEN);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_GUN)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAPID_SPIN)));
+        levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.RECOVER)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYWAVE)));
+        levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWIFT)));
+        levelUpSkills.put(18, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLEBEAM)));
+        //TODO: CAMOUFLAGE 22
+        levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.GYRO_BALL)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.BRINE)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.MINIMIZE)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.REFLECT_TYPE)));
+        levelUpSkills.put(37, new ArrayList<Integer>(Arrays.asList(SkillFactory.POWER_GEM)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSE_RAY)));
+        levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.PSYCHIC)));
+        levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.LIGHT_SCREEN)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.COSMIC_POWER)));
+        levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
     }
 
     /**

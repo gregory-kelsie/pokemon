@@ -79,8 +79,25 @@ public class Snorlax extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.TACKLE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.DEFENSE_CURL)));
+        levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.AMNESIA)));
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.LICK)));
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.CHIP_AWAY)));
+        levelUpSkills.put(20, new ArrayList<Integer>(Arrays.asList(SkillFactory.YAWN)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.BODY_SLAM)));
+        List<Integer> sleepMoves = new ArrayList<Integer>();
+        sleepMoves.add(SkillFactory.REST);
+        sleepMoves.add(SkillFactory.SNORE);
+        levelUpSkills.put(28, sleepMoves);
+        //TODO: SLEEP TALK 33
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_IMPACT)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROLLOUT)));
+        //TODO: BLOCK 41
+        levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.BELLY_DRUM)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        //TODO: HEAVY SLAM 50
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.HIGH_HORSEPOWER)));
     }
 }

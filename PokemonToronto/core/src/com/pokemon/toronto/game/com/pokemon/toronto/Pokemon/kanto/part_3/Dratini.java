@@ -79,9 +79,21 @@ public class Dratini extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.WRAP);
+        beginnerSkills.add(SkillFactory.LEER);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.TWISTER)));
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RAGE)));
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        //TODO: DRAGON TAIL 31
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_RUSH)));
+        levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.SAFEGUARD)));
+        levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.DRAGON_DANCE)));
+        levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.OUTRAGE)));
+        levelUpSkills.put(61, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_BEAM)));
     }
 
     /**

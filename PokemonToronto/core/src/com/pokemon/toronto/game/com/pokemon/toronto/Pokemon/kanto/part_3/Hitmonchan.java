@@ -78,8 +78,37 @@ public class Hitmonchan extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.CLOSE_COMBAT);
+        //TODO: COUNTER
+        //TODO: FOCUS PUNCH
+        beginnerSkills.add(SkillFactory.REVENGE);
+        beginnerSkills.add(SkillFactory.AGILITY);
+        //TODO: PURSUIT
+        beginnerSkills.add(SkillFactory.MACH_PUNCH);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        //TODO: PURSUIT 11
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.MACH_PUNCH)));
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLET_PUNCH)));
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.VACUUM_WAVE)));
+        //TODO: QUICK GUARD 31
+        ArrayList<Integer> elementalPunches = new ArrayList<Integer>();
+        elementalPunches.add(SkillFactory.THUNDER_PUNCH);
+        elementalPunches.add(SkillFactory.ICE_PUNCH);
+        elementalPunches.add(SkillFactory.FIRE_PUNCH);
+        levelUpSkills.put(36, elementalPunches);
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.SKY_UPPERCUT)));
+        levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEGA_PUNCH)));
+        //TODO: DETECT 50
+        //TODO: FOCUS PUNCH 56
+        //TODO: COUNTER 61
+        levelUpSkills.put(66, new ArrayList<Integer>(Arrays.asList(SkillFactory.CLOSE_COMBAT)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.COMET_PUNCH);
     }
 }

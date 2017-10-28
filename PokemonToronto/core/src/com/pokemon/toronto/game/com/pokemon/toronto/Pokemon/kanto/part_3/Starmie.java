@@ -79,9 +79,13 @@ public class Starmie extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.HYDRO_PUMP);
+        beginnerSkills.add(SkillFactory.WATER_GUN);
+        beginnerSkills.add(SkillFactory.RAPID_SPIN);
+        beginnerSkills.add(SkillFactory.RECOVER);
+        beginnerSkills.add(SkillFactory.SWIFT);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.CONFUSE_RAY)));
     }
     
 }

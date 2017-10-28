@@ -79,9 +79,25 @@ public class Aerodactyl extends Pokemon {
     @Override
     protected void initLevelUpSkills() {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
-        beginnerSkills.add(SkillFactory.SCRATCH);
+        beginnerSkills.add(SkillFactory.IRON_HEAD);
+        beginnerSkills.add(SkillFactory.ICE_FANG);
+        beginnerSkills.add(SkillFactory.FIRE_FANG);
+        beginnerSkills.add(SkillFactory.THUNDER_FANG);
+        beginnerSkills.add(SkillFactory.WING_ATTACK);
+        beginnerSkills.add(SkillFactory.SUPERSONIC);
+        beginnerSkills.add(SkillFactory.BITE);
+        beginnerSkills.add(SkillFactory.SCARY_FACE);
         levelUpSkills.put(0, beginnerSkills);
-        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        //TODO: ROAR 9
+        levelUpSkills.put(17, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.ANCIENT_POWER)));
+        levelUpSkills.put(33, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
+        levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAKE_DOWN)));
+        levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.SKY_DROP)));
+        levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.IRON_HEAD)));
+        levelUpSkills.put(65, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_BEAM)));
+        levelUpSkills.put(73, new ArrayList<Integer>(Arrays.asList(SkillFactory.ROCK_SLIDE)));
+        levelUpSkills.put(81, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_IMPACT)));
     }
 
 }
