@@ -22,6 +22,7 @@ public class Gastly extends Pokemon {
     private static final int BASE_EXP = 95;
     private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
     private static final int CAPTURE_RATE = 190;
+    private static final double WEIGHT = 0.1;
 
     //Base Stats
     private static final int BASE_HEALTH = 30;
@@ -31,21 +32,29 @@ public class Gastly extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 35;
     private static final int BASE_SPEED = 80;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.GHOST;
+    private static final Type TYPE_TWO = Type.POISON;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/gastly.png";
     private static final String BACK_PATH = "battle/backs/gastly.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/gastly.png";
     private static final String CRY_PATH = "sounds/cry/092.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/092.png";
 
     /**
      * Create a Gastly with the specified level.
      * @param level The level of the Gastly.
      */
     public Gastly(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GHOST, Type.POISON, Ability.LEVITATE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -66,11 +75,17 @@ public class Gastly extends Pokemon {
     public Gastly(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                     Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                     Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GHOST, Type.POISON, ability, nature, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: NO HIDDEN ABILITY!
+    @Override
+    protected void initAbility() {
+        ability = Ability.LEVITATE;
     }
 
     /**

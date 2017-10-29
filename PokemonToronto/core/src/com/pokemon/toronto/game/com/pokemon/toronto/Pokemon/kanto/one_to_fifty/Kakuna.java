@@ -21,6 +21,7 @@ public class Kakuna extends Pokemon {
     private static final int BASE_EXP = 71;
     private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
     private static final int CAPTURE_RATE = 120;
+    private static final double WEIGHT = 10;
 
     //Base Stats
     private static final int BASE_HEALTH = 45;
@@ -35,16 +36,17 @@ public class Kakuna extends Pokemon {
     private static final String BACK_PATH = "battle/backs/kakuna.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/kakuna.png";
     private static final String CRY_PATH = "sounds/cry/014.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/014.png";
 
     /**
      * Create a Kakuna with the specified level.
      * @param level The level of the Kakuna.
      */
     public Kakuna(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.BUG, Type.POISON, Ability.SHED_SKIN, Pokemon.ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.BUG, Type.POISON, Pokemon.ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +70,13 @@ public class Kakuna extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.BUG, Type.POISON, ability, nature, Pokemon.ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    @Override
+    protected void initAbility() {
+        ability = Ability.SHED_SKIN;
     }
 
     /**

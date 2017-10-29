@@ -21,6 +21,8 @@ public class Raichu extends Pokemon {
     private static final int BASE_EXP = 122;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
     private static final int CAPTURE_RATE = 75;
+    private static final double WEIGHT = 30;
+
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -35,16 +37,17 @@ public class Raichu extends Pokemon {
     private static final String BACK_PATH = "battle/backs/raichu.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/raichu.png";
     private static final String CRY_PATH = "sounds/cry/026.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/026.png";
 
     /**
      * Create a Raichu with the specified level.
      * @param level The level of the Raichu.
      */
     public Raichu(int level) {
-        super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, CAPTURE_RATE);
+                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +71,14 @@ public class Raichu extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.ELECTRIC, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN LIGHTNING ROD
+    @Override
+    protected void initAbility() {
+        ability = Ability.STATIC;
     }
 
     /**

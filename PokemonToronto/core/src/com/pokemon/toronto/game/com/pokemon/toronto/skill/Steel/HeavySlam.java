@@ -5,33 +5,29 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
 
 import java.util.List;
 
 /**
- * Created by Gregory on 9/19/2017.
+ * Created by Gregory on 10/28/2017.
  */
 
-public class Autotomize extends EffectSkill {
+public class HeavySlam extends DamageSkill {
     /**
-     * - Name: Autotomize
+     * - Name: Heavy Slam
      * - Type: Steel
-     * - PP: 15
-     * - Cat: Misc
+     * - Base Damage: 1 - depends on weight
+     * - PP: 10
+     * - Cat: Physical
+     * - Crit Stage: 1
      * - Accuracy: 100
-     * - Increase speed by 2 stages.
      */
-    public Autotomize() {
-        super(SkillFactory.AUTOTOMIZE, "Autotomize", 15, Pokemon.Type.STEEL, 100);
-        effects.add(new SpeedEffect(SecondaryEffect.Target.SELF,
-                2, SecondaryEffect.StatDirection.INCREASE));
-        targetsEnemy = false;
+    public HeavySlam() {
+        super(SkillFactory.HEAVY_SLAM, "Heavy Slam", 10, Pokemon.Type.STEEL,
+                SkillCategory.PHYSICAL, 100, 1, 1);
     }
 
     /**
@@ -48,26 +44,34 @@ public class Autotomize extends EffectSkill {
      * @param enemyPokemonParty
      * @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
-                            int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack,
-                            Skill targetSkill, List<Pokemon> skillUserParty,
-                            List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
+                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
-        //Shed 100kg with autotomize.
-        skillUser.setBattleWeight(Math.max(skillUser.getBattleWeight() - 100, 0.1));
+        if (enemyPokemon.getBattleWeight() >= skillUser.getBattleWeight() * 0.5) {
+            damage = 40;
+        }
+        else if (enemyPokemon.getBattleWeight() < skillUser.getBattleWeight() * 0.2) {
+            damage = 120;
+        } else if (enemyPokemon.getBattleWeight() < skillUser.getBattleWeight() * 0.25) {
+            damage = 100;
+        } else if (enemyPokemon.getBattleWeight() < skillUser.getBattleWeight() * 0.33) {
+            damage = 80;
+        } else {
+            damage = 60;
+        }
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
                 enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
                 skillUserParty, enemyPokemonParty);
+        damage = 1; //Reset damage to normal.
 
         return results;
     }
 
     /**
-     * Return Autotomize's skill animation.
+     * Return the skill's animation, player side or enemy side.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Autotomize's skill animation.
+     * @return The skill's animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

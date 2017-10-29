@@ -22,6 +22,7 @@ public class Pidgey extends Pokemon {
     private static final int BASE_EXP = 55;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 1.8;
 
     //Base Stats
     private static final int BASE_HEALTH = 40;
@@ -36,16 +37,17 @@ public class Pidgey extends Pokemon {
     private static final String BACK_PATH = "battle/backs/pidgey.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/pidgey.png";
     private static final String CRY_PATH = "sounds/cry/016.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/016.png";
 
     /**
      * Create a Pidgey with the specified level.
      * @param level The level of the Pidgey.
      */
     public Pidgey(int level) {
-        super(NUMBER, NAME, level, Type.NORMAL, Type.FLYING, Ability.KEEN_EYE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, Type.NORMAL, Type.FLYING, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, CAPTURE_RATE);
+                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,8 @@ public class Pidgey extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.NORMAL, Type.FLYING, ability, nature, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -95,16 +97,13 @@ public class Pidgey extends Pokemon {
 
     }
 
-    /**
-     * Init Pidgey's gender.
-     */
+    //TODO: HIDDEN = BIG PECKS
     @Override
-    protected void initGender() {
-        int genderProbability = (int)(Math.round(Math.random() * 100));
-        if (genderProbability <= 50) {
-            gender = 'M';
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.KEEN_EYE;
         } else {
-            gender = 'F';
+            ability = Ability.TANGLED_FEET;
         }
     }
 

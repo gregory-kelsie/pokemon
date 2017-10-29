@@ -21,6 +21,7 @@ public class Dodrio extends Pokemon {
     private static final int BASE_EXP = 158;
     private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 85.2;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -30,21 +31,29 @@ public class Dodrio extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 60;
     private static final int BASE_SPEED = 110;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.NORMAL;
+    private static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/dodrio.png";
     private static final String BACK_PATH = "battle/backs/dodrio.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/dodrio.png";
     private static final String CRY_PATH = "sounds/cry/085.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/085.png";
 
     /**
      * Create a Dodrio with the specified level.
      * @param level The level of the Dodrio.
      */
     public Dodrio(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Type.FLYING, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,22 @@ public class Dodrio extends Pokemon {
     public Dodrio(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.NORMAL, Type.FLYING, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN TANGLED FEET
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.RUN_AWAY;
+        } else {
+            //TODO: EARLY BIRD
+            ability = Ability.RUN_AWAY;
+        }
     }
 
     /**
@@ -86,7 +106,7 @@ public class Dodrio extends Pokemon {
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
         levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAGE)));
         levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
-        //TODO: PURSUIT 15
+        levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
         levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.PLUCK)));
         levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_HIT)));
         levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));

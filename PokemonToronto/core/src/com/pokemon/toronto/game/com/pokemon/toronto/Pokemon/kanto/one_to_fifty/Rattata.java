@@ -23,6 +23,8 @@ public class Rattata extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 3.5;
+
 
     //Base Stats
     private static final int BASE_HEALTH = 30;
@@ -37,16 +39,17 @@ public class Rattata extends Pokemon {
     private static final String BACK_PATH = "battle/backs/rattata.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/rattata.png";
     private static final String CRY_PATH = "sounds/cry/019.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/019.png";
 
     /**
      * Create a Rattata with the specified level.
      * @param level The level of the Rattata.
      */
     public Rattata(int level) {
-        super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, Ability.GUTS, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.NORMAL, Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                 BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -70,8 +73,8 @@ public class Rattata extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.NORMAL, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -86,7 +89,7 @@ public class Rattata extends Pokemon {
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
-        //TODO: PURSUIT 13
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
         levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_FANG)));
         levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
         levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));
@@ -96,16 +99,13 @@ public class Rattata extends Pokemon {
         levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
     }
 
-    /**
-     * Init Rattata's gender.
-     */
+    //TODO: HIDDEN HUSTLE
     @Override
-    protected void initGender() {
-        int genderProbability = (int)(Math.round(Math.random() * 100));
-        if (genderProbability <= 50) {
-            gender = 'M';
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.RUN_AWAY;
         } else {
-            gender = 'F';
+            ability = Ability.GUTS;
         }
     }
 

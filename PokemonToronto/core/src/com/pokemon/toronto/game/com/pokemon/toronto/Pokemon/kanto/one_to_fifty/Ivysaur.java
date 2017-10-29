@@ -22,6 +22,7 @@ public class Ivysaur extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 1, 1, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 13;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -37,16 +38,17 @@ public class Ivysaur extends Pokemon {
     private static final String BACK_PATH = "battle/backs/ivysaur.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/ivysaur.png";
     private static final String CRY_PATH = "sounds/cry/002.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/002.png";
 
     /**
      * Create a Ivysaur with the specified level from the wild.
      * @param level The level of the Ivysaur.
      */
     public Ivysaur(int level) {
-        super(NUMBER, NAME, level, Type.GRASS, Type.POISON, Ability.OVERGROW, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, Type.GRASS, Type.POISON, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -64,14 +66,15 @@ public class Ivysaur extends Pokemon {
      * @param nature The Pokemon's nature.
      * @param ability The Pokemon's ability.
      */
-    public Ivysaur(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                   Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                   Status status, Nature nature, Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GRASS, Type.POISON, ability, nature, ExpType.MEDIUM_SLOW,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+    public Ivysaur(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs,
+                   Skill firstSkill, Skill secondSkill, Skill thirdSkill, Skill fourthSkill,
+                   int currentHealth, int currentExp, Status status, Nature nature,
+                   Ability ability) {
+        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GRASS, Type.POISON, ability,
+                nature, ExpType.MEDIUM_SLOW, BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK,
+                        BASE_DEFENSE, BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED},
+                ICON_PATH, BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -112,6 +115,11 @@ public class Ivysaur extends Pokemon {
         } else {
             gender = 'F';
         }
+    }
+
+    @Override
+    protected void initAbility() {
+        ability = Ability.OVERGROW;
     }
 
     /**

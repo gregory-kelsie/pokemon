@@ -22,6 +22,7 @@ public class Pidgeotto extends Pokemon {
     private static final int BASE_EXP = 113;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 120;
+    private static final double WEIGHT = 30;
 
     //Base Stats
     private static final int BASE_HEALTH = 63;
@@ -36,16 +37,17 @@ public class Pidgeotto extends Pokemon {
     private static final String BACK_PATH = "battle/backs/pidgeotto.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/pidgeotto.png";
     private static final String CRY_PATH = "sounds/cry/017.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/017.png";
 
     /**
      * Create a Pidgeotto with the specified level.
      * @param level The level of the Pidgeotto.
      */
     public Pidgeotto(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, Ability.KEEN_EYE, Pokemon.ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, Pokemon.ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,8 @@ public class Pidgeotto extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, ability, nature, Pokemon.ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -95,6 +97,16 @@ public class Pidgeotto extends Pokemon {
         //TODO: MIRROR MOVE 52
         levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
         levelUpSkills.put(62, new ArrayList<Integer>(Arrays.asList(SkillFactory.HURRICANE)));
+    }
+
+    //TODO: HIDDEN BIG PECKS
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.KEEN_EYE;
+        } else {
+            ability = Ability.TANGLED_FEET;
+        }
     }
 
     /**

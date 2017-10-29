@@ -45,6 +45,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.NightSlash;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Payback;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.PowerTrip;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Punishment;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Pursuit;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Snarl;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.SuckerPunch;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dark.Thief;
@@ -108,6 +109,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.HammerArm;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.HighJumpKick;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.JumpKick;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.KarateChop;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.LowKick;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.LowSweep;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.MachPunch;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fighting.PowerUpPunch;
@@ -142,6 +144,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.FlameCharge;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.FlameWheel;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Flamethrower;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.FlareBlitz;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.HeatCrash;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.HeatWave;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Incinerate;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Inferno;
@@ -196,6 +199,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.CottonSpore;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.EnergyBall;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.FrenzyPlant;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GigaDrain;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GrassKnot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.GrassWhistle;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.HornLeech;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass.Ingrain;
@@ -333,6 +337,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.DoomDesire;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.FlashCannon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.GearGrind;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.GyroBall;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.HeavySlam;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronDefense;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronHead;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Steel.IronTail;
@@ -895,6 +900,11 @@ public class SkillFactory {
     public static final int PLAY_NICE = 497;
 
     public static final int CHARGE_BEAM = 498;
+    public static final int GRASS_KNOT = 499;
+    public static final int LOW_KICK = 500;
+    public static final int HEAT_CRASH = 501;
+    public static final int HEAVY_SLAM = 502;
+    public static final int PURSUIT = 503;
 
     public SkillFactory() {
 
@@ -1904,6 +1914,16 @@ public class SkillFactory {
             return new PlayNice();
         } else if (skillId == CHARGE_BEAM) {
             return new ChargeBeam();
+        } else if (skillId == GRASS_KNOT) {
+            return new GrassKnot();
+        } else if (skillId == LOW_KICK) {
+            return new LowKick();
+        } else if (skillId == HEAT_CRASH) {
+            return new HeatCrash();
+        } else if (skillId == HEAVY_SLAM) {
+            return new HeavySlam();
+        } else if (skillId == PURSUIT) {
+            return new Pursuit();
         }
         else {
             return new Covet();

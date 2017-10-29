@@ -21,6 +21,7 @@ public class Golbat extends Pokemon {
     private static final int BASE_EXP = 171;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 90;
+    private static final double WEIGHT = 55;
 
     //Base Stats
     private static final int BASE_HEALTH = 75;
@@ -35,16 +36,17 @@ public class Golbat extends Pokemon {
     private static final String BACK_PATH = "battle/backs/golbat.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/golbat.png";
     private static final String CRY_PATH = "sounds/cry/042.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/042.png";
 
     /**
      * Create a Golbat with the specified level.
      * @param level The level of the Golbat.
      */
     public Golbat(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.FLYING, Ability.INNER_FOCUS, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.FLYING, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +70,14 @@ public class Golbat extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.POISON, Pokemon.Type.FLYING, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN INFILTRATOR
+    @Override
+    protected void initAbility() {
+        ability = Ability.INNER_FOCUS;
     }
 
     /**

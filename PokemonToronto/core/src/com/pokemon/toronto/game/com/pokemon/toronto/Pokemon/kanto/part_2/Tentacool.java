@@ -22,6 +22,7 @@ public class Tentacool extends Pokemon {
     private static final int BASE_EXP = 105;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
     private static final int CAPTURE_RATE = 190;
+    private static final double WEIGHT = 45.5;
 
     //Base Stats
     private static final int BASE_HEALTH = 40;
@@ -31,21 +32,29 @@ public class Tentacool extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 100;
     private static final int BASE_SPEED = 70;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.WATER;
+    private static final Type TYPE_TWO = Type.POISON;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/tentacool.png";
     private static final String BACK_PATH = "battle/backs/tentacool.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/tentacool.png";
     private static final String CRY_PATH = "sounds/cry/072.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/072.png";
 
     /**
      * Create a Tentacool with the specified level.
      * @param level The level of the Tentacool.
      */
     public Tentacool(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.WATER, Pokemon.Type.POISON, Ability.RAIN_DISH, ExpType.SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -66,11 +75,23 @@ public class Tentacool extends Pokemon {
     public Tentacool(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                       Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                       Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.WATER, Type.POISON, ability, nature, ExpType.SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN RAIN DISH
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            //TODO: CLEAR BODY
+            ability = Ability.RAIN_DISH;
+        } else {
+            //TODO: LIQUID OOZE
+            ability = Ability.RAIN_DISH;
+        }
     }
 
     /**

@@ -21,6 +21,7 @@ public class Primeape extends Pokemon {
     private static final int BASE_EXP = 159;
     private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 75;
+    private static final double WEIGHT = 32;
 
     //Base Stats
     private static final int BASE_HEALTH = 65;
@@ -30,21 +31,29 @@ public class Primeape extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 70;
     private static final int BASE_SPEED = 95;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.FIGHTING;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/primeape.png";
     private static final String BACK_PATH = "battle/backs/primeape.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/primeape.png";
     private static final String CRY_PATH = "sounds/cry/057.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/057.png";
 
     /**
      * Create a Primeape with the specified level.
      * @param level The level of the Primeape.
      */
     public Primeape(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.FIGHTING, Pokemon.Type.NONE, Ability.DAMP, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,23 @@ public class Primeape extends Pokemon {
     public Primeape(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                   Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                   Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.FIGHTING, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN DEFIANT
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            //TODO: VITAL SPIRIT
+            ability = Ability.UNNERVE;
+        } else {
+            //TODO: ANGER POINT
+            ability = Ability.UNNERVE;
+        }
     }
 
     /**
@@ -80,13 +101,13 @@ public class Primeape extends Pokemon {
         List<Integer> beginnerSkills = new ArrayList<Integer>();
         beginnerSkills.add(SkillFactory.COVET);
         beginnerSkills.add(SkillFactory.SCRATCH);
-        //TODO: LOW KICK
+        beginnerSkills.add(SkillFactory.LOW_KICK);
         beginnerSkills.add(SkillFactory.LEER);
         beginnerSkills.add(SkillFactory.FOCUS_ENERGY);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.KARATE_CHOP)));
-        //TODO: PURSUIT: 12
+        levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
         levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SEISMIC_TOSS)));
         levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWAGGER)));
         levelUpSkills.put(22, new ArrayList<Integer>(Arrays.asList(SkillFactory.CROSS_CHOP)));

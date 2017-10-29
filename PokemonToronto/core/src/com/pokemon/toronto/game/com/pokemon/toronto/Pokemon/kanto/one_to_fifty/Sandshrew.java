@@ -22,6 +22,7 @@ public class Sandshrew extends Pokemon {
     private static final int BASE_EXP = 93;
     private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 12;
 
     //Base Stats
     private static final int BASE_HEALTH = 50;
@@ -36,16 +37,17 @@ public class Sandshrew extends Pokemon {
     private static final String BACK_PATH = "battle/backs/sandshrew.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/sandshrew.png";
     private static final String CRY_PATH = "sounds/cry/027.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/027.png";
 
     /**
      * Create a Sandshrew with the specified level.
      * @param level The level of the Sandshrew.
      */
     public Sandshrew(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,14 @@ public class Sandshrew extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Pokemon.Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN SAND RUSH
+    @Override
+    protected void initAbility() {
+        ability = Ability.SAND_VEIL;
     }
 
     /**

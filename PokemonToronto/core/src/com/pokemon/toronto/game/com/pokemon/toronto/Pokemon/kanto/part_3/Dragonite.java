@@ -21,6 +21,7 @@ public class Dragonite extends Pokemon {
     private static final int BASE_EXP = 218;
     private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 210;
 
     //Base Stats
     private static final int BASE_HEALTH = 91;
@@ -30,21 +31,29 @@ public class Dragonite extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 100;
     private static final int BASE_SPEED = 80;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.DRAGON;
+    private static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/dragonite.png";
     private static final String BACK_PATH = "battle/backs/dragonite.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/dragonite.png";
     private static final String CRY_PATH = "sounds/cry/149.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/149.png";
 
     /**
      * Create a Dragonite with the specified level.
      * @param level The level of the Dragonite.
      */
     public Dragonite(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.DRAGON, Type.FLYING, Ability.INNER_FOCUS, ExpType.SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,18 @@ public class Dragonite extends Pokemon {
     public Dragonite(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                      Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.DRAGON, Type.FLYING, ability, nature, ExpType.SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN MULTISCALE
+    @Override
+    protected void initAbility() {
+        ability = Ability.INNER_FOCUS;
+
     }
 
     /**

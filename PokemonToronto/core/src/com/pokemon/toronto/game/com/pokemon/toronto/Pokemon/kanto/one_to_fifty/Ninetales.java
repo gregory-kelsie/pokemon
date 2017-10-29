@@ -20,6 +20,7 @@ public class Ninetales extends Pokemon {
     private static final int BASE_EXP = 63;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 1};
     private static final int CAPTURE_RATE = 178;
+    private static final double WEIGHT = 19.9;
 
     //Base Stats
     private static final int BASE_HEALTH = 73;
@@ -34,16 +35,17 @@ public class Ninetales extends Pokemon {
     private static final String BACK_PATH = "battle/backs/ninetales.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/ninetales.png";
     private static final String CRY_PATH = "sounds/cry/038.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/038.png";
 
     /**
      * Create a Ninetales with the specified level.
      * @param level The level of the Ninetales.
      */
     public Ninetales(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.FIRE, Pokemon.Type.NONE, Ability.DROUGHT, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.FIRE, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -67,8 +69,25 @@ public class Ninetales extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.FIRE, Pokemon.Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN DROUGHT
+    @Override
+    protected void initAbility() {
+        //TODO: FLASH FIRE
+        ability = Ability.DROUGHT;
+    }
+
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .75) {
+            gender = 'F';
+        } else {
+            gender = 'M';
+        }
     }
 
     /**

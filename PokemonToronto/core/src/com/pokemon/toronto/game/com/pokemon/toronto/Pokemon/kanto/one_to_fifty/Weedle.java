@@ -23,6 +23,8 @@ public class Weedle extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 3.2;
+
 
     //Base Stats
     private static final int BASE_HEALTH = 40;
@@ -37,16 +39,17 @@ public class Weedle extends Pokemon {
     private static final String BACK_PATH = "battle/backs/weedle.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/weedle.png";
     private static final String CRY_PATH = "sounds/cry/013.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/013.png";
 
     /**
      * Create a Weedle with the specified level.
      * @param level The level of the Weedle.
      */
     public Weedle(int level) {
-        super(NUMBER, NAME, level, Type.BUG, Type.POISON, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.BUG, Type.POISON, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -70,8 +73,8 @@ public class Weedle extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.POISON, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -86,17 +89,10 @@ public class Weedle extends Pokemon {
         levelUpSkills.put(9, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BITE)));
     }
 
-    /**
-     * Init Weedle's gender.
-     */
+    //TODO: HIDDEN ABILITY = RUN AWAY
     @Override
-    protected void initGender() {
-        double genderProbability = Math.random();
-        if (genderProbability <= .5) {
-            gender = 'M';
-        } else {
-            gender = 'F';
-        }
+    protected void initAbility() {
+        ability = Ability.SHIELD_DUST;
     }
 
     /**

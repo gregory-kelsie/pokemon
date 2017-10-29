@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -30,7 +31,8 @@ public class SkyDrop extends DamageSkill {
      * - Accuracy: 100
      */
     public SkyDrop() {
-        super(SkillFactory.SKY_DROP, "Sky Drop", 15, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
+        super(SkillFactory.SKY_DROP, "Sky Drop", 15, Pokemon.Type.FLYING,
+                Skill.SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
     }
 
@@ -84,6 +86,16 @@ public class SkyDrop extends DamageSkill {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
+        if (enemyPokemon.getBattleWeight() >= 200) {
+            return new FailResult("The target is too heavy!");
+        }
+        return new FailResult(false);
     }
 
     /**

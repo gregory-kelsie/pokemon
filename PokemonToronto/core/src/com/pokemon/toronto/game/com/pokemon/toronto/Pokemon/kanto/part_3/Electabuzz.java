@@ -21,6 +21,7 @@ public class Electabuzz extends Pokemon {
     private static final int BASE_EXP = 156;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 30;
 
     //Base Stats
     private static final int BASE_HEALTH = 65;
@@ -30,21 +31,29 @@ public class Electabuzz extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 85;
     private static final int BASE_SPEED = 105;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.ELECTRIC;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/electabuzz.png";
     private static final String BACK_PATH = "battle/backs/electabuzz.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/electabuzz.png";
     private static final String CRY_PATH = "sounds/cry/125.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/125.png";
 
     /**
      * Create a Electabuzz with the specified level.
      * @param level The level of the Electabuzz.
      */
     public Electabuzz(int level) {
-        super(NUMBER, NAME, level, Type.ELECTRIC, Type.NONE, Ability.STATIC, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,28 @@ public class Electabuzz extends Pokemon {
     public Electabuzz(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                 Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                 Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.ELECTRIC, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN VITAL SPIRIT
+    @Override
+    protected void initAbility() {
+        ability = Ability.STATIC;
+
+    }
+
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .75) {
+            gender = 'M';
+        } else {
+            gender = 'F';
+        }
     }
 
     /**
@@ -83,7 +109,7 @@ public class Electabuzz extends Pokemon {
         beginnerSkills.add(SkillFactory.THUNDER_SHOCK);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_SHOCK)));
-        //TODO: LOW KICK 8
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.LOW_KICK)));
         levelUpSkills.put(12, new ArrayList<Integer>(Arrays.asList(SkillFactory.SWIFT)));
         levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.SHOCK_WAVE)));
         levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER_WAVE)));

@@ -21,6 +21,7 @@ public class Arbok extends Pokemon {
     private static final int BASE_EXP = 147;
     private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 90;
+    private static final double WEIGHT = 65;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -35,16 +36,17 @@ public class Arbok extends Pokemon {
     private static final String BACK_PATH = "battle/backs/arbok.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/arbok.png";
     private static final String CRY_PATH = "sounds/cry/024.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/024.png";
 
     /**
      * Create a Arbok with the specified level.
      * @param level The level of the Ekans.
      */
     public Arbok(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.NONE, Ability.INTIMIDATE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.POISON, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +70,18 @@ public class Arbok extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.POISON, Pokemon.Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN UNNERVE
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.INTIMIDATE;
+        } else {
+            ability = Ability.SHED_SKIN;
+        }
     }
 
     /**

@@ -21,6 +21,7 @@ public class Vileplume extends Pokemon {
     private static final int BASE_EXP = 184;
     private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 18.6;
 
     //Base Stats
     private static final int BASE_HEALTH = 75;
@@ -35,16 +36,17 @@ public class Vileplume extends Pokemon {
     private static final String BACK_PATH = "battle/backs/vileplume.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/vileplume.png";
     private static final String CRY_PATH = "sounds/cry/045.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/045.png";
 
     /**
      * Create a Vileplume with the specified level.
      * @param level The level of the Vileplume.
      */
     public Vileplume(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GRASS, Pokemon.Type.POISON, Ability.CHLOROPHYLL, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, Pokemon.Type.GRASS, Pokemon.Type.POISON, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +70,14 @@ public class Vileplume extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.GRASS, Type.POISON, ability, nature, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN EFFECT SPORE
+    @Override
+    protected void initAbility() {
+        ability = Ability.CHLOROPHYLL;
     }
 
     /**

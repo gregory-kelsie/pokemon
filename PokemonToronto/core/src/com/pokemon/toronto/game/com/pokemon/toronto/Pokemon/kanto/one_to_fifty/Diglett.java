@@ -22,6 +22,7 @@ public class Diglett extends Pokemon {
     private static final int BASE_EXP = 53;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 0.8;
 
     //Base Stats
     private static final int BASE_HEALTH = 10;
@@ -36,16 +37,17 @@ public class Diglett extends Pokemon {
     private static final String BACK_PATH = "battle/backs/diglett.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/diglett.png";
     private static final String CRY_PATH = "sounds/cry/050.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/050.png";
 
     /**
      * Create a Diglett with the specified level.
      * @param level The level of the Diglett.
      */
     public Diglett(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, Ability.SAND_VEIL, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,19 @@ public class Diglett extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN SAND FORCE
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.SAND_VEIL;
+        } else {
+            //TODO: ARENA TRAP
+            ability = Ability.SAND_VEIL;
+        }
     }
 
     /**

@@ -22,6 +22,7 @@ public class Kadabra extends Pokemon {
     private static final int BASE_EXP = 140;
     private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
     private static final int CAPTURE_RATE = 100;
+    private static final double WEIGHT = 56.5;
 
     //Base Stats
     private static final int BASE_HEALTH = 40;
@@ -31,21 +32,29 @@ public class Kadabra extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 70;
     private static final int BASE_SPEED = 105;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.PSYCHIC;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/kadabra.png";
     private static final String BACK_PATH = "battle/backs/kadabra.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/kadabra.png";
     private static final String CRY_PATH = "sounds/cry/064.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/064.png";
 
     /**
      * Create a Kadabra with the specified level.
      * @param level The level of the Kadabra.
      */
     public Kadabra(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.PSYCHIC, Pokemon.Type.NONE, Ability.INNER_FOCUS, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -66,11 +75,32 @@ public class Kadabra extends Pokemon {
     public Kadabra(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                 Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                 Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.PSYCHIC, Type.NONE, ability, nature, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN MAGIC GUARD
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            //TODO: SYNCHRONIZE
+            ability = Ability.INNER_FOCUS;
+        } else {
+            ability = Ability.INNER_FOCUS;
+        }
+    }
+
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .75) {
+            gender = 'M';
+        } else {
+            gender = 'F';
+        }
     }
 
     /**

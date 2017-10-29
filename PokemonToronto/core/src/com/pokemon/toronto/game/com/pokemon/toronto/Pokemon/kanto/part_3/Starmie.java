@@ -21,6 +21,7 @@ public class Starmie extends Pokemon {
     private static final int BASE_EXP = 207;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 60;
+    private static final double WEIGHT = 80;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -30,21 +31,29 @@ public class Starmie extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 85;
     private static final int BASE_SPEED = 115;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.WATER;
+    private static final Type TYPE_TWO = Type.PSYCHIC;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/starmie.png";
     private static final String BACK_PATH = "battle/backs/starmie.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/starmie.png";
     private static final String CRY_PATH = "sounds/cry/121.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/121.png";
 
     /**
      * Create a Starmie with the specified level.
      * @param level The level of the Starmie.
      */
     public Starmie(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.WATER, Type.PSYCHIC, Pokemon.Ability.SWIFT_SWIM, ExpType.SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,23 @@ public class Starmie extends Pokemon {
     public Starmie(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                   Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                   Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.WATER, Type.PSYCHIC, ability, nature, ExpType.SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN ANALYTIC
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            //TODO: ILLUMINATE
+            ability = Ability.TORRENT;
+        } else {
+            //TODO: NATURAL CURE
+            ability = Ability.TORRENT;
+        }
     }
 
     /**

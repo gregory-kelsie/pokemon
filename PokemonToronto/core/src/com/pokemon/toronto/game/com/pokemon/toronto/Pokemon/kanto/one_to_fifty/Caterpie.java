@@ -22,6 +22,8 @@ public class Caterpie extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 2.9;
+
 
     //Base Stats
     private static final int BASE_HEALTH = 45;
@@ -36,16 +38,17 @@ public class Caterpie extends Pokemon {
     private static final String BACK_PATH = "battle/backs/caterpie.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/caterpie.png";
     private static final String CRY_PATH = "sounds/cry/010.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/010.png";
 
     /**
      * Create a Caterpie with the specified level.
      * @param level The level of the Caterpie.
      */
     public Caterpie(int level) {
-        super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHIELD_DUST, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.BUG, Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +72,8 @@ public class Caterpie extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -97,6 +100,13 @@ public class Caterpie extends Pokemon {
             gender = 'F';
         }
     }
+
+    @Override
+    protected void initAbility() {
+        ability = Ability.SHIELD_DUST;
+    }
+
+    //Hidden Ability is Run Away
 
     /**
      * Return Metapod if the Caterpie is above level 7.

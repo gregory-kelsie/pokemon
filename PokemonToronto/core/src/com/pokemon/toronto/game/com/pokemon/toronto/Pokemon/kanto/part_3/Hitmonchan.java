@@ -21,6 +21,7 @@ public class Hitmonchan extends Pokemon {
     private static final int BASE_EXP = 140;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 50.2;
 
     //Base Stats
     private static final int BASE_HEALTH = 50;
@@ -30,21 +31,29 @@ public class Hitmonchan extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 110;
     private static final int BASE_SPEED = 76;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.FIGHTING;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/hitmonchan.png";
     private static final String BACK_PATH = "battle/backs/hitmonchan.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/hitmonchan.png";
     private static final String CRY_PATH = "sounds/cry/107.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/107.png";
 
     /**
      * Create a Hitmonchan with the specified level.
      * @param level The level of the Hitmonchan.
      */
     public Hitmonchan(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.FIGHTING, Type.NONE, Ability.KEEN_EYE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,27 @@ public class Hitmonchan extends Pokemon {
     public Hitmonchan(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                      Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.FIGHTING, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN INNER FOCUS
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.KEEN_EYE;
+        } else {
+            //TODO: IRON FIST
+            ability = Ability.KEEN_EYE;
+        }
+    }
+
+    @Override
+    protected void initGender() {
+        gender = 'M';
     }
 
     /**
@@ -83,15 +108,17 @@ public class Hitmonchan extends Pokemon {
         //TODO: FOCUS PUNCH
         beginnerSkills.add(SkillFactory.REVENGE);
         beginnerSkills.add(SkillFactory.AGILITY);
-        //TODO: PURSUIT
+        beginnerSkills.add(SkillFactory.PURSUIT);
         beginnerSkills.add(SkillFactory.MACH_PUNCH);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
-        //TODO: PURSUIT 11
-        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.MACH_PUNCH)));
-        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.BULLET_PUNCH)));
-        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
-        levelUpSkills.put(6, new ArrayList<Integer>(Arrays.asList(SkillFactory.VACUUM_WAVE)));
+        levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
+        List<Integer> speedPunches = new ArrayList<Integer>();
+        speedPunches.add(SkillFactory.MACH_PUNCH);
+        speedPunches.add(SkillFactory.BULLET_PUNCH);
+        levelUpSkills.put(16, speedPunches);
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.FEINT)));
+        levelUpSkills.put(26, new ArrayList<Integer>(Arrays.asList(SkillFactory.VACUUM_WAVE)));
         //TODO: QUICK GUARD 31
         ArrayList<Integer> elementalPunches = new ArrayList<Integer>();
         elementalPunches.add(SkillFactory.THUNDER_PUNCH);

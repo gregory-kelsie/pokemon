@@ -22,6 +22,7 @@ public class Squirtle extends Pokemon {
     private static final int BASE_EXP = 54;
     private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 9;
 
     //Base Stats
     private static final int BASE_HEALTH = 44;
@@ -36,16 +37,17 @@ public class Squirtle extends Pokemon {
     private static final String BACK_PATH = "battle/backs/squirtle.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/squirtle.png";
     private static final String CRY_PATH = "sounds/cry/007.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/007.png";
 
     /**
      * Create a Squirtle with the specified level.
      * @param level The level of the Squirtle.
      */
     public Squirtle(int level) {
-        super(NUMBER, NAME, level, Type.WATER, Type.NONE, Ability.TORRENT, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, level, Type.WATER, Type.NONE, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,8 @@ public class Squirtle extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.WATER, Type.NONE, ability, nature, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -118,4 +120,10 @@ public class Squirtle extends Pokemon {
         }
         return -1;
     }
+
+    @Override
+    protected void initAbility() {
+        ability = Ability.TORRENT;
+    }
+
 }

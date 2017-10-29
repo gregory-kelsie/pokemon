@@ -21,6 +21,7 @@ public class Hitmonlee extends Pokemon {
     private static final int BASE_EXP = 139;
     private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 49.8;
 
     //Base Stats
     private static final int BASE_HEALTH = 50;
@@ -30,21 +31,29 @@ public class Hitmonlee extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 110;
     private static final int BASE_SPEED = 87;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.FIGHTING;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/hitmonlee.png";
     private static final String BACK_PATH = "battle/backs/hitmonlee.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/hitmonlee.png";
     private static final String CRY_PATH = "sounds/cry/106.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/106.png";
 
     /**
      * Create a Hitmonlee with the specified level.
      * @param level The level of the Hitmonlee.
      */
     public Hitmonlee(int level) {
-        super(NUMBER, NAME, level, Type.FIGHTING, Type.NONE, Ability.LIMBER, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,27 @@ public class Hitmonlee extends Pokemon {
     public Hitmonlee(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                    Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.FIGHTING, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN UNBURDEN
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.LIMBER;
+        } else {
+            //TODO: RECKLESS
+            ability = Ability.LIMBER;
+        }
+    }
+
+    @Override
+    protected void initGender() {
+        gender = 'M';
     }
 
     /**

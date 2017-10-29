@@ -21,6 +21,7 @@ public class Raticate extends Pokemon {
     private static final int BASE_EXP = 116;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 127;
+    private static final double WEIGHT = 18.5;
 
     //Base Stats
     private static final int BASE_HEALTH = 55;
@@ -35,16 +36,17 @@ public class Raticate extends Pokemon {
     private static final String BACK_PATH = "battle/backs/raticate.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/raticate.png";
     private static final String CRY_PATH = "sounds/cry/020.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/020.png";
 
     /**
      * Create a Raticate with the specified level.
      * @param level The level of the Pidgeotto.
      */
     public Raticate(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.NONE, Ability.RUN_AWAY, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,11 +70,19 @@ public class Raticate extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.NORMAL, Type.NONE, ability, nature, Pokemon.ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
-
+    //TODO: HIDDEN HUSTLE
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.RUN_AWAY;
+        } else {
+            ability = Ability.GUTS;
+        }
+    }
 
     /**
      * Init Raticate's level up skills.
@@ -88,7 +98,7 @@ public class Raticate extends Pokemon {
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
         levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.FOCUS_ENERGY)));
         levelUpSkills.put(10, new ArrayList<Integer>(Arrays.asList(SkillFactory.BITE)));
-        //TODO: PURSUIT 13
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
         levelUpSkills.put(16, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_FANG)));
         levelUpSkills.put(19, new ArrayList<Integer>(Arrays.asList(SkillFactory.ASSURANCE)));
         levelUpSkills.put(24, new ArrayList<Integer>(Arrays.asList(SkillFactory.CRUNCH)));

@@ -22,6 +22,7 @@ public class Metapod extends Pokemon {
     private static final int BASE_EXP = 72;
     private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
     private static final int CAPTURE_RATE = 120;
+    private static final double WEIGHT = 9.9;
 
 
     //Base Stats
@@ -37,16 +38,17 @@ public class Metapod extends Pokemon {
     private static final String BACK_PATH = "battle/backs/metapod.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/metapod.png";
     private static final String CRY_PATH = "sounds/cry/011.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/011.png";
 
     /**
      * Create a Metapod with the specified level.
      * @param level The level of the Caterpie.
      */
     public Metapod(int level) {
-        super(NUMBER, NAME, level, Type.BUG, Type.NONE, Ability.SHED_SKIN, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.BUG, Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -70,8 +72,13 @@ public class Metapod extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    @Override
+    protected void initAbility() {
+        ability = Ability.SHED_SKIN;
     }
 
     /**

@@ -21,6 +21,7 @@ public class Exeggutor extends Pokemon {
     private static final int BASE_EXP = 212;
     private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 120;
 
     //Base Stats
     private static final int BASE_HEALTH = 95;
@@ -30,21 +31,29 @@ public class Exeggutor extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 75;
     private static final int BASE_SPEED = 55;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.GRASS;
+    private static final Type TYPE_TWO = Type.PSYCHIC;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.SLOW;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/exeggutor.png";
     private static final String BACK_PATH = "battle/backs/exeggutor.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/exeggutor.png";
     private static final String CRY_PATH = "sounds/cry/103.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/103.png";
 
     /**
      * Create a Exeggutor with the specified level.
      * @param level The level of the Exeggutor.
      */
     public Exeggutor(int level) {
-        super(NUMBER, NAME, level, Type.GRASS, Type.PSYCHIC, Ability.CHLOROPHYLL, ExpType.SLOW,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,17 @@ public class Exeggutor extends Pokemon {
     public Exeggutor(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                    Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GRASS, Type.PSYCHIC, ability, nature, ExpType.SLOW,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN HARVEST
+    @Override
+    protected void initAbility() {
+        ability = Ability.CHLOROPHYLL;
     }
 
     /**

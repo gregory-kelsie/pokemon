@@ -22,6 +22,7 @@ public class Fearow extends Pokemon {
     private static final int BASE_EXP = 162;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 90;
+    private static final double WEIGHT = 38;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -36,16 +37,17 @@ public class Fearow extends Pokemon {
     private static final String BACK_PATH = "battle/backs/fearow.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/fearow.png";
     private static final String CRY_PATH = "sounds/cry/022.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/022.png";
 
     /**
      * Create a Fearow with the specified level.
      * @param level The level of the Fearow.
      */
     public Fearow(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, Ability.KEEN_EYE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,14 @@ public class Fearow extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN SNIPER
+    @Override
+    protected void initAbility() {
+        ability  = Ability.KEEN_EYE;
     }
 
     /**
@@ -84,10 +92,10 @@ public class Fearow extends Pokemon {
         beginnerSkills.add(SkillFactory.PECK);
         beginnerSkills.add(SkillFactory.GROWL);
         beginnerSkills.add(SkillFactory.LEER);
-        //TODO: PURSUIT BEGINNER SKILL
+        beginnerSkills.add(SkillFactory.PURSUIT);
         levelUpSkills.put(0, beginnerSkills);
         levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEER)));
-        //TODO: PURSUIT 8
+        levelUpSkills.put(8, new ArrayList<Integer>(Arrays.asList(SkillFactory.PURSUIT)));
         levelUpSkills.put(11, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_ATTACK)));
         levelUpSkills.put(15, new ArrayList<Integer>(Arrays.asList(SkillFactory.AERIAL_ACE)));
         //TODO: MIRROR MOVE 18

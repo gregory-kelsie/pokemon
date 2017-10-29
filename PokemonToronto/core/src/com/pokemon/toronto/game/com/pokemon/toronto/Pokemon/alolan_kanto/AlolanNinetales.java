@@ -20,6 +20,7 @@ public class AlolanNinetales extends Pokemon {
     private static final int BASE_EXP = 63;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 178;
+    private static final double WEIGHT = 19.9;
 
     //Base Stats
     private static final int BASE_HEALTH = 73;
@@ -29,21 +30,29 @@ public class AlolanNinetales extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 100;
     private static final int BASE_SPEED = 109;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.ICE;
+    private static final Type TYPE_TWO = Type.FAIRY;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/alolan_kanto/ninetales.png";
     private static final String BACK_PATH = "battle/backs/alolan_kanto/ninetales.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/ninetales.png";
     private static final String CRY_PATH = "sounds/cry/038.wav";
+    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanninetales.png";
 
     /**
      * Create a Ninetales with the specified level.
      * @param level The level of the Ninetales.
      */
     public AlolanNinetales(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.ICE, Type.FAIRY, Ability.SNOW_CLOAK, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -64,11 +73,27 @@ public class AlolanNinetales extends Pokemon {
     public AlolanNinetales(boolean fromDatabase, int level, char  gender, int[] ivs, int [] evs, Skill firstSkill,
                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                      Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.ICE, Type.FAIRY, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN SNOW WARNING
+    @Override
+    protected void initAbility() {
+        ability = Ability.SNOW_CLOAK;
+    }
+
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .75) {
+            gender = 'F';
+        } else {
+            gender = 'M';
+        }
     }
 
     /**

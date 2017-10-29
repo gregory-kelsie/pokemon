@@ -22,6 +22,7 @@ public class Paras extends Pokemon {
     private static final int BASE_EXP = 70;
     private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 190;
+    private static final double WEIGHT = 5.4;
 
     //Base Stats
     private static final int BASE_HEALTH = 35;
@@ -36,16 +37,17 @@ public class Paras extends Pokemon {
     private static final String BACK_PATH = "battle/backs/paras.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/paras.png";
     private static final String CRY_PATH = "sounds/cry/046.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/046.png";
 
     /**
      * Create a Paras with the specified level.
      * @param level The level of the Paras.
      */
     public Paras(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.BUG, Pokemon.Type.GRASS, Ability.EFFECT_SPORE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Pokemon.Type.BUG, Pokemon.Type.GRASS, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -69,8 +71,8 @@ public class Paras extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
     }
 
     /**
@@ -93,6 +95,16 @@ public class Paras extends Pokemon {
         levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
         levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AROMATHERAPY)));
         levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.X_SCISSOR)));
+    }
+
+    //TODO: HIDDEN DAMP
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.EFFECT_SPORE;
+        } else {
+            ability = Ability.DRY_SKIN;
+        }
     }
 
     /**

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -28,7 +29,9 @@ public abstract class Pokemon {
     protected char gender;
     protected Type typeOne;
     protected Type typeTwo;
+
     protected double weight;
+    protected double battleWeight;
 
     //Some moves override the actual types and abilities
     //during battle.
@@ -51,6 +54,8 @@ public abstract class Pokemon {
     protected String cryPath;
     protected String backPath;
     protected String miniPath;
+    protected String profilePath;
+
     protected HashMap<Integer, List<Integer>> levelUpSkills;
     protected List<Integer> evolutionSkills;
     protected List<Skill> skills;
@@ -359,7 +364,6 @@ public abstract class Pokemon {
      * @param level The Pokemon's level.
      * @param typeOne The Pokemon's type.
      * @param typeTwo The Pokemon's second type, could be NONE
-     * @param ability The Pokemon's ability.
      * @param expType The Pokemon's exp growth type
      * @param baseExp The base exp the Pokemon yields.
      * @param evYield The ev yield for the Pokemon.
@@ -367,32 +371,41 @@ public abstract class Pokemon {
      * @param mapIconPath The basic Pokemon image path.
      * @param backPath The back of the Pokemon image path.
      * @param miniPath The mini Pokemon image path.
+     * @param profilePath The Pokemon's profile path that is displayed on the trainer card.
      * @param captureRate The Pokemon's capture rate.
+     * @param weight The Pokemon's weight in KG
      */
     public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
-                   Ability ability, ExpType expType, int baseExp, int[] evYield,
+                   ExpType expType, int baseExp, int[] evYield,
                    int[] baseStats, String mapIconPath, String backPath, String miniPath,
-                   String cryPath, int captureRate) {
+                   String cryPath, String profilePath, int captureRate, double weight) {
         initRandomIVs();
         initBlankEVs();
-        init(pokemonId, name, level, typeOne, typeTwo, ability, expType, baseExp,
+        this.weight = weight;
+        this.profilePath = profilePath;
+        initGender();
+        initAbility();
+        init(pokemonId, name, level, typeOne, typeTwo, expType, baseExp,
                 evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
         setRandomNature();
-        initGender();
+        //TODO: Remove ability from parameter and run initAbility(). Create initAbility for each
+        //TODO: Pokemon.
         initWildSkills();
     }
 
     public Pokemon(int pokemonId, String name, int level, char gender, Status status,
                    int[] ivs, int[] evs, Type typeOne, Type typeTwo, Ability ability,
-                   com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
+                   Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
                    String mapIconPath, String backPath, String miniPath,
-                   String cryPath, int captureRate, Skill firstSkill, Skill secondSkill,
+                   String cryPath, String profilePath, int captureRate, double weight, Skill firstSkill, Skill secondSkill,
                    Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp) {
         this.gender = gender;
         this.ivs = ivs;
         this.evs = evs;
         this.nature = nature;
-        init(pokemonId, name, level, typeOne, typeTwo, ability, expType, baseExp,
+        this.profilePath = profilePath;
+        this.ability = ability;
+        init(pokemonId, name, level, typeOne, typeTwo, expType, baseExp,
                 evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
         this.status = status;
         setHealthAndExp(currentHealth, currentExp);
@@ -400,9 +413,9 @@ public abstract class Pokemon {
     }
 
     private void init(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
-                      Ability ability, ExpType expType, int baseExp, int[] evYield,
-                      int[] baseStats, String mapIconPath, String backPath,
-                      String miniPath, String cryPath, int captureRate) {
+                      ExpType expType, int baseExp, int[] evYield, int[] baseStats,
+                      String mapIconPath, String backPath, String miniPath, String cryPath,
+                      int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
         this.level = level;
@@ -418,7 +431,6 @@ public abstract class Pokemon {
         this.typeTwo = typeTwo;
         battleTypeOne = typeOne;
         battleTypeTwo = typeTwo;
-        this.ability = ability;
         this.captureRate = captureRate;
         this.fainted = false;
         status = Status.STATUS_FREE;
@@ -530,6 +542,7 @@ public abstract class Pokemon {
         damageTakenCategory = Skill.SkillCategory.MISC;
         usedRage = false;
         uproaring = false;
+
         //Reset the battle types and resistances if they were changed.
         if (battleTypeOne != typeOne || battleTypeTwo != typeTwo) {
             battleTypeOne = typeOne;
@@ -537,6 +550,27 @@ public abstract class Pokemon {
             initializeResistances();
         }
         battleAbility = ability;
+        battleWeight = weight;
+    }
+
+    /**
+     * Return the battle weight of the Pokemon in KG
+     * @return The weight of the Pokemon in KG
+     */
+    public double getBattleWeight() {
+        return battleWeight;
+    }
+
+    /**
+     * Set a new battle weight for the Pokemon. Moves like Autotomize change this.
+     * @param newWeight The new weight for the Pokemon.
+     */
+    public void setBattleWeight(double newWeight) {
+        battleWeight = newWeight;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 
     public int getFuryCutterStacks() {
@@ -2033,6 +2067,11 @@ public abstract class Pokemon {
             gender = 'F';
         }
     }
+
+    /**
+     * Init the Pokemon's ability. Should be overrided by the subclass.
+     */
+    protected abstract void initAbility();
 
     /**
      * Return the Pokemon's gender.

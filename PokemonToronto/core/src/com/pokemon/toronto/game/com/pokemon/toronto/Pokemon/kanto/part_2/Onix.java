@@ -22,6 +22,7 @@ public class Onix extends Pokemon {
     private static final int BASE_EXP = 108;
     private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+    private static final double WEIGHT = 210;
 
     //Base Stats
     private static final int BASE_HEALTH = 35;
@@ -31,20 +32,28 @@ public class Onix extends Pokemon {
     private static final int BASE_SPECIAL_DEFENSE = 45;
     private static final int BASE_SPEED = 70;
 
+    //Typing
+    private static final Type TYPE_ONE = Type.ROCK;
+    private static final Type TYPE_TWO = Type.GROUND;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/onix.png";
     private static final String BACK_PATH = "battle/backs/onix.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/onix.png";
     private static final String CRY_PATH = "sounds/cry/095.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/095.png";
     /**
      * Create a Onix with the specified level.
      * @param level The level of the Onix.
      */
     public Onix(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.ROCK, Pokemon.Type.GROUND, Pokemon.Ability.STURDY, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -65,11 +74,21 @@ public class Onix extends Pokemon {
     public Onix(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
                      Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
                      Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.ROCK, Pokemon.Type.GROUND, ability, nature, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN WEAK ARMOR
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.ROCK_HEAD;
+        } else {
+            ability = Ability.STURDY;
+        }
     }
 
     /**

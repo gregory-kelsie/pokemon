@@ -21,6 +21,7 @@ public class Parasect extends Pokemon {
     private static final int BASE_EXP = 128;
     private static final int[] EV_YIELD = {0, 2, 1, 0, 0, 0};
     private static final int CAPTURE_RATE = 75;
+    private static final double WEIGHT = 29.5;
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -35,16 +36,17 @@ public class Parasect extends Pokemon {
     private static final String BACK_PATH = "battle/backs/parasect.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/parasect.png";
     private static final String CRY_PATH = "sounds/cry/047.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/047.png";
 
     /**
      * Create a Parasect with the specified level.
      * @param level The level of the Parasect.
      */
     public Parasect(int level) {
-        super(NUMBER, NAME, level, Type.BUG, Type.GRASS, Ability.EFFECT_SPORE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, level, Type.BUG, Type.GRASS, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
     }
 
     /**
@@ -68,8 +70,18 @@ public class Parasect extends Pokemon {
         super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, CAPTURE_RATE, firstSkill, secondSkill,
-                thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
+                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+    }
+
+    //TODO: HIDDEN DAMP
+    @Override
+    protected void initAbility() {
+        if (Math.random() <= .5) {
+            ability = Ability.EFFECT_SPORE;
+        } else {
+            ability = Ability.DRY_SKIN;
+        }
     }
 
     /**
