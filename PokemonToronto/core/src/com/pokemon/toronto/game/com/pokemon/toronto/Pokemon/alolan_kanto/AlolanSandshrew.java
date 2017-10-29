@@ -44,7 +44,7 @@ public class AlolanSandshrew extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/sandshrew.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/sandshrew.png";
     private static final String CRY_PATH = "sounds/cry/027.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolansandshrew.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolansandshrew.png";
 
     /**
      * Create a Sandshrew with the specified level.

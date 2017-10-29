@@ -182,8 +182,14 @@ public class PokeNavState extends GameState{
                 executeBagScreen();
                 break;
             case PROFILE_SCREEN:
+                executeProfileScreen();
                 break;
         }
+    }
+
+    public void executeProfileScreen() {
+        gsm.setState(new ProfileState(gsm));
+        dispose();
     }
 
     /**

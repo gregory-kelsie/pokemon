@@ -9,17 +9,28 @@ public class Player {
     private int uid;
     private int money;
     private char gender;
+    private int kantoBadges;
 
     public Player(int uid, String name) {
         this.uid = uid;
         this.name = name;
         this.money = 0;
     }
-    public Player(int uid, String name, int money, char gender) {
+    public Player(int uid, String name, int money, char gender, int kantoBadges) {
         this.uid = uid;
         this.name = name;
         this.money = money;
         this.gender = gender;
+        this.kantoBadges = kantoBadges;
+    }
+
+    public int getKantoBadges() {
+        return kantoBadges;
+    }
+
+    public void addKantoBadge() {
+        kantoBadges++;
+        kantoBadges = Math.min(kantoBadges, 8);
     }
 
     public int getId() {

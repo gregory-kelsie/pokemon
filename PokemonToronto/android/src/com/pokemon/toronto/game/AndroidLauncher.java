@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -565,6 +566,16 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			Log.i("Geocoder", cityName);
 		} catch (Exception e) { Log.i("Geocoder", e.getMessage());}
 		pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
+	}
+
+	@Override
+	public void forceLandscape() {
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+	}
+
+	@Override
+	public void forcePortrait() {
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	/**

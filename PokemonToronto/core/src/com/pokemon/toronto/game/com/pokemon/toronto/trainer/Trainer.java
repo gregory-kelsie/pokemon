@@ -4,6 +4,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
 import java.util.List;
 
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_BADGE;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.NO_BADGE;
+
 /**
  * Created by Gregory on 9/5/2017.
  */
@@ -15,14 +18,39 @@ public class Trainer {
     private List<Pokemon> party;
     private String victoryText;
     private double difficulty;
+    private Badge badgeType;
 
-    public Trainer(double difficulty, String title, String name, String victoryText, String iconPath, List<Pokemon> party) {
+    public static enum Badge {
+        NO_BADGE, KANTO_BADGE;
+    }
+
+    public Trainer(double difficulty, String title, String name, String victoryText,
+                   String iconPath, List<Pokemon> party) {
+        init(difficulty, title, name, victoryText, iconPath, party);
+        badgeType = NO_BADGE;
+    }
+
+    public Trainer(double difficulty, String title, String name, String victoryText,
+                   String iconPath, List<Pokemon> party, Badge badgeType) {
+        init(difficulty, title, name, victoryText, iconPath, party);
+        this.badgeType = badgeType;
+    }
+
+    private void init(double difficulty, String title, String name, String victoryText,
+                      String iconPath, List<Pokemon> party) {
         this.difficulty = difficulty;
         this.title = title;
         this.name = name;
         this.victoryText = victoryText;
         this.iconPath = iconPath;
         this.party = party;
+    }
+
+    public boolean givesKantoBadge() {
+        if (badgeType == KANTO_BADGE) {
+            return true;
+        }
+        return false;
     }
 
     public String toString() {

@@ -44,7 +44,7 @@ public class AlolanDiglett extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/diglett.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/diglett.png";
     private static final String CRY_PATH = "sounds/cry/050.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolandiglett.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolandiglett.png";
 
     /**
      * Create a Diglett with the specified level.

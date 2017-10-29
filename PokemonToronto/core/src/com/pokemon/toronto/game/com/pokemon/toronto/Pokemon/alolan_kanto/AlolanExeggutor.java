@@ -43,7 +43,7 @@ public class AlolanExeggutor extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/exeggutor.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/exeggutor.png";
     private static final String CRY_PATH = "sounds/cry/103.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanexeggutor.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanexeggutor.png";
 
     /**
      * Create a Exeggutor with the specified level.

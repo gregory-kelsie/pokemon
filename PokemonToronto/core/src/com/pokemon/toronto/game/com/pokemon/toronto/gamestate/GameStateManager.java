@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
@@ -79,7 +80,10 @@ public class GameStateManager {
     private Player player;
     private List<WildPokemon> nearbyPokemon;
     private List<WildTrainer> nearbyTrainers;
-    public GameStateManager() {
+
+    private OrthographicCamera camera;
+    public GameStateManager(OrthographicCamera camera) {
+        this.camera = camera;
         latitude = 0;
         longitude = 0;
         gotCoordinates = true;
@@ -98,10 +102,34 @@ public class GameStateManager {
         menubgm.setLooping(true);
     }
 
+    public void forceLandscape() {
+        camera.setToOrtho(false, 1920, 1080);
+        gameCallBack.forceLandscape();
+    }
+
+    public void forcePortrait() {
+        camera.setToOrtho(false, 1080, 1920);
+        gameCallBack.forcePortrait();
+    }
+
+    public void updateBadges() {
+        JSONParser jp = new JSONParser();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        int uid = player.getId();
+        params.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+        params.add(new BasicNameValuePair("kanto_badges", String.valueOf(player.getKantoBadges())));
+        JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/updateBadges.php", "POST", params);
+        try {
+            Gdx.app.log("updateBadges", obj.getString("message"));
+        } catch (JSONException e) {
+            Gdx.app.log("updateBadges", e.getMessage());
+        }
+    }
     public void saveParty() {
         JSONParser jp = new JSONParser();
         List<NameValuePair> paramsDelete = new ArrayList<NameValuePair>();
         int uid = player.getId();
+
 
         int emptySlots = 6 - party.size();
         int currentEmptySlot = 5;

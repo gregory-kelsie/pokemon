@@ -43,7 +43,7 @@ public class AlolanDugtrio extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/dugtrio.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/dugtrio.png";
     private static final String CRY_PATH = "sounds/cry/051.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolandugtrio.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolandugtrio.png";
 
     /**
      * Create a Diglett with the specified level.

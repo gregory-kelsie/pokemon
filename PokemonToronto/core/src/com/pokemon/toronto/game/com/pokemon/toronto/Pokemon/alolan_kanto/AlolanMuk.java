@@ -43,7 +43,7 @@ public class AlolanMuk extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/muk.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/muk.png";
     private static final String CRY_PATH = "sounds/cry/089.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanmuk.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanmuk.png";
 
     /**
      * Create a Muk with the specified level.

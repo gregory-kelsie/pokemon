@@ -42,7 +42,7 @@ public class AlolanSandslash extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/sandslash.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/sandslash.png";
     private static final String CRY_PATH = "sounds/cry/028.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolansandslash.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolansandslash.png";
 
     /**
      * Create a Sandslash with the specified level.

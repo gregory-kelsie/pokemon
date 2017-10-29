@@ -576,7 +576,8 @@ public class TrainerFactory {
 
         party.add(g);
         party.add(o);
-        return new Trainer(0, "Gym Leader", "Brock", victoryText, "trainers/small/brock.png", party);
+        return new Trainer(0, "Gym Leader", "Brock", victoryText, "trainers/small/brock.png", party,
+                Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderMisty() {
@@ -598,7 +599,8 @@ public class TrainerFactory {
 
         party.add(g);
         party.add(o);
-        return new Trainer(0, "Gym Leader", "Misty", victoryText, "trainers/small/misty.png", party);
+        return new Trainer(0, "Gym Leader", "Misty", victoryText, "trainers/small/misty.png", party,
+                Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderLtSurge() {
@@ -623,7 +625,8 @@ public class TrainerFactory {
         party.add(g);
         party.add(o);
         party.add(r);
-        return new Trainer(0, "Gym Leader", "Lt. Surge", victoryText, "trainers/small/ltsurge.png", party);
+        return new Trainer(0, "Gym Leader", "Lt. Surge", victoryText, "trainers/small/ltsurge.png",
+                party, Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderErika() {
@@ -648,7 +651,8 @@ public class TrainerFactory {
         party.add(g);
         party.add(o);
         party.add(r);
-        return new Trainer(0, "Gym Leader", "Erika", victoryText, "trainers/small/erika.png", party);
+        return new Trainer(0, "Gym Leader", "Erika", victoryText, "trainers/small/erika.png", party,
+                Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderSabrina() {
@@ -680,7 +684,8 @@ public class TrainerFactory {
         party.add(o);
         party.add(r);
         party.add(alakazam);
-        return new Trainer(0, "Gym Leader", "Sabrina", victoryText, "trainers/small/sabrina.png", party);
+        return new Trainer(0, "Gym Leader", "Sabrina", victoryText, "trainers/small/sabrina.png",
+                party, Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderJanine() {
@@ -710,7 +715,8 @@ public class TrainerFactory {
         party.add(o);
         party.add(r);
         party.add(weezing);
-        return new Trainer(0, "Gym Leader", "Janine", victoryText, "trainers/small/janine.png", party);
+        return new Trainer(0, "Gym Leader", "Janine", victoryText, "trainers/small/janine.png",
+                party, Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderBlaine() {
@@ -749,7 +755,8 @@ public class TrainerFactory {
         party.add(o);
         party.add(r);
         party.add(arcanine);
-        return new Trainer(0, "Gym Leader", "Blaine", victoryText, "trainers/small/blaine.png", party);
+        return new Trainer(0, "Gym Leader", "Blaine", victoryText, "trainers/small/blaine.png",
+                party, Trainer.Badge.KANTO_BADGE);
     }
 
     public Trainer getGymLeaderBlue() {
@@ -798,7 +805,8 @@ public class TrainerFactory {
         party.add(gyarados);
         party.add(exeggutor);
         party.add(arcanine);
-        return new Trainer(0, "Gym Leader", "Blue", victoryText, "trainers/small/blue.png", party);
+        return new Trainer(0, "Gym Leader", "Blue", victoryText, "trainers/small/blue.png", party,
+                Trainer.Badge.KANTO_BADGE);
     }
 
     public WildTrainer getBugCatcher(double difficulty, double latitude, double longitude) {

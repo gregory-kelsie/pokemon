@@ -26,60 +26,63 @@ public class KantoGymState extends GameState {
 
     public KantoGymState(GameStateManager gsm) {
         this.gsm = gsm;
-        badges = 7;
+        badges = gsm.getPlayer().getKantoBadges();
         gymTextures = new ArrayList<Texture>();
         background = new Texture("simulator/background.png");
         title = new Texture("simulator/gym_leaders/kanto/title.png");
-        gymTextures.add(new Texture("simulator/gym_leaders/kanto/brock.png"));
+
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
-        addLitTextures();
-        addGrayTextures();
+        addBadges();
 
     }
 
-    private void addLitTextures() {
-        if (badges >= 1) {
-            gymTextures.add(new Texture("simulator/gym_leaders/kanto/misty.png"));
-            if (badges >= 2) {
-                gymTextures.add(new Texture("simulator/gym_leaders/kanto/ltsurge.png"));
-                if (badges >= 3) {
-                    gymTextures.add(new Texture("simulator/gym_leaders/kanto/erika.png"));
-                    if (badges >= 4) {
-                        gymTextures.add(new Texture("simulator/gym_leaders/kanto/janine.png"));
-                        if (badges >= 5) {
-                            gymTextures.add(new Texture("simulator/gym_leaders/kanto/sabrina.png"));
-                            if (badges >= 6) {
-                                gymTextures.add(new Texture("simulator/gym_leaders/kanto/blaine.png"));
-                                if (badges >= 7) {
-                                    gymTextures.add(new Texture("simulator/gym_leaders/kanto/gary.png"));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    private void addBadges() {
+        if (badges == 0) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/brock.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/brock_gray.png"));
         }
-    }
-    private void addGrayTextures() {
-        if (badges < 1) {
+
+        if (badges == 1) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/misty.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/misty_gray.png"));
         }
-        if (badges < 2) {
+
+        if (badges == 2) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/ltsurge.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/ltsurge_gray.png"));
         }
-        if (badges < 3) {
+
+        if (badges == 3) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/erika.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/erika_gray.png"));
         }
-        if (badges < 4) {
+
+        if (badges == 4) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/janine.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/janine_gray.png"));
         }
-        if (badges < 5) {
+
+        if (badges == 5) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/sabrina.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/sabrina_gray.png"));
         }
-        if (badges < 6) {
+
+
+        if (badges == 6) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/blaine.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/blaine_gray.png"));
         }
-        if (badges < 7) {
+
+        if (badges == 7) {
+            gymTextures.add(new Texture("simulator/gym_leaders/kanto/gary.png"));
+        } else {
             gymTextures.add(new Texture("simulator/gym_leaders/kanto/gary_gray.png"));
         }
     }
@@ -105,36 +108,44 @@ public class KantoGymState extends GameState {
             int y = MyInput.getY();
             if (x >= 911 && x <= 1080 && y >= 0 && y <= 136) {
                 clickedPowerButton();
-            } else if (x >= 89 && x <= 439 && y >= 207 && y <= 522) {
+            } else if (x >= 89 && x <= 439 && y >= 207 && y <= 522 &&
+                    gsm.getPlayer().getKantoBadges() == 0) {
                 //Clicked Brock
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderBrock());
                 dispose();
-            } else if (x >= 534 && x <= 901 && y >= 221 && y <= 457) {
+            } else if (x >= 534 && x <= 901 && y >= 221 && y <= 457 &&
+                    gsm.getPlayer().getKantoBadges() == 1) {
                 //Clicked Misty
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderMisty());
-            } else if (x >= 89 && x <= 439 && y >= 702 && y <= 964) {
+            } else if (x >= 89 && x <= 439 && y >= 702 && y <= 964 &&
+                    gsm.getPlayer().getKantoBadges() == 2) {
                 //Clicked Lt Surge
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderLtSurge());
-            } else if (x >= 534 && x <= 901 && y >= 702 && y <= 964) {
+            } else if (x >= 534 && x <= 901 && y >= 702 && y <= 964 &&
+                    gsm.getPlayer().getKantoBadges() == 3) {
                 //Clicked Erika
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderErika());
-            } else if (x >= 89 && x <= 439 && y >= 1165 && y <= 1386) {
+            } else if (x >= 89 && x <= 439 && y >= 1165 && y <= 1386 &&
+                    gsm.getPlayer().getKantoBadges() == 4) {
                 //Clicked Janine
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderJanine());
-            } else if (x >= 534 && x <= 901 && y >= 1165 && y <= 1386) {
+            } else if (x >= 534 && x <= 901 && y >= 1165 && y <= 1386 &&
+                    gsm.getPlayer().getKantoBadges() == 5) {
                 //Clicked Sabrina
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderSabrina());
-            } else if (x >= 89 && x <= 439 && y >= 1575 && y <= 1800) {
+            } else if (x >= 89 && x <= 439 && y >= 1575 && y <= 1800 &&
+                    gsm.getPlayer().getKantoBadges() == 6) {
                 //Clicked Blaine
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderBlaine());
-            } else if (x >= 534 && x <= 901 && y >= 1575 && y <= 1800) {
+            } else if (x >= 534 && x <= 901 && y >= 1575 && y <= 1800 &&
+                    gsm.getPlayer().getKantoBadges() == 7) {
                 //Clicked Blue
                 TrainerFactory ttf = new TrainerFactory();
                 loadGymLeader(ttf.getGymLeaderBlue());

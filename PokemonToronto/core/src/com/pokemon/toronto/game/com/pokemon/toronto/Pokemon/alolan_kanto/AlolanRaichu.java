@@ -43,7 +43,7 @@ public class AlolanRaichu extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/raichu.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/raichu.png";
     private static final String CRY_PATH = "sounds/cry/026.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanraichu.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanraichu.png";
 
     /**
      * Create a Raichu with the specified level.

@@ -45,7 +45,7 @@ public class AlolanRattata extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/rattata.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/rattata.png";
     private static final String CRY_PATH = "sounds/cry/019.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanrattata.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanrattata.png";
 
     /**
      * Create a Rattata with the specified level.

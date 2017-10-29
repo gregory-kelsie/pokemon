@@ -42,7 +42,7 @@ public class AlolanNinetales extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/ninetales.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/ninetales.png";
     private static final String CRY_PATH = "sounds/cry/038.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanninetales.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanninetales.png";
 
     /**
      * Create a Ninetales with the specified level.

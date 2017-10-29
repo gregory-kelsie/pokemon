@@ -49,6 +49,8 @@ public class pokemonToronto extends ApplicationAdapter {
 									 double[] trainerLongitude, String[] trainerIcon);
 		public void startPokemonMapActivity(double pokemonLatitude, double pokemonLongitude, String pokemonIcon, int distance);
 		public void spawnNewGamePokemon();
+		void forceLandscape();
+		void forcePortrait();
 	}
 
 	/**
@@ -82,7 +84,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	 *  ### Spawning pokemon on boot as a test ###
 	 */
 	private void initGameStateManager() {
-		gsm = new GameStateManager();
+		gsm = new GameStateManager(camera);
 		//gsm.setNotificationSound();
 		gsm.setInitialState();
 		gsm.setGameCallBack(gameCallBack);

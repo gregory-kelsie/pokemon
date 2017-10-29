@@ -45,7 +45,7 @@ public class AlolanGeodude extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/geodude.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/geodude.png";
     private static final String CRY_PATH = "sounds/cry/074.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolangeodude.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolangeodude.png";
     /**
      * Create a Geodude with the specified level.
      * @param level The level of the Geodude.

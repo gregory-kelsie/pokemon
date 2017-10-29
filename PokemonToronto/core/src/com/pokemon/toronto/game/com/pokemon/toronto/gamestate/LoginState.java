@@ -128,14 +128,14 @@ public class LoginState extends GameState {
                 Gdx.app.log("startedgamez", obj.get("startedGame").toString());
                 int startedGame = Integer.parseInt(obj.get("startedGame").toString());
                 errorMessage = obj.get("message").toString();
-                gsm.setPlayer(new Player(Integer.parseInt(obj.get("uid").toString()), username));
                 if (startedGame == 0) {
+                    gsm.setPlayer(new Player(Integer.parseInt(obj.get("uid").toString()), username));
                     gsm.setState(new LoadingState(gsm, LoadingState.INTRODUCTION));
                     dispose();
                 } else {
                     //Load pokes and everything.
                     gsm.setPlayer(new Player(Integer.parseInt(obj.get("uid").toString()), username, Integer.parseInt(obj.get("money").toString()),
-                            obj.get("gender").toString().charAt(0)));
+                            obj.get("gender").toString().charAt(0), Integer.parseInt(obj.get("kanto_badges").toString())));
                     Gdx.input.setInputProcessor(new InputHandler());
                     loadParty();
                     gsm.logIn();

@@ -44,7 +44,7 @@ public class AlolanGrimer extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/grimer.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/grimer.png";
     private static final String CRY_PATH = "sounds/cry/088.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolangrimer.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolangrimer.png";
 
     /**
      * Create a Grimer with the specified level.

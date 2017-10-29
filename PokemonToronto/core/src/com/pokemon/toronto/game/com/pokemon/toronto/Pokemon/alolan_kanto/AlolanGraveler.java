@@ -45,7 +45,7 @@ public class AlolanGraveler extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/graveler.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/graveler.png";
     private static final String CRY_PATH = "sounds/cry/075.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolangraveler.png";
+    private static final String PROFILE_PATH = "trainercard/alolan_kanto/pokemon/alolangraveler.png";
     /**
      * Create a Graveler with the specified level.
      * @param level The level of the Graveler.

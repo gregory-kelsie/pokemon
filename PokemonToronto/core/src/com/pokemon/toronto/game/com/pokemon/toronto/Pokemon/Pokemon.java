@@ -3766,6 +3766,12 @@ public abstract class Pokemon {
     }
 
     /**
+     * Return the Pokemon's Profile Image path.
+     * @return The path for the Pokemon's profile image.
+     */
+    public String getProfileIcon() { return profilePath; }
+
+    /**
      * Return the Pokemon's Cry Sound path.
      * @return The path for the Pokemon's cry sound.
      */
@@ -4143,9 +4149,9 @@ public abstract class Pokemon {
 
     public boolean isPoisonable() {
         if (!isStatused() && currentHealth != 0 &&
-                battleAbility != Pokemon.Ability.SHIELD_DUST && battleTypeOne != Type.POISON &&
-                battleTypeTwo != Type.POISON && battleTypeOne != Type.STEEL &&
-                battleTypeTwo != Type.STEEL) {
+                battleAbility != Pokemon.Ability.SHIELD_DUST && !(battleTypeOne == Type.POISON ||
+                battleTypeTwo == Type.POISON) && !(battleTypeOne == Type.STEEL ||
+                battleTypeTwo == Type.STEEL)) {
             return true;
         }
         return false;
@@ -4153,8 +4159,8 @@ public abstract class Pokemon {
 
     public boolean isParalyzable() {
         if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
-                battleAbility != Pokemon.Ability.LIMBER && battleTypeOne != Type.ELECTRIC &&
-                battleTypeTwo != Type.ELECTRIC) {
+                battleAbility != Pokemon.Ability.LIMBER && !(battleTypeOne == Type.ELECTRIC ||
+                battleTypeTwo == Type.ELECTRIC)) {
             return true;
         }
         return false;
@@ -4168,7 +4174,7 @@ public abstract class Pokemon {
     }
     public boolean isFreezable() {
         if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
-                battleTypeOne != Type.ICE && battleTypeTwo != Type.ICE) {
+                !(battleTypeOne == Type.ICE || battleTypeTwo == Type.ICE)) {
             return true;
         }
         return false;
@@ -4176,7 +4182,7 @@ public abstract class Pokemon {
 
     public boolean isBurnable() {
         if (!isStatused() && currentHealth != 0 && battleAbility!= Pokemon.Ability.SHIELD_DUST &&
-                battleTypeOne != Type.FIRE && battleTypeTwo != Type.FIRE) {
+                !(battleTypeOne == Type.FIRE || battleTypeTwo == Type.FIRE)) {
             return true;
         }
         return false;

@@ -696,7 +696,10 @@ public class BattleState extends GameState implements BattleInterface {
             }
             gsm.getParty().get(i).resetJustLeveled();
         }
-
+        if (trainer.givesKantoBadge()) {
+            gsm.getPlayer().addKantoBadge();
+            gsm.updateBadges();
+        }
         if (region != -1) {
             if (evolvedPokemon.size() > 0) {
                 gsm.saveParty();

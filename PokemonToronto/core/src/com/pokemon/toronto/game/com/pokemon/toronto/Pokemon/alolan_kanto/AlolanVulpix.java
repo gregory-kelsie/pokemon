@@ -44,7 +44,7 @@ public class AlolanVulpix extends Pokemon {
     private static final String BACK_PATH = "battle/backs/alolan_kanto/vulpix.png";
     private static final String MINI_PATH = "pokemonMenu/sprites/alolan_kanto/vulpix.png";
     private static final String CRY_PATH = "sounds/cry/037.wav";
-    private static final String PROFILE_PATH = "trainercard/alolan_kanto/alolanvulpix.png";
+    private static final String PROFILE_PATH = "trainercard/pokemon/alolan_kanto/alolanvulpix.png";
 
     /**
      * Create a Vulpix with the specified level.
