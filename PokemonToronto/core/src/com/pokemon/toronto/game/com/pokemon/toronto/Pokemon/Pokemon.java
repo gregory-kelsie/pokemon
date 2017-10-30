@@ -2264,7 +2264,11 @@ public abstract class Pokemon {
             if (levelUpSkills.containsKey(i)) {
                 for (int j = 0; j < levelUpSkills.get(i).size(); j++) {
                     if (!hasSkill(levelUpSkills.get(i).get(j))) {
-                        skills.add(currentSkill, skillFactory.createSkill(levelUpSkills.get(i).get(j)));
+                        if (skills.size() > currentSkill) {
+                            skills.set(currentSkill, skillFactory.createSkill(levelUpSkills.get(i).get(j)));
+                        } else {
+                            skills.add(skillFactory.createSkill(levelUpSkills.get(i).get(j)));
+                        }
                         currentSkill++;
                     }
                     if (currentSkill == 4) {
