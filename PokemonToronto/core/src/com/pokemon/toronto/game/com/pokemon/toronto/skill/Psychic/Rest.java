@@ -72,8 +72,8 @@ public class Rest extends Skill {
                                Skill targetsSkill) {
         if (skillUser.isSleeping()) {
             return new FailResult(skillUser.getName() + " is already sleeping!");
-        } else if (skillUser.getBattleAbility() != Pokemon.Ability.INSOMNIA &&
-                !enemyPokemon.isUproaring() && !skillUser.isUproaring()) {
+        } else if (skillUser.getBattleAbility() == Pokemon.Ability.INSOMNIA ||
+                enemyPokemon.isUproaring() || skillUser.isUproaring()) {
             return new FailResult("It failed...");
         }
         return new FailResult(false);
