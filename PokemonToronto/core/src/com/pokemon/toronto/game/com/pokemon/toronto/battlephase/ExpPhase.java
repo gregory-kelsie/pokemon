@@ -45,14 +45,20 @@ public class ExpPhase extends BattlePhase {
         if (pui.isWildBattle()) {
             pui.playVictoryBgm();
         }
-        expGain = pui.getEnemyPokemon().calculateExp(1);
+        double a;
+        if (pui.isWildBattle()) {
+            a = 1;
+        } else {
+            a = 1.5;
+        }
+        expGain = pui.getEnemyPokemon().calculateExp(1, a);
         fullBarofExp = pui.getUserPokemon().getNextLevelExp();
         expGainRate = fullBarofExp / 1.5;
         if (!pui.getUserPokemon().hasMaxEvs()) {
             pui.getUserPokemon().addEvs(pui.getEnemyPokemon().getEvYield());
         }
         text = pui.getUserPokemon().getName() + " gained " +
-                pui.getEnemyPokemon().calculateExp(1) + " Exp. Points.";
+                pui.getEnemyPokemon().calculateExp(1, a) + " Exp. Points.";
         currentState = DISPLAY_EXP_GAIN;
         playedLevelUpSound = false;
 

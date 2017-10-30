@@ -38,7 +38,7 @@ public class ParalysisEffect extends SecondaryEffect {
             targetSubField = enemyField;
         }
         //Check if the user is able to receive paralysis.
-        if (!effectReceiver.isParalyzable() && !targetSubField.hasSafeguard()) {
+        if (effectReceiver.isParalyzable() && !targetSubField.hasSafeguard()) {
             effectReceiver.setPreStatus(Pokemon.Status.PARALYSIS);
             results.add(effectReceiver.getName() + " was paralyzed.");
         }

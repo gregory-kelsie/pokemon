@@ -168,6 +168,7 @@ public class PokeNavState extends GameState{
                 executeSimulator();
                 break;
             case COMMUNITY_SCREEN:
+                executeTrainerScreen();
                 break;
             case POKECENTER_SCREEN:
                 executePokeCenterScreen();
@@ -185,6 +186,11 @@ public class PokeNavState extends GameState{
                 executeProfileScreen();
                 break;
         }
+    }
+
+    private void executeTrainerScreen() {
+        gsm.setState(new TrainerState(gsm));
+        dispose();
     }
 
     public void executeProfileScreen() {
@@ -206,17 +212,6 @@ public class PokeNavState extends GameState{
     private void executePokeCenterScreen() {
         gsm.stopBgm();
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
-
-        /*
-        gsm.stopBgm();
-        TrainerFactory ttf = new TrainerFactory();
-        Trainer t = ttf.getTrainer(3, gsm.getLatitude(), gsm.getLongitude());
-        Gdx.app.log("Trainer", t.toString());
-        Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/trainer.mp3"));
-        wildBgm.setVolume(0.5f);
-        wildBgm.play();
-        gsm.setState(new BattleState(gsm, wildBgm, t));
-        */
     }
 
     /**

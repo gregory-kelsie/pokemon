@@ -63,10 +63,12 @@ public class BattleClickController {
                 model.playClickSound();
             } else if (x >= 200 && x <= 919 && y >= 1441 && y <= 1583 && model.isOnBagOptionPanel()) {
                 //Clicked Pokeballs
-                if ((!model.hasAFullParty() || !model.hasFullBoxes()) && !model.cameFromSimulator()) {
-                    model.setPanelPosition(model.POKEBALL_BAG);
-                    model.getBattleTextures().initPokeballIconTextures(model.getPokeballBag(), model.getCurrentItemPage());
-                    model.playClickSound();
+                if (model.isWildBattle()) {
+                    if ((!model.hasAFullParty() || !model.hasFullBoxes()) && !model.cameFromSimulator()) {
+                        model.setPanelPosition(model.POKEBALL_BAG);
+                        model.getBattleTextures().initPokeballIconTextures(model.getPokeballBag(), model.getCurrentItemPage());
+                        model.playClickSound();
+                    }
                 }
             } else if (x >= 0 && x <= 473 && y >= 1203 && y <= 1337 && model.isOnPokeballBagPanel()) {
                 //Clicked Pokeballs
@@ -138,15 +140,17 @@ public class BattleClickController {
                 }
             } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Run
-                if (!cannotSwitchOut()) {
-                    if (model.cameFromSimulator()) { //came from simulator
-                        model.goToRouteState();
-                    } else { // came from map
-                        model.goToMainMenuState();
+                if (model.isWildBattle()) {
+                    if (!cannotSwitchOut()) {
+                        if (model.cameFromSimulator()) { //came from simulator
+                            model.goToRouteState();
+                        } else { // came from map
+                            model.goToMainMenuState();
+                        }
+                        model.dispose();
+                    } else {
+                        model.setNoSwitchText();
                     }
-                    model.dispose();
-                } else {
-                    model.setNoSwitchText();
                 }
             } else if (x >= 88 && x <= 411 && y >= 1186 && y <= 1302 && model.isOnPartyPanel() && !model.hasFirstPokemonOnField()) {
                 //First Pokemon

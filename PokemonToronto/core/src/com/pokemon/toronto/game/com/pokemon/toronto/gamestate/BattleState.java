@@ -696,7 +696,7 @@ public class BattleState extends GameState implements BattleInterface {
             }
             gsm.getParty().get(i).resetJustLeveled();
         }
-        if (trainer.givesKantoBadge()) {
+        if (battleType != WILD_BATTLE && trainer.givesKantoBadge()) {
             gsm.getPlayer().addKantoBadge();
             gsm.updateBadges();
         }

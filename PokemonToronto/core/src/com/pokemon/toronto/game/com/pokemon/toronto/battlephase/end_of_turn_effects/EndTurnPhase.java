@@ -823,6 +823,7 @@ public class EndTurnPhase extends BattlePhase {
 
 
     private void checkLeechSeed() {
+        Gdx.app.log("seedcheck", "check");
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0 && currentPokemon.isSeeded()) {
             currentState = DISPLAY_TEXT;
@@ -832,7 +833,11 @@ public class EndTurnPhase extends BattlePhase {
                 leechSeedDrain = currentPokemon.getCurrentHealth();
             }
             currentPokemon.subtractHealth(leechSeedDrain);
-            stateAfterText = ADJUST_ENEMY_HEALTH;
+            if (usingOnEnemy) {
+                stateAfterText = ADJUST_ENEMY_HEALTH;
+            } else {
+                stateAfterText = ADJUST_PLAYER_HEALTH;
+            }
             if (currentPokemon.getCurrentHealth() == 0) {
                 if (usingOnEnemy) {
                     stateAfterHealthAdjustment = DISPLAY_ENEMY_FAINT_TEXT;

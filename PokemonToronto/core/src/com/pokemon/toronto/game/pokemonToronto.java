@@ -170,6 +170,7 @@ public class pokemonToronto extends ApplicationAdapter {
 
 	public void spawnTrainer(List<Place> places) {
 		TrainerFactory tf = new TrainerFactory();
+		double difficulty = getTrainerDifficulty(gsm.getPlayer().getKantoBadges());
 		if (places.size() != 0) {
 			Set<Integer> trainers = new HashSet<Integer>();
 			for (Place place: places) {
@@ -183,14 +184,99 @@ public class pokemonToronto extends ApplicationAdapter {
 			if (setToList.size() != 0) {
 				//Get a random trainer from the set of possible trainers
 				int rand = (int)Math.floor(Math.random() * setToList.size());
-				gsm.getNearbyTrainers().add(tf.getTrainer(setToList.get(rand), 0.5, gsm.getLatitude(), gsm.getLongitude()));
+				gsm.getNearbyTrainers().add(tf.getTrainer(setToList.get(rand), difficulty, gsm.getLatitude(), gsm.getLongitude()));
 			} else {
 				//Spawn default trainers
-				gsm.getNearbyTrainers().add(tf.getTrainer(0.5, gsm.getLatitude(), gsm.getLongitude()));
+				gsm.getNearbyTrainers().add(tf.getTrainer(difficulty, gsm.getLatitude(), gsm.getLongitude()));
 			}
 		} else {
 			//Spawn default trainers
-			gsm.getNearbyTrainers().add(tf.getTrainer(0.5, gsm.getLatitude(), gsm.getLongitude()));
+			gsm.getNearbyTrainers().add(tf.getTrainer(difficulty, gsm.getLatitude(), gsm.getLongitude()));
+		}
+	}
+
+	private double getTrainerDifficulty(int kantoBadges) {
+		double rand = Math.random();
+		Gdx.app.log("BADGES", "" + kantoBadges);
+		if (kantoBadges == 0) {
+			if (rand < 0.75) {
+				return 0.5;
+			}
+			return 1;
+		} else if (kantoBadges == 1) {
+			if (rand < 0.05) {
+				return 0.5;
+			} else if (rand < 0.9) {
+				return 1;
+			} else {
+				return 1.5;
+			}
+		} else if (kantoBadges == 2) {
+			if (rand < 0.05) {
+				return 1;
+			} else if (rand < 0.6) {
+				return 1.5;
+			} else {
+				return 2;
+			}
+		} else if (kantoBadges == 3) {
+			if (rand < 0.1) {
+				return 1.5;
+			} else if (rand < 0.6) {
+				return 2;
+			} else {
+				return 2.5;
+			}
+		} else if (kantoBadges == 4) {
+			if (rand < 0.05) {
+				return 2;
+			} else if (rand < 0.35) {
+				return 2.5;
+			} else if (rand < 0.75) {
+				return 3;
+			} else {
+				return 3.5;
+			}
+		} else if (kantoBadges == 5) {
+			if (rand < 0.35) {
+				return 2.5;
+			} else if (rand < 0.75) {
+				return 3;
+			} else {
+				return 3.5;
+			}
+		} else if (kantoBadges == 6) {
+			if (rand < 0.1) {
+				return 4;
+			} else if (rand < 0.75) {
+				return 3;
+			} else {
+				return 3.5;
+			}
+		} else if (kantoBadges == 7) {
+			if (rand < 0.1) {
+				return 5;
+			} else if (rand < 0.75) {
+				return 4;
+			} else if (rand < 0.9){
+				return 4.5;
+			} else if (rand < 0.97){
+				return 3.5;
+			} else {
+				return 3;
+			}
+		} else if (kantoBadges == 8) {
+			if (rand < 0.1) {
+				return 4.5;
+			} else if (rand < 0.8) {
+				return 5;
+			} else if (rand < 0.95){
+				return 5.5;
+			} else {
+				return 6;
+			}
+		} else {
+			return 6;
 		}
 	}
 

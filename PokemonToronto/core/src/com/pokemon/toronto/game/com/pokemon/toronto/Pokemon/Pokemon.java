@@ -2168,10 +2168,10 @@ public abstract class Pokemon {
      * of participants in the battle.
      * @param numberOfBattleParticipants The number of participants in the
      *                                   battle.
+     * @param a Whether or not the battle was a trainer battle or not. (1 for wild 1.5 for trainer)
      * @return The amount of exp the Pokemon will give.
      */
-    public long calculateExp(int numberOfBattleParticipants) {
-        double a = 1; //Wild pokemon 1, trainer 1.5
+    public long calculateExp(int numberOfBattleParticipants, double a) {
         int b = getBaseExp();
         double e = 1; //1.5 if holding lucky egg
         int l = getLevel();

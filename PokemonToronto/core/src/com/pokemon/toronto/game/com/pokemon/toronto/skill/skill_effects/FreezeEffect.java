@@ -39,7 +39,7 @@ public class FreezeEffect extends SecondaryEffect {
             targetSubField = enemyField;
         }
         //Check if the user is able to receive freeze.
-        if (!effectReceiver.isFreezable() && !targetSubField.hasSafeguard()) {
+        if (effectReceiver.isFreezable() && !targetSubField.hasSafeguard()) {
                 effectReceiver.setPreStatus(Pokemon.Status.FROZEN);
                 results.add(effectReceiver.getName() + " was frozen.");
         }

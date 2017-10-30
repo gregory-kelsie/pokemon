@@ -38,7 +38,7 @@ public class SleepEffect extends SecondaryEffect {
             targetSubField = enemyField;
         }
         if (effectReceiver.isSleepable() && !targetSubField.hasSafeguard() &&
-                !enemyPokemon.isUproaring()) {
+                !enemyPokemon.isUproaring() && !skillUser.isUproaring()) {
             effectReceiver.induceSleep();
             results.add(effectReceiver.getName() + " fell asleep!");
         }
