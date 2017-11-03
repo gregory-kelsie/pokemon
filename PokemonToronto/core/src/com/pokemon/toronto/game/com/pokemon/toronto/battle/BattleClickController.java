@@ -73,8 +73,12 @@ public class BattleClickController {
             } else if (x >= 0 && x <= 473 && y >= 1203 && y <= 1337 && model.isOnPokeballBagPanel()) {
                 //Clicked Pokeballs
                 if (model.getPokeballBag().size() >= 1) {
-                    int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                    model.startPokeballThrow(0, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                    if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                        int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                        model.startPokeballThrow(0, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                    } else {
+                        model.startPokeballThrow(0, model.getEnemyPokemon().getNextTurnSkill());
+                    }
 
                     model.getPokeballBag().get(0).subtractQuantity(1);
                     if (model.getPokeballBag().get(0).getQuantity() == 0) {
@@ -92,9 +96,14 @@ public class BattleClickController {
                 }
                 if (!model.startedAttack()) {
                     model.setPanelPosition(model.FIRST_PANEL);
-                    int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                    model.start(model.getCurrentPokemon().getSkills().get(0),
-                            model.getEnemyPokemon().getSkills().get(enemyAttack));
+                    if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                        int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                        model.start(model.getCurrentPokemon().getSkills().get(0),
+                                model.getEnemyPokemon().getSkills().get(enemyAttack));
+                    } else {
+                        model.start(model.getCurrentPokemon().getSkills().get(0),
+                                model.getEnemyPokemon().getNextTurnSkill());
+                    }
                 }
                 model.playClickSound();
 
@@ -107,9 +116,14 @@ public class BattleClickController {
                     }
                     if (!model.startedAttack()) {
                         model.setPanelPosition(model.FIRST_PANEL);
-                        int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                        model.start(model.getCurrentPokemon().getSkills().get(1),
-                                model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                            int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                            model.start(model.getCurrentPokemon().getSkills().get(1),
+                                    model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        } else {
+                            model.start(model.getCurrentPokemon().getSkills().get(1),
+                                    model.getEnemyPokemon().getNextTurnSkill());
+                        }
                     }
                     model.playClickSound();
                 }
@@ -122,9 +136,14 @@ public class BattleClickController {
                     }
                     if (!model.startedAttack()) {
                         model.setPanelPosition(model.FIRST_PANEL);
-                        int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                        model.start(model.getCurrentPokemon().getSkills().get(2),
-                                model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                            int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                            model.start(model.getCurrentPokemon().getSkills().get(2),
+                                    model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        } else {
+                            model.start(model.getCurrentPokemon().getSkills().get(2),
+                                    model.getEnemyPokemon().getNextTurnSkill());
+                        }
                     }
                     model.playClickSound();
                 }
@@ -137,9 +156,14 @@ public class BattleClickController {
                     }
                     if (!model.startedAttack()) {
                         model.setPanelPosition(model.FIRST_PANEL);
-                        int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                        model.start(model.getCurrentPokemon().getSkills().get(3),
-                                model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                            int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                            model.start(model.getCurrentPokemon().getSkills().get(3),
+                                    model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        } else {
+                            model.start(model.getCurrentPokemon().getSkills().get(3),
+                                    model.getEnemyPokemon().getNextTurnSkill());
+                        }
                     }
                     model.playClickSound();
                 }
@@ -170,8 +194,12 @@ public class BattleClickController {
                         if (model.isWaitingForNextPokemon()) {
                             model.switchCurrentPokemon();
                         } else {
-                            int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                            model.start(0, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                            if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                model.start(0, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                            } else {
+                                model.start(0, model.getEnemyPokemon().getNextTurnSkill());
+                            }
                         }
                         model.setPanelPosition(model.FIRST_PANEL);
                     }
@@ -191,8 +219,12 @@ public class BattleClickController {
                             if (model.isWaitingForNextPokemon()) {
                                 model.switchCurrentPokemon();
                             } else {
-                                int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                                model.start(1, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                    int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                    model.start(1, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                } else {
+                                    model.start(1, model.getEnemyPokemon().getNextTurnSkill());
+                                }
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
@@ -213,8 +245,12 @@ public class BattleClickController {
                             if (model.isWaitingForNextPokemon()) {
                                 model.switchCurrentPokemon();
                             } else {
-                                int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                                model.start(2, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                    int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                    model.start(2, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                } else {
+                                    model.start(2, model.getEnemyPokemon().getNextTurnSkill());
+                                }
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
@@ -235,8 +271,12 @@ public class BattleClickController {
                             if (model.isWaitingForNextPokemon()) {
                                 model.switchCurrentPokemon();
                             } else {
-                                int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                                model.start(3, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                    int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                    model.start(3, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                } else {
+                                    model.start(3, model.getEnemyPokemon().getNextTurnSkill());
+                                }
 
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
@@ -258,8 +298,12 @@ public class BattleClickController {
                             if (model.isWaitingForNextPokemon()) {
                                 model.switchCurrentPokemon();
                             } else {
-                                int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                                model.start(4, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                    int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                    model.start(4, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                } else {
+                                    model.start(4, model.getEnemyPokemon().getNextTurnSkill());
+                                }
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
@@ -280,8 +324,12 @@ public class BattleClickController {
                             if (model.isWaitingForNextPokemon()) {
                                 model.switchCurrentPokemon();
                             } else {
-                                int enemyAttack = (int)Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                                model.start(5, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                if (!model.getEnemyPokemon().hasNextTurnSkill()) {
+                                    int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
+                                    model.start(5, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                                } else {
+                                    model.start(5, model.getEnemyPokemon().getNextTurnSkill());
+                                }
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }

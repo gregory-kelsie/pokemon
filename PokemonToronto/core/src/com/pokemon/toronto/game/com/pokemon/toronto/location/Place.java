@@ -151,7 +151,7 @@ public class Place {
         int size = pokemonSet.size();
         if (size > 0) {
             List<Integer> setToList = new ArrayList<Integer>(pokemonSet);
-            return setToList.get((int)Math.floor(Math.random() * size));
+            return setToList.get((int)Math.round(Math.random() * (size - 1)));
         }
         return -1;
     }
@@ -303,17 +303,14 @@ public class Place {
         trainers.add(TrainerId.FIRE_BREATHER.getValue());
         trainers.add(TrainerId.JUGGLER.getValue());
         trainers.add(TrainerId.CONDUCTOR.getValue());
-        trainers.add(TrainerId.PSYCHIC_FEMALE.getValue());
-        trainers.add(TrainerId.PSYCHIC_MALE.getValue());
+        trainers.add(TrainerId.PSYCHIC.getValue());
         trainers.add(TrainerId.DRAGON_TAMER.getValue());
     }
 
     private void addAquariumTrainers() {
         trainers.add(TrainerId.TEACHER.getValue());
-        trainers.add(TrainerId.SCHOOL_BOY.getValue());
-        trainers.add(TrainerId.SCHOOL_GIRL.getValue());
-        trainers.add(TrainerId.SWIMMER_FEMALE.getValue());
-        trainers.add(TrainerId.SWIMMER_MALE.getValue());
+        trainers.add(TrainerId.SCHOOL_KID.getValue());
+        trainers.add(TrainerId.SWIMMER.getValue());
         trainers.add(TrainerId.FISHERMAN.getValue());
     }
 
@@ -332,8 +329,7 @@ public class Place {
         trainers.add(TrainerId.HIKER.getValue());
         trainers.add(TrainerId.PICNICKER_FEMALE.getValue());
         trainers.add(TrainerId.PICNICKER_MALE.getValue());
-        trainers.add(TrainerId.RANGER_FEMALE.getValue());
-        trainers.add(TrainerId.RANGER_MALE.getValue());
+        trainers.add(TrainerId.RANGER.getValue());
         trainers.add(TrainerId.BIRD_KEEPER.getValue());
         trainers.add(TrainerId.BUG_CATCHER.getValue());
     }
@@ -386,7 +382,7 @@ public class Place {
 
     private void addGymTrainers() {
         trainers.add(TrainerId.BATTLE_GIRL.getValue());
-        trainers.add(TrainerId.KARATE_MAN.getValue());
+        trainers.add(TrainerId.BLACKBELT.getValue());
         trainers.add(TrainerId.ACE_TRAINER_FEMALE.getValue());
         trainers.add(TrainerId.ACE_TRAINER_MALE.getValue());
     }
@@ -397,14 +393,12 @@ public class Place {
         trainers.add(TrainerId.GENTLEMAN.getValue());
         trainers.add(TrainerId.SOCIALITE.getValue());
         trainers.add(TrainerId.TEACHER.getValue());
-        trainers.add(TrainerId.SCHOOL_BOY.getValue());
-        trainers.add(TrainerId.SCHOOL_GIRL.getValue());
+        trainers.add(TrainerId.SCHOOL_KID.getValue());
     }
 
     private void addNaturalFeatureTrainers() {
         addParkTrainers();
-        trainers.add(TrainerId.SWIMMER_FEMALE.getValue());
-        trainers.add(TrainerId.SWIMMER_MALE.getValue());
+        trainers.add(TrainerId.SWIMMER.getValue());
         trainers.add(TrainerId.FISHERMAN.getValue());
     }
 
@@ -416,8 +410,7 @@ public class Place {
 
     private void addSchoolTrainers() {
         trainers.add(TrainerId.TEACHER.getValue());
-        trainers.add(TrainerId.SCHOOL_BOY.getValue());
-        trainers.add(TrainerId.SCHOOL_GIRL.getValue());
+        trainers.add(TrainerId.SCHOOL_KID.getValue());
         trainers.add(TrainerId.LASS.getValue());
         trainers.add(TrainerId.YOUNGSTER.getValue());
     }

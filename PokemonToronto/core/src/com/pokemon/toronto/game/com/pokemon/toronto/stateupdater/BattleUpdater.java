@@ -585,17 +585,35 @@ public class BattleUpdater implements PhaseUpdaterInterface {
     @Override
     public void endBattle() {
         if (userPokemon.isOutraging()) {
-            start(playerParty, userPokemon, enemyPokemon,
-                    userPokemonPosition, 0, userPokemon.getOutrageSkill(),
-                    getEnemyPokemon().getSkills().get(0), field);
+            if (!enemyPokemon.hasNextTurnSkill()) {
+                start(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0, userPokemon.getOutrageSkill(),
+                        getEnemyPokemon().getSkills().get(0), field);
+            } else {
+                start(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0, userPokemon.getOutrageSkill(),
+                        enemyPokemon.getNextTurnSkill(), field);
+            }
         } else if (userPokemon.isRecharging()) {
-            startNullUserSkill(playerParty, userPokemon, enemyPokemon,
-                    userPokemonPosition, 0,
-                    getEnemyPokemon().getSkills().get(0), field);
+            if (!enemyPokemon.hasNextTurnSkill()) {
+                startNullUserSkill(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0,
+                        getEnemyPokemon().getSkills().get(0), field);
+            } else {
+                startNullUserSkill(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0,
+                        enemyPokemon.getNextTurnSkill(), field);
+            }
         } else if (userPokemon.hasNextTurnSkill()) {
-            start(playerParty, userPokemon, enemyPokemon,
-                    userPokemonPosition, 0, userPokemon.getNextTurnSkill(),
-                    getEnemyPokemon().getSkills().get(0), field);
+            if (!enemyPokemon.hasNextTurnSkill()) {
+                start(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0, userPokemon.getNextTurnSkill(),
+                        getEnemyPokemon().getSkills().get(0), field);
+            } else {
+                start(playerParty, userPokemon, enemyPokemon,
+                        userPokemonPosition, 0, userPokemon.getNextTurnSkill(),
+                        enemyPokemon.getNextTurnSkill(), field);
+            }
         } else {
             started = false;
         }

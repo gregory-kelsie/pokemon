@@ -640,22 +640,22 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 						public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
 							PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
 							for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-								name = placeLikelihood.getPlace().getName().toString();
-								LatLng ln = placeLikelihood.getPlace().getLatLng();
-								List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
-								Log.i("osgh", "Type List");
-								for (int i = 0; i < types.size(); i++) {
-									Log.i("osgh", "Type: " + types.get(i));
-								}
-								try {
-									Log.i("osgh", String.format("Place '%s' has likelihood: %g",
-											placeLikelihood.getPlace().getName(),
-											placeLikelihood.getLikelihood()));
-									Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
-								} catch (Exception e) {
-									Log.i("osgh", e.getMessage());
-								}
-								pToronto.createPlace(name, ln.latitude, ln.longitude, types);
+									name = placeLikelihood.getPlace().getName().toString();
+									LatLng ln = placeLikelihood.getPlace().getLatLng();
+									List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+									Log.i("osgh", "Type List");
+									for (int i = 0; i < types.size(); i++) {
+										Log.i("osgh", "Type: " + types.get(i));
+									}
+									try {
+										Log.i("osgh", String.format("Place '%s' has likelihood: %g",
+												placeLikelihood.getPlace().getName(),
+												placeLikelihood.getLikelihood()));
+										Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
+									} catch (Exception e) {
+										Log.i("osgh", e.getMessage());
+									}
+									pToronto.createPlace(name, ln.latitude, ln.longitude, types);
 							}
 							likelyPlaces.release();
 						}
@@ -709,7 +709,13 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					name = placeLikelihood.getPlace().getName().toString();
 					LatLng ln = placeLikelihood.getPlace().getLatLng();
 					List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
-					places.add(new Place(name, ln.latitude, ln.longitude, types));
+					//Only take places that have a decent likelihood.
+					if (placeLikelihood.getLikelihood() > 0.0f) {
+						places.add(new Place(name, ln.latitude, ln.longitude, types));
+					}
+				}
+				for (Place place: places) {
+					Gdx.app.log("PlaceX", "name: " + place.getName() + " trainerset: " + place.getTrainers().size());
 				}
 				pToronto.spawnTrainer(places);
 				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

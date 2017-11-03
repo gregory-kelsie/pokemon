@@ -140,17 +140,20 @@ public class pokemonToronto extends ApplicationAdapter {
 	 */
 	public void createPlace(String name, double latitude, double longitude, List<Integer> types) {
 		Place p = new Place(name, latitude, longitude, types);
+		Gdx.app.log("MyPlace", "Place: " + name);
 		if (p.hasPokemon()) { //Skips all places that don't have Pokemon.
-			int pokeID = p.getPokemon();
-			Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
-			if (pokeID != -1) {
-				WildPokemonCreator wpc = new WildPokemonCreator();
-				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-				Date date = new Date();
-				String text = dateFormat.format(date);
-				double[] latlng = PokemonLookup.getRandomLocation(gsm.getLatitude(), gsm.getLongitude(), 200);
-				gsm.getNearbyPokemon().add(wpc.createPokemon(pokeID, latlng[0],
-						latlng[1], date, text));
+			WildPokemonCreator wpc = new WildPokemonCreator();
+			for (int i = 0; i < 3; i++) {
+				int pokeID = p.getPokemon();
+				Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
+				if (pokeID != -1) {
+					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+					Date date = new Date();
+					String text = dateFormat.format(date);
+					double[] latlng = PokemonLookup.getRandomLocation(gsm.getLatitude(), gsm.getLongitude(), 200);
+					gsm.getNearbyPokemon().add(wpc.createPokemon(pokeID, latlng[0],
+							latlng[1], date, text));
+				}
 			}
 
 		}
@@ -191,6 +194,7 @@ public class pokemonToronto extends ApplicationAdapter {
 			}
 		} else {
 			//Spawn default trainers
+			//TODO: Spawn different trainers based on badges. (More veterans and ace trainers if higher level.
 			gsm.getNearbyTrainers().add(tf.getTrainer(difficulty, gsm.getLatitude(), gsm.getLongitude()));
 		}
 	}

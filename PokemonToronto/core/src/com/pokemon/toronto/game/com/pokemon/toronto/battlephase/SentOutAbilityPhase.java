@@ -90,7 +90,7 @@ public class SentOutAbilityPhase extends BattlePhase {
         currentState = INIT;
         fainted = false;
         trainerFainted = true;
-        abilityUserIsPlayerPokemon = true;
+        abilityUserIsPlayerPokemon = false;
         hazzardText = new ArrayList<String>();
         hazzardTextIndex = 0;
     }

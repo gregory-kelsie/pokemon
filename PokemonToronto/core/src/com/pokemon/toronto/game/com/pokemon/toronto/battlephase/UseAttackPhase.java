@@ -154,7 +154,7 @@ public class UseAttackPhase extends BattlePhase {
         } else {
             //Display the second skill name after depleting health.
             updatingHealth = false;
-            if (usedSkill.makesPhysicalContact()) {
+            if (usedSkill.makesPhysicalContact() && usedSkill.targetsEnemy(attacker, pui.getField())) {
                 state = ABILITY_CONTACT;
             } else {
                 goToNextPhase();

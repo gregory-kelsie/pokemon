@@ -35,20 +35,16 @@ public enum TrainerId {
     PICNICKER_MALE(27),
     PICNICKER_FEMALE(28),
     POLICEMAN(29),
-    PSYCHIC_MALE(30),
-    PSYCHIC_FEMALE(31),
-    RANGER_MALE(32),
-    RANGER_FEMALE(33),
+    PSYCHIC(30),
+    RANGER(32),
     RICH_BOY(34),
     RUNE_MANIAC(35),
     SAGE(36),
     SAILOR(37),
-    SCHOOL_BOY(38),
-    SCHOOL_GIRL(39),
+    SCHOOL_KID(38),
     SCIENTIST(40),
     SOCIALITE(41),
-    SWIMMER_MALE(42),
-    SWIMMER_FEMALE(43),
+    SWIMMER(42),
     TEACHER(44),
     VETERAN_MALE(45),
     VETERAN_FEMALE(46),
@@ -56,8 +52,7 @@ public enum TrainerId {
     WAITRESS(48),
     BAKER(49),
     PILOT(50),
-    CONDUCTOR(51),
-    KARATE_MAN(52);
+    CONDUCTOR(51);
 
 
     private final int value;

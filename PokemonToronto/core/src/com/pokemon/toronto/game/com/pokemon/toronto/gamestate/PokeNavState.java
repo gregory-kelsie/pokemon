@@ -212,6 +212,7 @@ public class PokeNavState extends GameState{
     private void executePokeCenterScreen() {
         gsm.stopBgm();
         gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
+        dispose();
     }
 
     /**
