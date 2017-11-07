@@ -3,6 +3,8 @@ package com.pokemon.toronto.game.com.pokemon.toronto.item.stone;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemBlob;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 
 /**
  * Created by Gregory on 8/19/2017.
@@ -10,12 +12,11 @@ import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
 
 public class DuskStone extends Item {
     public DuskStone() {
-        super(25, "Dusk Stone", "A peculiar stone that can make certain species of Pokemon evolve. It holds shadows as dark as can be.",
-                "bag/icons/duskStone.png");
+        super(new ItemBlob.DuskStoneBlob(), "bag/icons/duskStone.png");
     }
 
     public void use(Pokemon p) {
-        if (p.getFireStoneEvolutionId() != -1) {
+        if (p.getDuskStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getDuskStoneEvolutionId(), p);
         }

@@ -75,9 +75,9 @@ public class BattleClickController {
                 if (model.getPokeballBag().size() >= 1) {
                     if (!model.getEnemyPokemon().hasNextTurnSkill()) {
                         int enemyAttack = (int) Math.round(Math.random() * (model.getEnemyPokemon().getSkills().size() - 1));
-                        model.startPokeballThrow(0, model.getEnemyPokemon().getSkills().get(enemyAttack));
+                        model.startPokeballThrow(model.getPokeballBag().get(0).getId(), model.getEnemyPokemon().getSkills().get(enemyAttack));
                     } else {
-                        model.startPokeballThrow(0, model.getEnemyPokemon().getNextTurnSkill());
+                        model.startPokeballThrow(model.getPokeballBag().get(0).getId(), model.getEnemyPokemon().getNextTurnSkill());
                     }
 
                     model.getPokeballBag().get(0).subtractQuantity(1);

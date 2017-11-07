@@ -3,6 +3,8 @@ package com.pokemon.toronto.game.com.pokemon.toronto.item.stone;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemBlob;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 
 /**
  * Created by Gregory on 8/18/2017.
@@ -10,8 +12,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
 
 public class SunStone extends Item {
     public SunStone() {
-        super(24, "Sun Stone", "A peculiar stone that can make certain species of Pokémon evolve. It burns as red as the evening sun.",
-                "bag/icons/sunStone.png");
+        super(new ItemBlob.SunStoneBlob(), "bag/icons/sunStone.png");
     }
 
     public void use(Pokemon p) {

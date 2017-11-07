@@ -42,6 +42,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
@@ -97,7 +98,7 @@ public class GameStateManager {
         box = new ArrayList<Pokemon>();
         notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
         bag = new Bag();
-        bag.addPokeball(Ball.POKEBALL, 5);
+        bag.addPokeball(ItemId.POKEBALL, 5);
         kantoBadges = 0;
         menubgm.setLooping(true);
     }

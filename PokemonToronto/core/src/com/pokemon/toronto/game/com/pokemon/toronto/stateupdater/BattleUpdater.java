@@ -21,6 +21,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.UseAttackPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleInterface;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleState;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
@@ -184,7 +185,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
      * @param enemySkill The skill the enemy will use if the ball fails
      */
     public void start(List<Pokemon> playerParty, Pokemon userPokemon, Pokemon enemyPokemon, int userPokemonPosition,
-                      int enemyPokemonPosition, int pokeballType, Skill enemySkill, Field field) {
+                      int enemyPokemonPosition, ItemId pokeballType, Skill enemySkill, Field field) {
         this.playerParty = playerParty;
         this.userPokemon = userPokemon;
         this.enemyPokemon = enemyPokemon;

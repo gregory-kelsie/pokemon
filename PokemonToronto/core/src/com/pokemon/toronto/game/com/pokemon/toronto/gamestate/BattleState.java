@@ -20,6 +20,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleClickController
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleTextures;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.stateupdater.BattleUpdater;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
@@ -975,7 +976,7 @@ public class BattleState extends GameState implements BattleInterface {
                 currentPokemonPosition, 0, userSkill, enemySkill, field);
     }
 
-    public void startPokeballThrow(int pokeballType, Skill enemySkill) {
+    public void startPokeballThrow(ItemId pokeballType, Skill enemySkill) {
         battleUpdater.start(getParty(), currentPokemon, enemyPokemon,
                 currentPokemonPosition, 0, pokeballType, enemySkill, field);// 0 is speedcheck phase
     }

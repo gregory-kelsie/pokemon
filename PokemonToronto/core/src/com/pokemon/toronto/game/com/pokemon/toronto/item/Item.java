@@ -7,27 +7,30 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
  */
 
 public class Item {
-    private int id;
-    private String description;
-    private String name;
+
+    private ItemBlob info;
     private String image;
-    public Item(int id, String name, String description, String image) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+
+    public Item(ItemBlob info, String image) {
+        this.info = info;
         this.image = image;
     }
 
-    public int getId() {
-        return id;
+    public Item(ItemId id, String name, String description, String image) {
+        info = new ItemBlob(id, name, description);
+        this.image = image;
+    }
+
+    public ItemId getId() {
+        return info.getId();
     }
 
     public String getDescription() {
-        return description;
+        return info.getDescription();
     }
 
     public String getName() {
-        return name;
+        return info.getName();
     }
 
     public String getImage() {

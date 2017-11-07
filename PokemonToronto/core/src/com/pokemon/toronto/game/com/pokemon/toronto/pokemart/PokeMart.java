@@ -1,20 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.pokemart;
 
-import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartBall;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartDuskStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartFireStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartLeafStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartItem;
 import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartListing;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartPokeball;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartPokeball10;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartPokeball20;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartPokeball5;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartShinyStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartSunStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartThunderStone;
-import com.pokemon.toronto.game.com.pokemon.toronto.pokemart.item.MartWaterStone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,21 +10,23 @@ import java.util.List;
  */
 
 public class PokeMart {
-    private List<MartItem> evolutionStones;
-    private List<MartBall> pokeballs;
+    private List<MartListing> evolutionStones;
+    private List<MartListing> pokeballs;
+    private List<MartListing> usableItems;
 
     private int currentPage; //0-n
     private int currentItem; //0-3, -1 for none
     private ItemTab currentTab;
 
-    private List<MartItem> currentList;
+    private List<MartListing> currentList;
     public PokeMart() {
         initEvolutionStones();
         initPokeballs();
+        initUsableItems();
         currentTab = ItemTab.EVOLUTION_STONE;
         currentPage = 0;
         currentItem = -1;
-        currentList = new ArrayList<MartItem>();
+        currentList = new ArrayList<MartListing>();
         transferEvolutionStones();
     }
 
@@ -56,26 +44,44 @@ public class PokeMart {
         }
     }
 
+    private void transferUsableItems() {
+        currentList.clear();
+        for (int i = 0; i < usableItems.size(); i++) {
+            currentList.add(usableItems.get(i));
+        }
+    }
+
     private void initPokeballs() {
-        pokeballs = new ArrayList<MartBall>();
-        pokeballs.add(new MartPokeball());
-        pokeballs.add(new MartPokeball5());
-        pokeballs.add(new MartPokeball10());
-        pokeballs.add(new MartPokeball20());
+        pokeballs = new ArrayList<MartListing>();
+        pokeballs.add(new MartListing.MartPokeball());
     }
     private void initEvolutionStones() {
-        evolutionStones = new ArrayList<MartItem>();
-        evolutionStones.add(new MartLeafStone());
-        evolutionStones.add(new MartFireStone());
-        evolutionStones.add(new MartWaterStone());
-        evolutionStones.add(new MartThunderStone());
-        evolutionStones.add(new MartSunStone());
-        evolutionStones.add(new MartDuskStone());
-        evolutionStones.add(new MartShinyStone());
-
+        evolutionStones = new ArrayList<MartListing>();
+        evolutionStones.add(new MartListing.MartLeafStone());
+        evolutionStones.add(new MartListing.MartFireStone());
+        evolutionStones.add(new MartListing.MartWaterStone());
+        evolutionStones.add(new MartListing.MartThunderStone());
+        evolutionStones.add(new MartListing.MartSunStone());
+        evolutionStones.add(new MartListing.MartDuskStone());
+        evolutionStones.add(new MartListing.MartShinyStone());
+        evolutionStones.add(new MartListing.MartDawnStone());
+        evolutionStones.add(new MartListing.MartMoonStone());
+        evolutionStones.add(new MartListing.MartIceStone());
     }
 
-    public List<MartItem> getItems() {
+    private void initUsableItems() {
+        usableItems = new ArrayList<MartListing>();
+        usableItems.add(new MartListing.MartPotion());
+        usableItems.add(new MartListing.MartSuperPotion());
+        usableItems.add(new MartListing.MartHyperPotion());
+        usableItems.add(new MartListing.MartMaxPotion());
+        usableItems.add(new MartListing.MartAntidote());
+        usableItems.add(new MartListing.MartAwakening());
+        usableItems.add(new MartListing.MartBurnHeal());
+        usableItems.add(new MartListing.MartIceHeal());
+    }
+
+    public List<MartListing> getItems() {
         if (currentTab == ItemTab.EVOLUTION_STONE) {
             return evolutionStones;
         }
@@ -99,25 +105,25 @@ public class PokeMart {
         return false;
     }
 
-    public MartItem getFirstItem() {
+    public MartListing getFirstItem() {
         return currentList.get(currentPage * 4);
     }
 
-    public MartItem getSecondItem() {
+    public MartListing getSecondItem() {
         if (currentPage * 4 + 1 < currentList.size()) {
             return currentList.get(currentPage * 4 + 1);
         }
         return null;
     }
 
-    public MartItem getThirdItem() {
+    public MartListing getThirdItem() {
         if (currentPage * 4 + 2 < currentList.size()) {
             return currentList.get(currentPage * 4 + 2);
         }
         return null;
     }
 
-    public MartItem getFourthItem() {
+    public MartListing getFourthItem() {
         if (currentPage * 4 + 3 < currentList.size()) {
             return currentList.get(currentPage * 4 + 3);
         }
@@ -180,6 +186,9 @@ public class PokeMart {
         } else if (newTab == ItemTab.EVOLUTION_STONE) {
             transferEvolutionStones();
             switchTabs(ItemTab.EVOLUTION_STONE);
+        } else if (newTab == ItemTab.POTION) {
+            transferUsableItems();
+            switchTabs(ItemTab.POTION);
         }
     }
 

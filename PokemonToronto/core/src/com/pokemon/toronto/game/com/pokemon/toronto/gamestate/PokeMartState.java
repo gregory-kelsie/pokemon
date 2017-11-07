@@ -23,7 +23,7 @@ import java.util.Locale;
  * Created by Gregory on 8/18/2017.
  */
 
-public class PokeMartState extends GameState{
+public class PokeMartState extends GameState {
     private GameStateManager gsm;
     private PokeMart pokeMart;
     
@@ -288,6 +288,8 @@ public class PokeMartState extends GameState{
                 clickedRight();
             } else if (x >= 125 && x <= 241 && y >= 745 && y <= 885) {
                 clickedPokeballTab();
+            } else if (x >= 125 && x <= 241 && y >= 914 && y <= 1077) {
+                clickedUsableItemTab();
             } else if (x >= 125 && x <= 241 && y >= 1656 && y <= 1776) {
                 clickedEvolutionStoneTab();
             } else if (x >= 838 && x <= 1016 && y >= 421 && y <= 556) {
@@ -329,8 +331,8 @@ public class PokeMartState extends GameState{
     private void clickedFirstItem() {
         clickSound.play();
         pokeMart.setCurrentItem(0);
-        bubbleHeader = pokeMart.getFirstItem().getItem().getName();
-        bubbleText = formatDescription(pokeMart.getFirstItem().getItem().getDescription());
+        bubbleHeader = pokeMart.getFirstItem().getName();
+        bubbleText = formatDescription(pokeMart.getFirstItem().getDescription());
 
     }
 
@@ -338,8 +340,8 @@ public class PokeMartState extends GameState{
         if (pokeMart.hasSecondItem()) {
             clickSound.play();
             pokeMart.setCurrentItem(1);
-            bubbleHeader = pokeMart.getSecondItem().getItem().getName();
-            bubbleText = formatDescription(pokeMart.getSecondItem().getItem().getDescription());
+            bubbleHeader = pokeMart.getSecondItem().getName();
+            bubbleText = formatDescription(pokeMart.getSecondItem().getDescription());
         }
     }
 
@@ -347,8 +349,8 @@ public class PokeMartState extends GameState{
         if (pokeMart.hasThirdItem()) {
             clickSound.play();
             pokeMart.setCurrentItem(2);
-            bubbleHeader = pokeMart.getThirdItem().getItem().getName();
-            bubbleText = formatDescription(pokeMart.getThirdItem().getItem().getDescription());
+            bubbleHeader = pokeMart.getThirdItem().getName();
+            bubbleText = formatDescription(pokeMart.getThirdItem().getDescription());
         }
     }
 
@@ -356,8 +358,8 @@ public class PokeMartState extends GameState{
         if (pokeMart.hasFourthItem()) {
             clickSound.play();
             pokeMart.setCurrentItem(3);
-            bubbleHeader = pokeMart.getFourthItem().getItem().getName();
-            bubbleText = formatDescription(pokeMart.getFourthItem().getItem().getDescription());
+            bubbleHeader = pokeMart.getFourthItem().getName();
+            bubbleText = formatDescription(pokeMart.getFourthItem().getDescription());
         }
     }
 
@@ -405,6 +407,9 @@ public class PokeMartState extends GameState{
             } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
                 gsm.getBag().addPokeball(pokeMart.getFirstItem().getItemId(), pokeMart.getFirstItem().getQuantity());
                 moneySound.play();
+            } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
+                gsm.getBag().addUsable(pokeMart.getFirstItem().getItemId(), pokeMart.getFirstItem().getQuantity());
+                moneySound.play();
             }
         } else if (pokeMart.getCurrentItem() == 1) {
             if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
@@ -412,6 +417,9 @@ public class PokeMartState extends GameState{
                 moneySound.play();
             } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
                 gsm.getBag().addPokeball(pokeMart.getSecondItem().getItemId(), pokeMart.getSecondItem().getQuantity());
+                moneySound.play();
+            } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
+                gsm.getBag().addUsable(pokeMart.getSecondItem().getItemId(), pokeMart.getSecondItem().getQuantity());
                 moneySound.play();
             }
         } else if (pokeMart.getCurrentItem() == 2) {
@@ -422,12 +430,19 @@ public class PokeMartState extends GameState{
                 gsm.getBag().addPokeball(pokeMart.getThirdItem().getItemId(), pokeMart.getThirdItem().getQuantity());
                 moneySound.play();
             }
+            else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
+                gsm.getBag().addUsable(pokeMart.getThirdItem().getItemId(), pokeMart.getThirdItem().getQuantity());
+                moneySound.play();
+            }
         } else if (pokeMart.getCurrentItem() == 3) {
             if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
                 gsm.getBag().addStone(pokeMart.getFourthItem().getItemId());
                 moneySound.play();
             } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
                 gsm.getBag().addPokeball(pokeMart.getFourthItem().getItemId(), pokeMart.getFourthItem().getQuantity());
+                moneySound.play();
+            } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
+                gsm.getBag().addUsable(pokeMart.getFourthItem().getItemId(), pokeMart.getFourthItem().getQuantity());
                 moneySound.play();
             }
         }
@@ -437,6 +452,16 @@ public class PokeMartState extends GameState{
         if (pokeMart.getCurrentTab() != ItemTab.POKEBALL) {
             clickSound.play();
             pokeMart.setCurrentTab(ItemTab.POKEBALL);
+            setHeaderTexture();
+            initItemTextures();
+            initPokeballBubbleText();
+        }
+    }
+
+    private void clickedUsableItemTab() {
+        if (pokeMart.getCurrentTab() != ItemTab.POTION) {
+            clickSound.play();
+            pokeMart.setCurrentTab(ItemTab.POTION);
             setHeaderTexture();
             initItemTextures();
             initPokeballBubbleText();

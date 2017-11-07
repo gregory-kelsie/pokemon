@@ -6,16 +6,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.PokeballAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.catching.CatchResults;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
-
-import static com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball.POKEBALL;
 
 /**
  * Created by Gregory on 8/10/2017.
  */
 
 public class CatchingPhase extends BattlePhase {
-    private int ballType;
+    private ItemId ballType;
     private Skill enemySkill;
 
     //Text Variables
@@ -31,7 +30,7 @@ public class CatchingPhase extends BattlePhase {
     private final int SHAKING_BALL = 1;
     private final int DISPLAY_CATCH_RESULTS = 2;
     private final int FINISHED = 3;
-    public CatchingPhase(PhaseUpdaterInterface pui, Skill enemySkill, int ballType) {
+    public CatchingPhase(PhaseUpdaterInterface pui, Skill enemySkill, ItemId ballType) {
         super(pui);
         counter = 0;
         textPosition = 0;
@@ -99,8 +98,8 @@ public class CatchingPhase extends BattlePhase {
         }
     }
 
-    private double getBallMultiplier(int ballType) {
-        if (ballType == POKEBALL) {
+    private double getBallMultiplier(ItemId ballType) {
+        if (ballType == ItemId.POKEBALL) {
             return 1;
         } else {
             return 1;

@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.ItemFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokeballFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerItem;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Bag {
     //Instance variables
     private List<Ball> pokeballs;
     private List<PlayerItem> stones;
+    private List<PlayerItem> usables;
 
     /**
      * Constructor
@@ -25,6 +27,7 @@ public class Bag {
     public Bag() {
         pokeballs = new ArrayList<Ball>();
         stones = new ArrayList<PlayerItem>();
+        usables = new ArrayList<PlayerItem>();
     }
 
     /**
@@ -42,13 +45,19 @@ public class Bag {
     public List<PlayerItem> getStoneBag() { return stones; }
 
     /**
+     * Return the Usable portion of the bag. (Potions)
+     * @return The Usable bag.
+     */
+    public List<PlayerItem> getUsables() { return usables; }
+
+    /**
      * Return whether or not the Player has the stone with
      * an id = stoneId
      * @param stoneId The stone we are searching for.
      * @return Whether or not the Player has the stone with
      * stoneId in the bag.
      */
-    public boolean hasStone(int stoneId) {
+    public boolean hasStone(ItemId stoneId) {
         for (int i = 0; i < stones.size(); i++) {
             if (stones.get(i).getItem().getId() == stoneId) {
                 return true;
@@ -57,7 +66,7 @@ public class Bag {
         return false;
     }
 
-    public void addStone(int stoneId) {
+    public void addStone(ItemId stoneId) {
         boolean addedStone = false;
         for (int i = 0; i < stones.size(); i++) {
             if (stones.get(i).getItem().getId() == stoneId) {
@@ -76,7 +85,7 @@ public class Bag {
      * @param id The type of Pokeball (Pokeball, Greatball etc)
      * @param quantity The quantity of the Pokeball added. (1-n)
      */
-    public void addPokeball(int id, int quantity) {
+    public void addPokeball(ItemId id, int quantity) {
         boolean added = false;
 
         for (int i = 0; i < pokeballs.size(); i++) {
@@ -97,6 +106,24 @@ public class Bag {
 
     }
 
+    public void addUsable(ItemId id, int quantity) {
+        boolean added = false;
+
+        for (int i = 0; i < usables.size(); i++) {
+            //Look through the Pokeball bag to see if there exists
+            //the added Pokeball type.
+            if (usables.get(i).getItem().getId() == id) {
+                usables.get(i).add(quantity);
+                added = true;
+                break;
+            }
+        }
+        if (!added) {
+            ItemFactory pf = new ItemFactory();
+            usables.add(pf.createUsable(id, quantity));
+        }
+    }
+
     /**
      * Return whether or not the Pokeball at the specified index
      * in the Pokeball bag matches the addedId.
@@ -105,7 +132,7 @@ public class Bag {
      * @return A boolean on whether or not the Pokeball at the
      * specified index in the Pokeball bag matches the addedId.
      */
-    public boolean isPokeballType(int index, int addedId) {
+    public boolean isPokeballType(int index, ItemId addedId) {
         if (pokeballs.get(index).getId() == addedId) {
             return true;
         }

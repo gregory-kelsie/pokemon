@@ -70,6 +70,7 @@ public class BagState extends GameState {
 
     private boolean waitEvolutionClick;
     private boolean waitNoEffectClick;
+    private boolean waitFinishedUseClick;
 
     public BagState(GameStateManager gsm, boolean cameFromMenu) {
         this.gsm = gsm;
@@ -90,6 +91,7 @@ public class BagState extends GameState {
         panelText = "";
         waitEvolutionClick = false;
         waitNoEffectClick = false;
+        waitFinishedUseClick = false;
     }
 
     private void initTextures() {
@@ -152,6 +154,8 @@ public class BagState extends GameState {
         if (currentIndex != -1) {
             if (currentBag == ItemTab.EVOLUTION_STONE) {
                 batch.draw(useButton, 792, 1779);
+            } else if (currentBag == ItemTab.POTION) {
+                batch.draw(useButton, 792, 1779);
             }
         }
     }
@@ -169,6 +173,11 @@ public class BagState extends GameState {
                         10 * gsm.getBag().getStoneBag().get(currentIndex).getItem().getName().length()), 1650);
                 font.draw(batch, "x " + gsm.getBag().getStoneBag().get(currentIndex).getQuantity(), 693, 1554);
                 font.draw(batch, formatDescription(gsm.getBag().getStoneBag().get(currentIndex).getItem().getDescription()), 30, 1428);
+            } else if (currentBag == ItemTab.POTION) {
+                font.draw(batch, gsm.getBag().getUsables().get(currentIndex).getItem().getName(), 525 - (
+                        10 * gsm.getBag().getUsables().get(currentIndex).getItem().getName().length()), 1650);
+                font.draw(batch, "x " + gsm.getBag().getUsables().get(currentIndex).getQuantity(), 693, 1554);
+                font.draw(batch, formatDescription(gsm.getBag().getUsables().get(currentIndex).getItem().getDescription()), 30, 1428);
             }
         }
     }
@@ -214,6 +223,8 @@ public class BagState extends GameState {
             drawPokeballPanels(batch);
         } else if (currentBag == ItemTab.EVOLUTION_STONE) {
             drawEvolutionStonePanels(batch);
+        } else if (currentBag == ItemTab.POTION) {
+            drawUsablePanels(batch);
         }
     }
 
@@ -226,6 +237,12 @@ public class BagState extends GameState {
     private void drawEvolutionStonePanels(SpriteBatch batch) {
         for (int i = 0; i < 6; i++) {
             drawEvolutionPanel(batch, i);
+        }
+    }
+
+    private void drawUsablePanels(SpriteBatch batch) {
+        for (int i = 0; i < 6; i++) {
+            drawUsablePanel(batch, i);
         }
     }
 
@@ -249,6 +266,18 @@ public class BagState extends GameState {
             }
 
             font.draw(batch, gsm.getBag().getPokeballBag().get(scrollAmount + panelNum).getName(), 708, 885 - (92 * panelNum));
+        }
+    }
+
+    private void drawUsablePanel(SpriteBatch batch, int panelNum) {
+        if (gsm.getBag().getUsables().size() > panelNum) {
+            if (currentIndex == scrollAmount + panelNum) {
+                batch.draw(selectedItemNamePanel, 627, 821 - (92 * panelNum));
+            } else {
+                batch.draw(itemNamePanel, 627, 821 - (92 * panelNum));
+            }
+
+            font.draw(batch, gsm.getBag().getUsables().get(scrollAmount + panelNum).getItem().getName(), 708, 885 - (92 * panelNum));
         }
     }
 
@@ -354,12 +383,41 @@ public class BagState extends GameState {
                 panelText = "Select a Pokemon to use the " +
                         gsm.getBag().getStoneBag().get(currentIndex)
                                 .getItem().getName() + " on.";
+            } else if (currentBag == ItemTab.POTION) {
+                displayPokemonPanel = true;
+                panelText = "Select a Pokemon to use the " +
+                        gsm.getBag().getUsables().get(currentIndex)
+                                .getItem().getName() + " on.";
             }
         }
     }
 
     private void clickedPokemon(int pokemonIndex) {
-        if (currentBag == ItemTab.EVOLUTION_STONE) {
+        if (currentBag == ItemTab.POTION) {
+            if (gsm.getBag().getUsables().get(currentIndex)
+                    .getItem().ableToUse(gsm.getParty().get(pokemonIndex))) {
+                gsm.getBag().getUsables().get(currentIndex)
+                        .getItem().use(gsm.getParty().get(pokemonIndex));
+                panelText = "You used the item!!";
+                gsm.getBag().getUsables().get(currentIndex).discard();
+                if (gsm.getBag().getUsables().size() > 1) {
+                    gsm.getBag().getUsables().remove(currentIndex);
+                    if (currentIndex != 0) {
+                        currentIndex--;
+                    } else {
+                        currentIndex = -1;
+                    }
+                } else {
+                    gsm.getBag().getUsables().remove(currentIndex);
+                    currentIndex = -1;
+                }
+                waitFinishedUseClick = true;
+            } else {
+                panelText = "The " + gsm.getBag().getUsables()
+                        .get(currentIndex).getItem().getName() + " has no effect.";
+                waitNoEffectClick = true;
+            }
+        } else if (currentBag == ItemTab.EVOLUTION_STONE) {
             if (gsm.getBag().getStoneBag().get(currentIndex)
                     .getItem().ableToUse(gsm.getParty().get(pokemonIndex))) {
                 panelText = "What? " + gsm.getParty().get(pokemonIndex).getName() + " is evolving!";
@@ -419,10 +477,19 @@ public class BagState extends GameState {
                 dispose();
             } else if (waitNoEffectClick) {
                 waitNoEffectClick = false;
-                panelText = "Select a Pokemon to use the " +
-                        gsm.getBag().getStoneBag().get(currentIndex)
-                                .getItem().getName() + " on.";
+                if (currentBag == ItemTab.EVOLUTION_STONE) {
+                    panelText = "Select a Pokemon to use the " +
+                            gsm.getBag().getStoneBag().get(currentIndex)
+                                    .getItem().getName() + " on.";
+                } else if (currentBag == ItemTab.POTION) {
+                    panelText = "Select a Pokemon to use the " +
+                            gsm.getBag().getUsables().get(currentIndex)
+                                    .getItem().getName() + " on.";
+                }
 
+            } else if (waitFinishedUseClick) {
+                waitFinishedUseClick = false;
+                displayPokemonPanel = false;
             }
             else if (x >= 0 && x <= 161 && y >= 1792 && y <= 1920 && !displayPokemonPanel) {
                 clickedLeft();
@@ -476,6 +543,10 @@ public class BagState extends GameState {
     private void clickedLeft() {
         if (currentBag == ItemTab.POKEBALL) {
             setNewBag(ItemTab.POTION);
+            if (gsm.getBag().getUsables().size() > 0) {
+                currentIndex = 0;
+                setItemIconTexture();
+            }
         } else if (currentBag == ItemTab.POTION) {
             setNewBag(ItemTab.TM);
         } else if (currentBag == ItemTab.TM) {
@@ -512,6 +583,10 @@ public class BagState extends GameState {
             }
         } else if (currentBag == ItemTab.TM) {
             setNewBag(ItemTab.POTION);
+            if (gsm.getBag().getUsables().size() > 0) {
+                currentIndex = 0;
+                setItemIconTexture();
+            }
         } else if (currentBag == ItemTab.BERRY) {
             setNewBag(ItemTab.TM);
         } else if (currentBag == ItemTab.HOLD_ITEM) {
@@ -564,6 +639,11 @@ public class BagState extends GameState {
                     return true;
                 }
                 return false;
+            } else if (currentBag == ItemTab.POTION) {
+                if (index < gsm.getBag().getUsables().size()) {
+                    return true;
+                }
+                return false;
             }
             return false;
     }
@@ -576,6 +656,8 @@ public class BagState extends GameState {
             itemIcon = new Texture(gsm.getBag().getPokeballBag().get(currentIndex).getImage());
         } else if (currentBag == ItemTab.EVOLUTION_STONE) {
             itemIcon = new Texture(gsm.getBag().getStoneBag().get(currentIndex).getItem().getImage());
+        } else if (currentBag == ItemTab.POTION) {
+            itemIcon = new Texture(gsm.getBag().getUsables().get(currentIndex).getItem().getImage());
         }
     }
     private void clickedFirstItem() {

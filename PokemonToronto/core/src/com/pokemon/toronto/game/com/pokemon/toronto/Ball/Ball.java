@@ -1,14 +1,13 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Ball;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemBlob;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 
 /**
  * Created by Gregory on 6/17/2017.
  */
 public abstract class Ball extends Item {
-
-    //Ball Type Constants
-    public static final int POKEBALL = 0;
 
     //Instance Variables
     protected int rate;
@@ -17,30 +16,26 @@ public abstract class Ball extends Item {
 
     /**
      * Constructor
-     * @param id The Pokeball's id
-     * @param name The name of the Pokeball
-     * @param description The description of the Pokeball
+     * @param info The id, name, description of the Pokeball
      * @param iconPath The image path of the Pokeball icon
      * @param rate The catching rate of the Pokeball.
      */
-    public Ball(int id, String name, String description, String iconPath,
+    public Ball(ItemBlob info, String iconPath,
                 int rate) {
-        super(id, name, description, iconPath);
+        super(info, iconPath);
         this.rate = rate;
         this.quantity = 1;
     }
 
     /**
      * Constructor
-     * @param id The Pokeball's id
-     * @param name The name of the Pokeball
-     * @param description The description of the Pokeball
+     * @param info The id, name, description of the Pokeball
      * @param iconPath The image path of the Pokeball icon
      * @param rate The catching rate of the Pokeball.
      */
-    public Ball(int id, String name, String description, String iconPath,
+    public Ball(ItemBlob info, String iconPath,
                 int rate, int quantity) {
-        super(id, name, description, iconPath);
+        super(info, iconPath);
         this.rate = rate;
         this.quantity = quantity;
     }
