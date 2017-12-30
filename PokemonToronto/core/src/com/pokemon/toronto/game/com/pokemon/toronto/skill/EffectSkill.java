@@ -13,8 +13,9 @@ import java.util.List;
 
 public abstract class EffectSkill extends Skill {
     protected List<SecondaryEffect> effects;
-    public EffectSkill(int skillId, String name, int maxPP, Pokemon.Type type, int accuracy) {
-        super(skillId, name, maxPP, type, SkillCategory.MISC, accuracy);
+    public EffectSkill(int skillId, String name, String description, int maxPP, Pokemon.Type type,
+                       int accuracy) {
+        super(skillId, name, description, maxPP, type, SkillCategory.MISC, accuracy);
         effects = new ArrayList<SecondaryEffect>();
     }
 

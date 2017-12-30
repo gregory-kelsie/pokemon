@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,8 +23,8 @@ public class Psystrike extends DamageSkill {
      * Deals physical damage shown by reverseCategory
      */
     public Psystrike() {
-        super(SkillFactory.PSYSTRIKE, "Psystrike", 10, Pokemon.Type.PSYCHIC,
-                SkillCategory.SPECIAL, 100, 100, 1);
+        super(SkillFactory.PSYSTRIKE, "Psystrike", SkillDescription.PSYSTRIKE, 10,
+                Pokemon.Type.PSYCHIC, SkillCategory.SPECIAL, 100, 100, 1);
         reverseCategory = true;
     }
 

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class Dig extends DamageSkill {
      * - Accuracy: 100
      */
     public Dig() {
-        super(SkillFactory.DIG, "Dig", 10, Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 100, 80, 1);
+        super(SkillFactory.DIG, "Dig", SkillDescription.DIG, 10, Pokemon.Type.GROUND,
+                Skill.SkillCategory.PHYSICAL, 100, 80, 1);
         makesPhysicalContact = true;
     }
 
@@ -43,8 +45,10 @@ public class Dig extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         //Use the damage part of the move.
         if (!skillUser.isUnderground()) {
@@ -55,8 +59,9 @@ public class Dig extends DamageSkill {
             return results;
         } else {
             skillUser.finishDig();
-            return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                    userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+            return super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                    enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                    targetSkill, skillUserParty, enemyPokemonParty);
         }
     }
 

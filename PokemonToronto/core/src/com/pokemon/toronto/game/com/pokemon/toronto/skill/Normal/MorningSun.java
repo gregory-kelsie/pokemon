@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class MorningSun extends Skill {
      * - Accuracy: 100
      */
     public MorningSun() {
-        super(SkillFactory.MORNING_SUN, "Morning Sun", 5, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.MORNING_SUN, "Morning Sun", SkillDescription.MORNING_SUN, 5,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 
@@ -43,10 +44,13 @@ public class MorningSun extends Skill {
      * @param enemyField The field for the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty      @return The move results.
+     * @param enemyPokemonParty
+     * @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         if (field.getWeatherType() == WeatherType.SUN) {
             skillUser.addHealth((int)Math.round(skillUser.getHealthStat() * 0.5));
@@ -72,7 +76,8 @@ public class MorningSun extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.hasFullHealth()) {
             return new FailResult(skillUser.getName() + " is full health!");
         }

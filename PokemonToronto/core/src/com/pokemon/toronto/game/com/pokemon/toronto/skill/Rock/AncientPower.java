@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -28,12 +29,18 @@ public class AncientPower extends SecondaryEffectSkill{
      * - Accuracy: 100
      */
     public AncientPower() {
-        super(SkillFactory.ANCIENT_POWER, "Ancient Power", 5, Pokemon.Type.ROCK, Skill.SkillCategory.SPECIAL, 100, 60, 1, .1);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        secondaryEffects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.ANCIENT_POWER, "Ancient Power", SkillDescription.ANCIENT_POWER, 5,
+                Pokemon.Type.ROCK, Skill.SkillCategory.SPECIAL, 100, 60, 1, .1);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        secondaryEffects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
     }
 
     /**

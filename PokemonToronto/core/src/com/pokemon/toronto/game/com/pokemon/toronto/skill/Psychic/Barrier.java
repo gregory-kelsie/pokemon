@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -22,7 +23,8 @@ public class Barrier extends EffectSkill {
      * - Accuracy: -1
      */
     public Barrier() {
-        super(SkillFactory.BARRIER, "Barrier", 20, Pokemon.Type.PSYCHIC, -1);
+        super(SkillFactory.BARRIER, "Barrier", SkillDescription.BARRIER, 20, Pokemon.Type.PSYCHIC,
+                -1);
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF,
                 2, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

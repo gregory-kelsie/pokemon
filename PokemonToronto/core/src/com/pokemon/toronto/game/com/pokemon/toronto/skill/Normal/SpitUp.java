@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -29,10 +30,9 @@ public class SpitUp extends DamageSkill {
      * - Accuracy: 100
      */
     public SpitUp() {
-        super(SkillFactory.SPIT_UP, "Spit Up", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.SPIT_UP, "Spit Up", SkillDescription.SPIT_UP, 10, Pokemon.Type.NORMAL,
                 SkillCategory.SPECIAL, 100, 1, 1);
     }
-
 
     /**
      * @param skillUser The Pokemon using the skill
@@ -44,10 +44,13 @@ public class SpitUp extends DamageSkill {
      * @param enemyField The field for the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty      @return The results of using the move.
+     * @param enemyPokemonParty
+     * @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         if (skillUser.getStockpileStacks() == 1) {
             damage = 100;
@@ -65,7 +68,8 @@ public class SpitUp extends DamageSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.hasStockpileStacks()) {
             return new FailResult(false);
         }

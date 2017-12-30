@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -25,7 +26,8 @@ public class FireBlast extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public FireBlast() {
-        super(SkillFactory.FIRE_BLAST, "Fire Blast", 5, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 85, 110, 1, .1);
+        super(SkillFactory.FIRE_BLAST, "Fire Blast", SkillDescription.FIRE_BLAST, 5,
+                Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 85, 110, 1, .1);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 

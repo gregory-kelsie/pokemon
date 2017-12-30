@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class BrickBreak extends DamageSkill {
      * - Accuracy: 100
      */
     public BrickBreak() {
-        super(SkillFactory.BRICK_BREAK, "Brick Break", 15, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 75, 1);
+        super(SkillFactory.BRICK_BREAK, "Brick Break", SkillDescription.BRICK_BREAK, 15,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 75, 1);
         makesPhysicalContact = true;
-
     }
 
     /**
@@ -44,8 +45,10 @@ public class BrickBreak extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         boolean brokeLightScreen = false;
         boolean brokeReflect = false;
         if (enemyField.hasLightScreen()) {
@@ -56,8 +59,9 @@ public class BrickBreak extends DamageSkill {
             enemyField.removeReflect();
             brokeReflect = true;
         }
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         if (brokeLightScreen) {
             results.add(enemyPokemon.getName() + "s Light Screen was broken.");
         }

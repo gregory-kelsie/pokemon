@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -26,14 +27,16 @@ public class SuckerPunch extends DamageSkill {
      * - Accuracy: 100
      */
     public SuckerPunch() {
-        super(SkillFactory.SUCKER_PUNCH, "Sucker Punch", 15, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 70, 1);
+        super(SkillFactory.SUCKER_PUNCH, "Sucker Punch", SkillDescription.SUCKER_PUNCH, 15,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 70, 1);
         makesPhysicalContact = true;
         setPriority(1);
     }
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (isFirstAttack && targetsSkill.doesDamageToEnemy()) {
             return new FailResult(false);
         }

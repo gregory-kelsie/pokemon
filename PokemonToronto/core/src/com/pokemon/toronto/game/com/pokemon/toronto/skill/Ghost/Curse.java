@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -29,10 +30,13 @@ public class Curse extends EffectSkill {
      * - Accuracy: 100
      */
     public Curse() {
-        super(37, "Curse", 10, Pokemon.Type.GHOST, 100);
-        effects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.DECREASE));
-        effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(37, "Curse", SkillDescription.CURSE, 10, Pokemon.Type.GHOST, 100);
+        effects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.DECREASE));
+        effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;
     }
 
@@ -50,8 +54,10 @@ public class Curse extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         if (skillUser.getBattleTypeOne() == Pokemon.Type.GHOST ||
                 skillUser.getBattleTypeTwo() == Pokemon.Type.GHOST) {
@@ -63,7 +69,9 @@ public class Curse extends EffectSkill {
                     "\nlaid a curse on " + enemyPokemon.getName());
             return results;
         } else {
-            return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+            return super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                    enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                    targetSkill, skillUserParty, enemyPokemonParty);
         }
 
     }
@@ -82,7 +90,8 @@ public class Curse extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
         if ((skillUser.getBattleTypeOne() == Pokemon.Type.GHOST ||
                 skillUser.getBattleTypeTwo() == Pokemon.Type.GHOST) &&
                 enemyPokemon.isCursed()) {

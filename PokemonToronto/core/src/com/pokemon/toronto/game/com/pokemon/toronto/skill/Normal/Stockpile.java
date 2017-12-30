@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -31,7 +32,8 @@ public class Stockpile extends EffectSkill {
      * - Max out the attack stat.
      */
     public Stockpile() {
-        super(SkillFactory.STOCKPILE, "Stockpile", 10, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.STOCKPILE, "Stockpile", SkillDescription.STOCKPILE, 10,
+                Pokemon.Type.NORMAL, -1);
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF, 1,
@@ -53,10 +55,13 @@ public class Stockpile extends EffectSkill {
      * @param enemyPokemonParty
      * @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         skillUser.stockpile();
         results.add(0, skillUser.getName() + " stockpiled " + skillUser.getStockpileStacks());
         return results;
@@ -65,7 +70,8 @@ public class Stockpile extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.getStockpileStacks() < 3) {
             return new FailResult(false);
         }

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -24,7 +25,8 @@ public class BraveBird extends DamageSkill {
      */
     public BraveBird() {
         //1/3 RECOIL
-        super(SkillFactory.BRAVE_BIRD, "Brave Bird", 15, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
+        super(SkillFactory.BRAVE_BIRD, "Brave Bird", SkillDescription.BRAVE_BIRD, 15,
+                Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
         makesPhysicalContact = true;
     }
 

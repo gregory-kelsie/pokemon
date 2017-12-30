@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -24,8 +25,8 @@ public class Moonblast extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Moonblast() {
-        super(SkillFactory.MOONBLAST, "Moonblast", 15, Pokemon.Type.FAIRY, SkillCategory.SPECIAL,
-                100, 95, 1, .3);
+        super(SkillFactory.MOONBLAST, "Moonblast", SkillDescription.MOONBLAST, 15,
+                Pokemon.Type.FAIRY, SkillCategory.SPECIAL, 100, 95, 1, .3);
         secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
     }

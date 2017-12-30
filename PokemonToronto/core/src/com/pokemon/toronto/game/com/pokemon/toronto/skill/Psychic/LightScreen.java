@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class LightScreen extends Skill {
      * - Accuracy: -1
      */
     public LightScreen() {
-        super(SkillFactory.LIGHT_SCREEN, "Light Screen", 30, Pokemon.Type.PSYCHIC,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.LIGHT_SCREEN, "Light Screen", SkillDescription.LIGHT_SCREEN, 30,
+                Pokemon.Type.PSYCHIC, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 
@@ -68,7 +69,8 @@ public class LightScreen extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (userField.hasLightScreen()) {
             return new FailResult("It failed...");
         }

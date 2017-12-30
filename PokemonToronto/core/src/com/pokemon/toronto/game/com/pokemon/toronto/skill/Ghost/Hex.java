@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
 
@@ -28,8 +29,8 @@ public class Hex extends DamageSkill {
      * - Accuracy: 100
      */
     public Hex() {
-        super(SkillFactory.HEX, "Hex", 10, Pokemon.Type.GHOST, SkillCategory.SPECIAL,
-                100, 65, 1);
+        super(SkillFactory.HEX, "Hex", SkillDescription.HEX, 10, Pokemon.Type.GHOST,
+                SkillCategory.SPECIAL, 100, 65, 1);
     }
 
     /**

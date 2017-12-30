@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -23,7 +24,8 @@ public class TearfulLook extends EffectSkill {
      * - Decrease target ATK and SP ATK by 1 stage.
      */
     public TearfulLook() {
-        super(SkillFactory.TEARFUL_LOOK, "Tearful Look", 20, Pokemon.Type.NORMAL, 100);
+        super(SkillFactory.TEARFUL_LOOK, "Tearful Look", SkillDescription.TEARFUL_LOOK, 20,
+                Pokemon.Type.NORMAL, 100);
         effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
         effects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1,

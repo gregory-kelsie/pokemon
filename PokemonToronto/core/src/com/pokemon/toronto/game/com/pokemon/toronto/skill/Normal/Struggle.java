@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -24,7 +25,7 @@ public class Struggle extends DamageSkill {
      */
     public Struggle() {
         //1/4 RECOIL
-        super(SkillFactory.STRUGGLE, "Struggle", 1, Pokemon.Type.NORMAL,
+        super(SkillFactory.STRUGGLE, "Struggle", SkillDescription.STRUGGLE, 1, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.PHYSICAL, -1, 50, 1, 1);
         makesPhysicalContact = true;
     }

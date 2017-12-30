@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class Pluck extends DamageSkill {
      * - Accuracy: 100
      */
     public Pluck() {
-        super(SkillFactory.PLUCK, "Pluck", 20, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
+        super(SkillFactory.PLUCK, "Pluck", SkillDescription.PLUCK, 20, Pokemon.Type.FLYING,
+                Skill.SkillCategory.PHYSICAL, 100, 60, 1);
     }
 
     //TODO: Override use method and eat the enemy berry if they are holding one.

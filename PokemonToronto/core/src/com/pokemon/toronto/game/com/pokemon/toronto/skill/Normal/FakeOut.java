@@ -10,6 +10,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -31,7 +32,7 @@ public class FakeOut extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public FakeOut() {
-        super(SkillFactory.FAKE_OUT, "Fake Out", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.FAKE_OUT, "Fake Out", SkillDescription.FAKE_OUT, 10, Pokemon.Type.NORMAL,
                 SkillCategory.PHYSICAL, 100, 40, 1, 1.0);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;

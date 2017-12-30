@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Rage extends DamageSkill {
      * - Accuracy: 100
      */
     public Rage() {
-        super(SkillFactory.RAGE, "Rage", 20, Pokemon.Type.NORMAL,
+        super(SkillFactory.RAGE, "Rage", SkillDescription.RAGE, 20, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.PHYSICAL, 100, 20, 1);
         makesPhysicalContact = true;
     }
@@ -44,7 +45,8 @@ public class Rage extends DamageSkill {
      * @param enemyField The field for the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty      @return The results of using the move.
+     * @param enemyPokemonParty
+     * @return The results of using the move.
      * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
                             int enemyPokemonPartyPosition, Field field, SubField userField,

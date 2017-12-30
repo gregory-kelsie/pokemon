@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 
@@ -24,7 +25,8 @@ public class FrostBreath extends DamageSkill {
      * - Accuracy: 90
      */
     public FrostBreath() {
-        super(SkillFactory.FROST_BREATH, "Frost Breath", 10, Pokemon.Type.ICE, Skill.SkillCategory.SPECIAL, 90, 60, -1);
+        super(SkillFactory.FROST_BREATH, "Frost Breath", SkillDescription.FROST_BREATH, 10,
+                Pokemon.Type.ICE, Skill.SkillCategory.SPECIAL, 90, 60, -1);
     }
 
     /**

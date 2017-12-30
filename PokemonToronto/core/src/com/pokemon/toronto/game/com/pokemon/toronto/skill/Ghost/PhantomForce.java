@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class PhantomForce extends DamageSkill {
      * - Accuracy: 100
      */
     public PhantomForce() {
-        super(SkillFactory.PHANTOM_FORCE, "Phantom Force", 10, Pokemon.Type.GHOST,
-                SkillCategory.PHYSICAL, 100, 90, 1);
+        super(SkillFactory.PHANTOM_FORCE, "Phantom Force", SkillDescription.PHANTOM_FORCE, 10,
+                Pokemon.Type.GHOST, SkillCategory.PHYSICAL, 100, 90, 1);
         makesPhysicalContact = true;
         //TODO: Implement hitting through protect.
     }

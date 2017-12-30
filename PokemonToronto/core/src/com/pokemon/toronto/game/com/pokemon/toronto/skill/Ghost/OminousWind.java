@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -28,8 +29,8 @@ public class OminousWind extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public OminousWind() {
-        super(SkillFactory.OMINOUS_WIND, "Ominous Wind", 5, Pokemon.Type.GHOST,
-                Skill.SkillCategory.SPECIAL, 100, 60, 1, .1);
+        super(SkillFactory.OMINOUS_WIND, "Ominous Wind", SkillDescription.OMINOUS_WIND, 5,
+                Pokemon.Type.GHOST, Skill.SkillCategory.SPECIAL, 100, 60, 1, .1);
         secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         secondaryEffects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,

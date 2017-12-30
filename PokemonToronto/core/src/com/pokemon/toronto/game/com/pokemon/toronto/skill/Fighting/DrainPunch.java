@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,11 +23,11 @@ public class DrainPunch extends DamageSkill {
      * - 4 = Gain Half
      */
     public DrainPunch() {
-        super(SkillFactory.DRAIN_PUNCH, "Drain Punch", 10, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 75, 1, 4);
+        super(SkillFactory.DRAIN_PUNCH, "Drain Punch", SkillDescription.DRAIN_PUNCH, 10,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 75, 1, 4);
         makesPhysicalContact = true;
         punchSkill = true;
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

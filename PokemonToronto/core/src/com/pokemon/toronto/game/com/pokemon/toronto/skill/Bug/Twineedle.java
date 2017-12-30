@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamag
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
@@ -33,7 +34,8 @@ public class Twineedle extends MultiHitMove {
      * - Number of Hits: 2
      */
     public Twineedle() {
-        super(SkillFactory.TWINEEDLE, "Twineedle", 20, Pokemon.Type.BUG, Skill.SkillCategory.PHYSICAL, 100, 25, 1, 0);
+        super(SkillFactory.TWINEEDLE, "Twineedle", SkillDescription.twineedle, 20, Pokemon.Type.BUG,
+                Skill.SkillCategory.PHYSICAL, 100, 25, 1, 0);
         poisonEffect = new PoisonEffect(SecondaryEffect.Target.ENEMY);
         poisonChance = 0.2;
     }

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class HoldBack extends DamageSkill {
      * - Accuracy: 100
      */
     public HoldBack() {
-        super(SkillFactory.HOLD_BACK, "Hold Back", 40, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 100, 40, 1);
+        super(SkillFactory.HOLD_BACK, "Hold Back", SkillDescription.HOLD_BACK, 40,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
     }
 

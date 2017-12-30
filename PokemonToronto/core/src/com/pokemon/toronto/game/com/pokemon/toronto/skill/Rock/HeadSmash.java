@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -25,7 +26,8 @@ public class HeadSmash extends DamageSkill {
      */
     public HeadSmash() {
         //1/2 RECOIL = 3
-        super(SkillFactory.HEAD_SMASH, "Head Smash", 5, Pokemon.Type.ROCK, Skill.SkillCategory.PHYSICAL, 80, 150, 1, 3);
+        super(SkillFactory.HEAD_SMASH, "Head Smash", SkillDescription.HEAD_SMASH, 5,
+                Pokemon.Type.ROCK, Skill.SkillCategory.PHYSICAL, 80, 150, 1, 3);
         makesPhysicalContact = true;
     }
 

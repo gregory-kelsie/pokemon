@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public class RainDance extends Skill {
      * - Accuracy: 100
      */
     public RainDance() {
-        super(SkillFactory.RAIN_DANCE, "Rain Dance", 5, Pokemon.Type.WATER, Skill.SkillCategory.MISC, 100);
+        super(SkillFactory.RAIN_DANCE, "Rain Dance", SkillDescription.RAIN_DANCE, 5,
+                Pokemon.Type.WATER, Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 
@@ -44,8 +46,10 @@ public class RainDance extends Skill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         if (field.getWeatherType() == WeatherType.SAND) {
             results.add("The sandstorm subsided.");
@@ -72,7 +76,8 @@ public class RainDance extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (field.getWeatherType() == WeatherType.HEAVY_RAIN ||
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.RAIN) {

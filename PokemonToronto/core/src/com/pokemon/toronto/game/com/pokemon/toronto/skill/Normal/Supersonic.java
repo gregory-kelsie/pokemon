@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
@@ -25,7 +26,8 @@ public class Supersonic extends EffectSkill {
      * - Accuracy: 55
      */
     public Supersonic() {
-        super(SkillFactory.SUPERSONIC, "Supersonic", 20, Pokemon.Type.NORMAL, 55);
+        super(SkillFactory.SUPERSONIC, "Supersonic", SkillDescription.SUPERSONIC,20,
+                Pokemon.Type.NORMAL, 55);
         effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 

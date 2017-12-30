@@ -15,11 +15,12 @@ public class ShinyStone extends Item {
         super(new ItemBlob.ShinyStoneBlob(), "bag/icons/shinyStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getShinyStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getShinyStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -22,7 +23,8 @@ public class Amnesia extends EffectSkill {
      * - Accuracy: -1
      */
     public Amnesia() {
-        super(SkillFactory.AMNESIA, "Amnesia", 20, Pokemon.Type.PSYCHIC, -1);
+        super(SkillFactory.AMNESIA, "Amnesia", SkillDescription.AMNESIA, 20, Pokemon.Type.PSYCHIC,
+                -1);
         effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF,
                 2, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

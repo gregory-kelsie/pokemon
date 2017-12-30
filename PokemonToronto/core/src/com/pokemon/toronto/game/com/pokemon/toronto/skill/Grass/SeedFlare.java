@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,10 @@ public class SeedFlare extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public SeedFlare() {
-        super(SkillFactory.SEED_FLARE, "Seed Flare", 5, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 85, 120, 1, .4);
-        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 2, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.SEED_FLARE, "Seed Flare", SkillDescription.SEED_FLARE, 5,
+                Pokemon.Type.GRASS, SkillCategory.SPECIAL, 85, 120, 1, .4);
+        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 2,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

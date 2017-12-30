@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -27,7 +28,8 @@ public class Agility extends EffectSkill {
      * - Accuracy: -1
      */
     public Agility() {
-        super(SkillFactory.AGILITY, "Agility", 30, Pokemon.Type.PSYCHIC, -1);
+        super(SkillFactory.AGILITY, "Agility", SkillDescription.AGILITY, 30, Pokemon.Type.PSYCHIC,
+                -1);
         effects.add(new SpeedEffect(SecondaryEffect.Target.SELF,
                 2, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

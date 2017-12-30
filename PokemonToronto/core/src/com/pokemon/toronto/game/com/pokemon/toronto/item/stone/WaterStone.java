@@ -15,11 +15,12 @@ public class WaterStone extends Item {
         super(new ItemBlob.WaterStoneBlob(), "bag/icons/waterStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getWaterStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getWaterStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

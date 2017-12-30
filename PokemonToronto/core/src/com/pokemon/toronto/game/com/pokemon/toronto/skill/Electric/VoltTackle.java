@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -24,8 +25,8 @@ public class VoltTackle extends SecondaryEffectSkill {
      * - 1/3 Recoil
      */
     public VoltTackle() {
-        super(SkillFactory.VOLT_TACKLE, "Volt Tackle", 15, Pokemon.Type.ELECTRIC,
-                SkillCategory.PHYSICAL, 100, 120, 1, 2, .1);
+        super(SkillFactory.VOLT_TACKLE, "Volt Tackle", SkillDescription.VOLT_TACKLE,15,
+                Pokemon.Type.ELECTRIC, SkillCategory.PHYSICAL, 100, 120, 1, 2, .1);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -25,8 +26,10 @@ public class TailGlow extends EffectSkill {
      * - Cat: Misc
      */
     public TailGlow() {
-        super(SkillFactory.TAIL_GLOW, "Tail Glow", 20, Pokemon.Type.BUG, -1);
-        effects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 3, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.TAIL_GLOW, "Tail Glow", SkillDescription.tailGlow, 20, Pokemon.Type.BUG,
+                -1);
+        effects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 3,
+                SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;
     }
 

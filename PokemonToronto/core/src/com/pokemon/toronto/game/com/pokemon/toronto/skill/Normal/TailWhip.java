@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class TailWhip extends EffectSkill {
      * - Lower enemy defense by 1 stage.
      */
     public TailWhip() {
-        super(5, "Tail Whip", 30, Pokemon.Type.NORMAL, 100);
+        super(5, "Tail Whip", SkillDescription.TAIL_WHIP,30, Pokemon.Type.NORMAL, 100);
         effects.add(new DefenseEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
     }

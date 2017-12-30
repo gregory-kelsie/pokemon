@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class SandTomb extends DamageSkill {
      * - Accuracy: 85
      */
     public SandTomb() {
-        super(SkillFactory.SAND_TOMB, "Sand Tomb", 15, Pokemon.Type.GROUND, SkillCategory.PHYSICAL,
-                85, 35, 1);
+        super(SkillFactory.SAND_TOMB, "Sand Tomb", SkillDescription.SAND_TOMB, 15,
+                Pokemon.Type.GROUND, SkillCategory.PHYSICAL, 85, 35, 1);
     }
 
     /**

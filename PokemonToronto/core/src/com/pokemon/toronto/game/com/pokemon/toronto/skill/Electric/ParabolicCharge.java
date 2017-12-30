@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class ParabolicCharge extends DamageSkill {
      * - 4 = Gain Half
      */
     public ParabolicCharge() {
-        super(SkillFactory.PARABOLIC_CHARGE, "Parabolic Charge", 20, Pokemon.Type.ELECTRIC,
+        super(SkillFactory.PARABOLIC_CHARGE, "Parabolic Charge", SkillDescription.PARABOLIC_CHARGE,
+                20, Pokemon.Type.ELECTRIC,
                 SkillCategory.SPECIAL, 100, 65, 1, 4);
     }
 

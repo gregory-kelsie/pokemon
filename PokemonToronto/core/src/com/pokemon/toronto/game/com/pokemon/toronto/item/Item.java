@@ -37,8 +37,8 @@ public class Item {
         return image;
     }
 
-    public void use(Pokemon p) {
-
+    public String use(Pokemon p) {
+        return "";
     }
 
     public boolean ableToUse(Pokemon p) {

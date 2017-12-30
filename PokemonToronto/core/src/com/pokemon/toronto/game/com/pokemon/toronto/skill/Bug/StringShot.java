@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class StringShot extends EffectSkill {
      * - Accuracy: 95
      */
     public StringShot() {
-        super(8, "String Shot", 35, Pokemon.Type.BUG, 95);
+        super(8, "String Shot", SkillDescription.stringShot, 35, Pokemon.Type.BUG, 95);
         effects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
     }

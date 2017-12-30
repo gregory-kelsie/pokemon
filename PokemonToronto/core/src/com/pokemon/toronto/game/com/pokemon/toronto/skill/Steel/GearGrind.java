@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -28,11 +29,10 @@ public class GearGrind extends MultiHitMove {
      * - Number of Hits: 2
      */
     public GearGrind() {
-        super(SkillFactory.GEAR_GRIND, "Gear Grind", 15, Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 85, 50, 1, 1);
+        super(SkillFactory.GEAR_GRIND, "Gear Grind", SkillDescription.GEAR_GRIND, 15,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 85, 50, 1, 1);
         makesPhysicalContact = true;
     }
-
-
 
     /**
      * Return Gear Grind's skill animation.

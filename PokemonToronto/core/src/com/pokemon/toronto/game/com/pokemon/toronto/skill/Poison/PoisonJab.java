@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
@@ -23,8 +24,8 @@ public class PoisonJab extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public PoisonJab() {
-        super(SkillFactory.POISON_JAB, "Poison Jab", 20, Pokemon.Type.POISON,
-                SkillCategory.PHYSICAL, 100, 80, 1, .3);
+        super(SkillFactory.POISON_JAB, "Poison Jab", SkillDescription.POISON_JAB, 20,
+                Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 80, 1, .3);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

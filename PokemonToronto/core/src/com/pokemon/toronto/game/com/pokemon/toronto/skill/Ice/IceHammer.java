@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -26,8 +27,10 @@ public class IceHammer extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public IceHammer() {
-        super(SkillFactory.ICE_HAMMER, "Ice Hammer", 10, Pokemon.Type.ICE, SkillCategory.PHYSICAL, 90, 100, 1, 1.0);
-        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.ICE_HAMMER, "Ice Hammer", SkillDescription.ICE_HAMMER, 10,
+                Pokemon.Type.ICE, SkillCategory.PHYSICAL, 90, 100, 1, 1.0);
+        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;
         punchSkill = true;
     }

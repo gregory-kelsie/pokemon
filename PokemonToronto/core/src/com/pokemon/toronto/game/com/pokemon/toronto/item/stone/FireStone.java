@@ -15,11 +15,12 @@ public class FireStone extends Item {
         super(new ItemBlob.FireStoneBlob(), "bag/icons/fireStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getFireStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getFireStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

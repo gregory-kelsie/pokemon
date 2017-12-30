@@ -17,9 +17,9 @@ public abstract class MultiHitMove extends DamageSkill {
     private final int TWO_TIMES = 1;
     private final int TRIPLE_KICK = 2;
 
-    public MultiHitMove(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit,
-                        int multiHitType) {
-        super(id, name, maxPP, type, category, accuracy, damage, crit);
+    public MultiHitMove(int id, String name, String description, int maxPP, Pokemon.Type type,
+                        SkillCategory category, int accuracy, int damage, int crit, int multiHitType) {
+        super(id, name, description, maxPP, type, category, accuracy, damage, crit);
         this.multiHitType = multiHitType;
         isMultiStrikeMove = true;
         timesHit = 0;

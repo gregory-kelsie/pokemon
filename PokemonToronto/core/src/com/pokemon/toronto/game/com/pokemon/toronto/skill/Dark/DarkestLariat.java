@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class DarkestLariat extends DamageSkill {
      * - Accuracy: 100
      */
     public DarkestLariat() {
-        super(SkillFactory.DARKEST_LARIAT, "Darkest Lariat", 10, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 85, 1);
+        super(SkillFactory.DARKEST_LARIAT, "Darkest Lariat", SkillDescription.DARKEST_LARIAT ,10,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 85, 1);
         makesPhysicalContact = true;
         ignoreTargetStatChanges = true;
     }

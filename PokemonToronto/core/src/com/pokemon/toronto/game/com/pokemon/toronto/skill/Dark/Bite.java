@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 
 import java.util.List;
@@ -28,7 +29,8 @@ public class Bite extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Bite() {
-        super(17, "Bite", 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL, 100, 60, 1, .3);
+        super(17, "Bite", SkillDescription.BITE, 25, Pokemon.Type.DARK, SkillCategory.PHYSICAL,
+                100, 60, 1, .3);
         makesPhysicalContact = true;
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }

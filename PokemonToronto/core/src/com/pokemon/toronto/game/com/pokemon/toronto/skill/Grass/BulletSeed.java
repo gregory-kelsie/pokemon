@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class BulletSeed extends MultiHitMove {
      * - Number of Hits: 2-5 (As denoted by the last parameter of 0)
      */
     public BulletSeed() {
-        super(SkillFactory.BULLET_SEED, "Bullet Seed", 30, Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 25, 1, 0);
+        super(SkillFactory.BULLET_SEED, "Bullet Seed", SkillDescription.BULLET_SEED, 30,
+                Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 25, 1, 0);
     }
 
     /**

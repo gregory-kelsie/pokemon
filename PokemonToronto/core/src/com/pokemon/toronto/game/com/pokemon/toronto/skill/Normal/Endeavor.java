@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Endeavor extends DamageSkill {
      * - Accuracy: 100
      */
     public Endeavor() {
-        super(SkillFactory.ENDEAVOR, "Endeavor", 5, Pokemon.Type.NORMAL,
+        super(SkillFactory.ENDEAVOR, "Endeavor", SkillDescription.ENDEAVOR, 5, Pokemon.Type.NORMAL,
                 SkillCategory.PHYSICAL, 100, 1, 1);
     }
 

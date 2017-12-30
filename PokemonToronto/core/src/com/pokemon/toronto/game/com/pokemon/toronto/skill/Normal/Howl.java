@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -23,7 +24,7 @@ public class Howl extends EffectSkill {
      * - Increase user ATK by 1 stage.
      */
     public Howl() {
-        super(SkillFactory.HOWL, "Howl", 40, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.HOWL, "Howl", SkillDescription.HOWL, 40, Pokemon.Type.NORMAL, -1);
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -28,7 +29,8 @@ public class ThunderWave extends EffectSkill {
      * - Accuracy: 90
      */
     public ThunderWave() {
-        super(SkillFactory.THUNDER_WAVE, "Thunder Wave", 20, Pokemon.Type.ELECTRIC, 90);
+        super(SkillFactory.THUNDER_WAVE, "Thunder Wave", SkillDescription.THUNDER_WAVE, 20,
+                Pokemon.Type.ELECTRIC, 90);
         effects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

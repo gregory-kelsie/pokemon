@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class BurnUp extends DamageSkill {
      * - Accuracy: 100
      */
     public BurnUp() {
-        super(SkillFactory.BURN_UP, "Burn Up", 5, Pokemon.Type.FIRE, SkillCategory.SPECIAL, 100, 130, 1);
+        super(SkillFactory.BURN_UP, "Burn Up", SkillDescription.BURN_UP, 5, Pokemon.Type.FIRE,
+                SkillCategory.SPECIAL, 100, 130, 1);
     }
-
 
     /**
      * Damage the enemy and remove type as fire if it has one.
@@ -43,12 +44,15 @@ public class BurnUp extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                        userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         if (skillUser.getBattleTypeOne() == Pokemon.Type.FIRE) {
             skillUser.setBattleTypeOne(Pokemon.Type.NONE);
             results.add(skillUser.getName() + " lost its\nFire type!");

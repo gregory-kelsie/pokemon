@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,8 +25,10 @@ public class FlashCannon extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public FlashCannon() {
-        super(SkillFactory.FLASH_CANNON, "Flash Cannon", 10, Pokemon.Type.STEEL, SkillCategory.SPECIAL, 100, 80, 1, .1);
-        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.FLASH_CANNON, "Flash Cannon", SkillDescription.FLASH_CANNON, 10,
+                Pokemon.Type.STEEL, SkillCategory.SPECIAL, 100, 80, 1, .1);
+        secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

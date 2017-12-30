@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 
@@ -23,7 +24,7 @@ public class Round extends DamageSkill {
      * - Accuracy: 100
      */
     public Round() {
-        super(SkillFactory.ROUND, "Round", 15, Pokemon.Type.NORMAL,
+        super(SkillFactory.ROUND, "Round", SkillDescription.ROUND,15, Pokemon.Type.NORMAL,
                 SkillCategory.SPECIAL, 100, 60, 1);
     }
 

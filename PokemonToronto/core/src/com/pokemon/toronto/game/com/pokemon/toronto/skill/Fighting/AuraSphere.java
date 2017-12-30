@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,8 +23,8 @@ public class AuraSphere extends DamageSkill {
      * - Accuracy: -1 (Never misses)
      */
     public AuraSphere() {
-        super(SkillFactory.AURA_SPHERE, "Aura Sphere", 20, Pokemon.Type.FIGHTING, Skill.SkillCategory.SPECIAL, 100, 80, -1);
-
+        super(SkillFactory.AURA_SPHERE, "Aura Sphere", SkillDescription.AURA_SPHERE, 20,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.SPECIAL, 100, 80, -1);
     }
 
     /**

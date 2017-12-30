@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamag
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -30,7 +31,8 @@ public class WaterShuriken extends MultiHitMove {
      * - Number of Hits: 2-5 (As denoted by the last parameter of 0)
      */
     public WaterShuriken() {
-        super(SkillFactory.WATER_SHURIKEN, "Water Shuriken", 20, Pokemon.Type.WATER, SkillCategory.SPECIAL, 100, 15, 1, 0);
+        super(SkillFactory.WATER_SHURIKEN, "Water Shuriken", SkillDescription.WATER_SHURIKEN, 20,
+                Pokemon.Type.WATER, SkillCategory.SPECIAL, 100, 15, 1, 0);
         setPriority(1);
     }
 

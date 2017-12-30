@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class HealBell extends Skill {
      * - Accuracy: n/a
      */
     public HealBell() {
-        super(SkillFactory.HEAL_BELL, "Heal Bell", 5, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.HEAL_BELL, "Heal Bell", SkillDescription.HEAL_BELL, 5,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class LeechLife extends DamageSkill {
      * - 4 = Gain Half
      */
     public LeechLife() {
-        super(SkillFactory.LEECH_LIFE, "Leech Life", 10, Pokemon.Type.BUG, Skill.SkillCategory.PHYSICAL, 100, 80, 1, 4);
+        super(SkillFactory.LEECH_LIFE, "Leech Life", SkillDescription.leechLife, 10,
+                Pokemon.Type.BUG, Skill.SkillCategory.PHYSICAL, 100, 80, 1, 4);
         makesPhysicalContact = true;
     }
 

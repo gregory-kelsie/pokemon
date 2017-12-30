@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
@@ -24,7 +25,8 @@ public class IceBeam extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public IceBeam() {
-        super(SkillFactory.ICE_BEAM, "Ice Beam", 10, Pokemon.Type.ICE, SkillCategory.SPECIAL, 100, 90, 1, .1);
+        super(SkillFactory.ICE_BEAM, "Ice Beam", SkillDescription.ICE_BEAM, 10, Pokemon.Type.ICE,
+                SkillCategory.SPECIAL, 100, 90, 1, .1);
         secondaryEffects.add(new FreezeEffect(SecondaryEffect.Target.ENEMY));
     }
 

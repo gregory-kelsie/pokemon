@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -23,7 +24,8 @@ public class FlareBlitz extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public FlareBlitz() {
-        super(SkillFactory.FLARE_BLITZ, "Flare Blitz", 15, Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 120, 1, 2, .1);
+        super(SkillFactory.FLARE_BLITZ, "Flare Blitz", SkillDescription.FLARE_BLITZ, 15,
+                Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 120, 1, 2, .1);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -23,8 +24,10 @@ public class FakeTears extends EffectSkill {
      * - Accuracy: 100
      */
     public FakeTears() {
-        super(SkillFactory.FAKE_TEARS, "Fake Tears", 20, Pokemon.Type.DARK, 100);
-        effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 2, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.FAKE_TEARS, "Fake Tears", SkillDescription.FAKE_TEARS ,20,
+                Pokemon.Type.DARK, 100);
+        effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 2,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,7 @@ public class PayDay extends DamageSkill {
      * - Accuracy: 100
      */
     public PayDay() {
-        super(SkillFactory.PAY_DAY, "Pay Day", 20, Pokemon.Type.NORMAL,
+        super(SkillFactory.PAY_DAY, "Pay Day", SkillDescription.PAY_DAY,20, Pokemon.Type.NORMAL,
                 SkillCategory.PHYSICAL, 100, 40, 1);
     }
 

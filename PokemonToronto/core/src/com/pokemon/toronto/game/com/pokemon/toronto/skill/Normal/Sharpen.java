@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,7 +25,8 @@ public class Sharpen extends EffectSkill {
      * - Increase user atk by 1 stage.
      */
     public Sharpen() {
-        super(SkillFactory.SHARPEN, "Sharpen", 10, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.SHARPEN, "Sharpen", SkillDescription.SHARPEN, 10, Pokemon.Type.NORMAL,
+                -1);
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

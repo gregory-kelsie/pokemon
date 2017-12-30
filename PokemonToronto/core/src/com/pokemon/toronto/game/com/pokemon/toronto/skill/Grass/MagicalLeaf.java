@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class MagicalLeaf extends DamageSkill {
      * - Accuracy: -1 Can't miss
      */
     public MagicalLeaf() {
-        super(SkillFactory.MAGICAL_LEAF, "Magical Leaf", 20, Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
+        super(SkillFactory.MAGICAL_LEAF, "Magical Leaf", SkillDescription.MAGICAL_LEAF, 20,
+                Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
     }
 
     /**

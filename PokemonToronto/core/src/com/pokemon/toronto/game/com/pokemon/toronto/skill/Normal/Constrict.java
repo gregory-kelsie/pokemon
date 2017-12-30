@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,8 @@ public class Constrict extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Constrict() {
-        super(SkillFactory.CONSTRICT, "Constrict", 35, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 100, 10, 1, .1);
+        super(SkillFactory.CONSTRICT, "Constrict", SkillDescription.CONSTRICT, 35,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 10, 1, .1);
         secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;

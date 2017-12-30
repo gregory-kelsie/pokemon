@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -24,7 +25,8 @@ public class PoisonGas extends EffectSkill {
      * - Accuracy: 90
      */
     public PoisonGas() {
-        super(SkillFactory.POISON_GAS, "Poison Gas", 40, Pokemon.Type.POISON, 90);
+        super(SkillFactory.POISON_GAS, "Poison Gas", SkillDescription.POISON_GAS, 40,
+                Pokemon.Type.POISON, 90);
         effects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

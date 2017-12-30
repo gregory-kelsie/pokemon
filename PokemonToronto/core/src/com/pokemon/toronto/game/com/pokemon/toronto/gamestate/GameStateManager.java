@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Weedle;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.WildPokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto.AlolanDiglett;
@@ -290,7 +291,7 @@ public class GameStateManager {
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));*/
         //addToParty(new Charmander(5));
-        addToBox(new Pidgeotto(5));
+        addToBox(new Bulbasaur(5));
         addToBox(new Pidgeot(5));
         addToBox(new Ekans(5));
         addToBox(new Arbok(5));

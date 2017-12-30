@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,15 +24,15 @@ public class BoneRush extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public BoneRush() {
-        super(SkillFactory.BONE_RUSH, "Bone Rush", 10, Pokemon.Type.GROUND,
-                Skill.SkillCategory.PHYSICAL, 90, 25, 1, 0);
+        super(SkillFactory.BONE_RUSH, "Bone Rush", SkillDescription.BONE_RUSH, 10,
+                Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 90, 25, 1, 0);
     }
 
     /**
      * Return Bone Rush's skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Quick Attack's skill animation.
+     * @return Bone Rush's skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public class GastroAcid extends Skill {
      * - Accuracy: 100
      */
     public GastroAcid() {
-        super(SkillFactory.GASTRO_ACID, "Gastro Acid", 10, Pokemon.Type.POISON, Skill.SkillCategory.MISC, 100);
+        super(SkillFactory.GASTRO_ACID, "Gastro Acid", SkillDescription.GASTRO_ACID, 10,
+                Pokemon.Type.POISON, Skill.SkillCategory.MISC, 100);
     }
 
     /**
@@ -42,8 +44,10 @@ public class GastroAcid extends Skill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyPokemon.setBattleAbility(Pokemon.Ability.NONE);
         results.add(enemyPokemon.getName() + "'s ability was suppressed!");
@@ -63,7 +67,8 @@ public class GastroAcid extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (enemyPokemon.getBattleAbility() == Pokemon.Ability.NONE) {
             return new FailResult("It failed...");
         }

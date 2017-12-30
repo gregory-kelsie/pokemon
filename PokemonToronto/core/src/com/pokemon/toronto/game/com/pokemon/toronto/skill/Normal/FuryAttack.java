@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,8 +24,8 @@ public class FuryAttack extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public FuryAttack() {
-        super(SkillFactory.FURY_ATTACK, "Fury Attack", 20, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 85, 15, 1, 0);
+        super(SkillFactory.FURY_ATTACK, "Fury Attack", SkillDescription.FURY_ATTACK, 20,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 15, 1, 0);
         makesPhysicalContact = true;
     }
 

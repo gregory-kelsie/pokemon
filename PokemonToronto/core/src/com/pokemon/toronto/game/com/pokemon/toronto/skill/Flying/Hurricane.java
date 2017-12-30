@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
@@ -27,7 +28,8 @@ public class Hurricane extends SecondaryEffectSkill {
      * - Accuracy: 70
      */
     public Hurricane() {
-        super(SkillFactory.HURRICANE, "Hurricane", 10, Pokemon.Type.FLYING, Skill.SkillCategory.SPECIAL, 70, 110, 1, .3);
+        super(SkillFactory.HURRICANE, "Hurricane", SkillDescription.HURRICANE, 10,
+                Pokemon.Type.FLYING, Skill.SkillCategory.SPECIAL, 70, 110, 1, .3);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
         hitFlyingPokemon = true;
     }
@@ -43,13 +45,15 @@ public class Hurricane extends SecondaryEffectSkill {
      * @return Whether or not the skill hits the enemy.
      */
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
-                                Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
+                                Field field, SubField userField, SubField enemyField,
+                                boolean isFirstAttack) {
         if (field.getWeatherType() == WeatherType.RAIN) {
             accuracy = 100;
         } else if (field.getWeatherType() == WeatherType.SUN) {
             accuracy = 50;
         }
-        boolean result = super.willHitEnemy(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
+        boolean result = super.willHitEnemy(skillUser, enemyPokemon, field, userField, enemyField,
+                isFirstAttack);
         accuracy = 70; //Set it back to normal.
         return result;
     }

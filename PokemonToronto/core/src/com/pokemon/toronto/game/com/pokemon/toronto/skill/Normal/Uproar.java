@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class Uproar extends DamageSkill {
      * - Accuracy: 100
      */
     public Uproar() {
-        super(SkillFactory.UPROAR, "Uproar", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.UPROAR, "Uproar", SkillDescription.UPROAR, 10, Pokemon.Type.NORMAL,
                 SkillCategory.SPECIAL, 100, 90, 1);
     }
 

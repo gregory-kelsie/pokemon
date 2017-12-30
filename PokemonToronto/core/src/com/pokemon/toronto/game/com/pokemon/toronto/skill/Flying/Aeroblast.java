@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class Aeroblast extends DamageSkill {
      * - Accuracy: 95
      */
     public Aeroblast() {
-        super(SkillFactory.AEROBLAST, "Aeroblast", 5, Pokemon.Type.FLYING, SkillCategory.SPECIAL, 95, 100, 2);
+        super(SkillFactory.AEROBLAST, "Aeroblast", SkillDescription.AEROBLAST, 5,
+                Pokemon.Type.FLYING, SkillCategory.SPECIAL, 95, 100, 2);
     }
 
     /**

@@ -15,11 +15,12 @@ public class ThunderStone extends Item {
         super(new ItemBlob.ThunderStoneBlob(), "bag/icons/thunderStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getThunderStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getThunderStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

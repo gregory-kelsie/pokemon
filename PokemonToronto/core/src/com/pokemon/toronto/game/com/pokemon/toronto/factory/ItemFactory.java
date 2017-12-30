@@ -12,9 +12,16 @@ import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.ShinyStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.SunStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.ThunderStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.WaterStone;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Calcium;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Carbos;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.HealthRestoreItem;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.HpUp;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Iron;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.MaxPotion;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Protein;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.RareCandy;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.StatusHealItem;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Zinc;
 
 /**
  * Created by Gregory on 8/17/2017.
@@ -69,6 +76,20 @@ public class ItemFactory {
             return new PlayerItem(amount, new StatusHealItem.BurnHeal());
         } else if (id == ItemId.ICE_HEAL) {
             return new PlayerItem(amount, new StatusHealItem.IceHeal());
+        } else if (id == ItemId.HP_UP) {
+            return new PlayerItem(amount, new HpUp());
+        } else if (id == ItemId.PROTEIN) {
+            return new PlayerItem(amount, new Protein());
+        } else if (id == ItemId.IRON) {
+            return new PlayerItem(amount, new Iron());
+        } else if (id == ItemId.CALCIUM) {
+            return new PlayerItem(amount, new Calcium());
+        } else if (id == ItemId.ZINC) {
+            return new PlayerItem(amount, new Zinc());
+        } else if (id == ItemId.CARBOS) {
+            return new PlayerItem(amount, new Carbos());
+        } else if (id == ItemId.RARE_CANDY) {
+            return new PlayerItem(amount, new RareCandy());
         }
         return null;
     }

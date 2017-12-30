@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class HeavySlam extends DamageSkill {
      * - Accuracy: 100
      */
     public HeavySlam() {
-        super(SkillFactory.HEAVY_SLAM, "Heavy Slam", 10, Pokemon.Type.STEEL,
-                SkillCategory.PHYSICAL, 100, 1, 1);
+        super(SkillFactory.HEAVY_SLAM, "Heavy Slam", SkillDescription.HEAVY_SLAM, 10,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 100, 1, 1);
     }
 
     /**
@@ -44,8 +45,10 @@ public class HeavySlam extends DamageSkill {
      * @param enemyPokemonParty
      * @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         if (enemyPokemon.getBattleWeight() >= skillUser.getBattleWeight() * 0.5) {
             damage = 40;

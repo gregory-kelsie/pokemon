@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,8 +22,8 @@ public class DisarmingVoice extends DamageSkill {
      * - Accuracy: -1 Never misses
      */
     public DisarmingVoice() {
-        super(SkillFactory.DISARMING_VOICE, "Disarming Voice", 15, Pokemon.Type.FAIRY,
-                SkillCategory.SPECIAL, -1, 40, 1);
+        super(SkillFactory.DISARMING_VOICE, "Disarming Voice", SkillDescription.DISARMING_VOICE, 15,
+                Pokemon.Type.FAIRY, SkillCategory.SPECIAL, -1, 40, 1);
     }
 
     /**

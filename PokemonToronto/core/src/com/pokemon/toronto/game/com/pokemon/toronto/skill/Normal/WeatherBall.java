@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class WeatherBall extends DamageSkill {
      * - Accuracy: 100
      */
     public WeatherBall() {
-        super(SkillFactory.WEATHER_BALL, "Weather Ball", 10, Pokemon.Type.NORMAL,
-                SkillCategory.SPECIAL, 100, 50, 1);
+        super(SkillFactory.WEATHER_BALL, "Weather Ball", SkillDescription.WEATHER_BALL, 10,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 50, 1);
     }
 
     /**
@@ -45,8 +46,10 @@ public class WeatherBall extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
         if (field.getWeatherType() == WeatherType.SUN) {
             damage = 100;

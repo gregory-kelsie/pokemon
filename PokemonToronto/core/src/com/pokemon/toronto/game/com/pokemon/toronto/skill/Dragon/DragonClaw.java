@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 
@@ -24,7 +25,8 @@ public class DragonClaw extends DamageSkill {
      * - Accuracy: 100
      */
     public DragonClaw() {
-        super(SkillFactory.DRAGON_CLAW, "Dragon Claw", 15, Pokemon.Type.DRAGON, SkillCategory.PHYSICAL, 100, 80, 1);
+        super(SkillFactory.DRAGON_CLAW, "Dragon Claw", SkillDescription.DRAGON_CLAW, 15,
+                Pokemon.Type.DRAGON, SkillCategory.PHYSICAL, 100, 80, 1);
         makesPhysicalContact = true;
     }
 

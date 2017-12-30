@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -25,8 +26,10 @@ public class FlameCharge extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public FlameCharge() {
-        super(SkillFactory.FLAME_CHARGE, "Flame Charge", 20, Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 50, 1, 1.0);
-        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.FLAME_CHARGE, "Flame Charge", SkillDescription.FLAME_CHARGE, 20,
+                Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 50, 1, 1.0);
+        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
         makesPhysicalContact = true;
     }
 

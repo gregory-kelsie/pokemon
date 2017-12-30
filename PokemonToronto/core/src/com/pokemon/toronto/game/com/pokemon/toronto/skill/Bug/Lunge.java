@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,10 @@ public class Lunge extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Lunge() {
-        super(SkillFactory.LUNGE, "Lunge", 15, Pokemon.Type.BUG, SkillCategory.PHYSICAL, 100, 80, 1, 1.0);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.LUNGE, "Lunge", SkillDescription.lunge, 15, Pokemon.Type.BUG,
+                SkillCategory.PHYSICAL, 100, 80, 1, 1.0);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;
     }
 

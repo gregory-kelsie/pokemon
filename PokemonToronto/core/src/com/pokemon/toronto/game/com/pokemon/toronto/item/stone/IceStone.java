@@ -14,11 +14,12 @@ public class IceStone extends Item {
         super(new ItemBlob.IceStoneBlob(), "bag/icons/iceStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getIceStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getIceStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

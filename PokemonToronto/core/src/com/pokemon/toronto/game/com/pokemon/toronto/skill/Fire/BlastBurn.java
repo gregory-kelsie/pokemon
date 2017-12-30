@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class BlastBurn extends DamageSkill{
      * - Accuracy: 90
      */
     public BlastBurn() {
-        super(SkillFactory.BLAST_BURN, "Blast Burn", 5, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 90, 150, 1);
+        super(SkillFactory.BLAST_BURN, "Blast Burn", SkillDescription.BLAST_BURN, 5,
+                Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 90, 150, 1);
     }
-
 
     /**
      * Damage the enemy then recharge the next turn.
@@ -43,12 +44,15 @@ public class BlastBurn extends DamageSkill{
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         skillUser.initiateRecharge();
-        return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        return super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
     }
 
     /**

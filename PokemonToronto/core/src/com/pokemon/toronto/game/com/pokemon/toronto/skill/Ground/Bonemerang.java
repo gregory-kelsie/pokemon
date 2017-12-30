@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,15 +24,15 @@ public class Bonemerang extends MultiHitMove {
      * - Number of Hits: 2
      */
     public Bonemerang() {
-        super(SkillFactory.BONEMERANG, "Bonemerang", 10, Pokemon.Type.GROUND,
-                Skill.SkillCategory.PHYSICAL, 90, 50, 1, 1);
+        super(SkillFactory.BONEMERANG, "Bonemerang", SkillDescription.BONEMERANG, 10,
+                Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 90, 50, 1, 1);
     }
 
     /**
      * Return Bonemerang's skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Quick Attack's skill animation.
+     * @return Bonemerang's skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

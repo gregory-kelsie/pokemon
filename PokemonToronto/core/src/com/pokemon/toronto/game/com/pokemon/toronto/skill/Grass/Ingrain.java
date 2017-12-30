@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class Ingrain extends Skill {
      * - Accuracy: 100
      */
     public Ingrain() {
-        super(33, "Ingrain", 20, Pokemon.Type.GRASS, Skill.SkillCategory.MISC, 100);
+        super(33, "Ingrain", SkillDescription.INGRAIN, 20, Pokemon.Type.GRASS,
+                Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 
@@ -42,8 +44,10 @@ public class Ingrain extends Skill {
      * @param enemyPokemonParty    @return Ingrain's move results.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         skillUser.receiveIngrain();
         results.add(skillUser.getName() + " planted its roots!");

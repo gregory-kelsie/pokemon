@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class ClearSmog extends DamageSkill {
      * - Accuracy: -1
      */
     public ClearSmog() {
-        super(SkillFactory.CLEAR_SMOG, "Clear Smog", 15, Pokemon.Type.POISON,
-                Skill.SkillCategory.PHYSICAL, -1, 50, 1);
+        super(SkillFactory.CLEAR_SMOG, "Clear Smog", SkillDescription.CLEAR_SMOG, 15,
+                Pokemon.Type.POISON, Skill.SkillCategory.PHYSICAL, -1, 50, 1);
     }
 
     /**
@@ -49,8 +50,9 @@ public class ClearSmog extends DamageSkill {
                             SubField enemyField, boolean isFirstAttack, Skill targetSkill,
                             List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         enemyPokemon.resetStages();
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         results.add(enemyPokemon.getName() + "'s stat changes\nwere removed!");
         return results;
     }

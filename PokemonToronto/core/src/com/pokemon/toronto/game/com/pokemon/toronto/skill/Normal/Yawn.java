@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Yawn extends Skill {
      * - Accuracy: 100
      */
     public Yawn() {
-        super(SkillFactory.YAWN, "Yawn", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.YAWN, "Yawn", SkillDescription.YAWN, 10, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.MISC, 100);
     }
 
@@ -67,7 +68,8 @@ public class Yawn extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (enemyPokemon.isYawned() || enemyPokemon.isStatused() ||
                 enemyPokemon.getBattleAbility() == Pokemon.Ability.INSOMNIA) {
             return new FailResult("It failed...");

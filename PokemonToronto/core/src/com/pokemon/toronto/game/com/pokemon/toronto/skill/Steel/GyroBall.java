@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class GyroBall extends DamageSkill {
      * - Accuracy: 100
      */
     public GyroBall() {
-        super(SkillFactory.GYRO_BALL, "Gyro Ball", 5, Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 100, 1, 1);
+        super(SkillFactory.GYRO_BALL, "Gyro Ball", SkillDescription.GYRO_BALL, 5,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 100, 1, 1);
         makesPhysicalContact = true;
 
     }
@@ -43,14 +45,18 @@ public class GyroBall extends DamageSkill {
      * @param enemyPokemonParty    @return The results of using the move.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
 
-        damage = (int)(25 * (enemyPokemon.getTotalSpeed(field, enemyField) / skillUser.getTotalSpeed(field, enemyField)));
+        damage = (int)(25 * (enemyPokemon.getTotalSpeed(field, enemyField) /
+                skillUser.getTotalSpeed(field, enemyField)));
 
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
-                enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         damage = 1; //Reset power back to normal.
         return results;
     }

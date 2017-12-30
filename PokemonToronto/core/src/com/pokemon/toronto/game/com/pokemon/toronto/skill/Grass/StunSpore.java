@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -26,7 +27,8 @@ public class StunSpore extends EffectSkill {
      * - Accuracy: 75
      */
     public StunSpore() {
-        super(SkillFactory.STUN_SPORE, "Stun Spore", 15, Pokemon.Type.GRASS, 75);
+        super(SkillFactory.STUN_SPORE, "Stun Spore", SkillDescription.STUN_SPORE, 15,
+                Pokemon.Type.GRASS, 75);
         effects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -43,9 +45,10 @@ public class StunSpore extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
-        if (enemyPokemon.isStatused() || enemyPokemon.getBattleAbility() == Pokemon.Ability.LIMBER ||
-                (enemyPokemon.getBattleTypeOne() == Pokemon.Type.ELECTRIC ||
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
+        if (enemyPokemon.isStatused() || enemyPokemon.getBattleAbility() == Pokemon.Ability.LIMBER
+                || (enemyPokemon.getBattleTypeOne() == Pokemon.Type.ELECTRIC ||
                         enemyPokemon.getBattleTypeTwo() == Pokemon.Type.ELECTRIC ||
                 enemyPokemon.getBattleTypeOne() == Pokemon.Type.GRASS ||
                 enemyPokemon.getBattleTypeTwo() == Pokemon.Type.GRASS)) {

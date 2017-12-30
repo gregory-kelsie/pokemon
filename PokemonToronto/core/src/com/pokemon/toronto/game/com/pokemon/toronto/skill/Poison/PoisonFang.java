@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,8 @@ public class PoisonFang extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public PoisonFang() {
-        super(SkillFactory.POISON_FANG, "Poison Fang", 15, Pokemon.Type.POISON,
-                SkillCategory.PHYSICAL, 100, 50, 1, .5);
+        super(SkillFactory.POISON_FANG, "Poison Fang", SkillDescription.POISON_FANG, 15,
+                Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 50, 1, .5);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

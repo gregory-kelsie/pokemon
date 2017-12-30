@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class PainSplit extends Skill {
      * - Accuracy: N/A
      */
     public PainSplit() {
-        super(SkillFactory.PAIN_SPLIT, "Pain Split", 20,
+        super(SkillFactory.PAIN_SPLIT, "Pain Split", SkillDescription.PAIN_SPLIT, 20,
                 Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
@@ -71,7 +72,8 @@ public class PainSplit extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.hasFullHealth()) {
             return new FailResult(skillUser.getName() + " is full health!");
         }

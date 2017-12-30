@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class Haze extends Skill {
      * - Accuracy: 100
      */
     public Haze() {
-        super(SkillFactory.HAZE, "Haze", 30, Pokemon.Type.ICE, Skill.SkillCategory.MISC, 100);
+        super(SkillFactory.HAZE, "Haze", SkillDescription.HAZE, 30, Pokemon.Type.ICE,
+                Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 
@@ -42,8 +44,10 @@ public class Haze extends Skill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         results.add("All stat changes were\neliminated!");
         skillUser.resetStages();

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -24,8 +25,10 @@ public class Snarl extends SecondaryEffectSkill {
      * - Accuracy: 95
      */
     public Snarl() {
-        super(SkillFactory.SNARL, "Snarl", 15, Pokemon.Type.DARK, SkillCategory.SPECIAL, 95, 55, 1, 1.0);
-        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.SNARL, "Snarl", SkillDescription.SNARL, 15, Pokemon.Type.DARK,
+                SkillCategory.SPECIAL, 95, 55, 1, 1.0);
+        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,8 +24,8 @@ public class Swift extends DamageSkill {
      * - Accuracy: n/a should always hit
      */
     public Swift() {
-        super(SkillFactory.SWIFT, "Swift", 20, Pokemon.Type.NORMAL, SkillCategory.SPECIAL,
-                -1, 60, 1);
+        super(SkillFactory.SWIFT, "Swift", SkillDescription.SWIFT, 20, Pokemon.Type.NORMAL,
+                SkillCategory.SPECIAL, -1, 60, 1);
     }
 
     /**

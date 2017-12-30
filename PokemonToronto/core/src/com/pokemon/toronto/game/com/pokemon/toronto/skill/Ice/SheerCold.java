@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class SheerCold extends DamageSkill {
      * - Accuracy: 30
      */
     public SheerCold() {
-        super(SkillFactory.SHEER_COLD, "Sheer Cold", 5, Pokemon.Type.ICE, SkillCategory.SPECIAL, 30, 100, 1);
+        super(SkillFactory.SHEER_COLD, "Sheer Cold", SkillDescription.SHEER_COLD, 5,
+                Pokemon.Type.ICE, SkillCategory.SPECIAL, 30, 100, 1);
     }
-
 
     /**
      * Use Sheer Cold and return the move results.
@@ -44,8 +45,10 @@ public class SheerCold extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyPokemon.subtractHealth(enemyPokemon.getCurrentHealth());
         return results;
@@ -74,7 +77,8 @@ public class SheerCold extends DamageSkill {
      */
     @Override
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
-                                Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
+                                Field field, SubField userField, SubField enemyField,
+                                boolean isFirstAttack) {
         if (enemyPokemon.isSemiInvulnerable()) {
             return false;
         }

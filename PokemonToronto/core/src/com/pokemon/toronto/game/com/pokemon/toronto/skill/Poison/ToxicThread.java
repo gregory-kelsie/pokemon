@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -25,7 +26,8 @@ public class ToxicThread extends EffectSkill {
      * - Accuracy: 100
      */
     public ToxicThread() {
-        super(SkillFactory.TOXIC_THREAD, "Toxic Thread", 20, Pokemon.Type.POISON, 100);
+        super(SkillFactory.TOXIC_THREAD, "Toxic Thread", SkillDescription.TOXIC_THREAD, 20,
+                Pokemon.Type.POISON, 100);
         effects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
         effects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY,
                 1, SecondaryEffect.StatDirection.DECREASE));

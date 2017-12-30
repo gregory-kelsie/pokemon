@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,10 +28,9 @@ public class EchoedVoice extends DamageSkill {
      * - Accuracy: 100
      */
     public EchoedVoice() {
-        super(SkillFactory.ECHOED_VOICE, "Echoed Voice", 15, Pokemon.Type.NORMAL,
-                SkillCategory.SPECIAL, 100, 40, 1);
+        super(SkillFactory.ECHOED_VOICE, "Echoed Voice", SkillDescription.ECHOED_VOICE, 15,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 40, 1);
     }
-
 
     /**
      * Damage the enemy, increasing for each successive use.

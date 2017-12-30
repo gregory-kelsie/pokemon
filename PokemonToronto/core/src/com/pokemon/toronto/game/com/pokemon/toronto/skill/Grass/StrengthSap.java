@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 
@@ -28,8 +29,10 @@ public class StrengthSap extends EffectSkill {
      * - Accuracy: 100
      */
     public StrengthSap() {
-        super(SkillFactory.STRENGTH_SAP, "Strength Sap", 10, Pokemon.Type.GRASS, 100);
-        effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.STRENGTH_SAP, "Strength Sap", SkillDescription.STRENGTH_SAP, 10,
+                Pokemon.Type.GRASS, 100);
+        effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**
@@ -46,11 +49,14 @@ public class StrengthSap extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         if (!skillUser.hasFullHealth()) {
             skillUser.addHealth(enemyPokemon.getAttackStat());
             results.add(skillUser.getName() + " drained some health!");
@@ -71,7 +77,8 @@ public class StrengthSap extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
         if (enemyPokemon.getAttackStage() == -6) {
             return new FailResult("It failed...");
         }

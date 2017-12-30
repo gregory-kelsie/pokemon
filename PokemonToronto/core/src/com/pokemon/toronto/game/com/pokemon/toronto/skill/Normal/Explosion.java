@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class Explosion extends DamageSkill {
      * - Accuracy: 100
      */
     public Explosion() {
-        super(SkillFactory.EXPLOSION, "Explosion", 5, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 100, 250, 1);
+        super(SkillFactory.EXPLOSION, "Explosion", SkillDescription.EXPLOSION, 5,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 250, 1);
         continuesUseThroughNoEffect = true;
     }
 

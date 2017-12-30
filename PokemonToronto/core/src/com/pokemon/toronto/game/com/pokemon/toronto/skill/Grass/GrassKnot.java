@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class GrassKnot extends DamageSkill {
      * - Accuracy: 100
      */
     public GrassKnot() {
-        super(SkillFactory.GRASS_KNOT, "Grass Knot", 20, Pokemon.Type.GRASS,
-                SkillCategory.SPECIAL, 100, 1, 1);
+        super(SkillFactory.GRASS_KNOT, "Grass Knot", SkillDescription.GRASS_KNOT, 20,
+                Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 1, 1);
     }
 
     /**
@@ -44,8 +45,10 @@ public class GrassKnot extends DamageSkill {
      * @param enemyPokemonParty
      * @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         if (enemyPokemon.getBattleWeight() < 10) {
             damage = 20;
@@ -67,7 +70,6 @@ public class GrassKnot extends DamageSkill {
 
         return results;
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

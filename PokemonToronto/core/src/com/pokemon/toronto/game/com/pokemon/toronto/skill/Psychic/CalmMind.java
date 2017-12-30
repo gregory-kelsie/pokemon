@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -23,7 +24,8 @@ public class CalmMind extends EffectSkill {
      * - Accuracy: -1
      */
     public CalmMind() {
-        super(SkillFactory.CALM_MIND, "Calm Mind", 20, Pokemon.Type.PSYCHIC, -1);
+        super(SkillFactory.CALM_MIND, "Calm Mind", SkillDescription.CALM_MIND, 20,
+                Pokemon.Type.PSYCHIC, -1);
         effects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF,
                 1, SecondaryEffect.StatDirection.INCREASE));
         effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF,

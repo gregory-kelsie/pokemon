@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -26,8 +27,8 @@ public class Thunder extends SecondaryEffectSkill {
      * - Accuracy: 70
      */
     public Thunder() {
-        super(SkillFactory.THUNDER, "Thunder", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL,
-                70, 110, 1, .3);
+        super(SkillFactory.THUNDER, "Thunder", SkillDescription.THUNDER, 30, Pokemon.Type.ELECTRIC,
+                SkillCategory.SPECIAL, 70, 110, 1, .3);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

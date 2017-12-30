@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class PsychUp extends Skill {
      * - Accuracy: N/A
      */
     public PsychUp() {
-        super(SkillFactory.PSYCH_UP, "Psych Up", 10,
+        super(SkillFactory.PSYCH_UP, "Psych Up", SkillDescription.PSYCH_UP, 10,
                 Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
     }
 

@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class SandAttack extends EffectSkill {
      * - Lower enemy accuracy by 1 stage.
      */
     public SandAttack() {
-        super(6, "Sand Attack", 15, Pokemon.Type.GROUND, 100);
+        super(6, "Sand Attack", SkillDescription.SAND_ATTACK, 15, Pokemon.Type.GROUND, 100);
         effects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
     }

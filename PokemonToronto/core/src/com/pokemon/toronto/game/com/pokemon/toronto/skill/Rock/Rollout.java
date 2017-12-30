@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class Rollout extends DamageSkill {
      * - Accuracy: 90
      */
     public Rollout() {
-        super(SkillFactory.ROLLOUT, "Rollout", 20, Pokemon.Type.ROCK, Skill.SkillCategory.PHYSICAL, 90, 30, 1);
+        super(SkillFactory.ROLLOUT, "Rollout", SkillDescription.ROLLOUT, 20, Pokemon.Type.ROCK,
+                Skill.SkillCategory.PHYSICAL, 90, 30, 1);
         makesPhysicalContact = true;
     }
 
@@ -44,8 +46,10 @@ public class Rollout extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         if (skillUser.getRolloutTurns() == 0) {
             skillUser.startRollout(this);
@@ -59,8 +63,9 @@ public class Rollout extends DamageSkill {
             }
         }
         List<String> results;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         damage = 30; // Set damage back to regular amount.
         return results;
     }

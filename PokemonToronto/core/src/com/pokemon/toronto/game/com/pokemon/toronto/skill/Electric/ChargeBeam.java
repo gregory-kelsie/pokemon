@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -24,9 +25,8 @@ public class ChargeBeam extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public ChargeBeam() {
-        super(SkillFactory.CHARGE_BEAM, "Charge Beam", 10, Pokemon.Type.ELECTRIC,
-                SkillCategory.SPECIAL, 90, 50, 1,
-                .7);
+        super(SkillFactory.CHARGE_BEAM, "Charge Beam", SkillDescription.CHARGE_BEAM, 10,
+                Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 90, 50, 1, .7);
         secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
     }

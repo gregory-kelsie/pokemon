@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class LaserFocus extends Skill {
      * - Accuracy: n/a
      */
     public LaserFocus() {
-        super(SkillFactory.LASER_FOCUS, "Laser Focus", 30, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.LASER_FOCUS, "Laser Focus", SkillDescription.LASER_FOCUS, 30,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 

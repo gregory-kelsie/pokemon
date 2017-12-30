@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,7 @@ public class EggBomb extends DamageSkill {
      * - Accuracy: 100
      */
     public EggBomb() {
-        super(SkillFactory.EGG_BOMB, "Egg Bomb", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.EGG_BOMB, "Egg Bomb", SkillDescription.EGG_BOMB, 10, Pokemon.Type.NORMAL,
                 SkillCategory.PHYSICAL, 100, 75, 1);
     }
 

@@ -24,6 +24,13 @@ public enum ItemId {
     MOON_STONE(16),
     ICE_STONE(17),
     DAWN_STONE(18),
+    HP_UP(19),
+    PROTEIN(20),
+    CALCIUM(21),
+    CARBOS(22),
+    ZINC(23),
+    IRON(24),
+    RARE_CANDY(25),
     NONE(-1);
 
     private final int value;

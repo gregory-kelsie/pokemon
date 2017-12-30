@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 
@@ -27,7 +28,7 @@ public class Swallow extends Skill {
      * - Accuracy: n/a
      */
     public Swallow() {
-        super(SkillFactory.SWALLOW, "Swallow", 10, Pokemon.Type.NORMAL,
+        super(SkillFactory.SWALLOW, "Swallow", SkillDescription.SWALLOW, 10, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }

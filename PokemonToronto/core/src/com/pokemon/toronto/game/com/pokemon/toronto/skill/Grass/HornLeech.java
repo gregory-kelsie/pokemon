@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,10 +24,10 @@ public class HornLeech extends DamageSkill {
      * - 4 = Gain Half
      */
     public HornLeech() {
-        super(SkillFactory.HORN_LEECH, "Horn Leech", 10, Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 75, 1, 4);
+        super(SkillFactory.HORN_LEECH, "Horn Leech", SkillDescription.HORN_LEECH, 10,
+                Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 75, 1, 4);
         makesPhysicalContact = true;
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

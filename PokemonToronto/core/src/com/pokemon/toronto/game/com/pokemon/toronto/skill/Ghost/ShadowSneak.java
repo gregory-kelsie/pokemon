@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 
@@ -23,8 +24,8 @@ public class ShadowSneak extends DamageSkill {
      * - Accuracy: 100
      */
     public ShadowSneak() {
-        super(SkillFactory.SHADOW_SNEAK, "Shadow Sneak", 30, Pokemon.Type.GHOST,
-                SkillCategory.PHYSICAL, 100, 40, 1);
+        super(SkillFactory.SHADOW_SNEAK, "Shadow Sneak", SkillDescription.SHADOW_SNEAK,30,
+                Pokemon.Type.GHOST, SkillCategory.PHYSICAL, 100, 40, 1);
         setPriority(1);
         makesPhysicalContact = true;
     }

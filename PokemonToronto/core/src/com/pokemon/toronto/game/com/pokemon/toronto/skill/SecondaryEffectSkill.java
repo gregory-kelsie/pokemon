@@ -30,9 +30,10 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * @param chance The chance the Secondary effect will occur
      *                    none, 1/2, 1/3, 1/4.
      */
-    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel,
-                                double chance) {
-        super(id, name, maxPP, type, category, accuracy, damage, crit, recoilLevel);
+    public SecondaryEffectSkill(int id, String name, String description, int maxPP,
+                                Pokemon.Type type, SkillCategory category, int accuracy, int damage,
+                                int crit, int recoilLevel, double chance) {
+        super(id, name, description, maxPP, type, category, accuracy, damage, crit, recoilLevel);
         this.chance = chance;
         secondaryEffects = new ArrayList<SecondaryEffect>();
     }
@@ -49,8 +50,10 @@ public abstract class SecondaryEffectSkill extends DamageSkill {
      * @param crit The crit stage for the skill
      * @param accuracy The accuracy level for the skill.
      */
-    public SecondaryEffectSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, double chance) {
-        super(id, name, maxPP, type, category, accuracy, damage, crit);
+    public SecondaryEffectSkill(int id, String name, String description, int maxPP,
+                                Pokemon.Type type, SkillCategory category, int accuracy,
+                                int damage, int crit, double chance) {
+        super(id, name, description, maxPP, type, category, accuracy, damage, crit);
         this.chance = chance;
         secondaryEffects = new ArrayList<SecondaryEffect>();
     }

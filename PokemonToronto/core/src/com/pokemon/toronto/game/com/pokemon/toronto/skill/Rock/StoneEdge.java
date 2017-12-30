@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
 
@@ -24,7 +25,8 @@ public class StoneEdge extends DamageSkill {
      * - Accuracy: 80
      */
     public StoneEdge() {
-        super(SkillFactory.STONE_EDGE, "Stone Edge", 5, Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 80, 100, 2);
+        super(SkillFactory.STONE_EDGE, "Stone Edge", SkillDescription.STONE_EDGE, 5,
+                Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 80, 100, 2);
     }
 
     /**

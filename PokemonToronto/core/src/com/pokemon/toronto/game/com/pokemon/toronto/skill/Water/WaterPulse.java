@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
@@ -24,7 +25,8 @@ public class WaterPulse extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public WaterPulse() {
-        super(SkillFactory.WATER_PULSE, "Water Pulse", 20, Pokemon.Type.WATER, SkillCategory.SPECIAL, 100, 60, 1, .2);
+        super(SkillFactory.WATER_PULSE, "Water Pulse", SkillDescription.WATER_PULSE, 20,
+                Pokemon.Type.WATER, SkillCategory.SPECIAL, 100, 60, 1, .2);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 

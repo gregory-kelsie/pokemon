@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class SolarBlade extends DamageSkill {
      * - Accuracy: 100
      */
     public SolarBlade() {
-        super(SkillFactory.SOLAR_BLADE, "Solar Blade", 10, Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 125, 1);
+        super(SkillFactory.SOLAR_BLADE, "Solar Blade", SkillDescription.SOLAR_BLADE, 10,
+                Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 125, 1);
     }
-
 
     /**
      * Damage the enemy, no charge in sun, half damage in rain, hail, fog
@@ -45,15 +46,18 @@ public class SolarBlade extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results = new ArrayList<String>();
         if (!skillUser.hasNextTurnSkill()) {
             if (field.getWeatherType() == WeatherType.SUN) {
                 //Attack
-                return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                        userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+                return super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                        enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                        targetSkill, skillUserParty, enemyPokemonParty);
             } else {
                 //Charge
                 skillUser.setNextTurnSkill(this);
@@ -62,12 +66,13 @@ public class SolarBlade extends DamageSkill {
             }
         } else {
             skillUser.setNextTurnSkill(null);
-            if (field.getWeatherType() == WeatherType.RAIN || field.getWeatherType() == WeatherType.HAIL ||
-                    field.getWeatherType() == WeatherType.SAND) {
+            if (field.getWeatherType() == WeatherType.RAIN || field.getWeatherType()
+                    == WeatherType.HAIL || field.getWeatherType() == WeatherType.SAND) {
                 extraMod = 0.5; //Half damage in rain, hail or sand
             }
-            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                    userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                    enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                    targetSkill, skillUserParty, enemyPokemonParty);
             extraMod = 1; //Reset extraMod
             return results;
         }

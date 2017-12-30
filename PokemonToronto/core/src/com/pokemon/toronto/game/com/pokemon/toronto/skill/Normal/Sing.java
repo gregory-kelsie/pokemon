@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SleepEffect;
 
@@ -25,7 +26,7 @@ public class Sing extends EffectSkill {
      * - Accuracy: 55
      */
     public Sing() {
-        super(SkillFactory.SING, "Sing", 15, Pokemon.Type.NORMAL, 55);
+        super(SkillFactory.SING, "Sing", SkillDescription.SING, 15, Pokemon.Type.NORMAL, 55);
         effects.add(new SleepEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -42,7 +43,8 @@ public class Sing extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
         if (enemyPokemon.isStatused()) {
             return new FailResult("It failed...");
         }

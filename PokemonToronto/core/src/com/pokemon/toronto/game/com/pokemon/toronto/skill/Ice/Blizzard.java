@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
@@ -29,7 +30,8 @@ public class Blizzard extends SecondaryEffectSkill {
      * - Accuracy: 70
      */
     public Blizzard() {
-        super(SkillFactory.BLIZZARD, "Blizzard", 5, Pokemon.Type.ICE, SkillCategory.SPECIAL, 70, 110, 1, .1);
+        super(SkillFactory.BLIZZARD, "Blizzard", SkillDescription.BLIZZARD, 5, Pokemon.Type.ICE,
+                SkillCategory.SPECIAL, 70, 110, 1, .1);
         secondaryEffects.add(new FreezeEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -45,8 +47,10 @@ public class Blizzard extends SecondaryEffectSkill {
     }
 
     public boolean willHitEnemy(Pokemon skillUser, Pokemon enemyPokemon,
-                                Field field, SubField userField, SubField enemyField, boolean isFirstAttack) {
-        if (enemyPokemon.isUnderwater() || enemyPokemon.isUnderground() || enemyPokemon.isFlying()) {
+                                Field field, SubField userField, SubField enemyField,
+                                boolean isFirstAttack) {
+        if (enemyPokemon.isUnderwater() || enemyPokemon.isUnderground() ||
+                enemyPokemon.isFlying()) {
             //Misses when enemy is semi-invulnerable, even if there is
             //an accuracy bypass.
             return false;
@@ -55,7 +59,8 @@ public class Blizzard extends SecondaryEffectSkill {
                 //Bypass accuracy check
                 return true;
             } else {
-                return super.willHitEnemy(skillUser, enemyPokemon, field, userField, enemyField, isFirstAttack);
+                return super.willHitEnemy(skillUser, enemyPokemon, field, userField, enemyField,
+                        isFirstAttack);
             }
         }
     }

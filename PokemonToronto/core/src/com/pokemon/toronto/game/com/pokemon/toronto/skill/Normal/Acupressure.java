@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -34,7 +35,8 @@ public class Acupressure extends EffectSkill {
      * - Sharply increase a random stat of the user.
      */
     public Acupressure() {
-        super(SkillFactory.ACUPRESSURE, "Acupressure", 30, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.ACUPRESSURE, "Acupressure", SkillDescription.ACUPRESSURE, 30,
+                Pokemon.Type.NORMAL, -1);
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 2,
                 SecondaryEffect.StatDirection.INCREASE));
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 2,
@@ -65,8 +67,10 @@ public class Acupressure extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         int rand = (int)(Math.random() * (effects.size() - 1));
         effects.get(rand).use(results, skillUser, enemyPokemon, field, userField,

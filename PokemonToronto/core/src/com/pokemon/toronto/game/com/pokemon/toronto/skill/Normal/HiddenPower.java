@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class HiddenPower extends DamageSkill {
      * - Accuracy: 100
      */
     public HiddenPower() {
-        super(SkillFactory.HIDDEN_POWER, "Hidden Power", 15, Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 60, 1);
+        super(SkillFactory.HIDDEN_POWER, "Hidden Power", SkillDescription.HIDDEN_POWER, 15,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 60, 1);
         //Todo: Change type based on IVs
     }
 

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
@@ -25,7 +26,8 @@ public class ForcePalm extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public ForcePalm() {
-        super(SkillFactory.FORCE_PALM, "Force Palm", 10, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 60, 1, .3);
+        super(SkillFactory.FORCE_PALM, "Force Palm", SkillDescription.FORCE_PALM, 10,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 60, 1, .3);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

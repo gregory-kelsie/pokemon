@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -24,8 +25,8 @@ public class DoubleEdge extends DamageSkill {
      */
     public DoubleEdge() {
         //1/3 RECOIL
-        super(SkillFactory.DOUBLE_EDGE, "Double-Edge", 15, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
+        super(SkillFactory.DOUBLE_EDGE, "Double-Edge", SkillDescription.DOUBLE_EDGE, 15,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
         makesPhysicalContact = true;
     }
 

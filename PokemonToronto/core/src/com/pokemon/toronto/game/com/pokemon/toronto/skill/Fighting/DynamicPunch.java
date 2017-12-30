@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -25,7 +26,8 @@ public class DynamicPunch extends SecondaryEffectSkill {
      * - Accuracy: 50
      */
     public DynamicPunch() {
-        super(SkillFactory.DYNAMIC_PUNCH, "Dynamic Punch", 5, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 50, 100, 1, 1.0);
+        super(SkillFactory.DYNAMIC_PUNCH, "Dynamic Punch", SkillDescription.DYNAMIC_PUNCH, 5,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 50, 100, 1, 1.0);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
         punchSkill = true;

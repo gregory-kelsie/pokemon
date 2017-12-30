@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,7 +25,8 @@ public class RockSlide extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public RockSlide() {
-        super(SkillFactory.ROCK_SLIDE, "Rock Slide", 10, Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 90, 75, 1, .3);
+        super(SkillFactory.ROCK_SLIDE, "Rock Slide", SkillDescription.ROCK_SLIDE, 10,
+                Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 90, 75, 1, .3);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }
 

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class FuryCutter extends DamageSkill {
      * - Accuracy: 95
      */
     public FuryCutter() {
-        super(SkillFactory.FURY_CUTTER, "Fury Cutter", 20, Pokemon.Type.BUG, Skill.SkillCategory.PHYSICAL, 95, 40, 1);
+        super(SkillFactory.FURY_CUTTER, "Fury Cutter", SkillDescription.furyCutter, 20,
+                Pokemon.Type.BUG, Skill.SkillCategory.PHYSICAL, 95, 40, 1);
         makesPhysicalContact = true;
     }
 

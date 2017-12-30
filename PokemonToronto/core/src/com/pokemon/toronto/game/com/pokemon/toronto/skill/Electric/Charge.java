@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -30,7 +31,8 @@ public class Charge extends EffectSkill {
      * - Increase power of next electric attack and increase sp. def by 1 stage.
      */
     public Charge() {
-        super(SkillFactory.CHARGE, "Charge", 20, Pokemon.Type.ELECTRIC, -1);
+        super(SkillFactory.CHARGE, "Charge", SkillDescription.CHARGE, 20, Pokemon.Type.ELECTRIC,
+                -1);
         effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF,
                 1, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;
@@ -49,8 +51,10 @@ public class Charge extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
                 enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
                 skillUserParty, enemyPokemonParty);

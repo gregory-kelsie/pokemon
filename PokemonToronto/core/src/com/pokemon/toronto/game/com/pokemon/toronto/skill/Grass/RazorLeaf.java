@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class RazorLeaf extends DamageSkill {
      * - Accuracy: 95
      */
     public RazorLeaf() {
-        super(SkillFactory.RAZOR_LEAF, "Razor Leaf", 25, Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 95, 55, 2);
+        super(SkillFactory.RAZOR_LEAF, "Razor Leaf", SkillDescription.RAZOR_LEAF, 25,
+                Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 95, 55, 2);
     }
 
     /**

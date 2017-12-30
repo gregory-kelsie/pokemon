@@ -16,7 +16,6 @@ public abstract class DamageSkill extends Skill {
 
     //Instance Variables
     private int crit; //Initial Crit Stage
-    protected int damage;
     private int recoilLevel;
     protected double extraMod; //For skills that double damage for certain conditions ex: Brine
     protected boolean reverseCategory; //For Secred Sword (calculates user's special attack and hits defense instead of sp def)
@@ -45,8 +44,9 @@ public abstract class DamageSkill extends Skill {
      * @param recoilLevel The amount of recoil damage the user will take.
      *                    none, 1/2, 1/3, 1/4.
      */
-    public DamageSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
-        super(id, name, maxPP, type, category, accuracy);
+    public DamageSkill(int id, String name, String description, int maxPP, Pokemon.Type type,
+                       SkillCategory category, int accuracy, int damage, int crit, int recoilLevel) {
+        super(id, name, description, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
         this.recoilLevel = recoilLevel;
@@ -68,8 +68,9 @@ public abstract class DamageSkill extends Skill {
      * @param crit The crit stage for the skill
      * @param accuracy The accuracy level for the skill.
      */
-    public DamageSkill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy, int damage, int crit) {
-        super(id, name, maxPP, type, category, accuracy);
+    public DamageSkill(int id, String name, String description, int maxPP, Pokemon.Type type,
+                       SkillCategory category, int accuracy, int damage, int crit) {
+        super(id, name, description, maxPP, type, category, accuracy);
         this.crit = crit;
         this.damage = damage;
         recoilLevel = NO_RECOIL;
@@ -269,14 +270,6 @@ public abstract class DamageSkill extends Skill {
 
 
 
-    }
-
-    /**
-     * Return the skill's base damage.
-     * @return The skill's base damage.
-     */
-    public int getBaseDamage() {
-        return damage;
     }
 
     /**

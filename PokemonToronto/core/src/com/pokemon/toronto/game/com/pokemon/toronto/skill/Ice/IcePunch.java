@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,7 +25,8 @@ public class IcePunch extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public IcePunch() {
-        super(SkillFactory.ICE_PUNCH, "Ice Punch", 15, Pokemon.Type.ICE, SkillCategory.PHYSICAL, 100, 75, 1, .1);
+        super(SkillFactory.ICE_PUNCH, "Ice Punch", SkillDescription.ICE_PUNCH, 15, Pokemon.Type.ICE,
+                SkillCategory.PHYSICAL, 100, 75, 1, .1);
         secondaryEffects.add(new FreezeEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
         punchSkill = true;

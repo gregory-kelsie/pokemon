@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,8 +24,8 @@ public class Pound extends DamageSkill {
      * - Accuracy: 100
      */
     public Pound() {
-        super(SkillFactory.POUND, "Pound", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL,
-                100, 40, 1);
+        super(SkillFactory.POUND, "Pound", SkillDescription.POUND, 35, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
     }
 

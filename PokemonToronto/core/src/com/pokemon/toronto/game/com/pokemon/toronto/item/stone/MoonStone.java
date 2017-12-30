@@ -15,11 +15,12 @@ public class MoonStone extends Item {
         super(new ItemBlob.MoonStoneBlob(), "bag/icons/moonStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getMoonStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getMoonStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

@@ -15,11 +15,12 @@ public class SunStone extends Item {
         super(new ItemBlob.SunStoneBlob(), "bag/icons/sunStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getSunStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getSunStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

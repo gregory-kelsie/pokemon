@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class SimpleBeam extends Skill {
      * - Accuracy: 100
      */
     public SimpleBeam() {
-        super(SkillFactory.SIMPLE_BEAM, "Simple Beam", 15, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.MISC, 100);
+        super(SkillFactory.SIMPLE_BEAM, "Simple Beam", SkillDescription.SIMPLE_BEAM, 15,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, 100);
         //todo: When the rest of the abilities are implemented, implement when it will fail.
     }
 

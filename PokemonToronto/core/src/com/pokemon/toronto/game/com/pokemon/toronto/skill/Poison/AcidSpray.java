@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 
@@ -23,8 +24,8 @@ public class AcidSpray extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public AcidSpray() {
-        super(SkillFactory.ACID_SPRAY, "Acid Spray", 20, Pokemon.Type.POISON,
-                SkillCategory.SPECIAL, 100, 40, 1, 1.0);
+        super(SkillFactory.ACID_SPRAY, "Acid Spray", SkillDescription.ACID_SPRAY, 20,
+                Pokemon.Type.POISON, SkillCategory.SPECIAL, 100, 40, 1, 1.0);
         secondaryEffects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY, 2,
                 SecondaryEffect.StatDirection.DECREASE));
     }

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class AquaRing extends Skill {
      * - Accuracy: 100
      */
     public AquaRing() {
-        super(32, "Aqua Ring", 20, Pokemon.Type.WATER, Skill.SkillCategory.MISC, 100);
+        super(32, "Aqua Ring", SkillDescription.AQUA_RING, 20, Pokemon.Type.WATER,
+                Skill.SkillCategory.MISC, 100);
     }
 
     /**
@@ -40,8 +42,10 @@ public class AquaRing extends Skill {
      * @param enemyPokemonParty    @return Aqua Ring's move results.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         skillUser.receiveAquaRing();
         results.add(skillUser.getName() + " surrounded\nitself in a veil of water!");

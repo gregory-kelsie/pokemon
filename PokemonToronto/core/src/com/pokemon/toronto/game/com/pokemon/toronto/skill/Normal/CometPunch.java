@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,8 +24,8 @@ public class CometPunch extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public CometPunch() {
-        super(SkillFactory.COMET_PUNCH, "Comet Punch", 15, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 85, 18, 1, 0);
+        super(SkillFactory.COMET_PUNCH, "Comet Punch", SkillDescription.COMET_PUNCH, 15,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 18, 1, 0);
         makesPhysicalContact = true;
         punchSkill = true;
     }

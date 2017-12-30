@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
 
@@ -29,11 +30,11 @@ public class IceFang extends SecondaryEffectSkill {
      * 10% chance to freeze and another 10% chance to flinch.
      */
     public IceFang() {
-        super(SkillFactory.ICE_FANG, "Ice Fang", 15, Pokemon.Type.ICE, SkillCategory.PHYSICAL, 95, 65, 1, .1);
+        super(SkillFactory.ICE_FANG, "Ice Fang", SkillDescription.ICE_FANG, 15, Pokemon.Type.ICE,
+                SkillCategory.PHYSICAL, 95, 65, 1, .1);
         secondaryEffects.add(new FreezeEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }
-
 
     /**
      * Damage the enemy, but also use the secondary effects.
@@ -46,11 +47,14 @@ public class IceFang extends SecondaryEffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty    @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
 
         if (Math.random() <= .1 && isFirstAttack) {
             //Flinch

@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class PoisonSting extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public PoisonSting() {
-        super(9, "Poison Sting", 35, Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 15, 1, .3);
+        super(9, "Poison Sting", SkillDescription.POISON_STING, 35, Pokemon.Type.POISON,
+                SkillCategory.PHYSICAL, 100, 15, 1, .3);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

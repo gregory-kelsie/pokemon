@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -24,7 +25,8 @@ public class DarkPulse extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public DarkPulse() {
-        super(SkillFactory.DARK_PULSE, "Dark Pulse", 15, Pokemon.Type.DARK, SkillCategory.SPECIAL, 100, 80, 1, .2);
+        super(SkillFactory.DARK_PULSE, "Dark Pulse", SkillDescription.DARK_PULSE ,15,
+                Pokemon.Type.DARK, SkillCategory.SPECIAL, 100, 80, 1, .2);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }
 

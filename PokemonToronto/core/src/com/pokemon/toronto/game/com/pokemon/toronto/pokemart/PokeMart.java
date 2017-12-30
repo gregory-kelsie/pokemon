@@ -79,6 +79,13 @@ public class PokeMart {
         usableItems.add(new MartListing.MartAwakening());
         usableItems.add(new MartListing.MartBurnHeal());
         usableItems.add(new MartListing.MartIceHeal());
+        usableItems.add(new MartListing.HpUp());
+        usableItems.add(new MartListing.Protein());
+        usableItems.add(new MartListing.Iron());
+        usableItems.add(new MartListing.Calcium());
+        usableItems.add(new MartListing.Zinc());
+        usableItems.add(new MartListing.Carbos());
+        usableItems.add(new MartListing.RareCandy());
     }
 
     public List<MartListing> getItems() {

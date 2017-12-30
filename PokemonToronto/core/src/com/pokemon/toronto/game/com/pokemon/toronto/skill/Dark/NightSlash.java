@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class NightSlash extends DamageSkill {
      * - Accuracy: 100
      */
     public NightSlash() {
-        super(SkillFactory.NIGHT_SLASH, "Night Slash", 15, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 70, 2);
+        super(SkillFactory.NIGHT_SLASH, "Night Slash", SkillDescription.NIGHT_SLASH ,15,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 70, 2);
         makesPhysicalContact = true;
     }
 

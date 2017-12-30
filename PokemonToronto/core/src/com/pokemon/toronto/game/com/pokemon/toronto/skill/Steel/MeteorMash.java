@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 
@@ -23,8 +24,10 @@ public class MeteorMash extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public MeteorMash() {
-        super(SkillFactory.METEOR_MASH, "Meteor Mash", 10, Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 90, 90, 1, .2);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.METEOR_MASH, "Meteor Mash", SkillDescription.METEOR_MASH, 10,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 90, 90, 1, .2);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
         makesPhysicalContact = true;
     }
 

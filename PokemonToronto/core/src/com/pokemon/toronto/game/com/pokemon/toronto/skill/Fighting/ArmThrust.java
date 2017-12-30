@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -24,7 +25,8 @@ public class ArmThrust extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public ArmThrust() {
-        super(SkillFactory.ARM_THRUST, "Arm Thrust", 15, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 20, 1, 0);
+        super(SkillFactory.ARM_THRUST, "Arm Thrust", SkillDescription.ARM_THRUST, 15,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 20, 1, 0);
         makesPhysicalContact = true;
     }
 

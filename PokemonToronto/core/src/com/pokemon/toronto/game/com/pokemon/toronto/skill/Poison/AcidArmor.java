@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -23,7 +24,8 @@ public class AcidArmor extends EffectSkill {
      * - Increase def by two stages.
      */
     public AcidArmor() {
-        super(SkillFactory.ACID_ARMOR, "Acid Armor", 20, Pokemon.Type.POISON, -1);
+        super(SkillFactory.ACID_ARMOR, "Acid Armor", SkillDescription.ACID_ARMOR, 20,
+                Pokemon.Type.POISON, -1);
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF,
                 2, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

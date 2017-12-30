@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -24,8 +25,8 @@ public class RockClimb extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public RockClimb() {
-        super(SkillFactory.ROCK_CLIMB, "Rock Climb", 20, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 85, 90, 1, .2);
+        super(SkillFactory.ROCK_CLIMB, "Rock Climb", SkillDescription.ROCK_CLIMB, 20,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 85, 90, 1, .2);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

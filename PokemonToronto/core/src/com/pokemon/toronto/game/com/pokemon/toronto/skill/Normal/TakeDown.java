@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class TakeDown extends DamageSkill {
      */
     public TakeDown() {
         //1/4 RECOIL
-        super(12, "Take Down", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 90, 1, 1);
+        super(12, "Take Down", SkillDescription.TAKE_DOWN,20, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, 85, 90, 1, 1);
         makesPhysicalContact = true;
     }
 

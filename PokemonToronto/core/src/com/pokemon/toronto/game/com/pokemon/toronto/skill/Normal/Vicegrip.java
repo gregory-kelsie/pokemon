@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,7 @@ public class Vicegrip extends DamageSkill {
      * - Accuracy: 100
      */
     public Vicegrip() {
-        super(SkillFactory.VICEGRIP, "Vicegrip", 30, Pokemon.Type.NORMAL,
+        super(SkillFactory.VICEGRIP, "Vicegrip", SkillDescription.VICEGRIP, 30, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.PHYSICAL, 100, 55, 1);
         makesPhysicalContact = true;
     }

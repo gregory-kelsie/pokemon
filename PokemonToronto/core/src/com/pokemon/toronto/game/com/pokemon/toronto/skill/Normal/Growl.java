@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class Growl extends EffectSkill {
      * - Lower enemy attack by one stage.
      */
     public Growl() {
-        super(3, "Growl", 40, Pokemon.Type.NORMAL, 100);
+        super(3, "Growl", SkillDescription.GROWL, 40, Pokemon.Type.NORMAL, 100);
         effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));
     }

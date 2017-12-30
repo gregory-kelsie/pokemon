@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -24,8 +25,10 @@ public class NightDaze extends SecondaryEffectSkill {
      * - Accuracy: 95
      */
     public NightDaze() {
-        super(SkillFactory.NIGHT_DAZE, "Night Daze", 10, Pokemon.Type.DARK, SkillCategory.SPECIAL, 95, 85, 1, .4);
-        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.NIGHT_DAZE, "Night Daze", SkillDescription.attackOrder ,10,
+                Pokemon.Type.DARK, SkillCategory.SPECIAL, 95, 85, 1, .4);
+        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

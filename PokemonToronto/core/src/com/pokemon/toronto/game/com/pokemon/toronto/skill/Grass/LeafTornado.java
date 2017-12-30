@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,10 @@ public class LeafTornado extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public LeafTornado() {
-        super(SkillFactory.LEAF_TORNADO, "Leaf Tornado", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 90, 65, 1, .5);
-        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.LEAF_TORNADO, "Leaf Tornado", SkillDescription.LEAF_TORNADO, 10,
+                Pokemon.Type.GRASS, SkillCategory.SPECIAL, 90, 65, 1, .5);
+        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

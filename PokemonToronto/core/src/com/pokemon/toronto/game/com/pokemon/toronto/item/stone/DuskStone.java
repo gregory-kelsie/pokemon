@@ -15,11 +15,12 @@ public class DuskStone extends Item {
         super(new ItemBlob.DuskStoneBlob(), "bag/icons/duskStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getDuskStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getDuskStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

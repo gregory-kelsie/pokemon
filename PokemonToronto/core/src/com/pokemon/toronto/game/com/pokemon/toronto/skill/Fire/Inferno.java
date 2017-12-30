@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -23,7 +24,8 @@ public class Inferno extends SecondaryEffectSkill {
      * - Accuracy: 50
      */
     public Inferno() {
-        super(SkillFactory.INFERNO, "Inferno", 5, Pokemon.Type.FIRE, SkillCategory.SPECIAL, 50, 100, 1, 1.0);
+        super(SkillFactory.INFERNO, "Inferno", SkillDescription.INFERNO, 5, Pokemon.Type.FIRE,
+                SkillCategory.SPECIAL, 50, 100, 1, 1.0);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 

@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class Fissure extends DamageSkill {
      * - Accuracy: 30
      */
     public Fissure() {
-        super(SkillFactory.FISSURE, "Fissure", 5, Pokemon.Type.GROUND, SkillCategory.PHYSICAL, 30,
-                1, 1);
+        super(SkillFactory.FISSURE, "Fissure", SkillDescription.FISSURE, 5, Pokemon.Type.GROUND,
+                SkillCategory.PHYSICAL, 30, 1, 1);
     }
 
     /**

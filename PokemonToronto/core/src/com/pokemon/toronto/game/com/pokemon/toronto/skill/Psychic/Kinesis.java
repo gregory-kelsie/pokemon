@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -22,7 +23,8 @@ public class Kinesis extends EffectSkill {
      * - Accuracy: 80
      */
     public Kinesis() {
-        super(SkillFactory.KINESIS, "Kinesis", 15, Pokemon.Type.PSYCHIC, 80);
+        super(SkillFactory.KINESIS, "Kinesis", SkillDescription.KINESIS,15, Pokemon.Type.PSYCHIC,
+                80);
         effects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY,
                 1, SecondaryEffect.StatDirection.DECREASE));
     }

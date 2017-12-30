@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
@@ -3482,6 +3483,102 @@ public abstract class Pokemon {
         playerY = PLAYER_NORMAL_Y;
         enemyX = ENEMY_NORMAL_X;
         enemyY = ENEMY_NORMAL_Y;
+    }
+
+    /**
+     * Return the texture of the Pokemon's first type.
+     * @return The texture of the Pokemon's first type.
+     */
+    public Texture getTypeOneTexture() {
+        if (typeOne == Pokemon.Type.BUG) {
+            return new Texture("bag/gui/skill/bug.png");
+        } else if (typeOne == Pokemon.Type.DARK) {
+            return new Texture("bag/gui/skill/dark.png");
+        } else if (typeOne == Pokemon.Type.DRAGON) {
+            return new Texture("bag/gui/skill/dragon.png");
+        } else if (typeOne == Pokemon.Type.ELECTRIC) {
+            return new Texture("bag/gui/skill/electric.png");
+        } else if (typeOne == Pokemon.Type.FIGHTING) {
+            return new Texture("bag/gui/skill/fighting.png");
+        } else if (typeOne == Pokemon.Type.FIRE) {
+            return new Texture("bag/gui/skill/fire.png");
+        } else if (typeOne == Pokemon.Type.FLYING) {
+            return new Texture("bag/gui/skill/flying.png");
+        } else if (typeOne == Pokemon.Type.GHOST) {
+            return new Texture("bag/gui/skill/ghost.png");
+        } else if (typeOne == Pokemon.Type.GRASS) {
+            return new Texture("bag/gui/skill/grass.png");
+        } else if (typeOne == Pokemon.Type.GROUND) {
+            return new Texture("bag/gui/skill/ground.png");
+        } else if (typeOne == Pokemon.Type.ICE) {
+            return new Texture("bag/gui/skill/ice.png");
+        } else if (typeOne == Pokemon.Type.NORMAL) {
+            return new Texture("bag/gui/skill/normal.png");
+        } else if (typeOne == Pokemon.Type.POISON) {
+            return new Texture("bag/gui/skill/poison.png");
+        } else if (typeOne == Pokemon.Type.PSYCHIC) {
+            return new Texture("bag/gui/skill/psychic.png");
+        } else if (typeOne == Pokemon.Type.ROCK) {
+            return new Texture("bag/gui/skill/rock.png");
+        } else if (typeOne == Pokemon.Type.STEEL) {
+            return new Texture("bag/gui/skill/steel.png");
+        } else if (typeOne == Pokemon.Type.WATER) {
+            return new Texture("bag/gui/skill/water.png");
+        }
+        else if (typeOne == Pokemon.Type.FAIRY) {
+            return new Texture("bag/gui/skill/fairy.png");
+        }
+        else {
+            return new Texture("bag/gui/skill/normal.png");
+        }
+    }
+
+    /**
+     * Return the texture of the Pokemon's second type.
+     * @return The texture of the Pokemon's second type.
+     */
+    public Texture getTypeTwoTexture() {
+        if (typeTwo == Pokemon.Type.BUG) {
+            return new Texture("bag/gui/skill/bug.png");
+        } else if (typeTwo == Pokemon.Type.DARK) {
+            return new Texture("bag/gui/skill/dark.png");
+        } else if (typeTwo == Pokemon.Type.DRAGON) {
+            return new Texture("bag/gui/skill/dragon.png");
+        } else if (typeTwo == Pokemon.Type.ELECTRIC) {
+            return new Texture("bag/gui/skill/electric.png");
+        } else if (typeTwo == Pokemon.Type.FIGHTING) {
+            return new Texture("bag/gui/skill/fighting.png");
+        } else if (typeTwo == Pokemon.Type.FIRE) {
+            return new Texture("bag/gui/skill/fire.png");
+        } else if (typeTwo == Pokemon.Type.FLYING) {
+            return new Texture("bag/gui/skill/flying.png");
+        } else if (typeTwo == Pokemon.Type.GHOST) {
+            return new Texture("bag/gui/skill/ghost.png");
+        } else if (typeTwo == Pokemon.Type.GRASS) {
+            return new Texture("bag/gui/skill/grass.png");
+        } else if (typeTwo == Pokemon.Type.GROUND) {
+            return new Texture("bag/gui/skill/ground.png");
+        } else if (typeTwo == Pokemon.Type.ICE) {
+            return new Texture("bag/gui/skill/ice.png");
+        } else if (typeTwo == Pokemon.Type.NORMAL) {
+            return new Texture("bag/gui/skill/normal.png");
+        } else if (typeTwo == Pokemon.Type.POISON) {
+            return new Texture("bag/gui/skill/poison.png");
+        } else if (typeTwo == Pokemon.Type.PSYCHIC) {
+            return new Texture("bag/gui/skill/psychic.png");
+        } else if (typeTwo == Pokemon.Type.ROCK) {
+            return new Texture("bag/gui/skill/rock.png");
+        } else if (typeTwo == Pokemon.Type.STEEL) {
+            return new Texture("bag/gui/skill/steel.png");
+        } else if (typeTwo == Pokemon.Type.WATER) {
+            return new Texture("bag/gui/skill/water.png");
+        }
+        else if (typeTwo == Pokemon.Type.FAIRY) {
+            return new Texture("bag/gui/skill/fairy.png");
+        }
+        else {
+            return new Texture("bag/gui/skill/normal.png");
+        }
     }
 
     public AbsorbResult getAbsorbResults(Skill usedSkill) {

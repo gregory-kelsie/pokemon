@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,8 @@ public class BoneClub extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public BoneClub() {
-        super(SkillFactory.BONE_CLUB, "Bone Club", 20, Pokemon.Type.GROUND,
-                SkillCategory.PHYSICAL, 85, 65, 1, .1);
+        super(SkillFactory.BONE_CLUB, "Bone Club", SkillDescription.BONE_CLUB, 20,
+                Pokemon.Type.GROUND, SkillCategory.PHYSICAL, 85, 65, 1, .1);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }
 

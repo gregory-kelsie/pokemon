@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
@@ -24,7 +25,8 @@ public class DragonBreath extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public DragonBreath() {
-        super(SkillFactory.DRAGON_BREATH, "Dragon Breath", 20, Pokemon.Type.DRAGON, SkillCategory.SPECIAL, 100, 60, 1, .3);
+        super(SkillFactory.DRAGON_BREATH, "Dragon Breath", SkillDescription.DRAGON_BREATH, 20,
+                Pokemon.Type.DRAGON, SkillCategory.SPECIAL, 100, 60, 1, .3);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class HornDrill extends DamageSkill {
      * - Accuracy: 30
      */
     public HornDrill() {
-        super(SkillFactory.HORN_DRILL, "Horn Drill", 5, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 30, 1, 1);
+        super(SkillFactory.HORN_DRILL, "Horn Drill", SkillDescription.HORN_DRILL, 5,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 30, 1, 1);
         makesPhysicalContact = true;
     }
 

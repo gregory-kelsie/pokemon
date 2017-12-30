@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class FinalGambit extends DamageSkill {
      * - Accuracy: 100
      */
     public FinalGambit() {
-        super(SkillFactory.FINAL_GAMBIT, "Final Gambit", 5, Pokemon.Type.FIGHTING, Skill.SkillCategory.SPECIAL, 100, 1, 1);
+        super(SkillFactory.FINAL_GAMBIT, "Final Gambit", SkillDescription.FINAL_GAMBIT, 5,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.SPECIAL, 100, 1, 1);
     }
 
     /**
@@ -44,8 +46,10 @@ public class FinalGambit extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results = new ArrayList<String>();
         enemyPokemon.subtractHealth(skillUser.getCurrentHealth());

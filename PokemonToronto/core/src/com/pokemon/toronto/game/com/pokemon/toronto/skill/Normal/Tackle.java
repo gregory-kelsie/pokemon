@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.StringShotAn
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class Tackle extends DamageSkill {
      * - Accuracy: 100
      */
     public Tackle() {
-        super(1, "Tackle", 35, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 40, 1);
+        super(1, "Tackle", SkillDescription.TACKLE, 35, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, 100, 40, 1);
         makesPhysicalContact = true;
 
     }

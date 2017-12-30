@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class ThunderShock extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public ThunderShock() {
-        super(11, "Thunder Shock", 30, Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 100, 40, 1, .15);
+        super(11, "Thunder Shock", SkillDescription.THUNDER_SHOCK,30, Pokemon.Type.ELECTRIC,
+                SkillCategory.SPECIAL, 100, 40, 1, .15);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,14 +23,15 @@ public class IcicleSpear extends MultiHitMove {
      * - Number of Hits: 2-5 (As denoted by the last parameter of 0)
      */
     public IcicleSpear() {
-        super(SkillFactory.ICICLE_SPEAR, "Icicle Spear", 30, Pokemon.Type.ICE, SkillCategory.PHYSICAL, 100, 25, 1, 0);
+        super(SkillFactory.ICICLE_SPEAR, "Icicle Spear", SkillDescription.ICICLE_SPEAR, 30,
+                Pokemon.Type.ICE, SkillCategory.PHYSICAL, 100, 25, 1, 0);
     }
 
     /**
      * Return Icicle Spear's skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Quick Attack's skill animation.
+     * @return Icicle Spear's skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

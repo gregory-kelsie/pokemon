@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class WaterSpout extends DamageSkill {
      * - Accuracy: 100
      */
     public WaterSpout() {
-        super(SkillFactory.WATER_SPOUT, "Water Spout", 5, Pokemon.Type.WATER, Skill.SkillCategory.SPECIAL, 100, 150, 1);
+        super(SkillFactory.WATER_SPOUT, "Water Spout", SkillDescription.WATER_SPOUT, 5,
+                Pokemon.Type.WATER, Skill.SkillCategory.SPECIAL, 100, 150, 1);
     }
 
     /**
@@ -41,8 +43,10 @@ public class WaterSpout extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         damage = (int)Math.round((1.0 * damage * skillUser.getCurrentHealth()) /
                 skillUser.getHealthStat());
         List<String> results;

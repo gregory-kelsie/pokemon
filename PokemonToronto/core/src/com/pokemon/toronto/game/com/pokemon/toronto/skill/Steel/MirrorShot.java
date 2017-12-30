@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -24,8 +25,10 @@ public class MirrorShot extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public MirrorShot() {
-        super(SkillFactory.MIRROR_SHOT, "Mirror Shot", 10, Pokemon.Type.STEEL, SkillCategory.SPECIAL, 85, 65, 1, .3);
-        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.MIRROR_SHOT, "Mirror Shot", SkillDescription.MIRROR_SHOT, 10,
+                Pokemon.Type.STEEL, SkillCategory.SPECIAL, 85, 65, 1, .3);
+        secondaryEffects.add(new AccuracyEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

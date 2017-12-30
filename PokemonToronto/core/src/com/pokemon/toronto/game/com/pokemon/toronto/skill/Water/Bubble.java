@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,8 +25,10 @@ public class Bubble extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Bubble() {
-        super(SkillFactory.BUBBLE, "Bubble", 30, Pokemon.Type.WATER, SkillCategory.SPECIAL, 100, 40, 1, .1);
-        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.BUBBLE, "Bubble", SkillDescription.BUBBLE, 30, Pokemon.Type.WATER,
+                SkillCategory.SPECIAL, 100, 40, 1, .1);
+        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

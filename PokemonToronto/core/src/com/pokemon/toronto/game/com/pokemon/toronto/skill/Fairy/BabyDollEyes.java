@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -23,7 +24,8 @@ public class BabyDollEyes extends EffectSkill {
      * - Decrease attack by 1 stage
      */
     public BabyDollEyes() {
-        super(SkillFactory.BABY_DOLL_EYES, "Baby-Doll Eyes", 30, Pokemon.Type.FAIRY, 100);
+        super(SkillFactory.BABY_DOLL_EYES, "Baby-Doll Eyes", SkillDescription.BABY_DOLL_EYES, 30,
+                Pokemon.Type.FAIRY, 100);
         effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY,
                 1, SecondaryEffect.StatDirection.DECREASE));
     }

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -23,7 +24,8 @@ public class MetalSound extends EffectSkill {
      * - Decrease sp defense by 2 stages.
      */
     public MetalSound() {
-        super(SkillFactory.METAL_SOUND, "Metal Sound", 40, Pokemon.Type.STEEL, 85);
+        super(SkillFactory.METAL_SOUND, "Metal Sound", SkillDescription.METAL_SOUND,40,
+                Pokemon.Type.STEEL, 85);
         effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.ENEMY,
                 2, SecondaryEffect.StatDirection.DECREASE));
     }

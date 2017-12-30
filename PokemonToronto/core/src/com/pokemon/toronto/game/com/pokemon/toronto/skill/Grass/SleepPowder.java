@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SleepEffect;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class SleepPowder extends EffectSkill {
      * - Accuracy: 75
      */
     public SleepPowder() {
-        super(15, "Sleep Powder", 15, Pokemon.Type.GRASS, 75);
+        super(15, "Sleep Powder", SkillDescription.SLEEP_POWDER, 15, Pokemon.Type.GRASS, 75);
         effects.add(new SleepEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -46,8 +47,10 @@ public class SleepPowder extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyPokemon.induceSleep();
         results.add(enemyPokemon.getName() + " fell asleep!");
@@ -67,7 +70,8 @@ public class SleepPowder extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
         if (enemyPokemon.isStatused()) {
             return new FailResult("It failed...");
         }

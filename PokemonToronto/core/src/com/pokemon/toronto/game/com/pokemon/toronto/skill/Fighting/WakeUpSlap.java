@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class WakeUpSlap extends DamageSkill {
      * - Accuracy: 100
      */
     public WakeUpSlap() {
-        super(SkillFactory.WAKE_UP_SLAP, "Wake-Up Slap", 10, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 70, 1);
+        super(SkillFactory.WAKE_UP_SLAP, "Wake-Up Slap", SkillDescription.WAKE_UP_SLAP,10,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 70, 1);
         makesPhysicalContact = true;
     }
 
@@ -44,8 +46,10 @@ public class WakeUpSlap extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results = new ArrayList<String>();
         boolean wokeUp = false;
@@ -54,8 +58,9 @@ public class WakeUpSlap extends DamageSkill {
             damage = 140;
             wokeUp = true;
         }
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
+                skillUserParty, enemyPokemonParty);
         if (wokeUp) {
             results.add(enemyPokemon.getName() + " woke up!");
             damage = 70; //Reset to the normal amount.

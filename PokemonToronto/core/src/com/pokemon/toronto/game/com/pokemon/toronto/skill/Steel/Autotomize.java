@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -28,7 +29,8 @@ public class Autotomize extends EffectSkill {
      * - Increase speed by 2 stages.
      */
     public Autotomize() {
-        super(SkillFactory.AUTOTOMIZE, "Autotomize", 15, Pokemon.Type.STEEL, 100);
+        super(SkillFactory.AUTOTOMIZE, "Autotomize", SkillDescription.AUTOTOMIZE, 15,
+                Pokemon.Type.STEEL, 100);
         effects.add(new SpeedEffect(SecondaryEffect.Target.SELF,
                 2, SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

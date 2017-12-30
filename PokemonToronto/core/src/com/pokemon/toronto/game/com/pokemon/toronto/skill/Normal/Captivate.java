@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -27,7 +28,8 @@ public class Captivate extends EffectSkill {
      * - Lower enemy defense by 1 stage.
      */
     public Captivate() {
-        super(SkillFactory.CAPTIVATE, "Captivate", 20, Pokemon.Type.NORMAL, 100);
+        super(SkillFactory.CAPTIVATE, "Captivate", SkillDescription.CAPTIVATE, 20,
+                Pokemon.Type.NORMAL, 100);
         effects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 2,
                 SecondaryEffect.StatDirection.DECREASE));
     }

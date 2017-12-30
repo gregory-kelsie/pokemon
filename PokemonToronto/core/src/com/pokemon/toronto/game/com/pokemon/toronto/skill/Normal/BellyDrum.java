@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -34,7 +35,8 @@ public class BellyDrum extends EffectSkill {
      * - Max out the attack stat.
      */
     public BellyDrum() {
-        super(SkillFactory.BELLY_DRUM, "Belly Drum", 10, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.BELLY_DRUM, "Belly Drum", SkillDescription.BELLY_DRUM, 10,
+                Pokemon.Type.NORMAL, -1);
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 12,
                 SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;
@@ -53,8 +55,10 @@ public class BellyDrum extends EffectSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         effects.get(0).use(results, skillUser, enemyPokemon, field, userField,
                 enemyField, isFirstAttack);

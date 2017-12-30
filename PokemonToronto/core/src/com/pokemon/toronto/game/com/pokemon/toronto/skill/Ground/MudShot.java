@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
 
@@ -23,7 +24,7 @@ public class MudShot extends SecondaryEffectSkill {
      * - Accuracy: 95
      */
     public MudShot() {
-        super(SkillFactory.MUD_SHOT, "Mud Shot", 15, Pokemon.Type.GROUND,
+        super(SkillFactory.MUD_SHOT, "Mud Shot", SkillDescription.MUD_SHOT,15, Pokemon.Type.GROUND,
                 SkillCategory.SPECIAL, 95, 55, 1, 1.0);
         secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
@@ -22,7 +23,8 @@ public class SweetKiss extends EffectSkill {
      * - Accuracy: 75
      */
     public SweetKiss() {
-        super(SkillFactory.SWEET_KISS, "Sweet Kiss", 10, Pokemon.Type.FAIRY, 75);
+        super(SkillFactory.SWEET_KISS, "Sweet Kiss", SkillDescription.SWEET_KISS, 10,
+                Pokemon.Type.FAIRY, 75);
         effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 

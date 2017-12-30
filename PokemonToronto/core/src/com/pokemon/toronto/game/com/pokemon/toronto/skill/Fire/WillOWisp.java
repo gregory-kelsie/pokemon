@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -25,7 +26,8 @@ public class WillOWisp extends EffectSkill {
      * - Accuracy: 85
      */
     public WillOWisp() {
-        super(SkillFactory.WILL_O_WISP, "Will O Wisp", 15, Pokemon.Type.FIRE, 85);
+        super(SkillFactory.WILL_O_WISP, "Will O Wisp", SkillDescription.WILL_O_WISP, 15,
+                Pokemon.Type.FIRE, 85);
         effects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -42,7 +44,8 @@ public class WillOWisp extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttacker, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttacker,
+                               Skill targetsSkill) {
         if (enemyPokemon.isStatused()) {
             return new FailResult("It failed...");
         }

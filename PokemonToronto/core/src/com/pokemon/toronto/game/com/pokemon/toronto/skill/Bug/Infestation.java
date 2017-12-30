@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class Infestation extends DamageSkill {
      * - Accuracy: 100
      */
     public Infestation() {
-        super(SkillFactory.INFESTATION, "Infestation", 20, Pokemon.Type.BUG, Skill.SkillCategory.SPECIAL, 100, 20, 1);
+        super(SkillFactory.INFESTATION, "Infestation", SkillDescription.infestation, 20,
+                Pokemon.Type.BUG, Skill.SkillCategory.SPECIAL, 100, 20, 1);
     }
 
     /**

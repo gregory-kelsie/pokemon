@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,15 +24,15 @@ public class SpikeCannon extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public SpikeCannon() {
-        super(SkillFactory.SPIKE_CANNON, "Spike Cannon", 15, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.PHYSICAL, 100, 20, 1, 0);
+        super(SkillFactory.SPIKE_CANNON, "Spike Cannon", SkillDescription.SPIKE_CANNON, 15,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 100, 20, 1, 0);
     }
 
     /**
      * Return Spike Cannon's skill animation.
      * @param userAnimation Whether or not the skill's animation is from the user
      *                      using the skill or the enemy using the skill.
-     * @return Quick Attack's skill animation.
+     * @return Spike Cannon's skill animation.
      */
     @Override
     public SkillAnimation getAnimation(boolean userAnimation) {

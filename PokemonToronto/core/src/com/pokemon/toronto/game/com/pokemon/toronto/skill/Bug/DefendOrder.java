@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -23,9 +24,12 @@ public class DefendOrder extends EffectSkill {
      * - Accuracy: -1 (Should never miss)
      */
     public DefendOrder() {
-        super(SkillFactory.DEFEND_ORDER, "Defend Order", 10, Pokemon.Type.BUG, -1);
-        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
-        effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.DEFEND_ORDER, "Defend Order", SkillDescription.defendOrder, 10,
+                Pokemon.Type.BUG, -1);
+        effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
+        effects.add(new SpecialDefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;
     }
 

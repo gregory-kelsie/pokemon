@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class VitalThrow extends DamageSkill {
      * - Accuracy: -1 Never misses
      */
     public VitalThrow() {
-        super(SkillFactory.VITAL_THROW, "Vital Throw", 10, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, -1, 70, 1);
+        super(SkillFactory.VITAL_THROW, "Vital Throw", SkillDescription.VITAL_THROW, 10,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, -1, 70, 1);
         makesPhysicalContact = true;
     }
 

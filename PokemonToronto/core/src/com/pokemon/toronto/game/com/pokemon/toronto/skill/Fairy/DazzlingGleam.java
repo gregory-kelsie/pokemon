@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -23,8 +24,8 @@ public class DazzlingGleam extends DamageSkill {
      * - Accuracy: 100
      */
     public DazzlingGleam() {
-        super(SkillFactory.DAZZLING_GLEAM, "Dazzling Gleam", 10, Pokemon.Type.FAIRY,
-                SkillCategory.SPECIAL, 100, 80, 1);
+        super(SkillFactory.DAZZLING_GLEAM, "Dazzling Gleam", SkillDescription.DAZZLING_GLEAM, 10,
+                Pokemon.Type.FAIRY, SkillCategory.SPECIAL, 100, 80, 1);
     }
 
     /**

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SleepEffect;
@@ -24,7 +25,8 @@ public class LovelyKiss extends EffectSkill {
      * - Make enemy sleep
      */
     public LovelyKiss() {
-        super(SkillFactory.LOVELY_KISS, "Lovely Kiss", 10, Pokemon.Type.NORMAL, 75);
+        super(SkillFactory.LOVELY_KISS, "Lovely Kiss", SkillDescription.LOVELY_KISS,10,
+                Pokemon.Type.NORMAL, 75);
         effects.add(new SleepEffect(SecondaryEffect.Target.ENEMY));
     }
 

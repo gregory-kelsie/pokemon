@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Present extends DamageSkill {
      * - Accuracy: 90
      */
     public Present() {
-        super(SkillFactory.PRESENT, "Present", 15, Pokemon.Type.NORMAL,
+        super(SkillFactory.PRESENT, "Present", SkillDescription.PRESENT, 15, Pokemon.Type.NORMAL,
                 Skill.SkillCategory.PHYSICAL, 90, 1, 1);
     }
     /**

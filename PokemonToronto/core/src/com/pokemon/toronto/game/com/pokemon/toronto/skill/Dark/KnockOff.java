@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class KnockOff extends DamageSkill {
      * - Accuracy: 100
      */
     public KnockOff() {
-        super(SkillFactory.KNOCK_OFF, "Knock Off", 20, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 65, 1);
+        super(SkillFactory.KNOCK_OFF, "Knock Off", SkillDescription.KNOCK_OFF ,20,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 65, 1);
         makesPhysicalContact = true;
         //TODO: Increase damage when enemy is holding an item and knock it off
     }

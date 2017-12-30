@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class MetalBurst extends DamageSkill {
      * - Accuracy: 100
      */
     public MetalBurst() {
-        super(SkillFactory.METAL_BURST, "Metal Burst", 10, Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 100, 1, 1);
+        super(SkillFactory.METAL_BURST, "Metal Burst", SkillDescription.METAL_BURST, 10,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 100, 1, 1);
     }
-
 
     /**
      * Damage the enemy then recharge the next turn.
@@ -45,8 +46,10 @@ public class MetalBurst extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results = new ArrayList<String>();
         int damageDealt = (int)Math.round(skillUser.getDamageTakenThisTurn() * 1.5);
@@ -67,7 +70,8 @@ public class MetalBurst extends DamageSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (!skillUser.tookEnemyDamageThisTurn() || isFirstAttack) {
             return new FailResult("It failed...");
         }

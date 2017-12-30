@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,11 +27,10 @@ public class GigaImpact extends DamageSkill {
      * - Accuracy: 90
      */
     public GigaImpact() {
-        super(SkillFactory.GIGA_IMPACT, "Giga Impact", 5, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 90, 150, 1);
+        super(SkillFactory.GIGA_IMPACT, "Giga Impact", SkillDescription.GIGA_IMPACT, 5,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 90, 150, 1);
         makesPhysicalContact = true;
     }
-
 
     /**
      * Damage the enemy then recharge the next turn.

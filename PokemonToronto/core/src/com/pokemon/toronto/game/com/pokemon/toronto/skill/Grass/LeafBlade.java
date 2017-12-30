@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,10 +23,10 @@ public class LeafBlade extends DamageSkill {
      * - Accuracy: 100
      */
     public LeafBlade() {
-        super(SkillFactory.LEAF_BLADE, "Leaf Blade", 15, Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 90, 2);
+        super(SkillFactory.LEAF_BLADE, "Leaf Blade", SkillDescription.LEAF_BLADE, 15,
+                Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 90, 2);
         makesPhysicalContact = true;
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

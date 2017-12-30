@@ -20,8 +20,9 @@ public class StatusHealItem extends Item {
     }
 
     @Override
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         p.wakeUp();
+        return p.getName() + "'s status recovered!";
     }
 
     @Override

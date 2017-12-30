@@ -20,9 +20,10 @@ public class HealthRestoreItem extends Item {
     }
 
     @Override
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         // TODO Auto-generated method stub
         p.addHealth(restoreAmount);
+        return p.getName() + "'s health was restored by " + restoreAmount;
     }
 
     @Override

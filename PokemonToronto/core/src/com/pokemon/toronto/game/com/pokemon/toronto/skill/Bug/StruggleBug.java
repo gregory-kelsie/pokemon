@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
@@ -24,8 +25,10 @@ public class StruggleBug extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public StruggleBug() {
-        super(SkillFactory.STRUGGLE_BUG, "Struggle Bug", 20, Pokemon.Type.BUG, SkillCategory.SPECIAL, 100, 50, 1, 1.0);
-        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.STRUGGLE_BUG, "Struggle Bug", SkillDescription.struggleBug, 20,
+                Pokemon.Type.BUG, SkillCategory.SPECIAL, 100, 50, 1, 1.0);
+        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

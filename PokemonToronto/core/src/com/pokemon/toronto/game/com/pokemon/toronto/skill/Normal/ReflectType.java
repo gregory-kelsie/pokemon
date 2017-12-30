@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class ReflectType extends Skill {
      * - Accuracy: N/A
      */
     public ReflectType() {
-        super(SkillFactory.REFLECT_TYPE, "Reflect Type", 15, Pokemon.Type.NORMAL,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.REFLECT_TYPE, "Reflect Type", SkillDescription.REFLECT_TYPE, 15,
+                Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
     }
 
     /**
@@ -40,7 +41,8 @@ public class ReflectType extends Skill {
      * @param enemyField The field for the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty      @return The move results.
+     * @param enemyPokemonParty
+     * @return The move results.
      * */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
                             int enemyPokemonPartyPosition, Field field, SubField userField,

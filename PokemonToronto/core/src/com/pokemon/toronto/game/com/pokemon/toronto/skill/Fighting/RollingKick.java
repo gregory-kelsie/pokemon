@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,7 +25,8 @@ public class RollingKick extends SecondaryEffectSkill {
      * - Accuracy: 85
      */
     public RollingKick() {
-        super(SkillFactory.ROLLING_KICK, "Rolling Kick", 15, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 85, 60, 1, .3);
+        super(SkillFactory.ROLLING_KICK, "Rolling Kick", SkillDescription.ROLLING_KICK, 15,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 85, 60, 1, .3);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

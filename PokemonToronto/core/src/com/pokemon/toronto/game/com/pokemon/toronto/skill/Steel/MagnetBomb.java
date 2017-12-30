@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class MagnetBomb extends DamageSkill {
      * - Accuracy: Never Misses
      */
     public MagnetBomb() {
-        super(SkillFactory.MAGNET_BOMB, "Magnet Bomb", 20, Pokemon.Type.STEEL, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
+        super(SkillFactory.MAGNET_BOMB, "Magnet Bomb", SkillDescription.MAGNET_BOMB, 20,
+                Pokemon.Type.STEEL, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
     }
 
     /**

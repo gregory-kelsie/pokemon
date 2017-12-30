@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
@@ -23,8 +24,8 @@ public class SludgeBomb extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public SludgeBomb() {
-        super(SkillFactory.SLUDGE_BOMB, "Sludge Bomb", 10, Pokemon.Type.POISON,
-                SkillCategory.SPECIAL, 100, 90, 1, .3);
+        super(SkillFactory.SLUDGE_BOMB, "Sludge Bomb", SkillDescription.SLUDGE_BOMB,10,
+                Pokemon.Type.POISON, SkillCategory.SPECIAL, 100, 90, 1, .3);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

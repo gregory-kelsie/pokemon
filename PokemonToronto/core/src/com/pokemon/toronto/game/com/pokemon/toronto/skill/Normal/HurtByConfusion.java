@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamag
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.List;
 
 public class HurtByConfusion extends DamageSkill {
     public HurtByConfusion() {
-        super(-1, "Hurt By Confusion", -1, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, -1, 40, 1);
+        super(-1, "Hurt By Confusion", "Hurt by Confusion Desc",-1, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, -1, 40, 1);
     }
 
     /**

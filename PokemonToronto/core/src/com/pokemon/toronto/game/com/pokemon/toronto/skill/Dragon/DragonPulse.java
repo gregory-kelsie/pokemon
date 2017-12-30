@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class DragonPulse extends DamageSkill {
      * - Accuracy: 100
      */
     public DragonPulse() {
-        super(SkillFactory.DRAGON_PULSE, "Dragon Pulse", 10, Pokemon.Type.DRAGON, Skill.SkillCategory.SPECIAL, 100, 85, 1);
+        super(SkillFactory.DRAGON_PULSE, "Dragon Pulse", SkillDescription.DRAGON_PULSE, 10,
+                Pokemon.Type.DRAGON, Skill.SkillCategory.SPECIAL, 100, 85, 1);
     }
 
     /**

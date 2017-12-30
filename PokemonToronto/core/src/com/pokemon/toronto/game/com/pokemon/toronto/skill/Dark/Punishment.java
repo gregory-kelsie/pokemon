@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class Punishment extends DamageSkill {
      * - Accuracy: 100
      */
     public Punishment() {
-        super(SkillFactory.PUNISHMENT, "Punishment", 5, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
+        super(SkillFactory.PUNISHMENT, "Punishment", SkillDescription.PUNISHMENT ,5,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
     }
 
@@ -43,8 +45,10 @@ public class Punishment extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         int totalStageBoosts = (int)Math.max(0, skillUser.getAttackStage()) +
                 (int)Math.max(0, skillUser.getAttackStage()) +
@@ -55,8 +59,9 @@ public class Punishment extends DamageSkill {
                 (int)Math.max(0, skillUser.getAccuracyStage()) +
                 (int)Math.max(0, skillUser.getEvasionStage());
         damage = Math.max(damage + (20 * totalStageBoosts), 200);
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
+                skillUserParty, enemyPokemonParty);
         damage = 60; //Reset damage back to normal.
         return results;
     }

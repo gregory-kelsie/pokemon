@@ -217,5 +217,54 @@ public class MartListing {
         }
     }
 
+    public static class RareCandy extends MartListing {
+        public RareCandy() {
+            super(new ItemBlob.RareCandy(), 9800, 1, "pokemart/items/rareCandy.png",
+                    "pokemart/itemNames/rareCandy.png", 1);
+        }
+    }
+
+    public static class HpUp extends MartListing {
+        public HpUp() {
+            super(new ItemBlob.HpUp(), 9800, 1, "pokemart/items/hpup.png",
+                    "pokemart/itemNames/hpup.png", 1);
+        }
+    }
+
+    public static class Protein extends MartListing {
+        public Protein() {
+            super(new ItemBlob.Protein(), 9800, 1, "pokemart/items/protein.png",
+                    "pokemart/itemNames/protein.png", 1);
+        }
+    }
+
+    public static class Iron extends MartListing {
+        public Iron() {
+            super(new ItemBlob.Iron(), 9800, 1, "pokemart/items/iron.png",
+                    "pokemart/itemNames/iron.png", 1);
+        }
+    }
+
+    public static class Calcium extends MartListing {
+        public Calcium() {
+            super(new ItemBlob.Calcium(), 9800, 1, "pokemart/items/calcium.png",
+                    "pokemart/itemNames/calcium.png", 1);
+        }
+    }
+
+    public static class Zinc extends MartListing {
+        public Zinc() {
+            super(new ItemBlob.Zinc(), 9800, 1, "pokemart/items/zinc.png",
+                    "pokemart/itemNames/zinc.png", 1);
+        }
+    }
+
+    public static class Carbos extends MartListing {
+        public Carbos() {
+            super(new ItemBlob.Carbos(), 9800, 1, "pokemart/items/carbos.png",
+                    "pokemart/itemNames/carbos.png", 1);
+        }
+    }
+
 
 }

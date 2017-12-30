@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -23,7 +24,8 @@ public class SearingShot extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public SearingShot() {
-        super(SkillFactory.SEARING_SHOT, "Searing Shot", 5, Pokemon.Type.FIRE, SkillCategory.SPECIAL, 100, 100, 1, .3);
+        super(SkillFactory.SEARING_SHOT, "Searing Shot", SkillDescription.SEARING_SHOT, 5,
+                Pokemon.Type.FIRE, SkillCategory.SPECIAL, 100, 100, 1, .3);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 

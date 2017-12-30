@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 
@@ -29,8 +30,8 @@ public class NightShade extends DamageSkill {
      * - Accuracy: 100
      */
     public NightShade() {
-        super(SkillFactory.NIGHT_SHADE, "Night Shade", 15, Pokemon.Type.GHOST,
-                Skill.SkillCategory.SPECIAL, 100, 1, 1);
+        super(SkillFactory.NIGHT_SHADE, "Night Shade", SkillDescription.NIGHT_SHADE, 15,
+                Pokemon.Type.GHOST, Skill.SkillCategory.SPECIAL, 100, 1, 1);
     }
 
     /**

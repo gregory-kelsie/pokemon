@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,8 +22,8 @@ public class ChipAway extends DamageSkill {
      * - Accuracy: 100
      */
     public ChipAway() {
-        super(SkillFactory.CHIP_AWAY, "Chip Away", 20, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 100, 70, 1);
+        super(SkillFactory.CHIP_AWAY, "Chip Away", SkillDescription.CHIP_AWAY, 20,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 70, 1);
         ignoreTargetStatChanges = true;
         makesPhysicalContact = true;
     }

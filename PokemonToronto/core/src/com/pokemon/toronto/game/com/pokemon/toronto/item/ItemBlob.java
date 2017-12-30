@@ -178,5 +178,54 @@ public class ItemBlob {
         }
     }
 
+    public static class RareCandy extends ItemBlob {
+        public RareCandy() {
+            super(ItemId.RARE_CANDY, "Rare Candy", "A candy that is packed with energy. When " +
+                    "consumed, it will instantly raise the level of a single Pokémon by one.");
+        }
+    }
+
+    public static class HpUp extends ItemBlob {
+        public HpUp() {
+            super(ItemId.HP_UP, "HP Up", "A nutritious drink for Pokémon. When consumed, it " +
+                    "raises the base HP of a single Pokémon.");
+        }
+    }
+
+    public static class Protein extends ItemBlob {
+        public Protein() {
+            super(ItemId.PROTEIN, "Protein", "A nutritious drink for Pokémon. When consumed, " +
+                    "it raises the base Attack stat of a single Pokémon.");
+        }
+    }
+
+    public static class Iron extends ItemBlob {
+        public Iron() {
+            super(ItemId.IRON, "Iron", "A nutritious drink for Pokémon. When consumed, it " +
+                    "raises the base Defense stat of a single Pokémon.");
+        }
+    }
+
+    public static class Calcium extends ItemBlob {
+        public Calcium() {
+            super(ItemId.CALCIUM, "Calcium", "A nutritious drink for Pokémon. When consumed, " +
+                    "it raises the base Sp. Atk stat of a single Pokémon.");
+        }
+    }
+
+    public static class Zinc extends ItemBlob {
+        public Zinc() {
+            super(ItemId.ZINC, "Zinc", "A nutritious drink for Pokémon. When consumed, it " +
+                    "raises the base Sp. Def stat of a single Pokémon.");
+        }
+    }
+
+    public static class Carbos extends ItemBlob {
+        public Carbos() {
+            super(ItemId.CARBOS, "Carbos", "A nutritious drink for Pokémon. When consumed, " +
+                    "it raises the base Speed stat of a single Pokémon.");
+        }
+    }
+
 
 }

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.EvasionEffect;
@@ -24,7 +25,8 @@ public class SweetScent extends EffectSkill {
      * - Lower enemy evasion by 2 stages.
      */
     public SweetScent() {
-        super(SkillFactory.SWEET_SCENT, "Sweet Scent", 20, Pokemon.Type.NORMAL, 100);
+        super(SkillFactory.SWEET_SCENT, "Sweet Scent", SkillDescription.SWEET_SCENT, 20,
+                Pokemon.Type.NORMAL, 100);
         effects.add(new EvasionEffect(SecondaryEffect.Target.ENEMY, 2,
                 SecondaryEffect.StatDirection.DECREASE));
     }

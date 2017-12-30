@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -33,7 +34,7 @@ public class Growth extends EffectSkill {
      * - Increase user atk and sp atk by 1 stage, 2 stages in sunlight
      */
     public Growth() {
-        super(SkillFactory.GROWTH, "Growth", 20, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.GROWTH, "Growth", SkillDescription.GROWTH, 20, Pokemon.Type.NORMAL, -1);
         sunlightEffects = new ArrayList<SecondaryEffect>();
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));

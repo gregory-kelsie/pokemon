@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
@@ -24,8 +25,10 @@ public class AuroraBeam extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public AuroraBeam() {
-        super(SkillFactory.AURORA_BEAM, "Aurora Beam", 25, Pokemon.Type.ICE, SkillCategory.SPECIAL, 100, 65, 1, .1);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.AURORA_BEAM, "Aurora Beam", SkillDescription.AURORA_BEAM, 25,
+                Pokemon.Type.ICE, SkillCategory.SPECIAL, 100, 65, 1, .1);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;
     }
 

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class ElectroBall extends DamageSkill {
      * - Accuracy: 100
      */
     public ElectroBall() {
-        super(SkillFactory.ELECTRO_BALL, "Electro Ball", 5, Pokemon.Type.ELECTRIC, Skill.SkillCategory.SPECIAL, 100, 1, 1);
+        super(SkillFactory.ELECTRO_BALL, "Electro Ball", SkillDescription.ELECTRO_BALL, 5,
+                Pokemon.Type.ELECTRIC, Skill.SkillCategory.SPECIAL, 100, 1, 1);
     }
 
     /**
@@ -62,7 +64,8 @@ public class ElectroBall extends DamageSkill {
         }
         List<String> results = super.use(skillUser, enemyPokemon,
                 skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+                userField, enemyField, isFirstAttack, targetSkill, skillUserParty,
+                enemyPokemonParty);
         damage = 1; //Reset damage back to normal.
         return results;
     }

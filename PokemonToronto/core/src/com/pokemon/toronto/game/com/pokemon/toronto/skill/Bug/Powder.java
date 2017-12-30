@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Powder extends Skill {
      * - Accuracy: 100
      */
     public Powder() {
-        super(SkillFactory.POWDER, "Powder", 20, Pokemon.Type.BUG, Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.POWDER, "Powder", SkillDescription.powder, 20, Pokemon.Type.BUG,
+                Skill.SkillCategory.MISC, -1);
         setPriority(1);
     }
 

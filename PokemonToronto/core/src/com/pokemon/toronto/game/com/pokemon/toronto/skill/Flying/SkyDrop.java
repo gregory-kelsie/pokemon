@@ -11,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class SkyDrop extends DamageSkill {
      * - Accuracy: 100
      */
     public SkyDrop() {
-        super(SkillFactory.SKY_DROP, "Sky Drop", 15, Pokemon.Type.FLYING,
+        super(SkillFactory.SKY_DROP, "Sky Drop", SkillDescription.SKY_DROP, 15, Pokemon.Type.FLYING,
                 Skill.SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
     }
@@ -48,17 +49,21 @@ public class SkyDrop extends DamageSkill {
      * @param enemyField The field for the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty      @return The results of using the move.
+     * @param enemyPokemonParty
+     * @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         //Use the damage part of the move.
         if (!enemyPokemon.isSkyDropped()) {
             enemyPokemon.setSkyDrop();
             skillUser.setNextTurnSkill(this);
             List<String> results = new ArrayList<String>();
-            results.add(skillUser.getName() + " took\n" + enemyPokemon.getName() + " high into the air!");
+            results.add(skillUser.getName() + " took\n" + enemyPokemon.getName() +
+                    " high into the air!");
             return results;
         } else {
             enemyPokemon.removeSkyDrop();
@@ -71,8 +76,9 @@ public class SkyDrop extends DamageSkill {
                 results = new ArrayList<String>();
             } else {
                 Gdx.app.log("skydrop", "dmg");
-                results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                        userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+                results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                        enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                        targetSkill, skillUserParty, enemyPokemonParty);
             }
             results.add(0, enemyPokemon.getName() + " was freed\nfrom the Sky Drop!");
             return results;

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,9 +24,9 @@ public class Absorb extends DamageSkill {
      * - 4 = Gain Half
      */
     public Absorb() {
-        super(SkillFactory.ABSORB, "Absorb", 25, Pokemon.Type.GRASS, Skill.SkillCategory.SPECIAL, 100, 20, 1, 4);
+        super(SkillFactory.ABSORB, "Absorb", SkillDescription.ABSORB, 25, Pokemon.Type.GRASS,
+                Skill.SkillCategory.SPECIAL, 100, 20, 1, 4);
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

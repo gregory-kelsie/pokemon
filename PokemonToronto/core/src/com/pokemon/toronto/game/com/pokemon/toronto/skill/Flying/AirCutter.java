@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class AirCutter extends DamageSkill {
      */
     public AirCutter() {
         //1/3 RECOIL
-        super(SkillFactory.AIR_CUTTER, "Air Cutter", 25, Pokemon.Type.FLYING, SkillCategory.SPECIAL, 95, 60, 2);
+        super(SkillFactory.AIR_CUTTER, "Air Cutter", SkillDescription.AIR_CUTTER, 25,
+                Pokemon.Type.FLYING, SkillCategory.SPECIAL, 95, 60, 2);
     }
 
     /**

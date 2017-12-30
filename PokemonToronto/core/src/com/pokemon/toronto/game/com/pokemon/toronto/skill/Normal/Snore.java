@@ -11,6 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
 
@@ -30,14 +31,15 @@ public class Snore extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Snore() {
-        super(SkillFactory.SNORE, "Snore", 15, Pokemon.Type.NORMAL, SkillCategory.SPECIAL,
-                100, 50, 1, .3);
+        super(SkillFactory.SNORE, "Snore", SkillDescription.SNORE, 15, Pokemon.Type.NORMAL,
+                SkillCategory.SPECIAL, 100, 50, 1, .3);
         secondaryEffects.add(new FlinchEffect(SecondaryEffect.Target.ENEMY));
     }
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.isSleeping()) {
             return new FailResult(false);
         }

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class Submission extends DamageSkill {
      * - Accuracy: 90
      */
     public Submission() {
-        super(SkillFactory.SUBMISSION, "Submission", 20, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 80, 80, 1, 1);
+        super(SkillFactory.SUBMISSION, "Submission", SkillDescription.SUBMISSION, 20,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 80, 80, 1, 1);
         makesPhysicalContact = true;
     }
 

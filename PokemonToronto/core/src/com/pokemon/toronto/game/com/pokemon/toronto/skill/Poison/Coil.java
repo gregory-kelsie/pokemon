@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -24,7 +25,7 @@ public class Coil extends EffectSkill {
      * - Increase atk def and accuracy by one stages.
      */
     public Coil() {
-        super(SkillFactory.COIL, "Coil", 20, Pokemon.Type.POISON, -1);
+        super(SkillFactory.COIL, "Coil", SkillDescription.COIL, 20, Pokemon.Type.POISON, -1);
         effects.add(new AttackEffect(SecondaryEffect.Target.SELF,
                 1, SecondaryEffect.StatDirection.INCREASE));
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF,

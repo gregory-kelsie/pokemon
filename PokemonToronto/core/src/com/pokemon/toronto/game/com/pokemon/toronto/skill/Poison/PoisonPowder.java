@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
 /**
@@ -25,7 +26,7 @@ public class PoisonPowder extends EffectSkill {
      * - Poison the enemy Pokemon
      */
     public PoisonPowder() {
-        super(35, "Poison Powder", 35, Pokemon.Type.POISON, 75);
+        super(35, "Poison Powder", SkillDescription.POISON_POWDER, 35, Pokemon.Type.POISON, 75);
         effects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

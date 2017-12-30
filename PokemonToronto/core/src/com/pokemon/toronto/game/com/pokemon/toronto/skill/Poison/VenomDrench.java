@@ -10,6 +10,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AccuracyEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
@@ -34,7 +35,8 @@ public class VenomDrench extends EffectSkill {
      * - Increase atk def and accuracy by one stages.
      */
     public VenomDrench() {
-        super(SkillFactory.VENOM_DRENCH, "Venom Drench", 20, Pokemon.Type.POISON, 100);
+        super(SkillFactory.VENOM_DRENCH, "Venom Drench", SkillDescription.VENOM_DRENCH, 20,
+                Pokemon.Type.POISON, 100);
         effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY,
                 1, SecondaryEffect.StatDirection.DECREASE));
         effects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY,
@@ -45,7 +47,8 @@ public class VenomDrench extends EffectSkill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (!enemyPokemon.isPoisoned()) {
             return new FailResult("It failed...");
         }

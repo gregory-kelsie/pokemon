@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.List;
 
@@ -24,9 +25,9 @@ public class GigaDrain extends DamageSkill {
      * - 4 = Gain Half
      */
     public GigaDrain() {
-        super(23, "Giga Drain", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 75, 1, 4);
+        super(23, "Giga Drain", SkillDescription.GIGA_DRAIN, 10, Pokemon.Type.GRASS,
+                SkillCategory.SPECIAL, 100, 75, 1, 4);
     }
-
 
     /**
      * Return the skill's animation, player side or enemy side.

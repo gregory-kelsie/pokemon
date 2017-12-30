@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.EvasionEffect;
@@ -23,7 +24,8 @@ public class DoubleTeam extends EffectSkill {
      * - Increase EVASION by 1 stage
      */
     public DoubleTeam() {
-        super(SkillFactory.DOUBLE_TEAM, "Double Team", 15, Pokemon.Type.NORMAL, -1);
+        super(SkillFactory.DOUBLE_TEAM, "Double Team", SkillDescription.DOUBLE_TEAM, 15,
+                Pokemon.Type.NORMAL, -1);
         effects.add(new EvasionEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

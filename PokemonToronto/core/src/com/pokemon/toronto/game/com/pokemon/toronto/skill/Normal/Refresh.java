@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class Refresh extends Skill {
      * - Accuracy: n/a
      */
     public Refresh() {
-        super(SkillFactory.REFRESH, "Refresh", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC,
-                -1);
+        super(SkillFactory.REFRESH, "Refresh", SkillDescription.REFRESH, 20, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 
@@ -40,7 +41,8 @@ public class Refresh extends Skill {
      * @param field The field of the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty    @return Refresh's move results.
+     * @param enemyPokemonParty
+     * @return Refresh's move results.
      * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,

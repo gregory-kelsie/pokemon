@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,8 @@ public class HighJumpKick extends DamageSkill {
      * - Accuracy: 90
      */
     public HighJumpKick() {
-        super(SkillFactory.HIGH_JUMP_KICK, "High Jump Kick", 10, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 90, 130, 1);
+        super(SkillFactory.HIGH_JUMP_KICK, "High Jump Kick", SkillDescription.HIGH_JUMP_KICK, 10,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 90, 130, 1);
         makesPhysicalContact = true;
         missRecoil = 1; //Take half hp.
     }

@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
 /**
@@ -25,7 +26,7 @@ public class ConfuseRay extends EffectSkill {
      * - Accuracy: 100
      */
     public ConfuseRay() {
-        super(14, "Confuse Ray", 10, Pokemon.Type.GHOST, 100);
+        super(14, "Confuse Ray", SkillDescription.CONFUSE_RAY,10, Pokemon.Type.GHOST, 100);
         effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 
@@ -47,7 +48,8 @@ public class ConfuseRay extends EffectSkill {
         if (enemyPokemon.isConfused()){
             return new FailResult(enemyPokemon.getName() + " is already confused.");
         } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.OWN_TEMPO) {
-            return new FailResult(enemyPokemon.getName() + " cannot be confused\nbecause it has it's Own Tempo");
+            return new FailResult(enemyPokemon.getName() + " cannot be confused\nbecause it has " +
+                    "it's Own Tempo");
         }
         return new FailResult(false);
     }

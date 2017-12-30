@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.List;
 
 public class HurtByDoomDesire extends DamageSkill {
     public HurtByDoomDesire() {
-        super(-1, "Hurt By Doom Desire", -1, Pokemon.Type.STEEL, Skill.SkillCategory.SPECIAL, 100, 140, 1);
+        super(-1, "Hurt By Doom Desire", "HURT BY DOOM DESC", -1, Pokemon.Type.STEEL,
+                Skill.SkillCategory.SPECIAL, 100, 140, 1);
     }
 
     /**

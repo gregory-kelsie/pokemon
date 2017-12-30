@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class SeedBomb extends DamageSkill {
      * - Accuracy: 100
      */
     public SeedBomb() {
-        super(SkillFactory.SEED_BOMB, "Seed Bomb", 15, Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 80, 1);
+        super(SkillFactory.SEED_BOMB, "Seed Bomb", SkillDescription.SEED_BOMB, 15,
+                Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 80, 1);
     }
 
     /**

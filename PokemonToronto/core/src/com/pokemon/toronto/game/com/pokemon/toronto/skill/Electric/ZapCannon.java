@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -23,8 +24,8 @@ public class ZapCannon extends SecondaryEffectSkill {
      * - Accuracy: 50
      */
     public ZapCannon() {
-        super(SkillFactory.ZAP_CANNON, "Zap Cannon", 5, Pokemon.Type.ELECTRIC,
-                SkillCategory.SPECIAL, 50, 120, 1, 1.0);
+        super(SkillFactory.ZAP_CANNON, "Zap Cannon", SkillDescription.ZAP_CANNON, 5,
+                Pokemon.Type.ELECTRIC, SkillCategory.SPECIAL, 50, 120, 1, 1.0);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

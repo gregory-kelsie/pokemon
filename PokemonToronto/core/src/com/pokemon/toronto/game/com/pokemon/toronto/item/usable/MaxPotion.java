@@ -14,8 +14,9 @@ public class MaxPotion extends Item {
         super(new ItemBlob.MaxPotion(), "bag/icons/maxPotion.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         p.addHealth(p.getHealthStat() - p.getCurrentHealth());
+        return p.getName() + "'s recovered its health!";
     }
 
     @Override

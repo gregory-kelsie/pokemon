@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamag
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.List;
 
@@ -27,7 +28,8 @@ public class DoubleSlap extends MultiHitMove {
      * - Number of Hits: 2-5
      */
     public DoubleSlap() {
-        super(13, "Double Slap", 10, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 85, 15, 1, 0);
+        super(13, "Double Slap", SkillDescription.DOUBLE_HIT, 10, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, 85, 15, 1, 0);
         makesPhysicalContact = true;
     }
 

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 
 /**
@@ -21,7 +22,7 @@ public class Harden extends EffectSkill {
      * - Increase user defense by 1 stage.
      */
     public Harden() {
-        super(28, "Harden", 30, Pokemon.Type.NORMAL, 100);
+        super(28, "Harden", SkillDescription.HARDEN,30, Pokemon.Type.NORMAL, 100);
         effects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
                 SecondaryEffect.StatDirection.INCREASE));
         targetsEnemy = false;

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -24,8 +25,10 @@ public class TropKick extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public TropKick() {
-        super(SkillFactory.TROP_KICK, "Trop Kick", 15, Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 70, 1, 1.0);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.TROP_KICK, "Trop Kick", SkillDescription.TROP_KICK, 15,
+                Pokemon.Type.GRASS, SkillCategory.PHYSICAL, 100, 70, 1, 1.0);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;
     }
 

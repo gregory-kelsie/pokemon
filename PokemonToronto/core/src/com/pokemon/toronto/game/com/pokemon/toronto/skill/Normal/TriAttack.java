@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -36,8 +37,8 @@ public class TriAttack extends DamageSkill {
      * - Accuracy: 100
      */
     public TriAttack() {
-        super(SkillFactory.TRI_ATTACK, "Tri Attack", 15, Pokemon.Type.NORMAL,
-                SkillCategory.SPECIAL, 100, 80, 1);
+        super(SkillFactory.TRI_ATTACK, "Tri Attack", SkillDescription.TRI_ATTACK, 15,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 80, 1);
         paralysisEffect = new ParalysisEffect(SecondaryEffect.Target.ENEMY);
         burnEffect = new BurnEffect(SecondaryEffect.Target.ENEMY);
         freezeEffect = new FreezeEffect(SecondaryEffect.Target.ENEMY);

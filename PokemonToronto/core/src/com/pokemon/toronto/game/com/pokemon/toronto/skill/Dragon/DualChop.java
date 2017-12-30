@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class DualChop extends MultiHitMove {
      * - Number of Hits: 2
      */
     public DualChop() {
-        super(SkillFactory.DUAL_CHOP, "Dual Chop", 15, Pokemon.Type.DRAGON, Skill.SkillCategory.PHYSICAL, 90, 40, 1, 1);
+        super(SkillFactory.DUAL_CHOP, "Dual Chop", SkillDescription.DUAL_CHOP, 15,
+                Pokemon.Type.DRAGON, Skill.SkillCategory.PHYSICAL, 90, 40, 1, 1);
         makesPhysicalContact = true;
     }
 

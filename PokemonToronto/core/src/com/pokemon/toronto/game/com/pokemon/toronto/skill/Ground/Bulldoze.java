@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,7 +25,7 @@ public class Bulldoze extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Bulldoze() {
-        super(SkillFactory.BULLDOZE, "Bulldoze", 20, Pokemon.Type.GROUND,
+        super(SkillFactory.BULLDOZE, "Bulldoze", SkillDescription.BULLDOZE, 20, Pokemon.Type.GROUND,
                 SkillCategory.PHYSICAL, 100, 60, 1, 1.0);
         secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
                 SecondaryEffect.StatDirection.DECREASE));

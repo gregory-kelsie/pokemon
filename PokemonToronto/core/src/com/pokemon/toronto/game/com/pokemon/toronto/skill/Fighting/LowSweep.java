@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,8 +25,10 @@ public class LowSweep extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public LowSweep() {
-        super(SkillFactory.LOW_SWEEP, "Low Sweep", 20, Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 65, 1, 1.0);
-        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1 , SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.LOW_SWEEP, "Low Sweep", SkillDescription.LOW_SWEEP, 20,
+                Pokemon.Type.FIGHTING, SkillCategory.PHYSICAL, 100, 65, 1, 1.0);
+        secondaryEffects.add(new SpeedEffect(SecondaryEffect.Target.ENEMY, 1,
+                SecondaryEffect.StatDirection.DECREASE));
         makesPhysicalContact = true;
     }
 

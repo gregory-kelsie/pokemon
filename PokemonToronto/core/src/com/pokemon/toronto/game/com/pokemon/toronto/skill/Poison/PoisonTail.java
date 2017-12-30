@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 
@@ -23,8 +24,8 @@ public class PoisonTail extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public PoisonTail() {
-        super(SkillFactory.POISON_TAIL, "Poison Tail", 25, Pokemon.Type.POISON,
-                SkillCategory.PHYSICAL, 100, 50, 2, .1);
+        super(SkillFactory.POISON_TAIL, "Poison Tail", SkillDescription.POISON_TAIL, 25,
+                Pokemon.Type.POISON, SkillCategory.PHYSICAL, 100, 50, 2, .1);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

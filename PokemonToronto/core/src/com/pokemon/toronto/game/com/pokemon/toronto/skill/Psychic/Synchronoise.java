@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 
@@ -27,8 +28,8 @@ public class Synchronoise extends DamageSkill {
      * - Accuracy: 100
      */
     public Synchronoise() {
-        super(SkillFactory.SYNCHRONOISE, "Synchronoise", 10, Pokemon.Type.PSYCHIC,
-                SkillCategory.SPECIAL, 100, 120, 1);
+        super(SkillFactory.SYNCHRONOISE, "Synchronoise", SkillDescription.SYNCHRONOISE, 10,
+                Pokemon.Type.PSYCHIC, SkillCategory.SPECIAL, 100, 120, 1);
     }
 
     @Override

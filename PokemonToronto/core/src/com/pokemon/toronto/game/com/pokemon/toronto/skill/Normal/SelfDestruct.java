@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,10 @@ public class SelfDestruct extends DamageSkill {
      * - Accuracy: 100
      */
     public SelfDestruct() {
-        super(20, "Self-Destruct", 5, Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 200, 1);
+        super(20, "Self-Destruct", SkillDescription.SELF_DESTRUCT,5, Pokemon.Type.NORMAL,
+                SkillCategory.PHYSICAL, 100, 200, 1);
         continuesUseThroughNoEffect = true;
     }
-
 
     /**
      * Use Self-Destruct and return the move results.
@@ -44,12 +45,16 @@ public class SelfDestruct extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty    @return Thunder Shock's move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
 
         if (effectsEnemy(enemyPokemon)) {
-            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+            results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                    enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                    targetSkill, skillUserParty, enemyPokemonParty);
         } else {
             results = new ArrayList<String>();
             results.add("It does not effect " + enemyPokemon.getName() + "...");
@@ -75,7 +80,8 @@ public class SelfDestruct extends DamageSkill {
                                Field field, SubField userField, SubField enemyField,
                                boolean isFirstAttack, Skill targetsSkill) {
         if (enemyPokemon.getBattleAbility() == Pokemon.Ability.DAMP) {
-            return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents Self-Destruct.");
+            return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents " +
+                    "Self-Destruct.");
         }
         return new FailResult(false);
     }

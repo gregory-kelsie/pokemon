@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class Slam extends DamageSkill {
      * - Accuracy: 75
      */
     public Slam() {
-        super(SkillFactory.SLAM, "Slam", 20, Pokemon.Type.NORMAL, Skill.SkillCategory.PHYSICAL, 75, 80, 1);
+        super(SkillFactory.SLAM, "Slam", SkillDescription.SLAM, 20, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.PHYSICAL, 75, 80, 1);
         makesPhysicalContact = true;
     }
 

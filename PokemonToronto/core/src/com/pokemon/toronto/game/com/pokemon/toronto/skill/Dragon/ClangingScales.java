@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpeedEffect;
@@ -24,8 +25,10 @@ public class ClangingScales extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public ClangingScales() {
-        super(SkillFactory.CLANGING_SCALES, "Clanging Scales", 5, Pokemon.Type.DRAGON, SkillCategory.SPECIAL, 100, 110, 1, 1.0);
-        secondaryEffects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.CLANGING_SCALES, "Clanging Scales", SkillDescription.CLANGING_SCALES, 5,
+                Pokemon.Type.DRAGON, SkillCategory.SPECIAL, 100, 110, 1, 1.0);
+        secondaryEffects.add(new DefenseEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class SkillSwap extends Skill {
      * - Accuracy: -1
      */
     public SkillSwap() {
-        super(SkillFactory.SKILL_SWAP, "Skill Swap", 10, Pokemon.Type.PSYCHIC,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.SKILL_SWAP, "Skill Swap", SkillDescription.SKILL_SWAP, 10,
+                Pokemon.Type.PSYCHIC, Skill.SkillCategory.MISC, -1);
     }
 
     /**

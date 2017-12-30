@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.PoisonEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,8 @@ public class GunkShot extends SecondaryEffectSkill {
      * - Accuracy: 80
      */
     public GunkShot() {
-        super(SkillFactory.GUNK_SHOT, "Gunk Shot", 5, Pokemon.Type.POISON,
-                SkillCategory.PHYSICAL, 80, 120, 1, .3);
+        super(SkillFactory.GUNK_SHOT, "Gunk Shot", SkillDescription.GUNK_SHOT, 5,
+                Pokemon.Type.POISON, SkillCategory.PHYSICAL, 80, 120, 1, .3);
         secondaryEffects.add(new PoisonEffect(SecondaryEffect.Target.ENEMY));
     }
 

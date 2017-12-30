@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,8 +23,8 @@ public class HighHorsepower extends DamageSkill {
      * - Accuracy: 95
      */
     public HighHorsepower() {
-        super(SkillFactory.HIGH_HORSEPOWER, "High Horsepower", 10, Pokemon.Type.GROUND,
-                Skill.SkillCategory.PHYSICAL, 95, 95, 1);
+        super(SkillFactory.HIGH_HORSEPOWER, "High Horsepower", SkillDescription.HIGH_HORSEPOWER, 10,
+                Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 95, 95, 1);
         makesPhysicalContact = true;
     }
 

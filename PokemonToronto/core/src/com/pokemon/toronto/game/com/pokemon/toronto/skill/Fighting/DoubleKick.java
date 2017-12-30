@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,7 +24,8 @@ public class DoubleKick extends MultiHitMove {
      * - Number of Hits: 2 denoted by last parameter of 1
      */
     public DoubleKick() {
-        super(SkillFactory.DOUBLE_KICK, "Double Kick", 30, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 30, 1, 1);
+        super(SkillFactory.DOUBLE_KICK, "Double Kick", SkillDescription.DOUBLE_KICK, 30,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 100, 30, 1, 1);
         makesPhysicalContact = true;
     }
 

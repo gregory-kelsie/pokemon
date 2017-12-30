@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class PollenPuff extends DamageSkill {
      * - Accuracy: 100
      */
     public PollenPuff() {
-        super(SkillFactory.POLLEN_PUFF, "Pollen Puff", 15, Pokemon.Type.BUG, Skill.SkillCategory.SPECIAL, 100, 90, 1);
+        super(SkillFactory.POLLEN_PUFF, "Pollen Puff", SkillDescription.pollenPuff, 15,
+                Pokemon.Type.BUG, Skill.SkillCategory.SPECIAL, 100, 90, 1);
         //TODO: Implement effect for using on a teammate when doubles are implemented.
     }
 

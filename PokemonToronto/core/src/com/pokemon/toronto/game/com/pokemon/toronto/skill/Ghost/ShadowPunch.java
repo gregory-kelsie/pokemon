@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
 
@@ -23,8 +24,8 @@ public class ShadowPunch extends DamageSkill {
      * - Accuracy: -1 Never misses
      */
     public ShadowPunch() {
-        super(SkillFactory.SHADOW_PUNCH, "Shadow Punch", 20, Pokemon.Type.GHOST,
-                SkillCategory.PHYSICAL, 100, 60, 1);
+        super(SkillFactory.SHADOW_PUNCH, "Shadow Punch", SkillDescription.SHADOW_PUNCH, 20,
+                Pokemon.Type.GHOST, SkillCategory.PHYSICAL, 100, 60, 1);
         punchSkill = true;
     }
 

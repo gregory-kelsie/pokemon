@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class FeintAttack extends DamageSkill {
      * - Accuracy: -1 Never misses
      */
     public FeintAttack() {
-        super(SkillFactory.FEINT_ATTACK, "Feint Attack", 20, Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
+        super(SkillFactory.FEINT_ATTACK, "Feint Attack", SkillDescription.FEINT_ATTACK ,20,
+                Pokemon.Type.DARK, Skill.SkillCategory.PHYSICAL, -1, 60, 1);
         makesPhysicalContact = true;
     }
 

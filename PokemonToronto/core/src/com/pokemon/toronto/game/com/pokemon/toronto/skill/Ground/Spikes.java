@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,8 @@ public class Spikes extends Skill {
      * - Accuracy: 100
      */
     public Spikes() {
-        super(25, "Spikes", 20, Pokemon.Type.GROUND, Skill.SkillCategory.MISC, 100);
+        super(25, "Spikes", SkillDescription.SPIKES, 20, Pokemon.Type.GROUND,
+                Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 
@@ -41,8 +43,10 @@ public class Spikes extends Skill {
      * @param enemyPokemonParty    @return Spikes' move results.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
-                            SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         enemyField.addSpikeLayer();
         results.add(skillUser.getName() + " added a layer of spikes.");

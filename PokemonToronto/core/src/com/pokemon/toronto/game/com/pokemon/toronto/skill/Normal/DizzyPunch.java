@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
@@ -24,8 +25,8 @@ public class DizzyPunch extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public DizzyPunch() {
-        super(SkillFactory.DIZZY_PUNCH, "Dizzy Punch", 10, Pokemon.Type.NORMAL,
-                SkillCategory.PHYSICAL, 100, 70, 1, .2);
+        super(SkillFactory.DIZZY_PUNCH, "Dizzy Punch", SkillDescription.DIZZY_PUNCH, 10,
+                Pokemon.Type.NORMAL, SkillCategory.PHYSICAL, 100, 70, 1, .2);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
         punchSkill = true;

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class Venoshock extends DamageSkill {
      * - Accuracy: 100
      */
     public Venoshock() {
-        super(SkillFactory.VENOSHOCK, "Venoshock", 10, Pokemon.Type.POISON,
-                SkillCategory.SPECIAL, 100, 65, 1);
+        super(SkillFactory.VENOSHOCK, "Venoshock", SkillDescription.VENOSHOCK, 10,
+                Pokemon.Type.POISON, SkillCategory.SPECIAL, 100, 65, 1);
     }
 
     /**
@@ -44,18 +45,22 @@ public class Venoshock extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Deal extra damage to a poisoned target.
         if (enemyPokemon.isPoisoned()) {
             damage *= 2;
-            List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                    userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+            List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                    enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                    targetSkill, skillUserParty, enemyPokemonParty);
             damage = 65; //Return damage to normal.
             return results;
         }
-        return super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        return super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
+                skillUserParty, enemyPokemonParty);
     }
 
     /**

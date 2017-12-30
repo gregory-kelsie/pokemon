@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class Moonlight extends Skill {
      * - Accuracy: 100
      */
     public Moonlight() {
-        super(SkillFactory.MOONLIGHT, "Moonlight", 5, Pokemon.Type.FAIRY,
-                Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.MOONLIGHT, "Moonlight", SkillDescription.MOONLIGHT, 5,
+                Pokemon.Type.FAIRY, Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 

@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -24,7 +25,8 @@ public class WoodHammer extends DamageSkill {
      */
     public WoodHammer() {
         //1/3 RECOIL
-        super(SkillFactory.WOOD_HAMMER, "Wood Hammer", 15, Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
+        super(SkillFactory.WOOD_HAMMER, "Wood Hammer", SkillDescription.WOOD_HAMMER,15,
+                Pokemon.Type.GRASS, Skill.SkillCategory.PHYSICAL, 100, 120, 1, 2);
         makesPhysicalContact = true;
     }
 

@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -26,13 +27,14 @@ public class DreamEater extends DamageSkill {
      * - 4 = Gain Half
      */
     public DreamEater() {
-        super(SkillFactory.DREAM_EATER, "Dream Eater", 15, Pokemon.Type.PSYCHIC,
-                Skill.SkillCategory.SPECIAL, 100, 100, 1, 4);
+        super(SkillFactory.DREAM_EATER, "Dream Eater", SkillDescription.DREAM_EATER, 15,
+                Pokemon.Type.PSYCHIC, Skill.SkillCategory.SPECIAL, 100, 100, 1, 4);
     }
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (!enemyPokemon.isSleeping()) {
             return new FailResult(skillUser.getName() + " is not asleep!");
         }

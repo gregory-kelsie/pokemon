@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class Whirlpool extends DamageSkill {
      * - Accuracy: 85
      */
     public Whirlpool() {
-        super(SkillFactory.WHIRLPOOL, "Whirlpool", 15, Pokemon.Type.WATER, SkillCategory.SPECIAL, 85, 35, 1);
+        super(SkillFactory.WHIRLPOOL, "Whirlpool", SkillDescription.WHIRLPOOL, 15,
+                Pokemon.Type.WATER, SkillCategory.SPECIAL, 85, 35, 1);
         hitUnderwaterPokemon = true;
     }
 
@@ -45,16 +47,19 @@ public class Whirlpool extends DamageSkill {
      * @return The results of using the move.
      */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
+                skillUserParty, enemyPokemonParty);
         if (!enemyPokemon.inWhirlpool()) {
             enemyPokemon.whirlpool();
             results.add(enemyPokemon.getName() + " became trapped\nby the vortex!");
         }
-
         return results;
     }
 

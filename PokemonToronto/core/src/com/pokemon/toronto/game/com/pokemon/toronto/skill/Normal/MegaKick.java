@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,8 @@ public class MegaKick extends DamageSkill {
      * - Accuracy: 75
      */
     public MegaKick() {
-        super(SkillFactory.MEGA_KICK, "Mega Kick", 5, Pokemon.Type.NORMAL,
+        super(SkillFactory.MEGA_KICK, "Mega Kick", SkillDescription.MEGA_KICK, 5,
+                Pokemon.Type.NORMAL,
                 SkillCategory.PHYSICAL, 75, 120, 1);
         makesPhysicalContact = true;
     }

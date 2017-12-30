@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Splash extends Skill {
      * - Accuracy: n/a
      */
     public Splash() {
-        super(SkillFactory.SPLASH, "Splash", 40, Pokemon.Type.NORMAL, Skill.SkillCategory.MISC, -1);
+        super(SkillFactory.SPLASH, "Splash", SkillDescription.SPLASH, 40, Pokemon.Type.NORMAL,
+                Skill.SkillCategory.MISC, -1);
         targetsEnemy = false;
     }
 

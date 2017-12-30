@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FlinchEffect;
@@ -24,8 +25,8 @@ public class Confusion extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Confusion() {
-        super(SkillFactory.CONFUSION, "Confusion", 25, Pokemon.Type.PSYCHIC, SkillCategory.SPECIAL,
-                100, 50, 1, .1);
+        super(SkillFactory.CONFUSION, "Confusion", SkillDescription.CONFUSION, 25,
+                Pokemon.Type.PSYCHIC, SkillCategory.SPECIAL, 100, 50, 1, .1);
         secondaryEffects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 

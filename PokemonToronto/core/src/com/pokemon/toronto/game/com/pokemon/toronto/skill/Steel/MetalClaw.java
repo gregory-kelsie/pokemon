@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,10 @@ public class MetalClaw extends SecondaryEffectSkill {
      * - Accuracy: 95
      */
     public MetalClaw() {
-        super(SkillFactory.METAL_CLAW, "Metal Claw", 35, Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 95, 50, 1, .1);
-        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1, SecondaryEffect.StatDirection.INCREASE));
+        super(SkillFactory.METAL_CLAW, "Metal Claw", SkillDescription.METAL_CLAW, 35,
+                Pokemon.Type.STEEL, SkillCategory.PHYSICAL, 95, 50, 1, .1);
+        secondaryEffects.add(new AttackEffect(SecondaryEffect.Target.SELF, 1,
+                SecondaryEffect.StatDirection.INCREASE));
         makesPhysicalContact = true;
     }
 

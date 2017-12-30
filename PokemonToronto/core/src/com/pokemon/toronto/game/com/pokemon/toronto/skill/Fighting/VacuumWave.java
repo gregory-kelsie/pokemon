@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class VacuumWave extends DamageSkill {
      * - Accuracy: 100
      */
     public VacuumWave() {
-        super(SkillFactory.VACUUM_WAVE, "Vacuum Wave", 30, Pokemon.Type.FIGHTING, SkillCategory.SPECIAL, 100, 40, 1);
+        super(SkillFactory.VACUUM_WAVE, "Vacuum Wave", SkillDescription.VACUUM_WAVE, 30,
+                Pokemon.Type.FIGHTING, SkillCategory.SPECIAL, 100, 40, 1);
         setPriority(1);
     }
 

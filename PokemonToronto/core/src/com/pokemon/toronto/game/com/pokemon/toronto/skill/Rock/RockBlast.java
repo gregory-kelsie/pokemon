@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -30,11 +31,11 @@ public class RockBlast extends DamageSkill {
      * - Number of Hits: 2-5
      */
     public RockBlast() {
-        super(SkillFactory.ROCK_BLAST, "Rock Blast", 10, Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 90, 25, 1);
+        super(SkillFactory.ROCK_BLAST, "Rock Blast", SkillDescription.ROCK_BLAST, 10,
+                Pokemon.Type.ROCK, SkillCategory.PHYSICAL, 90, 25, 1);
         isMultiStrikeMove = true;
         timesHit = 0;
     }
-
 
     /**
      * Damage the enemy 2-5 times.
@@ -48,8 +49,10 @@ public class RockBlast extends DamageSkill {
      * @param enemyPokemonParty    @return The results of using the move.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
         //Use the damage part of the move.
         if (strikesLeft == -1) {
@@ -67,8 +70,9 @@ public class RockBlast extends DamageSkill {
         }
         timesHit++;
         strikesLeft--;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
-                enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
         results.remove(0); //Remove old single damage result.
         results.add("Dealt " + damageTally + " damage!");
         results.add("Hit " + timesHit + " times!");

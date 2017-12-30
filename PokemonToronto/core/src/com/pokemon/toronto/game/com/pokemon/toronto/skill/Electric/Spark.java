@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -23,7 +24,8 @@ public class Spark extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Spark() {
-        super(SkillFactory.SPARK, "Spark", 20, Pokemon.Type.ELECTRIC, SkillCategory.PHYSICAL, 100, 65, 1, .3);
+        super(SkillFactory.SPARK, "Spark", SkillDescription.SPARK, 20, Pokemon.Type.ELECTRIC,
+                SkillCategory.PHYSICAL, 100, 65, 1, .3);
         secondaryEffects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

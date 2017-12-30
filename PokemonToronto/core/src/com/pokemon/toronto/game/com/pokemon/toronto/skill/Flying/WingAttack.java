@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class WingAttack extends DamageSkill {
      * - Accuracy: 100
      */
     public WingAttack() {
-        super(SkillFactory.WING_ATTACK, "Wing Attack", 35, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
+        super(SkillFactory.WING_ATTACK, "Wing Attack", SkillDescription.WING_ATTACK,35,
+                Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 60, 1);
         makesPhysicalContact = true;
     }
 

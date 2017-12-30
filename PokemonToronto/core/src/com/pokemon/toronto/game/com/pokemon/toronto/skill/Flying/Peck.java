@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 /**
  * Created by Gregory on 6/15/2017.
@@ -21,7 +22,8 @@ public class Peck extends DamageSkill {
      * - Accuracy: 100
      */
     public Peck() {
-        super(7, "Peck", 30, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 35, 1);
+        super(7, "Peck", SkillDescription.PECK, 30, Pokemon.Type.FLYING,
+                Skill.SkillCategory.PHYSICAL, 100, 35, 1);
         makesPhysicalContact = true;
     }
 

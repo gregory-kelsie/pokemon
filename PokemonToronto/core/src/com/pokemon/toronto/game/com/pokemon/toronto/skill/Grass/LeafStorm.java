@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -24,8 +25,10 @@ public class LeafStorm extends SecondaryEffectSkill {
      * - Accuracy: 90
      */
     public LeafStorm() {
-        super(SkillFactory.LEAF_STORM, "Leaf Storm", 5, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 90, 130, 1, 1.0);
-        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 2, SecondaryEffect.StatDirection.DECREASE));
+        super(SkillFactory.LEAF_STORM, "Leaf Storm", SkillDescription.LEAF_STORM, 5,
+                Pokemon.Type.GRASS, SkillCategory.SPECIAL, 90, 130, 1, 1.0);
+        secondaryEffects.add(new SpecialAttackEffect(SecondaryEffect.Target.SELF, 2,
+                SecondaryEffect.StatDirection.DECREASE));
     }
 
     /**

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class StickyWeb extends Skill {
      * - Accuracy: 100
      */
     public StickyWeb() {
-        super(27, "Sticky Web", 20, Pokemon.Type.BUG, Skill.SkillCategory.MISC, 100);
+        super(27, "Sticky Web", SkillDescription.stickyWeb, 20, Pokemon.Type.BUG,
+                Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 

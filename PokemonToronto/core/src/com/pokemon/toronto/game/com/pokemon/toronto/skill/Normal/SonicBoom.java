@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class SonicBoom extends DamageSkill {
      * - Accuracy: 90
      */
     public SonicBoom() {
-        super(SkillFactory.SONIC_BOOM, "Sonic Boom", 10, Pokemon.Type.NORMAL,
-                SkillCategory.SPECIAL, 90, 1, 1);
+        super(SkillFactory.SONIC_BOOM, "Sonic Boom", SkillDescription.SONIC_BOOM, 10,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 90, 1, 1);
     }
 
     /**
@@ -44,8 +45,10 @@ public class SonicBoom extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
 
         List<String> results = new ArrayList<String>();
         enemyPokemon.subtractHealth(20);

@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
@@ -29,6 +30,7 @@ public abstract class Skill {
     //Instance Variables
     protected int id;
     protected String name;
+    protected String description;
     protected int maxPP;
     protected int currentPP;
     protected Pokemon.Type type;
@@ -40,6 +42,7 @@ public abstract class Skill {
     protected boolean damagesEnemy;
     protected boolean punchSkill;
     protected int missRecoil;
+    protected int damage;
 
     //Multi-Hit Move Variables
     protected boolean isMultiStrikeMove;
@@ -61,13 +64,16 @@ public abstract class Skill {
      * @param category The skill's category (physical, special or misc)
      * @param accuracy The accuracy level for the skill.
      */
-    public Skill(int id, String name, int maxPP, Pokemon.Type type, SkillCategory category, int accuracy) {
+    public Skill(int id, String name, String description, int maxPP, Pokemon.Type type,
+                 SkillCategory category, int accuracy) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.maxPP = maxPP;
         this.currentPP = maxPP;
         this.type = type;
         this.category = category;
+        damage = 0;
         priority = 0;
         this.accuracy = accuracy;
         targetsEnemy = true; //default
@@ -86,6 +92,128 @@ public abstract class Skill {
     }
 
     /**
+     * Return the skill's description.
+     * @return The skill's description.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+
+    /**
+     * Return the skill's base damage.
+     * @return The skill's base damage.
+     */
+    public int getBaseDamage() {
+        return damage;
+    }
+
+    /**
+     * Return the skill's category texture.
+     * @return The skill's category texture.
+     */
+    public Texture getCategoryTexture() {
+        if (category == Skill.SkillCategory.PHYSICAL) {
+            return new Texture("bag/gui/skill/physical.png");
+        } else if (category == Skill.SkillCategory.SPECIAL) {
+            return new Texture("bag/gui/skill/special.png");
+        } else {
+            return new Texture("bag/gui/skill/other.png");
+        }
+    }
+
+    public Texture getSkillTypeTexture() {
+        if (type == Pokemon.Type.BUG) {
+            return new Texture("bag/gui/skill/bug.png");
+        } else if (type == Pokemon.Type.DARK) {
+            return new Texture("bag/gui/skill/dark.png");
+        } else if (type == Pokemon.Type.DRAGON) {
+            return new Texture("bag/gui/skill/dragon.png");
+        } else if (type == Pokemon.Type.ELECTRIC) {
+            return new Texture("bag/gui/skill/electric.png");
+        } else if (type == Pokemon.Type.FIGHTING) {
+            return new Texture("bag/gui/skill/fighting.png");
+        } else if (type == Pokemon.Type.FIRE) {
+            return new Texture("bag/gui/skill/fire.png");
+        } else if (type == Pokemon.Type.FLYING) {
+            return new Texture("bag/gui/skill/flying.png");
+        } else if (type == Pokemon.Type.GHOST) {
+            return new Texture("bag/gui/skill/ghost.png");
+        } else if (type == Pokemon.Type.GRASS) {
+            return new Texture("bag/gui/skill/grass.png");
+        } else if (type == Pokemon.Type.GROUND) {
+            return new Texture("bag/gui/skill/ground.png");
+        } else if (type == Pokemon.Type.ICE) {
+            return new Texture("bag/gui/skill/ice.png");
+        } else if (type == Pokemon.Type.NORMAL) {
+            return new Texture("bag/gui/skill/normal.png");
+        } else if (type == Pokemon.Type.POISON) {
+            return new Texture("bag/gui/skill/poison.png");
+        } else if (type == Pokemon.Type.PSYCHIC) {
+            return new Texture("bag/gui/skill/psychic.png");
+        } else if (type == Pokemon.Type.ROCK) {
+            return new Texture("bag/gui/skill/rock.png");
+        } else if (type == Pokemon.Type.STEEL) {
+            return new Texture("bag/gui/skill/steel.png");
+        } else if (type == Pokemon.Type.WATER) {
+            return new Texture("bag/gui/skill/water.png");
+        }
+        else if (type == Pokemon.Type.FAIRY) {
+            return new Texture("bag/gui/skill/fairy.png");
+        }
+        else {
+            return new Texture("bag/gui/skill/normal.png");
+        }
+    }
+    /**
+     * Return the Texture for the skill's border/panel.
+     * @return The Texture for the skill's border/panel.
+     */
+    public Texture getSkillBorderTexture() {
+        if (type == Pokemon.Type.BUG) {
+            return new Texture("battle/skillBorders/bug.png");
+        } else if (type == Pokemon.Type.DARK) {
+            return new Texture("battle/skillBorders/dark.png");
+        } else if (type == Pokemon.Type.DRAGON) {
+            return new Texture("battle/skillBorders/dragon.png");
+        } else if (type == Pokemon.Type.ELECTRIC) {
+            return new Texture("battle/skillBorders/electric.png");
+        } else if (type == Pokemon.Type.FIGHTING) {
+            return new Texture("battle/skillBorders/fighting.png");
+        } else if (type == Pokemon.Type.FIRE) {
+            return new Texture("battle/skillBorders/fire.png");
+        } else if (type == Pokemon.Type.FLYING) {
+            return new Texture("battle/skillBorders/flying.png");
+        } else if (type == Pokemon.Type.GHOST) {
+            return new Texture("battle/skillBorders/ghost.png");
+        } else if (type == Pokemon.Type.GRASS) {
+            return new Texture("battle/skillBorders/grass.png");
+        } else if (type == Pokemon.Type.GROUND) {
+            return new Texture("battle/skillBorders/ground.png");
+        } else if (type == Pokemon.Type.ICE) {
+            return new Texture("battle/skillBorders/ice.png");
+        } else if (type == Pokemon.Type.NORMAL) {
+            return new Texture("battle/skillBorders/normal.png");
+        } else if (type == Pokemon.Type.POISON) {
+            return new Texture("battle/skillBorders/poison.png");
+        } else if (type == Pokemon.Type.PSYCHIC) {
+            return new Texture("battle/skillBorders/psychic.png");
+        } else if (type == Pokemon.Type.ROCK) {
+            return new Texture("battle/skillBorders/rock.png");
+        } else if (type == Pokemon.Type.STEEL) {
+            return new Texture("battle/skillBorders/steel.png");
+        } else if (type == Pokemon.Type.WATER) {
+            return new Texture("battle/skillBorders/water.png");
+        }
+        else if (type == Pokemon.Type.FAIRY) {
+            return new Texture("battle/skillBorders/fairy.png");
+        }
+        else {
+            return new Texture("battle/skillBorders/normal.png");
+        }
+    }
+
+    /**
      * Return whether or not this skill ignores the target's stat
      * changes when it is used. (Defense and Evasion)
      * @return Whether or not this skill ignore's the target's stat
@@ -101,6 +229,14 @@ public abstract class Skill {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Return the skill's category.
+     * @return The skill's category - Physical Special Misc
+     */
+    public SkillCategory getCategory() {
+        return category;
     }
 
     /**

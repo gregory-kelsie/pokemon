@@ -6,6 +6,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
@@ -24,7 +25,8 @@ public class FirePunch extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public FirePunch() {
-        super(SkillFactory.FIRE_PUNCH, "Fire Punch", 15, Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 75, 1, .1);
+        super(SkillFactory.FIRE_PUNCH, "Fire Punch", SkillDescription.FIRE_PUNCH, 15,
+                Pokemon.Type.FIRE, SkillCategory.PHYSICAL, 100, 75, 1, .1);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
         makesPhysicalContact = true;
     }

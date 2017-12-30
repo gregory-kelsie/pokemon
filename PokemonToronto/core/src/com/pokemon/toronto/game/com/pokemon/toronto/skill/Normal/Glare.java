@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ParalysisEffect;
 
@@ -25,7 +26,7 @@ public class Glare extends EffectSkill {
      * - Accuracy: 100
      */
     public Glare() {
-        super(SkillFactory.GLARE, "Glare", 30, Pokemon.Type.NORMAL, 100);
+        super(SkillFactory.GLARE, "Glare", SkillDescription.GLARE, 30, Pokemon.Type.NORMAL, 100);
         effects.add(new ParalysisEffect(SecondaryEffect.Target.ENEMY));
     }
 

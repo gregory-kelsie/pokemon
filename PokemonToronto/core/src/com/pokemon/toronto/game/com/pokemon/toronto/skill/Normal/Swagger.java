@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
@@ -26,7 +27,8 @@ public class Swagger extends EffectSkill {
      * - Accuracy: 85
      */
     public Swagger() {
-        super(SkillFactory.SWAGGER, "Swagger", 15, Pokemon.Type.NORMAL, 85);
+        super(SkillFactory.SWAGGER, "Swagger", SkillDescription.SWAGGER, 15, Pokemon.Type.NORMAL,
+                85);
         effects.add(new AttackEffect(SecondaryEffect.Target.ENEMY, 2,
                 SecondaryEffect.StatDirection.INCREASE));
         effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));

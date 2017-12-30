@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.ConfusionEffect;
@@ -22,7 +23,8 @@ public class TeeterDance extends EffectSkill {
      * - Accuracy: 100
      */
     public TeeterDance() {
-        super(SkillFactory.TEETER_DANCE, "Teeter Dance", 20, Pokemon.Type.NORMAL, 100);
+        super(SkillFactory.TEETER_DANCE, "Teeter Dance", SkillDescription.TEETER_DANCE, 20,
+                Pokemon.Type.NORMAL, 100);
         effects.add(new ConfusionEffect(SecondaryEffect.Target.ENEMY));
     }
 

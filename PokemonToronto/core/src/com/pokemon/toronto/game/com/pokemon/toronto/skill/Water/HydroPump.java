@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,8 @@ public class HydroPump  extends DamageSkill {
      * - Accuracy: 80
      */
     public HydroPump() {
-        super(SkillFactory.HYDRO_PUMP, "Hydro Pump", 5, Pokemon.Type.WATER, SkillCategory.SPECIAL, 80, 110, 1);
+        super(SkillFactory.HYDRO_PUMP, "Hydro Pump", SkillDescription.HYDRO_PUMP, 5,
+                Pokemon.Type.WATER, SkillCategory.SPECIAL, 80, 110, 1);
     }
 
     /**

@@ -9,6 +9,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.BurnEffect;
 
 import java.util.List;
@@ -29,7 +30,8 @@ public class Ember extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public Ember() {
-        super(16, "Ember", 25, Pokemon.Type.FIRE, Skill.SkillCategory.SPECIAL, 100, 40, 1, .1);
+        super(16, "Ember", SkillDescription.EMBER, 25, Pokemon.Type.FIRE,
+                Skill.SkillCategory.SPECIAL, 100, 40, 1, .1);
         secondaryEffects.add(new BurnEffect(SecondaryEffect.Target.ENEMY));
     }
 

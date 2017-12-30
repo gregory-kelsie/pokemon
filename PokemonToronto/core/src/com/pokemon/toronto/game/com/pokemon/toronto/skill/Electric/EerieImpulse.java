@@ -8,6 +8,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimat
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialAttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.SpecialDefenseEffect;
@@ -28,7 +29,8 @@ public class EerieImpulse extends EffectSkill {
      * - Increase power of next electric attack and increase sp. def by 1 stage.
      */
     public EerieImpulse() {
-        super(SkillFactory.EERIE_IMPULSE, "Eerie Impulse", 15, Pokemon.Type.ELECTRIC, -1);
+        super(SkillFactory.EERIE_IMPULSE, "Eerie Impulse", SkillDescription.EERIE_IMPULSE, 15,
+                Pokemon.Type.ELECTRIC, -1);
         effects.add(new SpecialAttackEffect(SecondaryEffect.Target.ENEMY,
                 2, SecondaryEffect.StatDirection.DECREASE));
     }

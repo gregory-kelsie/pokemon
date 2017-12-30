@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.RegularDamageAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.MultiHitMove;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.List;
@@ -28,12 +29,13 @@ public class TripleKick extends MultiHitMove {
      * - Number of Hits: 1-3
      */
     public TripleKick() {
-        super(SkillFactory.TRIPLE_KICK, "Triple Kick", 10, Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 90, 10, 1, 2);
+        super(SkillFactory.TRIPLE_KICK, "Triple Kick", SkillDescription.TRIPLE_KICK, 10,
+                Pokemon.Type.FIGHTING, Skill.SkillCategory.PHYSICAL, 90, 10, 1, 2);
         makesPhysicalContact = true;
     }
 
     /**
-     * Damage the enemy 2-5 times.
+     * Damage the enemy 1-3 times.
      * @param skillUser The Pokemon using the skill
      * @param enemyPokemon The enemy receiving the skill
      * @param skillUserPartyPosition
@@ -44,8 +46,10 @@ public class TripleKick extends MultiHitMove {
      * @param enemyPokemonParty    @return The results of using the move.
      * */
     @Override
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results;
         //Use the damage part of the move.
         if (strikesLeft == -1) {
@@ -54,8 +58,9 @@ public class TripleKick extends MultiHitMove {
         }
         timesHit++;
         strikesLeft--;
-        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field, userField,
-                enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack, targetSkill,
+                skillUserParty, enemyPokemonParty);
         damage += 10; //Increase Triple Kick's damage after each strike.
         results.remove(0); //Remove old single damage result.
         results.add("Dealt " + damageTally + " damage!");

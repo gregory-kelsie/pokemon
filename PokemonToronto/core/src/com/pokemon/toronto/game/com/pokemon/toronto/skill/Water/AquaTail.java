@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -21,7 +22,8 @@ public class AquaTail extends DamageSkill {
      * - Accuracy: 100
      */
     public AquaTail() {
-        super(SkillFactory.AQUA_TAIL, "Aqua Tail", 10, Pokemon.Type.WATER, SkillCategory.PHYSICAL, 90, 90, 1);
+        super(SkillFactory.AQUA_TAIL, "Aqua Tail", SkillDescription.AQUA_TAIL, 10,
+                Pokemon.Type.WATER, SkillCategory.PHYSICAL, 90, 90, 1);
         makesPhysicalContact = true;
     }
 

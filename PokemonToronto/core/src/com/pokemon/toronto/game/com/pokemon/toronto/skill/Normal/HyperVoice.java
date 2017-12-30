@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -23,8 +24,8 @@ public class HyperVoice extends DamageSkill {
      * - Accuracy: 100
      */
     public HyperVoice() {
-        super(SkillFactory.HYPER_VOICE, "Hyper Voice", 10, Pokemon.Type.NORMAL,
-                SkillCategory.SPECIAL, 100, 90, 1);
+        super(SkillFactory.HYPER_VOICE, "Hyper Voice", SkillDescription.HYPER_VOICE, 10,
+                Pokemon.Type.NORMAL, SkillCategory.SPECIAL, 100, 90, 1);
     }
 
     /**

@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class PetalDance extends DamageSkill {
      * - Accuracy: 100
      */
     public PetalDance() {
-        super(21, "Petal Dance", 10, Pokemon.Type.GRASS, SkillCategory.SPECIAL, 100, 120, 1);
+        super(21, "Petal Dance", SkillDescription.PETAL_DANCE, 10, Pokemon.Type.GRASS,
+                SkillCategory.SPECIAL, 100, 120, 1);
     }
-
 
     /**
      * Damage the enemy for 2-3 turns. Once finished confuses the user.
@@ -43,8 +44,10 @@ public class PetalDance extends DamageSkill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The results of using the move.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         //Use the damage part of the move.
         if (!skillUser.isOutraging()) {
             double rand = Math.random();
@@ -56,12 +59,14 @@ public class PetalDance extends DamageSkill {
             }
             skillUser.activateOutrage(this, turns);
         }
-        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition, enemyPokemonPartyPosition, field,
-                userField, enemyField, isFirstAttack, targetSkill, skillUserParty, enemyPokemonParty);
+        List<String> results = super.use(skillUser, enemyPokemon, skillUserPartyPosition,
+                enemyPokemonPartyPosition, field, userField, enemyField, isFirstAttack,
+                targetSkill, skillUserParty, enemyPokemonParty);
 
         skillUser.reduceOutrageTime();
         if (skillUser.getOutrageTime() == 0) {
-            if (!skillUser.isConfused() && skillUser.getBattleAbility() != Pokemon.Ability.OWN_TEMPO) {
+            if (!skillUser.isConfused() && skillUser.getBattleAbility()
+                    != Pokemon.Ability.OWN_TEMPO) {
                 results.add(skillUser.getName() + " became confused.");
                 skillUser.induceConfusion();
                 skillUser.removeOutrageSkill();

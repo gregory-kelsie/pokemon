@@ -7,6 +7,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Roost extends Skill {
      * - Accuracy: 100
      */
     public Roost() {
-        super(SkillFactory.ROOST, "Roost", 5, Pokemon.Type.FLYING, Skill.SkillCategory.MISC, 100);
+        super(SkillFactory.ROOST, "Roost", SkillDescription.ROOST, 5, Pokemon.Type.FLYING,
+                Skill.SkillCategory.MISC, 100);
         targetsEnemy = false;
     }
 
@@ -43,8 +45,10 @@ public class Roost extends Skill {
      * @param skillUserParty
      * @param enemyPokemonParty      @return The move results.
      * */
-    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field,
-                            SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetSkill, List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
+    public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,
+                            int enemyPokemonPartyPosition, Field field, SubField userField,
+                            SubField enemyField, boolean isFirstAttack, Skill targetSkill,
+                            List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
         skillUser.addHealth((int)Math.round(skillUser.getHealthStat() * 0.5));
         results.add(skillUser.getName() + " regained health!");
@@ -64,7 +68,8 @@ public class Roost extends Skill {
 
     @Override
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
-                               SubField userField, SubField enemyField, boolean isFirstAttack, Skill targetsSkill) {
+                               SubField userField, SubField enemyField, boolean isFirstAttack,
+                               Skill targetsSkill) {
         if (skillUser.hasFullHealth()) {
             return new FailResult(skillUser.getName() + " is full health!");
         }

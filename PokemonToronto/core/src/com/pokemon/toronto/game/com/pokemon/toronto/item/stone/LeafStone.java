@@ -15,11 +15,12 @@ public class LeafStone extends Item {
         super(new ItemBlob.LeafStoneBlob(), "bag/icons/leafStone.png");
     }
 
-    public void use(Pokemon p) {
+    public String use(Pokemon p) {
         if (p.getLeafStoneEvolutionId() != -1) {
             PokemonFactory pf = new PokemonFactory();
             p = pf.createPokemon(p.getLeafStoneEvolutionId(), p);
         }
+        return "";
     }
 
     @Override

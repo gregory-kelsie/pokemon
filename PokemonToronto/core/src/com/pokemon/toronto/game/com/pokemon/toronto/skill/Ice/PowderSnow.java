@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffectSkill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.FreezeEffect;
 
@@ -23,7 +24,8 @@ public class PowderSnow extends SecondaryEffectSkill {
      * - Accuracy: 100
      */
     public PowderSnow() {
-        super(SkillFactory.POWDER_SNOW, "Powder Snow", 25, Pokemon.Type.ICE, SkillCategory.SPECIAL, 100, 40, 1, .1);
+        super(SkillFactory.POWDER_SNOW, "Powder Snow", SkillDescription.POWDER_SNOW, 25,
+                Pokemon.Type.ICE, SkillCategory.SPECIAL, 100, 40, 1, .1);
         secondaryEffects.add(new FreezeEffect(SecondaryEffect.Target.ENEMY));
     }
 

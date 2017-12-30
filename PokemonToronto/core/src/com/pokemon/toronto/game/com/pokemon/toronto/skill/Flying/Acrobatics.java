@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 /**
@@ -22,7 +23,8 @@ public class Acrobatics extends DamageSkill {
      * - Accuracy: 100
      */
     public Acrobatics() {
-        super(SkillFactory.ACROBATICS, "Acrobatics", 15, Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 55, 1);
+        super(SkillFactory.ACROBATICS, "Acrobatics", SkillDescription.ACROBATICS, 15,
+                Pokemon.Type.FLYING, Skill.SkillCategory.PHYSICAL, 100, 55, 1);
         makesPhysicalContact = true;
         //TODO: Override use method and check if the user is holding an item
     }
