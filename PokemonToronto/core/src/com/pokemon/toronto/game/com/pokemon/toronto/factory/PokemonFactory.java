@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Blastoise;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Caterpie;
@@ -186,6 +187,10 @@ public class PokemonFactory {
 
     }
 
+    private Ability.AbilityId getAbilityId(int abilityInteger) {
+        return Ability.AbilityId.fromInt(abilityInteger);
+
+    }
 
     public Pokemon createPokemon(int id, int level, char gender, Nature nature, Pokemon.Ability ability, int currentHealth, int currentExp,
                                  Pokemon.Status status, int[] ivs, int[] evs, Skill firstSkill, Skill secondSkill, Skill thirdSkill, Skill fourthSkill) {

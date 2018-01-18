@@ -1,6 +1,5 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill;
 
-import com.sun.javafx.binding.StringFormatter;
 
 import javax.management.StringValueExp;
 

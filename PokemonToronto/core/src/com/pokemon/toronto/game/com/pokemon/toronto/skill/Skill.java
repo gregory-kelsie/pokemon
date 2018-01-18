@@ -397,8 +397,9 @@ public abstract class Skill {
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @param targetSkill
      * @param skillUserParty The party for the skill user.
-     * @param enemyPokemonParty The party for the skill receiver.       @return List of Strings that display the result of
- * using the move. The first list displays misses, and the second
+     * @param enemyPokemonParty The party for the skill receiver.
+     * @return List of Strings that display the result of using the move. The first list
+     * displays misses, and the second
      */
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon,
                             int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
@@ -479,6 +480,7 @@ public abstract class Skill {
      */
     //TODO: Refactor signature to include pokemon parties and a boolean to represent is a wild battle. (Whirlwind on 1 pokemon in a trainer battle will fail but will
     //TODO: blow away the enemy in a wild battle.
+    //TODO: Add general fail scenarios - Water types fail when the field is Desolate Land etc.
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
                                boolean isFirstAttack, Skill targetsSkill) {

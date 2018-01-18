@@ -100,7 +100,8 @@ public abstract class DamageSkill extends Skill {
      * @param isFirstAttack Whether or not the skill was used first in the clash
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty       @return The skill results.
+     * @param enemyPokemonParty
+     * @return The skill results.
      * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition, int enemyPokemonPartyPosition, Field field, SubField userField,
@@ -109,6 +110,7 @@ public abstract class DamageSkill extends Skill {
         
         List<String> results = new ArrayList<String>();
         boolean heldOnWithSturdy = false;
+        //TODO: Set battle type ex: Aerialate switch normal moves to flying
         boolean hasCrit = calcCrit(skillUser, enemyPokemon, field);
 
         //Add Effectiveness results

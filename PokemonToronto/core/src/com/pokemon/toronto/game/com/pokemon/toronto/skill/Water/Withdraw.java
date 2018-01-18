@@ -10,8 +10,6 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.AttackEffect;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects.DefenseEffect;
 
-import javafx.scene.effect.Effect;
-
 /**
  * Created by Gregory on 9/18/2017.
  */
