@@ -53,6 +53,7 @@ public class BattleTextures {
     private BitmapFont regularFont; //Textbox and Skill
     private BitmapFont itemDescFont;
     private BitmapFont smallFont; //Pokemon panel font
+    private BitmapFont nameFont;//Name font for battling pokemon with stroke.
 
     //Pokemon Sprite Textures
     private Texture userPokemonTexture;
@@ -77,6 +78,10 @@ public class BattleTextures {
     private Texture paralysisTexture;
     private Texture sleepTexture;
 
+    //Gender Textures
+    private Texture maleTexture;
+    private Texture femaleTexture;
+
     /**
      *
      * @param backPath
@@ -91,8 +96,11 @@ public class BattleTextures {
 
     private void initTextures(String backPath, String enemyPath,
                               List<String> partyIcons) {
+        maleTexture = new Texture("battle/male.png");
+        femaleTexture = new Texture("battle/female.png");
         healthText = new BitmapFont(Gdx.files.internal("battle/healthFont.fnt"));
         healthText.setColor(Color.BLACK);
+        nameFont = new BitmapFont(Gdx.files.internal("battle/pokename.fnt"));
         regularFont = new BitmapFont(Gdx.files.internal("battle/font/regularFont.fnt"));
         itemDescFont = new BitmapFont(Gdx.files.internal("battle/itemDesc.fnt"));
         smallFont = new BitmapFont(Gdx.files.internal("battle/textFont.fnt"));
@@ -407,6 +415,18 @@ public class BattleTextures {
         userPokemonTexture = newTexture;
     }
 
+    public BitmapFont getNameFont() {
+        return nameFont;
+    }
+
+    public Texture getMaleIcon() {
+        return maleTexture;
+    }
+
+    public Texture getFemaleIcon() {
+        return femaleTexture;
+    }
+
     public void setFirstItem(Texture firstItem) {
         this.firstItem = firstItem;
     }
@@ -473,6 +493,7 @@ public class BattleTextures {
         healthText.dispose();
         regularFont.dispose();
         smallFont.dispose();
+        nameFont.dispose();
 
         firstSkill.dispose();
         yesNo.dispose();
@@ -490,7 +511,8 @@ public class BattleTextures {
         sleepTexture.dispose();
         poisonTexture.dispose();
         paralysisTexture.dispose();
-
+        maleTexture.dispose();
+        femaleTexture.dispose();
         disposeItemTextures();
     }
 }

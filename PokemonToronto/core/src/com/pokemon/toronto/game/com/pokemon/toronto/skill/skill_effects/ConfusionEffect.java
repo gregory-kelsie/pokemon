@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 
 import java.util.List;
@@ -39,9 +40,7 @@ public class ConfusionEffect extends SecondaryEffect {
             targetSubField = enemyField;
         }
         //Check if the user is able to receive confusion.
-        if (!effectReceiver.isConfused() &&
-                effectReceiver.getBattleAbility() != Pokemon.Ability.OWN_TEMPO &&
-                !targetSubField.hasSafeguard()) {
+        if (effectReceiver.isConfusable() && !targetSubField.hasSafeguard()) {
             effectReceiver.induceConfusion();
             results.add(effectReceiver.getName() + " was confused!");
         }

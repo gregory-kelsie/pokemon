@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -71,7 +72,7 @@ public class Yawn extends Skill {
                                SubField userField, SubField enemyField, boolean isFirstAttack,
                                Skill targetsSkill) {
         if (enemyPokemon.isYawned() || enemyPokemon.isStatused() ||
-                enemyPokemon.getBattleAbility() == Pokemon.Ability.INSOMNIA) {
+                enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.INSOMNIA) {
             return new FailResult("It failed...");
         }
         return new FailResult(false);

@@ -35,9 +35,7 @@ public class FlinchEffect extends SecondaryEffect {
             } else {
                 effectReceiver = enemyPokemon;
             }
-            if (effectReceiver.getBattleAbility() !=
-                    Pokemon.Ability.INNER_FOCUS && effectReceiver.getBattleAbility() !=
-                    Pokemon.Ability.SHIELD_DUST) {
+            if (effectReceiver.isFlinchable()) {
                     effectReceiver.flinch();
             }
         }

@@ -270,7 +270,7 @@ public class PokeMartState extends GameState {
             Gdx.app.log("martxy", x + "," + y);
             if (x >= 0 && x <= 105 && y >= 0 && y <= 93) {
                 clickSound.play();
-                gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                 bgm.stop();
                 gsm.playBgm();
                 dispose();

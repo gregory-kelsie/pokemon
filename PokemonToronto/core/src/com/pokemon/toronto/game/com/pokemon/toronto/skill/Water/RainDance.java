@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -82,7 +83,7 @@ public class RainDance extends Skill {
                 field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                 field.getWeatherType() == WeatherType.RAIN) {
             return new FailResult("It failed...");
-        } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.CLOUD_NINE) {
+        } else if (enemyPokemon.getBattleAbility().getId() == AbilityId.CLOUD_NINE) {
             return new FailResult(enemyPokemon.getName() + " prevents weather changes\n" +
                     "with ability Cloud Nine!");
         }

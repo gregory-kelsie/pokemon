@@ -185,7 +185,7 @@ public class RegionSelect extends GameState {
      */
     private void clickedPowerButton() {
         clickSound.play();
-        gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+        gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
         dispose();
     }
 

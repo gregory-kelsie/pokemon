@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -23,6 +24,10 @@ public class Parasect extends Pokemon {
     private static final int CAPTURE_RATE = 75;
     private static final double WEIGHT = 29.5;
 
+    private static final Ability FIRST_ABILITY = new Ability.EffectSpore();
+    private static final Ability SECOND_ABILITY = new Ability.DrySkin();
+    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+
     //Base Stats
     private static final int BASE_HEALTH = 60;
     private static final int BASE_ATTACK = 95;
@@ -39,49 +44,14 @@ public class Parasect extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/047.png";
 
     /**
-     * Create a Parasect with the specified level.
-     * @param level The level of the Parasect.
+     * Create a Parasect
      */
-    public Parasect(int level) {
-        super(NUMBER, NAME, level, Type.BUG, Type.GRASS, ExpType.MEDIUM_FAST,
+    public Parasect() {
+        super(NUMBER, NAME, Type.BUG, Type.GRASS, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Parasect from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Parasect(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                 Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                 Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
-    }
-
-    //TODO: HIDDEN DAMP
-    @Override
-    protected void initAbility() {
-        if (Math.random() <= .5) {
-            ability = Ability.EFFECT_SPORE;
-        } else {
-            ability = Ability.DRY_SKIN;
-        }
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

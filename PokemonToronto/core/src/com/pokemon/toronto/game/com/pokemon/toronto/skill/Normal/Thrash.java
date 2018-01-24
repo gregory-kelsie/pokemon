@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
@@ -68,7 +69,7 @@ public class Thrash extends DamageSkill {
         skillUser.reduceOutrageTime();
         if (skillUser.getOutrageTime() == 0) {
             if (!skillUser.isConfused() &&
-                    skillUser.getBattleAbility() != Pokemon.Ability.OWN_TEMPO) {
+                    skillUser.getBattleAbility().getId() != Ability.AbilityId.OWN_TEMPO) {
                 results.add(skillUser.getName() + " became confused.");
                 skillUser.induceConfusion();
                 skillUser.removeOutrageSkill();

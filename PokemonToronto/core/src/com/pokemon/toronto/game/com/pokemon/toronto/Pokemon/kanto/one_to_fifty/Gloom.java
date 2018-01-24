@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
@@ -24,6 +25,10 @@ public class Gloom extends Pokemon {
     private static final int CAPTURE_RATE = 120;
     private static final double WEIGHT = 8.6;
 
+    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    private static final Ability SECOND_ABILITY = null;
+    private static final Ability HIDDEN_ABILITY = new Ability.Stench();
+
     //Base Stats
     private static final int BASE_HEALTH = 60;
     private static final int BASE_ATTACK = 65;
@@ -40,45 +45,14 @@ public class Gloom extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/044.png";
 
     /**
-     * Create a Gloom with the specified level.
-     * @param level The level of the Gloom.
+     * Create a Gloom
      */
-    public Gloom(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GRASS, Pokemon.Type.POISON, ExpType.MEDIUM_SLOW,
+    public Gloom() {
+        super(NUMBER, NAME, Pokemon.Type.GRASS, Pokemon.Type.POISON, ExpType.MEDIUM_SLOW,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Gloom from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Gloom(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.GRASS, Type.POISON, ability, nature, ExpType.MEDIUM_SLOW,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
-    }
-
-    //TODO: HIDDEN STENCH
-    @Override
-    protected void initAbility() {
-        ability = Ability.CHLOROPHYLL;
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**
@@ -111,5 +85,10 @@ public class Gloom extends Pokemon {
     @Override
     public int getLeafStoneEvolutionId() {
         return PokemonId.VILEPLUME.getValue();
+    }
+
+    @Override
+    public int getSunStoneEvolutionId() {
+        return PokemonId.BELLOSSOM.getValue();
     }
 }

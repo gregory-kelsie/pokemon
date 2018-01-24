@@ -5,7 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.AbsorbResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -24,9 +27,16 @@ public abstract class Pokemon {
     //Basic
     protected int pokemonId;
     protected String name;
-    protected com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature nature;
+    protected Nature nature;
     protected ExpType expType;
+
+    //Abilities
+    protected Ability firstAbility;
+    protected Ability secondAbility;
+    protected Ability hiddenAbility;
     protected Ability ability;
+    protected int abilityPosition;
+
     protected char gender;
     protected Type typeOne;
     protected Type typeTwo;
@@ -60,6 +70,10 @@ public abstract class Pokemon {
     protected HashMap<Integer, List<Integer>> levelUpSkills;
     protected List<Integer> evolutionSkills;
     protected List<Skill> skills;
+
+    protected Item holdItem;
+    //The item checked during battle. It can also change and move around with skills like thief.
+    protected Item battleItem;
 
     //Battle Variables
     protected boolean flinched;
@@ -276,35 +290,6 @@ public abstract class Pokemon {
     }
 
     /**
-     * Pokemon abilities
-     */
-    public enum Ability {
-        INTIMIDATE(0), SHED_SKIN(1), UNNERVE(2), RUN_AWAY(3), QUICK_FEET(4), RATTLED(5), GUTS(6), HUSTLE(7), SNIPER(8),
-        SUPER_LUCK(9), SWARM(10), INSOMNIA(11), INNER_FOCUS(12), STATIC(13), KEEN_EYE(14), TANGLED_FEET(15), BIG_PECKS(16),
-        LIGHTNINGROD(17), TORRENT(18), RAIN_DISH(19), BLAZE(20), SOLAR_POWER(21), OVERGROW(22), CHLOROPHYLL(23), SHIELD_DUST(24),
-        POISON_POINT(25), RIVALRY(26), ADAPTABILITY(27), THICK_FAT(28), DRY_SKIN(29), HEATPROOF(30), FILTER(31), TINTED_LENS(32),
-        SOLID_ROCK(33), POISON_TOUCH(34), FLAME_BODY(35), EFFECT_SPORE(36), OWN_TEMPO(37), BATTLE_ARMOR(38), SHELL_ARMOR(39),
-        ICE_BODY(40), SNOW_CLOAK(41), MAGIC_GUARD(42), OVERCOAT(43), SAND_FORCE(44), SAND_RUSH(45), SAND_VEIL(46), HYDRATION(47),
-        SWIFT_SWIM(48), DAMP(49), DRIZZLE(50), SAND_STREAM(51), DROUGHT(52), SNOW_WARNING(53), CLOUD_NINE(54), MOLD_BREAKER(55),
-        PRESSURE(56), MOTOR_DRIVE(57), WATER_ABSORB(58), VOLT_ABSORB(59), LEVITATE(60), LEAF_GUARD(61), IMMUNITY(62), STURDY(63),
-        ROCK_HEAD(64), LIMBER(65), SIMPLE(66), NONE(66);
-        private final int value;
-        private Ability(int value) {
-            this.value = value;
-        }
-        public static Ability fromInt(int i) {
-            for (Ability n : Ability.values()) {
-                if (n.getValue() == i) { return n; }
-            }
-            return null;
-        }
-
-        public int getValue() {
-            return value;
-        }
-    }
-
-    /**
      * Pokemon types, Fire, Grass, Water etc.
      * None is also a type when the Pokemon doesn't have a second type.
      */
@@ -362,7 +347,6 @@ public abstract class Pokemon {
      * Fresh means that there are no current evs
      * @param pokemonId The Pokemon id, 1 is Bulbasaur, 2 is Ivysaur etc.
      * @param name The name of the Pokemon.
-     * @param level The Pokemon's level.
      * @param typeOne The Pokemon's type.
      * @param typeTwo The Pokemon's second type, could be NONE
      * @param expType The Pokemon's exp growth type
@@ -376,50 +360,27 @@ public abstract class Pokemon {
      * @param captureRate The Pokemon's capture rate.
      * @param weight The Pokemon's weight in KG
      */
-    public Pokemon(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
+    public Pokemon(int pokemonId, String name, Type typeOne, Type typeTwo,
                    ExpType expType, int baseExp, int[] evYield,
                    int[] baseStats, String mapIconPath, String backPath, String miniPath,
-                   String cryPath, String profilePath, int captureRate, double weight) {
-        initRandomIVs();
-        initBlankEVs();
+                   String cryPath, String profilePath, int captureRate, double weight,
+                   Ability firstAbility, Ability secondAbility, Ability hiddenAbility) {
+
+        init(pokemonId, name, typeOne, typeTwo, expType, baseExp,
+                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
         this.weight = weight;
         this.profilePath = profilePath;
-        initGender();
-        initAbility();
-        init(pokemonId, name, level, typeOne, typeTwo, expType, baseExp,
-                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
-        setRandomNature();
-        //TODO: Remove ability from parameter and run initAbility(). Create initAbility for each
-        //TODO: Pokemon.
-        initWildSkills();
+        this.firstAbility = firstAbility;
+        this.secondAbility = secondAbility;
+        this.hiddenAbility = hiddenAbility;
     }
 
-    public Pokemon(int pokemonId, String name, int level, char gender, Status status,
-                   int[] ivs, int[] evs, Type typeOne, Type typeTwo, Ability ability,
-                   Nature nature, ExpType expType, int baseExp, int[] evYield, int[] baseStats,
-                   String mapIconPath, String backPath, String miniPath,
-                   String cryPath, String profilePath, int captureRate, double weight, Skill firstSkill, Skill secondSkill,
-                   Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp) {
-        this.gender = gender;
-        this.ivs = ivs;
-        this.evs = evs;
-        this.nature = nature;
-        this.profilePath = profilePath;
-        this.ability = ability;
-        init(pokemonId, name, level, typeOne, typeTwo, expType, baseExp,
-                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
-        this.status = status;
-        setHealthAndExp(currentHealth, currentExp);
-        addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
-    }
-
-    private void init(int pokemonId, String name, int level, Type typeOne, Type typeTwo,
+    private void init(int pokemonId, String name, Type typeOne, Type typeTwo,
                       ExpType expType, int baseExp, int[] evYield, int[] baseStats,
                       String mapIconPath, String backPath, String miniPath, String cryPath,
                       int captureRate) {
         this.pokemonId = pokemonId;
         this.name = name;
-        this.level = level;
         this.baseStats = baseStats;
         this.baseExp = baseExp;
         this.evYield = evYield;
@@ -459,9 +420,6 @@ public abstract class Pokemon {
         resetBattleVariables();
         sleepTime = 0;
         flinched = false;
-        currentHealth = getHealthStat();
-        animationHealth = currentHealth;
-        initNatureMultipliers();
     }
 
     /**
@@ -563,11 +521,79 @@ public abstract class Pokemon {
     }
 
     /**
+     * Insert data into the Pokemon class. Usually from a DB or from a pre-evolved Pokemon.
+     * @param level The Pokemon's level.
+     * @param gender The Pokemon's gender.
+     * @param ivs The Pokemon's array of IVs
+     * @param evs The Pokemon's array of EVs
+     * @param firstSkill The Pokemon's first skill
+     * @param secondSkill The Pokemon's second skill
+     * @param thirdSkill The Pokemon's third skill
+     * @param fourthSkill The Pokemon's fourth skill
+     * @param currentHealth The Pokemon's current health
+     * @param currentExp The Pokemon's current exp
+     * @param status The Pokemon's status (Burn, Paralyzed normal etc)
+     * @param nature The Pokemon's nature.
+     * @param abilityPosition The Pokemon's ability position
+     */
+    public void insertData(int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
+                           Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
+                           Pokemon.Status status, Nature nature, int abilityPosition) {
+        this.level = level;
+        this.gender = gender;
+        this.ivs = ivs;
+        this.evs = evs;
+        this.currentHealth = currentHealth;
+        this.currentExp = currentExp;
+        this.status = status;
+        this.nature = nature;
+        this.abilityPosition = abilityPosition;
+        if (abilityPosition == 1 && secondAbility != null) {
+            this.ability = secondAbility;
+        } else if (abilityPosition == 2 && hiddenAbility != null) {
+            this.ability = hiddenAbility;
+        } else {
+            this.ability = firstAbility;
+        }
+        this.battleAbility = ability;
+        setHealthAndExp(currentHealth, currentExp);
+        addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
+        initNatureMultipliers();
+    }
+
+    public void insertWildData(int level) {
+        this.level = level;
+        initRandomIVs();
+        initBlankEVs();
+        initGender();
+        initAbility();
+        setRandomNature();
+        initWildSkills();
+        currentHealth = getHealthStat();
+        animationHealth = currentHealth;
+        initNatureMultipliers();
+        initializeHoldItem();
+    }
+
+    protected void initializeHoldItem() {
+        //No hold item is default.
+    }
+
+    /**
      * Set a new battle weight for the Pokemon. Moves like Autotomize change this.
      * @param newWeight The new weight for the Pokemon.
      */
     public void setBattleWeight(double newWeight) {
         battleWeight = newWeight;
+    }
+
+    /**
+     * Return what ability the Pokemon has. The first ability = 0, The second ability = 1, or
+     * the hidden ability = 2
+     * @return The ability position.
+     */
+    public int getAbilityPosition() {
+        return abilityPosition;
     }
 
     public double getWeight() {
@@ -2070,9 +2096,24 @@ public abstract class Pokemon {
     }
 
     /**
-     * Init the Pokemon's ability. Should be overrided by the subclass.
+     * Init the Pokemon's ability.
      */
-    protected abstract void initAbility();
+    private void initAbility() {
+        if (secondAbility != null) {
+            double rand = Math.random();
+            if (rand < .5) {
+                ability = firstAbility;
+                abilityPosition = 0;
+            } else {
+                ability = secondAbility;
+                abilityPosition = 1;
+            }
+        } else {
+            ability = firstAbility;
+            abilityPosition = 0;
+        }
+        battleAbility = ability;
+    }
 
     /**
      * Return the Pokemon's gender.
@@ -2483,10 +2524,32 @@ public abstract class Pokemon {
      * due to their ability.
      */
     public boolean isProtectedByDefenseLoweringEffects() {
-        if (ability == Ability.BIG_PECKS) {
+        if (ability.getId() == AbilityId.BIG_PECKS) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Return whether or not the Pokemon is holding an item.
+     * @return Whether or not the Pokemon is holding an item.
+     */
+    public boolean isHoldingItem() {
+        if (holdItem != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isHoldingBattleItem() {
+        if (battleItem != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public void giveItem(Item newItem) {
+        holdItem = newItem;
     }
 
     /**
@@ -2496,7 +2559,7 @@ public abstract class Pokemon {
      * due to their ability.
      */
     public boolean isProtectedByAccuracyLoweringEffects() {
-        if (ability == Ability.KEEN_EYE) {
+        if (ability.getId() == AbilityId.KEEN_EYE) {
             return true;
         }
         return false;
@@ -2813,14 +2876,14 @@ public abstract class Pokemon {
         if (isParalyzed()) {
             userSpeed *= 0.5;
         }
-        if (ability == Pokemon.Ability.SAND_RUSH &&
+        if (ability.getId() == AbilityId.SAND_RUSH &&
                 field.getWeatherType() == WeatherType.SAND) {
             userSpeed *= 2;
-        } else if (ability == Pokemon.Ability.SWIFT_SWIM &&
+        } else if (ability.getId() == AbilityId.SWIFT_SWIM &&
                 (field.getWeatherType() == WeatherType.RAIN ||
                         field.getWeatherType() == WeatherType.HEAVY_RAIN)) {
             userSpeed *= 2;
-        } else if (ability == Pokemon.Ability.CHLOROPHYLL &&
+        } else if (ability.getId() == AbilityId.CHLOROPHYLL &&
                 (field.getWeatherType() == WeatherType.SUN ||
                         field.getWeatherType() == WeatherType.HARSH_SUNSHINE)) {
             userSpeed *= 2;
@@ -3583,17 +3646,17 @@ public abstract class Pokemon {
 
     public AbsorbResult getAbsorbResults(Skill usedSkill) {
         if (usedSkill.getType() == Type.ELECTRIC) {
-            if (ability == Ability.LIGHTNINGROD) {
+            if (ability.getId() == AbilityId.LIGHTNINGROD) {
                 getLightningRodAbsorbEffect();
-            } else if (ability == Ability.MOTOR_DRIVE) {
+            } else if (ability.getId() == AbilityId.MOTOR_DRIVE) {
                 return getMotorDriveAbsorbEffect();
-            } else if (ability == Ability.VOLT_ABSORB) {
+            } else if (ability.getId() == AbilityId.VOLT_ABSORB) {
                 return getVoltAbsorbAbsorbEffect();
             }
         } else if (usedSkill.getType() == Type.WATER) {
-            if (ability == Ability.DRY_SKIN) {
+            if (ability.getId() == AbilityId.DRY_SKIN) {
                 return getDrySkinAbsorbEffect();
-            } else if (ability == Ability.WATER_ABSORB) {
+            } else if (ability.getId() == AbilityId.WATER_ABSORB) {
                 return getWaterAbsorbAbsorbEffect();
             }
         }
@@ -3983,148 +4046,8 @@ public abstract class Pokemon {
      * Return the String representation for the Pokemon's ability.
      * @return A String representing the Pokemon's ability.
      */
-    public String getAbilityString() {
-        switch(ability) {
-            case INTIMIDATE:
-                return "Intimidate";
-            case SHED_SKIN:
-                return "Shed Skin";
-            case UNNERVE:
-                return "Unnerve";
-            case RUN_AWAY:
-                return "Run Away";
-            case QUICK_FEET:
-                return "Quick Feet";
-            case RATTLED:
-                return "Rattled";
-            case GUTS:
-                return "Guts";
-            case HUSTLE:
-                return "Hustle";
-            case SNIPER:
-                return "Sniper";
-            case SUPER_LUCK:
-                return "Super Luck";
-            case SWARM:
-                return "Swarm";
-            case INSOMNIA:
-                return "Insomnia";
-            case INNER_FOCUS:
-                return "Inner Focus";
-            case STATIC:
-                return "Static";
-            case BIG_PECKS:
-                return "Big Pecks";
-            case TANGLED_FEET:
-                return "Tangled Feet";
-            case KEEN_EYE:
-                return "Keen Eye";
-            case LIGHTNINGROD:
-                return "Lightning Rod";
-            case TORRENT:
-                return "Torrent";
-            case RAIN_DISH:
-                return "Rain Dish";
-            case BLAZE:
-                return "Blaze";
-            case SOLAR_POWER:
-                return "Solar Power";
-            case OVERGROW:
-                return "Overgrow";
-            case CHLOROPHYLL:
-                return "Chlorophyll";
-            case SHIELD_DUST:
-                return "Shield Dust";
-            case POISON_POINT:
-                return "Poison Point";
-            case RIVALRY:
-                return "Rivalry";
-            case ADAPTABILITY:
-                return "Adaptability";
-            case THICK_FAT:
-                return "Thick Fat";
-            case DRY_SKIN:
-                return "Dry Skin";
-            case HEATPROOF:
-                return "Heatproof";
-            case FILTER:
-                return "Filter";
-            case SOLID_ROCK:
-                return "Solid Rock";
-            case TINTED_LENS:
-                return "Tinted Lens";
-            case POISON_TOUCH:
-                return "Poison Touch";
-            case FLAME_BODY:
-                return "Flame Body";
-            case EFFECT_SPORE:
-                return "Effect Spore";
-            case OWN_TEMPO:
-                return "Own Tempo";
-            case BATTLE_ARMOR:
-                return "Battle Armor";
-            case SHELL_ARMOR:
-                return "Shell Armor";
-            case ICE_BODY:
-                return "Ice Body";
-            case SNOW_CLOAK:
-                return "Snow Cloak";
-            case MAGIC_GUARD:
-                return "Magic Guard";
-            case OVERCOAT:
-                return "Overcoat";
-            case SAND_FORCE:
-                return "Sand Force";
-            case SAND_RUSH:
-                return "Sand Rush";
-            case SAND_VEIL:
-                return "Sand Veil";
-            case HYDRATION:
-                return "Hydration";
-            case SWIFT_SWIM:
-                return "Swift Swim";
-            case DAMP:
-                return "Damp";
-            case DRIZZLE:
-                return "Drizzle";
-            case DROUGHT:
-                return "Drought";
-            case SAND_STREAM:
-                return "Sand Stream";
-            case SNOW_WARNING:
-                return "Snow Warning";
-            case MOLD_BREAKER:
-                return "Mold Breaker";
-            case CLOUD_NINE:
-                return "Cloud Nine";
-            case PRESSURE:
-                return "Pressure";
-            case MOTOR_DRIVE:
-                return "Motor Drive";
-            case WATER_ABSORB:
-                return "Water Absorb";
-            case VOLT_ABSORB:
-                return "Volt Absorb";
-            case LEVITATE:
-                return "Levitate";
-            case IMMUNITY:
-                return "Immunity";
-            case LEAF_GUARD:
-                return "Leaf Guard";
-            case STURDY:
-                return "Sturdy";
-            case ROCK_HEAD:
-                return "Rock Head";
-            case LIMBER:
-                return "Limber";
-            case SIMPLE:
-                return "Simple";
-            case NONE:
-                return "No Ability";
-            default:
-                return "Ability Error";
-
-        }
+    public String getAbilityName() {
+       return ability.getName();
     }
 
     /**
@@ -4250,7 +4173,7 @@ public abstract class Pokemon {
 
     public boolean isPoisonable() {
         if (!isStatused() && currentHealth != 0 &&
-                battleAbility != Pokemon.Ability.SHIELD_DUST && !(battleTypeOne == Type.POISON ||
+                battleAbility.getId() != AbilityId.SHIELD_DUST && !(battleTypeOne == Type.POISON ||
                 battleTypeTwo == Type.POISON) && !(battleTypeOne == Type.STEEL ||
                 battleTypeTwo == Type.STEEL)) {
             return true;
@@ -4259,8 +4182,8 @@ public abstract class Pokemon {
     }
 
     public boolean isParalyzable() {
-        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
-                battleAbility != Pokemon.Ability.LIMBER && !(battleTypeOne == Type.ELECTRIC ||
+        if (!isStatused() && currentHealth != 0 && battleAbility.getId() != AbilityId.SHIELD_DUST &&
+                battleAbility.getId() != AbilityId.LIMBER && !(battleTypeOne == Type.ELECTRIC ||
                 battleTypeTwo == Type.ELECTRIC)) {
             return true;
         }
@@ -4268,13 +4191,13 @@ public abstract class Pokemon {
     }
 
     public boolean isSleepable() {
-        if (!isStatused() && battleAbility != Pokemon.Ability.INSOMNIA && !uproaring) {
+        if (!isStatused() && battleAbility.getId() != AbilityId.INSOMNIA && !uproaring) {
             return true;
         }
         return false;
     }
     public boolean isFreezable() {
-        if (!isStatused() && currentHealth != 0 && battleAbility != Pokemon.Ability.SHIELD_DUST &&
+        if (!isStatused() && currentHealth != 0 && battleAbility.getId() != AbilityId.SHIELD_DUST &&
                 !(battleTypeOne == Type.ICE || battleTypeTwo == Type.ICE)) {
             return true;
         }
@@ -4282,8 +4205,23 @@ public abstract class Pokemon {
     }
 
     public boolean isBurnable() {
-        if (!isStatused() && currentHealth != 0 && battleAbility!= Pokemon.Ability.SHIELD_DUST &&
+        if (!isStatused() && currentHealth != 0 && battleAbility.getId() != AbilityId.SHIELD_DUST &&
                 !(battleTypeOne == Type.FIRE || battleTypeTwo == Type.FIRE)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isConfusable() {
+        if (!confused && battleAbility.getId() != AbilityId.OWN_TEMPO) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFlinchable() {
+        if (battleAbility.getId() != AbilityId.INNER_FOCUS && battleAbility.getId() !=
+                AbilityId.SHIELD_DUST) {
             return true;
         }
         return false;

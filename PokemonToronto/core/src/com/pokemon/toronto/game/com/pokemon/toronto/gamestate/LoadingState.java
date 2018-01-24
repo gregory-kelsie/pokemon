@@ -19,6 +19,7 @@ public class LoadingState extends GameState {
     public static final int WILD_POKEMON_LIST = 5;
     public static final int POKEMON_MENU = 6;
     public static final int POKECENTER_STATE = 7;
+    public static final int HUB_STATE = 8;
     private Texture background;
     private int nextState;
     public LoadingState(GameStateManager gsm, int nextState) {
@@ -52,6 +53,9 @@ public class LoadingState extends GameState {
         }
         if (nextState == POKECENTER_STATE) {
             loadPokeCenterResources();
+        }
+        if (nextState == HUB_STATE) {
+
         }
     }
 
@@ -181,6 +185,8 @@ public class LoadingState extends GameState {
                 gsm.setState(new WildPokemonListState(gsm));
             } else if (nextState == POKECENTER_STATE) {
                 gsm.setState(new PokeCenterState(gsm, false));
+            } else if (nextState == HUB_STATE) {
+                gsm.setState(new HubState((gsm)));
             }
             dispose();
         }

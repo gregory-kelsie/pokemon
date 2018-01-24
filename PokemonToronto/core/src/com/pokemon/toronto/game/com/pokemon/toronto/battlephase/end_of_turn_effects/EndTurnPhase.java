@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BattlePhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.BlackedOutPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.EndTrainerBattle;
@@ -953,7 +954,7 @@ public class EndTurnPhase extends BattlePhase {
     private void checkHealingAbilities() {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
-                currentPokemon.getBattleAbility() == Pokemon.Ability.SHED_SKIN) {
+                currentPokemon.getBattleAbility().getId() == AbilityId.SHED_SKIN) {
             double rand = Math.random();
             if (rand <= .3) {
                 text = currentPokemon.getName() + " shed its skin\nand removed all status problems!";
@@ -963,7 +964,7 @@ public class EndTurnPhase extends BattlePhase {
               goToNextStateFromHealingAbilities();
             }
         } else if (currentPokemon.getStatus() != Pokemon.Status.STATUS_FREE &&
-                currentPokemon.getBattleAbility() == Pokemon.Ability.HYDRATION &&
+                currentPokemon.getBattleAbility().getId() == AbilityId.HYDRATION &&
                 pui.getField().getWeatherType() == WeatherType.RAIN) {
             text = currentPokemon.getName() + " removed its status problem\nusing the ability Hydration!";
             currentPokemon.setPreStatus(Pokemon.Status.RECOVER);
@@ -1130,11 +1131,11 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useSandstorm() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getBattleAbility() == Pokemon.Ability.SAND_FORCE ||
-                pokemon.getBattleAbility() == Pokemon.Ability.SAND_RUSH ||
-                pokemon.getBattleAbility() == Pokemon.Ability.SAND_VEIL ||
-                pokemon.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD ||
-                pokemon.getBattleAbility() == Pokemon.Ability.OVERCOAT ||
+        if (pokemon.getBattleAbility().getId() == AbilityId.SAND_FORCE ||
+                pokemon.getBattleAbility().getId() == AbilityId.SAND_RUSH ||
+                pokemon.getBattleAbility().getId() == AbilityId.SAND_VEIL ||
+                pokemon.getBattleAbility().getId() == AbilityId.MAGIC_GUARD ||
+                pokemon.getBattleAbility().getId() == AbilityId.OVERCOAT ||
                 pokemon.getBattleTypeOne() == Pokemon.Type.ROCK ||
                 pokemon.getBattleTypeOne() == Pokemon.Type.GROUND ||
                 pokemon.getBattleTypeOne() == Pokemon.Type.STEEL ||
@@ -1151,10 +1152,10 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useRain() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getBattleAbility() == Pokemon.Ability.RAIN_DISH
+        if (pokemon.getBattleAbility().getId() == AbilityId.RAIN_DISH
                 && !pokemon.hasFullHealth()) {
             recoverPokemonFromRain(pokemon, 16.0);
-        } else if (pokemon.getBattleAbility() == Pokemon.Ability.DRY_SKIN
+        } else if (pokemon.getBattleAbility().getId() == AbilityId.DRY_SKIN
                 && !pokemon.hasFullHealth()) {
             recoverPokemonFromRain(pokemon, 8.0);
         } else {
@@ -1164,8 +1165,8 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useSunlight() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getBattleAbility() == Pokemon.Ability.DRY_SKIN ||
-                pokemon.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (pokemon.getBattleAbility().getId() == AbilityId.DRY_SKIN ||
+                pokemon.getBattleAbility().getId() == AbilityId.SOLAR_POWER) {
             damagePokemonFromSunlight(pokemon);
         } else {
             weatherDoesNothing();
@@ -1174,13 +1175,13 @@ public class EndTurnPhase extends BattlePhase {
 
     private void useHail() {
         Pokemon pokemon = getCurrentPokemon();
-        if (pokemon.getBattleAbility() == Pokemon.Ability.ICE_BODY ||
-                pokemon.getBattleAbility() == Pokemon.Ability.SNOW_CLOAK ||
-                pokemon.getBattleAbility() == Pokemon.Ability.MAGIC_GUARD ||
-                pokemon.getBattleAbility() == Pokemon.Ability.OVERCOAT ||
+        if (pokemon.getBattleAbility().getId() == AbilityId.ICE_BODY ||
+                pokemon.getBattleAbility().getId() == AbilityId.SNOW_CLOAK ||
+                pokemon.getBattleAbility().getId() == AbilityId.MAGIC_GUARD ||
+                pokemon.getBattleAbility().getId() == AbilityId.OVERCOAT ||
                 pokemon.getBattleTypeOne() == Pokemon.Type.ICE ||
                 pokemon.getBattleTypeTwo() == Pokemon.Type.ICE) { //TODO: Check for holding safety goggles
-            if (pokemon.getBattleAbility() == Pokemon.Ability.ICE_BODY && !pokemon.hasFullHealth()){
+            if (pokemon.getBattleAbility().getId() == AbilityId.ICE_BODY && !pokemon.hasFullHealth()){
                 //Recover
                 recoverPokemonFromHail(pokemon);
             } else {
@@ -1273,7 +1274,7 @@ public class EndTurnPhase extends BattlePhase {
     private void damagePokemonFromSunlight(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 8.0);
         pokemon.subtractHealth(damage);
-        if (pokemon.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (pokemon.getBattleAbility().getId() == AbilityId.SOLAR_POWER) {
             text = pokemon.getName() + " is hurt \nfrom drawing in solar power.";
         } else { //Having Dry skin is the only other way to get here.
             text = pokemon.getName() + " is hurt by having\n Dry Skin in the sunlight";

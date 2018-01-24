@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -71,7 +72,7 @@ public class Powder extends Skill {
             return new FailResult("It failed.");
         } else if (enemyPokemon.getTypeOne() == Pokemon.Type.GRASS ||
                 enemyPokemon.getTypeTwo() == Pokemon.Type.GRASS ||
-                enemyPokemon.getAbility() == Pokemon.Ability.OVERCOAT) {
+                enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.OVERCOAT) {
             return new FailResult("It failed.");
         }
         return new FailResult(false);

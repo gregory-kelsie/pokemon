@@ -14,8 +14,8 @@ public class Ability {
         this.description = description;
     }
 
-    public int getId() {
-        return id.getValue();
+    public AbilityId getId() {
+        return id;
     }
 
     public String getName() {
@@ -301,14 +301,6 @@ public class Ability {
             return value;
         }
     }
-    
-    public static final int SIMPLE = 200;
-    
-    
-
-
-
-
 
     /*********************************************************************************************
      *                                  Ability Subclasses
@@ -2029,6 +2021,12 @@ public class Ability {
         public ZenMode() {
             super(AbilityId.ZEN_MODE, "Zen Mode", "Changes the Pokémon's shape when HP" +
                     " is half or less.");
+        }
+    }
+
+    public static class None extends Ability {
+        public None() {
+            super(AbilityId.NONE, "No Ability", "No ability on this Pokemon.");
         }
     }
 

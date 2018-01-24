@@ -6,7 +6,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -141,7 +140,7 @@ public class BoxState extends GameState {
             font.draw(batch, selectedPokemon.getName() +
                     "\nLv. " + selectedPokemon.getLevel() +
                     "\nNature: " + selectedPokemon.getNatureString() +
-                    "\nAbility: " + selectedPokemon.getAbilityString() +
+                    "\nAbility: " + selectedPokemon.getAbilityName() +
                     "\nItem: None" , 624, 1405);
         }
     }
@@ -290,7 +289,7 @@ public class BoxState extends GameState {
         font.draw(batch, "" + Math.round(selectedPokemon.getDisplayedExp()), 828, 774);
         font.draw(batch, "" +  (selectedPokemon.getNextLevelExp()
                 - Math.round(selectedPokemon.getDisplayedExp())), 828, 700);
-        font.draw(batch, selectedPokemon.getAbilityString(), 828, 633);
+        font.draw(batch, selectedPokemon.getAbilityName(), 828, 633);
     }
     private void renderStatBox(SpriteBatch batch) {
         font.draw(batch, selectedPokemon.getAttackStat() +"", 957, 1605);
@@ -595,7 +594,8 @@ public class BoxState extends GameState {
     private void logOut() {
         logoutSound.play();
         gsm.saveParty();
-        gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+        //todo: save boxes if they were tampered.
+        gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
         dispose();
         gsm.playBgm();
     }

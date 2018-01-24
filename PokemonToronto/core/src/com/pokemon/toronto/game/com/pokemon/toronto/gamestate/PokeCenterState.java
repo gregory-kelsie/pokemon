@@ -74,7 +74,7 @@ public class PokeCenterState extends GameState{
                     if (currentTextBox == text.size() - 1) {
                         gsm.saveParty();
                         bgm.stop();
-                        gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                        gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                         gsm.playBgm();
                         dispose();
                     } else {

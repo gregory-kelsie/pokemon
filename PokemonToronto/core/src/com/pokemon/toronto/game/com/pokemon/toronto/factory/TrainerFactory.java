@@ -2032,12 +2032,14 @@ public class TrainerFactory {
         String victoryText = "I took you for granted, and so I lost. As proof of\nyour victory" +
                 "I confer on you this...the official\nPokémon League BoulderBadge.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Geodude g = new Geodude(12);
+        Geodude g = new Geodude();
+        g.insertWildData(12);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new Tackle());
         g.setSkillset(gSkills);
 
-        Onix o = new Onix(14);
+        Onix o = new Onix();
+        o.insertWildData(14);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new Tackle());
         oSkills.add(new Bind());
@@ -2054,7 +2056,8 @@ public class TrainerFactory {
         String victoryText = "Wow! You're too much, all right! You can have\n" +
                 "the CascadeBadge to show that you beat me.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Staryu g = new Staryu(18);
+        Staryu g = new Staryu();
+        g.insertWildData(18);
 
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new Tackle());
@@ -2062,7 +2065,8 @@ public class TrainerFactory {
         gSkills.add(new WaterPulse());
         g.setSkillset(gSkills);
 
-        Starmie o = new Starmie(21);
+        Starmie o = new Starmie();
+        o.insertWildData(21);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new WaterPulse());
         o.setSkillset(oSkills);
@@ -2077,17 +2081,20 @@ public class TrainerFactory {
         String victoryText = "Now that's a shocker! You're the real deal, kid!\n" +
                 " Fine, then, take the ThunderBadge!";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Voltorb g = new Voltorb(21);
+        Voltorb g = new Voltorb();
+        g.insertWildData(21);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new ThunderShock());
         g.setSkillset(gSkills);
 
-        Pikachu o = new Pikachu(18);
+        Pikachu o = new Pikachu();
+        o.insertWildData(18);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new WaterPulse());
         o.setSkillset(oSkills);
 
-        Raichu r = new Raichu(24);
+        Raichu r = new Raichu();
+        r.insertWildData(24);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new ThunderShock());
         r.setSkillset(rSkills);
@@ -2103,17 +2110,20 @@ public class TrainerFactory {
         String victoryText = "Oh! I concede defeat. You are remarkably strong.\n" +
                 "I must confer on you the RainbowBadge.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Victreebel g = new Victreebel(29);
+        Victreebel g = new Victreebel();
+        g.insertWildData(29);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new GigaDrain());
         g.setSkillset(gSkills);
 
-        Tangela o = new Tangela(24);
+        Tangela o = new Tangela();
+        o.insertWildData(24);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new WaterPulse());
         o.setSkillset(oSkills);
 
-        Vileplume r = new Vileplume(29);
+        Vileplume r = new Vileplume();
+        r.insertWildData(29);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new GigaDrain());
         r.setSkillset(rSkills);
@@ -2129,23 +2139,27 @@ public class TrainerFactory {
         String victoryText = "This loss shocks me! But a loss is a loss. I admit\n" +
                 "I didn't work hard enough to win. You earned the MarshBadge.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Kadabra g = new Kadabra(38);
+        Kadabra g = new Kadabra();
+        g.insertWildData(38);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new FutureSight());
         g.setSkillset(gSkills);
 
-        MrMime o = new MrMime(37);
+        MrMime o = new MrMime();
+        o.insertWildData(37);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new Tackle());
         o.setSkillset(oSkills);
 
-        Venomoth r = new Venomoth(38);
+        Venomoth r = new Venomoth();
+        r.insertWildData(38);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new LeechLife());
         rSkills.add(new Gust());
         r.setSkillset(rSkills);
 
-        Alakazam alakazam = new Alakazam(43);
+        Alakazam alakazam = new Alakazam();
+        alakazam.insertWildData(43);
         List<Skill> alakazamSkills = new ArrayList<Skill>();
         alakazamSkills.add(new FutureSight());
         alakazam.setSkillset(alakazamSkills);
@@ -2161,22 +2175,26 @@ public class TrainerFactory {
     public Trainer getGymLeaderJanine() {
         String victoryText = "...!!! So... So strong!";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Koffing g = new Koffing(37);
+        Koffing g = new Koffing();
+        g.insertWildData(37);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new SelfDestruct());
         g.setSkillset(gSkills);
 
-        Muk o = new Muk(39);
+        Muk o = new Muk();
+        o.insertWildData(39);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new Tackle());
         o.setSkillset(oSkills);
 
-        Koffing r = new Koffing(37);
+        Koffing r = new Koffing();
+        r.insertWildData(37);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new SelfDestruct());
         r.setSkillset(rSkills);
 
-        Weezing weezing = new Weezing(43);
+        Weezing weezing = new Weezing();
+        weezing.insertWildData(43);
         List<Skill> weezingSkills = new ArrayList<Skill>();
         weezingSkills.add(new Tackle());
         weezing.setSkillset(weezingSkills);
@@ -2193,28 +2211,32 @@ public class TrainerFactory {
         String victoryText = "I have burned down to nothing! Not even ashes remain!\n" +
                 "You have earned the VolcanoBadge.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Growlithe g = new Growlithe(42);
+        Growlithe g = new Growlithe();
+        g.insertWildData(42);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new Bite());
         gSkills.add(new TakeDown());
         gSkills.add(new FireBlast());
         g.setSkillset(gSkills);
 
-        Ponyta o = new Ponyta(40);
+        Ponyta o = new Ponyta();
+        o.insertWildData(40);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new Bounce());
         oSkills.add(new FireSpin());
         oSkills.add(new FireBlast());
         o.setSkillset(oSkills);
 
-        Rapidash r = new Rapidash(42);
+        Rapidash r = new Rapidash();
+        r.insertWildData(42);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new Bounce());
         rSkills.add(new FireSpin());
         rSkills.add(new FireBlast());
         r.setSkillset(rSkills);
 
-        Arcanine arcanine = new Arcanine(47);
+        Arcanine arcanine = new Arcanine();
+        arcanine.insertWildData(47);
         List<Skill> arcanineSkills = new ArrayList<Skill>();
         arcanineSkills.add(new Bite());
         arcanineSkills.add(new TakeDown());
@@ -2233,38 +2255,44 @@ public class TrainerFactory {
         String victoryText = "What? How the heck did I lose to you? … \n" +
                 "Tch, all right… Here, take this-- it's EarthBadge.";
         List<Pokemon> party = new ArrayList<Pokemon>();
-        Pidgeot g = new Pidgeot(56);
+        Pidgeot g = new Pidgeot();
+        g.insertWildData(56);
         List<Skill> gSkills = new ArrayList<Skill>();
         gSkills.add(new QuickAttack());
         gSkills.add(new WingAttack());
         g.setSkillset(gSkills);
 
-        Alakazam o = new Alakazam(54);
+        Alakazam o = new Alakazam();
+        o.insertWildData(54);
         List<Skill> oSkills = new ArrayList<Skill>();
         oSkills.add(new Tackle());
         o.setSkillset(oSkills);
 
-        Rhydon r = new Rhydon(56);
+        Rhydon r = new Rhydon();
+        r.insertWildData(56);
         List<Skill> rSkills = new ArrayList<Skill>();
         rSkills.add(new Sandstorm());
         rSkills.add(new RockSlide());
         r.setSkillset(rSkills);
 
-        Gyarados gyarados = new Gyarados(58);
+        Gyarados gyarados = new Gyarados();
+        gyarados.insertWildData(58);
         List<Skill> gyaradosSkills = new ArrayList<Skill>();
         gyaradosSkills.add(new Twister());
         gyaradosSkills.add(new HydroPump());
         gyaradosSkills.add(new RainDance());
         gyarados.setSkillset(gyaradosSkills);
 
-        Exeggutor exeggutor = new Exeggutor(58);
+        Exeggutor exeggutor = new Exeggutor();
+        exeggutor.insertWildData(58);
         List<Skill> exeggutorSkills = new ArrayList<Skill>();
         exeggutorSkills.add(new SunnyDay());
         exeggutorSkills.add(new LeechLife());
         exeggutorSkills.add(new SolarBeam());
         exeggutor.setSkillset(exeggutorSkills);
 
-        Arcanine arcanine = new Arcanine(58);
+        Arcanine arcanine = new Arcanine();
+        arcanine.insertWildData(58);
         List<Skill> arcanineSkills = new ArrayList<Skill>();
         arcanineSkills.add(new Flamethrower());
         arcanine.setSkillset(arcanineSkills);

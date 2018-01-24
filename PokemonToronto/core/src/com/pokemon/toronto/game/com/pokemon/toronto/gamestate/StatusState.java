@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -112,7 +111,7 @@ public class StatusState extends GameState {
         regularFont.draw(batch, "" + Math.round(pokemon.getDisplayedExp()), 828, 774);
         regularFont.draw(batch, "" +  (pokemon.getNextLevelExp()
                 - Math.round(pokemon.getDisplayedExp())), 828, 700);
-        regularFont.draw(batch, pokemon.getAbilityString(), 828, 633);
+        regularFont.draw(batch, pokemon.getAbilityName(), 828, 633);
     }
 
     /**

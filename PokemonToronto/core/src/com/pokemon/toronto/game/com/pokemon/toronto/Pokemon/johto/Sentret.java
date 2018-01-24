@@ -1,0 +1,111 @@
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
+
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by gregorykelsie on 2018-01-22.
+ */
+
+public class Sentret extends Pokemon {
+    /** Init Variables */
+
+    //Basic (id, name, exp, ev yield, capture rate)
+    private static final int NUMBER = 161;
+    private static final String NAME = "Sentret";
+    private static final int BASE_EXP = 57;
+    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    private static final int CAPTURE_RATE = 255;
+    private static final double WEIGHT = 6;
+
+    private static final Ability FIRST_ABILITY = new Ability.RunAway();
+    private static final Ability SECOND_ABILITY = new Ability.KeenEye();
+    private static final Ability HIDDEN_ABILITY = new Ability.Frisk();
+
+    //Base Stats
+    private static final int BASE_HEALTH = 35;
+    private static final int BASE_ATTACK = 46;
+    private static final int BASE_DEFENSE = 34;
+    private static final int BASE_SPECIAL_ATTACK = 35;
+    private static final int BASE_SPECIAL_DEFENSE = 45;
+    private static final int BASE_SPEED = 20;
+
+    //Image Paths
+    private static final String ICON_PATH = "pokemonSprites/johto/sentret.png";
+    private static final String BACK_PATH = "battle/backs/johto/sentret.png";
+    private static final String MINI_PATH = "pokemonMenu/sprites/johto/sentret.png";
+    private static final String CRY_PATH = "sounds/cry/161.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/johto/sentret.png";
+
+    //Typing
+    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    private static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+
+    /**
+     * Create a sentret
+     */
+    public Sentret() {
+        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
+    }
+
+    /**
+     * Init sentret's level up skills.
+     */
+    @Override
+    protected void initLevelUpSkills() {
+        List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.SCRATCH);
+        //todo: foresight
+        levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(4, new ArrayList<Integer>(Arrays.asList(SkillFactory.DEFENSE_CURL)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUICK_ATTACK)));
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.FURY_SWIPES)));
+        //todo helping hand 16
+        //todo follow me 19
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.SLAM)));
+        levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.REST)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUCKER_PUNCH)));
+        levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.AMNESIA)));
+        //TODO BATON PASS 39
+        //TODO ME FIRST 42
+        levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_VOICE)));
+    }
+
+    /**
+     * Init sentret's gender.
+     */
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .5) {
+            gender = 'M';
+        } else {
+            gender = 'F';
+        }
+    }
+
+    /**
+     * Return Furret if the sentret is above level 15.
+     * @return Furret if sentret is the right level.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        if (level >= 15) {
+            return PokemonId.FURRET.getValue();
+        }
+        return -1;
+    }
+}

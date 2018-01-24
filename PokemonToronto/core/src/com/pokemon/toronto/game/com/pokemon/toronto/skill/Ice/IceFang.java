@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
@@ -58,9 +59,9 @@ public class IceFang extends SecondaryEffectSkill {
 
         if (Math.random() <= .1 && isFirstAttack) {
             //Flinch
-            if (enemyPokemon.getBattleAbility() !=
-                    Pokemon.Ability.INNER_FOCUS && enemyPokemon.getBattleAbility() !=
-                    Pokemon.Ability.SHIELD_DUST) {
+            if (enemyPokemon.getBattleAbility().getId() !=
+                    Ability.AbilityId.INNER_FOCUS && enemyPokemon.getBattleAbility().getId() !=
+                    Ability.AbilityId.SHIELD_DUST) {
                 enemyPokemon.flinch();
             }
         }

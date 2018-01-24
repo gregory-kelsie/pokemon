@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -228,7 +227,7 @@ public class WildPokemonListState extends GameState {
         info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLatitude(),
                 gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + TOP_POSITION).getLongitude())) + "m\nNature: " +
                 gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getNatureString() +
-                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getAbilityString() +
+                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3).getPokemon().getAbilityName() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3).getExpirationString(), 30, 1620);
     }
 
@@ -245,7 +244,7 @@ public class WildPokemonListState extends GameState {
         info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLatitude(),
                 gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + BOT_POSITION).getLongitude())) + "m\nNature: " +
                 gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getNatureString() +
-                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getAbilityString() +
+                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 2).getPokemon().getAbilityName() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 2).getExpirationString(), 30, 520);
         if (hasBottomPokemon) {
             batch.draw(bottomTexture, 700, 260, 394, 394);
@@ -271,7 +270,7 @@ public class WildPokemonListState extends GameState {
         info.draw(batch, "Distance: " + Math.round(distance(gsm.getLatitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLatitude(),
                 gsm.getLongitude(), gsm.getNearbyPokemon().get(currentPage * 3 + MID_POSITION).getLongitude())) + "m\nNature: " +
                 gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getNatureString() +
-                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getAbilityString() +
+                "\nAbility: " +  gsm.getNearbyPokemon().get(currentPage * 3 + 1).getPokemon().getAbilityName() +
                 "\nExpiration:" + gsm.getNearbyPokemon().get(currentPage * 3 + 1).getExpirationString(), 30, 1070);
         if (hasMiddlePokemon) {
             batch.draw(middleTexture, 700, 780, 394, 394);

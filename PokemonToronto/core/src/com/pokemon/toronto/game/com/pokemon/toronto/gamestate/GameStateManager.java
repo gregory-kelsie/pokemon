@@ -46,6 +46,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
 import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.WildTrainer;
 import com.pokemon.toronto.game.pokemonToronto;
 
@@ -84,6 +85,11 @@ public class GameStateManager {
     private List<WildTrainer> nearbyTrainers;
 
     private OrthographicCamera camera;
+
+    //Checkmarks on the main hub page.
+    private boolean checkedWild;
+    private boolean checkedTrainer;
+
     public GameStateManager(OrthographicCamera camera) {
         this.camera = camera;
         latitude = 0;
@@ -102,6 +108,23 @@ public class GameStateManager {
         bag.addPokeball(ItemId.POKEBALL, 5);
         kantoBadges = 0;
         menubgm.setLooping(true);
+        checkedWild = true;
+        checkedTrainer = true;
+    }
+
+    public void toggleWildCheck() {
+        checkedWild = !checkedWild;
+    }
+
+    public boolean hasWildChecked() {
+        return checkedWild;
+    }
+    public void toggleTrainerCheck() {
+        checkedTrainer = !checkedTrainer;
+    }
+
+    public boolean hasTrainerChecked() {
+        return checkedTrainer;
     }
 
     public void forceLandscape() {
@@ -152,7 +175,7 @@ public class GameStateManager {
             params.add(new BasicNameValuePair("health", Integer.toString(party.get(i).getCurrentHealth())));
             params.add(new BasicNameValuePair("currentExp", Integer.toString((int)party.get(i).getDisplayedExp())));
             params.add(new BasicNameValuePair("nature", Integer.toString(party.get(i).getNature().getValue())));
-            params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getBattleAbility().getValue())));
+            params.add(new BasicNameValuePair("ability", Integer.toString(party.get(i).getAbilityPosition())));
             params.add(new BasicNameValuePair("partyPosition", Integer.toString(i))); //first slot in party
             params.add(new BasicNameValuePair("pokemonGender", String.valueOf(party.get(i).getGender())));
             params.add(new BasicNameValuePair("status", Integer.toString(party.get(i).getStatus().getValue()))); //0 is status free
@@ -275,6 +298,10 @@ public class GameStateManager {
 
     }
 
+    public void addTrainerPopUp(Trainer t) {
+        currentState.openTrainerPopUp(t);
+    }
+
     public void setInitialState() {
         currentState = new LoginState(this);
         loggedIn = false;
@@ -291,39 +318,6 @@ public class GameStateManager {
         addToParty(new Blastoise(5));
         addToParty(new Pikachu(5));*/
         //addToParty(new Charmander(5));
-        addToBox(new Bulbasaur(5));
-        addToBox(new Pidgeot(5));
-        addToBox(new Ekans(5));
-        addToBox(new Arbok(5));
-        addToBox(new Sandshrew(5));
-        addToBox(new AlolanRaticate(5));
-        addToBox(new AlolanRattata(5));
-        addToBox(new AlolanSandslash(5));
-        addToBox(new AlolanSandshrew(5));
-        addToBox(new AlolanVulpix(5));
-        addToBox(new AlolanNinetales(5));
-        addToBox(new AlolanGrimer(5));
-        addToBox(new AlolanMuk(5));
-        addToBox(new AlolanMarowak(5));
-        addToBox(new AlolanRaichu(5));
-        addToBox(new AlolanMeowth(5));
-        addToBox(new AlolanPersian(5));
-        addToBox(new AlolanGolem(5));
-        addToBox(new AlolanGraveler(5));
-        addToBox(new AlolanDiglett(3));
-        addToBox(new AlolanDugtrio(5));
-        addToBox(new AlolanGeodude(5));
-        addToBox(new AlolanExeggutor(5));
-        addToBox(new Exeggutor(5));
-        Pokemon weedle = new Weedle(6);
-        weedle.setExp(100);
-        addToBox(weedle);
-        addToBox(new Scyther(5));
-        addToBox(new Aerodactyl(5));
-        Pokemon dragonite = new Dragonite(100);
-        dragonite.setCurrentHealth(1);
-        addToBox(dragonite);
-        addToBox(new Kabutops(5));
         //addToBox(new Pikachu(5));
     }
 
@@ -341,6 +335,10 @@ public class GameStateManager {
 
     public boolean isLoggedIn() {
         return loggedIn;
+    }
+
+    public GameState getCurrentState() {
+        return currentState;
     }
 
     public void addNewWildPokemon(double longitude, double latitude, String country,

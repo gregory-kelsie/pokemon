@@ -130,4 +130,5 @@ idea {
         compile 'com.google.firebase:firebase-core:11.2.0'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.google.android.gms:play-services-location:11.2.0'
+
 }

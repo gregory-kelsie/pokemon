@@ -36,7 +36,7 @@ public class MapState extends GameState {
             } else if (clickedCheckPokemon(x, y)) {
                 openPokemonList();
             } else if (clickedBack(x, y)) {
-                gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                 this.dispose();
             }
         }

@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -50,7 +51,7 @@ public class SimpleBeam extends Skill {
                             SubField enemyField, boolean isFirstAttack, Skill targetSkill,
                             List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
-        enemyPokemon.setBattleAbility(Pokemon.Ability.SIMPLE);
+        enemyPokemon.setBattleAbility(new Ability.Simple());
         results.add(skillUser.getName() + " acquired the Simple ability!");
         return results;
     }

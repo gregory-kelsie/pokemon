@@ -1033,7 +1033,7 @@ public class BagState extends GameState {
 
     private void clickedX() {
         if (cameFromMenu) {
-            gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+            gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
         } else {
             gsm.setState(new PokeMartState(gsm));
         }

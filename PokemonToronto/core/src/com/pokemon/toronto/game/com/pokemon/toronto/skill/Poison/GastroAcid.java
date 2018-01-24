@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -49,7 +50,7 @@ public class GastroAcid extends Skill {
                             SubField enemyField, boolean isFirstAttack, Skill targetSkill,
                             List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
-        enemyPokemon.setBattleAbility(Pokemon.Ability.NONE);
+        enemyPokemon.setBattleAbility(new Ability.None());
         results.add(enemyPokemon.getName() + "'s ability was suppressed!");
         return results;
     }
@@ -69,7 +70,7 @@ public class GastroAcid extends Skill {
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
                                SubField userField, SubField enemyField, boolean isFirstAttack,
                                Skill targetsSkill) {
-        if (enemyPokemon.getBattleAbility() == Pokemon.Ability.NONE) {
+        if (enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.NONE) {
             return new FailResult("It failed...");
         }
         return new FailResult(false);

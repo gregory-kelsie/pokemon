@@ -400,7 +400,8 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    starter = new Charmander(5);
+                    starter = new Charmander();
+                    starter.insertWildData(5);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -449,7 +450,8 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    starter = new Bulbasaur(5);
+                    starter = new Bulbasaur();
+                    starter.insertWildData(5);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -495,7 +497,8 @@ public class IntroductionState extends GameState {
                     MyInput.getY() >= 1582 && MyInput.getY() <= 1760) {
                 //Clicked yes
                 if (drawYesNoOptions) {
-                    starter = new Squirtle(5);
+                    starter = new Squirtle();
+                    starter.insertWildData(5);
                     drawYesNoOptions = false;
                     drawDroppingPokeballAnimation = true;
                     throwPokeballSound.play();
@@ -863,7 +866,7 @@ public class IntroductionState extends GameState {
         params.add(new BasicNameValuePair("health", Integer.toString(starter.getCurrentHealth())));
         params.add(new BasicNameValuePair("currentExp", Integer.toString((int)starter.getDisplayedExp())));
         params.add(new BasicNameValuePair("nature", Integer.toString(starter.getNature().getValue())));
-        params.add(new BasicNameValuePair("ability", Integer.toString(starter.getBattleAbility().getValue())));
+        params.add(new BasicNameValuePair("ability", Integer.toString(starter.getAbilityPosition())));
         params.add(new BasicNameValuePair("partyPosition", "0")); //first slot in party
         params.add(new BasicNameValuePair("pokemonGender", "" + starter.getGender()));
         params.add(new BasicNameValuePair("status", "0")); //0 is status free

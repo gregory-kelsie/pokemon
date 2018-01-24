@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
@@ -24,6 +25,10 @@ public class Paras extends Pokemon {
     private static final int CAPTURE_RATE = 190;
     private static final double WEIGHT = 5.4;
 
+    private static final Ability FIRST_ABILITY = new Ability.EffectSpore();
+    private static final Ability SECOND_ABILITY = new Ability.DrySkin();
+    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+
     //Base Stats
     private static final int BASE_HEALTH = 35;
     private static final int BASE_ATTACK = 70;
@@ -40,39 +45,14 @@ public class Paras extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/046.png";
 
     /**
-     * Create a Paras with the specified level.
-     * @param level The level of the Paras.
+     * Create a Paras
      */
-    public Paras(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.BUG, Pokemon.Type.GRASS, ExpType.MEDIUM_FAST,
+    public Paras() {
+        super(NUMBER, NAME, Pokemon.Type.BUG, Pokemon.Type.GRASS, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Paras from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Paras(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                 Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                 Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Pokemon.Type.BUG, Type.GRASS, ability, nature, ExpType.MEDIUM_FAST,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**
@@ -95,16 +75,6 @@ public class Paras extends Pokemon {
         levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
         levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.AROMATHERAPY)));
         levelUpSkills.put(54, new ArrayList<Integer>(Arrays.asList(SkillFactory.X_SCISSOR)));
-    }
-
-    //TODO: HIDDEN DAMP
-    @Override
-    protected void initAbility() {
-        if (Math.random() <= .5) {
-            ability = Ability.EFFECT_SPORE;
-        } else {
-            ability = Ability.DRY_SKIN;
-        }
     }
 
     /**

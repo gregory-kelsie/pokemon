@@ -3,6 +3,8 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
@@ -422,15 +424,15 @@ public class UseAttackPhase extends BattlePhase {
 
 
     protected void checkAbilityContact(double dt) {
-        if (receiver.getBattleAbility() == Pokemon.Ability.STATIC) {
+        if (receiver.getBattleAbility().getId() == AbilityId.STATIC) {
             useStatic();
-        } else if (receiver.getBattleAbility() == Pokemon.Ability.POISON_POINT) {
+        } else if (receiver.getBattleAbility().getId() == AbilityId.POISON_POINT) {
             usePoisonPoint();
-        } else if (attacker.getBattleAbility() == Pokemon.Ability.POISON_TOUCH) {
+        } else if (attacker.getBattleAbility().getId() == AbilityId.POISON_TOUCH) {
             usePoisonTouch();
-        } else if (receiver.getBattleAbility() == Pokemon.Ability.FLAME_BODY) {
+        } else if (receiver.getBattleAbility().getId() == AbilityId.FLAME_BODY) {
             useFlameBody();
-        } else if (receiver.getBattleAbility() == Pokemon.Ability.EFFECT_SPORE) {
+        } else if (receiver.getBattleAbility().getId() == AbilityId.EFFECT_SPORE) {
             useEffectSpore();
         }
 

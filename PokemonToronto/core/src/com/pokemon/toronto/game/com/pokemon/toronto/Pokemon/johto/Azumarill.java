@@ -1,0 +1,106 @@
+package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
+
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by gregorykelsie on 2018-01-22.
+ */
+
+public class Azumarill extends Pokemon {
+    /** Init Variables */
+
+    //Basic (id, name, exp, ev yield, capture rate)
+    private static final int NUMBER = 184;
+    private static final String NAME = "Azumarill";
+    private static final int BASE_EXP = 189;
+    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    private static final int CAPTURE_RATE = 75;
+    private static final double WEIGHT = 28.5;
+
+    private static final Ability FIRST_ABILITY = new Ability.ThickFat();
+    private static final Ability SECOND_ABILITY = new Ability.HugePower();
+    private static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
+
+    //Base Stats
+    private static final int BASE_HEALTH = 100;
+    private static final int BASE_ATTACK = 50;
+    private static final int BASE_DEFENSE = 80;
+    private static final int BASE_SPECIAL_ATTACK = 60;
+    private static final int BASE_SPECIAL_DEFENSE = 80;
+    private static final int BASE_SPEED = 50;
+
+    //Image Paths
+    private static final String ICON_PATH = "pokemonSprites/johto/azumarill.png";
+    private static final String BACK_PATH = "battle/backs/johto/azumarill.png";
+    private static final String MINI_PATH = "pokemonMenu/sprites/johto/azumarill.png";
+    private static final String CRY_PATH = "sounds/cry/184.wav";
+    private static final String PROFILE_PATH = "trainercard/pokemon/johto/azumarill.png";
+
+    //Typing
+    private static final Pokemon.Type TYPE_ONE = Type.WATER;
+    private static final Type TYPE_TWO = Type.FAIRY;
+
+    //Exp
+    private static final ExpType EXP_TYPE = ExpType.FAST;
+
+    /**
+     * Create a azumarill
+     */
+    public Azumarill() {
+        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
+    }
+
+    /**
+     * Init azumarill's level up skills.
+     */
+    @Override
+    protected void initLevelUpSkills() {
+        List<Integer> beginnerSkills = new ArrayList<Integer>();
+        beginnerSkills.add(SkillFactory.TACKLE);
+        beginnerSkills.add(SkillFactory.TAIL_WHIP);
+        beginnerSkills.add(SkillFactory.WATER_GUN);
+        beginnerSkills.add(SkillFactory.WATER_SPORT);
+        levelUpSkills.put(0, beginnerSkills);
+        levelUpSkills.put(2, new ArrayList<Integer>(Arrays.asList(SkillFactory.TAIL_WHIP)));
+        levelUpSkills.put(5, new ArrayList<Integer>(Arrays.asList(SkillFactory.WATER_SPORT)));
+        levelUpSkills.put(7, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLE)));
+        List<Integer> rollingMoves = new ArrayList<Integer>();
+        rollingMoves.add(SkillFactory.DEFENSE_CURL);
+        rollingMoves.add(SkillFactory.ROLLOUT);
+        levelUpSkills.put(10, rollingMoves);
+        levelUpSkills.put(13, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUBBLEBEAM)));
+        //HELPING HAND 16
+        levelUpSkills.put(21, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
+        levelUpSkills.put(25, new ArrayList<Integer>(Arrays.asList(SkillFactory.PLAY_ROUGH)));
+        levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_RING)));
+        levelUpSkills.put(35, new ArrayList<Integer>(Arrays.asList(SkillFactory.RAIN_DANCE)));
+        levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
+        levelUpSkills.put(46, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERPOWER)));
+        levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+    }
+
+    /**
+     * Init azumarill's gender.
+     */
+    @Override
+    protected void initGender() {
+        double genderProbability = Math.random();
+        if (genderProbability <= .5) {
+            gender = 'M';
+        } else {
+            gender = 'F';
+        }
+    }
+
+}

@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
@@ -95,8 +96,8 @@ public class SheerCold extends DamageSkill {
         if (enemyPokemon.getBattleTypeOne() == Pokemon.Type.ICE ||
                 enemyPokemon.getBattleTypeTwo() == Pokemon.Type.ICE) {
             return new FailResult("Sheer Cold does not affect\nIce type Pokemon.");
-        } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.STURDY &&
-                skillUser.getBattleAbility() != Pokemon.Ability.MOLD_BREAKER) {
+        } else if (enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.STURDY &&
+                skillUser.getBattleAbility().getId() != Ability.AbilityId.MOLD_BREAKER) {
             return new FailResult("Sheer Cold does not affect " +
                     enemyPokemon.getName() + "\nDue to its ability Sturdy!");
         }

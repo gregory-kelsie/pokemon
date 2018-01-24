@@ -300,6 +300,12 @@ public class BattleState extends GameState implements BattleInterface {
             } else {
                 battleTextures.getHealthText().draw(batch, Integer.toString(currentPokemon.getAnimationHealth()), 785, 1325);
             }
+            battleTextures.getNameFont().draw(batch, currentPokemon.getName(), 530,1403);
+            if (currentPokemon.getGender() == 'm' || currentPokemon.getGender() == 'M') {
+                batch.draw(battleTextures.getMaleIcon(), 808, 1364);
+            } else if (currentPokemon.getGender() == 'f' || currentPokemon.getGender() == 'F') {
+                batch.draw(battleTextures.getFemaleIcon(), 808, 1364);
+            }
             battleTextures.getHealthText().draw(batch, Integer.toString(currentPokemon.getLevel()), 900,1398);
             batch.draw(battleTextures.getGreenHealth(), 712, 1340, Math.round(261 *((1.0 * currentPokemon.getAnimationHealth()) / currentPokemon.getHealthStat())), 14);
             batch.draw(battleTextures.getExpBar(), 578, 1271, (int)((1.0 * currentPokemon.getDisplayedExp() / currentPokemon.getNextLevelExp()) * 441.0), 12); //439 14 width height
@@ -308,7 +314,13 @@ public class BattleState extends GameState implements BattleInterface {
         if (battleType != TRAINER_BATTLE || (battleType == TRAINER_BATTLE && trainerAnimation.isDisplayingTrainerPokemon() && !enemyPokemon.isFainted())) {
             batch.draw(battleTextures.getEnemyHealthPanel(), 15, 1779);
             //Enemy level
+            battleTextures.getNameFont().draw(batch, enemyPokemon.getName(), 105,1881);
             battleTextures.getHealthText().draw(batch, Integer.toString(enemyPokemon.getLevel()), 488, 1874);
+            if (enemyPokemon.getGender() == 'm' || enemyPokemon.getGender() == 'M') {
+                batch.draw(battleTextures.getMaleIcon(), 399, 1841);
+            } else if (enemyPokemon.getGender() == 'f' || enemyPokemon.getGender() == 'F') {
+                batch.draw(battleTextures.getFemaleIcon(), 399, 1841);
+            }
             //Enemy Healthbar
             batch.draw(battleTextures.getGreenHealth(), 221, 1818, Math.round(261 * ((1.0 * enemyPokemon.getAnimationHealth()) / enemyPokemon.getHealthStat())), 14);
             //Render the statuses
@@ -632,6 +644,7 @@ public class BattleState extends GameState implements BattleInterface {
                     } else if (!gsm.isBoxFull()) {
                         enemyPokemon.fullyHeal();
                         gsm.getBox().add(enemyPokemon);
+                        //TODO: Save the caught pokemon to the appropriate box in db
                     }
                     if (region != -1) {
                         gsm.saveParty();
@@ -639,7 +652,7 @@ public class BattleState extends GameState implements BattleInterface {
                         gsm.playBgm();
                     } else {
                         gsm.saveParty();
-                        gsm.setState(new LoadingState(gsm, LoadingState.WILD_POKEMON_LIST));
+                        gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                         gsm.playBgm();
                     }
                     dispose();
@@ -717,7 +730,7 @@ public class BattleState extends GameState implements BattleInterface {
             } else {
                 gsm.saveParty();
                 gsm.playBgm();
-                gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
+                gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
             }
         }
         dispose();

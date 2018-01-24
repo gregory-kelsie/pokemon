@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.skill_effects;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public abstract class StatEffect extends SecondaryEffect {
             effectReceiver = enemyPokemon;
             receiverField = enemyField;
         }
-        if (effectReceiver.getBattleAbility() == Pokemon.Ability.SIMPLE) {
+        if (effectReceiver.getBattleAbility().getId() == Ability.AbilityId.SIMPLE) {
             finalAmount = amount * 2;
         } else {
             finalAmount = amount;

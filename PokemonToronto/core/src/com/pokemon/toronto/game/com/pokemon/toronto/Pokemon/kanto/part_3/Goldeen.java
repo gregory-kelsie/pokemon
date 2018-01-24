@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
@@ -24,6 +25,10 @@ public class Goldeen extends Pokemon {
     private static final int CAPTURE_RATE = 225;
     private static final double WEIGHT = 15;
 
+    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    private static final Ability SECOND_ABILITY = new Ability.WaterVeil();
+    private static final Ability HIDDEN_ABILITY = new Ability.Lightningrod();
+
     //Base Stats
     private static final int BASE_HEALTH = 45;
     private static final int BASE_ATTACK = 67;
@@ -47,50 +52,14 @@ public class Goldeen extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/118.png";
 
     /**
-     * Create a Goldeen with the specified level.
-     * @param level The level of the Goldeen.
+     * Create a Goldeen
      */
-    public Goldeen(int level) {
-        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+    public Goldeen() {
+        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Goldeen from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Goldeen(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
-    }
-
-    //TODO: HIDDEN LIGHTNING ROD
-    @Override
-    protected void initAbility() {
-        if (Math.random() <= .5) {
-            ability = Ability.SWIFT_SWIM;
-        } else {
-            //TODO: WATER VEIL
-            ability = Ability.SWIFT_SWIM;
-        }
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

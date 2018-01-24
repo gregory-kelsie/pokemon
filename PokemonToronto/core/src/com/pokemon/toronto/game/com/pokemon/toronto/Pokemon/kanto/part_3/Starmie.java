@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -22,6 +23,10 @@ public class Starmie extends Pokemon {
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
     private static final int CAPTURE_RATE = 60;
     private static final double WEIGHT = 80;
+
+    private static final Ability FIRST_ABILITY = new Ability.Illuminate();
+    private static final Ability SECOND_ABILITY = new Ability.NaturalCure();
+    private static final Ability HIDDEN_ABILITY = new Ability.Analytic();
 
     //Base Stats
     private static final int BASE_HEALTH = 60;
@@ -46,51 +51,14 @@ public class Starmie extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/121.png";
 
     /**
-     * Create a Starmie with the specified level.
-     * @param level The level of the Starmie.
+     * Create a Starmie
      */
-    public Starmie(int level) {
-        super(NUMBER, NAME, level, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+    public Starmie() {
+        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Starmie from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Starmie(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                  Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                  Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, TYPE_ONE, TYPE_TWO, ability, nature, EXP_TYPE,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
-    }
-
-    //TODO: HIDDEN ANALYTIC
-    @Override
-    protected void initAbility() {
-        if (Math.random() <= .5) {
-            //TODO: ILLUMINATE
-            ability = Ability.TORRENT;
-        } else {
-            //TODO: NATURAL CURE
-            ability = Ability.TORRENT;
-        }
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

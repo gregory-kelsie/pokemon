@@ -139,7 +139,7 @@ public class ProfileState extends GameState {
             int y = MyInput.getY();
 
             gsm.forcePortrait();
-            gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+            gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
             dispose();
         }
     }

@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.DamageSkill;
@@ -81,7 +82,7 @@ public class Explosion extends DamageSkill {
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon,
                                Field field, SubField userField, SubField enemyField,
                                boolean isFirstAttack, Skill targetsSkill) {
-        if (enemyPokemon.getBattleAbility() == Pokemon.Ability.DAMP) {
+        if (enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.DAMP) {
             return new FailResult(enemyPokemon.getName() + "'s ability Damp\nprevents Explosion.");
         }
         return new FailResult(false);

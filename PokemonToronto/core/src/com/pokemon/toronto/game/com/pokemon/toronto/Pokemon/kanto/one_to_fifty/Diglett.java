@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
@@ -24,6 +25,10 @@ public class Diglett extends Pokemon {
     private static final int CAPTURE_RATE = 255;
     private static final double WEIGHT = 0.8;
 
+    private static final Ability FIRST_ABILITY = new Ability.SandVeil();
+    private static final Ability SECOND_ABILITY = new Ability.ArenaTrap();
+    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+
     //Base Stats
     private static final int BASE_HEALTH = 10;
     private static final int BASE_ATTACK = 55;
@@ -40,50 +45,14 @@ public class Diglett extends Pokemon {
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/050.png";
 
     /**
-     * Create a Diglett with the specified level.
-     * @param level The level of the Diglett.
+     * Create a Diglett
      */
-    public Diglett(int level) {
-        super(NUMBER, NAME, level, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
+    public Diglett() {
+        super(NUMBER, NAME, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT);
-    }
-
-    /**
-     * Create an Diglett from the database.
-     * @param level The level of the Pokemon.
-     * @param ivs  The array of set IVs
-     * @param evs The array of set EVs
-     * @param firstSkill The first move.
-     * @param secondSkill The second move.
-     * @param thirdSkill The third move.
-     * @param fourthSkill The fourth move.
-     * @param currentHealth The current health of the Pokemon.
-     * @param currentExp The current exp of the Pokemon.
-     * @param status The Pokemon's status.
-     * @param nature The Pokemon's nature.
-     * @param ability The Pokemon's ability.
-     */
-    public Diglett(boolean fromDatabase, int level, char gender, int[] ivs, int [] evs, Skill firstSkill,
-                    Skill secondSkill, Skill thirdSkill, Skill fourthSkill, int currentHealth, int currentExp,
-                    Pokemon.Status status, Nature nature, Pokemon.Ability ability) {
-        super(NUMBER, NAME, level, gender, status, ivs, evs, Type.GROUND, Type.NONE, ability, nature, ExpType.MEDIUM_FAST,
-                BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT,
-                firstSkill, secondSkill, thirdSkill, fourthSkill, currentHealth, currentExp);
-    }
-
-    //TODO: HIDDEN SAND FORCE
-    @Override
-    protected void initAbility() {
-        if (Math.random() <= .5) {
-            ability = Ability.SAND_VEIL;
-        } else {
-            //TODO: ARENA TRAP
-            ability = Ability.SAND_VEIL;
-        }
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

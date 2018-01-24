@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Grass;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
@@ -47,9 +48,9 @@ public class StunSpore extends EffectSkill {
     public FailResult willFail(Pokemon skillUser, Pokemon enemyPokemon, Field field,
                                SubField userField, SubField enemyField, boolean isFirstAttacker,
                                Skill targetsSkill) {
-        if (enemyPokemon.isStatused() || enemyPokemon.getBattleAbility() == Pokemon.Ability.LIMBER
-                || (enemyPokemon.getBattleTypeOne() == Pokemon.Type.ELECTRIC ||
-                        enemyPokemon.getBattleTypeTwo() == Pokemon.Type.ELECTRIC ||
+        if (enemyPokemon.isStatused() || enemyPokemon.getBattleAbility().getId() ==
+                Ability.AbilityId.LIMBER || (enemyPokemon.getBattleTypeOne() ==
+                Pokemon.Type.ELECTRIC || enemyPokemon.getBattleTypeTwo() == Pokemon.Type.ELECTRIC ||
                 enemyPokemon.getBattleTypeOne() == Pokemon.Type.GRASS ||
                 enemyPokemon.getBattleTypeTwo() == Pokemon.Type.GRASS)) {
             return new FailResult("It failed...");

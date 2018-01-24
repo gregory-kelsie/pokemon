@@ -36,7 +36,7 @@ public class AccuracyEffect extends StatEffect {
             //Attempt to lower the accuracy stage.
             if (effectReceiver.isProtectedByAccuracyLoweringEffects()) {
                 results.add(effectReceiver.getName() + "'s accuracy cannot be\nlowered due to " +
-                        effectReceiver.getAbilityString() + ".");
+                        effectReceiver.getAbilityName() + ".");
             } else if (receiverField.hasMist()) {
                 results.add("Mist prevents " + effectReceiver.getName() +
                         "\nfrom losing accuracy!");

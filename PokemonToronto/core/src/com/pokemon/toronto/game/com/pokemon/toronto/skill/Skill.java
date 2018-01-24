@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 
 import java.util.List;
@@ -434,21 +435,21 @@ public abstract class Skill {
             }
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
-            if (enemyPokemon.getBattleAbility() == Pokemon.Ability.SAND_VEIL &&
+            if (enemyPokemon.getBattleAbility().getId() == AbilityId.SAND_VEIL &&
                     field.getWeatherType() == WeatherType.SAND) {
                 attackerAccuracyMod *= 0.8;
-            } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.SNOW_CLOAK &&
+            } else if (enemyPokemon.getBattleAbility().getId() == AbilityId.SNOW_CLOAK &&
                     field.getWeatherType() == WeatherType.HAIL) {
                 attackerAccuracyMod *= 0.8;
             }
-            if (skillUser.getBattleAbility() == Pokemon.Ability.HUSTLE) {
+            if (skillUser.getBattleAbility().getId() == AbilityId.HUSTLE) {
                 attackerAccuracyMod *= 0.8;
             }
             int evasionStage = 0;
             if (!ignoreTargetStatChanges) {
                 evasionStage = enemyPokemon.getEvasionStage();
-                if (enemyPokemon.isConfused() && enemyPokemon.getBattleAbility() ==
-                        Pokemon.Ability.TANGLED_FEET) {
+                if (enemyPokemon.isConfused() && enemyPokemon.getBattleAbility().getId() ==
+                        AbilityId.TANGLED_FEET) {
                     evasionStage++;
                     evasionStage = Math.min(6, evasionStage);
                 }

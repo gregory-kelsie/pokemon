@@ -40,7 +40,8 @@ public class LockOn extends Skill {
      * @param field The field of the battle.
      * @param targetSkill
      * @param skillUserParty
-     * @param enemyPokemonParty    @return Lock-On's move results.
+     * @param enemyPokemonParty
+     * @return Lock-On's move results.
      * */
     @Override
     public List<String> use(Pokemon skillUser, Pokemon enemyPokemon, int skillUserPartyPosition,

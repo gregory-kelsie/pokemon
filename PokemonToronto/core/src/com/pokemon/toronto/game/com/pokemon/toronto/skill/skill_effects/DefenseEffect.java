@@ -36,7 +36,7 @@ public class DefenseEffect extends StatEffect {
             //Attempt to lower the defense stage.
             if (effectReceiver.isProtectedByDefenseLoweringEffects()) {
                 results.add(effectReceiver.getName() + "'s defense can't be lowered\n" +
-                        "Due to the ability " + effectReceiver.getAbilityString());
+                        "Due to the ability " + effectReceiver.getAbilityName());
             } else if (receiverField.hasMist()) {
                 results.add("Mist prevents " + effectReceiver.getName() + "\nfrom losing Defense!");
             }else if (effectReceiver.getDefenseStage() == -6) {

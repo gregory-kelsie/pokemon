@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability.AbilityId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +133,8 @@ public abstract class DamageSkill extends Skill {
 
         //Prevent Overkill.
         if (damage > enemyPokemon.getCurrentHealth()) {
-            if (enemyPokemon.hasFullHealth() && enemyPokemon.getBattleAbility() == Pokemon.Ability.STURDY) {
+            if (enemyPokemon.hasFullHealth() && enemyPokemon.getBattleAbility().getId() ==
+                    AbilityId.STURDY) {
                 damage = enemyPokemon.getCurrentHealth() - 1;
                 heldOnWithSturdy = true;
             } else {
@@ -162,13 +164,16 @@ public abstract class DamageSkill extends Skill {
             results.add(enemyPokemon.getName() + " held on\nwith Sturdy!");
         }
         //Subtract recoil damage.
-        if (recoilLevel == ONE_THIRD && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
+        if (recoilLevel == ONE_THIRD && skillUser.getBattleAbility().getId() !=
+                AbilityId.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 3.0));
             skillUser.takeDamageThisTurn();
-        } else if (recoilLevel == ONE_HALF && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
+        } else if (recoilLevel == ONE_HALF && skillUser.getBattleAbility().getId() !=
+                AbilityId.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 2.0));
             skillUser.takeDamageThisTurn();
-        } else if (recoilLevel == ONE_FOURTH && skillUser.getBattleAbility() != Pokemon.Ability.ROCK_HEAD) {
+        } else if (recoilLevel == ONE_FOURTH && skillUser.getBattleAbility().getId() !=
+                AbilityId.ROCK_HEAD) {
             skillUser.subtractHealth((int) Math.ceil(damage / 4.0));
             skillUser.takeDamageThisTurn();
         } else if (recoilLevel == GAIN_HALF) {
@@ -231,8 +236,8 @@ public abstract class DamageSkill extends Skill {
      * @return Whether or not the move crit.
      */
     private boolean calcCrit(Pokemon user, Pokemon enemy, Field field) {
-        if (enemy.getBattleAbility() == Pokemon.Ability.SHELL_ARMOR ||
-                enemy.getBattleAbility() == Pokemon.Ability.BATTLE_ARMOR) {
+        if (enemy.getBattleAbility().getId() == AbilityId.SHELL_ARMOR ||
+                enemy.getBattleAbility().getId() == AbilityId.BATTLE_ARMOR) {
             return false;
         }
         if (crit == -1 || user.hasCrit()) { //-1 Means always crits.
@@ -242,7 +247,7 @@ public abstract class DamageSkill extends Skill {
         if (user.isFocused()) {
             critStage += 2;
         }
-        if (user.getBattleAbility() == Pokemon.Ability.SUPER_LUCK) {
+        if (user.getBattleAbility().getId() == AbilityId.SUPER_LUCK) {
             critStage *= 2;
         }
         //TODO: Add hold item bonus, add lucky chant prevention.
@@ -311,7 +316,7 @@ public abstract class DamageSkill extends Skill {
     public double getStabModifier(Pokemon user) {
         //Check if the user's type is the same as the move type.
         if (user.getBattleTypeOne() == this.getType() || user.getBattleTypeTwo() == this.getType()) {
-            if (user.getBattleAbility() == Pokemon.Ability.ADAPTABILITY) {
+            if (user.getBattleAbility().getId() == AbilityId.ADAPTABILITY) {
                 //Adaptability makes the STAB bonus 2 instead of 1
                 return 2;
             }
@@ -335,13 +340,14 @@ public abstract class DamageSkill extends Skill {
         } else if (resistMod < 1) {
             notVeryEffective = true;
         }
-        if (enemy.getBattleAbility() == Pokemon.Ability.FILTER || enemy.getBattleAbility() == Pokemon.Ability.SOLID_ROCK) {
+        if (enemy.getBattleAbility().getId() == AbilityId.FILTER ||
+                enemy.getBattleAbility().getId() == AbilityId.SOLID_ROCK) {
             //Filter and Solid Rock reduce super effective moves by 1/4
             if (superEffective) {
                 resistMod *= 0.75;
             }
         }
-        if (user.getBattleAbility() == Pokemon.Ability.TINTED_LENS) {
+        if (user.getBattleAbility().getId() == AbilityId.TINTED_LENS) {
             //Power of not very effective moves is doubled.
             if (notVeryEffective) {
                 resistMod *= 2;
@@ -358,7 +364,7 @@ public abstract class DamageSkill extends Skill {
 	 */
     private double getCritMultiplier(Pokemon user, boolean hasCrit) {
         if (hasCrit) {
-            if (user.getBattleAbility() == Pokemon.Ability.SNIPER) {
+            if (user.getBattleAbility().getId() == AbilityId.SNIPER) {
                 return 2.25;
             }  else {
                 return 1.5;
@@ -378,7 +384,7 @@ public abstract class DamageSkill extends Skill {
      */
     private double getBurnMod (Pokemon user) {
         if (user.isBurned()) {
-            if (user.getBattleAbility() == Pokemon.Ability.GUTS ||
+            if (user.getBattleAbility().getId() == AbilityId.GUTS ||
                     id == SkillFactory.FACADE || category != SkillCategory.PHYSICAL) {
                 return 1;
             }
@@ -395,24 +401,24 @@ public abstract class DamageSkill extends Skill {
         //Health below 1/3 ability mods
         if (user.getCurrentHealth() <= user.getHealthStat() * 0.33) {
             if (this.getType() == Pokemon.Type.FIRE) {
-                if (user.getBattleAbility() == Pokemon.Ability.BLAZE) {
+                if (user.getBattleAbility().getId() == AbilityId.BLAZE) {
                     return 1.5;
                 }
             } else if (this.getType() == Pokemon.Type.WATER) {
-                if (user.getBattleAbility() == Pokemon.Ability.TORRENT) {
+                if (user.getBattleAbility().getId() == AbilityId.TORRENT) {
                     return 1.5;
                 }
             }	else if (this.getType() == Pokemon.Type.GRASS) {
-                if (user.getBattleAbility() == Pokemon.Ability.OVERGROW) {
+                if (user.getBattleAbility().getId() == AbilityId.OVERGROW) {
                     return 1.5;
                 }
             }	else if (this.getType()== Pokemon.Type.BUG) {
-                if (user.getBattleAbility() == Pokemon.Ability.SWARM) {
+                if (user.getBattleAbility().getId() == AbilityId.SWARM) {
                     return 1.5;
                 }
             }
         }
-        if (user.getBattleAbility() == Pokemon.Ability.SAND_FORCE) {
+        if (user.getBattleAbility().getId() == AbilityId.SAND_FORCE) {
             if (type == Pokemon.Type.GROUND ||
                     type == Pokemon.Type.STEEL ||
                     type == Pokemon.Type.ROCK) {
@@ -420,7 +426,7 @@ public abstract class DamageSkill extends Skill {
             }
         }
 
-        if (user.getBattleAbility() == Pokemon.Ability.SOLAR_POWER) {
+        if (user.getBattleAbility().getId() == AbilityId.SOLAR_POWER) {
             if (field.getWeatherType() == WeatherType.HARSH_SUNSHINE ||
                     field.getWeatherType() == WeatherType.SUN) {
                 if (category == SkillCategory.SPECIAL) {
@@ -430,13 +436,14 @@ public abstract class DamageSkill extends Skill {
         }
 
         //Status ability mods
-        if (user.getBattleAbility() == Pokemon.Ability.GUTS && (user.getStatus() == Pokemon.Status.BURN
-                || user.getStatus() == Pokemon.Status.PARALYSIS || user.getStatus() == Pokemon.Status.POISON)) {
+        if (user.getBattleAbility().getId() == AbilityId.GUTS &&
+                (user.getStatus() == Pokemon.Status.BURN || user.getStatus() ==
+                        Pokemon.Status.PARALYSIS || user.getStatus() == Pokemon.Status.POISON)) {
             return 1.5;
         }
 
         //Regular ability mods.
-        if (user.getBattleAbility() == Pokemon.Ability.HUSTLE) {
+        if (user.getBattleAbility().getId() == AbilityId.HUSTLE) {
             return 1.5;
         }
 
@@ -451,15 +458,16 @@ public abstract class DamageSkill extends Skill {
     private double getDefenseAbilityMod(Pokemon enemy) {
         //Ability mods when getting hit by fire
         if (this.getType() == Pokemon.Type.FIRE) {
-            if (enemy.getBattleAbility() == Pokemon.Ability.THICK_FAT || enemy.getBattleAbility() == Pokemon.Ability.HEATPROOF) {
+            if (enemy.getBattleAbility().getId() == AbilityId.THICK_FAT ||
+                    enemy.getBattleAbility().getId() == AbilityId.HEATPROOF) {
                 return 0.5;
-            } else if (enemy.getBattleAbility() == Pokemon.Ability.DRY_SKIN) {
+            } else if (enemy.getBattleAbility().getId() == AbilityId.DRY_SKIN) {
                 return 1.25;
             }
         }
         //Ability mods when getting hit by ice
         else if (this.getType() == Pokemon.Type.ICE) {
-            if (enemy.getBattleAbility() == Pokemon.Ability.THICK_FAT) {
+            if (enemy.getBattleAbility().getId() == AbilityId.THICK_FAT) {
                 return 0.5;
             }
         }

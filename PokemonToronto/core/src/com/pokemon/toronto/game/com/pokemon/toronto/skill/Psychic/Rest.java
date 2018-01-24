@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
@@ -74,7 +75,7 @@ public class Rest extends Skill {
                                Skill targetsSkill) {
         if (skillUser.isSleeping()) {
             return new FailResult(skillUser.getName() + " is already sleeping!");
-        } else if (skillUser.getBattleAbility() == Pokemon.Ability.INSOMNIA ||
+        } else if (skillUser.getBattleAbility().getId() == Ability.AbilityId.INSOMNIA ||
                 enemyPokemon.isUproaring() || skillUser.isUproaring()) {
             return new FailResult("It failed...");
         }

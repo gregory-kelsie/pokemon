@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.skill.Ice;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SecondaryEffect;
@@ -40,8 +41,8 @@ public class FreezeDry extends SecondaryEffectSkill {
                 enemy.getBattleTypeTwo() == Pokemon.Type.WATER) {
             //Make the hit super effective against water types.
             double resistMod = 2;
-            if (enemy.getBattleAbility() == Pokemon.Ability.FILTER ||
-                    enemy.getBattleAbility() == Pokemon.Ability.SOLID_ROCK) {
+            if (enemy.getBattleAbility().getId() == Ability.AbilityId.FILTER ||
+                    enemy.getBattleAbility().getId() == Ability.AbilityId.SOLID_ROCK) {
                 //Filter and Solid Rock reduce super effective damage.
                resistMod *= 0.75;
             }

@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
@@ -47,11 +48,10 @@ public class SkillSwap extends Skill {
                             SubField enemyField, boolean isFirstAttack, Skill targetSkill,
                             List<Pokemon> skillUserParty, List<Pokemon> enemyPokemonParty) {
         List<String> results = new ArrayList<String>();
-        Pokemon.Ability skillUserAbility = skillUser.getBattleAbility();
+        Ability skillUserAbility = skillUser.getBattleAbility();
         skillUser.setBattleAbility(enemyPokemon.getBattleAbility());
         enemyPokemon.setBattleAbility(skillUserAbility);
         results.add(skillUser.getName() + " swapped abilities\n" + " with its target!");
-        //TODO: Create a method to get an ability string from an ability.
         return results;
     }
 

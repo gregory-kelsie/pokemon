@@ -1,5 +1,99 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Aipom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ampharos;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ariados;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Azumarill;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Bayleef;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Bellossom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Blissey;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Chikorita;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Chinchou;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Cleffa;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Corsola;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Crobat;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Croconaw;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Cyndaquil;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Delibird;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Donphan;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Dunsparce;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Elekid;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Espeon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Feraligatr;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Flaffy;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Forretress;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Furret;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Girafarig;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Gligar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Granbull;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Heracross;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hitmontop;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hoothoot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hoppip;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Houndoom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Houndour;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Igglybuff;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Jumpluff;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Kingdra;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Lanturn;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Larvitar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ledian;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ledyba;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Magby;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Magcargo;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Mantine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Mareep;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Marill;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Meganium;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Miltank;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Misdreavus;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Murkrow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Natu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Noctowl;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Octillery;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Phanpy;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pichu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Piloswine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pineco;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Politoed;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Porygon2;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pupitar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Quagsire;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Quilava;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Qwilfish;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Remoraid;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Scizor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sentret;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Shuckle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Skarmory;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Skiploom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Slowking;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Slugma;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Smeargle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Smoochum;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sneasel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Snubbull;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Spinarak;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Stantler;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Steelix;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sudowoodo;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sunflora;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sunkern;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Swinub;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Teddiursa;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Togepi;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Togetic;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Totodile;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Typhlosion;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Tyranitar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Tyrogue;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Umbreon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Unown;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ursaring;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Wobbuffet;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Wooper;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Xatu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Yanma;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Blastoise;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Bulbasaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Caterpie;
@@ -193,339 +287,8 @@ public class WildPokemonCreator {
      */
     public WildPokemon createPokemon(int number, double latitude, double longitude,
                                      Date date, String dateString) {
-        if (number == PokemonId.BULBASAUR.getValue()) {
-            return new WildPokemon(new Bulbasaur(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.IVYSAUR.getValue()) {
-            return new WildPokemon(new Ivysaur(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VENUSAUR.getValue()) {
-            return new WildPokemon(new Venusaur(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CHARMANDER.getValue()) {
-            return new WildPokemon(new Charmander(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CHARMELEON.getValue()) {
-            return new WildPokemon(new Charmeleon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CHARIZARD.getValue()) {
-            return new WildPokemon(new Charizard(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SQUIRTLE.getValue()) {
-            return new WildPokemon(new Squirtle(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.WARTORTLE.getValue()) {
-            return new WildPokemon(new Wartortle(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.BLASTOISE.getValue()) {
-            return new WildPokemon(new Blastoise(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CATERPIE.getValue()) {
-            return new WildPokemon(new Caterpie(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.METAPOD.getValue()) {
-            return new WildPokemon(new Metapod(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.BUTTERFREE.getValue()) {
-            return new WildPokemon(new Butterfree(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.WEEDLE.getValue()) {
-            return new WildPokemon(new Weedle(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KAKUNA.getValue()) {
-            return new WildPokemon(new Kakuna(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.BEEDRILL.getValue()) {
-            return new WildPokemon(new Beedrill(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PIDGEY.getValue()) {
-            return new WildPokemon(new Pidgey(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PIDGEOTTO.getValue()) {
-            return new WildPokemon(new Pidgeotto(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PIDGEOT.getValue()) {
-            return new WildPokemon(new Pidgeot(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RATTATA.getValue()) {
-            return new WildPokemon(new Rattata(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_RATTATA.getValue()) {
-            return new WildPokemon(new AlolanRattata(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RATICATE.getValue()) {
-            return new WildPokemon(new Raticate(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_RATICATE.getValue()) {
-            return new WildPokemon(new AlolanRaticate(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SPEAROW.getValue()) {
-            return new WildPokemon(new Spearow(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.FEAROW.getValue()) {
-            return new WildPokemon(new Fearow(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.EKANS.getValue()) {
-            return new WildPokemon(new Ekans(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ARBOK.getValue()) {
-            return new WildPokemon(new Arbok(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PIKACHU.getValue()) {
-            return new WildPokemon(new Pikachu(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RAICHU.getValue()) {
-            return new WildPokemon(new Raichu(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_RAICHU.getValue()) {
-            return new WildPokemon(new AlolanRaichu(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SANDSHREW.getValue()) {
-            return new WildPokemon(new Sandshrew(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_SANDSHREW.getValue()) {
-            return new WildPokemon(new AlolanSandshrew(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SANDSLASH.getValue()) {
-            return new WildPokemon(new Sandslash(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_SANDSLASH.getValue()) {
-            return new WildPokemon(new AlolanSandslash(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORANF.getValue()) {
-            return new WildPokemon(new NidoranF(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORINA.getValue()) {
-            return new WildPokemon(new Nidorina(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDOQUEEN.getValue()) {
-            return new WildPokemon(new Nidoqueen(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORANM.getValue()) {
-            return new WildPokemon(new NidoranM(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDORINO.getValue()) {
-            return new WildPokemon(new Nidorino(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NIDOKING.getValue()) {
-            return new WildPokemon(new Nidoking(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CLEFAIRY.getValue()) {
-            return new WildPokemon(new Clefairy(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CLEFABLE.getValue()) {
-            return new WildPokemon(new Clefable(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VULPIX.getValue()) {
-            return new WildPokemon(new Vulpix(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_VULPIX.getValue()) {
-            return new WildPokemon(new AlolanVulpix(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.NINETALES.getValue()) {
-            return new WildPokemon(new Ninetales(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_NINETALES.getValue()) {
-            return new WildPokemon(new AlolanNinetales(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.JIGGLYPUFF.getValue()) {
-            return new WildPokemon(new Jigglypuff(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.WIGGLYTUFF.getValue()) {
-            return new WildPokemon(new Wigglytuff(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ZUBAT.getValue()) {
-            return new WildPokemon(new Zubat(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GOLBAT.getValue()) {
-            return new WildPokemon(new Golbat(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ODDISH.getValue()) {
-            return new WildPokemon(new Oddish(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GLOOM.getValue()) {
-            return new WildPokemon(new Gloom(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VILEPLUME.getValue()) {
-            return new WildPokemon(new Vileplume(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PARAS.getValue()) {
-            return new WildPokemon(new Paras(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PARASECT.getValue()) {
-            return new WildPokemon(new Parasect(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VENONAT.getValue()) {
-            return new WildPokemon(new Venonat(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VENOMOTH.getValue()) {
-            return new WildPokemon(new Venomoth(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DIGLETT.getValue()) {
-            return new WildPokemon(new Diglett(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_DIGLETT.getValue()) {
-            return new WildPokemon(new AlolanDiglett(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DUGTRIO.getValue()) {
-            return new WildPokemon(new Dugtrio(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_DUGTRIO.getValue()) {
-            return new WildPokemon(new AlolanDugtrio(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MEOWTH.getValue()) {
-            return new WildPokemon(new Meowth(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_MEOWTH.getValue()) {
-            return new WildPokemon(new AlolanMeowth(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PERSIAN.getValue()) {
-            return new WildPokemon(new Persian(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_PERSIAN.getValue()) {
-            return new WildPokemon(new AlolanPersian(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PSYDUCK.getValue()) {
-            return new WildPokemon(new Psyduck(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GOLDUCK.getValue()) {
-            return new WildPokemon(new Golduck(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MANKEY.getValue()) {
-            return new WildPokemon(new Mankey(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PRIMEAPE.getValue()) {
-            return new WildPokemon(new Primeape(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GROWLITHE.getValue()) {
-            return new WildPokemon(new Growlithe(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ARCANINE.getValue()) {
-            return new WildPokemon(new Arcanine(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.POLIWAG.getValue()) {
-            return new WildPokemon(new Poliwag(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.POLIWHIRL.getValue()) {
-            return new WildPokemon(new Poliwhirl(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.POLIWRATH.getValue()) {
-            return new WildPokemon(new Poliwrath(5), latitude, longitude, date, dateString);
-        }  else if (number == PokemonId.ABRA.getValue()) {
-            return new WildPokemon(new Abra(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KADABRA.getValue()) {
-            return new WildPokemon(new Kadabra(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALAKAZAM.getValue()) {
-            return new WildPokemon(new Alakazam(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MACHOP.getValue()) {
-            return new WildPokemon(new Machop(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MACHOKE.getValue()) {
-            return new WildPokemon(new Machoke(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MACHAMP.getValue()) {
-            return new WildPokemon(new Machamp(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.BELLSPROUT.getValue()) {
-            return new WildPokemon(new Bellsprout(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.WEEPINBELL.getValue()) {
-            return new WildPokemon(new Weepinbell(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VICTREEBEL.getValue()) {
-            return new WildPokemon(new Victreebel(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.TENTACOOL.getValue()) {
-            return new WildPokemon(new Tentacool(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.TENTACRUEL.getValue()) {
-            return new WildPokemon(new Tentacruel(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GEODUDE.getValue()) {
-            return new WildPokemon(new Geodude(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_GEODUDE.getValue()) {
-            return new WildPokemon(new AlolanGeodude(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GRAVELER.getValue()) {
-            return new WildPokemon(new Graveler(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_GRAVELER.getValue()) {
-            return new WildPokemon(new AlolanGraveler(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GOLEM.getValue()) {
-            return new WildPokemon(new Golem(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_GOLEM.getValue()) {
-            return new WildPokemon(new AlolanGolem(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PONYTA.getValue()) {
-            return new WildPokemon(new Ponyta(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RAPIDASH.getValue()) {
-            return new WildPokemon(new Rapidash(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SLOWPOKE.getValue()) {
-            return new WildPokemon(new Slowpoke(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SLOWBRO.getValue()) {
-            return new WildPokemon(new Slowbro(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MAGNEMITE.getValue()) {
-            return new WildPokemon(new Magnemite(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MAGNETON.getValue()) {
-            return new WildPokemon(new Magneton(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.FARFETCHD.getValue()) {
-            return new WildPokemon(new Farfetchd(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DODUO.getValue()) {
-            return new WildPokemon(new Doduo(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DODRIO.getValue()) {
-            return new WildPokemon(new Dodrio(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SEEL.getValue()) {
-            return new WildPokemon(new Seel(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DEWGONG.getValue()) {
-            return new WildPokemon(new Dewgong(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GRIMER.getValue()) {
-            return new WildPokemon(new Grimer(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_GRIMER.getValue()) {
-            return new WildPokemon(new AlolanGrimer(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MUK.getValue()) {
-            return new WildPokemon(new Muk(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_MUK.getValue()) {
-            return new WildPokemon(new AlolanMuk(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SHELLDER.getValue()) {
-            return new WildPokemon(new Shellder(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CLOYSTER.getValue()) {
-            return new WildPokemon(new Cloyster(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GASTLY.getValue()) {
-            return new WildPokemon(new Gastly(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.HAUNTER.getValue()) {
-            return new WildPokemon(new Haunter(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GENGAR.getValue()) {
-            return new WildPokemon(new Gengar(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ONIX.getValue()) {
-            return new WildPokemon(new Onix(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DROWZEE.getValue()) {
-            return new WildPokemon(new Drowzee(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.HYPNO.getValue()) {
-            return new WildPokemon(new Hypno(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KRABBY.getValue()) {
-            return new WildPokemon(new Krabby(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KINGLER.getValue()) {
-            return new WildPokemon(new Kingler(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VOLTORB.getValue()) {
-            return new WildPokemon(new Voltorb(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ELECTRODE.getValue()) {
-            return new WildPokemon(new Electrode(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.EXEGGCUTE.getValue()) {
-            return new WildPokemon(new Exeggcute(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.EXEGGUTOR.getValue()) {
-            return new WildPokemon(new Exeggutor(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_EXEGGUTOR.getValue()) {
-            return new WildPokemon(new AlolanExeggutor(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CUBONE.getValue()) {
-            return new WildPokemon(new Cubone(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MAROWAK.getValue()) {
-            return new WildPokemon(new Marowak(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ALOLAN_MAROWAK.getValue()) {
-            return new WildPokemon(new AlolanMarowak(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.HITMONLEE.getValue()) {
-            return new WildPokemon(new Hitmonlee(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.HITMONCHAN.getValue()) {
-            return new WildPokemon(new Hitmonchan(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.LICKITUNG.getValue()) {
-            return new WildPokemon(new Lickitung(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KOFFING.getValue()) {
-            return new WildPokemon(new Koffing(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.WEEZING.getValue()) {
-            return new WildPokemon(new Weezing(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RHYHORN.getValue()) {
-            return new WildPokemon(new Rhyhorn(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.RHYDON.getValue()) {
-            return new WildPokemon(new Rhydon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.CHANSEY.getValue()) {
-            return new WildPokemon(new Chansey(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.TANGELA.getValue()) {
-            return new WildPokemon(new Tangela(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KANGASKHAN.getValue()) {
-            return new WildPokemon(new Kangaskhan(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.HORSEA.getValue()) {
-            return new WildPokemon(new Horsea(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SEADRA.getValue()) {
-            return new WildPokemon(new Seadra(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GOLDEEN.getValue()) {
-            return new WildPokemon(new Goldeen(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SEAKING.getValue()) {
-            return new WildPokemon(new Seaking(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.STARYU.getValue()) {
-            return new WildPokemon(new Staryu(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.STARMIE.getValue()) {
-            return new WildPokemon(new Starmie(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MR_MIME.getValue()) {
-            return new WildPokemon(new MrMime(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SCYTHER.getValue()) {
-            return new WildPokemon(new Scyther(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.JYNX.getValue()) {
-            return new WildPokemon(new Jynx(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.ELECTABUZZ.getValue()) {
-            return new WildPokemon(new Electabuzz(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MAGMAR.getValue()) {
-            return new WildPokemon(new Magmar(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PINSIR.getValue()) {
-            return new WildPokemon(new Pinsir(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.TAUROS.getValue()) {
-            return new WildPokemon(new Tauros(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.MAGIKARP.getValue()) {
-            return new WildPokemon(new Magikarp(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.GYARADOS.getValue()) {
-            return new WildPokemon(new Gyarados(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.LAPRAS.getValue()) {
-            return new WildPokemon(new Lapras(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DITTO.getValue()) {
-            return new WildPokemon(new Ditto(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.EEVEE.getValue()) {
-            return new WildPokemon(new Eevee(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.VAPOREON.getValue()) {
-            return new WildPokemon(new Vaporeon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.JOLTEON.getValue()) {
-            return new WildPokemon(new Jolteon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.FLAREON.getValue()) {
-            return new WildPokemon(new Flareon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.PORYGON.getValue()) {
-            return new WildPokemon(new Porygon(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.OMANYTE.getValue()) {
-            return new WildPokemon(new Omanyte(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.OMASTAR.getValue()) {
-            return new WildPokemon(new Omastar(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KABUTO.getValue()) {
-            return new WildPokemon(new Kabuto(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.KABUTOPS.getValue()) {
-            return new WildPokemon(new Kabutops(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.AERODACTYL.getValue()) {
-            return new WildPokemon(new Aerodactyl(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.SNORLAX.getValue()) {
-            return new WildPokemon(new Snorlax(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DRATINI.getValue()) {
-            return new WildPokemon(new Dratini(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DRAGONAIR.getValue()) {
-            return new WildPokemon(new Dragonair(5), latitude, longitude, date, dateString);
-        } else if (number == PokemonId.DRAGONITE.getValue()) {
-            return new WildPokemon(new Dragonite(5), latitude, longitude, date, dateString);
-        }
-        else {
-            Pikachu p = new Pikachu(5);
-            return new WildPokemon(p, latitude, longitude, date, dateString);
-        }
+        return new WildPokemon(createPokemon(number, 5, 5), latitude,
+                longitude, date, dateString);
     }
 
 
@@ -537,338 +300,868 @@ public class WildPokemonCreator {
      * @return A new Pokemon within a level range.
      */
     public Pokemon createPokemon(int pokemonNumber, int lowestLevel, int highestLevel) {
-        int level = (int)((Math.random() * (highestLevel - lowestLevel)) + lowestLevel);
+        int level = (int) ((Math.random() * (highestLevel - lowestLevel)) + lowestLevel);
         if (pokemonNumber == PokemonId.BULBASAUR.getValue()) {
-            return new Bulbasaur(level);
+            Pokemon createdPokemon = new Bulbasaur();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.IVYSAUR.getValue()) {
-            return new Ivysaur(level);
+            Pokemon createdPokemon = new Ivysaur();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VENUSAUR.getValue()) {
-            return new Venusaur(level);
+            Pokemon createdPokemon = new Venusaur();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CHARMANDER.getValue()) {
-            return new Charmander(level);
+            Pokemon createdPokemon = new Charmander();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CHARMELEON.getValue()) {
-            return new Charmander(level);
+            Pokemon createdPokemon = new Charmander();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CHARIZARD.getValue()) {
-            return new Charizard(level);
+            Pokemon createdPokemon = new Charizard();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SQUIRTLE.getValue()) {
-            return new Squirtle(level);
+            Pokemon createdPokemon = new Squirtle();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.WARTORTLE.getValue()) {
-            return new Wartortle(level);
+            Pokemon createdPokemon = new Wartortle();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.BLASTOISE.getValue()) {
-            return new Blastoise(level);
+            Pokemon createdPokemon = new Blastoise();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CATERPIE.getValue()) {
-            return new Caterpie(level);
+            Pokemon createdPokemon = new Caterpie();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.METAPOD.getValue()) {
-            return new Metapod(level);
+            Pokemon createdPokemon = new Metapod();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.BUTTERFREE.getValue()) {
-            return new Butterfree(level);
+            Pokemon createdPokemon = new Butterfree();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.WEEDLE.getValue()) {
-            return new Weedle(level);
+            Pokemon createdPokemon = new Weedle();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KAKUNA.getValue()) {
-            return new Kakuna(level);
+            Pokemon createdPokemon = new Kakuna();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.BEEDRILL.getValue()) {
-            return new Beedrill(level);
+            Pokemon createdPokemon = new Beedrill();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PIDGEY.getValue()) {
-            return new Pidgey(level);
+            Pokemon createdPokemon = new Pidgey();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PIDGEOTTO.getValue()) {
-            return new Pidgeotto(level);
+            Pokemon createdPokemon = new Pidgeotto();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PIDGEOT.getValue()) {
-            return new Pidgeot(level);
+            Pokemon createdPokemon = new Pidgeot();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RATTATA.getValue()) {
-            return new Rattata(level);
+            Pokemon createdPokemon = new Rattata();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_RATTATA.getValue()) {
-            return new AlolanRattata(level);
+            Pokemon createdPokemon = new AlolanRattata();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RATICATE.getValue()) {
-            return new Raticate(level);
+            Pokemon createdPokemon = new Raticate();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_RATICATE.getValue()) {
-            return new AlolanRaticate(level);
+            Pokemon createdPokemon = new AlolanRaticate();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SPEAROW.getValue()) {
-            return new Spearow(level);
+            Pokemon createdPokemon = new Spearow();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.FEAROW.getValue()) {
-            return new Fearow(level);
+            Pokemon createdPokemon = new Fearow();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.EKANS.getValue()) {
-            return new Ekans(level);
+            Pokemon createdPokemon = new Ekans();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ARBOK.getValue()) {
-            return new Arbok(level);
+            Pokemon createdPokemon = new Arbok();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PIKACHU.getValue()) {
-            return new Pikachu(level);
+            Pokemon createdPokemon = new Pikachu();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RAICHU.getValue()) {
-            return new Raichu(level);
+            Pokemon createdPokemon = new Raichu();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_RAICHU.getValue()) {
-            return new AlolanRaichu(level);
+            Pokemon createdPokemon = new AlolanRaichu();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SANDSHREW.getValue()) {
-            return new Sandshrew(level);
+            Pokemon createdPokemon = new Sandshrew();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_SANDSHREW.getValue()) {
-            return new AlolanSandshrew(level);
+            Pokemon createdPokemon = new AlolanSandshrew();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SANDSLASH.getValue()) {
-            return new Sandslash(level);
+            Pokemon createdPokemon = new Sandslash();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_SANDSLASH.getValue()) {
-            return new AlolanSandslash(level);
+            Pokemon createdPokemon = new AlolanSandslash();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDORANF.getValue()) {
-            return new NidoranF(level);
+            Pokemon createdPokemon = new NidoranF();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDORINA.getValue()) {
-            return new Nidorina(level);
+            Pokemon createdPokemon = new Nidorina();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDOQUEEN.getValue()) {
-            return new Nidoqueen(level);
+            Pokemon createdPokemon = new Nidoqueen();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDORANM.getValue()) {
-            return new NidoranM(level);
+            Pokemon createdPokemon = new NidoranM();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDORINO.getValue()) {
-            return new Nidorino(level);
+            Pokemon createdPokemon = new Nidorino();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NIDOKING.getValue()) {
-            return new Nidoking(level);
+            Pokemon createdPokemon = new Nidoking();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CLEFAIRY.getValue()) {
-            return new Clefairy(level);
+            Pokemon createdPokemon = new Clefairy();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CLEFABLE.getValue()) {
-            return new Clefable(level);
+            Pokemon createdPokemon = new Clefable();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VULPIX.getValue()) {
-            return new Vulpix(level);
+            Pokemon createdPokemon = new Vulpix();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_VULPIX.getValue()) {
-            return new AlolanVulpix(level);
+            Pokemon createdPokemon = new AlolanVulpix();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.NINETALES.getValue()) {
-            return new Ninetales(level);
+            Pokemon createdPokemon = new Ninetales();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_NINETALES.getValue()) {
-            return new AlolanNinetales(level);
+            Pokemon createdPokemon = new AlolanNinetales();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.JIGGLYPUFF.getValue()) {
-            return new Jigglypuff(level);
+            Pokemon createdPokemon = new Jigglypuff();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.WIGGLYTUFF.getValue()) {
-            return new Wigglytuff(level);
+            Pokemon createdPokemon = new Wigglytuff();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ZUBAT.getValue()) {
-            return new Zubat(level);
+            Pokemon createdPokemon = new Zubat();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GOLBAT.getValue()) {
-            return new Golbat(level);
+            Pokemon createdPokemon = new Golbat();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ODDISH.getValue()) {
-            return new Oddish(level);
+            Pokemon createdPokemon = new Oddish();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GLOOM.getValue()) {
-            return new Gloom(level);
+            Pokemon createdPokemon = new Gloom();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VILEPLUME.getValue()) {
-            return new Vileplume(level);
+            Pokemon createdPokemon = new Vileplume();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PARAS.getValue()) {
-            return new Paras(level);
+            Pokemon createdPokemon = new Paras();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PARASECT.getValue()) {
-            return new Parasect(level);
+            Pokemon createdPokemon = new Parasect();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VENONAT.getValue()) {
-            return new Venonat(level);
-        }  else if (pokemonNumber == PokemonId.VENOMOTH.getValue()) {
-            return new Venomoth(level);
+            Pokemon createdPokemon = new Venonat();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
+        } else if (pokemonNumber == PokemonId.VENOMOTH.getValue()) {
+            Pokemon createdPokemon = new Venomoth();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DIGLETT.getValue()) {
-            return new Diglett(level);
+            Pokemon createdPokemon = new Diglett();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_DIGLETT.getValue()) {
-            return new AlolanDiglett(level);
+            Pokemon createdPokemon = new AlolanDiglett();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DUGTRIO.getValue()) {
-            return new Dugtrio(level);
+            Pokemon createdPokemon = new Dugtrio();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_DUGTRIO.getValue()) {
-            return new AlolanDugtrio(level);
+            Pokemon createdPokemon = new AlolanDugtrio();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MEOWTH.getValue()) {
-            return new Meowth(level);
+            Pokemon createdPokemon = new Meowth();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_MEOWTH.getValue()) {
-            return new AlolanMeowth(level);
+            Pokemon createdPokemon = new AlolanMeowth();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PERSIAN.getValue()) {
-            return new Persian(level);
+            Pokemon createdPokemon = new Persian();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_PERSIAN.getValue()) {
-            return new AlolanPersian(level);
+            Pokemon createdPokemon = new AlolanPersian();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PSYDUCK.getValue()) {
-            return new Psyduck(level);
+            Pokemon createdPokemon = new Psyduck();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GOLDUCK.getValue()) {
-            return new Golduck(level);
+            Pokemon createdPokemon = new Golduck();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MANKEY.getValue()) {
-            return new Mankey(level);
+            Pokemon createdPokemon = new Mankey();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PRIMEAPE.getValue()) {
-            return new Primeape(level);
+            Pokemon createdPokemon = new Primeape();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GROWLITHE.getValue()) {
-            return new Growlithe(level);
+            Pokemon createdPokemon = new Growlithe();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ARCANINE.getValue()) {
-            return new Arcanine(level);
+            Pokemon createdPokemon = new Arcanine();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.POLIWAG.getValue()) {
-            return new Poliwag(level);
+            Pokemon createdPokemon = new Poliwag();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.POLIWHIRL.getValue()) {
-            return new Poliwhirl(level);
+            Pokemon createdPokemon = new Poliwhirl();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.POLIWRATH.getValue()) {
-            return new Poliwrath(level);
+            Pokemon createdPokemon = new Poliwrath();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ABRA.getValue()) {
-            return new Abra(level);
+            Pokemon createdPokemon = new Abra();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KADABRA.getValue()) {
-            return new Kadabra(level);
+            Pokemon createdPokemon = new Kadabra();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALAKAZAM.getValue()) {
-            return new Alakazam(level);
+            Pokemon createdPokemon = new Alakazam();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MACHOP.getValue()) {
-            return new Machop(level);
+            Pokemon createdPokemon = new Machop();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MACHOKE.getValue()) {
-            return new Machoke(level);
+            Pokemon createdPokemon = new Machoke();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MACHAMP.getValue()) {
-            return new Machamp(level);
+            Pokemon createdPokemon = new Machamp();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.BELLSPROUT.getValue()) {
-            return new Bellsprout(level);
+            Pokemon createdPokemon = new Bellsprout();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.WEEPINBELL.getValue()) {
-            return new Weepinbell(level);
+            Pokemon createdPokemon = new Weepinbell();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VICTREEBEL.getValue()) {
-            return new Victreebel(level);
+            Pokemon createdPokemon = new Victreebel();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.TENTACOOL.getValue()) {
-            return new Tentacool(level);
+            Pokemon createdPokemon = new Tentacool();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.TENTACRUEL.getValue()) {
-            return new Tentacruel(level);
+            Pokemon createdPokemon = new Tentacruel();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GEODUDE.getValue()) {
-            return new Geodude(level);
+            Pokemon createdPokemon = new Geodude();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_GEODUDE.getValue()) {
-            return new AlolanGeodude(level);
+            Pokemon createdPokemon = new AlolanGeodude();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GRAVELER.getValue()) {
-            return new Graveler(level);
+            Pokemon createdPokemon = new Graveler();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_GRAVELER.getValue()) {
-            return new AlolanGraveler(level);
+            Pokemon createdPokemon = new AlolanGraveler();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GOLEM.getValue()) {
-            return new Golem(level);
+            Pokemon createdPokemon = new Golem();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_GOLEM.getValue()) {
-            return new AlolanGolem(level);
+            Pokemon createdPokemon = new AlolanGolem();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PONYTA.getValue()) {
-            return new Ponyta(level);
+            Pokemon createdPokemon = new Ponyta();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RAPIDASH.getValue()) {
-            return new Rapidash(level);
+            Pokemon createdPokemon = new Rapidash();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SLOWPOKE.getValue()) {
-            return new Slowpoke(level);
+            Pokemon createdPokemon = new Slowpoke();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SLOWBRO.getValue()) {
-            return new Slowbro(level);
+            Pokemon createdPokemon = new Slowbro();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MAGNEMITE.getValue()) {
-            return new Magnemite(level);
+            Pokemon createdPokemon = new Magnemite();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MAGNETON.getValue()) {
-            return new Magneton(level);
+            Pokemon createdPokemon = new Magneton();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.FARFETCHD.getValue()) {
-            return new Farfetchd(level);
+            Pokemon createdPokemon = new Farfetchd();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DODUO.getValue()) {
-            return new Doduo(level);
+            Pokemon createdPokemon = new Doduo();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DODRIO.getValue()) {
-            return new Dodrio(level);
+            Pokemon createdPokemon = new Dodrio();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SEEL.getValue()) {
-            return new Seel(level);
+            Pokemon createdPokemon = new Seel();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DEWGONG.getValue()) {
-            return new Dewgong(level);
+            Pokemon createdPokemon = new Dewgong();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GRIMER.getValue()) {
-            return new Grimer(level);
-        }  else if (pokemonNumber == PokemonId.ALOLAN_GRIMER.getValue()) {
-            return new AlolanGrimer(level);
+            Pokemon createdPokemon = new Grimer();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
+        } else if (pokemonNumber == PokemonId.ALOLAN_GRIMER.getValue()) {
+            Pokemon createdPokemon = new AlolanGrimer();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MUK.getValue()) {
-            return new Muk(level);
+            Pokemon createdPokemon = new Muk();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_MUK.getValue()) {
-            return new AlolanMuk(level);
+            Pokemon createdPokemon = new AlolanMuk();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SHELLDER.getValue()) {
-            return new Shellder(level);
+            Pokemon createdPokemon = new Shellder();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CLOYSTER.getValue()) {
-            return new Cloyster(level);
+            Pokemon createdPokemon = new Cloyster();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GASTLY.getValue()) {
-            return new Gastly(level);
+            Pokemon createdPokemon = new Gastly();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.HAUNTER.getValue()) {
-            return new Haunter(level);
+            Pokemon createdPokemon = new Haunter();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GENGAR.getValue()) {
-            return new Gengar(level);
+            Pokemon createdPokemon = new Gengar();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ONIX.getValue()) {
-            return new Onix(level);
+            Pokemon createdPokemon = new Onix();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DROWZEE.getValue()) {
-            return new Drowzee(level);
+            Pokemon createdPokemon = new Drowzee();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.HYPNO.getValue()) {
-            return new Hypno(level);
+            Pokemon createdPokemon = new Hypno();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KRABBY.getValue()) {
-            return new Krabby(level);
+            Pokemon createdPokemon = new Krabby();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KINGLER.getValue()) {
-            return new Kingler(level);
+            Pokemon createdPokemon = new Kingler();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VOLTORB.getValue()) {
-            return new Voltorb(level);
+            Pokemon createdPokemon = new Voltorb();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ELECTRODE.getValue()) {
-            return new Electrode(level);
+            Pokemon createdPokemon = new Electrode();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.EXEGGCUTE.getValue()) {
-            return new Exeggcute(level);
+            Pokemon createdPokemon = new Exeggcute();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.EXEGGUTOR.getValue()) {
-            return new Exeggutor(level);
+            Pokemon createdPokemon = new Exeggutor();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_EXEGGUTOR.getValue()) {
-            return new AlolanExeggutor(level);
+            Pokemon createdPokemon = new AlolanExeggutor();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CUBONE.getValue()) {
-            return new Cubone(level);
+            Pokemon createdPokemon = new Cubone();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MAROWAK.getValue()) {
-            return new Marowak(level);
+            Pokemon createdPokemon = new Marowak();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ALOLAN_MAROWAK.getValue()) {
-            return new AlolanMarowak(level);
+            Pokemon createdPokemon = new AlolanMarowak();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.HITMONLEE.getValue()) {
-            return new Hitmonlee(level);
+            Pokemon createdPokemon = new Hitmonlee();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.HITMONCHAN.getValue()) {
-            return new Hitmonchan(level);
+            Pokemon createdPokemon = new Hitmonchan();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.LICKITUNG.getValue()) {
-            return new Lickitung(level);
+            Pokemon createdPokemon = new Lickitung();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KOFFING.getValue()) {
-            return new Koffing(level);
+            Pokemon createdPokemon = new Koffing();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.WEEZING.getValue()) {
-            return new Weezing(level);
+            Pokemon createdPokemon = new Weezing();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RHYHORN.getValue()) {
-            return new Rhyhorn(level);
+            Pokemon createdPokemon = new Rhyhorn();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.RHYDON.getValue()) {
-            return new Rhydon(level);
+            Pokemon createdPokemon = new Rhydon();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.CHANSEY.getValue()) {
-            return new Chansey(level);
+            Pokemon createdPokemon = new Chansey();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.TANGELA.getValue()) {
-            return new Tangela(level);
+            Pokemon createdPokemon = new Tangela();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KANGASKHAN.getValue()) {
-            return new Kangaskhan(level);
+            Pokemon createdPokemon = new Kangaskhan();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.HORSEA.getValue()) {
-            return new Horsea(level);
+            Pokemon createdPokemon = new Horsea();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SEADRA.getValue()) {
-            return new Seadra(level);
+            Pokemon createdPokemon = new Seadra();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GOLDEEN.getValue()) {
-            return new Goldeen(level);
+            Pokemon createdPokemon = new Goldeen();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SEAKING.getValue()) {
-            return new Seaking(level);
+            Pokemon createdPokemon = new Seaking();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.STARYU.getValue()) {
-            return new Staryu(level);
+            Pokemon createdPokemon = new Staryu();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.STARMIE.getValue()) {
-            return new Starmie(level);
+            Pokemon createdPokemon = new Starmie();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MR_MIME.getValue()) {
-            return new MrMime(level);
+            Pokemon createdPokemon = new MrMime();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SCYTHER.getValue()) {
-            return new Scyther(level);
+            Pokemon createdPokemon = new Scyther();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.JYNX.getValue()) {
-            return new Jynx(level);
+            Pokemon createdPokemon = new Jynx();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.ELECTABUZZ.getValue()) {
-            return new Electabuzz(level);
+            Pokemon createdPokemon = new Electabuzz();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MAGMAR.getValue()) {
-            return new Magmar(level);
+            Pokemon createdPokemon = new Magmar();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PINSIR.getValue()) {
-            return new Pinsir(level);
+            Pokemon createdPokemon = new Pinsir();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.TAUROS.getValue()) {
-            return new Tauros(level);
+            Pokemon createdPokemon = new Tauros();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.MAGIKARP.getValue()) {
-            return new Magikarp(level);
+            Pokemon createdPokemon = new Magikarp();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.GYARADOS.getValue()) {
-            return new Gyarados(level);
+            Pokemon createdPokemon = new Gyarados();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.LAPRAS.getValue()) {
-            return new Lapras(level);
+            Pokemon createdPokemon = new Lapras();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DITTO.getValue()) {
-            return new Ditto(level);
+            Pokemon createdPokemon = new Ditto();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.EEVEE.getValue()) {
-            return new Eevee(level);
+            Pokemon createdPokemon = new Eevee();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.VAPOREON.getValue()) {
-            return new Vaporeon(level);
+            Pokemon createdPokemon = new Vaporeon();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.JOLTEON.getValue()) {
-            return new Jolteon(level);
+            Pokemon createdPokemon = new Jolteon();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.FLAREON.getValue()) {
-            return new Flareon(level);
+            Pokemon createdPokemon = new Flareon();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.PORYGON.getValue()) {
-            return new Porygon(level);
+            Pokemon createdPokemon = new Porygon();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.OMANYTE.getValue()) {
-            return new Omanyte(level);
+            Pokemon createdPokemon = new Omanyte();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.OMASTAR.getValue()) {
-            return new Omastar(level);
+            Pokemon createdPokemon = new Omastar();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KABUTO.getValue()) {
-            return new Kabuto(level);
+            Pokemon createdPokemon = new Kabuto();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.KABUTOPS.getValue()) {
-            return new Kabutops(level);
+            Pokemon createdPokemon = new Kabutops();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.AERODACTYL.getValue()) {
-            return new Aerodactyl(level);
+            Pokemon createdPokemon = new Aerodactyl();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.SNORLAX.getValue()) {
-            return new Snorlax(level);
+            Pokemon createdPokemon = new Snorlax();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DRATINI.getValue()) {
-            return new Dratini(level);
+            Pokemon createdPokemon = new Dratini();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DRAGONAIR.getValue()) {
-            return new Dragonair(level);
+            Pokemon createdPokemon = new Dragonair();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         } else if (pokemonNumber == PokemonId.DRAGONITE.getValue()) {
-            return new Dragonite(level);
+            Pokemon createdPokemon = new Dragonite();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
+        }
+        /**
+         * ****************************************************************************************
+         *                              JOHTO
+         ******************************************************************************************
+         */
+        else if (pokemonNumber == PokemonId.CHIKORITA.getValue()) {
+            return getDataInsertedPokemon(new Chikorita(), level);
+        } else if (pokemonNumber == PokemonId.BAYLEEF.getValue()) {
+            return getDataInsertedPokemon(new Bayleef(), level);
+        } else if (pokemonNumber == PokemonId.MEGANIUM.getValue()) {
+            return getDataInsertedPokemon(new Meganium(), level);
+        } else if (pokemonNumber == PokemonId.CYNDAQUIL.getValue()) {
+            return getDataInsertedPokemon(new Cyndaquil(), level);
+        } else if (pokemonNumber == PokemonId.QUILAVA.getValue()) {
+            return getDataInsertedPokemon(new Quilava(), level);
+        } else if (pokemonNumber == PokemonId.TYPHLOSION.getValue()) {
+            return getDataInsertedPokemon(new Typhlosion(), level);
+        } else if (pokemonNumber == PokemonId.TOTODILE.getValue()) {
+            return getDataInsertedPokemon(new Totodile(), level);
+        } else if (pokemonNumber == PokemonId.CROCONAW.getValue()) {
+            return getDataInsertedPokemon(new Croconaw(), level);
+        } else if (pokemonNumber == PokemonId.FERALIGATR.getValue()) {
+            return getDataInsertedPokemon(new Feraligatr(), level);
+        } else if (pokemonNumber == PokemonId.SENTRET.getValue()) {
+            return getDataInsertedPokemon(new Sentret(), level);
+        } else if (pokemonNumber == PokemonId.FURRET.getValue()) {
+            return getDataInsertedPokemon(new Furret(), level);
+        } else if (pokemonNumber == PokemonId.HOOTHOOT.getValue()) {
+            return getDataInsertedPokemon(new Hoothoot(), level);
+        } else if (pokemonNumber == PokemonId.NOCTOWL.getValue()) {
+            return getDataInsertedPokemon(new Noctowl(), level);
+        } else if (pokemonNumber == PokemonId.LEDYBA.getValue()) {
+            return getDataInsertedPokemon(new Ledyba(), level);
+        } else if (pokemonNumber == PokemonId.LEDIAN.getValue()) {
+            return getDataInsertedPokemon(new Ledian(), level);
+        } else if (pokemonNumber == PokemonId.SPINARAK.getValue()) {
+            return getDataInsertedPokemon(new Spinarak(), level);
+        } else if (pokemonNumber == PokemonId.ARIADOS.getValue()) {
+            return getDataInsertedPokemon(new Ariados(), level);
+        } else if (pokemonNumber == PokemonId.CROBAT.getValue()) {
+            return getDataInsertedPokemon(new Crobat(), level);
+        } else if (pokemonNumber == PokemonId.CHINCHOU.getValue()) {
+            return getDataInsertedPokemon(new Chinchou(), level);
+        } else if (pokemonNumber == PokemonId.LANTURN.getValue()) {
+            return getDataInsertedPokemon(new Lanturn(), level);
+        } else if (pokemonNumber == PokemonId.PICHU.getValue()) {
+            return getDataInsertedPokemon(new Pichu(), level);
+        } else if (pokemonNumber == PokemonId.CLEFFA.getValue()) {
+            return getDataInsertedPokemon(new Cleffa(), level);
+        } else if (pokemonNumber == PokemonId.IGGLYBUFF.getValue()) {
+            return getDataInsertedPokemon(new Igglybuff(), level);
+        } else if (pokemonNumber == PokemonId.TOGEPI.getValue()) {
+            return getDataInsertedPokemon(new Togepi(), level);
+        } else if (pokemonNumber == PokemonId.TOGETIC.getValue()) {
+            return getDataInsertedPokemon(new Togetic(), level);
+        } else if (pokemonNumber == PokemonId.NATU.getValue()) {
+            return getDataInsertedPokemon(new Natu(), level);
+        } else if (pokemonNumber == PokemonId.XATU.getValue()) {
+            return getDataInsertedPokemon(new Xatu(), level);
+        } else if (pokemonNumber == PokemonId.MAREEP.getValue()) {
+            return getDataInsertedPokemon(new Mareep(), level);
+        } else if (pokemonNumber == PokemonId.FLAFFY.getValue()) {
+            return getDataInsertedPokemon(new Flaffy(), level);
+        } else if (pokemonNumber == PokemonId.AMPHAROS.getValue()) {
+            return getDataInsertedPokemon(new Ampharos(), level);
+        } else if (pokemonNumber == PokemonId.BELLOSSOM.getValue()) {
+            return getDataInsertedPokemon(new Bellossom(), level);
+        } else if (pokemonNumber == PokemonId.MARILL.getValue()) {
+            return getDataInsertedPokemon(new Marill(), level);
+        } else if (pokemonNumber == PokemonId.AZUMARILL.getValue()) {
+            return getDataInsertedPokemon(new Azumarill(), level);
+        } else if (pokemonNumber == PokemonId.SUDOWOODO.getValue()) {
+            return getDataInsertedPokemon(new Sudowoodo(), level);
+        } else if (pokemonNumber == PokemonId.POLITOED.getValue()) {
+            return getDataInsertedPokemon(new Politoed(), level);
+        } else if (pokemonNumber == PokemonId.HOPPIP.getValue()) {
+            return getDataInsertedPokemon(new Hoppip(), level);
+        } else if (pokemonNumber == PokemonId.SKIPLOOM.getValue()) {
+            return getDataInsertedPokemon(new Skiploom(), level);
+        } else if (pokemonNumber == PokemonId.JUMPLUFF.getValue()) {
+            return getDataInsertedPokemon(new Jumpluff(), level);
+        } else if (pokemonNumber == PokemonId.AIPOM.getValue()) {
+            return getDataInsertedPokemon(new Aipom(), level);
+        } else if (pokemonNumber == PokemonId.SUNKERN.getValue()) {
+            return getDataInsertedPokemon(new Sunkern(), level);
+        } else if (pokemonNumber == PokemonId.SUNFLORA.getValue()) {
+            return getDataInsertedPokemon(new Sunflora(), level);
+        } else if (pokemonNumber == PokemonId.YANMA.getValue()) {
+            return getDataInsertedPokemon(new Yanma(), level);
+        } else if (pokemonNumber == PokemonId.WOOPER.getValue()) {
+            return getDataInsertedPokemon(new Wooper(), level);
+        } else if (pokemonNumber == PokemonId.QUAGSIRE.getValue()) {
+            return getDataInsertedPokemon(new Quagsire(), level);
+        } else if (pokemonNumber == PokemonId.ESPEON.getValue()) {
+            return getDataInsertedPokemon(new Espeon(), level);
+        } else if (pokemonNumber == PokemonId.UMBREON.getValue()) {
+            return getDataInsertedPokemon(new Umbreon(), level);
+        } else if (pokemonNumber == PokemonId.MURKROW.getValue()) {
+            return getDataInsertedPokemon(new Murkrow(), level);
+        } else if (pokemonNumber == PokemonId.SLOWKING.getValue()) {
+            return getDataInsertedPokemon(new Slowking(), level);
+        } else if (pokemonNumber == PokemonId.MISDREAVUS.getValue()) {
+            return getDataInsertedPokemon(new Misdreavus(), level);
+        } else if (pokemonNumber == PokemonId.UNOWN.getValue()) {
+            return getDataInsertedPokemon(new Unown(), level);
+        } else if (pokemonNumber == PokemonId.WOBBUFFET.getValue()) {
+            return getDataInsertedPokemon(new Wobbuffet(), level);
+        } else if (pokemonNumber == PokemonId.GIRAFARIG.getValue()) {
+            return getDataInsertedPokemon(new Girafarig(), level);
+        } else if (pokemonNumber == PokemonId.PINECO.getValue()) {
+            return getDataInsertedPokemon(new Pineco(), level);
+        } else if (pokemonNumber == PokemonId.FORRETRESS.getValue()) {
+            return getDataInsertedPokemon(new Forretress(), level);
+        } else if (pokemonNumber == PokemonId.DUNSPARCE.getValue()) {
+            return getDataInsertedPokemon(new Dunsparce(), level);
+        } else if (pokemonNumber == PokemonId.GLIGAR.getValue()) {
+            return getDataInsertedPokemon(new Gligar(), level);
+        } else if (pokemonNumber == PokemonId.STEELIX.getValue()) {
+            return getDataInsertedPokemon(new Steelix(), level);
+        } else if (pokemonNumber == PokemonId.SNUBBULL.getValue()) {
+            return getDataInsertedPokemon(new Snubbull(), level);
+        } else if (pokemonNumber == PokemonId.GRANBULL.getValue()) {
+            return getDataInsertedPokemon(new Granbull(), level);
+        } else if (pokemonNumber == PokemonId.QWILFISH.getValue()) {
+            return getDataInsertedPokemon(new Qwilfish(), level);
+        } else if (pokemonNumber == PokemonId.SCIZOR.getValue()) {
+            return getDataInsertedPokemon(new Scizor(), level);
+        } else if (pokemonNumber == PokemonId.SHUCKLE.getValue()) {
+            return getDataInsertedPokemon(new Shuckle(), level);
+        } else if (pokemonNumber == PokemonId.HERACROSS.getValue()) {
+            return getDataInsertedPokemon(new Heracross(), level);
+        } else if (pokemonNumber == PokemonId.SNEASEL.getValue()) {
+            return getDataInsertedPokemon(new Sneasel(), level);
+        } else if (pokemonNumber == PokemonId.TEDDIURSA.getValue()) {
+            return getDataInsertedPokemon(new Teddiursa(), level);
+        } else if (pokemonNumber == PokemonId.URSARING.getValue()) {
+            return getDataInsertedPokemon(new Ursaring(), level);
+        } else if (pokemonNumber == PokemonId.SLUGMA.getValue()) {
+            return getDataInsertedPokemon(new Slugma(), level);
+        } else if (pokemonNumber == PokemonId.MAGCARGO.getValue()) {
+            return getDataInsertedPokemon(new Magcargo(), level);
+        } else if (pokemonNumber == PokemonId.SWINUB.getValue()) {
+            return getDataInsertedPokemon(new Swinub(), level);
+        } else if (pokemonNumber == PokemonId.PILOSWINE.getValue()) {
+            return getDataInsertedPokemon(new Piloswine(), level);
+        } else if (pokemonNumber == PokemonId.CORSOLA.getValue()) {
+            return getDataInsertedPokemon(new Corsola(), level);
+        } else if (pokemonNumber == PokemonId.REMORAID.getValue()) {
+            return getDataInsertedPokemon(new Remoraid(), level);
+        } else if (pokemonNumber == PokemonId.OCTILLERY.getValue()) {
+            return getDataInsertedPokemon(new Octillery(), level);
+        } else if (pokemonNumber == PokemonId.DELIBIRD.getValue()) {
+            return getDataInsertedPokemon(new Delibird(), level);
+        } else if (pokemonNumber == PokemonId.MANTINE.getValue()) {
+            return getDataInsertedPokemon(new Mantine(), level);
+        } else if (pokemonNumber == PokemonId.SKARMORY.getValue()) {
+            return getDataInsertedPokemon(new Skarmory(), level);
+        } else if (pokemonNumber == PokemonId.HOUNDOUR.getValue()) {
+            return getDataInsertedPokemon(new Houndour(), level);
+        } else if (pokemonNumber == PokemonId.HOUNDOOM.getValue()) {
+            return getDataInsertedPokemon(new Houndoom(), level);
+        } else if (pokemonNumber == PokemonId.KINGDRA.getValue()) {
+            return getDataInsertedPokemon(new Kingdra(), level);
+        } else if (pokemonNumber == PokemonId.PHANPY.getValue()) {
+            return getDataInsertedPokemon(new Phanpy(), level);
+        } else if (pokemonNumber == PokemonId.DONPHAN.getValue()) {
+            return getDataInsertedPokemon(new Donphan(), level);
+        } else if (pokemonNumber == PokemonId.PORYGON2.getValue()) {
+            return getDataInsertedPokemon(new Porygon2(), level);
+        } else if (pokemonNumber == PokemonId.STANTLER.getValue()) {
+            return getDataInsertedPokemon(new Stantler(), level);
+        } else if (pokemonNumber == PokemonId.SMEARGLE.getValue()) {
+            return getDataInsertedPokemon(new Smeargle(), level);
+        } else if (pokemonNumber == PokemonId.TYROGUE.getValue()) {
+            return getDataInsertedPokemon(new Tyrogue(), level);
+        } else if (pokemonNumber == PokemonId.HITMONTOP.getValue()) {
+            return getDataInsertedPokemon(new Hitmontop(), level);
+        } else if (pokemonNumber == PokemonId.SMOOCHUM.getValue()) {
+            return getDataInsertedPokemon(new Smoochum(), level);
+        } else if (pokemonNumber == PokemonId.ELEKID.getValue()) {
+            return getDataInsertedPokemon(new Elekid(), level);
+        } else if (pokemonNumber == PokemonId.MAGBY.getValue()) {
+            return getDataInsertedPokemon(new Magby(), level);
+        } else if (pokemonNumber == PokemonId.MILTANK.getValue()) {
+            return getDataInsertedPokemon(new Miltank(), level);
+        } else if (pokemonNumber == PokemonId.BLISSEY.getValue()) {
+            return getDataInsertedPokemon(new Blissey(), level);
+        } else if (pokemonNumber == PokemonId.LARVITAR.getValue()) {
+            return getDataInsertedPokemon(new Larvitar(), level);
+        } else if (pokemonNumber == PokemonId.PUPITAR.getValue()) {
+            return getDataInsertedPokemon(new Pupitar(), level);
+        } else if (pokemonNumber == PokemonId.TYRANITAR.getValue()) {
+            return getDataInsertedPokemon(new Tyranitar(), level);
         }
         else {
-            return new Pikachu(level);
+            Pokemon createdPokemon = new Pikachu();
+            createdPokemon.insertWildData(level);
+            return createdPokemon;
         }
+
+    }
+    
+    private Pokemon getDataInsertedPokemon(Pokemon createdPokemon, int level) {
+        createdPokemon.insertWildData(level);
+        return createdPokemon;
     }
 }

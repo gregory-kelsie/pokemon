@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.EffectSkill;
@@ -48,7 +49,7 @@ public class Supersonic extends EffectSkill {
                                boolean isFirstAttack, Skill targetsSkill) {
         if (enemyPokemon.isConfused()){
             return new FailResult(enemyPokemon.getName() + " is already confused.");
-        } else if (enemyPokemon.getBattleAbility() == Pokemon.Ability.OWN_TEMPO) {
+        } else if (enemyPokemon.getBattleAbility().getId() == Ability.AbilityId.OWN_TEMPO) {
             return new FailResult(enemyPokemon.getName() + " cannot be confused\n" +
                     "because it has it's Own Tempo");
         }

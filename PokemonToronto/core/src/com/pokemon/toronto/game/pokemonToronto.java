@@ -11,7 +11,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.GameStateManager;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
-import com.pokemon.toronto.game.com.pokemon.toronto.location.Place;
+import com.pokemon.toronto.game.com.pokemon.toronto.location.PokemonPlace;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.TrainerFactory;
 
 import java.text.DateFormat;
@@ -49,8 +49,10 @@ public class pokemonToronto extends ApplicationAdapter {
 									 double[] trainerLongitude, String[] trainerIcon);
 		public void startPokemonMapActivity(double pokemonLatitude, double pokemonLongitude, String pokemonIcon, int distance);
 		public void spawnNewGamePokemon();
+		void spawnWalkingPokemon();
 		void forceLandscape();
 		void forcePortrait();
+		void vibrate();
 	}
 
 	/**
@@ -131,6 +133,15 @@ public class pokemonToronto extends ApplicationAdapter {
 	}
 
 
+	public void addPokemonPlace(PokemonPlace pokemonPlace) {
+		gsm.getCurrentState().addPokemonPlace(pokemonPlace.getPokemon());
+	}
+
+	public void addPokemonGeographic(int pokemonId) {
+		gsm.getCurrentState().addPokemonGeographic(pokemonId);
+	}
+
+
 	/**
 	 *
 	 * @param name
@@ -139,13 +150,14 @@ public class pokemonToronto extends ApplicationAdapter {
 	 * @param types
 	 */
 	public void createPlace(String name, double latitude, double longitude, List<Integer> types) {
-		Place p = new Place(name, latitude, longitude, types);
-		Gdx.app.log("MyPlace", "Place: " + name);
+		int difficulty = getDifficulty();
+		PokemonPlace p = new PokemonPlace(name, latitude, longitude, types, difficulty);
+		Gdx.app.log("MyPlace", "PokemonPlace: " + name);
 		if (p.hasPokemon()) { //Skips all places that don't have Pokemon.
 			WildPokemonCreator wpc = new WildPokemonCreator();
 			for (int i = 0; i < 3; i++) {
 				int pokeID = p.getPokemon();
-				Gdx.app.log("MyPlace", "Place: " + name + ", PokeID: " + pokeID);
+				Gdx.app.log("MyPlace", "PokemonPlace: " + name + ", PokeID: " + pokeID);
 				if (pokeID != -1) {
 					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 					Date date = new Date();
@@ -171,15 +183,25 @@ public class pokemonToronto extends ApplicationAdapter {
 		}
 	}
 
-	public void spawnTrainer(List<Place> places) {
+	public int getDifficulty() {
+		if (gsm.getPlayer().getKantoBadges() < 3) {
+			return 0;
+		} else if (gsm.getPlayer().getKantoBadges() >= 3 && gsm.getPlayer().getKantoBadges() < 6) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	public void spawnTrainer(List<PokemonPlace> pokemonPlaces) {
 		TrainerFactory tf = new TrainerFactory();
 		double difficulty = getTrainerDifficulty(gsm.getPlayer().getKantoBadges());
-		if (places.size() != 0) {
+		if (pokemonPlaces.size() != 0) {
 			Set<Integer> trainers = new HashSet<Integer>();
-			for (Place place: places) {
+			for (PokemonPlace pokemonPlace : pokemonPlaces) {
 				//Fill the set of possible trainers that could be encountered
-				//from the nearby places.
-				for (Integer i: place.getTrainers()) {
+				//from the nearby pokemonPlaces.
+				for (Integer i: pokemonPlace.getTrainers()) {
 					trainers.add(i);
 				}
 			}
@@ -187,15 +209,16 @@ public class pokemonToronto extends ApplicationAdapter {
 			if (setToList.size() != 0) {
 				//Get a random trainer from the set of possible trainers
 				int rand = (int)Math.floor(Math.random() * setToList.size());
-				gsm.getNearbyTrainers().add(tf.getTrainer(setToList.get(rand), difficulty, gsm.getLatitude(), gsm.getLongitude()));
+				gsm.addTrainerPopUp(tf.getTrainer(setToList.get(rand), difficulty,
+						gsm.getLatitude(), gsm.getLongitude()));
 			} else {
 				//Spawn default trainers
-				gsm.getNearbyTrainers().add(tf.getTrainer(difficulty, gsm.getLatitude(), gsm.getLongitude()));
+				gsm.addTrainerPopUp(tf.getTrainer(difficulty,
+						gsm.getLatitude(), gsm.getLongitude()));
 			}
 		} else {
-			//Spawn default trainers
-			//TODO: Spawn different trainers based on badges. (More veterans and ace trainers if higher level.
-			gsm.getNearbyTrainers().add(tf.getTrainer(difficulty, gsm.getLatitude(), gsm.getLongitude()));
+			gsm.addTrainerPopUp(tf.getTrainer(difficulty,
+					gsm.getLatitude(), gsm.getLongitude()));
 		}
 	}
 

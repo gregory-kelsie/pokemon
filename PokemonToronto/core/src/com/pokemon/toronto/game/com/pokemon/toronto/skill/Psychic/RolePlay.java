@@ -2,11 +2,9 @@ package com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.Field;
 import com.pokemon.toronto.game.com.pokemon.toronto.Field.SubField;
-import com.pokemon.toronto.game.com.pokemon.toronto.Field.WeatherType;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.SkillAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.skill.TackleAnimation;
-import com.pokemon.toronto.game.com.pokemon.toronto.skill.FailResult;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillDescription;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -52,7 +50,7 @@ public class RolePlay extends Skill {
         List<String> results = new ArrayList<String>();
         skillUser.setBattleAbility(enemyPokemon.getBattleAbility());
         results.add(skillUser.getName() + " copied\n" + enemyPokemon.getName() + "'s ability " +
-                enemyPokemon.getAbilityString());
+                enemyPokemon.getAbilityName());
         //TODO: Create a method to get an ability string from an ability.
         return results;
     }

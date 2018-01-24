@@ -140,7 +140,7 @@ public class LoginState extends GameState {
                     loadParty();
                     gsm.logIn();
                     gsm.playBgm();
-                    gsm.setState(new LoadingState(gsm, LoadingState.POKENAV_MENU));
+                    gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                     dispose();
                 }
 
@@ -196,12 +196,14 @@ public class LoginState extends GameState {
                         }
                     }
                 }
+                Gdx.app.log("cxz", "Created Pokemon");
+
                 Pokemon p = pf.createPokemon(
                         pokemonObject.getInt("pid"),
                         pokemonObject.getInt("level"),
                         pokemonObject.getString("gender").charAt(0),
                         Nature.fromInt(pokemonObject.getInt("nature_id")),
-                        Pokemon.Ability.fromInt(pokemonObject.getInt("ability_id")),
+                        pokemonObject.getInt("ability_id"),
                         pokemonObject.getInt("current_health"),
                         pokemonObject.getInt("current_exp"),
                         Pokemon.Status.fromInt(pokemonObject.getInt("status")),
@@ -212,6 +214,7 @@ public class LoginState extends GameState {
                         thirdSkill,
                         fourthSkill
                         );
+                Gdx.app.log("cxx", "Created Pokemon");
                 gsm.addToParty(p);
             }
             gsm.getGameCallBack().spawnNewGamePokemon();
