@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.box.BoxLocation;
+import com.pokemon.toronto.game.com.pokemon.toronto.box.BoxPokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 
 import java.util.ArrayList;
@@ -58,8 +60,14 @@ public class BoxState extends GameState {
     private boolean startedBgm;
     private boolean displayingStatusWindow;
 
+    private int currentBox;
+    private List<BoxPokemon> partyBoxPokemon;
+
     public BoxState(GameStateManager gsm, boolean cameFromPokeNav) {
         this.gsm = gsm;
+        initPartyBox();
+        gsm.getPC().initNullLocations();
+        currentBox = 0;
         setNoPokemonSelection();
         openPopUp = false;
         displayingStatusWindow = false;
@@ -86,6 +94,19 @@ public class BoxState extends GameState {
         initTextures();
     }
 
+    private void initPartyBox() {
+
+        partyBoxPokemon = new ArrayList<BoxPokemon>();
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+                partyBoxPokemon.add(new BoxPokemon(gsm.getParty().get(i),
+                        new BoxLocation(gsm.getPC().PARTY, i)));
+        }
+        for (int i = 0; i < 6 - gsm.getParty().size(); i++) {
+            partyBoxPokemon.add(new BoxPokemon(null,
+                    new BoxLocation(gsm.getPC().PARTY, i)));
+        }
+    }
+
     private void initTextures() {
         background = new Texture("pokemonpc/boxbackground.png");
         statusBackground = new Texture("pokemonMenu/statusScreen.png");
@@ -105,8 +126,12 @@ public class BoxState extends GameState {
 
     private void initBoxTextures() {
         boxTextures = new ArrayList<Texture>();
-        for (int i = 0; i <gsm.getBox().size(); i++) {
-            boxTextures.add(new Texture(gsm.getBox().get(i).getMiniIconPath()));
+        for (int i = 0; i < gsm.getPC().getBox(currentBox).size(); i++) {
+            if (gsm.getPC().getBox(currentBox).get(i).getPokemon() != null) {
+                boxTextures.add(new Texture(gsm.getPC().getBox(currentBox).get(i).getPokemon().getMiniIconPath()));
+            } else {
+                boxTextures.add(null);
+            }
         }
     }
 
@@ -168,9 +193,11 @@ public class BoxState extends GameState {
     }
     private void renderBoxPokemon(SpriteBatch batch) {
         for (int i = 0; i < boxTextures.size(); i++) {
-            int y = getYFromRow(getPokemonBoxPositionRow(i));
-            int x = getXFromColumn(getPokemonBoxPositionColumn(i));
-            batch.draw(boxTextures.get(i), x, y, 160, 160);
+            if (boxTextures.get(i) != null) {
+                int y = getYFromRow(getPokemonBoxPositionRow(i));
+                int x = getXFromColumn(getPokemonBoxPositionColumn(i));
+                batch.draw(boxTextures.get(i), x, y, 160, 160);
+            }
         }
     }
 
@@ -332,6 +359,7 @@ public class BoxState extends GameState {
                     }
                 } else {
                     if (clickedLogout(x, y)) {
+                        //testLogout();
                         logOut();
                     } else if (clickedDescriptionArea(x, y)) {
                         clickedDescriptionArea();
@@ -413,12 +441,20 @@ public class BoxState extends GameState {
         openPopUp = false;
 
         if (selectedABoxPokemon()) {
-            gsm.getBox().remove(selectedBoxSlot);
-            boxTextures.remove(selectedBoxSlot);
+            //-2 is new null
+            gsm.getPC().getBox(currentBox).set(selectedBoxSlot,
+                    new BoxPokemon(null, new BoxLocation(-2, -2)));
+            Texture temp = boxTextures.get(selectedBoxSlot);
+            boxTextures.set(selectedBoxSlot, null);
+            temp.dispose();
         } else if (selectedAPartyPokemon()) {
             if (gsm.getParty().size() != 1) {
                 gsm.getParty().remove(selectedPartySlot);
+                partyBoxPokemon.set(selectedPartySlot,
+                        new BoxPokemon(null, new BoxLocation(-2, -2)));
+                Texture temp = partyTextures.get(selectedPartySlot);
                 partyTextures.remove(selectedPartySlot);
+                temp.dispose();
             }
         }
         setNoPokemonSelection();
@@ -464,12 +500,15 @@ public class BoxState extends GameState {
                     clickSound.play();
                 }
             } else if (clickZone == CLICKED_BOX_POKEMON) {
-                if (gsm.getBox().size() >= clickPosition + 1) {
-                    selectedBoxSlot = clickPosition;
-                    selectedPokemon = gsm.getBox().get(clickPosition);
+                selectedBoxSlot = clickPosition;
+                if (gsm.getPC().getBox(currentBox).get(selectedBoxSlot).getPokemon() != null) {
+                    selectedPokemon = gsm.getPC().getBox(currentBox).get(clickPosition).getPokemon();
                     setSelectedPokemonTexture(clickZone, clickPosition);
                     clickSound.play();
+                } else {
+                    selectedBoxSlot = -1;
                 }
+
             }
 
         } else {
@@ -489,52 +528,71 @@ public class BoxState extends GameState {
                 switchSound.play();
                 Texture temp = partyTextures.get(selectedPartySlot);
                 Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
+                BoxPokemon tempPartyPokemon = partyBoxPokemon.get(selectedPartySlot);
                 partyTextures.set(selectedPartySlot, partyTextures.get(clickPosition));
                 partyTextures.set(clickPosition, temp);
                 gsm.getParty().set(selectedPartySlot, gsm.getParty().get(clickPosition));
                 gsm.getParty().set(clickPosition, tempPokemon);
+                partyBoxPokemon.set(selectedPartySlot, partyBoxPokemon.get(clickPosition));
+                partyBoxPokemon.set(clickPosition, tempPartyPokemon);
                 setNoPokemonSelection();
             }
         } else if (selectedAPartyPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap party to box
-            if (gsm.getBox().size() >= clickPosition + 1) {
+            if (gsm.getPC().getBox(currentBox).get(clickPosition).getPokemon() != null) {
                 switchSound.play();
                 Texture temp = partyTextures.get(selectedPartySlot);
                 Pokemon tempPokemon = gsm.getParty().get(selectedPartySlot);
                 tempPokemon.fullyHeal();
                 partyTextures.set(selectedPartySlot, boxTextures.get(clickPosition));
                 boxTextures.set(clickPosition, temp);
-                gsm.getParty().set(selectedPartySlot, gsm.getBox().get(clickPosition));
-                gsm.getBox().set(clickPosition, tempPokemon);
+
+                //Party gets Box Pokemon
+                gsm.getParty().set(selectedPartySlot, gsm.getPC().getBox(currentBox).get(clickPosition).getPokemon());
+                //Create temp of box BoxPokemon
+                BoxPokemon tempWithdrawnPokemon = gsm.getPC().getBox(currentBox).get(clickPosition);
+                //Box gets Party Pokemon.
+                gsm.getPC().depositPartyPokemon(partyBoxPokemon.get(selectedPartySlot), currentBox, clickPosition);
+                partyBoxPokemon.set(selectedPartySlot, tempWithdrawnPokemon);
                 setNoPokemonSelection();
             } else {
                 if (gsm.getParty().size() != 1) {
-                    deposit();
+                    deposit(clickPosition);
                     setNoPokemonSelection();
                 }
             }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_BOX_POKEMON) {
             //Swap box to box
-            if (gsm.getBox().size() >= clickPosition + 1) {
                 switchSound.play();
-                Texture temp = boxTextures.get(selectedBoxSlot);
-                Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
-                boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
-                boxTextures.set(clickPosition, temp);
-                gsm.getBox().set(selectedBoxSlot, gsm.getBox().get(clickPosition));
-                gsm.getBox().set(clickPosition, tempPokemon);
+                if (gsm.getPC().getBox(currentBox).get(clickPosition).getPokemon() == null) {
+                    //Move the first Pokemon to the empty position
+                    boxTextures.set(clickPosition, boxTextures.get(selectedBoxSlot));
+                    boxTextures.set(selectedBoxSlot, null);
+                    BoxPokemon tempPokemon = gsm.getPC().getBox(currentBox).get(selectedBoxSlot);
+                    gsm.getPC().getBox(currentBox).set(selectedBoxSlot, gsm.getPC().getBox(currentBox).get(clickPosition));
+                    gsm.getPC().getBox(currentBox).set(clickPosition, tempPokemon);
+                } else {
+                    //Swap the two Pokemon
+                    Gdx.app.log("BoxState", "swap box");
+                    Texture temp = boxTextures.get(selectedBoxSlot);
+                    BoxPokemon tempPokemon = gsm.getPC().getBox(currentBox).get(selectedBoxSlot);
+                    boxTextures.set(selectedBoxSlot, boxTextures.get(clickPosition));
+                    boxTextures.set(clickPosition, temp);
+                    gsm.getPC().getBox(currentBox).set(selectedBoxSlot, gsm.getPC().getBox(currentBox).get(clickPosition));
+                    gsm.getPC().getBox(currentBox).set(clickPosition, tempPokemon);
+                }
                 setNoPokemonSelection();
-            }
         } else if (selectedABoxPokemon() && clickZone == CLICKED_PARTY_POKEMON) {
             if (gsm.getParty().size() >= clickPosition + 1) {
                 switchSound.play();
                 Texture temp = boxTextures.get(selectedBoxSlot);
-                Pokemon tempPokemon = gsm.getBox().get(selectedBoxSlot);
+                BoxPokemon tempPokemon = gsm.getPC().getBox(currentBox).get(selectedBoxSlot);
                 boxTextures.set(selectedBoxSlot, partyTextures.get(clickPosition));
                 partyTextures.set(clickPosition, temp);
-                gsm.getBox().set(selectedBoxSlot, gsm.getParty().get(clickPosition));
-                gsm.getBox().get(selectedBoxSlot).fullyHeal();
-                gsm.getParty().set(clickPosition, tempPokemon);
+                gsm.getPC().depositPartyPokemon(partyBoxPokemon.get(clickPosition), currentBox, selectedBoxSlot);
+                gsm.getPC().getBox(currentBox).get(selectedBoxSlot).getPokemon().fullyHeal();
+                gsm.getParty().set(clickPosition, tempPokemon.getPokemon());
+                partyBoxPokemon.set(clickPosition, tempPokemon);
                 setNoPokemonSelection();
             } else {
                 withdraw();
@@ -543,22 +601,43 @@ public class BoxState extends GameState {
         }
     }
 
-    private void deposit() {
+    private void deposit(int clickPosition) {
+        Gdx.app.log("BoxState", "deposit: " + selectedPartySlot);
         depositSound.play();
         gsm.getParty().get(selectedPartySlot).fullyHeal();
-        gsm.getBox().add(gsm.getParty().get(selectedPartySlot));
+        Gdx.app.log("BoxState", "deposited " + partyBoxPokemon.get(selectedPartySlot).getPokemon().getName());
+        gsm.getPC().depositPartyPokemon(partyBoxPokemon.get(selectedPartySlot), currentBox, clickPosition);
         gsm.getParty().remove(selectedPartySlot);
-        boxTextures.add(partyTextures.get(selectedPartySlot));
+        //-2 is NOT_NULL
+        partyBoxPokemon.remove(selectedPartySlot); //remove that so the rest can shoot up.
+        partyBoxPokemon.add(new BoxPokemon(null, new BoxLocation(gsm.getPC().NEW_NULL, gsm.getPC().NEW_NULL)));
+        boxTextures.set(clickPosition, partyTextures.get(selectedPartySlot));
         partyTextures.remove(selectedPartySlot);
     }
 
     private void withdraw() {
         depositSound.play();
-        gsm.getParty().add(gsm.getBox().get(selectedBoxSlot));
-        gsm.getBox().remove(selectedBoxSlot);
+        printPartyBoxPokemon();
+        gsm.getParty().add(gsm.getPC().getBox(currentBox).get(selectedBoxSlot).getPokemon());
+        partyBoxPokemon.set(gsm.getParty().size() - 1, gsm.getPC().getBox(currentBox).get(selectedBoxSlot));
+        gsm.getPC().removePokemon(currentBox, selectedBoxSlot);
+        gsm.getPC().printBox(currentBox);
         partyTextures.add(boxTextures.get(selectedBoxSlot));
-        boxTextures.remove(selectedBoxSlot);
+        boxTextures.set(selectedBoxSlot, null);
+        Gdx.app.log("pbpokemon", "" + selectedBoxSlot);
+        printPartyBoxPokemon();
 
+
+    }
+
+    private void printPartyBoxPokemon() {
+        for (int i = 0; i < partyBoxPokemon.size(); i++) {
+            if (partyBoxPokemon.get(i).getPokemon() != null) {
+                Gdx.app.log("pbpokemon", partyBoxPokemon.get(i).getPokemon().getName());
+            } else {
+                Gdx.app.log("pbpokemon", "null");
+            }
+        }
     }
     private boolean selectedTheSamePokemon(int clickZone, int clickPosition) {
         if (selectedAPartyPokemon() && clickZone == CLICKED_PARTY_POKEMON && clickPosition == selectedPartySlot) {
@@ -576,7 +655,7 @@ public class BoxState extends GameState {
      */
     private void setSelectedPokemonTexture(int clickZone, int clickPosition) {
         if (clickZone == CLICKED_BOX_POKEMON) {
-            setSelectedPokemonTexture(gsm.getBox().get(clickPosition).getMapIconPath());
+            setSelectedPokemonTexture(gsm.getPC().getBox(currentBox).get(clickPosition).getPokemon().getMapIconPath());
         } else if (clickZone == CLICKED_PARTY_POKEMON) {
             setSelectedPokemonTexture(gsm.getParty().get(clickPosition).getMapIconPath());
         }
@@ -592,12 +671,48 @@ public class BoxState extends GameState {
     }
 
     private void logOut() {
-        logoutSound.play();
+        gsm.getGameCallBack().createProgressDialog("Shutting Down PC",
+                "Please wait while we save your Pokemon.");
+
+        List<BoxLocation> lbl = gsm.getPC().getDeletableNulls();
+        for (int i = 0; i < lbl.size(); i++) {
+            gsm.deleteBoxes(lbl);
+        }
+        List<BoxLocation> updateLocations = gsm.getPC().logout();
+        for (int i = 0; i < updateLocations.size(); i++) {
+            gsm.updateBoxes(updateLocations);
+        }
+        //
         gsm.saveParty();
+        gsm.getGameCallBack().dismissProgressDialog();
+        logoutSound.play();
         //todo: save boxes if they were tampered.
         gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
         dispose();
         gsm.playBgm();
+    }
+
+    private void testLogout() {
+        gsm.getPC().printBox(currentBox);
+        List<BoxLocation> lbl = gsm.getPC().getDeletableNulls();
+        for (int i = 0; i < lbl.size(); i++) {
+            Gdx.app.log("dbx", "delete - box: " + lbl.get(i).getBoxNumber() + " pos: " +
+                    lbl.get(i).getBoxPosition());
+        }
+        Gdx.app.log("testlogout", "done");
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            Gdx.app.log("testlogout", "poke: " + gsm.getParty().get(i).getName());
+        }
+        List<BoxLocation> updateLocations = gsm.getPC().logout();
+        for (int i = 0; i < updateLocations.size(); i++) {
+            Gdx.app.log("dbx", "update - box: " + updateLocations.get(i).getBoxNumber()
+                    + " pos: " + updateLocations.get(i).getBoxPosition() + " {" +
+                    gsm.getPC().getBox(updateLocations.get(i).getBoxNumber())
+                            .get(updateLocations.get(i).getBoxPosition()).getPokemon().getName() + "}");
+        }
+        gsm.getPC().printBox(currentBox);
+        initPartyBox();
+        gsm.getPC().initNullLocations();
     }
 
     public boolean selectedAPokemon() {
@@ -757,7 +872,9 @@ public class BoxState extends GameState {
 
     private void disposeBoxTextures() {
         for (int i = 0; i < boxTextures.size(); i++) {
-            boxTextures.get(i).dispose();
+            if (boxTextures.get(i) != null) {
+                boxTextures.get(i).dispose();
+            }
         }
     }
 }

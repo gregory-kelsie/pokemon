@@ -28,7 +28,7 @@ public class HealthRestoreItem extends Item {
 
     @Override
     public boolean ableToUse(Pokemon p) {
-        if (p.getCurrentHealth() < p.getHealthStat()) {
+        if (p.getCurrentHealth() < p.getHealthStat() && !p.isFainted()) {
             return true;
         }
         return false;

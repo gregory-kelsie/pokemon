@@ -21,9 +21,11 @@ public class UseFirstAttackPhase extends UseAttackPhase {
         firstAttack = true;
         if (pui.isUserPokemonFirstAttacker()) {
             attackerIsUser = true;
+            isUser = true;
             attemptSkillUsage();
         } else {
             attackerIsUser = false;
+            isUser = false;
             attemptSkillUsage();
         }
     }
@@ -64,15 +66,23 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                         battleResults = blt;
                     } else {
                         if (attackerIsUser) {
+                            calcSchoolingBeforeDamageOrHeal(attacker, isUser);
+                            calcSchoolingBeforeDamageOrHeal(receiver, !isUser);
                             battleResults = usedSkill.use(attacker, receiver,
                                     pui.getUserPokemonPosition(), pui.getEnemyPokemonPosition(),
                                     pui.getField(), attackerSubField, receiverSubField, true,
                                     targetsSkill, pui.getPlayerParty(), new ArrayList<Pokemon>());
+                            calcSchoolingAfterDamageOrHeal(attacker, isUser);
+                            calcSchoolingAfterDamageOrHeal(receiver, !isUser);
                         } else {
+                            calcSchoolingBeforeDamageOrHeal(attacker, !isUser);
+                            calcSchoolingBeforeDamageOrHeal(receiver, isUser);
                             battleResults = usedSkill.use(attacker, receiver,
                                     pui.getEnemyPokemonPosition(), pui.getUserPokemonPosition(),
                                     pui.getField(), attackerSubField, receiverSubField, true,
                                     targetsSkill, new ArrayList<Pokemon>(), pui.getPlayerParty());
+                            calcSchoolingAfterDamageOrHeal(attacker, !isUser);
+                            calcSchoolingAfterDamageOrHeal(receiver, isUser);
                         }
                     }
                     if (attackerIsUser) {
@@ -149,8 +159,10 @@ public class UseFirstAttackPhase extends UseAttackPhase {
             }
             else {
                 if (missRecoil == 1) {
+                    calcSchoolingBeforeDamageOrHeal(attacker, isUser);
                     attacker.subtractHealth((int)Math
                             .round(attacker.getHealthStat() / 2.0));
+                    calcSchoolingAfterDamageOrHeal(attacker, isUser);
                     missed = false;
                     updateAttackerHealth = true;
                 }

@@ -34,12 +34,15 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.E
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeot;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Pidgeotto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Sandshrew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Gastly;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Aerodactyl;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Dragonite;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Exeggutor;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Kabutops;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Scyther;
 import com.pokemon.toronto.game.com.pokemon.toronto.bag.Bag;
+import com.pokemon.toronto.game.com.pokemon.toronto.box.BoxLocation;
+import com.pokemon.toronto.game.com.pokemon.toronto.box.PokemonBox;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookupPackage;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
@@ -75,6 +78,7 @@ public class GameStateManager {
     private Sound notificationSound;
     private List<Pokemon> party;
     private List<Pokemon> box;
+    private PokemonBox pc;
     private Bag bag;
     private int kantoBadges;
     private Music menubgm;
@@ -103,6 +107,7 @@ public class GameStateManager {
         nearbyTrainers = new ArrayList<WildTrainer>();
         party = new ArrayList<Pokemon>();
         box = new ArrayList<Pokemon>();
+        pc = new PokemonBox();
         notificationSound = Gdx.audio.newSound(Gdx.files.internal("sounds/notification.wav"));
         bag = new Bag();
         bag.addPokeball(ItemId.POKEBALL, 5);
@@ -150,6 +155,97 @@ public class GameStateManager {
             Gdx.app.log("updateBadges", e.getMessage());
         }
     }
+
+    public void updateJohtoBadges() {
+        JSONParser jp = new JSONParser();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        int uid = player.getId();
+        params.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+        params.add(new BasicNameValuePair("johto_badges", String.valueOf(player.getJohtoBadges())));
+        JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/updateJohtoBadges.php", "POST", params);
+        try {
+            Gdx.app.log("updateJohtoBadges", obj.getString("message"));
+        } catch (JSONException e) {
+            Gdx.app.log("updateJohtoBadges", e.getMessage());
+        }
+    }
+
+    /**
+     * Delete entries from the Box db based on the deleteLocations
+     * @param deleteLocations A list of BoxLocations of spots to delete from the db
+     */
+    public void deleteBoxes(List<BoxLocation> deleteLocations) {
+        JSONParser jp = new JSONParser();
+
+        int uid = player.getId();
+        for (int i = 0; i < deleteLocations.size(); i++) {
+            List<NameValuePair> paramsDelete = new ArrayList<NameValuePair>();
+            paramsDelete.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+            paramsDelete.add(new BasicNameValuePair("boxNumber", String.valueOf(deleteLocations.get(i).getBoxNumber())));
+            paramsDelete.add(new BasicNameValuePair("boxPosition", String.valueOf(deleteLocations.get(i).getBoxPosition())));
+            JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/deleteBoxPokemon.php", "POST", paramsDelete);
+            try {
+                Gdx.app.log("deleteBoxes", obj.getString("message"));
+            } catch (Exception e){
+                Gdx.app.log("deleteBoxes", "Catch: " + e.getMessage());
+            }
+        }
+    }
+
+    public void updateBoxes(List<BoxLocation> updateLocations) {
+        JSONParser jp = new JSONParser();
+
+        int uid = player.getId();
+        for (int i = 0; i < updateLocations.size(); i++) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Pokemon updatingPokemon = pc.getBox(updateLocations.get(i).getBoxNumber())
+                    .get(updateLocations.get(i).getBoxPosition()).getPokemon();
+            params.add(new BasicNameValuePair("uid", String.valueOf(uid)));
+            params.add(new BasicNameValuePair("pid", Integer.toString(updatingPokemon.getId())));
+            params.add(new BasicNameValuePair("level", Integer.toString(updatingPokemon.getLevel())));
+            params.add(new BasicNameValuePair("health", Integer.toString(updatingPokemon.getCurrentHealth())));
+            params.add(new BasicNameValuePair("currentExp", Integer.toString((int)updatingPokemon.getDisplayedExp())));
+            params.add(new BasicNameValuePair("nature", Integer.toString(updatingPokemon.getNature().getValue())));
+            params.add(new BasicNameValuePair("ability", Integer.toString(updatingPokemon.getAbilityPosition())));
+            params.add(new BasicNameValuePair("boxNumber", Integer.toString(updateLocations.get(i).getBoxNumber())));
+            params.add(new BasicNameValuePair("boxPosition", Integer.toString(updateLocations.get(i).getBoxPosition())));
+            params.add(new BasicNameValuePair("pokemonGender", String.valueOf(updatingPokemon.getGender())));
+            params.add(new BasicNameValuePair("status", Integer.toString(updatingPokemon.getStatus().getValue()))); //0 is status free
+            params.add(new BasicNameValuePair("iv_hp", Integer.toString(updatingPokemon.getHealthIV())));
+            params.add(new BasicNameValuePair("iv_atk", Integer.toString(updatingPokemon.getAttackIV())));
+            params.add(new BasicNameValuePair("iv_def", Integer.toString(updatingPokemon.getDefenseIV())));
+            params.add(new BasicNameValuePair("iv_spatk", Integer.toString(updatingPokemon.getSpAttackIV())));
+            params.add(new BasicNameValuePair("iv_spdef", Integer.toString(updatingPokemon.getSpDefenseIV())));
+            params.add(new BasicNameValuePair("iv_spd", Integer.toString(updatingPokemon.getSpeedIV())));
+            params.add(new BasicNameValuePair("ev_hp", Integer.toString(updatingPokemon.getHealthEV())));
+            params.add(new BasicNameValuePair("ev_atk", Integer.toString(updatingPokemon.getAttackEV())));
+            params.add(new BasicNameValuePair("ev_def", Integer.toString(updatingPokemon.getDefenseEV())));
+            params.add(new BasicNameValuePair("ev_spatk", Integer.toString(updatingPokemon.getSpAttackEV())));
+            params.add(new BasicNameValuePair("ev_spdef", Integer.toString(updatingPokemon.getSpDefenseEV())));
+            params.add(new BasicNameValuePair("ev_spd", Integer.toString(updatingPokemon.getSpeedEV())));
+            params.add(new BasicNameValuePair("skill1_id", Integer.toString(updatingPokemon.getSkills().get(0).getId())));
+            params.add(new BasicNameValuePair("skill1_pp", Integer.toString(updatingPokemon.getSkills().get(0).getCurrentPP())));
+            if (updatingPokemon.getSkills().size() > 1) {
+                params.add(new BasicNameValuePair("skill2_id", Integer.toString(updatingPokemon.getSkills().get(1).getId())));
+                params.add(new BasicNameValuePair("skill2_pp", Integer.toString(updatingPokemon.getSkills().get(1).getCurrentPP())));
+                if (updatingPokemon.getSkills().size() > 2) {
+                    params.add(new BasicNameValuePair("skill3_id", Integer.toString(updatingPokemon.getSkills().get(2).getId())));
+                    params.add(new BasicNameValuePair("skill3_pp", Integer.toString(updatingPokemon.getSkills().get(2).getCurrentPP())));
+                    if (updatingPokemon.getSkills().size() > 3) {
+                        params.add(new BasicNameValuePair("skill4_id", Integer.toString(updatingPokemon.getSkills().get(3).getId())));
+                        params.add(new BasicNameValuePair("skill4_pp", Integer.toString(updatingPokemon.getSkills().get(3).getCurrentPP())));
+                    }
+                }
+            }
+            JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/updateBoxPokemon.php", "POST", params);
+            try {
+                Gdx.app.log("updateBoxes", obj.getString("message"));
+            } catch (JSONException e) {
+                Gdx.app.log("updateBoxes", "Catch: " + e.getMessage());
+            }
+        }
+    }
+
     public void saveParty() {
         JSONParser jp = new JSONParser();
         List<NameValuePair> paramsDelete = new ArrayList<NameValuePair>();
@@ -284,6 +380,8 @@ public class GameStateManager {
     }
 
     public List<Pokemon> getBox() { return box; }
+
+    public PokemonBox getPC() { return pc; }
 
     public void stopBgm() {
         menubgm.stop();

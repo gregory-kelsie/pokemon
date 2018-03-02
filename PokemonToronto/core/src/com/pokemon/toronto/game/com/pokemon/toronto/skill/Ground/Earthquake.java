@@ -25,6 +25,7 @@ public class Earthquake extends DamageSkill {
     public Earthquake() {
         super(SkillFactory.EARTHQUAKE, "Earthquake", SkillDescription.EARTHQUAKE, 10,
                 Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 100, 100, 1);
+        hitUndergroundPokemon = true;
     }
 
     /**

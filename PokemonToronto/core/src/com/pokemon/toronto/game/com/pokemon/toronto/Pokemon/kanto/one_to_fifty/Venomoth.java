@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -82,6 +83,39 @@ public class Venomoth extends Pokemon {
         levelUpSkills.put(59, new ArrayList<Integer>(Arrays.asList(SkillFactory.BUG_BUZZ)));
         levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.QUIVER_DANCE)));
         initEvolutionSkills();
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.VENOSHOCK.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.ROOST.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SOLAR_BEAM.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.LEECH_LIFE.getValue());
+        tmSkills.add(TmId.PSYCHIC.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.SLUDGE_BOMB.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.THIEF.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.ENERGY_BALL.getValue());
+        tmSkills.add(TmId.ACROBATICS.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.INFESTATION.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.U_TURN.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     @Override

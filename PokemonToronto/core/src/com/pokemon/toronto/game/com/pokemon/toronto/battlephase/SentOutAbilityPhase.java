@@ -95,6 +95,7 @@ public class SentOutAbilityPhase extends BattlePhase {
         abilityUserIsPlayerPokemon = false;
         hazzardText = new ArrayList<String>();
         hazzardTextIndex = 0;
+        isUser = false;
     }
 
     /**
@@ -164,10 +165,12 @@ public class SentOutAbilityPhase extends BattlePhase {
                 abilityUser = pui.getUserPokemon();
                 otherPokemon = pui.getEnemyPokemon();
                 abilityUserIsPlayerPokemon = true;
+                isUser = true;
             } else {
                abilityUser = pui.getEnemyPokemon();
                 otherPokemon = pui.getUserPokemon();
                 abilityUserIsPlayerPokemon = false;
+                isUser = false;
             }
         }
         currentState = INIT;
@@ -320,6 +323,7 @@ public class SentOutAbilityPhase extends BattlePhase {
         if (!abilityUser.matchingAnimationHealth()) {
             abilityUser.adjustAnimationHealth(1);
         } else {
+            schoolingCheck(abilityUser, isUser);
             if (abilityUser.getCurrentHealth() == 0) {
                 hazzardText.add(abilityUser.getName() + " fainted.");
             }
@@ -349,7 +353,9 @@ public class SentOutAbilityPhase extends BattlePhase {
                 } else {
                     damage = (int)Math.ceil(abilityUser.getHealthStat() * .5);
                 }
+                calcSchoolingBeforeDamageOrHeal(abilityUser, isUser);
                 abilityUser.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(abilityUser, isUser);
                 hazzardText.add(abilityUser.getName() + " was hurt by Stealth Rocks.");
                 currentState = DEPLETE_HEALTH;
             }
@@ -415,7 +421,9 @@ public class SentOutAbilityPhase extends BattlePhase {
         } else {
             afterTextState = STEALTH_ROCKS;
             if (!immuneToSpikes()) {
+                calcSchoolingBeforeDamageOrHeal(abilityUser, isUser);
                 abilityUser.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(abilityUser, isUser);
                 currentState = DEPLETE_HEALTH;
                 hazzardText.add(abilityUser.getName() + " took damage from spikes.");
             } else {

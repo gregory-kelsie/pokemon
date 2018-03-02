@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -87,6 +88,35 @@ public class Sunflora extends Pokemon {
         levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUNNY_DAY)));
         levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.LEAF_STORM)));
         levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.PETAL_BLIZZARD)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.LIGHT_SCREEN.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.SAFEGUARD.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SOLAR_BEAM.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.SLUDGE_BOMB.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.ENERGY_BALL.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.SWORDS_DANCE.getValue());
+        tmSkills.add(TmId.GRASS_KNOT.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.NATURE_POWER.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

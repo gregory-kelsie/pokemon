@@ -68,6 +68,7 @@ public abstract class Pokemon {
     protected String profilePath;
 
     protected HashMap<Integer, List<Integer>> levelUpSkills;
+    protected List<Integer> tmSkills;
     protected List<Integer> evolutionSkills;
     protected List<Skill> skills;
 
@@ -400,12 +401,11 @@ public abstract class Pokemon {
         currentExp = NO_EXP;
         displayedExp = NO_EXP;
         levelUpSkills = new HashMap<Integer, List<Integer>>();
+        tmSkills = new ArrayList<Integer>();
         evolutionSkills = new ArrayList<Integer>();
         skills = new ArrayList<Skill>();
         justLeveled = false;
         resetCoordinates();
-        initLevelUpSkills();
-        initBattleVariables();
         initializeResistances();
     }
 
@@ -513,6 +513,36 @@ public abstract class Pokemon {
     }
 
     /**
+     * Reset the variables that only reset when the battle is over.
+     * Ex: Mimikyu's disguise.
+     */
+    public void resetEndBattleVariables() {
+
+    }
+
+    /**
+     * Change the Pokemon to blade form, only aegislash currently will use this method.
+     */
+    public void changeToBladeForm() {
+
+    }
+
+    /**
+     * Change the Pokemon to shield form, only aegislash currently will use this method.
+     */
+    public void changeToShieldForm() {
+
+    }
+
+    public boolean isInBladeForm() {
+        return false;
+    }
+
+    public boolean isInShieldForm() {
+        return false;
+    }
+
+    /**
      * Return the battle weight of the Pokemon in KG
      * @return The weight of the Pokemon in KG
      */
@@ -559,20 +589,32 @@ public abstract class Pokemon {
         setHealthAndExp(currentHealth, currentExp);
         addSkills(firstSkill, secondSkill, thirdSkill, fourthSkill);
         initNatureMultipliers();
+        initLevelUpSkills();
+        initTMSkills();
+        initBattleVariables();
     }
 
-    public void insertWildData(int level) {
+    public void insertWildData(int level, int wildType) {
+        //wildType 0 = Default 1 = Route Pokemon (low ivs) 2 = Map Pokemon (hidden ability chance)
         this.level = level;
-        initRandomIVs();
+        initRandomIVs(wildType);
         initBlankEVs();
         initGender();
-        initAbility();
+        if (wildType == 2) {
+            initMapPokemonAbility();
+        } else {
+            initAbility();
+        }
         setRandomNature();
+        initLevelUpSkills();
+        initTMSkills();
         initWildSkills();
         currentHealth = getHealthStat();
         animationHealth = currentHealth;
         initNatureMultipliers();
         initializeHoldItem();
+
+        initBattleVariables();
     }
 
     protected void initializeHoldItem() {
@@ -2072,10 +2114,25 @@ public abstract class Pokemon {
         this.enemyY = ENEMY_NORMAL_Y;
     }
 
+    public boolean canLearnTM(int tmId) {
+        for (int i = 0; i < tmSkills.size(); i++) {
+            if (tmId == tmSkills.get(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Init the Pokemon's level up skills.
      */
     protected abstract void initLevelUpSkills();
+
+    /**
+     * Init the Pokemon's TM skills
+     */
+    protected void initTMSkills() {
+    }
 
     /**
      * Init the Pokemon's evolution skills.
@@ -2114,6 +2171,36 @@ public abstract class Pokemon {
         }
         battleAbility = ability;
     }
+
+    private void initMapPokemonAbility() {
+        double rand = Math.random();
+        if (hiddenAbility != null && secondAbility != null) {
+            if (rand <= .33) {
+                ability = firstAbility;
+                abilityPosition = 0;
+            } else if (rand <= .66) {
+                ability = secondAbility;
+                abilityPosition = 1;
+            } else {
+                ability = hiddenAbility;
+                abilityPosition = 2;
+            }
+        } else if (hiddenAbility != null) {
+            if (rand <= .66) {
+                ability = firstAbility;
+                abilityPosition = 0;
+            } else {
+                ability = hiddenAbility;
+                abilityPosition = 2;
+            }
+        } else {
+            ability = firstAbility;
+            abilityPosition = 0;
+        }
+        battleAbility = ability;
+    }
+
+
 
     /**
      * Return the Pokemon's gender.
@@ -2293,6 +2380,17 @@ public abstract class Pokemon {
     public double getDisplayedExp() {
         return currentExp;
     }
+
+    /**
+     * Return whether or not the Pokemon has a disguise active. Should only work
+     * for Mimikyu.
+     * @return Whether or not the Pokemon has a disguise active.
+     */
+    public boolean hasDisguise() {
+        return false;
+    }
+
+    public void removeDisguise() { }
 
 
     /**
@@ -2793,15 +2891,16 @@ public abstract class Pokemon {
     /**
      * Create random IVs for the Pokemon
      */
-    private void initRandomIVs() {
+    private void initRandomIVs(int wildType) {
         ivs = new int[6];
-        ivs[HEALTH] = createRandomIV();
-        ivs[ATTACK] = createRandomIV();
-        ivs[SPECIAL_ATTACK] = createRandomIV();
-        ivs[DEFENSE] = createRandomIV();
-        ivs[SPECIAL_DEFENSE] = createRandomIV();
-        ivs[SPEED] = createRandomIV();
+        ivs[HEALTH] = createRandomIV(wildType);
+        ivs[ATTACK] = createRandomIV(wildType);
+        ivs[SPECIAL_ATTACK] = createRandomIV(wildType);
+        ivs[DEFENSE] = createRandomIV(wildType);
+        ivs[SPECIAL_DEFENSE] = createRandomIV(wildType);
+        ivs[SPEED] = createRandomIV(wildType);
     }
+
 
     /**
      * Return the Pokemon's Health IV
@@ -2949,6 +3048,7 @@ public abstract class Pokemon {
                     resistances.get(Pokemon.Type.PSYCHIC) * 2);
             resistances.put(Pokemon.Type.DARK, 
                     resistances.get(Pokemon.Type.DARK) * 0.5);
+            resistances.put(Pokemon.Type.FAIRY, resistances.get(Pokemon.Type.FAIRY) * 2);
         } else if (type == Pokemon.Type.FLYING) {
             resistances.put(Pokemon.Type.FIGHTING, 
                     resistances.get(Pokemon.Type.FIGHTING)  * 0.5);
@@ -2964,13 +3064,13 @@ public abstract class Pokemon {
             resistances.put(Pokemon.Type.ICE, 
                     resistances.get(Pokemon.Type.ICE) * 2);
         } else if (type == Pokemon.Type.POISON) {
-            resistances.put(Pokemon.Type.FIGHTING, 
-                    resistances.get(Pokemon.Type.FIGHTING)  * 0.5);
+            resistances.put(Pokemon.Type.FIGHTING, resistances.get(Pokemon.Type.FIGHTING)  * 0.5);
             resistances.put(Pokemon.Type.POISON, resistances.get(Pokemon.Type.POISON) * 0.5);
             resistances.put(Pokemon.Type.GROUND, resistances.get(Pokemon.Type.GROUND) * 2);
             resistances.put(Pokemon.Type.BUG, resistances.get(Pokemon.Type.BUG) * 0.5);
             resistances.put(Pokemon.Type.GRASS, resistances.get(Pokemon.Type.GRASS) * 0.5);
             resistances.put(Pokemon.Type.PSYCHIC, resistances.get(Pokemon.Type.PSYCHIC) * 2);
+            resistances.put(Pokemon.Type.FAIRY, resistances.get(Pokemon.Type.FAIRY) * 0.5);
         } else if (type == Pokemon.Type.GROUND) {
             resistances.put(Pokemon.Type.POISON, resistances.get(Pokemon.Type.POISON) * 0.5);
             resistances.put(Pokemon.Type.ROCK, resistances.get(Pokemon.Type.ROCK) * 0.5);
@@ -3016,6 +3116,7 @@ public abstract class Pokemon {
             resistances.put(Pokemon.Type.PSYCHIC, resistances.get(Pokemon.Type.PSYCHIC) * 0.5);
             resistances.put(Pokemon.Type.ICE, resistances.get(Pokemon.Type.ICE) * 0.5);
             resistances.put(Pokemon.Type.DRAGON, resistances.get(Pokemon.Type.DRAGON) * 0.5);
+            resistances.put(Pokemon.Type.FAIRY, resistances.get(Pokemon.Type.FAIRY) * 0.5);
         } else if (type == Pokemon.Type.FIRE) {
             resistances.put(Pokemon.Type.GROUND, resistances.get(Pokemon.Type.GROUND) * 2);
             resistances.put(Pokemon.Type.ROCK, resistances.get(Pokemon.Type.ROCK) * 2);
@@ -3025,6 +3126,7 @@ public abstract class Pokemon {
             resistances.put(Pokemon.Type.WATER, resistances.get(Pokemon.Type.WATER) * 2);
             resistances.put(Pokemon.Type.GRASS, resistances.get(Pokemon.Type.GRASS) * 0.5);
             resistances.put(Pokemon.Type.ICE, resistances.get(Pokemon.Type.ICE) * 0.5);
+            resistances.put(Pokemon.Type.FAIRY, resistances.get(Pokemon.Type.FAIRY) * 0.5);
         } else if (type == Pokemon.Type.WATER) {
             resistances.put(Pokemon.Type.STEEL, resistances.get(Pokemon.Type.STEEL) * 0.5);
             resistances.put(Pokemon.Type.FIRE, resistances.get(Pokemon.Type.FIRE) * 0.5);
@@ -3097,7 +3199,12 @@ public abstract class Pokemon {
      * Return a random IV value, 1-31
      * @return A random IV value
      */
-    private int createRandomIV() {
+    private int createRandomIV(int wildType) {
+        if (wildType == 1) {
+            return (int)(Math.round(Math.random() * 9)) + 1;
+        } else if (wildType == 2) {
+            return (int)(Math.round(Math.random() * (31 - 20))) + 20;
+        }
         return (int)(Math.round(Math.random() * 30)) + 1;
     }
 
@@ -3238,7 +3345,7 @@ public abstract class Pokemon {
      * @return Total Health stat
      */
     public int getHealthStat() {
-        return (int)Math.round(((2 * baseStats[HEALTH]+ ivs[HEALTH] + (evs[HEALTH] / 4.0) + 100) * level) / 100.0) + 10;
+        return (int)Math.round(((2 * getBaseStatHealth() + ivs[HEALTH] + (evs[HEALTH] / 4.0) + 100) * level) / 100.0) + 10;
     }
 
     /**
@@ -3246,7 +3353,7 @@ public abstract class Pokemon {
      * @return Attack Stat
      */
     public int getAttackStat() {
-        return (int)Math.round(((((2 * baseStats[ATTACK] + ivs[ATTACK] + (evs[ATTACK] / 4.0)) * level)
+        return (int)Math.round(((((2 * getBaseStatAttack() + ivs[ATTACK] + (evs[ATTACK] / 4.0)) * level)
                 / 100.0) + 5) * natureAttackMultiplier);
     }
 
@@ -3255,7 +3362,7 @@ public abstract class Pokemon {
      * @return Special Attack Stat
      */
     public int getSpecialAttackStat() {
-        return (int)Math.round(((((2 * baseStats[SPECIAL_ATTACK] + ivs[SPECIAL_ATTACK] + (evs[SPECIAL_ATTACK] / 4.0)) * level)
+        return (int)Math.round(((((2 * getBaseStatSpeicialAttack() + ivs[SPECIAL_ATTACK] + (evs[SPECIAL_ATTACK] / 4.0)) * level)
                 / 100.0) + 5) * natureSpecialAttackMultiplier);
     }
 
@@ -3264,7 +3371,7 @@ public abstract class Pokemon {
      * @return Defense Stat
      */
     public int getDefenseStat() {
-        return (int)Math.round(((((2 * baseStats[DEFENSE] + ivs[DEFENSE] + (evs[DEFENSE] / 4.0)) * level)
+        return (int)Math.round(((((2 * getBaseStatDefense() + ivs[DEFENSE] + (evs[DEFENSE] / 4.0)) * level)
                 / 100.0) + 5) * natureDefenseMultiplier);
     }
 
@@ -3273,7 +3380,7 @@ public abstract class Pokemon {
      * @return Special Defense Stat
      */
     public int getSpecialDefenseStat() {
-        return (int)Math.round(((((2 * baseStats[SPECIAL_DEFENSE] + ivs[SPECIAL_DEFENSE] + (evs[SPECIAL_DEFENSE] / 4.0)) * level)
+        return (int)Math.round(((((2 * getBaseStatSpecialDefense() + ivs[SPECIAL_DEFENSE] + (evs[SPECIAL_DEFENSE] / 4.0)) * level)
                 / 100.0) + 5) * natureSpecialDefenseMultiplier);
     }
 
@@ -3282,7 +3389,7 @@ public abstract class Pokemon {
      * @return Speed Stat
      */
     public int getSpeedStat() {
-        return (int)Math.round(((((2 * baseStats[SPEED] + ivs[SPEED] + (evs[SPEED] / 4.0)) * level)
+        return (int)Math.round(((((2 * getBaseStatSpeed() + ivs[SPEED] + (evs[SPEED] / 4.0)) * level)
                 / 100.0) + 5) * natureSpeedMultiplier);
     }
 
@@ -4388,6 +4495,8 @@ public abstract class Pokemon {
     public void addHealth(int amt) {
         currentHealth = Math.min(getHealthStat(), currentHealth + amt);
     }
+
+
 
     /**
      * Return the Pokemon's id that this Pokemon would evolve into

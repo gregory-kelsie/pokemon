@@ -87,6 +87,36 @@ public class AlolanDiglett extends Pokemon {
         levelUpSkills.put(43, new ArrayList<Integer>(Arrays.asList(SkillFactory.FISSURE)));
     }
 
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(1);
+        tmSkills.add(6);
+        tmSkills.add(10);
+        tmSkills.add(11);
+        tmSkills.add(17);
+        tmSkills.add(21);
+        tmSkills.add(26);
+        tmSkills.add(27);
+        tmSkills.add(32);
+        tmSkills.add(36);
+        tmSkills.add(39);
+        tmSkills.add(40);
+        tmSkills.add(42);
+        tmSkills.add(44);
+        tmSkills.add(45);
+        tmSkills.add(46);
+        tmSkills.add(48);
+        tmSkills.add(49);
+        tmSkills.add(65);
+        tmSkills.add(78);
+        tmSkills.add(80);
+        tmSkills.add(87);
+        tmSkills.add(88);
+        tmSkills.add(90);
+        tmSkills.add(91);
+        tmSkills.add(100);
+    }
+
     /**
      * Return Alolan Dugtrio if the Alolan Diglett is 26+.
      * @return Alolan Dugtrio if the Alolan Diglett is 26+.

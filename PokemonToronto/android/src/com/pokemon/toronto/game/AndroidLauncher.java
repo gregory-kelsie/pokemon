@@ -1,6 +1,7 @@
 package com.pokemon.toronto.game;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
 //import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
@@ -65,9 +67,6 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	private pokemonToronto pToronto;
 
 	//GPS and Google API Variables
-	private LocationManager locationManager;
-	private LocationListener locationListener;
-	private boolean mRequestingLocationUpdates = false;
 	private LocationRequest mLocationRequest;
 	private GoogleApiClient mGoogleApiClient;
 	private Location mLastLocation;
@@ -100,6 +99,8 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	//Steps
 	private int steps;
 	private int pokemonSteps;
+
+	private ProgressDialog dialog;
 
 	/**
 	 * Called when starting up the application.
@@ -470,6 +471,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 
 	@Override
 	public void spawnWalkingPokemon() {
+		Gdx.app.log("spawnwalkingpokemon", "here");
 		latitude = mLastLocation.getLatitude();
 		longitude = mLastLocation.getLongitude();
 		try {
@@ -505,6 +507,8 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
 					List<PokemonPlace> pokemonPlaces = new ArrayList<PokemonPlace>();
 					float maxLikelihood = 0;
+					int bestMatch = -1;
+					int counter = 0;
 					for (PlaceLikelihood placeLikelihood : likelyPlaces) {
 						name = placeLikelihood.getPlace().getName().toString();
 						LatLng ln = placeLikelihood.getPlace().getLatLng();
@@ -513,13 +517,20 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 						if (pp.hasPokemon()) {
 							if (placeLikelihood.getLikelihood() >= maxLikelihood) {
 								maxLikelihood = placeLikelihood.getLikelihood();
-								pokemonPlaces.add(pp);
+								bestMatch = counter;
 							}
 						}
+						pokemonPlaces.add(pp);
+						counter++;
 					}
 					//Select a random place from the list of places.
-					int rand = (int)Math.round(Math.random() * (pokemonPlaces.size() - 1));
-					pToronto.addPokemonPlace(pokemonPlaces.get(rand));
+					if (pokemonPlaces.size() != 0 && bestMatch != -1) {
+						Gdx.app.log("WildPlace", pokemonPlaces.get(bestMatch).getName() +
+								" - " + maxLikelihood);
+						pToronto.addPokemonPlace(pokemonPlaces.get(bestMatch));
+					} else {
+						//todo: add a default place
+					}
 					likelyPlaces.release();
 				}
 			});
@@ -533,6 +544,39 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 		pToronto.addPokemonGeographic(plp.get(0).getPokemonId());
 	}
 
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			decorView.setSystemUiVisibility(uiOptions);
+		}
+	}
+
+	@Override
+	public void createProgressDialog(final String title, final String description) {
+
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				dialog = new ProgressDialog(AndroidLauncher.this);
+				dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+				dialog.setTitle(title);
+				dialog.setMessage(description);
+				dialog.setCancelable(false);
+				dialog.show();
+
+			}
+		});
+		//new ProgressTask().execute(new Object[]{title, description, AndroidLauncher.this});
+
+	}
+
+	@Override
+	public void dismissProgressDialog() {
+		try {
+			dialog.dismiss();
+		} catch (Exception e) { }
+	}
 	/**
 	 * Allows the pokemonToronto class to grab your location so that
 	 * it can create new Pokemon around you.
@@ -640,6 +684,13 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		// Vibrate for 500 milliseconds
 		v.vibrate(500);
+	}
+
+	@Override
+	public void pulsate() {
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		// Vibrate for 500 milliseconds
+		v.vibrate(30);
 	}
 
 	/**
@@ -801,5 +852,16 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+	}
+
+	private class ProgressTask extends AsyncTask<Object, Void, Object> {
+		@Override
+		protected String doInBackground(Object... objects) {
+			dialog = new ProgressDialog((Context)objects[2]);
+			dialog.setTitle((String)objects[0]);
+			dialog.setMessage((String)objects[1]);
+			dialog.show();
+			return "";
+		}
 	}
 }

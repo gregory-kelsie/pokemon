@@ -218,6 +218,191 @@ public class TextBoxFactory {
     }
 
     /**
+     * Return Lorelei's text list.
+     * @return Elite 4 Lorelei's text box list.
+     */
+    public static List<TextBoxText> getLoreleiText() {
+        BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        ArrayList<TextBoxText> tbts = new ArrayList<TextBoxText>();
+
+        TextBoxText tbt = new TextBoxText(header, body);
+        tbt.setHeader("Lorelei");
+        tbt.addLine("Welcome to the Pokemon League!");
+        tbt.addLine("I am Lorelei of the Elite Four!");
+        tbt.addLine("You know how it goes. No one can");
+        tbt.addLine("best me when it comes to icy Pokemon");
+
+        TextBoxText tbt2 = new TextBoxText(header, body);
+        tbt2.setHeader("Lorelei");
+        tbt2.addLine("Freezing moves are powerful.");
+        tbt2.addLine("Your Pokemon will be at my mercy");
+        tbt2.addLine("when they are frozen solid!");
+
+        TextBoxText tbt3 = new TextBoxText(header, body);
+        tbt3.setHeader("Lorelei");
+        tbt3.addLine("Hahaha! Are you ready?");
+
+        tbts.add(tbt);
+        tbts.add(tbt2);
+        tbts.add(tbt3);
+
+        return tbts;
+    }
+
+    /**
+     * Return Kanto Bruno's text list.
+     * @return Elite 4 Kanto Bruno's text box list.
+     */
+    public static List<TextBoxText> getKantoBrunoText() {
+        BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        ArrayList<TextBoxText> tbts = new ArrayList<TextBoxText>();
+
+        TextBoxText tbt = new TextBoxText(header, body);
+        tbt.setHeader("Bruno");
+        tbt.addLine("I am Bruno of the Elite Four!");
+        tbt.addLine("Through rigorous training, people");
+        tbt.addLine("and Pokemon can become stronger!");
+        tbt.addLine("I've weight trained with my Pokemon");
+
+        TextBoxText tbt2 = new TextBoxText(header, body);
+        tbt2.setHeader("Bruno");
+        tbt2.addLine("I've weight trained with my Pokemon");
+        tbt2.addLine("and that will never change!");
+        tbt2.addLine("We will grind you down with our");
+        tbt2.addLine("superior power!");
+
+        TextBoxText tbt3 = new TextBoxText(header, body);
+        tbt3.setHeader("Bruno");
+        tbt3.addLine("Hoo hah!");
+
+        tbts.add(tbt);
+        tbts.add(tbt2);
+        tbts.add(tbt3);
+
+        return tbts;
+    }
+
+    /**
+     * Return Agatha's text list.
+     * @return Agatha's text box list.
+     */
+    public static List<TextBoxText> getAgathaText() {
+        BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        ArrayList<TextBoxText> tbts = new ArrayList<TextBoxText>();
+
+        TextBoxText tbt = new TextBoxText(header, body);
+        tbt.setHeader("Agatha");
+        tbt.addLine("I am Agatha of the Elite Four!");
+        tbt.addLine("Oak's taken a lot of interest in");
+        tbt.addLine("you, child! That old duff was once");
+        tbt.addLine("tough and handsome!");
+
+        TextBoxText tbt2 = new TextBoxText(header, body);
+        tbt2.setHeader("Agatha");
+        tbt2.addLine("That was decades ago!");
+        tbt2.addLine("Now he just wants to fiddle");
+        tbt2.addLine("with his Pokedex! He's wrong!");
+        tbt2.addLine("Pokemon are for fighting!");
+
+        TextBoxText tbt3 = new TextBoxText(header, body);
+        tbt3.setHeader("Agatha");
+        tbt3.addLine("I'll show you how a real");
+        tbt3.addLine("trainer fights!");
+
+        tbts.add(tbt);
+        tbts.add(tbt2);
+        tbts.add(tbt3);
+
+        return tbts;
+    }
+
+    /**
+     * Return Kanto Lance's text list.
+     * @return Kanto Lance's text box list.
+     */
+    public static List<TextBoxText> getKantoLanceText() {
+        BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        ArrayList<TextBoxText> tbts = new ArrayList<TextBoxText>();
+
+        TextBoxText tbt = new TextBoxText(header, body);
+        tbt.setHeader("Lance");
+        tbt.addLine("I lead the Elite Four.");
+        tbt.addLine("You can call me Lance the");
+        tbt.addLine("dragon trainer.");
+
+        TextBoxText tbt2 = new TextBoxText(header, body);
+        tbt2.setHeader("Lance");
+        tbt2.addLine("You know that dragons are");
+        tbt2.addLine("mythical Pokemon. They're");
+        tbt2.addLine("hard to catch and raise, but");
+        tbt2.addLine("their powers are superior.");
+
+        TextBoxText tbt3 = new TextBoxText(header, body);
+        tbt3.setHeader("Lance");
+        tbt3.addLine("They're virtually indestructible.");
+        tbt3.addLine("There's no being clever with");
+        tbt3.addLine("them. Well, are you ready to");
+        tbt3.addLine("lose?");
+
+        TextBoxText tbt4 = new TextBoxText(header, body);
+        tbt4.setHeader("Lance");
+        tbt4.addLine("Your League challenge ends");
+        tbt4.addLine("with me!");
+
+        tbts.add(tbt);
+        tbts.add(tbt2);
+        tbts.add(tbt3);
+        tbts.add(tbt4);
+
+        return tbts;
+    }
+
+    /**
+     * Return Champion Blue's text list.
+     * @return Champion Blue's text box list.
+     */
+    public static List<TextBoxText> getChampionBlueText() {
+        BitmapFont header = new BitmapFont(Gdx.files.internal("font/textHeaderFont.fnt"));
+        BitmapFont body = new BitmapFont(Gdx.files.internal("font/textBoxNarrowFont.fnt"));
+        ArrayList<TextBoxText> tbts = new ArrayList<TextBoxText>();
+
+        TextBoxText tbt = new TextBoxText(header, body);
+        tbt.setHeader("Blue");
+        tbt.addLine("I am Blue from Pallet Town.");
+        tbt.addLine("While working on my Pokedex,");
+        tbt.addLine("I looked all over for powerful");
+        tbt.addLine("Pokemon!");
+
+        TextBoxText tbt2 = new TextBoxText(header, body);
+        tbt2.setHeader("Blue");
+        tbt2.addLine("Not only that, I assembled");
+        tbt2.addLine("teams that would beat any");
+        tbt2.addLine("Pokemon type! And now! I am");
+        tbt2.addLine("the Pokemon League Champion!");
+
+        TextBoxText tbt3 = new TextBoxText(header, body);
+        tbt3.setHeader("Blue");
+        tbt3.addLine("Do you know what that means?");
+        tbt3.addLine("I'll tell you!");
+
+        TextBoxText tbt4 = new TextBoxText(header, body);
+        tbt4.setHeader("Blue");
+        tbt4.addLine("I am the most powerful");
+        tbt4.addLine("trainer in the world!");
+
+        tbts.add(tbt);
+        tbts.add(tbt2);
+        tbts.add(tbt3);
+        tbts.add(tbt4);
+
+        return tbts;
+    }
+
+    /**
      * Return the first text boxes Professor Ivy says explaining the game.
      * Ends when she is about to ask for your gender.
      * @return The first set of text boxes from Professor Ivy.

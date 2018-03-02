@@ -202,8 +202,7 @@ public class PokeNavState extends GameState{
      * Go to the RegionSelect state to execute the battle simulator.
      */
     private void executeSimulator() {
-        gsm.setState(new RegionSelect(gsm));
-        dispose();
+
     }
 
     /**

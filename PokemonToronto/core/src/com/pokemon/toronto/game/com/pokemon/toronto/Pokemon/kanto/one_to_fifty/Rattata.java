@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -33,7 +34,7 @@ public class Rattata extends Pokemon {
 
     //Base Stats
     private static final int BASE_HEALTH = 30;
-    private static final int BASE_ATTACK = 1000; //56
+    private static final int BASE_ATTACK = 56;
     private static final int BASE_DEFENSE = 35;
     private static final int BASE_SPECIAL_ATTACK = 25;
     private static final int BASE_SPECIAL_DEFENSE = 35;
@@ -77,6 +78,39 @@ public class Rattata extends Pokemon {
         levelUpSkills.put(28, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPER_FANG)));
         levelUpSkills.put(31, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
         levelUpSkills.put(34, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.WORK_UP.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.TAUNT.getValue());
+        tmSkills.add(TmId.ICE_BEAM.getValue());
+        tmSkills.add(TmId.BLIZZARD.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.THUNDERBOLT.getValue());
+        tmSkills.add(TmId.THUNDER.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.SHADOW_BALL.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.THIEF.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.CHARGE_BEAM.getValue());
+        tmSkills.add(TmId.THUNDER_WAVE.getValue());
+        tmSkills.add(TmId.GRASS_KNOT.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.U_TURN.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.WILD_CHARGE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

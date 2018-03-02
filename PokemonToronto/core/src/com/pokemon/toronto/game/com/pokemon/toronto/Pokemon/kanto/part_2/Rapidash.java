@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -87,6 +88,37 @@ public class Rapidash extends Pokemon {
         levelUpSkills.put(45, new ArrayList<Integer>(Arrays.asList(SkillFactory.BOUNCE)));
         levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLARE_BLITZ)));
         initEvolutionSkills();
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SOLAR_BEAM.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FLAMETHROWER.getValue());
+        tmSkills.add(TmId.FIRE_BLAST.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.FLAME_CHARGE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.ECHOED_VOICE.getValue());
+        tmSkills.add(TmId.OVERHEAT.getValue());
+        tmSkills.add(TmId.WILL_O_WISP.getValue());
+        tmSkills.add(TmId.SMART_STRIKE.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.POISON_JAB.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.WILD_CHARGE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     @Override

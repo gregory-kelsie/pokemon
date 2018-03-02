@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -86,6 +87,44 @@ public class Crobat extends Pokemon {
         levelUpSkills.put(48, new ArrayList<Integer>(Arrays.asList(SkillFactory.AIR_SLASH)));
         //TODO: QUICK GUARD 51
         initEvolutionSkills();
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.VENOSHOCK.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.TAUNT.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.ROOST.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.LEECH_LIFE.getValue());
+        tmSkills.add(TmId.SHADOW_BALL.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.SLUDGE_BOMB.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.TORMENT.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.THIEF.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.STEEL_WING.getValue());
+        tmSkills.add(TmId.ACROBATICS.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.FLY.getValue());
+        tmSkills.add(TmId.X_SCISSOR.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.U_TURN.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.DARK_PULSE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     @Override

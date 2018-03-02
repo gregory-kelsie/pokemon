@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -85,6 +86,41 @@ public class Geodude extends Pokemon {
         levelUpSkills.put(36, new ArrayList<Integer>(Arrays.asList(SkillFactory.EXPLOSION)));
         levelUpSkills.put(40, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
         levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.STONE_EDGE)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SMACK_DOWN.getValue());
+        tmSkills.add(TmId.EARTHQUAKE.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FLAMETHROWER.getValue());
+        tmSkills.add(TmId.SANDSTORM.getValue());
+        tmSkills.add(TmId.FIRE_BLAST.getValue());
+        tmSkills.add(TmId.ROCK_TOMB.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.EXPLOSION.getValue());
+        tmSkills.add(TmId.ROCK_POLISH.getValue());
+        tmSkills.add(TmId.STONE_EDGE.getValue());
+        tmSkills.add(TmId.GYRO_BALL.getValue());
+        tmSkills.add(TmId.BULLDOZE.getValue());
+        tmSkills.add(TmId.ROCK_SLIDE.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.TRICK_ROOM.getValue());
+        tmSkills.add(TmId.NATURE_POWER.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

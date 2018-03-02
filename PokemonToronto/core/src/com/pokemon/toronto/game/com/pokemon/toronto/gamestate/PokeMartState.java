@@ -107,6 +107,16 @@ public class PokeMartState extends GameState {
         bubbleText = "Using these stones on certain\nPokemon will evolve them!";
     }
 
+    private void initUsableBubbleText() {
+        bubbleHeader = "Usable Items";
+        bubbleText = "A variety of usable\nitems to aid your Pokemon!";
+    }
+
+    private void initTMBubbleText() {
+        bubbleHeader = "Technical Machines";
+        bubbleText = "Use these items to teach\nyour Pokemon new moves!";
+    }
+
     private void initItemTextures() {
         if (itemNameTextures.size() > 0) {
             itemNameTextures.get(0).dispose();
@@ -292,7 +302,9 @@ public class PokeMartState extends GameState {
                 clickedUsableItemTab();
             } else if (x >= 125 && x <= 241 && y >= 1656 && y <= 1776) {
                 clickedEvolutionStoneTab();
-            } else if (x >= 838 && x <= 1016 && y >= 421 && y <= 556) {
+            } else if (x >= 125 && x <= 241 && y >= 1269 && y <= 1354) {
+                clickedTMTab();
+            }  else if (x >= 838 && x <= 1016 && y >= 421 && y <= 556) {
                 clickedBuyNow();
             } else if (x >= 126 && x <= 429 && y >= 0 && y <= 93) {
                 clickSound.play();
@@ -316,6 +328,10 @@ public class PokeMartState extends GameState {
             initEvolutionBubbleText();
         } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
             initPokeballBubbleText();
+        } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
+            initUsableBubbleText();
+        } else if (pokeMart.getCurrentTab() == ItemTab.TM) {
+            initTMBubbleText();
         }
     }
 
@@ -400,52 +416,26 @@ public class PokeMartState extends GameState {
     }
 
     private void clickedBuyNow() {
-        if (pokeMart.getCurrentItem() == 0) {
+        int currentItemIndex = pokeMart.getCurrentItem();
+        if (pokeMart.getItem(currentItemIndex) != null) {
             if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
-                gsm.getBag().addStone(pokeMart.getFirstItem().getItemId());
+                gsm.getBag().addStone(pokeMart.getItem(currentItemIndex).getItemId());
                 moneySound.play();
             } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
-                gsm.getBag().addPokeball(pokeMart.getFirstItem().getItemId(), pokeMart.getFirstItem().getQuantity());
+                gsm.getBag().addPokeball(pokeMart.getItem(currentItemIndex).getItemId(),
+                        pokeMart.getItem(currentItemIndex).getQuantity());
                 moneySound.play();
             } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
-                gsm.getBag().addUsable(pokeMart.getFirstItem().getItemId(), pokeMart.getFirstItem().getQuantity());
+                gsm.getBag().addUsable(pokeMart.getItem(currentItemIndex).getItemId(),
+                        pokeMart.getItem(currentItemIndex).getQuantity());
                 moneySound.play();
-            }
-        } else if (pokeMart.getCurrentItem() == 1) {
-            if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
-                gsm.getBag().addStone(pokeMart.getSecondItem().getItemId());
-                moneySound.play();
-            } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
-                gsm.getBag().addPokeball(pokeMart.getSecondItem().getItemId(), pokeMart.getSecondItem().getQuantity());
-                moneySound.play();
-            } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
-                gsm.getBag().addUsable(pokeMart.getSecondItem().getItemId(), pokeMart.getSecondItem().getQuantity());
-                moneySound.play();
-            }
-        } else if (pokeMart.getCurrentItem() == 2) {
-            if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
-                gsm.getBag().addStone(pokeMart.getThirdItem().getItemId());
-                moneySound.play();
-            } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
-                gsm.getBag().addPokeball(pokeMart.getThirdItem().getItemId(), pokeMart.getThirdItem().getQuantity());
-                moneySound.play();
-            }
-            else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
-                gsm.getBag().addUsable(pokeMart.getThirdItem().getItemId(), pokeMart.getThirdItem().getQuantity());
-                moneySound.play();
-            }
-        } else if (pokeMart.getCurrentItem() == 3) {
-            if (pokeMart.getCurrentTab() == ItemTab.EVOLUTION_STONE) {
-                gsm.getBag().addStone(pokeMart.getFourthItem().getItemId());
-                moneySound.play();
-            } else if (pokeMart.getCurrentTab() == ItemTab.POKEBALL) {
-                gsm.getBag().addPokeball(pokeMart.getFourthItem().getItemId(), pokeMart.getFourthItem().getQuantity());
-                moneySound.play();
-            } else if (pokeMart.getCurrentTab() == ItemTab.POTION) {
-                gsm.getBag().addUsable(pokeMart.getFourthItem().getItemId(), pokeMart.getFourthItem().getQuantity());
+            } else if (pokeMart.getCurrentTab() == ItemTab.TM) {
+                Gdx.app.log("bought", "" + pokeMart.getItem(currentItemIndex).getItemId().getValue());
+                gsm.getBag().addTM(pokeMart.getItem(currentItemIndex).getItemId());
                 moneySound.play();
             }
         }
+
     }
 
     private void clickedPokeballTab() {
@@ -464,7 +454,7 @@ public class PokeMartState extends GameState {
             pokeMart.setCurrentTab(ItemTab.POTION);
             setHeaderTexture();
             initItemTextures();
-            initPokeballBubbleText();
+            initUsableBubbleText();
         }
     }
 
@@ -475,6 +465,16 @@ public class PokeMartState extends GameState {
             setHeaderTexture();
             initItemTextures();
             initEvolutionBubbleText();
+        }
+    }
+
+    private void clickedTMTab() {
+        if (pokeMart.getCurrentTab() != ItemTab.TM) {
+            clickSound.play();
+            pokeMart.setCurrentTab(ItemTab.TM);
+            setHeaderTexture();
+            initItemTextures();
+            initTMBubbleText();
         }
     }
 

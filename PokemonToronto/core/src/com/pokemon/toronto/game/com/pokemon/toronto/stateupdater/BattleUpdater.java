@@ -660,4 +660,14 @@ public class BattleUpdater implements PhaseUpdaterInterface {
         enemyPokemon = battleState.setNextEnemyPokemon();
 
     }
+
+    @Override
+    public void updateEnemySprite() {
+        battleState.updateEnemySprite();
+    }
+
+    @Override
+    public void updatePlayerSprite() {
+        battleState.updatePlayerSprite();
+    }
 }

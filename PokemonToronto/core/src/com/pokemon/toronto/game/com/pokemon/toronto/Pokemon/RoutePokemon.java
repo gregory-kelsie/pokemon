@@ -8,8 +8,8 @@ public class RoutePokemon {
     private int pokemonId;
     private int lowestLevel;
     private int highestLevel;
-    private int rate;
-    public RoutePokemon(int pokemonId, int lowestLevel, int highestLevel, int rate) {
+    private double rate;
+    public RoutePokemon(int pokemonId, int lowestLevel, int highestLevel, double rate) {
         this.pokemonId = pokemonId;
         this.lowestLevel = lowestLevel;
         this.highestLevel = highestLevel;
@@ -28,7 +28,7 @@ public class RoutePokemon {
         return highestLevel;
     }
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 

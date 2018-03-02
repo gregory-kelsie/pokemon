@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -71,6 +72,11 @@ public class Wobbuffet extends Pokemon {
         beginnerSkills.add(SkillFactory.SAFEGUARD);
         //MIRROR COAT
         levelUpSkills.put(0, beginnerSkills);
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.SAFEGUARD.getValue());
     }
 
     /**

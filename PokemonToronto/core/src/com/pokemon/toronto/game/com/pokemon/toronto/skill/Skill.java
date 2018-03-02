@@ -433,6 +433,9 @@ public abstract class Skill {
             if (enemyPokemon.isFlying() && !hitFlyingPokemon) {
                 return false;
             }
+            if (enemyPokemon.isUnderground() && !hitUndergroundPokemon) {
+                return false;
+            }
             int accuracyStage = skillUser.getAccuracyStage();
             double attackerAccuracyMod = skillUser.getAccuracyModifier(accuracyStage);
             if (enemyPokemon.getBattleAbility().getId() == AbilityId.SAND_VEIL &&

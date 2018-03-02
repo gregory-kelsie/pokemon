@@ -64,4 +64,6 @@ public interface PhaseUpdaterInterface {
     void setTrainerDoubleFaint();
     boolean hasTrainerDoubleFaint();
     void removeTrainerDoubleFaint();
+    void updateEnemySprite();
+    void updatePlayerSprite();
 }

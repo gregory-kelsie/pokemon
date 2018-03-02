@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -82,6 +83,37 @@ public class Pikachu extends Pokemon {
         levelUpSkills.put(53, new ArrayList<Integer>(Arrays.asList(SkillFactory.LIGHT_SCREEN)));
         levelUpSkills.put(58, new ArrayList<Integer>(Arrays.asList(SkillFactory.THUNDER)));
     }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.LIGHT_SCREEN.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.THUNDERBOLT.getValue());
+        tmSkills.add(TmId.THUNDER.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.ECHOED_VOICE.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.CHARGE_BEAM.getValue());
+        tmSkills.add(TmId.VOLT_SWITCH.getValue());
+        tmSkills.add(TmId.THUNDER_WAVE.getValue());
+        tmSkills.add(TmId.GRASS_KNOT.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.WILD_CHARGE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
+    }
+
 
     /**
      * Init Pikachu's gender.

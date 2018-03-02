@@ -29,6 +29,7 @@ public class Magnitude extends DamageSkill {
     public Magnitude() {
         super(SkillFactory.MAGNITUDE, "Magnitude", SkillDescription.MAGNITUDE, 30,
                 Pokemon.Type.GROUND, Skill.SkillCategory.PHYSICAL, 100, 1, 1);
+        hitUndergroundPokemon = true;
     }
 
     /**

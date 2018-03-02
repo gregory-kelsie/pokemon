@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -91,6 +92,45 @@ public class Onix extends Pokemon {
         levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.DOUBLE_EDGE)));
         levelUpSkills.put(52, new ArrayList<Integer>(Arrays.asList(SkillFactory.SANDSTORM)));
     }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.ROAR.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.TAUNT.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SMACK_DOWN.getValue());
+        tmSkills.add(TmId.EARTHQUAKE.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.SANDSTORM.getValue());
+        tmSkills.add(TmId.ROCK_TOMB.getValue());
+        tmSkills.add(TmId.TORMENT.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.BRUTAL_SWING.getValue());
+        tmSkills.add(TmId.EXPLOSION.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.ROCK_POLISH.getValue());
+        tmSkills.add(TmId.STONE_EDGE.getValue());
+        tmSkills.add(TmId.GYRO_BALL.getValue());
+        tmSkills.add(TmId.PSYCH_UP.getValue());
+        tmSkills.add(TmId.BULLDOZE.getValue());
+        tmSkills.add(TmId.ROCK_SLIDE.getValue());
+        tmSkills.add(TmId.DRAGON_TAIL.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.FLASH_CANNON.getValue());
+        tmSkills.add(TmId.NATURE_POWER.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
+    }
+
 
     /**
      * Determine Onix's gender.

@@ -13,6 +13,7 @@ public class PokeMart {
     private List<MartListing> evolutionStones;
     private List<MartListing> pokeballs;
     private List<MartListing> usableItems;
+    private List<MartListing> tms;
 
     private int currentPage; //0-n
     private int currentItem; //0-3, -1 for none
@@ -23,6 +24,7 @@ public class PokeMart {
         initEvolutionStones();
         initPokeballs();
         initUsableItems();
+        initTMs();
         currentTab = ItemTab.EVOLUTION_STONE;
         currentPage = 0;
         currentItem = -1;
@@ -48,6 +50,13 @@ public class PokeMart {
         currentList.clear();
         for (int i = 0; i < usableItems.size(); i++) {
             currentList.add(usableItems.get(i));
+        }
+    }
+
+    private void transferTMs() {
+        currentList.clear();
+        for (int i = 0; i < tms.size(); i++) {
+            currentList.add(tms.get(i));
         }
     }
 
@@ -88,6 +97,12 @@ public class PokeMart {
         usableItems.add(new MartListing.RareCandy());
     }
 
+    private void initTMs() {
+        tms = new ArrayList<MartListing>();
+        tms.add(new MartListing.MartTM01());
+        tms.add(new MartListing.MartTM02());
+    }
+
     public List<MartListing> getItems() {
         if (currentTab == ItemTab.EVOLUTION_STONE) {
             return evolutionStones;
@@ -110,6 +125,18 @@ public class PokeMart {
             return true;
         }
         return false;
+    }
+
+    public MartListing getItem(int itemIndex) {
+        if (itemIndex == 0) {
+            return currentList.get(currentPage * 4 + itemIndex);
+        } else {
+            if (currentPage * 4 + itemIndex < currentList.size()) {
+                return currentList.get(currentPage * 4 + itemIndex);
+            } else {
+                return null;
+            }
+        }
     }
 
     public MartListing getFirstItem() {
@@ -196,6 +223,9 @@ public class PokeMart {
         } else if (newTab == ItemTab.POTION) {
             transferUsableItems();
             switchTabs(ItemTab.POTION);
+        } else if (newTab == ItemTab.TM) {
+            transferTMs();
+            switchTabs(ItemTab.TM);
         }
     }
 

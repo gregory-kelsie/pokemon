@@ -22,6 +22,8 @@ public class SkillDescription {
             "raising its Defense and Sp. Def stats.";
     public static String fellStinger = "When the user knocks out a target with this move, " +
             "the user's Attack stat rises drastically.";
+    public static String FIRST_IMPRESSION = "Although this move has great power, it only works" +
+            " the first turn the user is in battle.";
     public static String furyCutter = "The target is slashed with scythes or claws. This attack " +
             "becomes more powerful if it hits in succession.";
     public static String healOrder = "The user calls out its underlings to heal it. The user " +
@@ -748,6 +750,8 @@ public class SkillDescription {
             "the same type as the target.";
     public static final String REFRESH = "The user rests to cure itself of poisoning, a burn, " +
             "or paralysis.";
+    public static final String REVELATION_DANCE = "The user attacks the target by dancing very" +
+            " hard. The user's type determines the type of this move.";
     public static final String ROCK_CLIMB = "The user attacks the target by smashing into it " +
             "with incredible force. This may also confuse the target.";
     public static final String ROUND = "The user attacks the target with a song. Others can " +

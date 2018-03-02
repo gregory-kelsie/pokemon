@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -93,5 +94,36 @@ public class Magmar extends Pokemon {
         levelUpSkills.put(42, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUNNY_DAY)));
         levelUpSkills.put(49, new ArrayList<Integer>(Arrays.asList(SkillFactory.FLAMETHROWER)));
         levelUpSkills.put(55, new ArrayList<Integer>(Arrays.asList(SkillFactory.FIRE_BLAST)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.PSYCHIC.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FLAMETHROWER.getValue());
+        tmSkills.add(TmId.FIRE_BLAST.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.FLAME_CHARGE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.THIEF.getValue());
+        tmSkills.add(TmId.LOW_SWEEP.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.OVERHEAT.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.WILL_O_WISP.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.RouteStateModel;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.TrainerFactory;
@@ -24,16 +25,78 @@ public class KantoGymState extends GameState {
     private List<Texture> gymTextures;
     private Sound clickSound;
 
-    public KantoGymState(GameStateManager gsm) {
+    private int routeNumber;
+    private int region;
+
+    public KantoGymState(GameStateManager gsm, int routeNumber, int region) {
         this.gsm = gsm;
-        badges = gsm.getPlayer().getKantoBadges();
+        this.routeNumber = routeNumber; //The route number the player was on in the simulator.
+        this.region = region;
         gymTextures = new ArrayList<Texture>();
+        if (region == RouteStateModel.JOHTO) {
+            badges = gsm.getPlayer().getJohtoBadges();
+            addJohtoBadges();
+        } else {
+            badges = gsm.getPlayer().getKantoBadges();
+            addBadges();
+        }
+
         background = new Texture("simulator/background.png");
         title = new Texture("simulator/gym_leaders/kanto/title.png");
-
         clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/click.wav"));
-        addBadges();
 
+
+    }
+
+    private void addJohtoBadges() {
+        if (badges == 0) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/falkner.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/falkner_gray.png"));
+        }
+
+        if (badges == 1) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/bugsy.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/bugsy_gray.png"));
+        }
+
+        if (badges == 2) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/whitney.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/whitney_gray.png"));
+        }
+
+        if (badges == 3) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/morty.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/morty_gray.png"));
+        }
+
+        if (badges == 4) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/chuck.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/chuck_gray.png"));
+        }
+
+        if (badges == 5) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/jasmine.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/jasmine_gray.png"));
+        }
+
+
+        if (badges == 6) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/pryce.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/pryce_gray.png"));
+        }
+
+        if (badges == 7) {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/clair.png"));
+        } else {
+            gymTextures.add(new Texture("simulator/gym_leaders/johto/clair_gray.png"));
+        }
     }
 
     private void addBadges() {
@@ -108,55 +171,117 @@ public class KantoGymState extends GameState {
             int y = MyInput.getY();
             if (x >= 911 && x <= 1080 && y >= 0 && y <= 136) {
                 clickedPowerButton();
-            } else if (x >= 89 && x <= 439 && y >= 207 && y <= 522 &&
-                    gsm.getPlayer().getKantoBadges() == 0) {
-                //Clicked Brock
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderBrock());
-                dispose();
-            } else if (x >= 534 && x <= 901 && y >= 221 && y <= 457 &&
-                    gsm.getPlayer().getKantoBadges() == 1) {
-                //Clicked Misty
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderMisty());
-            } else if (x >= 89 && x <= 439 && y >= 702 && y <= 964 &&
-                    gsm.getPlayer().getKantoBadges() == 2) {
-                //Clicked Lt Surge
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderLtSurge());
-            } else if (x >= 534 && x <= 901 && y >= 702 && y <= 964 &&
-                    gsm.getPlayer().getKantoBadges() == 3) {
-                //Clicked Erika
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderErika());
-            } else if (x >= 89 && x <= 439 && y >= 1165 && y <= 1386 &&
-                    gsm.getPlayer().getKantoBadges() == 4) {
-                //Clicked Janine
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderJanine());
-            } else if (x >= 534 && x <= 901 && y >= 1165 && y <= 1386 &&
-                    gsm.getPlayer().getKantoBadges() == 5) {
-                //Clicked Sabrina
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderSabrina());
-            } else if (x >= 89 && x <= 439 && y >= 1575 && y <= 1800 &&
-                    gsm.getPlayer().getKantoBadges() == 6) {
-                //Clicked Blaine
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderBlaine());
-            } else if (x >= 534 && x <= 901 && y >= 1575 && y <= 1800 &&
-                    gsm.getPlayer().getKantoBadges() == 7) {
-                //Clicked Blue
-                TrainerFactory ttf = new TrainerFactory();
-                loadGymLeader(ttf.getGymLeaderBlue());
+            } else if (x >= 89 && x <= 439 && y >= 207 && y <= 522) {
+                clickedFirstGym();
+            } else if (x >= 534 && x <= 901 && y >= 221 && y <= 457) {
+                clickedSecondGym();
+            } else if (x >= 89 && x <= 439 && y >= 702 && y <= 964) {
+                clickedThirdGym();
+            } else if (x >= 534 && x <= 901 && y >= 702 && y <= 964) {
+                clickedFourthGym();
+            } else if (x >= 89 && x <= 439 && y >= 1165 && y <= 1386) {
+                clickedFifthGym();
+            } else if (x >= 534 && x <= 901 && y >= 1165 && y <= 1386) {
+                clickedSixthGym();
+            } else if (x >= 89 && x <= 439 && y >= 1575 && y <= 1800) {
+                clickedSeventhGym();
+            } else if (x >= 534 && x <= 901 && y >= 1575 && y <= 1800) {
+                clickedEightGym();
             }
             Gdx.app.log("coords", "x: " + x + ", y: " + y);
         }
     }
 
+    private void clickedFirstGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 0) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderBrock());
+            dispose();
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 0) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderFalkner());
+            dispose();
+        }
+    }
+
+    private void clickedSecondGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 1) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderMisty());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 1) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderBugsy());
+        }
+    }
+
+    private void clickedThirdGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 2) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderLtSurge());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 2) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderWhitney());
+        }
+    }
+
+    private void clickedFourthGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 3) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderErika());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 3) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderMorty());
+        }
+    }
+
+    private void clickedFifthGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 4) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderJanine());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 4) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderChuck());
+        }
+    }
+
+    private void clickedSixthGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 5) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderSabrina());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 5) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderJasmine());
+        }
+    }
+
+    private void clickedSeventhGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 6) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderBlaine());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 6) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderPryce());
+        }
+    }
+
+    private void clickedEightGym() {
+        if (region == RouteStateModel.KANTO && gsm.getPlayer().getKantoBadges() == 7) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderBlue());
+        } else if (region == RouteStateModel.JOHTO && gsm.getPlayer().getJohtoBadges() == 7) {
+            TrainerFactory ttf = new TrainerFactory();
+            loadGymLeader(ttf.getGymLeaderClair());
+        }
+    }
+
     private void loadGymLeader(Trainer leader) {
         gsm.stopBgm();
-        Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/kantogym.mp3"));
+        Music wildBgm;
+        if (region == RouteStateModel.KANTO) {
+            wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/kantogym.mp3"));
+        } else {
+            wildBgm = Gdx.audio.newMusic(Gdx.files.internal("bgm/johtogym.mp3"));
+        }
         wildBgm.setVolume(0.5f);
         wildBgm.play();
         gsm.setState(new BattleState(gsm, wildBgm, leader));
@@ -164,9 +289,10 @@ public class KantoGymState extends GameState {
     }
     private void clickedPowerButton() {
         clickSound.play();
-        gsm.setState(new RegionMenu(gsm, 0)); //0 brings back to kanto region menu
+        gsm.setState(new SimulatorState(gsm, region, routeNumber));
         dispose();
     }
+
     @Override
     protected void dispose() {
         background.dispose();

@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -99,6 +100,35 @@ public class AlolanVulpix extends Pokemon {
         //TODO: GRUDGE 44
         levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.CAPTIVATE)));
         levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.SHEER_COLD)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.ROAR.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HAIL.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.ICE_BEAM.getValue());
+        tmSkills.add(TmId.BLIZZARD.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.SAFEGUARD.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.AURORA_VEIL.getValue());
+        tmSkills.add(TmId.PSYCH_UP.getValue());
+        tmSkills.add(TmId.FROST_BREATH.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.DARK_PULSE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

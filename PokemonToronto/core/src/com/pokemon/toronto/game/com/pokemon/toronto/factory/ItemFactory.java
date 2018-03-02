@@ -1,7 +1,9 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.factory;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerItem;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerTM;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.DawnStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.DuskStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.FireStone;
@@ -12,6 +14,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.ShinyStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.SunStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.ThunderStone;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.stone.WaterStone;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.tm.TM01;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.tm.TM02;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Calcium;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.Carbos;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.usable.HealthRestoreItem;
@@ -34,6 +38,15 @@ public class ItemFactory {
 
     }
 
+    public PlayerTM createTM(ItemId tmId, int amount) {
+        if (tmId == ItemId.TM01) {
+            Gdx.app.log("factorytm", "working");
+            return new PlayerTM(amount, new TM01());
+        } else if (tmId == ItemId.TM02) {
+            return new PlayerTM(amount, new TM02());
+        }
+        return null;
+    }
     public PlayerItem createStone(ItemId stoneId, int amount) {
         if (stoneId == ItemId.LEAF_STONE) {
             return new PlayerItem(amount, new LeafStone());

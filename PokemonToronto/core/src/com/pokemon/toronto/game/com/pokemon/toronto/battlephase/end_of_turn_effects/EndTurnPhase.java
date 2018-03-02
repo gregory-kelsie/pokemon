@@ -311,6 +311,7 @@ public class EndTurnPhase extends BattlePhase {
         if (!pui.getEnemyPokemon().matchingAnimationHealth()) {
             pui.getEnemyPokemon().adjustAnimationHealth(1);
         } else {
+            schoolingCheck(pui.getEnemyPokemon(), false);
             currentState = stateAfterHealthAdjustment;
         }
     }
@@ -319,6 +320,7 @@ public class EndTurnPhase extends BattlePhase {
         if (!pui.getUserPokemon().matchingAnimationHealth()) {
             pui.getUserPokemon().adjustAnimationHealth(1);
         } else {
+            schoolingCheck(pui.getUserPokemon(), true);
             currentState = stateAfterHealthAdjustment;
         }
     }
@@ -531,7 +533,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.isInfested()) {
                 text = currentPokemon.getName() + " was hurt by Infestation.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustInfestationTurns();
                 adjustStates(currentPokemon, INFESTATION, WHIRLPOOL_STATE);
             } else {
@@ -559,7 +563,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.isWrapped()) {
                 text = currentPokemon.getName() + " was hurt by Wrap.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustWrapTurns();
                 adjustStates(currentPokemon, WRAP, REFLECT);
             } else {
@@ -587,7 +593,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.inFireSpin()) {
                 text = currentPokemon.getName() + " was hurt by Fire Spin.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustFireSpinTurns();
                 adjustStates(currentPokemon, FIRE_SPIN, SAND_TOMB);
             } else {
@@ -615,7 +623,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.inSandTomb()) {
                 text = currentPokemon.getName() + " was hurt by Sand Tomb.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustSandTombTurns();
                 adjustStates(currentPokemon, SAND_TOMB, INFESTATION);
             } else {
@@ -643,7 +653,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.inWhirlpool()) {
                 text = currentPokemon.getName() + " was hurt by Whirlpool.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustWhirlpoolTurns();
                 adjustStates(currentPokemon, WHIRLPOOL_STATE, WRAP);
             } else {
@@ -671,7 +683,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.isClamped()) {
                 text = currentPokemon.getName() + " was hurt by Clamp.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustClampTurns();
                 adjustStates(currentPokemon, CLAMP_STATE, FIRE_SPIN);
             } else {
@@ -698,7 +712,9 @@ public class EndTurnPhase extends BattlePhase {
             } else if (currentPokemon.isBinded()) {
                 text = currentPokemon.getName() + " was hurt by Bind.";
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 6.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustBindTurns();
                 adjustStates(currentPokemon, BIND_STATE, CLAMP_STATE);
             } else {
@@ -769,7 +785,9 @@ public class EndTurnPhase extends BattlePhase {
         if (currentPokemon.getCurrentHealth() != 0) {
             if (currentPokemon.isCursed()) {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getName() + " is afflicted by Curse!";
                 adjustStates(currentPokemon, CURSE, BIND_STATE);
             } else {
@@ -787,7 +805,9 @@ public class EndTurnPhase extends BattlePhase {
         if (currentPokemon.getCurrentHealth() != 0) {
             if (currentPokemon.hasNightmares()) {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 4.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getName() + " is locked in a nightmare!";
                 adjustStates(currentPokemon, NIGHTMARES, CURSE);
             } else {
@@ -805,12 +825,16 @@ public class EndTurnPhase extends BattlePhase {
             //TODO: Implement Poison Heal
             if (currentPokemon.getStatus() == Pokemon.Status.POISON) {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getName() + " was hurt by poison.";
                 adjustStates(currentPokemon, NEGATIVE_STATUS, NIGHTMARES);
             } else if (currentPokemon.getStatus() == Pokemon.Status.BURN) {
                 int damage = (int)Math.round(currentPokemon.getHealthStat() / 16.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 pui.playPoisonSound();
                 text = currentPokemon.getName() + " was hurt by burn.";
                 adjustStates(currentPokemon, NEGATIVE_STATUS, NIGHTMARES);
@@ -833,7 +857,9 @@ public class EndTurnPhase extends BattlePhase {
             if (leechSeedDrain > currentPokemon.getCurrentHealth()) {
                 leechSeedDrain = currentPokemon.getCurrentHealth();
             }
+            calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
             currentPokemon.subtractHealth(leechSeedDrain);
+            calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
             if (usingOnEnemy) {
                 stateAfterText = ADJUST_ENEMY_HEALTH;
             } else {
@@ -871,7 +897,9 @@ public class EndTurnPhase extends BattlePhase {
         }
 
         if (!drainer.hasFullHealth()) {
+            calcSchoolingBeforeDamageOrHeal(drainer, !usingOnEnemy);
             drainer.addHealth(leechSeedDrain);
+            calcSchoolingAfterDamageOrHeal(drainer, !usingOnEnemy);
             currentState = DISPLAY_TEXT;
             text = drainer.getName() + " recovered some health\nfrom Leech Seed.";
             //Note that here usingOnEnemy means that the enemy takes damage from leech seed
@@ -903,7 +931,9 @@ public class EndTurnPhase extends BattlePhase {
                 !currentPokemon.hasFullHealth() &&
                 currentPokemon.isEnvelopedInAquaRing()) {
             text = currentPokemon.getName() + " recovered health\nfrom Aqua Ring.";
+            calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
             currentPokemon.addHealth((int)Math.ceil(currentPokemon.getHealthStat() / 16.0));
+            calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
             currentState = DISPLAY_TEXT;
             if (usingOnEnemy) {
                 stateAfterText = ADJUST_ENEMY_HEALTH;
@@ -930,7 +960,9 @@ public class EndTurnPhase extends BattlePhase {
                 !currentPokemon.hasFullHealth() &&
                 currentPokemon.isIngrained()) {
             text = currentPokemon.getName() + " recovered health\nfrom Ingrain.";
+            calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
             currentPokemon.addHealth((int)Math.ceil(currentPokemon.getHealthStat() / 16.0));
+            calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
             currentState = DISPLAY_TEXT;
             if (usingOnEnemy) {
                 stateAfterText = ADJUST_ENEMY_HEALTH;
@@ -998,7 +1030,9 @@ public class EndTurnPhase extends BattlePhase {
         Pokemon currentPokemon = getCurrentPokemon();
         if (currentPokemon.getCurrentHealth() != 0 && currentPokemon.isReceivingWish()) {
             if (currentPokemon.getWishTurns() == 0) {
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.addHealth(currentPokemon.getHealthStat() / 2);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getWishUser() + "'s Wish\ncame true!";
                 currentPokemon.removeWish();
                 currentState = DISPLAY_TEXT;
@@ -1044,7 +1078,9 @@ public class EndTurnPhase extends BattlePhase {
             HurtByFutureSight futureSight = new HurtByFutureSight();
             if (futureSight.willHitEnemy(currentPokemon.getFutureSightUser(),
                     currentPokemon, pui.getField(), null, null, false)) {
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 futureSight.use(currentPokemon.getFutureSightUser(), currentPokemon, pui.getField());
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getName() + " took the\nFuture Sight attack!";
             } else {
                 text = currentPokemon.getFutureSightUser().getName()+ "'s future Sight failed.";
@@ -1062,7 +1098,9 @@ public class EndTurnPhase extends BattlePhase {
             HurtByDoomDesire doomDesire = new HurtByDoomDesire();
             if (doomDesire.willHitEnemy(currentPokemon.getFutureSightUser(),
                     currentPokemon, pui.getField(), null, null, false)) {
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
                 doomDesire.use(currentPokemon.getFutureSightUser(), currentPokemon, pui.getField());
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 text = currentPokemon.getName() + " took the\nDoom Desire attack!";
             } else {
                 text = currentPokemon.getFutureSightUser().getName()+ "'s Doom Desire failed.";
@@ -1196,7 +1234,9 @@ public class EndTurnPhase extends BattlePhase {
 
     private void recoverPokemonFromHail(Pokemon pokemon) {
         int recoverAmount = (int)Math.round(pokemon.getHealthStat() / 16.0);
+        calcSchoolingBeforeDamageOrHeal(pokemon, !usingOnEnemy);
         pokemon.addHealth(recoverAmount);
+        calcSchoolingAfterDamageOrHeal(pokemon, !usingOnEnemy);
         text = pokemon.getName() + " recovered health in hail\nwith the ability Ice Body.";
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
@@ -1216,7 +1256,9 @@ public class EndTurnPhase extends BattlePhase {
 
     private void recoverPokemonFromRain(Pokemon pokemon, double denominator) {
         int recoverAmount = (int)Math.round(pokemon.getHealthStat() / denominator);
+        calcSchoolingBeforeDamageOrHeal(pokemon, !usingOnEnemy);
         pokemon.addHealth(recoverAmount);
+        calcSchoolingAfterDamageOrHeal(pokemon, !usingOnEnemy);
         text = pokemon.getName() + " recovered health in the rain\nwith the ability Rain Dish.";
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
@@ -1236,7 +1278,9 @@ public class EndTurnPhase extends BattlePhase {
 
     private void damagePokemonFromSandstorm(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 16.0);
+        calcSchoolingBeforeDamageOrHeal(pokemon, !usingOnEnemy);
         pokemon.subtractHealth(damage);
+        calcSchoolingAfterDamageOrHeal(pokemon, !usingOnEnemy);
         text = pokemon.getName() + " is buffeted by the sandstorm!";
         currentState = DISPLAY_TEXT;
         if (usingOnEnemy) {
@@ -1273,7 +1317,9 @@ public class EndTurnPhase extends BattlePhase {
 
     private void damagePokemonFromSunlight(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 8.0);
+        calcSchoolingBeforeDamageOrHeal(pokemon, !usingOnEnemy);
         pokemon.subtractHealth(damage);
+        calcSchoolingAfterDamageOrHeal(pokemon, !usingOnEnemy);
         if (pokemon.getBattleAbility().getId() == AbilityId.SOLAR_POWER) {
             text = pokemon.getName() + " is hurt \nfrom drawing in solar power.";
         } else { //Having Dry skin is the only other way to get here.
@@ -1318,7 +1364,9 @@ public class EndTurnPhase extends BattlePhase {
      */
     private void damagePokemonFromHail(Pokemon pokemon) {
         int damage = (int)Math.round(pokemon.getHealthStat() / 16.0);
+        calcSchoolingBeforeDamageOrHeal(pokemon, !usingOnEnemy);
         pokemon.subtractHealth(damage);
+        calcSchoolingAfterDamageOrHeal(pokemon, !usingOnEnemy);
         text = pokemon.getName() + " is buffeted by hail.";
 
         currentState = DISPLAY_TEXT;

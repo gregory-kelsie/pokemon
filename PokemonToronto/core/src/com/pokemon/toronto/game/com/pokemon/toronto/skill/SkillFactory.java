@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.BugBite;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.BugBuzz;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.DefendOrder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.FellStinger;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.FirstImpression;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.FuryCutter;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.HealOrder;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Bug.Infestation;
@@ -905,6 +906,8 @@ public class SkillFactory {
     public static final int HEAT_CRASH = 501;
     public static final int HEAVY_SLAM = 502;
     public static final int PURSUIT = 503;
+    public static final int REVELATION_DANCE = 504;
+    public static final int FIRST_IMPRESSION = 505;
 
     public SkillFactory() {
 
@@ -1924,6 +1927,10 @@ public class SkillFactory {
             return new HeavySlam();
         } else if (skillId == PURSUIT) {
             return new Pursuit();
+        } else if (skillId == REVELATION_DANCE) {
+            return new RevelationDance();
+        } else if (skillId == FIRST_IMPRESSION) {
+            return new FirstImpression();
         }
         else {
             return new Covet();

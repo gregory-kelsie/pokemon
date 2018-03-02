@@ -4,7 +4,18 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
 import java.util.List;
 
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_BADGE;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_BRUNO;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_CHAMPION;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_KAREN;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_KOGA;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.JOHTO_WILL;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_AGATHA;
 import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_BADGE;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_BRUNO;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_CHAMPION;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_LANCE;
+import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.KANTO_LORELEI;
 import static com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer.Badge.NO_BADGE;
 
 /**
@@ -21,7 +32,8 @@ public class Trainer {
     private Badge badgeType;
 
     public static enum Badge {
-        NO_BADGE, KANTO_BADGE;
+        NO_BADGE, KANTO_BADGE, KANTO_LORELEI, KANTO_BRUNO, KANTO_AGATHA, KANTO_LANCE, KANTO_CHAMPION,
+        JOHTO_BADGE, JOHTO_WILL, JOHTO_KOGA, JOHTO_BRUNO, JOHTO_KAREN, JOHTO_CHAMPION;
     }
 
     public Trainer(double difficulty, String title, String name, String victoryText,
@@ -53,6 +65,23 @@ public class Trainer {
         return false;
     }
 
+    public boolean givesJohtoBadge() {
+        if (badgeType == JOHTO_BADGE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isElite4Member() {
+        if (badgeType == KANTO_LORELEI || badgeType == KANTO_BRUNO ||
+                badgeType == KANTO_AGATHA || badgeType == KANTO_CHAMPION ||
+                badgeType == KANTO_LANCE || badgeType == JOHTO_WILL || badgeType == JOHTO_KOGA ||
+                badgeType == JOHTO_BRUNO || badgeType == JOHTO_KAREN || badgeType == JOHTO_CHAMPION) {
+            return true;
+        }
+        return false;
+    }
+
     public String toString() {
         String s = "";
         s += "Name: " + title + " " + name + "\n";
@@ -64,6 +93,10 @@ public class Trainer {
         }
         s += "Victory Text: " + victoryText;
         return s;
+    }
+
+    public Badge getBadgeType() {
+        return badgeType;
     }
 
     public String getIconPath() {

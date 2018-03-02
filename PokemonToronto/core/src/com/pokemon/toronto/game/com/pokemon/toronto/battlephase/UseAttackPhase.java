@@ -155,6 +155,7 @@ public class UseAttackPhase extends BattlePhase {
             receiver.adjustAnimationHealth(1);
         } else {
             //Display the second skill name after depleting health.
+            schoolingCheck(receiver, !attackerIsUser);
             updatingHealth = false;
             if (usedSkill.makesPhysicalContact() && usedSkill.targetsEnemy(attacker, pui.getField())) {
                 state = ABILITY_CONTACT;
@@ -180,6 +181,8 @@ public class UseAttackPhase extends BattlePhase {
             }
             if (attacker.getCurrentHealth() == 0) {
                 recoilResults.add(attacker.getName() + " fainted.");
+            } else {
+                schoolingCheck(attacker, attackerIsUser);
             }
             displayRecoilResults = true;
             resetTextBoxAndResults();
@@ -424,6 +427,7 @@ public class UseAttackPhase extends BattlePhase {
 
 
     protected void checkAbilityContact(double dt) {
+        //TODO: Implement rough skin and make sure to do schooling checks for that.
         if (receiver.getBattleAbility().getId() == AbilityId.STATIC) {
             useStatic();
         } else if (receiver.getBattleAbility().getId() == AbilityId.POISON_POINT) {
@@ -473,15 +477,19 @@ public class UseAttackPhase extends BattlePhase {
                 receiverSubField = pui.getField().getPlayerField();
             }
             if (attackerIsUser) {
+                calcSchoolingBeforeDamageOrHeal(receiver, false);
                 battleResults = usedSkill.use(attacker, receiver, pui.getUserPokemonPosition(),
                         pui.getEnemyPokemonPosition(), pui.getField(), attackerSubField,
                         receiverSubField, firstAttack, targetsSkill, pui.getPlayerParty(),
                         new ArrayList<Pokemon>()); //Override
+                calcSchoolingAfterDamageOrHeal(receiver, false);
             } else {
+                calcSchoolingBeforeDamageOrHeal(receiver, true);
                 battleResults = usedSkill.use(attacker, receiver, pui.getEnemyPokemonPosition(),
                         pui.getUserPokemonPosition(), pui.getField(), attackerSubField,
                         receiverSubField, firstAttack, targetsSkill, new ArrayList<Pokemon>(),
                         pui.getPlayerParty()); //Override
+                calcSchoolingAfterDamageOrHeal(receiver, true);
             }
             updatingAnimation = true;
             state = -1; //reset state.

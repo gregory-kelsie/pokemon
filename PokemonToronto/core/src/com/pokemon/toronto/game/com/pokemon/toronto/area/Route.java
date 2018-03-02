@@ -4,7 +4,11 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.RoutePokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.RoutePokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
+import com.pokemon.toronto.game.com.pokemon.toronto.player.Player;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,6 +22,53 @@ public class Route {
     public static final int SURF = 1;
     public static final int FISHING = 2;
 
+    public static final int ROUTE_1 = 1;
+    public static final int VIRIDIAN_FOREST = 2;
+    public static final int ROUTE_2 = 3;
+    public static final int ROUTE_3 = 4;
+    public static final int MT_MOON_1F = 5;
+    public static final int MT_MOON_B1F = 6;
+    public static final int MT_MOON_B2F = 7;
+    public static final int ROUTE_4 = 8;
+    public static final int ROUTE_24 = 9;
+    public static final int ROUTE_6 = 10;
+    public static final int ROUTE_11 = 11;
+    public static final int DIGLETT_CAVE = 12;
+    public static final int ROUTE_10 = 13;
+    public static final int ROCK_TUNNEL = 14;
+    public static final int POKEMON_TOWER = 15;
+    public static final int ROUTE_8 = 16;
+    public static final int ROUTE_7 = 17;
+    public static final int ROUTE_16 = 18;
+    //NEXT SET
+    public static final int ROUTE_12 = 19;
+    public static final int ROUTE_13 = 20;
+    public static final int ROUTE_18 = 21;
+    public static final int SAFARI_CENTER = 22;
+    public static final int SAFARI_A1 = 23;
+    public static final int SAFARI_A2 = 24;
+    public static final int SAFARI_A3 = 25;
+    public static final int POWER_PLANT = 26;
+    public static final int ROUTE_21 = 27;
+    public static final int POKEMON_MANSION_1F = 28;
+    public static final int POKEMON_MANSION_B1F = 29;
+    public static final int SEAFOAM_B2F = 30;
+    public static final int SEAFOAM_B4F = 31;
+    public static final int ROUTE_23 = 32;
+    public static final int VICTORY_ROAD_1F = 33;
+    public static final int VICTORY_ROAD_2F = 34;
+
+    //JOHTO
+
+    public static final int ROUTE_29 = 35;
+    public static final int ROUTE_46 = 36;
+    public static final int ROUTE_30 = 37;
+    public static final int DARK_CAVE_VIOLET = 38;
+    public static final int SPROUT_TOWER = 39;
+    public static final int ROUTE_32 = 40;
+    public static final int RUINS_OF_ALPH = 41;
+    public static final int UNION_CAVE_1F = 42;
+
     //Instance Variables
     private String imagePath;
     private int routeNumber;
@@ -29,23 +80,68 @@ public class Route {
     private boolean hasGrass;
 
     //The Route's Pokemon
-    private List<RoutePokemon> grassPokemon;
-    private List<RoutePokemon> surfPokemon;
-    private List<RoutePokemon> fishingPokemon;
+    protected List<RoutePokemon> grassPokemon;
+    protected List<RoutePokemon> surfPokemon;
+    protected List<RoutePokemon> fishingPokemon;
+
+    protected String name;
+    protected String background;
+    protected String waterBackground;
 
     /**
      * Constructor
      * @param routeNumber The route's id
      * @param imagePath The route's image path.
-     * @param isRoute An identification on whether it is a route or a cave.
      */
-    public Route(int routeNumber, String imagePath, boolean isRoute) {
+    public Route(int routeNumber, String imagePath, String name, String background) {
         this.routeNumber = routeNumber;
         this.imagePath = imagePath;
         this.hasTrainers = true;
-        initPokemon(isRoute, new RoutePokemonFactory());
+        this.name = name;
+        this.background = background;
+        this.waterBackground = background;
+        initPokemon();
         initRouteOptions();
+    }
 
+    public Route(int routeNumber, String imagePath, String name, String background, String waterBackground) {
+        this.routeNumber = routeNumber;
+        this.imagePath = imagePath;
+        this.hasTrainers = true;
+        this.name = name;
+        this.background = background;
+        this.waterBackground = waterBackground;
+        initPokemon();
+        initRouteOptions();
+    }
+
+    protected int getHourTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        Date date = new Date();
+        String text = dateFormat.format(date);
+        return new Integer(text.substring(11, 13)); //0 - 23
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public String getWaterBackground() { return waterBackground; }
+
+    protected void initGrassPokemon() {
+        grassPokemon = null;
+    }
+
+    protected void initSurfPokemon() {
+        surfPokemon = null;
+    }
+
+    protected void initRodPokemon() {
+        fishingPokemon = null;
     }
 
     /**
@@ -68,6 +164,10 @@ public class Route {
         }
     }
 
+    public boolean isAvailable(Player p) {
+        return false;
+    }
+
     /**
      * Return whether or not the area has Pokemon.
      * @param area The List<RoutePokemon> that is checked for Pokemon
@@ -83,17 +183,12 @@ public class Route {
 
     /**
      * Initialize the Pokemon on the Route/Dungeon.
-     * @param isRoute A determinate for whether or not the area is a Route
-     *                or a dungeon.
-     * @param rpc The RoutePokemonFactory that creates the route's
-     *            Pokemon.
      */
-    private void initPokemon(boolean isRoute, RoutePokemonFactory rpc) {
-        if (isRoute) {
-            initRoute(rpc);
-        } else {
-            initDungeon(rpc);
-        }
+    protected void initPokemon() {
+        initGrassPokemon();
+        initSurfPokemon();
+        initRodPokemon();
+
     }
     /**
      * Init the Route's Pokemon using the RoutePokemonFactory
@@ -106,14 +201,6 @@ public class Route {
         fishingPokemon = rpc.createFishingPokemon(routeNumber);
     }
 
-    /**
-     * Init the Dungeon's Pokemon using the RoutePokemonFactory
-     * @param rpc The RoutePokemonFactory that creates the dungeon's
-     *            Pokemon.
-     */
-    private void initDungeon(RoutePokemonFactory rpc) {
-        grassPokemon = rpc.createRouteDungeonPokemon(routeNumber);
-    }
 
     /**
      * Return a String of the Route's Image path.
@@ -190,7 +277,7 @@ public class Route {
      */
     private Pokemon getAPokemon(List<RoutePokemon> area) {
         //Roll a random number to determine the Pokemon that shows up.
-        int num = (int) (Math.random() * 100);
+        double num = (Math.random() * 100);
         for (int i = 0; i < area.size(); i++) {
             //Check if the rolled number is within the Pokemon's rate.
             if (num <= area.get(i).getRate()) {
@@ -198,7 +285,7 @@ public class Route {
                 WildPokemonCreator wpc = new WildPokemonCreator();
                 return wpc.createPokemon(area.get(i).getPokemonId(),
                         area.get(i).getLowestLevel(),
-                        area.get(i).getHighestLevel());
+                        area.get(i).getHighestLevel(), wpc.SIMULATOR_WILD_POKEMON);
             }
         }
         return null;

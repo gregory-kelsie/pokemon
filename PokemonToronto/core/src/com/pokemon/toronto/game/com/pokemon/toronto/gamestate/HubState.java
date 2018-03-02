@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
-import com.pokemon.toronto.game.com.pokemon.toronto.location.PokemonPlace;
 import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 /**
@@ -98,6 +97,7 @@ public class HubState extends GameState {
             if (!receivedPlacePokemon) {
                 receivedPlacePokemon = true;
                 placePokemonId = pokemonId;
+                gsm.getGameCallBack().vibrate();
             }
         }
     }
@@ -114,6 +114,9 @@ public class HubState extends GameState {
 
     private void disposeWindow() {
         windowState = NO_WINDOW;
+        receivedGeographicalPokemon = false;
+        receivedPlacePokemon = false;
+
         popupTexture.dispose();
         loadedPopupTexture = false;
     }
@@ -125,12 +128,11 @@ public class HubState extends GameState {
             double rand = Math.random();
             WildPokemonCreator wpc = new WildPokemonCreator();
             if (rand <= 1 && placePokemonId != -1) {
-                randomPokemon = wpc.createPokemon(placePokemonId, 5, 5);
+                randomPokemon = wpc.createPokemon(placePokemonId, 5, 5, 0);
             } else {
-                randomPokemon = wpc.createPokemon(geographicalPokemonId, 5, 5);
+                randomPokemon = wpc.createPokemon(geographicalPokemonId, 5, 5, 0);
+                resetWildPokemon();
             }
-            gsm.getGameCallBack().vibrate();
-            resetWildPokemon();
         }
         if (MyInput.clicked()) {
             int x = MyInput.getX();
@@ -146,40 +148,40 @@ public class HubState extends GameState {
                 //World Map
                 gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
                 dispose();
-            } else if  (x >= 24 && x <= 655 && y >= 376 && y <= 480 && windowState == NO_WINDOW) {
+            } else if (x >= 24 && x <= 655 && y >= 376 && y <= 480 && windowState == NO_WINDOW) {
                 //PokeCenter
                 gsm.stopBgm();
                 gsm.setState(new LoadingState(gsm, LoadingState.POKECENTER_STATE));
                 dispose();
-            } else if  (x >= 24 && x <= 655 && y >= 572 && y <= 699 && windowState == NO_WINDOW) {
+            } else if (x >= 24 && x <= 655 && y >= 572 && y <= 699 && windowState == NO_WINDOW) {
                 //PokeMart
                 gsm.stopBgm();
                 gsm.setState(new PokeMartState(gsm));
                 dispose();
-            } else if  (x >= 24 && x <= 655 && y >= 820 && y <= 929 && windowState == NO_WINDOW) {
+            } else if (x >= 24 && x <= 655 && y >= 820 && y <= 929 && windowState == NO_WINDOW) {
                 //PokeNet
-            } else if  (x >= 24 && x <= 655 && y >= 1043 && y <= 1193 && windowState == NO_WINDOW) {
+            } else if (x >= 24 && x <= 655 && y >= 1043 && y <= 1193 && windowState == NO_WINDOW) {
                 //Simulator
-                gsm.setState(new RegionSelect(gsm));
+                gsm.setState(new SimulatorState(gsm));
                 dispose();
-            } else if  (x >= 797 && x <= 999 && y >= 30 && y <= 184 && windowState == NO_WINDOW) {
+            } else if (x >= 797 && x <= 999 && y >= 30 && y <= 184 && windowState == NO_WINDOW) {
                 //PokeDex
-            } else if  (x >= 823 && x <= 1009 && y >= 289 && y <= 491 && windowState == NO_WINDOW) {
+            } else if (x >= 823 && x <= 1009 && y >= 289 && y <= 491 && windowState == NO_WINDOW) {
                 //PC
                 gsm.setState(new BoxState(gsm, true));
                 gsm.stopBgm();
                 dispose();
-            } else if  (x >= 825 && x <= 1003 && y >= 582 && y <= 763 && windowState == NO_WINDOW) {
+            } else if (x >= 825 && x <= 1003 && y >= 582 && y <= 763 && windowState == NO_WINDOW) {
                 //Bag
                 gsm.setState(new BagState(gsm, true));
                 dispose();
-            } else if  (x >= 749 && x <= 1000 && y >= 1680 && y <= 1878 && windowState == NO_WINDOW) {
+            } else if (x >= 749 && x <= 1000 && y >= 1680 && y <= 1878 && windowState == NO_WINDOW) {
                 //Profile
                 gsm.setState(new ProfileState(gsm));
                 dispose();
             } else if (x >= 353 && x <= 564 && y >= 670 && y <= 753 && windowState == POKEMON_WINDOW) {
                 gsm.stopBgm();
-                Music wildBgm  = Gdx.audio.newMusic(Gdx.files.internal("sounds/wildBgm.mp3"));
+                Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("sounds/wildBgm.mp3"));
                 wildBgm.play();
                 gsm.setState(new BattleState(gsm, randomPokemon, wildBgm));
                 dispose();

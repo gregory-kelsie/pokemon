@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.battlephase;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.battlephase.end_of_turn_effects.EndTurnPhase;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.HurtByConfusion;
 
@@ -47,7 +48,6 @@ public class ConfusionCheckPhase extends BattlePhase {
         textCounter = 0;
         this.isFirstMove = isFirstMove;
         currentState = INIT;
-
     }
 
     /**
@@ -85,6 +85,7 @@ public class ConfusionCheckPhase extends BattlePhase {
     private void init() {
         if (isFirstMove && pui.isUserPokemonFirstAttacker()) {
             //First attack is the player.
+            isUser = true;
             if (pui.getUserPokemon().isConfused()) {
                 initConfusedPokemon(PLAYER);
             } else {
@@ -92,6 +93,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             }
         } else if (isFirstMove && !pui.isUserPokemonFirstAttacker()) {
             //First attack is the enemy.
+            isUser = false;
             if (pui.getEnemyPokemon().isConfused()) {
                 initConfusedPokemon(ENEMY);
             } else {
@@ -99,6 +101,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             }
         } else if (!isFirstMove && pui.isUserPokemonFirstAttacker()) {
             //Second attack is the enemy.
+            isUser = false;
             if (pui.getEnemyPokemon().isConfused()) {
                 initConfusedPokemon(ENEMY);
             } else {
@@ -106,6 +109,7 @@ public class ConfusionCheckPhase extends BattlePhase {
             }
         } else if (!isFirstMove && !pui.isUserPokemonFirstAttacker()) {
             //Second attack is the player.
+            isUser = true;
             if (pui.getUserPokemon().isConfused()) {
                 initConfusedPokemon(PLAYER);
             } else {
@@ -185,8 +189,10 @@ public class ConfusionCheckPhase extends BattlePhase {
      * Use the hurt by confusion skill on the confused pokemon.
      */
     private void damageSelf() {
+        calcSchoolingBeforeDamageOrHeal(confusedPokemon, isUser);
         HurtByConfusion confusionSkill = new HurtByConfusion();
         confusionSkill.use(confusedPokemon, confusedPokemon, pui.getField());
+        calcSchoolingAfterDamageOrHeal(confusedPokemon, isUser);
         currentState = DEPLETE_HEALTH;
         confusedPokemon.takeDamageThisTurn();
     }
@@ -201,6 +207,7 @@ public class ConfusionCheckPhase extends BattlePhase {
         } else {
             //Finished depleting health.
             if (confusedPokemon.getCurrentHealth() != 0) {
+                schoolingCheck(confusedPokemon, isUser);
                 if (isFirstMove) {
                     //Go to second move
                     pui.setPhase(new SleepCheckPhase(pui, false));

@@ -34,4 +34,6 @@ public interface BattleInterface {
     String getNextPokemonName();
     Pokemon setNextEnemyPokemon();
     void disposeBgm();
+    void updatePlayerSprite();
+    void updateEnemySprite();
 }

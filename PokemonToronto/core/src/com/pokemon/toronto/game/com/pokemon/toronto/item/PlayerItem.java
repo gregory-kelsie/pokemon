@@ -7,8 +7,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
  */
 
 public class PlayerItem {
-    private int quantity;
-    private Item item;
+    protected int quantity;
+    protected Item item;
     public PlayerItem(Item item) {
         this.quantity = 1;
         this.item = item;

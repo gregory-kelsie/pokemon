@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -90,6 +91,36 @@ public class Skiploom extends Pokemon {
         levelUpSkills.put(52, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_DRAIN)));
         levelUpSkills.put(56, new ArrayList<Integer>(Arrays.asList(SkillFactory.BOUNCE)));
         levelUpSkills.put(60, new ArrayList<Integer>(Arrays.asList(SkillFactory.MEMENTO)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SOLAR_BEAM.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.REFLECT.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.ENERGY_BALL.getValue());
+        tmSkills.add(TmId.ACROBATICS.getValue());
+        tmSkills.add(TmId.SWORDS_DANCE.getValue());
+        tmSkills.add(TmId.PSYCH_UP.getValue());
+        tmSkills.add(TmId.INFESTATION.getValue());
+        tmSkills.add(TmId.GRASS_KNOT.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.U_TURN.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.DAZZLING_GLEAM.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

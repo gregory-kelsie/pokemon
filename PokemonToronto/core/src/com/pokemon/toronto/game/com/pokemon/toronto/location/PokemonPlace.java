@@ -76,9 +76,16 @@ public class PokemonPlace {
     private String name;
     private double latitude;
     private double longitude;
-    private Set<Integer> commonPokemon;
-    private Set<Integer> rarePokemon;
-    private Set<Integer> superRarePokemon;
+    
+    private Set<Integer> ubiquitous; //45%
+    private Set<Integer> common; // 20%
+    private Set<Integer> uncommon; //15%
+    private Set<Integer> kindaRare; // 10%
+    private Set<Integer> rare; //5%
+    private Set<Integer> superRare; //4%
+    private Set<Integer> megaRare; //.75%
+    private Set<Integer> ultraRare; //.25%;
+    
 
     private int difficulty;
 
@@ -113,40 +120,63 @@ public class PokemonPlace {
     }
 
     public boolean hasPokemon() {
-        if (commonPokemon.size() > 0) {
+        if (ubiquitous.size() > 0) {
             return true;
-        } else if (rarePokemon.size() > 0) {
+        } else if (common.size() > 0) {
             return true;
-        } else if (superRarePokemon.size() > 0) {
+        } else if (uncommon.size() > 0) {
+            return true;
+        } else if (kindaRare.size() > 0) {
+            return true;
+        } else if (rare.size() > 0) {
+            return true;
+        } else if (superRare.size() > 0) {
+            return true;
+        } else if (megaRare.size() > 0) {
+            return true;
+        } else if (ultraRare.size() > 0) {
             return true;
         }
         return false;
     }
 
     public int getPokemon() {
-        //Determine whether to return a common, rare or super rare Pokemon.
         if (hasPokemon()) {
             double rand = Math.random();
-            if (rand >= .125) {
-                //Common
-                return getPokemon(commonPokemon);
-            } else if (rand >= .025) {
-                //Rare if there is one.
-                if (rarePokemon.size() > 0) {
-                    return getPokemon(rarePokemon);
-                } else {
-                    return getPokemon(commonPokemon);
+            if (rand >= .55) { //Common 45%
+                if (ubiquitous.size() > 0) {
+                    return getPokemon(ubiquitous);
                 }
-            } else {
-                //Super Rare if there is one.
-                if (superRarePokemon.size() > 0) {
-                    return getPokemon(superRarePokemon);
-                } else if (rarePokemon.size() > 0) {
-                    return getPokemon(rarePokemon);
-                } else {
-                    return getPokemon(commonPokemon);
+            } else if (rand >= .35) { //Uncommon 1 20%
+                if (common.size() > 0) {
+                    return getPokemon(common);
+                }
+            } else if (rand >= .20) { //Uncommon 3 15%
+                if (uncommon.size() > 0) {
+                    return getPokemon(uncommon);
+                }
+            } else if (rand >= .1) { //Uncommon 4 10%
+                if (kindaRare.size() > 0) {
+                    return getPokemon(kindaRare);
+                }
+            } else if (rand >= .05) { //Kinda Rare 5%
+                if (rare.size() > 0) {
+                    return getPokemon(rare);
+                }
+            } else if (rand >= .01) {  //Kinda Rare 4%
+                if (superRare.size() > 0) {
+                    return getPokemon(superRare);
+                }
+            } else if (rand >= .0025) { // Rare 1 .75%
+                if (megaRare.size() > 0) {
+                    return getPokemon(megaRare);
+                }
+            } else { //.25%
+                if (ultraRare.size() > 0) {
+                    return getPokemon(ultraRare);
                 }
             }
+            return -1;
         }
         return -1;
     }
@@ -169,9 +199,15 @@ public class PokemonPlace {
 
 
     private void initPokemon(List<Integer> types) {
-        commonPokemon = new HashSet<Integer>();
-        rarePokemon = new HashSet<Integer>();
-        superRarePokemon = new HashSet<Integer>();
+        ubiquitous = new HashSet<Integer>(); //45%
+        common = new HashSet<Integer>(); // 20%
+        uncommon = new HashSet<Integer>(); //15%
+        kindaRare = new HashSet<Integer>(); // 10%
+        rare = new HashSet<Integer>(); //5%
+        superRare = new HashSet<Integer>(); //4%
+        megaRare = new HashSet<Integer>(); //.75%
+        ultraRare = new HashSet<Integer>(); //.25%
+
         trainers = new HashSet<Integer>();
         for (int i = 0; i < types.size(); i++) {
             addPokemon(types.get(i));
@@ -434,25 +470,37 @@ public class PokemonPlace {
         Magnemite
          */
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.SPEAROW.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            rarePokemon.add(PokemonId.DODUO.getValue());
+            ubiquitous.add(PokemonId.MAGNEMITE.getValue());
+            common.add(PokemonId.PIDGEY.getValue());
+            uncommon.add(PokemonId.SPEAROW.getValue());
+            kindaRare.add(PokemonId.DODUO.getValue());
+            rare.add(PokemonId.VOLTORB.getValue());
+            superRare.add(PokemonId.FARFETCHD.getValue());
+            superRare.add(PokemonId.MINIOR.getValue());
+            megaRare.add(PokemonId.SKARMORY.getValue());
+            ultraRare.add(PokemonId.SKARMORY.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.SPEAROW.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            rarePokemon.add(PokemonId.DODUO.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
+            ubiquitous.add(PokemonId.MAGNEMITE.getValue());
+            common.add(PokemonId.PIDGEY.getValue());
+            uncommon.add(PokemonId.SPEAROW.getValue());
+            kindaRare.add(PokemonId.DODUO.getValue());
+            kindaRare.add(PokemonId.VOLTORB.getValue());
+            rare.add(PokemonId.PIDGEOTTO.getValue());
+            superRare.add(PokemonId.FARFETCHD.getValue());
+            superRare.add(PokemonId.MINIOR.getValue());
+            megaRare.add(PokemonId.SKARMORY.getValue());
+            ultraRare.add(PokemonId.SKARMORY.getValue());
         } else {
-            commonPokemon.add(PokemonId.PIDGEOTTO.getValue());
-            commonPokemon.add(PokemonId.FEAROW.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            commonPokemon.add(PokemonId.DODUO.getValue());
-            rarePokemon.add(PokemonId.MAGNETON.getValue());
-            rarePokemon.add(PokemonId.PIDGEY.getValue());
-            rarePokemon.add(PokemonId.SPEAROW.getValue());
-            superRarePokemon.add(PokemonId.PIDGEOT.getValue());
+            ubiquitous.add(PokemonId.PIDGEOTTO.getValue());
+            common.add(PokemonId.FEAROW.getValue());
+            uncommon.add(PokemonId.VOLTORB.getValue());
+            kindaRare.add(PokemonId.DODUO.getValue());
+            kindaRare.add(PokemonId.ELECTRODE.getValue());
+            rare.add(PokemonId.MAGNETON.getValue());
+            superRare.add(PokemonId.FARFETCHD.getValue());
+            superRare.add(PokemonId.MINIOR.getValue());
+            megaRare.add(PokemonId.SKARMORY.getValue());
+            ultraRare.add(PokemonId.SKARMORY.getValue());
         }
     }
 
@@ -464,30 +512,55 @@ public class PokemonPlace {
         Jinx
         Tauros - Rare
         */
+
+        /*
+        private Set<Integer> ubiquitous; //45%
+        private Set<Integer> common; // 20%
+        private Set<Integer> uncommon; //15%
+        private Set<Integer> kindaRare; // 10%
+        private Set<Integer> rare; //5%
+        private Set<Integer> superRare; //4%
+        private Set<Integer> megaRare; //.75%
+        private Set<Integer> ultraRare; //.25%;
+        */
+
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.DROWZEE.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            commonPokemon.add(PokemonId.ABRA.getValue());
-            superRarePokemon.add(PokemonId.MR_MIME.getValue());
-            superRarePokemon.add(PokemonId.JYNX.getValue());
+            ubiquitous.add(PokemonId.DROWZEE.getValue());
+            common.add(PokemonId.ESPURR.getValue());
+            uncommon.add(PokemonId.SWIRLIX.getValue());
+            kindaRare.add(PokemonId.MANKEY.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            superRare.add(PokemonId.AIPOM.getValue());
+            megaRare.add(PokemonId.MR_MIME.getValue());
+            megaRare.add(PokemonId.FENNEKIN.getValue());
+            ultraRare.add(PokemonId.JYNX.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.DROWZEE.getValue());
-            commonPokemon.add(PokemonId.ABRA.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            rarePokemon.add(PokemonId.KADABRA.getValue());
-            rarePokemon.add(PokemonId.HYPNO.getValue());
-            rarePokemon.add(PokemonId.TAUROS.getValue());
-            superRarePokemon.add(PokemonId.MR_MIME.getValue());
-            superRarePokemon.add(PokemonId.JYNX.getValue());
+            ubiquitous.add(PokemonId.DROWZEE.getValue());
+            common.add(PokemonId.ESPURR.getValue());
+            uncommon.add(PokemonId.SWIRLIX.getValue());
+            kindaRare.add(PokemonId.KADABRA.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            superRare.add(PokemonId.AIPOM.getValue());
+            superRare.add(PokemonId.HAWLUCHA.getValue());
+            megaRare.add(PokemonId.MR_MIME.getValue());
+            megaRare.add(PokemonId.ORANGURU.getValue());
+            megaRare.add(PokemonId.BRAIXEN.getValue());
+            ultraRare.add(PokemonId.TAUROS.getValue());
         } else {
-            commonPokemon.add(PokemonId.MAGMAR.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            commonPokemon.add(PokemonId.KADABRA.getValue());
-            commonPokemon.add(PokemonId.HYPNO.getValue());
-            rarePokemon.add(PokemonId.PRIMEAPE.getValue());
-            rarePokemon.add(PokemonId.TAUROS.getValue());
-            rarePokemon.add(PokemonId.MR_MIME.getValue());
-            rarePokemon.add(PokemonId.JYNX.getValue());
+            ubiquitous.add(PokemonId.DROWZEE.getValue());
+            common.add(PokemonId.PRIMEAPE.getValue());
+            uncommon.add(PokemonId.KADABRA.getValue());
+            uncommon.add(PokemonId.SWIRLIX.getValue());
+            kindaRare.add(PokemonId.HYPNO.getValue());
+            kindaRare.add(PokemonId.MEOWSTIC.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            rare.add(PokemonId.MAGMAR.getValue());
+            superRare.add(PokemonId.AIPOM.getValue());
+            superRare.add(PokemonId.HAWLUCHA.getValue());
+            megaRare.add(PokemonId.MR_MIME.getValue());
+            megaRare.add(PokemonId.ORANGURU.getValue());
+            megaRare.add(PokemonId.BRAIXEN.getValue());
+            ultraRare.add(PokemonId.TAUROS.getValue());
         }
 
     }
@@ -504,42 +577,82 @@ public class PokemonPlace {
         Dratini - Super rare
          */
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.MAGIKARP.getValue());
-            commonPokemon.add(PokemonId.SEEL.getValue());
-            rarePokemon.add(PokemonId.HORSEA.getValue());
-            rarePokemon.add(PokemonId.STARYU.getValue());
-            superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
-            superRarePokemon.add(PokemonId.DRATINI.getValue());
+            ubiquitous.add(PokemonId.TENTACOOL.getValue());
+            common.add(PokemonId.MAGIKARP.getValue());
+            uncommon.add(PokemonId.GOLDEEN.getValue());
+            uncommon.add(PokemonId.REMORAID.getValue());
+            uncommon.add(PokemonId.WISHIWASHI.getValue());
+            kindaRare.add(PokemonId.SEEL.getValue());
+            kindaRare.add(PokemonId.QWILFISH.getValue());
+            kindaRare.add(PokemonId.CHINCHOU.getValue());
+            kindaRare.add(PokemonId.INKAY.getValue());
+            rare.add(PokemonId.HORSEA.getValue());
+            rare.add(PokemonId.CORSOLA.getValue());
+            rare.add(PokemonId.PYUKUMUKU.getValue());
+            rare.add(PokemonId.CLAUNCHER.getValue());
+            superRare.add(PokemonId.STARYU.getValue());
+            superRare.add(PokemonId.SKRELP.getValue());
+            superRare.add(PokemonId.MANTINE.getValue());
+            megaRare.add(PokemonId.SQUIRTLE.getValue());
+            megaRare.add(PokemonId.POPPLIO.getValue());
+            ultraRare.add(PokemonId.DRATINI.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.MAGIKARP.getValue());
-            commonPokemon.add(PokemonId.SEEL.getValue());
-            commonPokemon.add(PokemonId.HORSEA.getValue());
-            rarePokemon.add(PokemonId.STARYU.getValue());
-            rarePokemon.add(PokemonId.SEADRA.getValue());
-            superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
-            superRarePokemon.add(PokemonId.WARTORTLE.getValue());
-            superRarePokemon.add(PokemonId.DRATINI.getValue());
-            superRarePokemon.add(PokemonId.VAPOREON.getValue());
+            ubiquitous.add(PokemonId.TENTACOOL.getValue());
+            common.add(PokemonId.MAGIKARP.getValue());
+            uncommon.add(PokemonId.GOLDEEN.getValue());
+            uncommon.add(PokemonId.REMORAID.getValue());
+            kindaRare.add(PokemonId.SEEL.getValue());
+            kindaRare.add(PokemonId.QWILFISH.getValue());
+            kindaRare.add(PokemonId.CHINCHOU.getValue());
+            kindaRare.add(PokemonId.WISHIWASHI.getValue());
+            kindaRare.add(PokemonId.INKAY.getValue());
+            rare.add(PokemonId.HORSEA.getValue());
+            rare.add(PokemonId.SEADRA.getValue());
+            rare.add(PokemonId.CORSOLA.getValue());
+            rare.add(PokemonId.PYUKUMUKU.getValue());
+            rare.add(PokemonId.CLAUNCHER.getValue());
+            superRare.add(PokemonId.MAREANIE.getValue());
+            superRare.add(PokemonId.BRUXISH.getValue());
+            superRare.add(PokemonId.STARYU.getValue());
+            superRare.add(PokemonId.MANTINE.getValue());
+            rare.add(PokemonId.SKRELP.getValue());
+            megaRare.add(PokemonId.SQUIRTLE.getValue());
+            megaRare.add(PokemonId.WARTORTLE.getValue());
+            megaRare.add(PokemonId.POPPLIO.getValue());
+            megaRare.add(PokemonId.BRIONNE.getValue());
+            ultraRare.add(PokemonId.DRATINI.getValue());
+            ultraRare.add(PokemonId.WIMPOD.getValue());
+            ultraRare.add(PokemonId.VAPOREON.getValue());
         } else {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.TENTACRUEL.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.SEAKING.getValue());
-            commonPokemon.add(PokemonId.SEEL.getValue());
-            commonPokemon.add(PokemonId.DEWGONG.getValue());
-            commonPokemon.add(PokemonId.HORSEA.getValue());
-            commonPokemon.add(PokemonId.STARYU.getValue());
-            rarePokemon.add(PokemonId.SEADRA.getValue());
-            rarePokemon.add(PokemonId.GYARADOS.getValue());
-            superRarePokemon.add(PokemonId.STARMIE.getValue());
-            superRarePokemon.add(PokemonId.WARTORTLE.getValue());
-            superRarePokemon.add(PokemonId.DRATINI.getValue());
-            superRarePokemon.add(PokemonId.DRAGONAIR.getValue());
-            superRarePokemon.add(PokemonId.VAPOREON.getValue());
+            ubiquitous.add(PokemonId.TENTACOOL.getValue());
+            ubiquitous.add(PokemonId.TENTACRUEL.getValue());
+            common.add(PokemonId.GOLDEEN.getValue());
+            common.add(PokemonId.REMORAID.getValue());
+            uncommon.add(PokemonId.SEEL.getValue());
+            uncommon.add(PokemonId.QWILFISH.getValue());
+            uncommon.add(PokemonId.CHINCHOU.getValue());
+            kindaRare.add(PokemonId.SEAKING.getValue());
+            kindaRare.add(PokemonId.DEWGONG.getValue());
+            kindaRare.add(PokemonId.WISHIWASHI.getValue());
+            kindaRare.add(PokemonId.INKAY.getValue());
+            rare.add(PokemonId.GYARADOS.getValue());
+            rare.add(PokemonId.SEADRA.getValue());
+            rare.add(PokemonId.CORSOLA.getValue());
+            rare.add(PokemonId.LANTURN.getValue());
+            rare.add(PokemonId.PYUKUMUKU.getValue());
+            rare.add(PokemonId.CLAUNCHER.getValue());
+            superRare.add(PokemonId.STARYU.getValue());
+            superRare.add(PokemonId.MAREANIE.getValue());
+            superRare.add(PokemonId.BRUXISH.getValue());
+            superRare.add(PokemonId.MANTINE.getValue());
+            superRare.add(PokemonId.SKRELP.getValue());
+            superRare.add(PokemonId.OCTILLERY.getValue());
+            megaRare.add(PokemonId.SQUIRTLE.getValue());
+            megaRare.add(PokemonId.WARTORTLE.getValue());
+            ultraRare.add(PokemonId.DRATINI.getValue());
+            ultraRare.add(PokemonId.DRAGONAIR.getValue());
+            ultraRare.add(PokemonId.WIMPOD.getValue());
+            ultraRare.add(PokemonId.VAPOREON.getValue());
         }
 
     }
@@ -558,16 +671,46 @@ public class PokemonPlace {
         Jinx - Super Rare
         Chansey - Super Rare
          */
-        if (difficulty == EARLY_DIFFICULTY || difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.JIGGLYPUFF.getValue());
-            commonPokemon.add(PokemonId.CLEFAIRY.getValue());
-            rarePokemon.add(PokemonId.JYNX.getValue());
-        } else {
-            commonPokemon.add(PokemonId.JIGGLYPUFF.getValue());
-            commonPokemon.add(PokemonId.CLEFAIRY.getValue());
-            rarePokemon.add(PokemonId.JYNX.getValue());
-            superRarePokemon.add(PokemonId.WIGGLYTUFF.getValue());
-            superRarePokemon.add(PokemonId.CLEFABLE.getValue());
+        if (difficulty == EARLY_DIFFICULTY) {
+            ubiquitous.add(PokemonId.CUTIEFLY.getValue());
+            common.add(PokemonId.BONUSWEET.getValue());
+            uncommon.add(PokemonId.JIGGLYPUFF.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.COMFEY.getValue());
+            kindaRare.add(PokemonId.SPRITZEE.getValue());
+            rare.add(PokemonId.IGGLYBUFF.getValue());
+            rare.add(PokemonId.CLEFFA.getValue());
+            superRare.add(PokemonId.JYNX.getValue());
+            superRare.add(PokemonId.FURFROU.getValue());
+            megaRare.add(PokemonId.SMOOCHUM.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
+        } else if (difficulty == EARLY_MID_DIFFICULTY) {
+            ubiquitous.add(PokemonId.CUTIEFLY.getValue());
+            common.add(PokemonId.STEENEE.getValue());
+            uncommon.add(PokemonId.JIGGLYPUFF.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.COMFEY.getValue());
+            kindaRare.add(PokemonId.SPRITZEE.getValue());
+            rare.add(PokemonId.IGGLYBUFF.getValue());
+            rare.add(PokemonId.CLEFFA.getValue());
+            superRare.add(PokemonId.JYNX.getValue());
+            superRare.add(PokemonId.FURFROU.getValue());
+            megaRare.add(PokemonId.SMOOCHUM.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
+        }
+        else {
+            ubiquitous.add(PokemonId.RIBOMBEE.getValue());
+            common.add(PokemonId.STEENEE.getValue());
+            uncommon.add(PokemonId.JIGGLYPUFF.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.COMFEY.getValue());
+            kindaRare.add(PokemonId.SPRITZEE.getValue());
+            rare.add(PokemonId.JYNX.getValue());
+            superRare.add(PokemonId.FURFROU.getValue());
+            superRare.add(PokemonId.SMOOCHUM.getValue());
+            megaRare.add(PokemonId.WIGGLYTUFF.getValue());
+            megaRare.add(PokemonId.CLEFABLE.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
         }
     }
 
@@ -588,55 +731,88 @@ public class PokemonPlace {
         Farfetch'd - Rare
          */
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.NIDORANM.getValue());
-            commonPokemon.add(PokemonId.NIDORANF.getValue());
-            commonPokemon.add(PokemonId.DIGLETT.getValue());
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.EKANS.getValue());
-            commonPokemon.add(PokemonId.VENONAT.getValue());
-            commonPokemon.add(PokemonId.PARAS.getValue());
-            commonPokemon.add(PokemonId.PSYDUCK.getValue());
-            commonPokemon.add(PokemonId.BELLSPROUT.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            rarePokemon.add(PokemonId.TANGELA.getValue());
-            superRarePokemon.add(PokemonId.BULBASAUR.getValue());
+            ubiquitous.add(PokemonId.SENTRET.getValue());
+            ubiquitous.add(PokemonId.PIDGEY.getValue());
+            ubiquitous.add(PokemonId.HOPPIP.getValue());
+            common.add(PokemonId.NIDORANM.getValue());
+            common.add(PokemonId.NIDORANF.getValue());
+            common.add(PokemonId.YUNGOOS.getValue());
+            common.add(PokemonId.LEDYBA.getValue());
+            common.add(PokemonId.SUNKERN.getValue());
+            uncommon.add(PokemonId.BUNNELBY.getValue());
+            uncommon.add(PokemonId.BELLSPROUT.getValue());
+            uncommon.add(PokemonId.PARAS.getValue());
+            uncommon.add(PokemonId.ODDISH.getValue());
+            kindaRare.add(PokemonId.PSYDUCK.getValue());
+            kindaRare.add(PokemonId.MORELULL.getValue());
+            kindaRare.add(PokemonId.FOMANTIS.getValue());
+            rare.add(PokemonId.FLETCHLING.getValue());
+            superRare.add(PokemonId.TANGELA.getValue());
+            superRare.add(PokemonId.PINECO.getValue());
+            superRare.add(PokemonId.STANTLER.getValue());
+            megaRare.add(PokemonId.BULBASAUR.getValue());
+            megaRare.add(PokemonId.ROWLET.getValue());
+            ultraRare.add(PokemonId.CHIKORITA.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.NIDORANM.getValue());
-            commonPokemon.add(PokemonId.NIDORANF.getValue());
-            commonPokemon.add(PokemonId.DIGLETT.getValue());
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.EKANS.getValue());
-            commonPokemon.add(PokemonId.VENONAT.getValue());
-            commonPokemon.add(PokemonId.PARAS.getValue());
-            commonPokemon.add(PokemonId.PSYDUCK.getValue());
-            commonPokemon.add(PokemonId.BELLSPROUT.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.TANGELA.getValue());
-            rarePokemon.add(PokemonId.DUGTRIO.getValue());
-            rarePokemon.add(PokemonId.GLOOM.getValue());
-            rarePokemon.add(PokemonId.WEEPINBELL.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
-            rarePokemon.add(PokemonId.NIDORINA.getValue());
-            rarePokemon.add(PokemonId.NIDORINO.getValue());
-            superRarePokemon.add(PokemonId.BULBASAUR.getValue());
-            superRarePokemon.add(PokemonId.SCYTHER.getValue());
-            superRarePokemon.add(PokemonId.PINSIR.getValue());
+            ubiquitous.add(PokemonId.SENTRET.getValue());
+            ubiquitous.add(PokemonId.PIDGEY.getValue());
+            ubiquitous.add(PokemonId.HOPPIP.getValue());
+            ubiquitous.add(PokemonId.NIDORANM.getValue());
+            ubiquitous.add(PokemonId.NIDORANF.getValue());
+            ubiquitous.add(PokemonId.LEDYBA.getValue());
+            ubiquitous.add(PokemonId.SUNKERN.getValue());
+            ubiquitous.add(PokemonId.YUNGOOS.getValue());
+            common.add(PokemonId.NIDORINO.getValue());
+            common.add(PokemonId.NIDORINA.getValue());
+            common.add(PokemonId.PIDGEOTTO.getValue());
+            uncommon.add(PokemonId.BUNNELBY.getValue());
+            uncommon.add(PokemonId.BELLSPROUT.getValue());
+            uncommon.add(PokemonId.ODDISH.getValue());
+            uncommon.add(PokemonId.PARAS.getValue());
+            uncommon.add(PokemonId.PSYDUCK.getValue());
+            uncommon.add(PokemonId.MORELULL.getValue());
+            uncommon.add(PokemonId.FOMANTIS.getValue());
+            kindaRare.add(PokemonId.WEEPINBELL.getValue());
+            kindaRare.add(PokemonId.GLOOM.getValue());
+            kindaRare.add(PokemonId.FURRET.getValue());
+            rare.add(PokemonId.FLETCHLING.getValue());
+            rare.add(PokemonId.FLETCHINDER.getValue());
+            superRare.add(PokemonId.TANGELA.getValue());
+            superRare.add(PokemonId.PINECO.getValue());
+            superRare.add(PokemonId.STANTLER.getValue());
+            megaRare.add(PokemonId.BULBASAUR.getValue());
+            megaRare.add(PokemonId.CHIKORITA.getValue());
+            megaRare.add(PokemonId.ROWLET.getValue());
+            megaRare.add(PokemonId.SUDOWOODO.getValue());
+            ultraRare.add(PokemonId.SCYTHER.getValue());
+            ultraRare.add(PokemonId.PINSIR.getValue());
+            ultraRare.add(PokemonId.HERACROSS.getValue());
         } else {
-            commonPokemon.add(PokemonId.NIDORINO.getValue());
-            commonPokemon.add(PokemonId.NIDORINA.getValue());
-            commonPokemon.add(PokemonId.ARBOK.getValue());
-            commonPokemon.add(PokemonId.GLOOM.getValue());
-            commonPokemon.add(PokemonId.VENONAT.getValue());
-            commonPokemon.add(PokemonId.PSYDUCK.getValue());
-            commonPokemon.add(PokemonId.WEEPINBELL.getValue());
-            commonPokemon.add(PokemonId.TANGELA.getValue());
-            rarePokemon.add(PokemonId.DUGTRIO.getValue());
-            rarePokemon.add(PokemonId.VENOMOTH.getValue());
-            rarePokemon.add(PokemonId.WEEPINBELL.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
-            superRarePokemon.add(PokemonId.IVYSAUR.getValue());
-            superRarePokemon.add(PokemonId.SCYTHER.getValue());
-            superRarePokemon.add(PokemonId.PINSIR.getValue());
+            ubiquitous.add(PokemonId.FURRET.getValue());
+            ubiquitous.add(PokemonId.PIDGEOTTO.getValue());
+            ubiquitous.add(PokemonId.SKIPLOOM.getValue());
+            ubiquitous.add(PokemonId.NIDORINA.getValue());
+            ubiquitous.add(PokemonId.NIDORINA.getValue());
+            ubiquitous.add(PokemonId.LEDIAN.getValue());
+            common.add(PokemonId.GUMSHOOS.getValue());
+            common.add(PokemonId.GLOOM.getValue());
+            common.add(PokemonId.WEEPINBELL.getValue());
+            uncommon.add(PokemonId.PSYDUCK.getValue());
+            uncommon.add(PokemonId.MORELULL.getValue());
+            uncommon.add(PokemonId.FOMANTIS.getValue());
+            kindaRare.add(PokemonId.PARASECT.getValue());
+            rare.add(PokemonId.FLETCHINDER.getValue());
+            rare.add(PokemonId.DIGGERSBY.getValue());
+            superRare.add(PokemonId.TANGELA.getValue());
+            superRare.add(PokemonId.STANTLER.getValue());
+            superRare.add(PokemonId.PINECO.getValue());
+            megaRare.add(PokemonId.IVYSAUR.getValue());
+            megaRare.add(PokemonId.DARTRIX.getValue());
+            megaRare.add(PokemonId.BAYLEEF.getValue());
+            megaRare.add(PokemonId.SUDOWOODO.getValue());
+            ultraRare.add(PokemonId.SCYTHER.getValue());
+            ultraRare.add(PokemonId.PINSIR.getValue());
+            ultraRare.add(PokemonId.HERACROSS.getValue());
         }
     }
 
@@ -646,250 +822,394 @@ public class PokemonPlace {
         Meowth
         Sandshrew
          */
-        if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.PIKACHU.getValue());
-            commonPokemon.add(PokemonId.SANDSHREW.getValue());
-            commonPokemon.add(PokemonId.MEOWTH.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.RATTATA.getValue());
-            commonPokemon.add(PokemonId.NIDORANF.getValue());
-            commonPokemon.add(PokemonId.NIDORANM.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_MEOWTH.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_VULPIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_SANDSHREW.getValue());
-            superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-        } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.PIKACHU.getValue());
-            commonPokemon.add(PokemonId.SANDSHREW.getValue());
-            commonPokemon.add(PokemonId.MEOWTH.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.RATTATA.getValue());
-            commonPokemon.add(PokemonId.NIDORANF.getValue());
-            commonPokemon.add(PokemonId.NIDORANM.getValue());
-            rarePokemon.add(PokemonId.GROWLITHE.getValue());
-            rarePokemon.add(PokemonId.VULPIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_MEOWTH.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_VULPIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_SANDSHREW.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-            superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
+        if (difficulty == EARLY_DIFFICULTY || difficulty == EARLY_MID_DIFFICULTY) {
+            ubiquitous.add(PokemonId.SENTRET.getValue());
+            ubiquitous.add(PokemonId.PIDGEY.getValue());
+            ubiquitous.add(PokemonId.RATTATA.getValue());
+            common.add(PokemonId.MEOWTH.getValue());
+            common.add(PokemonId.PIKACHU.getValue());
+            common.add(PokemonId.SNUBBULL.getValue());
+            uncommon.add(PokemonId.MARILL.getValue());
+            uncommon.add(PokemonId.BUNNELBY.getValue());
+            kindaRare.add(PokemonId.NIDORANM.getValue());
+            kindaRare.add(PokemonId.NIDORANM.getValue());
+            kindaRare.add(PokemonId.NIDORANF.getValue());
+            rare.add(PokemonId.ALOLAN_RATTATA.getValue());
+            superRare.add(PokemonId.ALOLAN_MEOWTH.getValue());
+            megaRare.add(PokemonId.LITTEN.getValue());
+            ultraRare.add(PokemonId.EEVEE.getValue());
+            ultraRare.add(PokemonId.SQUIRTLE.getValue());
         } else {
-            commonPokemon.add(PokemonId.PIKACHU.getValue());
-            commonPokemon.add(PokemonId.SANDSHREW.getValue());
-            commonPokemon.add(PokemonId.MEOWTH.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.RATTATA.getValue());
-            commonPokemon.add(PokemonId.NIDORANF.getValue());
-            commonPokemon.add(PokemonId.NIDORANM.getValue());
-            rarePokemon.add(PokemonId.GROWLITHE.getValue());
-            rarePokemon.add(PokemonId.VULPIX.getValue());
-            rarePokemon.add(PokemonId.PERSIAN.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_PERSIAN.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_VULPIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_SANDSHREW.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-            superRarePokemon.add(PokemonId.WARTORTLE.getValue());
+            ubiquitous.add(PokemonId.FURRET.getValue());
+            ubiquitous.add(PokemonId.PIDGEY.getValue());
+            ubiquitous.add(PokemonId.RATICATE.getValue());
+            common.add(PokemonId.MEOWTH.getValue());
+            common.add(PokemonId.PIKACHU.getValue());
+            common.add(PokemonId.SNUBBULL.getValue());
+            uncommon.add(PokemonId.MARILL.getValue());
+            uncommon.add(PokemonId.BUNNELBY.getValue());
+            kindaRare.add(PokemonId.NIDORINA.getValue());
+            kindaRare.add(PokemonId.NIDORINO.getValue());
+            rare.add(PokemonId.PERSIAN.getValue());
+            rare.add(PokemonId.GRANBULL.getValue());
+            rare.add(PokemonId.PIDGEOTTO.getValue());
+            superRare.add(PokemonId.ALOLAN_RATICATE.getValue());
+            superRare.add(PokemonId.ALOLAN_PERSIAN.getValue());
+            megaRare.add(PokemonId.TORRACAT.getValue());
+            ultraRare.add(PokemonId.EEVEE.getValue());
+            ultraRare.add(PokemonId.WARTORTLE.getValue());
         }
     }
 
     private void addCasinoPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-            superRarePokemon.add(PokemonId.PORYGON.getValue());
+            ubiquitous.add(PokemonId.ZUBAT.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.ORICORIO_PAU.getValue());
+            uncommon.add(PokemonId.ORICORIO_SENSU.getValue());
+            kindaRare.add(PokemonId.ZUBAT.getValue());
+            rare.add(PokemonId.CARBINK.getValue());
+            superRare.add(PokemonId.SHUCKLE.getValue());
+            megaRare.add(PokemonId.EEVEE.getValue());
+            ultraRare.add(PokemonId.TYPE_NULL.getValue());
+            ultraRare.add(PokemonId.PORYGON.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            rarePokemon.add(PokemonId.GOLBAT.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-            superRarePokemon.add(PokemonId.PORYGON.getValue());
+            ubiquitous.add(PokemonId.ZUBAT.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.ORICORIO_PAU.getValue());
+            uncommon.add(PokemonId.ORICORIO_SENSU.getValue());
+            kindaRare.add(PokemonId.GOLBAT.getValue());
+            rare.add(PokemonId.CARBINK.getValue());
+            superRare.add(PokemonId.SHUCKLE.getValue());
+            megaRare.add(PokemonId.EEVEE.getValue());
+            ultraRare.add(PokemonId.TYPE_NULL.getValue());
+            ultraRare.add(PokemonId.PORYGON.getValue());
         } else {
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            commonPokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.WEEZING.getValue());
-            rarePokemon.add(PokemonId.ZUBAT.getValue());
-            superRarePokemon.add(PokemonId.EEVEE.getValue());
-            superRarePokemon.add(PokemonId.PORYGON.getValue());
+            ubiquitous.add(PokemonId.GOLBAT.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.ORICORIO_PAU.getValue());
+            kindaRare.add(PokemonId.ORICORIO_SENSU.getValue());
+            rare.add(PokemonId.GOLBAT.getValue());
+            rare.add(PokemonId.CARBINK.getValue());
+            superRare.add(PokemonId.WEEZING.getValue());
+            superRare.add(PokemonId.SHUCKLE.getValue());
+            megaRare.add(PokemonId.EEVEE.getValue());
+            megaRare.add(PokemonId.DHELMISE.getValue());
+            ultraRare.add(PokemonId.TYPE_NULL.getValue());
+            ultraRare.add(PokemonId.PORYGON.getValue());
         }
     }
 
     private void addCemetaryPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            rarePokemon.add(PokemonId.EKANS.getValue());
-            rarePokemon.add(PokemonId.VENONAT.getValue());
-            rarePokemon.add(PokemonId.PARAS.getValue());
-            rarePokemon.add(PokemonId.SPEAROW.getValue());
-            rarePokemon.add(PokemonId.BELLSPROUT.getValue());
-        } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            rarePokemon.add(PokemonId.EKANS.getValue());
-            rarePokemon.add(PokemonId.VENONAT.getValue());
-            rarePokemon.add(PokemonId.PARAS.getValue());
-            rarePokemon.add(PokemonId.SPEAROW.getValue());
-            rarePokemon.add(PokemonId.HAUNTER.getValue());
-            rarePokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.BELLSPROUT.getValue());
-        } else {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.HAUNTER.getValue());
-            commonPokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.VENONAT.getValue());
-            rarePokemon.add(PokemonId.FEAROW.getValue());
-            rarePokemon.add(PokemonId.ARBOK.getValue());
-            rarePokemon.add(PokemonId.PARASECT.getValue());
-            rarePokemon.add(PokemonId.WEEPINBELL.getValue());
+            ubiquitous.add(PokemonId.ZUBAT.getValue());
+            ubiquitous.add(PokemonId.SPINARAK.getValue());
+            common.add(PokemonId.HOOTHOOT.getValue());
+            uncommon.add(PokemonId.GASTLY.getValue());
+            uncommon.add(PokemonId.PHANTUMP.getValue());
+            kindaRare.add(PokemonId.VENONAT.getValue());
+            kindaRare.add(PokemonId.PARAS.getValue());
+            kindaRare.add(PokemonId.EKANS.getValue());
+            kindaRare.add(PokemonId.SPEAROW.getValue());
+            rare.add(PokemonId.MISDREAVUS.getValue());
+            rare.add(PokemonId.HOUNDOUR.getValue());
+            superRare.add(PokemonId.MURKROW.getValue());
+            superRare.add(PokemonId.SALANDIT.getValue());
+            megaRare.add(PokemonId.SNEASEL.getValue());
+            megaRare.add(PokemonId.MIMIKYU.getValue());
+            ultraRare.add(PokemonId.WOBBUFFET.getValue());
 
+        } else if (difficulty == EARLY_MID_DIFFICULTY) {
+            ubiquitous.add(PokemonId.ZUBAT.getValue());
+            ubiquitous.add(PokemonId.SPINARAK.getValue());
+            ubiquitous.add(PokemonId.HOOTHOOT.getValue());
+            common.add(PokemonId.GASTLY.getValue());
+            uncommon.add(PokemonId.PHANTUMP.getValue());
+            uncommon.add(PokemonId.GOLBAT.getValue());
+            uncommon.add(PokemonId.HAUNTER.getValue());
+            kindaRare.add(PokemonId.VENONAT.getValue());
+            kindaRare.add(PokemonId.PARAS.getValue());
+            kindaRare.add(PokemonId.EKANS.getValue());
+            kindaRare.add(PokemonId.SPEAROW.getValue());
+            rare.add(PokemonId.MISDREAVUS.getValue());
+            rare.add(PokemonId.HOUNDOUR.getValue());
+            superRare.add(PokemonId.MURKROW.getValue());
+            superRare.add(PokemonId.SALANDIT.getValue());
+            megaRare.add(PokemonId.SNEASEL.getValue());
+            megaRare.add(PokemonId.MIMIKYU.getValue());
+            ultraRare.add(PokemonId.WOBBUFFET.getValue());
+        } else {
+            ubiquitous.add(PokemonId.GOLBAT.getValue());
+            ubiquitous.add(PokemonId.NOCTOWL.getValue());
+            ubiquitous.add(PokemonId.GASTLY.getValue());
+            ubiquitous.add(PokemonId.PHANTUMP.getValue());
+            ubiquitous.add(PokemonId.PUMPKABOO.getValue());
+            common.add(PokemonId.HAUNTER.getValue());
+            uncommon.add(PokemonId.PARASECT.getValue());
+            kindaRare.add(PokemonId.VENONAT.getValue());
+            kindaRare.add(PokemonId.ARBOK.getValue());
+            kindaRare.add(PokemonId.TREVENANT.getValue());
+            kindaRare.add(PokemonId.GOURGEIST.getValue());
+            rare.add(PokemonId.MISDREAVUS.getValue());
+            rare.add(PokemonId.HOUNDOUR.getValue());
+            superRare.add(PokemonId.MURKROW.getValue());
+            superRare.add(PokemonId.SALANDIT.getValue());
+            megaRare.add(PokemonId.SNEASEL.getValue());
+            megaRare.add(PokemonId.MIMIKYU.getValue());
+            ultraRare.add(PokemonId.WOBBUFFET.getValue());
         }
 
     }
 
     private void addChurchPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            rarePokemon.add(PokemonId.ABRA.getValue());
-            rarePokemon.add(PokemonId.CLEFAIRY.getValue());
+            ubiquitous.add(PokemonId.FLABEBE.getValue());
+            common.add(PokemonId.ABRA.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.HONEDGE.getValue());
+            rare.add(PokemonId.MISDREAVUS.getValue());
+            superRare.add(PokemonId.KLEFKI.getValue());
+            megaRare.add(PokemonId.NOIBAT.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
+
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            rarePokemon.add(PokemonId.ABRA.getValue());
-            rarePokemon.add(PokemonId.CLEFAIRY.getValue());
-            rarePokemon.add(PokemonId.KADABRA.getValue());
-            rarePokemon.add(PokemonId.HAUNTER.getValue());
-            rarePokemon.add(PokemonId.GOLBAT.getValue());
+            ubiquitous.add(PokemonId.FLABEBE.getValue());
+            common.add(PokemonId.ABRA.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.HONEDGE.getValue());
+            kindaRare.add(PokemonId.MISDREAVUS.getValue());
+            rare.add(PokemonId.KADABRA.getValue());
+            rare.add(PokemonId.FLOETTE.getValue());
+            superRare.add(PokemonId.COMFEY.getValue());
+            superRare.add(PokemonId.KLEFKI.getValue());
+            megaRare.add(PokemonId.DRAMPA.getValue());
+            megaRare.add(PokemonId.NOIBAT.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
         } else {
-            commonPokemon.add(PokemonId.GASTLY.getValue());
-            commonPokemon.add(PokemonId.HAUNTER.getValue());
-            commonPokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.CLEFAIRY.getValue());
-            rarePokemon.add(PokemonId.KADABRA.getValue());
+            ubiquitous.add(PokemonId.FLOETTE.getValue());
+            common.add(PokemonId.KADABRA.getValue());
+            uncommon.add(PokemonId.DOUBLADE.getValue());
+            uncommon.add(PokemonId.CLEFAIRY.getValue());
+            kindaRare.add(PokemonId.MISDREAVUS.getValue());
+            rare.add(PokemonId.COMFEY.getValue());
+            superRare.add(PokemonId.KLEFKI.getValue());
+            megaRare.add(PokemonId.DRAMPA.getValue());
+            megaRare.add(PokemonId.NOIBAT.getValue());
+            ultraRare.add(PokemonId.TOGEPI.getValue());
         }
 
     }
 
     private void addHospitalPokemon() {
-
-        superRarePokemon.add(PokemonId.CHANSEY.getValue());
+        ubiquitous.add(PokemonId.ORICORIO_BAILE.getValue());
+        common.add(PokemonId.ORICORIO_POM.getValue());
+        uncommon.add(PokemonId.STUFFUL.getValue());
+        superRare.add(PokemonId.CHANSEY.getValue());
     }
 
     private void addElectronicStorePokemon() {
         if (difficulty == EARLY_DIFFICULTY || difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.VOLTORB.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            ubiquitous.add(PokemonId.MAGNEMITE.getValue());
+            common.add(PokemonId.VOLTORB.getValue());
+            common.add(PokemonId.GRUBBIN.getValue());
+            uncommon.add(PokemonId.PIKACHU.getValue());
+            kindaRare.add(PokemonId.VOLTORB.getValue());
+            rare.add(PokemonId.DEDENNE.getValue());
+            superRare.add(PokemonId.ELEKID.getValue());
+            megaRare.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            ultraRare.add(PokemonId.ALOLAN_GEODUDE.getValue());
         } else {
-            commonPokemon.add(PokemonId.VOLTORB.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            rarePokemon.add(PokemonId.ELECTRODE.getValue());
-            rarePokemon.add(PokemonId.MAGNETON.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GRAVELER.getValue());
+            ubiquitous.add(PokemonId.MAGNEMITE.getValue());
+            ubiquitous.add(PokemonId.VOLTORB.getValue());
+            common.add(PokemonId.CHARJABUG.getValue());
+            uncommon.add(PokemonId.PIKACHU.getValue());
+            kindaRare.add(PokemonId.MAGNETON.getValue());
+            kindaRare.add(PokemonId.ELECTRODE.getValue());
+            rare.add(PokemonId.DEDENNE.getValue());
+            superRare.add(PokemonId.ELECTABUZZ.getValue());
+            megaRare.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            ultraRare.add(PokemonId.ALOLAN_GRAVELER.getValue());
         }
     }
 
     private void addFireStationPokemon() {
 
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GROWLITHE.getValue());
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            superRarePokemon.add(PokemonId.CHARMANDER.getValue());
+            ubiquitous.add(PokemonId.SLUGMA.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.GROWLITHE.getValue());
+            kindaRare.add(PokemonId.HOUNDOUR.getValue());
+            rare.add(PokemonId.SLUGMA.getValue());
+            superRare.add(PokemonId.MAGBY.getValue());
+            megaRare.add(PokemonId.CHARMANDER.getValue());
+            megaRare.add(PokemonId.CYNDAQUIL.getValue());
+            ultraRare.add(PokemonId.CHARMANDER.getValue());
+            ultraRare.add(PokemonId.CYNDAQUIL.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.GROWLITHE.getValue());
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            rarePokemon.add(PokemonId.MAGMAR.getValue());
-            superRarePokemon.add(PokemonId.CHARMANDER.getValue());
+            ubiquitous.add(PokemonId.SLUGMA.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.GROWLITHE.getValue());
+            kindaRare.add(PokemonId.HOUNDOUR.getValue());
+            rare.add(PokemonId.MAGMAR.getValue());
+            superRare.add(PokemonId.TURTONATOR.getValue());
+            megaRare.add(PokemonId.CHARMANDER.getValue());
+            megaRare.add(PokemonId.CYNDAQUIL.getValue());
+            ultraRare.add(PokemonId.CHARMANDER.getValue());
+            ultraRare.add(PokemonId.CYNDAQUIL.getValue());
         } else {
-            commonPokemon.add(PokemonId.GROWLITHE.getValue());
-            commonPokemon.add(PokemonId.KOFFING.getValue());
-            rarePokemon.add(PokemonId.MAGMAR.getValue());
-            rarePokemon.add(PokemonId.WEEZING.getValue());
-            superRarePokemon.add(PokemonId.CHARMELEON.getValue());
-            superRarePokemon.add(PokemonId.ARCANINE.getValue());
+            ubiquitous.add(PokemonId.SLUGMA.getValue());
+            common.add(PokemonId.KOFFING.getValue());
+            uncommon.add(PokemonId.GROWLITHE.getValue());
+            uncommon.add(PokemonId.HOUNDOUR.getValue());
+            kindaRare.add(PokemonId.MAGMAR.getValue());
+            rare.add(PokemonId.WEEZING.getValue());
+            superRare.add(PokemonId.TURTONATOR.getValue());
+            megaRare.add(PokemonId.CHARMELEON.getValue());
+            megaRare.add(PokemonId.QUILAVA.getValue());
+            ultraRare.add(PokemonId.ARCANINE.getValue());
+            ultraRare.add(PokemonId.HOUNDOOM.getValue());
         }
     }
 
     private void addFloristPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.BELLSPROUT.getValue());
+            ubiquitous.add(PokemonId.HOPPIP.getValue());
+            ubiquitous.add(PokemonId.SCATTERBUG.getValue());
+            common.add(PokemonId.SUNKERN.getValue());
+            uncommon.add(PokemonId.ODDISH.getValue());
+            kindaRare.add(PokemonId.BELLSPROUT.getValue());
+            rare.add(PokemonId.SPEWPA.getValue());
+            superRare.add(PokemonId.BELLSPROUT.getValue());
+            megaRare.add(PokemonId.CHIKORITA.getValue());
+            ultraRare.add(PokemonId.BULBASAUR.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.BELLSPROUT.getValue());
-            rarePokemon.add(PokemonId.GLOOM.getValue());
-            rarePokemon.add(PokemonId.WEEPINBELL.getValue());
+            ubiquitous.add(PokemonId.HOPPIP.getValue());
+            ubiquitous.add(PokemonId.SPEWPA.getValue());
+            common.add(PokemonId.SUNKERN.getValue());
+            uncommon.add(PokemonId.ODDISH.getValue());
+            kindaRare.add(PokemonId.BELLSPROUT.getValue());
+            rare.add(PokemonId.GLOOM.getValue());
+            rare.add(PokemonId.WEEPINBELL.getValue());
+            superRare.add(PokemonId.SKIPLOOM.getValue());
+            megaRare.add(PokemonId.CHIKORITA.getValue());
+            ultraRare.add(PokemonId.BULBASAUR.getValue());
         } else {
-            rarePokemon.add(PokemonId.ODDISH.getValue());
-            rarePokemon.add(PokemonId.BELLSPROUT.getValue());
-            commonPokemon.add(PokemonId.GLOOM.getValue());
-            commonPokemon.add(PokemonId.WEEPINBELL.getValue());
+            ubiquitous.add(PokemonId.SKIPLOOM.getValue());
+            common.add(PokemonId.GLOOM.getValue());
+            uncommon.add(PokemonId.WEEPINBELL.getValue());
+            kindaRare.add(PokemonId.GLOOM.getValue());
+            rare.add(PokemonId.WEEPINBELL.getValue());
+            rare.add(PokemonId.GLOOM.getValue());
+            superRare.add(PokemonId.WEEPINBELL.getValue());
+            megaRare.add(PokemonId.BAYLEEF.getValue());
+            megaRare.add(PokemonId.IVYSAUR.getValue());
+            ultraRare.add(PokemonId.SUNFLORA.getValue());
+            ultraRare.add(PokemonId.BELLOSSOM.getValue());
         }
     }
 
     private void addGymPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.MACHOP.getValue());
+            ubiquitous.add(PokemonId.MACHOP.getValue());
+            common.add(PokemonId.PANCHAM.getValue());
+            uncommon.add(PokemonId.MACHOP.getValue());
+            kindaRare.add(PokemonId.CRABRAWLER.getValue());
+            rare.add(PokemonId.TYROGUE.getValue());
+            superRare.add(PokemonId.MACHOP.getValue());
+            megaRare.add(PokemonId.JANGMOO.getValue());
+            ultraRare.add(PokemonId.MACHOP.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.MACHOP.getValue());
-            rarePokemon.add(PokemonId.POLIWHIRL.getValue());
-            superRarePokemon.add(PokemonId.HITMONCHAN.getValue());
-            superRarePokemon.add(PokemonId.HITMONLEE.getValue());
+            ubiquitous.add(PokemonId.MACHOP.getValue());
+            common.add(PokemonId.PANCHAM.getValue());
+            uncommon.add(PokemonId.CRABRAWLER.getValue());
+            kindaRare.add(PokemonId.POLIWHIRL.getValue());
+            rare.add(PokemonId.TYROGUE.getValue());
+            rare.add(PokemonId.HAWLUCHA.getValue());
+            superRare.add(PokemonId.MACHOKE.getValue());
+            megaRare.add(PokemonId.JANGMOO.getValue());
+            ultraRare.add(PokemonId.HITMONLEE.getValue());
+            ultraRare.add(PokemonId.HITMONCHAN.getValue());
+            ultraRare.add(PokemonId.HITMONTOP.getValue());
         } else {
-            commonPokemon.add(PokemonId.MACHOKE.getValue());
-            rarePokemon.add(PokemonId.POLIWHIRL.getValue());
-            superRarePokemon.add(PokemonId.HITMONCHAN.getValue());
-            superRarePokemon.add(PokemonId.HITMONLEE.getValue());
-            superRarePokemon.add(PokemonId.SNORLAX.getValue());
+            ubiquitous.add(PokemonId.MACHOKE.getValue());
+            common.add(PokemonId.PANCHAM.getValue());
+            uncommon.add(PokemonId.CRABRAWLER.getValue());
+            kindaRare.add(PokemonId.POLIWHIRL.getValue());
+            rare.add(PokemonId.TYROGUE.getValue());
+            superRare.add(PokemonId.HAWLUCHA.getValue());
+            megaRare.add(PokemonId.SNORLAX.getValue());
+            megaRare.add(PokemonId.JANGMOO.getValue());
+            ultraRare.add(PokemonId.HITMONLEE.getValue());
+            ultraRare.add(PokemonId.HITMONCHAN.getValue());
+            ultraRare.add(PokemonId.HITMONTOP.getValue());
         }
 
     }
 
     private void addMovingPokemon() {
         if (difficulty == EARLY_DIFFICULTY || difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.MACHOP.getValue());
+            ubiquitous.add(PokemonId.MACHOP.getValue());
         } else {
-            commonPokemon.add(PokemonId.MACHOKE.getValue());
+            ubiquitous.add(PokemonId.MACHOP.getValue());
         }
     }
 
     private void addMuseumPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.UNOWN.getValue());
-            commonPokemon.add(PokemonId.SANDSHREW.getValue());
-            commonPokemon.add(PokemonId.CUBONE.getValue());
-            rarePokemon.add(PokemonId.SWINUB.getValue());
-            rarePokemon.add(PokemonId.NATU.getValue());
-            superRarePokemon.add(PokemonId.KABUTO.getValue());
-            superRarePokemon.add(PokemonId.OMANYTE.getValue());
+            ubiquitous.add(PokemonId.UNOWN.getValue());
+            common.add(PokemonId.SANDSHREW.getValue());
+            uncommon.add(PokemonId.CUBONE.getValue());
+            kindaRare.add(PokemonId.HELIOPTILE.getValue());
+            kindaRare.add(PokemonId.DUNSPARCE.getValue());
+            kindaRare.add(PokemonId.NATU.getValue());
+            rare.add(PokemonId.SMEARGLE.getValue());
+            rare.add(PokemonId.PHANPY.getValue());
+            rare.add(PokemonId.SWINUB.getValue());
+            superRare.add(PokemonId.BERGMITE.getValue());
+            superRare.add(PokemonId.PALOSSAND.getValue());
+            megaRare.add(PokemonId.LARVITAR.getValue());
+            megaRare.add(PokemonId.TYRUNT.getValue());
+            megaRare.add(PokemonId.AMAURA.getValue());
+            ultraRare.add(PokemonId.KABUTO.getValue());
+            ultraRare.add(PokemonId.OMANYTE.getValue());
+
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.UNOWN.getValue());
-            commonPokemon.add(PokemonId.SANDSHREW.getValue());
-            commonPokemon.add(PokemonId.CUBONE.getValue());
-            rarePokemon.add(PokemonId.SWINUB.getValue());
-            rarePokemon.add(PokemonId.NATU.getValue());
-            rarePokemon.add(PokemonId.MISDREAVUS.getValue());
-            superRarePokemon.add(PokemonId.KABUTO.getValue());
-            superRarePokemon.add(PokemonId.OMANYTE.getValue());
-            superRarePokemon.add(PokemonId.AERODACTYL.getValue());
+            ubiquitous.add(PokemonId.UNOWN.getValue());
+            common.add(PokemonId.SANDSHREW.getValue());
+            uncommon.add(PokemonId.CUBONE.getValue());
+            kindaRare.add(PokemonId.HELIOPTILE.getValue());
+            kindaRare.add(PokemonId.DUNSPARCE.getValue());
+            kindaRare.add(PokemonId.NATU.getValue());
+            rare.add(PokemonId.SMEARGLE.getValue());
+            rare.add(PokemonId.PHANPY.getValue());
+            rare.add(PokemonId.SWINUB.getValue());
+            superRare.add(PokemonId.BERGMITE.getValue());
+            superRare.add(PokemonId.PALOSSAND.getValue());
+            megaRare.add(PokemonId.LARVITAR.getValue());
+            megaRare.add(PokemonId.TYRUNT.getValue());
+            megaRare.add(PokemonId.AMAURA.getValue());
+            ultraRare.add(PokemonId.KABUTO.getValue());
+            ultraRare.add(PokemonId.OMANYTE.getValue());
+            ultraRare.add(PokemonId.AERODACTYL.getValue());
         } else {
-            commonPokemon.add(PokemonId.UNOWN.getValue());
-            commonPokemon.add(PokemonId.SANDSLASH.getValue());
-            commonPokemon.add(PokemonId.MAROWAK.getValue());
-            rarePokemon.add(PokemonId.SWINUB.getValue());
-            rarePokemon.add(PokemonId.NATU.getValue());
-            rarePokemon.add(PokemonId.MISDREAVUS.getValue());
-            superRarePokemon.add(PokemonId.OMANYTE.getValue());
-            superRarePokemon.add(PokemonId.KABUTO.getValue());
-            superRarePokemon.add(PokemonId.KABUTOPS.getValue());
-            superRarePokemon.add(PokemonId.OMASTAR.getValue());
-            superRarePokemon.add(PokemonId.AERODACTYL.getValue());
-            superRarePokemon.add(PokemonId.LAPRAS.getValue());
+            ubiquitous.add(PokemonId.UNOWN.getValue());
+            common.add(PokemonId.SANDSLASH.getValue());
+            uncommon.add(PokemonId.MAROWAK.getValue());
+            kindaRare.add(PokemonId.HELIOPTILE.getValue());
+            kindaRare.add(PokemonId.DUNSPARCE.getValue());
+            kindaRare.add(PokemonId.NATU.getValue());
+            rare.add(PokemonId.SWINUB.getValue());
+            rare.add(PokemonId.SMEARGLE.getValue());
+            rare.add(PokemonId.DONPHAN.getValue());
+            superRare.add(PokemonId.BERGMITE.getValue());
+            superRare.add(PokemonId.PALOSSAND.getValue());
+            megaRare.add(PokemonId.PUPITAR.getValue());
+            megaRare.add(PokemonId.TYRUNT.getValue());
+            megaRare.add(PokemonId.AMAURA.getValue());
+            ultraRare.add(PokemonId.KABUTOPS.getValue());
+            ultraRare.add(PokemonId.OMASTAR.getValue());
+            ultraRare.add(PokemonId.AERODACTYL.getValue());
+            ultraRare.add(PokemonId.LAPRAS.getValue());
         }
     }
 
@@ -905,122 +1225,176 @@ public class PokemonPlace {
         Magikarp
          */
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.POLIWAG.getValue());
-            commonPokemon.add(PokemonId.PSYDUCK.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.MAGIKARP.getValue());
-            rarePokemon.add(PokemonId.KRABBY.getValue());
-            rarePokemon.add(PokemonId.SHELLDER.getValue());
-            superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
+            ubiquitous.add(PokemonId.POLIWAG.getValue());
+            common.add(PokemonId.WOOPER.getValue());
+            uncommon.add(PokemonId.PSYDUCK.getValue());
+            kindaRare.add(PokemonId.MARILL.getValue());
+            rare.add(PokemonId.MAGIKARP.getValue());
+            rare.add(PokemonId.GOLDEEN.getValue());
+            rare.add(PokemonId.DEWPIDER.getValue());
+            rare.add(PokemonId.REMORAID.getValue());
+            superRare.add(PokemonId.KRABBY.getValue());
+            superRare.add(PokemonId.SHELLDER.getValue());
+            superRare.add(PokemonId.BINACLE.getValue());
+            megaRare.add(PokemonId.SQUIRTLE.getValue());
+            megaRare.add(PokemonId.TOTODILE.getValue());
+            megaRare.add(PokemonId.FROAKIE.getValue());
+            ultraRare.add(PokemonId.SQUIRTLE.getValue());
+            ultraRare.add(PokemonId.TOTODILE.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.POLIWAG.getValue());
-            commonPokemon.add(PokemonId.PSYDUCK.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.MAGIKARP.getValue());
-            rarePokemon.add(PokemonId.KRABBY.getValue());
-            rarePokemon.add(PokemonId.SHELLDER.getValue());
-            rarePokemon.add(PokemonId.POLIWHIRL.getValue());
+            ubiquitous.add(PokemonId.POLIWAG.getValue());
+            common.add(PokemonId.WOOPER.getValue());
+            uncommon.add(PokemonId.PSYDUCK.getValue());
+            uncommon.add(PokemonId.MARILL.getValue());
+            kindaRare.add(PokemonId.POLIWHIRL.getValue());
+            kindaRare.add(PokemonId.QUAGSIRE.getValue());
+            rare.add(PokemonId.MAGIKARP.getValue());
+            rare.add(PokemonId.GOLDEEN.getValue());
+            rare.add(PokemonId.DEWPIDER.getValue());
+            rare.add(PokemonId.REMORAID.getValue());
+            superRare.add(PokemonId.KRABBY.getValue());
+            superRare.add(PokemonId.SHELLDER.getValue());
+            superRare.add(PokemonId.BINACLE.getValue());
+            megaRare.add(PokemonId.SQUIRTLE.getValue());
+            megaRare.add(PokemonId.TOTODILE.getValue());
+            megaRare.add(PokemonId.FROAKIE.getValue());
+            ultraRare.add(PokemonId.FROGADIER.getValue());
+            ultraRare.add(PokemonId.WARTORTLE.getValue());
         } else {
-            commonPokemon.add(PokemonId.TENTACOOL.getValue());
-            commonPokemon.add(PokemonId.TENTACRUEL.getValue());
-            commonPokemon.add(PokemonId.SEAKING.getValue());
-            commonPokemon.add(PokemonId.GOLDEEN.getValue());
-            commonPokemon.add(PokemonId.MAGIKARP.getValue());
-            commonPokemon.add(PokemonId.POLIWHIRL.getValue());
-            commonPokemon.add(PokemonId.KRABBY.getValue());
-            commonPokemon.add(PokemonId.SHELLDER.getValue());
-            rarePokemon.add(PokemonId.GYARADOS.getValue());
-            rarePokemon.add(PokemonId.KINGLER.getValue());
-            rarePokemon.add(PokemonId.CLOYSTER.getValue());
+            ubiquitous.add(PokemonId.POLIWHIRL.getValue());
+            common.add(PokemonId.QUAGSIRE.getValue());
+            uncommon.add(PokemonId.PSYDUCK.getValue());
+            uncommon.add(PokemonId.AZUMARILL.getValue());
+            kindaRare.add(PokemonId.GOLDEEN.getValue());
+            kindaRare.add(PokemonId.REMORAID.getValue());
+            rare.add(PokemonId.GYARADOS.getValue());
+            rare.add(PokemonId.DEWPIDER.getValue());
+            rare.add(PokemonId.SEAKING.getValue());
+            rare.add(PokemonId.OCTILLERY.getValue());
+            rare.add(PokemonId.GOLDUCK.getValue());
+            superRare.add(PokemonId.KRABBY.getValue());
+            superRare.add(PokemonId.SHELLDER.getValue());
+            superRare.add(PokemonId.BINACLE.getValue());
+            megaRare.add(PokemonId.WARTORTLE.getValue());
+            megaRare.add(PokemonId.CROCONAW.getValue());
+            megaRare.add(PokemonId.FROGADIER.getValue());
+            ultraRare.add(PokemonId.KINGLER.getValue());
+            ultraRare.add(PokemonId.CLOYSTER.getValue());
         }
-        superRarePokemon.add(PokemonId.SQUIRTLE.getValue());
     }
 
     private void addTrainStationPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            commonPokemon.add(PokemonId.RATTATA.getValue());
-            commonPokemon.add(PokemonId.GEODUDE.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            commonPokemon.add(PokemonId.GRIMER.getValue());
-            commonPokemon.add(PokemonId.VOLTORB.getValue());
-            rarePokemon.add(PokemonId.PIDGEY.getValue());
-            rarePokemon.add(PokemonId.ONIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GRIMER.getValue());
+            ubiquitous.add(PokemonId.DIGLETT.getValue());
+            common.add(PokemonId.RATTATA.getValue());
+            uncommon.add(PokemonId.GEODUDE.getValue());
+            kindaRare.add(PokemonId.MAGNEMITE.getValue());
+            rare.add(PokemonId.GRIMER.getValue());
+            rare.add(PokemonId.VOLTORB.getValue());
+            superRare.add(PokemonId.ONIX.getValue());
+            superRare.add(PokemonId.TOGEDEMARU.getValue());
+            megaRare.add(PokemonId.ALOLAN_RATTATA.getValue());
+            megaRare.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            megaRare.add(PokemonId.ALOLAN_GRIMER.getValue());
+            megaRare.add(PokemonId.ALOLAN_DIGLETT.getValue());
+            ultraRare.add(PokemonId.GOOMY.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ZUBAT.getValue());
-            commonPokemon.add(PokemonId.RATTATA.getValue());
-            commonPokemon.add(PokemonId.GEODUDE.getValue());
-            commonPokemon.add(PokemonId.MAGNEMITE.getValue());
-            commonPokemon.add(PokemonId.GRIMER.getValue());
-            commonPokemon.add(PokemonId.VOLTORB.getValue());
-            rarePokemon.add(PokemonId.RATICATE.getValue());
-            rarePokemon.add(PokemonId.PIDGEY.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
-            rarePokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.ONIX.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GRIMER.getValue());
+            ubiquitous.add(PokemonId.DIGLETT.getValue());
+            common.add(PokemonId.RATTATA.getValue());
+            uncommon.add(PokemonId.GEODUDE.getValue());
+            kindaRare.add(PokemonId.MAGNEMITE.getValue());
+            kindaRare.add(PokemonId.GRIMER.getValue());
+            kindaRare.add(PokemonId.VOLTORB.getValue());
+            rare.add(PokemonId.RATICATE.getValue());
+            rare.add(PokemonId.DUGTRIO.getValue());
+            superRare.add(PokemonId.ONIX.getValue());
+            superRare.add(PokemonId.TOGEDEMARU.getValue());
+            megaRare.add(PokemonId.ALOLAN_RATTATA.getValue());
+            megaRare.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            megaRare.add(PokemonId.ALOLAN_GRIMER.getValue());
+            megaRare.add(PokemonId.ALOLAN_RATICATE.getValue());
+            megaRare.add(PokemonId.ALOLAN_DIGLETT.getValue());
+            ultraRare.add(PokemonId.GOOMY.getValue());
         } else {
-            commonPokemon.add(PokemonId.GOLBAT.getValue());
-            commonPokemon.add(PokemonId.GRAVELER.getValue());
-            commonPokemon.add(PokemonId.ONIX.getValue());
-            commonPokemon.add(PokemonId.RATICATE.getValue());
-            commonPokemon.add(PokemonId.GRIMER.getValue());
-            commonPokemon.add(PokemonId.VOLTORB.getValue());
-            rarePokemon.add(PokemonId.GEODUDE.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
-            rarePokemon.add(PokemonId.GOLBAT.getValue());
-            rarePokemon.add(PokemonId.ELECTRODE.getValue());
-            rarePokemon.add(PokemonId.MAGNEMITE.getValue());
-            rarePokemon.add(PokemonId.MAGNETON.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GRAVELER.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_GRIMER.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_MUK.getValue());
+            ubiquitous.add(PokemonId.DIGLETT.getValue());
+            common.add(PokemonId.RATICATE.getValue());
+            uncommon.add(PokemonId.GRAVELER.getValue());
+            kindaRare.add(PokemonId.ONIX.getValue());
+            rare.add(PokemonId.GRIMER.getValue());
+            rare.add(PokemonId.VOLTORB.getValue());
+            rare.add(PokemonId.GEODUDE.getValue());
+            rare.add(PokemonId.MAGNETON.getValue());
+            rare.add(PokemonId.ELECTRODE.getValue());
+            rare.add(PokemonId.MAGNEMITE.getValue());
+            superRare.add(PokemonId.MUK.getValue());
+            superRare.add(PokemonId.DUGTRIO.getValue());
+            superRare.add(PokemonId.TOGEDEMARU.getValue());
+            megaRare.add(PokemonId.ALOLAN_RATICATE.getValue());
+            megaRare.add(PokemonId.ALOLAN_DUGTRIO.getValue());
+            megaRare.add(PokemonId.ALOLAN_GRAVELER.getValue());
+            megaRare.add(PokemonId.ALOLAN_GRIMER.getValue());
+            megaRare.add(PokemonId.ALOLAN_MUK.getValue());
+            ultraRare.add(PokemonId.SLIGGOO.getValue());
         }
     }
 
     private void addSchoolPokemon() {
         if (difficulty == EARLY_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.CATERPIE.getValue());
-            commonPokemon.add(PokemonId.WEEDLE.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            rarePokemon.add(PokemonId.PIKACHU.getValue());
-            rarePokemon.add(PokemonId.MEOWTH.getValue());
-            rarePokemon.add(PokemonId.KAKUNA.getValue());
-            rarePokemon.add(PokemonId.METAPOD.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_MEOWTH.getValue());
+            ubiquitous.add(PokemonId.CATERPIE.getValue());
+            ubiquitous.add(PokemonId.WEEDLE.getValue());
+            common.add(PokemonId.PIDGEY.getValue());
+            common.add(PokemonId.SENTRET.getValue());
+            uncommon.add(PokemonId.LEDYBA.getValue());
+            kindaRare.add(PokemonId.ODDISH.getValue());
+            kindaRare.add(PokemonId.BELLSPROUT.getValue());
+            kindaRare.add(PokemonId.YANMA.getValue());
+            rare.add(PokemonId.PIKACHU.getValue());
+            rare.add(PokemonId.MEOWTH.getValue());
+            rare.add(PokemonId.SNUBBULL.getValue());
+            rare.add(PokemonId.ROCKRUFF.getValue());
+            superRare.add(PokemonId.KAKUNA.getValue());
+            superRare.add(PokemonId.METAPOD.getValue());
+            megaRare.add(PokemonId.ALOLAN_MEOWTH.getValue());
+            megaRare.add(PokemonId.CHESPIN.getValue());
+            ultraRare.add(PokemonId.SUDOWOODO.getValue());
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.ODDISH.getValue());
-            commonPokemon.add(PokemonId.PIDGEY.getValue());
-            commonPokemon.add(PokemonId.KAKUNA.getValue());
-            commonPokemon.add(PokemonId.METAPOD.getValue());
-            rarePokemon.add(PokemonId.PIDGEOTTO.getValue());
-            rarePokemon.add(PokemonId.PIKACHU.getValue());
-            rarePokemon.add(PokemonId.MEOWTH.getValue());
-            rarePokemon.add(PokemonId.GLOOM.getValue());
-            rarePokemon.add(PokemonId.BUTTERFREE.getValue());
-            rarePokemon.add(PokemonId.BEEDRILL.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_MEOWTH.getValue());
+            ubiquitous.add(PokemonId.KAKUNA.getValue());
+            ubiquitous.add(PokemonId.METAPOD.getValue());
+            common.add(PokemonId.PIDGEY.getValue());
+            common.add(PokemonId.SENTRET.getValue());
+            common.add(PokemonId.LEDYBA.getValue());
+            uncommon.add(PokemonId.LEDIAN.getValue());
+            uncommon.add(PokemonId.PIDGEOTTO.getValue());
+            uncommon.add(PokemonId.FURRET.getValue());
+            kindaRare.add(PokemonId.ODDISH.getValue());
+            kindaRare.add(PokemonId.BELLSPROUT.getValue());
+            kindaRare.add(PokemonId.PIKACHU.getValue());
+            kindaRare.add(PokemonId.YANMA.getValue());
+            rare.add(PokemonId.MEOWTH.getValue());
+            rare.add(PokemonId.SNUBBULL.getValue());
+            rare.add(PokemonId.ROCKRUFF.getValue());
+            superRare.add(PokemonId.BUTTERFREE.getValue());
+            superRare.add(PokemonId.BEEDRILL.getValue());
+            megaRare.add(PokemonId.ALOLAN_MEOWTH.getValue());
+            megaRare.add(PokemonId.QUILLADIN.getValue());
+            ultraRare.add(PokemonId.SUDOWOODO.getValue());
         } else {
-            commonPokemon.add(PokemonId.PIDGEOTTO.getValue());
-            commonPokemon.add(PokemonId.GLOOM.getValue());
-            commonPokemon.add(PokemonId.BUTTERFREE.getValue());
-            commonPokemon.add(PokemonId.BEEDRILL.getValue());
-            rarePokemon.add(PokemonId.PIKACHU.getValue());
-            rarePokemon.add(PokemonId.MEOWTH.getValue());
-            superRarePokemon.add(PokemonId.FARFETCHD.getValue());
-            superRarePokemon.add(PokemonId.ALOLAN_PERSIAN.getValue());
+            ubiquitous.add(PokemonId.LEDIAN.getValue());
+            ubiquitous.add(PokemonId.FURRET.getValue());
+            common.add(PokemonId.PIDGEOTTO.getValue());
+            uncommon.add(PokemonId.BUTTERFREE.getValue());
+            uncommon.add(PokemonId.BEEDRILL.getValue());
+            kindaRare.add(PokemonId.WEEPINBELL.getValue());
+            kindaRare.add(PokemonId.GLOOM.getValue());
+            kindaRare.add(PokemonId.PIKACHU.getValue());
+            kindaRare.add(PokemonId.YANMA.getValue());
+            rare.add(PokemonId.PERSIAN.getValue());
+            rare.add(PokemonId.SNUBBULL.getValue());
+            rare.add(PokemonId.ROCKRUFF.getValue());
+            superRare.add(PokemonId.GRANBULL.getValue());
+            megaRare.add(PokemonId.ALOLAN_PERSIAN.getValue());
+            megaRare.add(PokemonId.QUILLADIN.getValue());
+            ultraRare.add(PokemonId.SUDOWOODO.getValue());
         }
     }
 
@@ -1041,37 +1415,78 @@ public class PokemonPlace {
         Farfetch'd - Rare
          */
         if (difficulty == EARLY_DIFFICULTY) {
-
-            commonPokemon.add(PokemonId.VULPIX.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            commonPokemon.add(PokemonId.SLOWPOKE.getValue());
-            rarePokemon.add(PokemonId.DODUO.getValue());
-            rarePokemon.add(PokemonId.PONYTA.getValue());
+            ubiquitous.add(PokemonId.MANKEY.getValue());
+            ubiquitous.add(PokemonId.PANCHAM.getValue());
+            ubiquitous.add(PokemonId.PIKIPEK.getValue());
+            common.add(PokemonId.MAREEP.getValue());
+            uncommon.add(PokemonId.VULPIX.getValue());
+            kindaRare.add(PokemonId.PONYTA.getValue());
+            kindaRare.add(PokemonId.RHYHORN.getValue());
+            kindaRare.add(PokemonId.MUDBRAY.getValue());
+            kindaRare.add(PokemonId.SKIDDO.getValue());
+            rare.add(PokemonId.DODUO.getValue());
+            rare.add(PokemonId.SLOWPOKE.getValue());
+            rare.add(PokemonId.GIRAFARIG.getValue());
+            rare.add(PokemonId.TEDDIURSA.getValue());
+            rare.add(PokemonId.AIPOM.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            superRare.add(PokemonId.PASSIMIAN.getValue());
+            superRare.add(PokemonId.KOMALA.getValue());
+            megaRare.add(PokemonId.CYNDAQUIL.getValue());
+            megaRare.add(PokemonId.TOTODILE.getValue());
+            ultraRare.add(PokemonId.MILTANK.getValue());
 
         } else if (difficulty == EARLY_MID_DIFFICULTY) {
-            commonPokemon.add(PokemonId.VULPIX.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            commonPokemon.add(PokemonId.SLOWPOKE.getValue());
-            rarePokemon.add(PokemonId.DODUO.getValue());
-            rarePokemon.add(PokemonId.PONYTA.getValue());
-            rarePokemon.add(PokemonId.KANGASKHAN.getValue());
-            rarePokemon.add(PokemonId.RHYHORN.getValue());
-            rarePokemon.add(PokemonId.TAUROS.getValue());
+            ubiquitous.add(PokemonId.PIKIPEK.getValue());
+            ubiquitous.add(PokemonId.PANCHAM.getValue());
+            ubiquitous.add(PokemonId.MANKEY.getValue());
+            common.add(PokemonId.MAREEP.getValue());
+            uncommon.add(PokemonId.VULPIX.getValue());
+            kindaRare.add(PokemonId.PONYTA.getValue());
+            kindaRare.add(PokemonId.RHYHORN.getValue());
+            kindaRare.add(PokemonId.SKIDDO.getValue());
+            kindaRare.add(PokemonId.FLAFFY.getValue());
+            kindaRare.add(PokemonId.TRUMBEAK.getValue());
+            kindaRare.add(PokemonId.MUDBRAY.getValue());
+            rare.add(PokemonId.DODUO.getValue());
+            rare.add(PokemonId.SLOWPOKE.getValue());
+            rare.add(PokemonId.GIRAFARIG.getValue());
+            rare.add(PokemonId.TEDDIURSA.getValue());
+            rare.add(PokemonId.AIPOM.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            superRare.add(PokemonId.KOMALA.getValue());
+            superRare.add(PokemonId.PASSIMIAN.getValue());
+            superRare.add(PokemonId.KANGASKHAN.getValue());
+            superRare.add(PokemonId.TAUROS.getValue());
+            megaRare.add(PokemonId.QUILAVA.getValue());
+            megaRare.add(PokemonId.CROCONAW.getValue());
+            ultraRare.add(PokemonId.MILTANK.getValue());
         } else {
-            commonPokemon.add(PokemonId.VULPIX.getValue());
-            commonPokemon.add(PokemonId.MANKEY.getValue());
-            commonPokemon.add(PokemonId.SLOWPOKE.getValue());
-            rarePokemon.add(PokemonId.DODUO.getValue());
-            rarePokemon.add(PokemonId.PONYTA.getValue());
-            rarePokemon.add(PokemonId.KANGASKHAN.getValue());
-            rarePokemon.add(PokemonId.RHYHORN.getValue());
-            rarePokemon.add(PokemonId.TAUROS.getValue());
-            rarePokemon.add(PokemonId.PRIMEAPE.getValue());
-            rarePokemon.add(PokemonId.SLOWBRO.getValue());
-            rarePokemon.add(PokemonId.DODRIO.getValue());
+            ubiquitous.add(PokemonId.FLAFFY.getValue());
+            ubiquitous.add(PokemonId.PANCHAM.getValue());
+            ubiquitous.add(PokemonId.TRUMBEAK.getValue());
+            common.add(PokemonId.MANKEY.getValue());
+            uncommon.add(PokemonId.VULPIX.getValue());
+            kindaRare.add(PokemonId.PONYTA.getValue());
+            kindaRare.add(PokemonId.RHYHORN.getValue());
+            kindaRare.add(PokemonId.MUDBRAY.getValue());
+            kindaRare.add(PokemonId.SKIDDO.getValue());
+            rare.add(PokemonId.DODUO.getValue());
+            rare.add(PokemonId.SLOWPOKE.getValue());
+            rare.add(PokemonId.GIRAFARIG.getValue());
+            rare.add(PokemonId.TEDDIURSA.getValue());
+            rare.add(PokemonId.AIPOM.getValue());
+            rare.add(PokemonId.LITLEO.getValue());
+            superRare.add(PokemonId.PASSIMIAN.getValue());
+            superRare.add(PokemonId.KANGASKHAN.getValue());
+            superRare.add(PokemonId.KOMALA.getValue());
+            superRare.add(PokemonId.TAUROS.getValue());
+            superRare.add(PokemonId.RHYDON.getValue());
+            superRare.add(PokemonId.URSARING.getValue());
+            megaRare.add(PokemonId.QUILAVA.getValue());
+            megaRare.add(PokemonId.CROCONAW.getValue());
+            ultraRare.add(PokemonId.MILTANK.getValue());
         }
-        superRarePokemon.add(PokemonId.EEVEE.getValue());
-        superRarePokemon.add(PokemonId.FARFETCHD.getValue());
 
     }
 

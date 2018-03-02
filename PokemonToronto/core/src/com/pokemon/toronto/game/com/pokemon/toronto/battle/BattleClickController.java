@@ -26,16 +26,20 @@ public class BattleClickController {
 
             if (x >= 309 && x <= 776 && y >= 1107 && y <= 1243) {
                 if (model.isOnMainPanel() && !model.startedAttack()) {
+                    model.getGsm().getGameCallBack().pulsate();
                     model.setNormalMoveSelectText();
                     model.setPanelPosition(model.BATTLE_PANEL);
                     model.playClickSound();
                 }
             } else if (x >= 0 && x <= 421 && y >= 1361 && y <= 1441 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Bag
+                model.getGsm().getGameCallBack().pulsate();
                 model.setPanelPosition(model.BAG_OPTION_PANEL);
                 model.playClickSound();
             } else if (x >= 627 && x <= 1051 && y >= 1353 && y <= 1464 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Pokemon
+                model.getBattleTextures().initIconTextures(model.getGsm().getParty());
+                model.getGsm().getGameCallBack().pulsate();
                 model.setPanelPosition(model.POKEMON_SELECT_PANEL);
                 model.playClickSound();
             } else if (x >= 0 && x <= 180 && y >= 1830 && y <= 1920 && model.isOnPartyPanel()) {
@@ -90,6 +94,7 @@ public class BattleClickController {
 
             } else if (x >= 81 && x <= 479 && y >= 1217 && y <= 1337 && model.isOnMoveSelectPanel()) {
                 //Clicked First Skill
+                model.getGsm().getGameCallBack().pulsate();
                 Gdx.app.log("Battle Log", "Clicked first skill");
                 if (model.isWaitingForMoveDeletion()) {
                     model.removeFirstSkill();
@@ -125,6 +130,7 @@ public class BattleClickController {
                                     model.getEnemyPokemon().getNextTurnSkill());
                         }
                     }
+                    model.getGsm().getGameCallBack().pulsate();
                     model.playClickSound();
                 }
             } else if (x >= 26 && x <= 485 && y >= 1443 && y <= 1555 && model.isOnMoveSelectPanel()) {
@@ -145,6 +151,7 @@ public class BattleClickController {
                                     model.getEnemyPokemon().getNextTurnSkill());
                         }
                     }
+                    model.getGsm().getGameCallBack().pulsate();
                     model.playClickSound();
                 }
             } else if (x >= 577 && x <= 1017 && y >= 1443 && y <= 1555 && model.isOnMoveSelectPanel()) {
@@ -165,12 +172,14 @@ public class BattleClickController {
                                     model.getEnemyPokemon().getNextTurnSkill());
                         }
                     }
+                    model.getGsm().getGameCallBack().pulsate();
                     model.playClickSound();
                 }
             } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Run
                 if (model.isWildBattle()) {
                     if (!cannotSwitchOut()) {
+                        model.removeBattleVariablesFromCurrentPokemon();
                         if (model.cameFromSimulator()) { //came from simulator
                             model.goToRouteState();
                         } else { // came from map
@@ -203,6 +212,7 @@ public class BattleClickController {
                         }
                         model.setPanelPosition(model.FIRST_PANEL);
                     }
+                    model.getGsm().getGameCallBack().pulsate();
                     model.playClickSound();
                 }
             } else if (x >= 594 && x <= 916 && y >= 1268 && y <= 1431 && model.isOnPartyPanel() && !model.hasSecondPokemonOnField()) {
@@ -228,6 +238,7 @@ public class BattleClickController {
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
+                        model.getGsm().getGameCallBack().pulsate();
                         model.playClickSound();
                     }
                 }
@@ -254,6 +265,7 @@ public class BattleClickController {
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
+                        model.getGsm().getGameCallBack().pulsate();
                         model.playClickSound();
                     }
                 }
@@ -281,6 +293,7 @@ public class BattleClickController {
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
+                        model.getGsm().getGameCallBack().pulsate();
                         model.playClickSound();
                     }
                 }
@@ -307,6 +320,7 @@ public class BattleClickController {
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
+                        model.getGsm().getGameCallBack().pulsate();
                         model.playClickSound();
                     }
                 }
@@ -333,6 +347,7 @@ public class BattleClickController {
                             }
                             model.setPanelPosition(model.FIRST_PANEL);
                         }
+                        model.getGsm().getGameCallBack().pulsate();
                         model.playClickSound();
                     }
                 }

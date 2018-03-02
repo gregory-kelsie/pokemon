@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -85,6 +86,40 @@ public class Croconaw extends Pokemon {
         levelUpSkills.put(51, new ArrayList<Integer>(Arrays.asList(SkillFactory.AQUA_TAIL)));
         levelUpSkills.put(57, new ArrayList<Integer>(Arrays.asList(SkillFactory.SUPERPOWER)));
         levelUpSkills.put(60, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYDRO_PUMP)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.WORK_UP.getValue());
+        tmSkills.add(TmId.DRAGON_CLAW.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HAIL.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.ICE_BEAM.getValue());
+        tmSkills.add(TmId.BLIZZARD.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.ROCK_TOMB.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.SCALD.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.SHADOW_CLAW.getValue());
+        tmSkills.add(TmId.SWORDS_DANCE.getValue());
+        tmSkills.add(TmId.ROCK_SLIDE.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.SURF.getValue());
+        tmSkills.add(TmId.WATERFALL.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

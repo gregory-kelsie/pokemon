@@ -6,6 +6,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokeballFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.Item;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.ItemId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerItem;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.PlayerTM;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.tm.Tm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Bag {
     private List<Ball> pokeballs;
     private List<PlayerItem> stones;
     private List<PlayerItem> usables;
+    private List<PlayerTM> tms;
 
     /**
      * Constructor
@@ -28,6 +31,7 @@ public class Bag {
         pokeballs = new ArrayList<Ball>();
         stones = new ArrayList<PlayerItem>();
         usables = new ArrayList<PlayerItem>();
+        tms = new ArrayList<PlayerTM>();
     }
 
     /**
@@ -43,6 +47,12 @@ public class Bag {
      * @return The Stones bag.
      */
     public List<PlayerItem> getStoneBag() { return stones; }
+
+    /**
+     * Return the TM portion of the bag.
+     * @return The TM bag.
+     */
+    public List<PlayerTM> getTMBag() { return tms; }
 
     /**
      * Return the Usable portion of the bag. (Potions)
@@ -77,6 +87,21 @@ public class Bag {
         if (!addedStone) {
             ItemFactory stoneFactory = new ItemFactory();
             stones.add(stoneFactory.createStone(stoneId, 1));
+        }
+    }
+
+    public void addTM(ItemId tmId) {
+        boolean addedTM = false;
+        for (int i = 0; i < tms.size(); i++) {
+            if (tms.get(i).getItem().getId() == tmId) {
+                tms.get(i).add(1);
+                addedTM = true;
+                break;
+            }
+        }
+        if (!addedTM) {
+            ItemFactory tmFactory = new ItemFactory();
+            tms.add(tmFactory.createTM(tmId, 1));
         }
     }
 

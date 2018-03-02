@@ -2,6 +2,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto;
 
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -87,6 +88,58 @@ public class Tyranitar extends Pokemon {
         levelUpSkills.put(63, new ArrayList<Integer>(Arrays.asList(SkillFactory.STONE_EDGE)));
         levelUpSkills.put(73, new ArrayList<Integer>(Arrays.asList(SkillFactory.HYPER_BEAM)));
         levelUpSkills.put(82, new ArrayList<Integer>(Arrays.asList(SkillFactory.GIGA_IMPACT)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.DRAGON_CLAW.getValue());
+        tmSkills.add(TmId.ROAR.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.TAUNT.getValue());
+        tmSkills.add(TmId.ICE_BEAM.getValue());
+        tmSkills.add(TmId.BLIZZARD.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SMACK_DOWN.getValue());
+        tmSkills.add(TmId.THUNDERBOLT.getValue());
+        tmSkills.add(TmId.THUNDER.getValue());
+        tmSkills.add(TmId.EARTHQUAKE.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FLAMETHROWER.getValue());
+        tmSkills.add(TmId.SANDSTORM.getValue());
+        tmSkills.add(TmId.FIRE_BLAST.getValue());
+        tmSkills.add(TmId.ROCK_TOMB.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.TORMENT.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.FOCUS_BLAST.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.BRUTAL_SWING.getValue());
+        tmSkills.add(TmId.SHADOW_CLAW.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.ROCK_POLISH.getValue());
+        tmSkills.add(TmId.STONE_EDGE.getValue());
+        tmSkills.add(TmId.THUNDER_WAVE.getValue());
+        tmSkills.add(TmId.BULLDOZE.getValue());
+        tmSkills.add(TmId.ROCK_SLIDE.getValue());
+        tmSkills.add(TmId.DRAGON_TAIL.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.SURF.getValue());
+        tmSkills.add(TmId.SNARL.getValue());
+        tmSkills.add(TmId.DARK_PULSE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

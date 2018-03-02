@@ -53,6 +53,13 @@ public class BagState extends GameState {
     private Texture fourthSkillType;
     private Texture newSkillIcon;
     private Texture newSkillType;
+
+    private Texture tmSkillType;
+    private Texture tmSkillCategory;
+    private int tmPower;
+    private int tmPP;
+    private int tmAccuracy;
+
     private int selectedSkill;
     private Texture selectedPokemonImage;
     private int selectedSkillPower;
@@ -340,6 +347,8 @@ public class BagState extends GameState {
                 batch.draw(useButton, 792, 1779);
             } else if (currentBag == ItemTab.POTION) {
                 batch.draw(useButton, 792, 1779);
+            } else if (currentBag == ItemTab.TM) {
+                batch.draw(useButton, 792, 1779);
             }
         }
     }
@@ -362,6 +371,28 @@ public class BagState extends GameState {
                         10 * gsm.getBag().getUsables().get(currentIndex).getItem().getName().length()), 1650);
                 font.draw(batch, "x " + gsm.getBag().getUsables().get(currentIndex).getQuantity(), 693, 1554);
                 font.draw(batch, formatDescription(gsm.getBag().getUsables().get(currentIndex).getItem().getDescription()), 30, 1428);
+            } else if (currentBag == ItemTab.TM) {
+                font.draw(batch, gsm.getBag().getTMBag().get(currentIndex).getItem().getName(), 525 - (
+                        10 * gsm.getBag().getTMBag().get(currentIndex).getItem().getName().length()), 1650);
+                font.draw(batch, "x " + gsm.getBag().getTMBag().get(currentIndex).getQuantity(), 693, 1554);
+                font.draw(batch, formatDescription(gsm.getBag().getTMBag().get(currentIndex).getItem().getDescription()), 30, 1428);
+                //Draw the skill type, pp, damage etc
+                font.draw(batch, "TYPE\nCATEGORY", 30, 1228);
+                font.draw(batch, "POWER\nACCURACY", 440, 1228);
+                font.draw(batch, "PP", 830, 1228);
+                batch.draw(tmSkillType, 270, 1180,125, 46);
+                batch.draw(tmSkillCategory, 270, 1130,125, 46);
+                if (tmPower <= 0) {
+                    font.draw(batch, "--", 700, 1228);
+                } else {
+                    font.draw(batch, Integer.toString(tmPower), 700, 1228);
+                }
+                if (tmAccuracy <= 0 || tmAccuracy > 100) {
+                    font.draw(batch, "--", 700, 1170);
+                } else {
+                    font.draw(batch, Integer.toString(tmAccuracy), 700, 1170);
+                }
+                font.draw(batch, Integer.toString(tmPP), 920, 1228);
             }
         }
     }
@@ -409,6 +440,8 @@ public class BagState extends GameState {
             drawEvolutionStonePanels(batch);
         } else if (currentBag == ItemTab.POTION) {
             drawUsablePanels(batch);
+        } else if (currentBag == ItemTab.TM) {
+            drawTMPanels(batch);
         }
     }
 
@@ -427,6 +460,23 @@ public class BagState extends GameState {
     private void drawUsablePanels(SpriteBatch batch) {
         for (int i = 0; i < 6; i++) {
             drawUsablePanel(batch, i);
+        }
+    }
+
+    private void drawTMPanels(SpriteBatch batch) {
+        for (int i = 0; i < 6; i++) {
+            drawTMPanel(batch, i);
+        }
+    }
+
+    private void drawTMPanel(SpriteBatch batch, int panelNum) {
+        if (gsm.getBag().getTMBag().size() > panelNum) {
+            if (currentIndex == scrollAmount + panelNum) {
+                batch.draw(selectedItemNamePanel,627, 821 - (92 * panelNum));
+            } else {
+                batch.draw(itemNamePanel, 627, 821 - (92 * panelNum));
+            }
+            font.draw(batch, gsm.getBag().getTMBag().get(scrollAmount + panelNum).getItem().getName(), 708, 885 - (92 * panelNum));
         }
     }
 
@@ -572,6 +622,11 @@ public class BagState extends GameState {
                 panelText = "Select a Pokemon to use the " +
                         gsm.getBag().getUsables().get(currentIndex)
                                 .getItem().getName() + " on.";
+            } else if (currentBag == ItemTab.TM) {
+                displayPokemonPanel = true;
+                panelText = "Teach " +
+                        gsm.getBag().getTMBag().get(currentIndex)
+                                .getItem().getName() + " to a Pokemon";
             }
         }
     }
@@ -961,6 +1016,11 @@ public class BagState extends GameState {
             }
         } else if (currentBag == ItemTab.POTION) {
             setNewBag(ItemTab.TM);
+            if (gsm.getBag().getTMBag().size() > 0) {
+                currentIndex = 0;
+                setItemIconTexture();
+                setTMExtras();
+            }
         } else if (currentBag == ItemTab.TM) {
             setNewBag(ItemTab.BERRY);
         } else if (currentBag == ItemTab.BERRY) {
@@ -1001,6 +1061,11 @@ public class BagState extends GameState {
             }
         } else if (currentBag == ItemTab.BERRY) {
             setNewBag(ItemTab.TM);
+            if (gsm.getBag().getTMBag().size() > 0) {
+                currentIndex = 0;
+                setItemIconTexture();
+                setTMExtras();
+            }
         } else if (currentBag == ItemTab.HOLD_ITEM) {
             setNewBag(ItemTab.BERRY);
         } else if (currentBag == ItemTab.EVOLUTION_STONE) {
@@ -1016,6 +1081,9 @@ public class BagState extends GameState {
             }
             currentIndex++;
             setItemIconTexture();
+            if (currentBag == ItemTab.TM) {
+                setTMExtras();
+            }
             clickSound.play();
         }
     }
@@ -1027,6 +1095,9 @@ public class BagState extends GameState {
         if (currentIndex > 0) {
             currentIndex--;
             setItemIconTexture();
+            if (currentBag == ItemTab.TM) {
+                setTMExtras();
+            }
             clickSound.play();
         }
     }
@@ -1056,8 +1127,34 @@ public class BagState extends GameState {
                     return true;
                 }
                 return false;
+            } else if (currentBag == ItemTab.TM) {
+                if (index < gsm.getBag().getTMBag().size()) {
+                    return true;
+                }
             }
             return false;
+    }
+
+    private void setTMExtras() {
+        if (tmSkillCategory != null) {
+            tmSkillCategory.dispose();
+        }
+        if (tmSkillType != null) {
+            tmSkillType.dispose();
+        }
+        if (gsm.getBag().getTMBag().size() > 0) {
+            tmSkillCategory = gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill()
+                    .getCategoryTexture();
+            tmSkillType = gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill()
+                    .getSkillTypeTexture();
+            tmAccuracy = gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill()
+                    .getAccuracy();
+            tmPP = gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill()
+                    .getMaxPP();
+            tmPower = gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill()
+                    .getBaseDamage();
+        }
+
     }
 
     private void setItemIconTexture() {
@@ -1070,53 +1167,8 @@ public class BagState extends GameState {
             itemIcon = new Texture(gsm.getBag().getStoneBag().get(currentIndex).getItem().getImage());
         } else if (currentBag == ItemTab.POTION) {
             itemIcon = new Texture(gsm.getBag().getUsables().get(currentIndex).getItem().getImage());
-        }
-    }
-    private void clickedFirstItem() {
-        if (bagHasItem(scrollAmount * 6)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6;
-            setItemIconTexture();
-        }
-    }
-
-    private void clickedSecondItem() {
-        if (bagHasItem(scrollAmount * 6 + 1)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6 + 1;
-            setItemIconTexture();
-        }
-    }
-
-    private void clickedThirdItem() {
-        if (bagHasItem(scrollAmount * 6 + 2)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6 + 2;
-            setItemIconTexture();
-        }
-    }
-
-    private void clickedFourthItem() {
-        if (bagHasItem(scrollAmount * 6 + 3)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6 + 3;
-            setItemIconTexture();
-        }
-    }
-
-    private void clickedFifthItem() {
-        if (bagHasItem(scrollAmount * 6 + 4)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6 + 4;
-            setItemIconTexture();
-        }
-    }
-
-    private void clickedSixthItem() {
-        if (bagHasItem(scrollAmount * 6 + 5)) {
-            clickSound.play();
-            currentIndex = scrollAmount * 6 + 5;
-            setItemIconTexture();
+        } else if (currentBag == ItemTab.TM) {
+            itemIcon = new Texture(gsm.getBag().getTMBag().get(currentIndex).getItem().getImage());
         }
     }
 
@@ -1191,6 +1243,12 @@ public class BagState extends GameState {
         }
         if (selectedPokemonTypeTwo != null) {
             selectedPokemonTypeTwo.dispose();
+        }
+        if (tmSkillType != null) {
+            tmSkillType.dispose();
+        }
+        if (tmSkillCategory != null) {
+            tmSkillCategory.dispose();
         }
     }
 }

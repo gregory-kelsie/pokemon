@@ -5,6 +5,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -90,6 +91,46 @@ public class Mankey extends Pokemon {
         //TODO: STOMPING TANTRUM 43
         levelUpSkills.put(47, new ArrayList<Integer>(Arrays.asList(SkillFactory.OUTRAGE)));
         levelUpSkills.put(50, new ArrayList<Integer>(Arrays.asList(SkillFactory.FINAL_GAMBIT)));
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.WORK_UP.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.BULK_UP.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.SUNNY_DAY.getValue());
+        tmSkills.add(TmId.TAUNT.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.SMACK_DOWN.getValue());
+        tmSkills.add(TmId.THUNDERBOLT.getValue());
+        tmSkills.add(TmId.THUNDER.getValue());
+        tmSkills.add(TmId.EARTHQUAKE.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.BRICK_BREAK.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.ROCK_TOMB.getValue());
+        tmSkills.add(TmId.AERIAL_ACE.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.LOW_SWEEP.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.OVERHEAT.getValue());
+        tmSkills.add(TmId.FOCUS_BLAST.getValue());
+        tmSkills.add(TmId.FLING.getValue());
+        tmSkills.add(TmId.ACROBATICS.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.BULLDOZE.getValue());
+        tmSkills.add(TmId.ROCK_SLIDE.getValue());
+        tmSkills.add(TmId.POISON_JAB.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.U_TURN.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     /**

@@ -52,7 +52,10 @@ public class pokemonToronto extends ApplicationAdapter {
 		void spawnWalkingPokemon();
 		void forceLandscape();
 		void forcePortrait();
+		void createProgressDialog(String title, String description);
+		void dismissProgressDialog();
 		void vibrate();
+		void pulsate();
 	}
 
 	/**

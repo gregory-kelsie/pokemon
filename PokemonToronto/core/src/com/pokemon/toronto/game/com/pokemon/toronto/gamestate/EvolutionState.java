@@ -10,6 +10,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
+import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 
 import java.util.List;
 
@@ -96,6 +97,8 @@ public class EvolutionState extends GameState {
     private Music evolutionFanfare;
     private Sound clickSound;
 
+    private Trainer.Badge badgeType; //In case the trainer evolved during an elite 4 battle.
+
     //Music Flags
     private boolean startSoundFinished;
 
@@ -107,6 +110,19 @@ public class EvolutionState extends GameState {
         region = -1;
         isRoute = false;
         cameFromBag = false;
+        badgeType = Trainer.Badge.NO_BADGE;
+
+    }
+
+    public EvolutionState(GameStateManager gsm, List<Pokemon> preEvolutions,
+                          List<Pokemon> evolvedPokemon, List<Integer> partyIndices, Trainer.Badge badgeType) {
+        init(gsm, preEvolutions, evolvedPokemon, partyIndices);
+        goToMapState = false;
+        startingRoute = -1;
+        region = -1;
+        isRoute = false;
+        cameFromBag = false;
+        this.badgeType = badgeType;
 
     }
 
@@ -120,6 +136,7 @@ public class EvolutionState extends GameState {
         isRoute = false;
         cameFromBag = true;
         this.cameFromStore = cameFromStore;
+        badgeType = Trainer.Badge.NO_BADGE;
     }
 
     public EvolutionState(GameStateManager gsm, List<Pokemon> preEvolutions,
@@ -130,8 +147,10 @@ public class EvolutionState extends GameState {
         this.region = region;
         this.isRoute = isRoute;
         cameFromBag = false;
-
+        badgeType = Trainer.Badge.NO_BADGE;
     }
+
+
 
     private void init(GameStateManager gsm, List<Pokemon> preEvolutions, List<Pokemon> evolvedPokemon, List<Integer> partyIndicies) {
         this.gsm = gsm;
@@ -405,10 +424,25 @@ public class EvolutionState extends GameState {
             //Go to Map State
             gsm.setState(new LoadingState(gsm, LoadingState.MAP_STATE));
             gsm.playBgm();
-        } else {
+        } else if (badgeType == Trainer.Badge.NO_BADGE){
             //Go back to last simulator page
-            gsm.setState(new RouteState(gsm, startingRoute, region, isRoute));
+            gsm.setState(new SimulatorState(gsm, region, startingRoute));
             gsm.playBgm();
+        } else {
+            if (badgeType == Trainer.Badge.KANTO_LORELEI) {
+                //Go to Bruno
+            } else if (badgeType == Trainer.Badge.KANTO_BRUNO) {
+                //Go to Agatha
+            } else if (badgeType == Trainer.Badge.KANTO_AGATHA) {
+                //Go to Lance
+            } else if (badgeType == Trainer.Badge.KANTO_LANCE) {
+                //Go to champion Blue
+            } else if (badgeType == Trainer.Badge.KANTO_CHAMPION) {
+                //Exit
+                //TODO: Change to a credits state.
+                gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
+                gsm.playBgm();
+            }
         }
         dispose();
     }
@@ -433,24 +467,36 @@ public class EvolutionState extends GameState {
             }
         }
     }
-
+    private boolean hasMove(int skillId) {
+        for (int i = 0; i < gsm.getParty().get(evolvedListPosition).getSkills().size(); i++) {
+            if (gsm.getParty().get(evolvedListPosition).getSkills().get(i).getId() == skillId) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void addLevelUpMoves() {
         if (levelUpSkills.size() > 0) {
-            //Add level up skills.
-            textPosition = 0;
-            newMove = sf.createSkill(levelUpSkills.get(0));
-            currentState = TEXT_STATE;
-            if (gsm.getParty().get(evolvedListPosition).getSkills().size() < 4) {
-                text = gsm.getParty().get(evolvedListPosition).getName() + " learned " +
-                        newMove.getName() + "!";
-                gsm.getParty().get(evolvedListPosition).addMove(newMove);
-                afterTextState = ADD_LEVEL_UP_MOVES;
+            if (!hasMove(levelUpSkills.get(0))) {
+                //Add level up skills.
+                textPosition = 0;
+                newMove = sf.createSkill(levelUpSkills.get(0));
+                currentState = TEXT_STATE;
+                if (gsm.getParty().get(evolvedListPosition).getSkills().size() < 4) {
+                    text = gsm.getParty().get(evolvedListPosition).getName() + " learned " +
+                            newMove.getName() + "!";
+                    gsm.getParty().get(evolvedListPosition).addMove(newMove);
+                    afterTextState = ADD_LEVEL_UP_MOVES;
+                } else {
+                    clickAfterText = true;
+                    text = "Should a move be deleted for\n" + newMove.getName() + "?";
+                    afterTextState = WAIT_YES_NO;
+                }
+                levelUpSkills.remove(0);
             } else {
-                clickAfterText = true;
-                text = "Should a move be deleted for\n" + newMove.getName() + "?";
-                afterTextState = WAIT_YES_NO;
+                levelUpSkills.remove(0);
+                currentState = ADD_LEVEL_UP_MOVES;
             }
-            levelUpSkills.remove(0);
         } else {
             //Exit
             exit();
@@ -473,19 +519,24 @@ public class EvolutionState extends GameState {
         } else {
             currentState = TEXT_STATE;
             textPosition = 0;
-            newMove = sf.createSkill(evolutionSkills.get(0));
-            if (gsm.getParty().get(evolvedListPosition).getSkills().size() < 4) {
-                text = gsm.getParty().get(evolvedListPosition).getName() + " learned " +
-                        newMove.getName() + "!";
-                gsm.getParty().get(evolvedListPosition).addMove(newMove);
-                afterTextState = ADD_EVOLUTION_MOVES;
+            if (!hasMove(evolutionSkills.get(0))) {
+                newMove = sf.createSkill(evolutionSkills.get(0));
+                if (gsm.getParty().get(evolvedListPosition).getSkills().size() < 4) {
+                    text = gsm.getParty().get(evolvedListPosition).getName() + " learned " +
+                            newMove.getName() + "!";
+                    gsm.getParty().get(evolvedListPosition).addMove(newMove);
+                    afterTextState = ADD_EVOLUTION_MOVES;
+                } else {
+                    clickAfterText = true;
+                    text = "Should a move be deleted for\n" + newMove.getName() + "?";
+                    afterTextState = WAIT_YES_NO;
+                }
+                Gdx.app.log("evolution", text + ":" + counter + ":" + textPosition);
+                evolutionSkills.remove(0);
             } else {
-                clickAfterText = true;
-                text = "Should a move be deleted for\n" + newMove.getName() + "?";
-                afterTextState = WAIT_YES_NO;
+                currentState = ADD_EVOLUTION_MOVES;
+                evolutionSkills.remove(0);
             }
-            Gdx.app.log("evolution", text + ":" + counter + ":" + textPosition);
-            evolutionSkills.remove(0);
         }
     }
 

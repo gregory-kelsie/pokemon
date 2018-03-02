@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alolan_kanto;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
@@ -84,6 +85,41 @@ public class AlolanNinetales extends Pokemon {
         beginnerSkills.add(SkillFactory.SAFEGUARD);
         levelUpSkills.put(0, beginnerSkills);
         initEvolutionSkills();
+    }
+
+    @Override
+    protected void initTMSkills() {
+        tmSkills.add(TmId.PSYSHOCK.getValue());
+        tmSkills.add(TmId.CALM_MIND.getValue());
+        tmSkills.add(TmId.ROAR.getValue());
+        tmSkills.add(TmId.TOXIC.getValue());
+        tmSkills.add(TmId.HAIL.getValue());
+        tmSkills.add(TmId.HIDDEN_POWER.getValue());
+        tmSkills.add(TmId.ICE_BEAM.getValue());
+        tmSkills.add(TmId.BLIZZARD.getValue());
+        tmSkills.add(TmId.HYPER_BEAM.getValue());
+        tmSkills.add(TmId.PROTECT.getValue());
+        tmSkills.add(TmId.RAIN_DANCE.getValue());
+        tmSkills.add(TmId.SAFEGUARD.getValue());
+        tmSkills.add(TmId.FRUSTRATION.getValue());
+        tmSkills.add(TmId.RETURN.getValue());
+        tmSkills.add(TmId.DOUBLE_TEAM.getValue());
+        tmSkills.add(TmId.FACADE.getValue());
+        tmSkills.add(TmId.REST.getValue());
+        tmSkills.add(TmId.ATTRACT.getValue());
+        tmSkills.add(TmId.ROUND.getValue());
+        tmSkills.add(TmId.PAYBACK.getValue());
+        tmSkills.add(TmId.GIGA_IMPACT.getValue());
+        tmSkills.add(TmId.AURORA_VEIL.getValue());
+        tmSkills.add(TmId.PSYCH_UP.getValue());
+        tmSkills.add(TmId.FROST_BREATH.getValue());
+        tmSkills.add(TmId.DREAM_EATER.getValue());
+        tmSkills.add(TmId.SWAGGER.getValue());
+        tmSkills.add(TmId.SLEEP_TALK.getValue());
+        tmSkills.add(TmId.SUBSTITUTE.getValue());
+        tmSkills.add(TmId.DARK_PULSE.getValue());
+        tmSkills.add(TmId.DAZZLING_GLEAM.getValue());
+        tmSkills.add(TmId.CONFIDE.getValue());
     }
 
     @Override

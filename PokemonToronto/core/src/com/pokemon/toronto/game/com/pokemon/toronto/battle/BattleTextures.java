@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -86,16 +89,16 @@ public class BattleTextures {
      *
      * @param backPath
      * @param enemyPath
-     * @param partyIcons
+     * @param partyPokemon
      * @param currentPokemon
      */
-    public BattleTextures(String backPath, String enemyPath, List<String> partyIcons, Pokemon currentPokemon) {
-        initTextures(backPath, enemyPath, partyIcons);
+    public BattleTextures(String backPath, String enemyPath, List<Pokemon> partyPokemon, Pokemon currentPokemon, String background) {
+        initTextures(backPath, enemyPath, partyPokemon, background);
         createSkillButtonTextures(currentPokemon);
     }
 
     private void initTextures(String backPath, String enemyPath,
-                              List<String> partyIcons) {
+                              List<Pokemon> partyPokemon, String background) {
         maleTexture = new Texture("battle/male.png");
         femaleTexture = new Texture("battle/female.png");
         healthText = new BitmapFont(Gdx.files.internal("battle/healthFont.fnt"));
@@ -105,7 +108,22 @@ public class BattleTextures {
         itemDescFont = new BitmapFont(Gdx.files.internal("battle/itemDesc.fnt"));
         smallFont = new BitmapFont(Gdx.files.internal("battle/textFont.fnt"));
         regularFont.setColor(Color.WHITE);
-        battleBackground = new Texture("battle/field.png");
+
+        if (background.equals("")) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+            Date date = new Date();
+            String text = dateFormat.format(date);
+            int hourTime = new Integer(text.substring(11, 13));
+            if (hourTime >= 10 && hourTime <= 17) {
+                battleBackground = new Texture("battle/field.png");
+            } else if (hourTime > 17 && hourTime <= 19 || hourTime >= 6 && hourTime < 10) {
+                battleBackground = new Texture("battle/fieldmorning.png");
+            } else { //Night time
+                battleBackground = new Texture("battle/fieldnight.png");
+            }
+        } else {
+            battleBackground = new Texture(background);
+        }
         battlePanel = new Texture("battle/battlePanel.png");
         initPanel = new Texture("battle/firstBottomPanel.png");
         pokemonSelectPanel = new Texture("battle/pokemonSelect/pokeSelectPanel.png");
@@ -127,8 +145,8 @@ public class BattleTextures {
 
         //Init Pokemon Icon Textures
         iconTextures = new ArrayList<Texture>();
-        for (int i = 0; i < partyIcons.size(); i++) {
-            iconTextures.add(new Texture(partyIcons.get(i)));
+        for (Pokemon p: partyPokemon) {
+            iconTextures.add(new Texture(p.getMiniIconPath()));
         }
 
         //Init Status Textures
@@ -142,6 +160,16 @@ public class BattleTextures {
         thirdSkill = null;
         fourthSkill = null;
 
+    }
+
+    public void initIconTextures(List<Pokemon> partyPokemon) {
+        for (int i = 0; i < iconTextures.size(); i++) {
+            iconTextures.get(i).dispose();
+        }
+        iconTextures = new ArrayList<Texture>();
+        for (Pokemon p: partyPokemon) {
+            iconTextures.add(new Texture(p.getMiniIconPath()));
+        }
     }
 
     private void createSkillButtonTextures(Pokemon currentPokemon) {

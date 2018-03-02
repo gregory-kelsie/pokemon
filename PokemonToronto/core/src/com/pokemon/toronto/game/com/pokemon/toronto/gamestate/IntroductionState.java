@@ -401,7 +401,7 @@ public class IntroductionState extends GameState {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     starter = new Charmander();
-                    starter.insertWildData(5);
+                    starter.insertWildData(5, 0);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -451,7 +451,7 @@ public class IntroductionState extends GameState {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     starter = new Bulbasaur();
-                    starter.insertWildData(5);
+                    starter.insertWildData(5, 0);
                     drawDroppingPokeballAnimation = true;
                     drawYesNoOptions = false;
                     throwPokeballSound.play();
@@ -498,7 +498,7 @@ public class IntroductionState extends GameState {
                 //Clicked yes
                 if (drawYesNoOptions) {
                     starter = new Squirtle();
-                    starter.insertWildData(5);
+                    starter.insertWildData(5, 0);
                     drawYesNoOptions = false;
                     drawDroppingPokeballAnimation = true;
                     throwPokeballSound.play();

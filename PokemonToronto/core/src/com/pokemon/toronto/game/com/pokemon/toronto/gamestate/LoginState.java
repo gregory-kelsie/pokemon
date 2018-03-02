@@ -11,8 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alola.Wishiwashi;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_2.Gastly;
+import com.pokemon.toronto.game.com.pokemon.toronto.box.BoxLocation;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
 import com.pokemon.toronto.game.com.pokemon.toronto.net.JSONParser;
@@ -135,9 +138,17 @@ public class LoginState extends GameState {
                 } else {
                     //Load pokes and everything.
                     gsm.setPlayer(new Player(Integer.parseInt(obj.get("uid").toString()), username, Integer.parseInt(obj.get("money").toString()),
-                            obj.get("gender").toString().charAt(0), Integer.parseInt(obj.get("kanto_badges").toString())));
+                            obj.get("gender").toString().charAt(0),
+                            Integer.parseInt(obj.get("kanto_badges").toString()),
+                                    Integer.parseInt(obj.get("johto_badges").toString())));
                     Gdx.input.setInputProcessor(new InputHandler());
                     loadParty();
+                    loadBoxes();/*
+                    Wishiwashi w = new Wishiwashi();
+                    w.insertWildData(20);
+                    List<BoxLocation> updatePokemon = new ArrayList<BoxLocation>();
+                    updatePokemon.add(gsm.getPC().depositCaughtPokemon(w));
+                    gsm.updateBoxes(updatePokemon); */
                     gsm.logIn();
                     gsm.playBgm();
                     gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
@@ -155,6 +166,72 @@ public class LoginState extends GameState {
         }
     }
 
+    private void loadBoxes() {
+        JSONParser jp = new JSONParser();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("uid", String.valueOf(gsm.getPlayer().getId())));
+        JSONObject obj = jp.makeHttpRequest("http://kelsiegr.com/pokemononline/getBoxes.php", "POST", params);
+        try {
+            JSONArray jsonBoxPokemon = obj.getJSONArray("boxes");
+            PokemonFactory pf = new PokemonFactory();
+            SkillFactory sf = new SkillFactory();
+            for (int i = 0; i < jsonBoxPokemon.length(); i++) {
+                JSONObject pokemonObject = jsonBoxPokemon.getJSONObject(i);
+                int boxNumber = pokemonObject.getInt("box_number");
+                int boxPosition = pokemonObject.getInt("box_position");
+                int ivs[] = {pokemonObject.getInt("iv_hp"),
+                        pokemonObject.getInt("iv_atk"),
+                        pokemonObject.getInt("iv_def"),
+                        pokemonObject.getInt("iv_spatk"),
+                        pokemonObject.getInt("iv_spdef"),
+                        pokemonObject.getInt("iv_spd")};
+                int evs[] = {pokemonObject.getInt("ev_hp"),
+                        pokemonObject.getInt("ev_atk"),
+                        pokemonObject.getInt("ev_def"),
+                        pokemonObject.getInt("ev_spatk"),
+                        pokemonObject.getInt("ev_spdef"),
+                        pokemonObject.getInt("ev_spd")};
+
+                Skill firstSkill = sf.createSkill(pokemonObject.getInt("skill_one_id"));
+                Skill secondSkill = null;
+                Skill thirdSkill = null;
+                Skill fourthSkill = null;
+                firstSkill.setCurrentPP(pokemonObject.getInt("skill_one_pp"));
+                if (pokemonObject.getInt("skill_two_id") != -1) {
+                    secondSkill = sf.createSkill(pokemonObject.getInt("skill_two_id"));
+                    secondSkill.setCurrentPP(pokemonObject.getInt("skill_two_pp"));
+                    if (pokemonObject.getInt("skill_three_id") != -1) {
+                        thirdSkill = sf.createSkill(pokemonObject.getInt("skill_three_id"));
+                        thirdSkill.setCurrentPP(pokemonObject.getInt("skill_three_pp"));
+                        if (pokemonObject.getInt("skill_four_id") != -1) {
+                            fourthSkill = sf.createSkill(pokemonObject.getInt("skill_four_id"));
+                            fourthSkill.setCurrentPP(pokemonObject.getInt("skill_four_pp"));
+                        }
+                    }
+                }
+                Pokemon p = pf.createPokemon(
+                        pokemonObject.getInt("pid"),
+                        pokemonObject.getInt("level"),
+                        pokemonObject.getString("gender").charAt(0),
+                        Nature.fromInt(pokemonObject.getInt("nature_id")),
+                        pokemonObject.getInt("ability_id"),
+                        pokemonObject.getInt("current_health"),
+                        pokemonObject.getInt("current_exp"),
+                        Pokemon.Status.fromInt(pokemonObject.getInt("status")),
+                        ivs,
+                        evs,
+                        firstSkill,
+                        secondSkill,
+                        thirdSkill,
+                        fourthSkill
+                );
+                Gdx.app.log("loadBoxes", "Created Pokemon");
+                gsm.getPC().depositPokemon(p, boxNumber, boxPosition);
+            }
+        }catch (Exception e) {
+            Gdx.app.log("loadBoxes", e.getMessage());
+        }
+    }
     private void loadParty() {
         JSONParser jp = new JSONParser();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
