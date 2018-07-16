@@ -19,10 +19,14 @@ public class Hitmontop extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 237;
     private static final String NAME = "Hitmontop";
+    public static final String TYPE_OF_POKEMON = "Handstand";
+    public static final String DESCRIPTION = "It fights while spinning like a top. The" +
+            " centrifugal force boosts its destructive power by ten.";
     private static final int BASE_EXP = 159;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
     private static final int CAPTURE_RATE = 45;
     private static final double WEIGHT = 48;
+    public static final double HEIGHT = 1.4;
 
     private static final Ability FIRST_ABILITY = new Ability.Intimidate();
     private static final Ability SECOND_ABILITY = new Ability.Technician();
@@ -54,10 +58,10 @@ public class Hitmontop extends Pokemon {
      * Create a hitmontop
      */
     public Hitmontop() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,52 @@ import java.util.List;
 public class Electrode extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 101;
-    private static final String NAME = "Electrode";
-    private static final int BASE_EXP = 150;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 66.6;
+    public static final int NUMBER = 101;
+    public static final String NAME = "Electrode";
+    public static final String TYPE_OF_POKEMON = "Ball";
+    public static final String DESCRIPTION = "It stores an overflowing amount of electric" +
+            " energy inside its body. Even a small shock makes it explode.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Soundproof();
-    private static final Ability SECOND_ABILITY = new Ability.Static();
-    private static final Ability HIDDEN_ABILITY = new Ability.Aftermath();
+    public static final int BASE_EXP = 150;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 66.6;
+    public static final double HEIGHT = 1.2;
+
+    public static final Ability FIRST_ABILITY = new Ability.Soundproof();
+    public static final Ability SECOND_ABILITY = new Ability.Static();
+    public static final Ability HIDDEN_ABILITY = new Ability.Aftermath();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 150;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 150;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/electrode.png";
-    private static final String BACK_PATH = "battle/backs/electrode.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/electrode.png";
-    private static final String CRY_PATH = "sounds/cry/101.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/101.png";
+    public static final String ICON_PATH = "pokemonSprites/electrode.png";
+    public static final String BACK_PATH = "battle/backs/electrode.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/electrode.png";
+    public static final String CRY_PATH = "sounds/cry/101.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/101.png";
 
     /**
      * Create a Electrode
      */
     public Electrode() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

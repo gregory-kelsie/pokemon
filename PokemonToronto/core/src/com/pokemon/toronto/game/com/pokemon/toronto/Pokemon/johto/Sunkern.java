@@ -18,47 +18,51 @@ public class Sunkern extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 191;
-    private static final String NAME = "Sunkern";
-    private static final int BASE_EXP = 36;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 235;
-    private static final double WEIGHT = 1.8;
+    public static final int NUMBER = 191;
+    public static final String NAME = "Sunkern";
+    public static final String TYPE_OF_POKEMON = "Seed";
+    public static final String DESCRIPTION = "It suddenly falls out of the sky in the morning." +
+            " Knowing it's weak, it simply feeds until it evolves.";
+    public static final int BASE_EXP = 36;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 235;
+    public static final double WEIGHT = 1.8;
+    public static final double HEIGHT = 0.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = new Ability.SolarPower();
-    private static final Ability HIDDEN_ABILITY = new Ability.EarlyBird();
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = new Ability.SolarPower();
+    public static final Ability HIDDEN_ABILITY = new Ability.EarlyBird();
 
     //Base Stats
-    private static final int BASE_HEALTH = 30;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 30;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/sunkern.png";
-    private static final String BACK_PATH = "battle/backs/johto/sunkern.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/sunkern.png";
-    private static final String CRY_PATH = "sounds/cry/191.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/sunkern.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/sunkern.png";
+    public static final String BACK_PATH = "battle/backs/johto/sunkern.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/sunkern.png";
+    public static final String CRY_PATH = "sounds/cry/191.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/sunkern.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a sunkern
      */
     public Sunkern() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

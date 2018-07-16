@@ -19,40 +19,52 @@ import java.util.List;
 public class Zubat extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 41;
-    private static final String NAME = "Zubat";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 7.5;
+    public static final int NUMBER = 41;
+    public static final String NAME = "Zubat";
+    public static final String TYPE_OF_POKEMON = "Bat";
+    public static final String DESCRIPTION = "Even though it has no eyes, it can sense obstacles" +
+            " using ultrasonic waves it emits from its mouth.";
 
-    private static final Ability FIRST_ABILITY = new Ability.InnerFocus();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.8;
+    public static final double WEIGHT = 7.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.InnerFocus();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/zubat.png";
-    private static final String BACK_PATH = "battle/backs/zubat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/zubat.png";
-    private static final String CRY_PATH = "sounds/cry/041.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/041.png";
+    public static final String ICON_PATH = "pokemonSprites/zubat.png";
+    public static final String BACK_PATH = "battle/backs/zubat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/zubat.png";
+    public static final String CRY_PATH = "sounds/cry/041.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/041.png";
+
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Zubat
      */
     public Zubat() {
-        super(NUMBER, NAME, Pokemon.Type.POISON, Pokemon.Type.FLYING, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

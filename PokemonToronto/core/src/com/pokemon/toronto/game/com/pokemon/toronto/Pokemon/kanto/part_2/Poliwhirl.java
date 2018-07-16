@@ -19,47 +19,53 @@ import java.util.List;
 public class Poliwhirl extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 61;
-    private static final String NAME = "Poliwhirl";
-    private static final int BASE_EXP = 135;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 20;
+    public static final int NUMBER = 61;
+    public static final String NAME = "Poliwhirl";
+    public static final String TYPE_OF_POKEMON = "Tadpole";
+    public static final String DESCRIPTION = "Its two legs are well developed. Even though it" +
+            " can live on the ground, it prefers living in water.";
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = new Ability.Damp();
-    private static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
+    public static final int BASE_EXP = 135;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 120;
+
+    public static final double HEIGHT = 1;
+    public static final double WEIGHT = 20;
+
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = new Ability.Damp();
+    public static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 90;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/poliwhirl.png";
-    private static final String BACK_PATH = "battle/backs/poliwhirl.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/poliwhirl.png";
-    private static final String CRY_PATH = "sounds/cry/061.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/061.png";
+    public static final String ICON_PATH = "pokemonSprites/poliwhirl.png";
+    public static final String BACK_PATH = "battle/backs/poliwhirl.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/poliwhirl.png";
+    public static final String CRY_PATH = "sounds/cry/061.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/061.png";
 
     /**
      * Create a Poliwhirl
      */
     public Poliwhirl() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

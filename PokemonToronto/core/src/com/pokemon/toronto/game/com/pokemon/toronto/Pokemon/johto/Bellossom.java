@@ -18,47 +18,51 @@ public class Bellossom extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 182;
-    private static final String NAME = "Bellossom";
-    private static final int BASE_EXP = 221;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 5.8;
+    public static final int NUMBER = 182;
+    public static final String NAME = "Bellossom";
+    public static final String TYPE_OF_POKEMON = "Flower";
+    public static final String DESCRIPTION = "When the heavy rainfall season ends, it is drawn" +
+            " out by warm sunlight to dance in the open.";
+    public static final int BASE_EXP = 221;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 5.8;
+    public static final double HEIGHT = 0.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Healer();
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Healer();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/bellossom.png";
-    private static final String BACK_PATH = "battle/backs/johto/bellossom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/bellossom.png";
-    private static final String CRY_PATH = "sounds/cry/182.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/bellossom.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/bellossom.png";
+    public static final String BACK_PATH = "battle/backs/johto/bellossom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/bellossom.png";
+    public static final String CRY_PATH = "sounds/cry/182.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/bellossom.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a bellossom
      */
     public Bellossom() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

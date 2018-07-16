@@ -166,6 +166,8 @@ public class HubState extends GameState {
                 dispose();
             } else if (x >= 797 && x <= 999 && y >= 30 && y <= 184 && windowState == NO_WINDOW) {
                 //PokeDex
+                gsm.setState(new PokedexState(gsm));
+                dispose();
             } else if (x >= 823 && x <= 1009 && y >= 289 && y <= 491 && windowState == NO_WINDOW) {
                 //PC
                 gsm.setState(new BoxState(gsm, true));
@@ -191,6 +193,8 @@ public class HubState extends GameState {
                 trainerBgm.play();
                 gsm.setState(new BattleState(gsm, trainerBgm, randomTrainer));
                 dispose();
+
+            } else {
 
             }
         }

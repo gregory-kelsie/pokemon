@@ -17,47 +17,51 @@ public class Octillery extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 224;
-    private static final String NAME = "Octillery";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 1, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 28.5;
+    public static final int NUMBER = 224;
+    public static final String NAME = "Octillery";
+    public static final String TYPE_OF_POKEMON = "Jet";
+    public static final String DESCRIPTION = "It loves to lurk inside holes in rocks. It " +
+            "sometimes sprays ink on prey by sticking out only its mouth.";
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 1, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 28.5;
+    public static final double HEIGHT = 0.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.SuctionCups();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moody();
+    public static final Ability FIRST_ABILITY = new Ability.SuctionCups();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/octillery.png";
-    private static final String BACK_PATH = "battle/backs/johto/octillery.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/octillery.png";
-    private static final String CRY_PATH = "sounds/cry/224.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/octillery.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/octillery.png";
+    public static final String BACK_PATH = "battle/backs/johto/octillery.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/octillery.png";
+    public static final String CRY_PATH = "sounds/cry/224.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/octillery.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a octillery
      */
     public Octillery() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

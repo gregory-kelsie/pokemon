@@ -17,47 +17,51 @@ public class Corsola extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 222;
-    private static final String NAME = "Corsola";
-    private static final int BASE_EXP = 133;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 5;
+    public static final int NUMBER = 222;
+    public static final String NAME = "Corsola";
+    public static final String TYPE_OF_POKEMON = "Coral";
+    public static final String DESCRIPTION = "Many live in the clean seas of the south. They" +
+            " apparently can't live in polluted waters.";
+    public static final int BASE_EXP = 133;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 5;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = new Ability.NaturalCure();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = new Ability.NaturalCure();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 35;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 35;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/corsola.png";
-    private static final String BACK_PATH = "battle/backs/johto/corsola.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/corsola.png";
-    private static final String CRY_PATH = "sounds/cry/222.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/corsola.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/corsola.png";
+    public static final String BACK_PATH = "battle/backs/johto/corsola.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/corsola.png";
+    public static final String CRY_PATH = "sounds/cry/222.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/corsola.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a corsola
      */
     public Corsola() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,52 @@ import java.util.List;
 public class Hitmonlee extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 106;
-    private static final String NAME = "Hitmonlee";
-    private static final int BASE_EXP = 139;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 49.8;
+    public static final int NUMBER = 106;
+    public static final String NAME = "Hitmonlee";
+    public static final String TYPE_OF_POKEMON = "Kicking";
+    public static final String DESCRIPTION = "The legs freely contract and stretch. The" +
+            " stretchy legs allow it to hit a distant foe with a rising kick.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Limber();
-    private static final Ability SECOND_ABILITY = new Ability.Reckless();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unburden();
+    public static final int BASE_EXP = 139;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 49.8;
+    public static final double HEIGHT = 1.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.Limber();
+    public static final Ability SECOND_ABILITY = new Ability.Reckless();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unburden();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 53;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 87;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 53;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 87;
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/hitmonlee.png";
-    private static final String BACK_PATH = "battle/backs/hitmonlee.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/hitmonlee.png";
-    private static final String CRY_PATH = "sounds/cry/106.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/106.png";
+    public static final String ICON_PATH = "pokemonSprites/hitmonlee.png";
+    public static final String BACK_PATH = "battle/backs/hitmonlee.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/hitmonlee.png";
+    public static final String CRY_PATH = "sounds/cry/106.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/106.png";
 
     /**
      * Create a Hitmonlee
      */
     public Hitmonlee() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

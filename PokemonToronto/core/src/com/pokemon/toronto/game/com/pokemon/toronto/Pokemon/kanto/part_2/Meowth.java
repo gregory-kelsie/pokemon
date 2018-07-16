@@ -20,47 +20,53 @@ public class Meowth extends Pokemon {
 
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 52;
-    private static final String NAME = "Meowth";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 4.2;
+    public static final int NUMBER = 52;
+    public static final String NAME = "Meowth";
+    public static final String TYPE_OF_POKEMON = "Scratch Cat";
+    public static final String DESCRIPTION = "Adores round objects. It wanders the streets on" +
+            " a nightly basis to look for dropped loose change.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = new Ability.Technician();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.4;
+    public static final double WEIGHT = 4.2;
+
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = new Ability.Technician();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 90;
 
     //Typing
-    private static final Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/meowth.png";
-    private static final String BACK_PATH = "battle/backs/meowth.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/meowth.png";
-    private static final String CRY_PATH = "sounds/cry/052.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/052.png";
+    public static final String ICON_PATH = "pokemonSprites/meowth.png";
+    public static final String BACK_PATH = "battle/backs/meowth.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/meowth.png";
+    public static final String CRY_PATH = "sounds/cry/052.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/052.png";
 
     /**
      * Create a Meowth
      */
     public Meowth() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

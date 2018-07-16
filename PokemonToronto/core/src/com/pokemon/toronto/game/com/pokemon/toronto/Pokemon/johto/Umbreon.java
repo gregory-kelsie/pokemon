@@ -17,47 +17,51 @@ public class Umbreon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 197;
-    private static final String NAME = "Umbreon";
-    private static final int BASE_EXP = 184;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 27;
+    public static final int NUMBER = 197;
+    public static final String NAME = "Umbreon";
+    public static final String TYPE_OF_POKEMON = "Moonlight";
+    public static final String DESCRIPTION = "When exposed to the moon's aura, the rings on its" +
+            " body glow faintly and it gains a mysterious power.";
+    public static final int BASE_EXP = 184;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 27;
+    public static final double HEIGHT = 1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Synchronize();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
+    public static final Ability FIRST_ABILITY = new Ability.Synchronize();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 110;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 130;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 110;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 130;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/umbreon.png";
-    private static final String BACK_PATH = "battle/backs/johto/umbreon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/umbreon.png";
-    private static final String CRY_PATH = "sounds/cry/197.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/umbreon.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/umbreon.png";
+    public static final String BACK_PATH = "battle/backs/johto/umbreon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/umbreon.png";
+    public static final String CRY_PATH = "sounds/cry/197.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/umbreon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a umbreon
      */
     public Umbreon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

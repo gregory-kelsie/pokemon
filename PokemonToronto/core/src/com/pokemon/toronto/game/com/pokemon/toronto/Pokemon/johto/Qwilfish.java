@@ -17,47 +17,51 @@ public class Qwilfish extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 211;
-    private static final String NAME = "Qwilfish";
-    private static final int BASE_EXP = 86;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 3.9;
+    public static final int NUMBER = 211;
+    public static final String NAME = "Qwilfish";
+    public static final String TYPE_OF_POKEMON = "Balloon";
+    public static final String DESCRIPTION = "It shoots the poison spines on its body in all" +
+            " directions. Its round form makes it a poor swimmer.";
+    public static final int BASE_EXP = 86;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 3.9;
+    public static final double HEIGHT = 0.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
-    private static final Ability SECOND_ABILITY = new Ability.SwiftSwim();
-    private static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
+    public static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
+    public static final Ability SECOND_ABILITY = new Ability.SwiftSwim();
+    public static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/qwilfish.png";
-    private static final String BACK_PATH = "battle/backs/johto/qwilfish.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/qwilfish.png";
-    private static final String CRY_PATH = "sounds/cry/211.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/qwilfish.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/qwilfish.png";
+    public static final String BACK_PATH = "battle/backs/johto/qwilfish.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/qwilfish.png";
+    public static final String CRY_PATH = "sounds/cry/211.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/qwilfish.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.POISON;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.POISON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a qwilfish
      */
     public Qwilfish() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,52 @@ import java.util.List;
 public class Hypno extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 97;
-    private static final String NAME = "Hypno";
-    private static final int BASE_EXP = 165;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 75.6;
+    public static final int NUMBER = 97;
+    public static final String NAME = "Hypno";
+    public static final String TYPE_OF_POKEMON = "Hypnosis";
+    public static final String DESCRIPTION = "Seeing its swinging pendulum can induce sleep " +
+            "in three seconds, even in someone who just woke up.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Insomnia();
-    private static final Ability SECOND_ABILITY = new Ability.Forewarn();
-    private static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
+    public static final int BASE_EXP = 165;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 75.6;
+    public static final double HEIGHT = 1.6;
+
+    public static final Ability FIRST_ABILITY = new Ability.Insomnia();
+    public static final Ability SECOND_ABILITY = new Ability.Forewarn();
+    public static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 73;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 73;
-    private static final int BASE_SPECIAL_DEFENSE = 115;
-    private static final int BASE_SPEED = 67;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 73;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 73;
+    public static final int BASE_SPECIAL_DEFENSE = 115;
+    public static final int BASE_SPEED = 67;
 
     //Typing
-    private static final Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/hypno.png";
-    private static final String BACK_PATH = "battle/backs/hypno.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/hypno.png";
-    private static final String CRY_PATH = "sounds/cry/097.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/097.png";
+    public static final String ICON_PATH = "pokemonSprites/hypno.png";
+    public static final String BACK_PATH = "battle/backs/hypno.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/hypno.png";
+    public static final String CRY_PATH = "sounds/cry/097.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/097.png";
 
     /**
      * Create a Hypno
      */
     public Hypno() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

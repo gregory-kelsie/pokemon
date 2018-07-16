@@ -20,48 +20,54 @@ import java.util.List;
 public class Mankey extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 56;
-    private static final String NAME = "Mankey";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 28;
+    public static final int NUMBER = 56;
+    public static final String NAME = "Mankey";
+    public static final String TYPE_OF_POKEMON = "Pig Monkey";
+    public static final String DESCRIPTION = "It's unsafe to approach if it gets violently" +
+            " enraged for no reason and can't distinguish friends from foes.";
 
-    private static final Ability FIRST_ABILITY = new Ability.VitalSpirit();
-    private static final Ability SECOND_ABILITY = new Ability.AngerPoint();
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+
+    public static final double HEIGHT = 0.5;
+    public static final double WEIGHT = 28;
+
+    public static final Ability FIRST_ABILITY = new Ability.VitalSpirit();
+    public static final Ability SECOND_ABILITY = new Ability.AngerPoint();
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 70;
 
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/mankey.png";
-    private static final String BACK_PATH = "battle/backs/mankey.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/mankey.png";
-    private static final String CRY_PATH = "sounds/cry/056.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/056.png";
+    public static final String ICON_PATH = "pokemonSprites/mankey.png";
+    public static final String BACK_PATH = "battle/backs/mankey.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/mankey.png";
+    public static final String CRY_PATH = "sounds/cry/056.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/056.png";
 
     /**
      * Create a Mankey
      */
     public Mankey() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

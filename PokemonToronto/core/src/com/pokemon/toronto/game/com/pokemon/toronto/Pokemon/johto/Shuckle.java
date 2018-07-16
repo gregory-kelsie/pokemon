@@ -17,47 +17,51 @@ public class Shuckle extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 213;
-    private static final String NAME = "Shuckle";
-    private static final int BASE_EXP = 177;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 20.5;
+    public static final int NUMBER = 213;
+    public static final String NAME = "Shuckle";
+    public static final String TYPE_OF_POKEMON = "Mold";
+    public static final String DESCRIPTION = "It stores berries in its shell. The berries" +
+            " eventually ferment to become delicious juices.";
+    public static final int BASE_EXP = 177;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 20.5;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.Gluttony();
-    private static final Ability HIDDEN_ABILITY = new Ability.Contrary();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.Gluttony();
+    public static final Ability HIDDEN_ABILITY = new Ability.Contrary();
 
     //Base Stats
-    private static final int BASE_HEALTH = 20;
-    private static final int BASE_ATTACK = 10;
-    private static final int BASE_DEFENSE = 230;
-    private static final int BASE_SPECIAL_ATTACK = 10;
-    private static final int BASE_SPECIAL_DEFENSE = 230;
-    private static final int BASE_SPEED = 5;
+    public static final int BASE_HEALTH = 20;
+    public static final int BASE_ATTACK = 10;
+    public static final int BASE_DEFENSE = 230;
+    public static final int BASE_SPECIAL_ATTACK = 10;
+    public static final int BASE_SPECIAL_DEFENSE = 230;
+    public static final int BASE_SPEED = 5;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/shuckle.png";
-    private static final String BACK_PATH = "battle/backs/johto/shuckle.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/shuckle.png";
-    private static final String CRY_PATH = "sounds/cry/213.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/shuckle.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/shuckle.png";
+    public static final String BACK_PATH = "battle/backs/johto/shuckle.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/shuckle.png";
+    public static final String CRY_PATH = "sounds/cry/213.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/shuckle.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a shuckle
      */
     public Shuckle() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

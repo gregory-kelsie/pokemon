@@ -18,47 +18,52 @@ import java.util.List;
 public class Gengar extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 94;
-    private static final String NAME = "Gengar";
-    private static final int BASE_EXP = 190;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 40.5;
+    public static final int NUMBER = 94;
+    public static final String NAME = "Gengar";
+    public static final String TYPE_OF_POKEMON = "Shadow";
+    public static final String DESCRIPTION = "Hiding in people's shadows at night, it absorbs" +
+            " their heat. The chill it causes makes the victims shake.";
 
-    private static final Ability FIRST_ABILITY = new Ability.CursedBody();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final int BASE_EXP = 190;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 40.5;
+    public static final double HEIGHT = 1.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.CursedBody();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 130;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 110;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 130;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 110;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.POISON;
+    public static final Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.POISON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/gengar.png";
-    private static final String BACK_PATH = "battle/backs/gengar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/gengar.png";
-    private static final String CRY_PATH = "sounds/cry/094.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/094.png";
+    public static final String ICON_PATH = "pokemonSprites/gengar.png";
+    public static final String BACK_PATH = "battle/backs/gengar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/gengar.png";
+    public static final String CRY_PATH = "sounds/cry/094.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/094.png";
 
     /**
      * Create a Gengar
      */
     public Gengar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

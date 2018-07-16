@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -18,47 +19,52 @@ import java.util.List;
 public class Magmar extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 126;
-    private static final String NAME = "Magmar";
-    private static final int BASE_EXP = 167;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 44.5;
+    public static final int NUMBER = 126;
+    public static final String NAME = "Magmar";
+    public static final String TYPE_OF_POKEMON = "Spitfire";
+    public static final String DESCRIPTION = "Born in the spout of a volcano, its body is" +
+            " covered by flames that shimmer like the sun.";
 
-    private static final Ability FIRST_ABILITY = new Ability.FlameBody();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
+    public static final int BASE_EXP = 167;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 44.5;
+    public static final double HEIGHT = 1.3;
+
+    public static final Ability FIRST_ABILITY = new Ability.FlameBody();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 57;
-    private static final int BASE_SPECIAL_ATTACK = 100;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 93;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 57;
+    public static final int BASE_SPECIAL_ATTACK = 100;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 93;
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/magmar.png";
-    private static final String BACK_PATH = "battle/backs/magmar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/magmar.png";
-    private static final String CRY_PATH = "sounds/cry/126.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/126.png";
+    public static final String ICON_PATH = "pokemonSprites/magmar.png";
+    public static final String BACK_PATH = "battle/backs/magmar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/magmar.png";
+    public static final String CRY_PATH = "sounds/cry/126.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/126.png";
 
     /**
      * Create a Magmar
      */
     public Magmar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -125,5 +131,14 @@ public class Magmar extends Pokemon {
         tmSkills.add(TmId.SLEEP_TALK.getValue());
         tmSkills.add(TmId.SUBSTITUTE.getValue());
         tmSkills.add(TmId.CONFIDE.getValue());
+    }
+
+    /**
+     * Evolve into Magmortar when a Fire Stone is used on Magmar
+     * @return Magmortar's id
+     */
+    @Override
+    public int getFireStoneEvolutionId() {
+        return PokemonId.MAGMORTAR.getValue();
     }
 }

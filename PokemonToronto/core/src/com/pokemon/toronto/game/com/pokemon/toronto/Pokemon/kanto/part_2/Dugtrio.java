@@ -18,48 +18,54 @@ import java.util.List;
 public class Dugtrio extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 51;
-    private static final String NAME = "Dugtrio";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 50;
-    private static final double WEIGHT = 33.3;
+    public static final int NUMBER = 51;
+    public static final String NAME = "Dugtrio";
+    public static final String TYPE_OF_POKEMON = "Mole";
+    public static final String DESCRIPTION = "In battle, it digs through the ground and strikes" +
+            " the unsuspecting foe from an unexpected direction.";
+    
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 50;
 
-    private static final Ability FIRST_ABILITY = new Ability.SandVeil();
-    private static final Ability SECOND_ABILITY = new Ability.ArenaTrap();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final double HEIGHT = 0.7;
+    public static final double WEIGHT = 33.3;
+
+    public static final Ability FIRST_ABILITY = new Ability.SandVeil();
+    public static final Ability SECOND_ABILITY = new Ability.ArenaTrap();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 120;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 120;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/dugtrio.png";
-    private static final String BACK_PATH = "battle/backs/dugtrio.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/dugtrio.png";
-    private static final String CRY_PATH = "sounds/cry/051.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/051.png";
+    public static final String ICON_PATH = "pokemonSprites/dugtrio.png";
+    public static final String BACK_PATH = "battle/backs/dugtrio.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/dugtrio.png";
+    public static final String CRY_PATH = "sounds/cry/051.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/051.png";
 
     /**
      * Create a Dugtrio
      */
     public Dugtrio() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

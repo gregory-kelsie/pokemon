@@ -19,47 +19,52 @@ import java.util.List;
 public class Omanyte extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 138;
-    private static final String NAME = "Omanyte";
-    private static final int BASE_EXP = 120;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 7.5;
+    public static final int NUMBER = 138;
+    public static final String NAME = "Omanyte";
+    public static final String TYPE_OF_POKEMON = "Spiral";
+    public static final String DESCRIPTION = "A prehistoric Pokémon that lived in the" +
+            " primordial sea, it swims by twisting its 10 tentacles about.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.ShellArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final int BASE_EXP = 120;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 7.5;
+    public static final double HEIGHT = 0.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.ShellArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 100;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 35;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 100;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 35;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/omanyte.png";
-    private static final String BACK_PATH = "battle/backs/omanyte.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/omanyte.png";
-    private static final String CRY_PATH = "sounds/cry/138.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/138.png";
+    public static final String ICON_PATH = "pokemonSprites/omanyte.png";
+    public static final String BACK_PATH = "battle/backs/omanyte.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/omanyte.png";
+    public static final String CRY_PATH = "sounds/cry/138.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/138.png";
 
     /**
      * Create a Omanyte
      */
     public Omanyte() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

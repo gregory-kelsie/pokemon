@@ -19,40 +19,52 @@ import java.util.List;
 public class Sandshrew extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 27;
-    private static final String NAME = "Sandshrew";
-    private static final int BASE_EXP = 93;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 12;
+    public static final int NUMBER = 27;
+    public static final String NAME = "Sandshrew";
+    public static final String TYPE_OF_POKEMON = "Mouse";
+    public static final String DESCRIPTION = "It burrows and lives underground. If threatened," +
+            " it curls itself up into a ball for protection.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SandVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SandRush();
+    public static final int BASE_EXP = 93;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.6;
+    public static final double WEIGHT = 12;
+
+    public static final Ability FIRST_ABILITY = new Ability.SandVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SandRush();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 20;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 20;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sandshrew.png";
-    private static final String BACK_PATH = "battle/backs/sandshrew.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sandshrew.png";
-    private static final String CRY_PATH = "sounds/cry/027.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/027.png";
+    public static final String ICON_PATH = "pokemonSprites/sandshrew.png";
+    public static final String BACK_PATH = "battle/backs/sandshrew.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sandshrew.png";
+    public static final String CRY_PATH = "sounds/cry/027.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/027.png";
+
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Sandshrew
      */
     public Sandshrew() {
-        super(NUMBER, NAME, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

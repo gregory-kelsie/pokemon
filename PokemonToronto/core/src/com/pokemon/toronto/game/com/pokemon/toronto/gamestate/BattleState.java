@@ -18,6 +18,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranima
 import com.pokemon.toronto.game.com.pokemon.toronto.animation.playertraineranimation.TrainerAnimation;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleClickController;
 import com.pokemon.toronto.game.com.pokemon.toronto.battle.BattleTextures;
+import com.pokemon.toronto.game.com.pokemon.toronto.battle.SaveThread;
 import com.pokemon.toronto.game.com.pokemon.toronto.box.BoxLocation;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonFactory;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -32,7 +33,7 @@ import java.util.List;
 /**
  * Created by Gregory on 6/15/2017.
  */
-public class BattleState extends GameState implements BattleInterface {
+public class BattleState extends GameState implements BattleInterface, LoadingInterface {
 
     public final int WILD_BATTLE = 0;
     private final int TRAINER_BATTLE = 1;
@@ -92,6 +93,12 @@ public class BattleState extends GameState implements BattleInterface {
     private Trainer trainer;
     private int currentEnemyPosition;
 
+    private boolean loading;
+    private double spinElapse; //Spinning pokeball time
+    private float spinRotation;
+
+    private SaveThread saveThread;
+
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
         init(gsm, bgm);
         this.enemyPokemon = enemyPokemon;
@@ -138,6 +145,9 @@ public class BattleState extends GameState implements BattleInterface {
 
     private void init(GameStateManager gsm, Music bgm) {
         this.gsm = gsm;
+        loading = false;
+        spinElapse = 0;
+        spinRotation = 0;
         enemyParty = new ArrayList<Pokemon>();
 
         justFinishedPta = false;
@@ -158,6 +168,7 @@ public class BattleState extends GameState implements BattleInterface {
         battling = false;
         controller = new BattleClickController(this);
         moveSelectText = "What will " + currentPokemon.getName() + " do?";
+        saveThread = null;
     }
 
     public List<Pokemon> getParty() {
@@ -193,6 +204,13 @@ public class BattleState extends GameState implements BattleInterface {
         renderTextPanel(batch);
         //Render bottom panel
         renderBottomScreen(batch);
+        if (loading) {
+            //batch.draw(battleTextures.getLoadingPokeball(), 906, 1746);
+            battleTextures.getLoadingPokeball().draw(batch);
+            /*batch.draw(battleTextures.getLoadingPokeball(), 906, 1746, 0,
+                    0, 138, 138, 1, 1, spinRotation,
+                    0, 0, 138, 138, false, false);*/
+        }
     }
 
     private void renderBattleScreen(SpriteBatch batch) {
@@ -615,58 +633,127 @@ public class BattleState extends GameState implements BattleInterface {
         return false;
     }
 
-
-
-    @Override
-    public void update(double dt) {
-        if (bgm.getPosition() >= 113.979f) {
-            bgm.setPosition(12.889f);
+    public void finishLoading() {
+        Gdx.app.log("finxig", "gg");
+        //gsm.setState(nextState);
+        gsm.getParty().get(currentPokemonPosition).resetBattleVariables();
+        List<Pokemon> preEvolution = new ArrayList<Pokemon>();
+        List<Pokemon> evolvedPokemon = new ArrayList<Pokemon>();
+        PokemonFactory pf = new PokemonFactory();
+        List<Integer> partyIndicies = new ArrayList<Integer>();
+        for (int i = 0; i < gsm.getParty().size(); i++) {
+            if (gsm.getParty().get(i).hasJustLeveled() &&
+                    gsm.getParty().get(i).getLevelUpEvolutionId() != -1) {
+                preEvolution.add(gsm.getParty().get(i));
+                Pokemon temp = pf.createPokemon(gsm.getParty().get(i)
+                        .getLevelUpEvolutionId(), gsm.getParty().get(i));
+                Gdx.app.log("evolvename:", temp.getName());
+                partyIndicies.add(new Integer(i));
+                evolvedPokemon.add(temp);
+                gsm.getParty().set(i, temp);
+            }
+            gsm.getParty().get(i).resetJustLeveled();
         }
-        if (battleType == WILD_BATTLE && !pta.isFinished()) {
-           pta.update(dt);
-        } else if (battleType == TRAINER_BATTLE && !trainerAnimation.isFinished()) {
-            trainerAnimation.update(dt);
-        }
-        else {
-            if (battleUpdater.started()) {
-                battleUpdater.update(dt);
-                if (isWaitingForNextPokemon()) {
-                    panelPosition = POKEMON_SELECT_PANEL;
+        if (battleType != WILD_BATTLE && trainer.isElite4Member()) {
+            if (trainer.getBadgeType() == Trainer.Badge.KANTO_LORELEI) {
+                gsm.setState(new EliteFourSpeechState(gsm, Trainer.Badge.KANTO_BRUNO));
+            } else if (trainer.getBadgeType() == Trainer.Badge.KANTO_BRUNO) {
+                gsm.setState(new EliteFourSpeechState(gsm, Trainer.Badge.KANTO_AGATHA));
+            } else if (trainer.getBadgeType() == Trainer.Badge.KANTO_AGATHA) {
+                gsm.setState(new EliteFourSpeechState(gsm, Trainer.Badge.KANTO_LANCE));
+            } else if (trainer.getBadgeType() == Trainer.Badge.KANTO_LANCE) {
+                gsm.setState(new EliteFourSpeechState(gsm, Trainer.Badge.KANTO_CHAMPION));
+            } else if (trainer.getBadgeType() == Trainer.Badge.KANTO_CHAMPION) {
+                gsm.playBgm();
+                gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
+            }
+        } else {
+            if (region != -1) {
+                if (evolvedPokemon.size() > 0) {
+                    gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon,
+                            partyIndicies, startingRoute, region, isRoute));
+                } else {
+                    gsm.playBgm();
+                    gsm.setState(new SimulatorState(gsm, region, startingRoute));
+                   /** gsm.setState(new LoadingState(gsm, LoadingState.SIMULATOR_STATE, region,
+                            startingRoute)); */
                 }
-                if (isWaitingForMoveDeletion()) {
-                    panelPosition = BATTLE_PANEL;
-                }
-
             } else {
-
-                if (battleUpdater.caughtThePokemon()) {
-                    if (!gsm.isPartyFull()) {
-                        gsm.getParty().add(enemyPokemon);
-                    } else if (!gsm.isBoxFull()) {
-                        enemyPokemon.fullyHeal();
-                        List<BoxLocation> updatePokemon = new ArrayList<BoxLocation>();
-                        updatePokemon.add(gsm.getPC().depositCaughtPokemon(enemyPokemon));
-                        gsm.updateBoxes(updatePokemon);
-                        //TODO: Save the caught pokemon to the appropriate box in db
-                    }
-                    if (region != -1) {
-                        gsm.saveParty();
-                        gsm.setState(new SimulatorState(gsm, region, startingRoute));
-                        gsm.playBgm();
-                    } else {
-                        gsm.saveParty();
-                        gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
-                        gsm.playBgm();
-                    }
-                    dispose();
+                if (evolvedPokemon.size() > 0) {
+                    gsm.setState(new EvolutionState(gsm, preEvolution, evolvedPokemon, partyIndicies));
+                } else {
+                    gsm.playBgm();
+                    gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
                 }
             }
         }
+        dispose();
+    }
 
-        if (MyInput.clicked()) {
-            int x = MyInput.getX();
-            int y = MyInput.getY();
-            controller.clicked(x, y);
+    @Override
+    public void update(double dt) {
+        if (!loading) {
+            if (bgm.getPosition() >= 113.979f) {
+                bgm.setPosition(12.889f);
+            }
+            if (battleType == WILD_BATTLE && !pta.isFinished()) {
+                pta.update(dt);
+            } else if (battleType == TRAINER_BATTLE && !trainerAnimation.isFinished()) {
+                trainerAnimation.update(dt);
+            } else {
+                if (battleUpdater.started()) {
+                    battleUpdater.update(dt);
+                    if (isWaitingForNextPokemon()) {
+                        panelPosition = POKEMON_SELECT_PANEL;
+                    }
+                    if (isWaitingForMoveDeletion()) {
+                        panelPosition = BATTLE_PANEL;
+                    }
+
+                } else {
+
+                    if (battleUpdater.caughtThePokemon()) {
+                        if (!gsm.isPartyFull()) {
+                            gsm.getParty().add(enemyPokemon);
+                        } else if (!gsm.isBoxFull()) {
+                            enemyPokemon.fullyHeal();
+                            List<BoxLocation> updatePokemon = new ArrayList<BoxLocation>();
+                            updatePokemon.add(gsm.getPC().depositCaughtPokemon(enemyPokemon));
+                            gsm.updateBoxes(updatePokemon);
+                            //TODO: Save the caught pokemon to the appropriate box in db
+                        }
+                        if (region != -1) {
+                            gsm.saveParty();
+                            gsm.setState(new SimulatorState(gsm, region, startingRoute));
+                            gsm.playBgm();
+                        } else {
+                            gsm.saveParty();
+                            gsm.setState(new LoadingState(gsm, LoadingState.HUB_STATE));
+                            gsm.playBgm();
+                        }
+                        dispose();
+                    }
+                }
+            }
+
+            if (MyInput.clicked()) {
+                int x = MyInput.getX();
+                int y = MyInput.getY();
+                controller.clicked(x, y);
+            }
+        } else {
+            spinElapse += dt;
+            if (spinElapse >= 0.008) {
+                spinRotation += 1;
+                if (spinRotation >= 360) {
+                    spinRotation = 0;
+                }
+                battleTextures.getLoadingPokeball().rotate(-5);
+                spinElapse = 0;
+            }
+            if (saveThread != null && saveThread.isFinished()) {
+                finishLoading();
+            }
         }
     }
 
@@ -696,6 +783,17 @@ public class BattleState extends GameState implements BattleInterface {
         battleUpdater.finishedFaintSwitch(currentPokemon);
     }
 
+    public void startLoading() {
+        Gdx.app.log("startloading", "strted");
+        loading = true;
+        saveThread = new SaveThread(gsm.getPlayer().getId(), gsm.getPlayer().getKantoBadges(),
+                gsm.getPlayer().getJohtoBadges(), gsm.getParty(), gsm.getPlayer(), region, victoryBgm, this, currentPokemonPosition,
+        battleType, trainer, startingRoute, isRoute);
+        Thread th = new Thread(saveThread);
+        th.start();
+        //finishLoading();
+
+    }
     public void endBattle() {
         victoryBgm.stop();
         gsm.getParty().get(currentPokemonPosition).resetBattleVariables();

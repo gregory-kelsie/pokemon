@@ -17,47 +17,51 @@ public class Skarmory extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 227;
-    private static final String NAME = "Skarmory";
-    private static final int BASE_EXP = 163;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 25;
-    private static final double WEIGHT = 50.5;
+    public static final int NUMBER = 227;
+    public static final String NAME = "Skarmory";
+    public static final String TYPE_OF_POKEMON = "Armor Bird";
+    public static final String DESCRIPTION = "Despite being clad entirely in iron-hard armor," +
+            " it flies at speeds over 180 mph.";
+    public static final int BASE_EXP = 163;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 25;
+    public static final double WEIGHT = 50.5;
+    public static final double HEIGHT = 1.7;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.Sturdy();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.Sturdy();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 140;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 140;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/skarmory.png";
-    private static final String BACK_PATH = "battle/backs/johto/skarmory.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/skarmory.png";
-    private static final String CRY_PATH = "sounds/cry/227.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/skarmory.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/skarmory.png";
+    public static final String BACK_PATH = "battle/backs/johto/skarmory.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/skarmory.png";
+    public static final String CRY_PATH = "sounds/cry/227.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/skarmory.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.STEEL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.STEEL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a skarmory
      */
     public Skarmory() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

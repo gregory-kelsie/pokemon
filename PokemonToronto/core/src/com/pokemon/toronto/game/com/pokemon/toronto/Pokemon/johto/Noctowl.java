@@ -17,47 +17,51 @@ import java.util.List;
 public class Noctowl extends Pokemon {
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 164;
-    private static final String NAME = "Noctowl";
-    private static final int BASE_EXP = 162;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 40.8;
+    public static final int NUMBER = 164;
+    public static final String NAME = "Noctowl";
+    public static final String TYPE_OF_POKEMON = "Owl";
+    public static final String DESCRIPTION = "Its eyes are specially developed to enable it to" +
+            " see clearly even in murky darkness and minimal light.";
+    public static final int BASE_EXP = 162;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 40.8;
+    public static final double HEIGHT = 1.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Insomnia();
-    private static final Ability SECOND_ABILITY = new Ability.KeenEye();
-    private static final Ability HIDDEN_ABILITY = new Ability.TintedLens();
+    public static final Ability FIRST_ABILITY = new Ability.Insomnia();
+    public static final Ability SECOND_ABILITY = new Ability.KeenEye();
+    public static final Ability HIDDEN_ABILITY = new Ability.TintedLens();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 86;
-    private static final int BASE_SPECIAL_DEFENSE = 96;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 86;
+    public static final int BASE_SPECIAL_DEFENSE = 96;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/noctowl.png";
-    private static final String BACK_PATH = "battle/backs/johto/noctowl.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/noctowl.png";
-    private static final String CRY_PATH = "sounds/cry/164.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/noctowl.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/noctowl.png";
+    public static final String BACK_PATH = "battle/backs/johto/noctowl.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/noctowl.png";
+    public static final String CRY_PATH = "sounds/cry/164.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/noctowl.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a noctowl
      */
     public Noctowl() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

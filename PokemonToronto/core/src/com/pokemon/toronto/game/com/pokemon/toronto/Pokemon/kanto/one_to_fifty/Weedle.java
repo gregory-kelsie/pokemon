@@ -19,41 +19,52 @@ public class Weedle extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 13;
-    private static final String NAME = "Weedle";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 3.2;
+    public static final int NUMBER = 13;
+    public static final String NAME = "Weedle";
+    public static final String TYPE_OF_POKEMON = "Hairy";
+    public static final String DESCRIPTION = "Its poison stinger is very powerful. " +
+            "Its bright-colored body is intended to warn off its enemies.";
 
-    private static final Ability FIRST_ABILITY = new Ability.ShieldDust();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.RunAway();
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
 
+    public static final double HEIGHT = 0.3;
+    public static final double WEIGHT = 3.2;
+
+    public static final Ability FIRST_ABILITY = new Ability.ShieldDust();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.RunAway();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 35;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 20;
-    private static final int BASE_SPECIAL_DEFENSE = 20;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 35;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 20;
+    public static final int BASE_SPECIAL_DEFENSE = 20;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/weedle/weedle.png";
-    private static final String BACK_PATH = "battle/backs/weedle.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/weedle.png";
-    private static final String CRY_PATH = "sounds/cry/013.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/013.png";
+    public static final String ICON_PATH = "pokemonSprites/weedle/weedle.png";
+    public static final String BACK_PATH = "battle/backs/weedle.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/weedle.png";
+    public static final String CRY_PATH = "sounds/cry/013.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/013.png";
+
+    public static final Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.POISON;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Weedle
      */
     public Weedle() {
-        super(NUMBER, NAME, Type.BUG, Type.POISON, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

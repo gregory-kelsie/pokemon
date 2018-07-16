@@ -34,9 +34,11 @@ public class RouteStateModel {
             Route.POKEMON_MANSION_1F, Route.POKEMON_MANSION_B1F, Route.SEAFOAM_B2F, Route.SEAFOAM_B4F,
             Route.ROUTE_23, Route.VICTORY_ROAD_1F, Route.VICTORY_ROAD_2F};
 
-    private final int[] johtoRouteIds = {Route.ROUTE_29, Route.ROUTE_46, Route.ROUTE_30,
+    private final int[] johtoRouteIds = {Route.TEST_ROUTE, Route.SWAMP, Route.AFRICA, Route.JURASSIC_PARK, Route.ROUTE_29, Route.ROUTE_46, Route.ROUTE_30,
             Route.DARK_CAVE_VIOLET, Route.SPROUT_TOWER, Route.ROUTE_32, Route.RUINS_OF_ALPH,
-            Route.UNION_CAVE_1F};
+            Route.UNION_CAVE_1F, Route.UNION_CAVE_B2F, Route.ROUTE_34, Route.ILEX_FOREST,
+            Route.ROUTE_35, Route.NATIONAL_PARK, Route.NATIONAL_PARK_2, Route.ROUTE_36, Route.ROUTE_37,
+    Route.ROUTE_38, Route.ROUTE_40, Route.ROUTE_41, Route.ROUTE_47, Route.CLIFF_CAVE, Route.ROUTE_48};
 
     public RouteStateModel() {
         region = KANTO;

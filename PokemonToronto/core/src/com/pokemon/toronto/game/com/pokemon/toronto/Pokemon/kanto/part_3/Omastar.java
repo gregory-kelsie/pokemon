@@ -18,47 +18,52 @@ import java.util.List;
 public class Omastar extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 139;
-    private static final String NAME = "Omastar";
-    private static final int BASE_EXP = 199;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 35;
+    public static final int NUMBER = 139;
+    public static final String NAME = "Omastar";
+    public static final String TYPE_OF_POKEMON = "Spiral";
+    public static final String DESCRIPTION = "Its tentacles are highly developed as if they" +
+            " are hands and feet. As soon as it ensnares prey, it bites.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.ShellArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final int BASE_EXP = 199;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 35;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.ShellArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 125;
-    private static final int BASE_SPECIAL_ATTACK = 115;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 125;
+    public static final int BASE_SPECIAL_ATTACK = 115;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 55;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/omastar.png";
-    private static final String BACK_PATH = "battle/backs/omastar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/omastar.png";
-    private static final String CRY_PATH = "sounds/cry/139.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/139.png";
+    public static final String ICON_PATH = "pokemonSprites/omastar.png";
+    public static final String BACK_PATH = "battle/backs/omastar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/omastar.png";
+    public static final String CRY_PATH = "sounds/cry/139.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/139.png";
 
     /**
      * Create a Omastar
      */
     public Omastar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

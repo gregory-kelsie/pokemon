@@ -19,48 +19,54 @@ import java.util.List;
 public class Kadabra extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 64;
-    private static final String NAME = "Kadabra";
-    private static final int BASE_EXP = 140;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 100;
-    private static final double WEIGHT = 56.5;
+    public static final int NUMBER = 64;
+    public static final String NAME = "Kadabra";
+    public static final String TYPE_OF_POKEMON = "Psi";
+    public static final String DESCRIPTION = "When it uses its psychic power, it emits strong" +
+            " alpha waves that can ruin precision devices.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Synchronize();
-    private static final Ability SECOND_ABILITY = new Ability.InnerFocus();
-    private static final Ability HIDDEN_ABILITY = new Ability.MagicGuard();
+    public static final int BASE_EXP = 140;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 100;
+
+    public static final double HEIGHT = 1.3;
+    public static final double WEIGHT = 56.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.Synchronize();
+    public static final Ability SECOND_ABILITY = new Ability.InnerFocus();
+    public static final Ability HIDDEN_ABILITY = new Ability.MagicGuard();
 
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 35;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 120;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 105;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 35;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 120;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 105;
 
     //Typing
-    private static final Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kadabra.png";
-    private static final String BACK_PATH = "battle/backs/kadabra.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kadabra.png";
-    private static final String CRY_PATH = "sounds/cry/064.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/064.png";
+    public static final String ICON_PATH = "pokemonSprites/kadabra.png";
+    public static final String BACK_PATH = "battle/backs/kadabra.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kadabra.png";
+    public static final String CRY_PATH = "sounds/cry/064.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/064.png";
 
     /**
      * Create a Kadabra.
      */
     public Kadabra() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

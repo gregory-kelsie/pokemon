@@ -18,47 +18,52 @@ public class Togepi extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 175;
-    private static final String NAME = "Togepi";
-    private static final int BASE_EXP = 49;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 1.5;
+    public static final int NUMBER = 175;
+    public static final String NAME = "Togepi";
+    public static final String TYPE_OF_POKEMON = "Spike Ball";
+    public static final String DESCRIPTION = "It transforms the kindness and joy of others" +
+            " into happiness, which it stores in its shell.";
+    public static final int BASE_EXP = 49;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 190;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = new Ability.SereneGrace();
-    private static final Ability HIDDEN_ABILITY = new Ability.SuperLuck();
+    public static final double WEIGHT = 1.5;
+    public static final double HEIGHT = 0.3;
+
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = new Ability.SereneGrace();
+    public static final Ability HIDDEN_ABILITY = new Ability.SuperLuck();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 20;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 20;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/togepi.png";
-    private static final String BACK_PATH = "battle/backs/johto/togepi.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/togepi.png";
-    private static final String CRY_PATH = "sounds/cry/175.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/togepi.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/togepi.png";
+    public static final String BACK_PATH = "battle/backs/johto/togepi.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/togepi.png";
+    public static final String CRY_PATH = "sounds/cry/175.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/togepi.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a togepi
      */
     public Togepi() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

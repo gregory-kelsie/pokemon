@@ -17,47 +17,51 @@ public class Blissey extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 242;
-    private static final String NAME = "Blissey";
-    private static final int BASE_EXP = 608;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 46.8;
+    public static final int NUMBER = 242;
+    public static final String NAME = "Blissey";
+    public static final String TYPE_OF_POKEMON = "Happiness";
+    public static final String DESCRIPTION = "The eggs it lays are filled with happiness. " +
+            "Eating even one bite will bring a smile to anyone.";
+    public static final int BASE_EXP = 608;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 46.8;
+    public static final double HEIGHT = 1.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.NaturalCure();
-    private static final Ability SECOND_ABILITY = new Ability.SereneGrace();
-    private static final Ability HIDDEN_ABILITY = new Ability.Healer();
+    public static final Ability FIRST_ABILITY = new Ability.NaturalCure();
+    public static final Ability SECOND_ABILITY = new Ability.SereneGrace();
+    public static final Ability HIDDEN_ABILITY = new Ability.Healer();
 
     //Base Stats
-    private static final int BASE_HEALTH = 255;
-    private static final int BASE_ATTACK = 10;
-    private static final int BASE_DEFENSE = 10;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 135;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 255;
+    public static final int BASE_ATTACK = 10;
+    public static final int BASE_DEFENSE = 10;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 135;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/blissey.png";
-    private static final String BACK_PATH = "battle/backs/johto/blissey.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/blissey.png";
-    private static final String CRY_PATH = "sounds/cry/242.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/blissey.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/blissey.png";
+    public static final String BACK_PATH = "battle/backs/johto/blissey.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/blissey.png";
+    public static final String CRY_PATH = "sounds/cry/242.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/blissey.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a blissey
      */
     public Blissey() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

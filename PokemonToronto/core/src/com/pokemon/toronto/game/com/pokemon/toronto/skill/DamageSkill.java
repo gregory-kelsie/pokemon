@@ -511,6 +511,12 @@ public abstract class DamageSkill extends Skill {
      */
     protected double getPhysicalAttack(Pokemon user, boolean hasCrit) {
         double atkStat = user.getAttackStat();
+
+        //Double attack if the Pokemon has the ability huge power or pure power
+        if (user.getBattleAbility().getId() == AbilityId.PURE_POWER ||
+                user.getBattleAbility().getId() == AbilityId.HUGE_POWER) {
+            atkStat *= 2;
+        }
         //Attack stage is above the normal
         if (user.getAttackStage() >= 0) {
             atkStat = atkStat * (1 + (0.5 * user.getAttackStage()));

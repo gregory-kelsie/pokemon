@@ -18,47 +18,51 @@ public class Sunflora extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 192;
-    private static final String NAME = "Sunflora";
-    private static final int BASE_EXP = 149;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 192;
+    public static final String NAME = "Sunflora";
+    public static final String TYPE_OF_POKEMON = "Sun";
+    public static final String DESCRIPTION = "It gets energy from warm sunlight and is known" +
+            " for its habit of moving in pursuit of it.";
+    public static final int BASE_EXP = 149;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 8.5;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = new Ability.SolarPower();
-    private static final Ability HIDDEN_ABILITY = new Ability.EarlyBird();
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = new Ability.SolarPower();
+    public static final Ability HIDDEN_ABILITY = new Ability.EarlyBird();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/sunflora.png";
-    private static final String BACK_PATH = "battle/backs/johto/sunflora.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/sunflora.png";
-    private static final String CRY_PATH = "sounds/cry/192.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/sunflora.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/sunflora.png";
+    public static final String BACK_PATH = "battle/backs/johto/sunflora.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/sunflora.png";
+    public static final String CRY_PATH = "sounds/cry/192.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/sunflora.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a sunflora
      */
     public Sunflora() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

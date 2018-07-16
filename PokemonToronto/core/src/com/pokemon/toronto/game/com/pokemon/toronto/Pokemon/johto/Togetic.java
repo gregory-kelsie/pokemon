@@ -18,47 +18,51 @@ public class Togetic extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 176;
-    private static final String NAME = "Togetic";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 3.2;
+    public static final int NUMBER = 176;
+    public static final String NAME = "Togetic";
+    public static final String TYPE_OF_POKEMON = "Happiness";
+    public static final String DESCRIPTION = "To share its happiness, it flies around the" +
+            " world seeking kind- hearted people.";
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 3.2;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = new Ability.SereneGrace();
-    private static final Ability HIDDEN_ABILITY = new Ability.SuperLuck();
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = new Ability.SereneGrace();
+    public static final Ability HIDDEN_ABILITY = new Ability.SuperLuck();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 105;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 105;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/togetic.png";
-    private static final String BACK_PATH = "battle/backs/johto/togetic.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/togetic.png";
-    private static final String CRY_PATH = "sounds/cry/176.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/togetic.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/togetic.png";
+    public static final String BACK_PATH = "battle/backs/johto/togetic.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/togetic.png";
+    public static final String CRY_PATH = "sounds/cry/176.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/togetic.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a togetic
      */
     public Togetic() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -148,4 +152,12 @@ public class Togetic extends Pokemon {
         }
     }
 
+    /**
+     * Evolve into Togekiss when a Shiny Stone is used on Togetic
+     * @return Togekiss' id
+     */
+    @Override
+    public int getShinyStoneEvolutionId() {
+        return PokemonId.TOGEKISS.getValue();
+    }
 }

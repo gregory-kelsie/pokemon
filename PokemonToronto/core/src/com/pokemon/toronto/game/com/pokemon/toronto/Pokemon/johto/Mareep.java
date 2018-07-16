@@ -18,47 +18,51 @@ public class Mareep extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 179;
-    private static final String NAME = "Mareep";
-    private static final int BASE_EXP = 56;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 235;
-    private static final double WEIGHT = 7.8;
+    public static final int NUMBER = 179;
+    public static final String NAME = "Mareep";
+    public static final String TYPE_OF_POKEMON = "Wool";
+    public static final String DESCRIPTION = "Its fluffy coat swells to double when static" +
+            " electricity builds up. Touching it can be shocking.";
+    public static final int BASE_EXP = 56;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 235;
+    public static final double WEIGHT = 7.8;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Static();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Plus();
+    public static final Ability FIRST_ABILITY = new Ability.Static();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Plus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 35;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 35;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/mareep.png";
-    private static final String BACK_PATH = "battle/backs/johto/mareep.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/mareep.png";
-    private static final String CRY_PATH = "sounds/cry/179.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/mareep.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/mareep.png";
+    public static final String BACK_PATH = "battle/backs/johto/mareep.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/mareep.png";
+    public static final String CRY_PATH = "sounds/cry/179.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/mareep.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a mareep
      */
     public Mareep() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

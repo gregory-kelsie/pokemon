@@ -18,47 +18,52 @@ import java.util.List;
 public class Exeggutor extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 103;
-    private static final String NAME = "Exeggutor";
-    private static final int BASE_EXP = 212;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 120;
+    public static final int NUMBER = 103;
+    public static final String NAME = "Exeggutor";
+    public static final String TYPE_OF_POKEMON = "Coconut";
+    public static final String DESCRIPTION = "Its three heads think independently. However," +
+            " they are friendly and never appear to squabble.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Harvest();
+    public static final int BASE_EXP = 212;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 120;
+    public static final double HEIGHT = 2;
+
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Harvest();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 55;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/exeggutor.png";
-    private static final String BACK_PATH = "battle/backs/exeggutor.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/exeggutor.png";
-    private static final String CRY_PATH = "sounds/cry/103.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/103.png";
+    public static final String ICON_PATH = "pokemonSprites/exeggutor.png";
+    public static final String BACK_PATH = "battle/backs/exeggutor.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/exeggutor.png";
+    public static final String CRY_PATH = "sounds/cry/103.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/103.png";
 
     /**
      * Create a Exeggutor
      */
     public Exeggutor() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,40 +17,52 @@ import java.util.List;
 public class Clefable extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 36;
-    private static final String NAME = "Clefable";
-    private static final int BASE_EXP = 129;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 25;
-    private static final double WEIGHT = 40;
+    public static final int NUMBER = 36;
+    public static final String NAME = "Clefable";
+    public static final String TYPE_OF_POKEMON = "Fairy";
+    public static final String DESCRIPTION = "Its hearing is so acute it can hear a pin drop over" +
+            " half a mile away. It lives on quiet mountains.";
 
-    private static final Ability FIRST_ABILITY = new Ability.CuteCharm();
-    private static final Ability SECOND_ABILITY = new Ability.MagicGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unaware();
+    public static final int BASE_EXP = 129;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 25;
+
+    public static final double HEIGHT = 1.3;
+    public static final double WEIGHT = 40;
+
+    public static final Ability FIRST_ABILITY = new Ability.CuteCharm();
+    public static final Ability SECOND_ABILITY = new Ability.MagicGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unaware();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 73;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 73;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/clefable.png";
-    private static final String BACK_PATH = "battle/backs/clefable.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/clefable.png";
-    private static final String CRY_PATH = "sounds/cry/036.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/036.png";
+    public static final String ICON_PATH = "pokemonSprites/clefable.png";
+    public static final String BACK_PATH = "battle/backs/clefable.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/clefable.png";
+    public static final String CRY_PATH = "sounds/cry/036.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/036.png";
+
+    public static final Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a Clefable
      */
     public Clefable() {
-        super(NUMBER, NAME, Pokemon.Type.FAIRY, Pokemon.Type.NONE, ExpType.FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -20,40 +20,52 @@ public class NidoranF extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 29;
-    private static final String NAME = "Nidoran (f)";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 235;
-    private static final double WEIGHT = 7;
+    public static final int NUMBER = 29;
+    public static final String NAME = "Nidoran (f)";
+    public static final String TYPE_OF_POKEMON = "Poison Pin";
+    public static final String DESCRIPTION = "Although small, its venomous barbs render this" +
+            " Pokémon dangerous. The female has smaller horns.";
 
-    private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
-    private static final Ability SECOND_ABILITY = new Ability.Rivalry();
-    private static final Ability HIDDEN_ABILITY = new Ability.Hustle();
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 235;
+
+    public static final double HEIGHT = 0.4;
+    public static final double WEIGHT = 7;
+
+    public static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
+    public static final Ability SECOND_ABILITY = new Ability.Rivalry();
+    public static final Ability HIDDEN_ABILITY = new Ability.Hustle();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 47;
-    private static final int BASE_DEFENSE = 52;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 41;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 47;
+    public static final int BASE_DEFENSE = 52;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 41;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/nidoran-f/nidoran-f.png";
-    private static final String BACK_PATH = "battle/backs/nidoran-f.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/nidoran-f.png";
-    private static final String CRY_PATH = "sounds/cry/029.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/029.png";
+    public static final String ICON_PATH = "pokemonSprites/nidoran-f/nidoran-f.png";
+    public static final String BACK_PATH = "battle/backs/nidoran-f.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/nidoran-f.png";
+    public static final String CRY_PATH = "sounds/cry/029.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/029.png";
+
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Nidoran f
      */
     public NidoranF() {
-        super(NUMBER, NAME, Type.POISON, Type.NONE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

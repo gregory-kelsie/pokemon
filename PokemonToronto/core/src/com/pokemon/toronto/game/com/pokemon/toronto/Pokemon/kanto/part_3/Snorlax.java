@@ -18,47 +18,51 @@ import java.util.List;
 public class Snorlax extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 143;
-    private static final String NAME = "Snorlax";
-    private static final int BASE_EXP = 154;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 25;
-    private static final double WEIGHT = 460;
+    public static final int NUMBER = 143;
+    public static final String NAME = "Snorlax";
+    public static final String TYPE_OF_POKEMON = "Sleeping";
+    public static final String DESCRIPTION = "It is not satisfied unless it eats over 880" +
+            " pounds of food every day. When it is done eating, it goes promptly to sleep.";
+    public static final int BASE_EXP = 154;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 25;
+    public static final double WEIGHT = 460;
+    public static final double HEIGHT = 2.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Immunity();
-    private static final Ability SECOND_ABILITY = new Ability.ThickFat();
-    private static final Ability HIDDEN_ABILITY = new Ability.Gluttony();
+    public static final Ability FIRST_ABILITY = new Ability.Immunity();
+    public static final Ability SECOND_ABILITY = new Ability.ThickFat();
+    public static final Ability HIDDEN_ABILITY = new Ability.Gluttony();
 
     //Base Stats
-    private static final int BASE_HEALTH = 160;
-    private static final int BASE_ATTACK = 110;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 160;
+    public static final int BASE_ATTACK = 110;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 30;
 
     //Typing
-    private static final Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/snorlax.png";
-    private static final String BACK_PATH = "battle/backs/snorlax.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/snorlax.png";
-    private static final String CRY_PATH = "sounds/cry/143.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/143.png";
+    public static final String ICON_PATH = "pokemonSprites/snorlax.png";
+    public static final String BACK_PATH = "battle/backs/snorlax.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/snorlax.png";
+    public static final String CRY_PATH = "sounds/cry/143.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/143.png";
 
     /**
      * Create a Snorlax
      */
     public Snorlax() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

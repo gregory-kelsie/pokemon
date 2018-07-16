@@ -242,6 +242,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.Magnitude;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.MudBomb;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.MudShot;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.MudSlap;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.PrecipiceBlades;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandAttack;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.SandTomb;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Ground.ShoreUp;
@@ -301,10 +302,13 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.HeartStamp;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Hypnosis;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Kinesis;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.LightScreen;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.LusterPurge;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Meditate;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.MistBall;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Psybeam;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Psychic;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.PsychicFangs;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.PsychoBoost;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.PsychoCut;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.PsychoShift;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Psychic.Psyshock;
@@ -365,6 +369,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.HydroPump;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Liquidation;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.MuddyWater;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Octazooka;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.OriginPulse;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.RainDance;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.RazorShell;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Water.Scald;
@@ -908,6 +913,11 @@ public class SkillFactory {
     public static final int PURSUIT = 503;
     public static final int REVELATION_DANCE = 504;
     public static final int FIRST_IMPRESSION = 505;
+    public static final int MIST_BALL = 506;
+    public static final int LUSTER_PURGE = 507;
+    public static final int ORIGIN_PULSE = 508;
+    public static final int PRECIPICE_BLADES = 509;
+    public static final int PSYCHO_BOOST = 510;
 
     public SkillFactory() {
 
@@ -1931,6 +1941,16 @@ public class SkillFactory {
             return new RevelationDance();
         } else if (skillId == FIRST_IMPRESSION) {
             return new FirstImpression();
+        } else if (skillId == MIST_BALL) {
+            return new MistBall();
+        } else if (skillId == LUSTER_PURGE) {
+            return new LusterPurge();
+        } else if (skillId == ORIGIN_PULSE) {
+            return new OriginPulse();
+        } else if (skillId == PRECIPICE_BLADES) {
+            return new PrecipiceBlades();
+        } else if (skillId == PSYCHO_BOOST) {
+            return new PsychoBoost();
         }
         else {
             return new Covet();

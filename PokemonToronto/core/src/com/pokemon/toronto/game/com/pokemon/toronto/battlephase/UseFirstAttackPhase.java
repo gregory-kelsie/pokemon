@@ -54,8 +54,7 @@ public class UseFirstAttackPhase extends UseAttackPhase {
                 attackerSubField, receiverSubField, true, targetsSkill);
         if (!failResult.hasFailed()) {
             if (!usedSkill.doesDamageToEnemy() || usedSkill.continuesUseThroughNoEffect() ||
-                    (usedSkill.doesDamageToEnemy() && receiver.getResistances()
-                            .get(usedSkill.getType()) != 0)) {
+                    willDealDamage(usedSkill, receiver)) {
                 if (!usedSkill.targetsEnemy(attacker, pui.getField()) ||
                         usedSkill.willHitEnemy(attacker, receiver, pui.getField(),
                         attackerSubField, receiverSubField, true)) {

@@ -17,47 +17,51 @@ import java.util.List;
 public class Smoochum extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 238;
-    private static final String NAME = "Smoochum";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 6;
+    public static final int NUMBER = 238;
+    public static final String NAME = "Smoochum";
+    public static final String TYPE_OF_POKEMON = "Kiss";
+    public static final String DESCRIPTION = "It tests everything by touching with its lips," +
+            " which remember what it likes and dislikes.";
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 6;
+    public static final double HEIGHT = 0.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.Forewarn();
-    private static final Ability HIDDEN_ABILITY = new Ability.Hydration();
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.Forewarn();
+    public static final Ability HIDDEN_ABILITY = new Ability.Hydration();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 15;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 15;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 65;
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/smoochum.png";
-    private static final String BACK_PATH = "battle/backs/johto/smoochum.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johtosmoochum.png";
-    private static final String CRY_PATH = "sounds/cry/238.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/smoochum.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/smoochum.png";
+    public static final String BACK_PATH = "battle/backs/johto/smoochum.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/smoochum.png";
+    public static final String CRY_PATH = "sounds/cry/238.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/smoochum.png";
 
     /**
      * Create a smoochum
      */
     public Smoochum() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

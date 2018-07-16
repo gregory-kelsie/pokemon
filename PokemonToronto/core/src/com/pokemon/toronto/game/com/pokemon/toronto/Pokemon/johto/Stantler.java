@@ -17,47 +17,51 @@ public class Stantler extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 234;
-    private static final String NAME = "Stantler";
-    private static final int BASE_EXP = 163;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 71.2;
+    public static final int NUMBER = 234;
+    public static final String NAME = "Stantler";
+    public static final String TYPE_OF_POKEMON = "Big Horn";
+    public static final String DESCRIPTION = "Staring at its antlers creates an odd sensation" +
+            " as if one were being drawn into their centers.";
+    public static final int BASE_EXP = 163;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 71.2;
+    public static final double HEIGHT = 1.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.Frisk();
-    private static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.Frisk();
+    public static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 73;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 62;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 73;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 62;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/stantler.png";
-    private static final String BACK_PATH = "battle/backs/johto/stantler.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/stantler.png";
-    private static final String CRY_PATH = "sounds/cry/234.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/stantler.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/stantler.png";
+    public static final String BACK_PATH = "battle/backs/johto/stantler.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/stantler.png";
+    public static final String CRY_PATH = "sounds/cry/234.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/stantler.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a stantler
      */
     public Stantler() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

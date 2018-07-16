@@ -17,47 +17,51 @@ public class Porygon2 extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 233;
-    private static final String NAME = "Porygon2";
-    private static final int BASE_EXP = 180;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 32.5;
+    public static final int NUMBER = 233;
+    public static final String NAME = "Porygon2";
+    public static final String TYPE_OF_POKEMON = "Virtual";
+    public static final String DESCRIPTION = "It was upgraded to enable the exploration of" +
+            " other planets. However, it failed to measure up.";
+    public static final int BASE_EXP = 180;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 32.5;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Trace();
-    private static final Ability SECOND_ABILITY = new Ability.Download();
-    private static final Ability HIDDEN_ABILITY = new Ability.Analytic();
+    public static final Ability FIRST_ABILITY = new Ability.Trace();
+    public static final Ability SECOND_ABILITY = new Ability.Download();
+    public static final Ability HIDDEN_ABILITY = new Ability.Analytic();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/porygon2.png";
-    private static final String BACK_PATH = "battle/backs/johto/porygon2.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/porygon2.png";
-    private static final String CRY_PATH = "sounds/cry/233.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/porygon2.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/porygon2.png";
+    public static final String BACK_PATH = "battle/backs/johto/porygon2.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/porygon2.png";
+    public static final String CRY_PATH = "sounds/cry/233.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/porygon2.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a porygon2
      */
     public Porygon2() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

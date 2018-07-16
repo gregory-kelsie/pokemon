@@ -18,47 +18,51 @@ public class Remoraid extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 223;
-    private static final String NAME = "Remoraid";
-    private static final int BASE_EXP = 60;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 12;
+    public static final int NUMBER = 223;
+    public static final String NAME = "Remoraid";
+    public static final String TYPE_OF_POKEMON = "Jet";
+    public static final String DESCRIPTION = "The water they shoot from their mouths can hit" +
+            " moving prey from more than 300 feet away.";
+    public static final int BASE_EXP = 60;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 12;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moody();
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 35;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 35;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/remoraid.png";
-    private static final String BACK_PATH = "battle/backs/johto/remoraid.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/remoraid.png";
-    private static final String CRY_PATH = "sounds/cry/223.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/remoraid.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/remoraid.png";
+    public static final String BACK_PATH = "battle/backs/johto/remoraid.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/remoraid.png";
+    public static final String CRY_PATH = "sounds/cry/223.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/remoraid.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a remoraid
      */
     public Remoraid() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

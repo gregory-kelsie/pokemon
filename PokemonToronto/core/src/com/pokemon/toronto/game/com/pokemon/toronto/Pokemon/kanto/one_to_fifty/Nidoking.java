@@ -20,9 +20,14 @@ public class Nidoking extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 34;
     private static final String NAME = "Nidoking";
+    public static final String TYPE_OF_POKEMON = "Drill";
+    public static final String DESCRIPTION = "It is recognized by its rock-hard hide and its" +
+            " extended horn. Be careful with the horn, as it contains venom.";
     private static final int BASE_EXP = 195;
     private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 45;
+
+    public static final double HEIGHT = 1.4;
     private static final double WEIGHT = 62;
 
     private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
@@ -44,14 +49,20 @@ public class Nidoking extends Pokemon {
     private static final String CRY_PATH = "sounds/cry/034.wav";
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/034.png";
 
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.GROUND;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+
     /**
      * Create a Nidoking
      */
     public Nidoking() {
-        super(NUMBER, NAME, Pokemon.Type.POISON, Pokemon.Type.NONE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

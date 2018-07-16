@@ -20,41 +20,52 @@ public class Rattata extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 19;
-    private static final String NAME = "Rattata";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 3.5;
+    public static final int NUMBER = 19;
+    public static final String NAME = "Rattata";
+    public static final String TYPE_OF_POKEMON = "Mouse";
+    public static final String DESCRIPTION = "Living wherever there is food available, it" +
+            " ceaselessly scavenges for edibles the entire day.";
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.Guts();
-    private static final Ability HIDDEN_ABILITY = new Ability.Hustle();
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
 
+    public static final double HEIGHT = 0.3;
+    public static final double WEIGHT = 3.5;
 
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.Guts();
+    public static final Ability HIDDEN_ABILITY = new Ability.Hustle();
+    
     //Base Stats
-    private static final int BASE_HEALTH = 30;
-    private static final int BASE_ATTACK = 56;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 25;
-    private static final int BASE_SPECIAL_DEFENSE = 35;
-    private static final int BASE_SPEED = 72;
+    public static final int BASE_HEALTH = 30;
+    public static final int BASE_ATTACK = 56;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 25;
+    public static final int BASE_SPECIAL_DEFENSE = 35;
+    public static final int BASE_SPEED = 72;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/rattata/rattata.png";
-    private static final String BACK_PATH = "battle/backs/rattata.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/rattata.png";
-    private static final String CRY_PATH = "sounds/cry/019.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/019.png";
+    public static final String ICON_PATH = "pokemonSprites/rattata/rattata.png";
+    public static final String BACK_PATH = "battle/backs/rattata.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/rattata.png";
+    public static final String CRY_PATH = "sounds/cry/019.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/019.png";
+
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Rattata
      */
     public Rattata() {
-        super(NUMBER, NAME, Type.NORMAL, Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

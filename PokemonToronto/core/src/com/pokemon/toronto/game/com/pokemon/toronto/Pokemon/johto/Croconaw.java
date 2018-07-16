@@ -18,47 +18,51 @@ public class Croconaw extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 159;
-    private static final String NAME = "Croconaw";
-    private static final int BASE_EXP = 143;
-    private static final int[] EV_YIELD = {0, 1, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 25;
+    public static final int NUMBER = 159;
+    public static final String NAME = "Croconaw";
+    public static final String TYPE_OF_POKEMON = "Big Jaw";
+    public static final String DESCRIPTION = "Once it bites down, it won't let go until it" +
+            " loses its fangs. New fangs quickly grow into place.";
+    public static final int BASE_EXP = 143;
+    public static final int[] EV_YIELD = {0, 1, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 25;
+    public static final double HEIGHT = 1.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Torrent();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
+    public static final Ability FIRST_ABILITY = new Ability.Torrent();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 59;
-    private static final int BASE_SPECIAL_DEFENSE = 63;
-    private static final int BASE_SPEED = 58;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 59;
+    public static final int BASE_SPECIAL_DEFENSE = 63;
+    public static final int BASE_SPEED = 58;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/croconaw.png";
-    private static final String BACK_PATH = "battle/backs/johto/croconaw.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/croconaw.png";
-    private static final String CRY_PATH = "sounds/cry/159.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/croconaw.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/croconaw.png";
+    public static final String BACK_PATH = "battle/backs/johto/croconaw.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/croconaw.png";
+    public static final String CRY_PATH = "sounds/cry/159.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/croconaw.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a croconaw
      */
     public Croconaw() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

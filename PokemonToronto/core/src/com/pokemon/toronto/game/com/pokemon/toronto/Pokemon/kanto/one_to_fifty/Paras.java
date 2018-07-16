@@ -19,40 +19,52 @@ import java.util.List;
 public class Paras extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 46;
-    private static final String NAME = "Paras";
-    private static final int BASE_EXP = 70;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 5.4;
+    public static final int NUMBER = 46;
+    public static final String NAME = "Paras";
+    public static final String TYPE_OF_POKEMON = "Mushroom";
+    public static final String DESCRIPTION = "Burrows under the ground to gnaw on tree roots." +
+            " The mushrooms on its back absorb most of the nutrition.";
 
-    private static final Ability FIRST_ABILITY = new Ability.EffectSpore();
-    private static final Ability SECOND_ABILITY = new Ability.DrySkin();
-    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+    public static final int BASE_EXP = 70;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+
+    public static final double HEIGHT = 0.3;
+    public static final double WEIGHT = 5.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.EffectSpore();
+    public static final Ability SECOND_ABILITY = new Ability.DrySkin();
+    public static final Ability HIDDEN_ABILITY = new Ability.Damp();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 25;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 25;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/paras.png";
-    private static final String BACK_PATH = "battle/backs/paras.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/paras.png";
-    private static final String CRY_PATH = "sounds/cry/046.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/046.png";
+    public static final String ICON_PATH = "pokemonSprites/paras.png";
+    public static final String BACK_PATH = "battle/backs/paras.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/paras.png";
+    public static final String CRY_PATH = "sounds/cry/046.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/046.png";
+
+    public static final Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.GRASS;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Paras
      */
     public Paras() {
-        super(NUMBER, NAME, Pokemon.Type.BUG, Pokemon.Type.GRASS, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

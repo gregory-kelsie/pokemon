@@ -18,47 +18,53 @@ import java.util.List;
 public class Golduck extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 55;
-    private static final String NAME = "Golduck";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 76.6;
+    public static final int NUMBER = 55;
+    public static final String NAME = "Golduck";
+    public static final String TYPE_OF_POKEMON = "Duck";
+    public static final String DESCRIPTION = "It appears by waterways at dusk. It may use" +
+            " telekinetic powers if its forehead glows mysteriously.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Damp();
-    private static final Ability SECOND_ABILITY = new Ability.CloudNine();
-    private static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+
+    public static final double HEIGHT = 1.7;
+    public static final double WEIGHT = 76.6;
+
+    public static final Ability FIRST_ABILITY = new Ability.Damp();
+    public static final Ability SECOND_ABILITY = new Ability.CloudNine();
+    public static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 78;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 78;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 85;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/golduck.png";
-    private static final String BACK_PATH = "battle/backs/golduck.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/golduck.png";
-    private static final String CRY_PATH = "sounds/cry/055.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/055.png";
+    public static final String ICON_PATH = "pokemonSprites/golduck.png";
+    public static final String BACK_PATH = "battle/backs/golduck.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/golduck.png";
+    public static final String CRY_PATH = "sounds/cry/055.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/055.png";
 
     /**
      * Create a Golduck
      */
     public Golduck() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

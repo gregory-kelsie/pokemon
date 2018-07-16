@@ -18,47 +18,52 @@ public class Meganium extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 154;
-    private static final String NAME = "Meganium";
-    private static final int BASE_EXP = 236;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 100.5;
+    public static final int NUMBER = 154;
+    public static final String NAME = "Meganium";
+    public static final String TYPE_OF_POKEMON = "Herb";
+    public static final String DESCRIPTION = "Its breath has the fantastic ability to revive" +
+            " dead plants and flowers.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.LeafGuard();
+    public static final int BASE_EXP = 236;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 100.5;
+    public static final double HEIGHT = 1.8;
+
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.LeafGuard();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 100;
-    private static final int BASE_SPECIAL_ATTACK = 83;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 100;
+    public static final int BASE_SPECIAL_ATTACK = 83;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/meganium.png";
-    private static final String BACK_PATH = "battle/backs/johto/meganium.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/meganium.png";
-    private static final String CRY_PATH = "sounds/cry/154.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/meganium.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/meganium.png";
+    public static final String BACK_PATH = "battle/backs/johto/meganium.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/meganium.png";
+    public static final String CRY_PATH = "sounds/cry/154.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/meganium.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a meganium
      */
     public Meganium() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

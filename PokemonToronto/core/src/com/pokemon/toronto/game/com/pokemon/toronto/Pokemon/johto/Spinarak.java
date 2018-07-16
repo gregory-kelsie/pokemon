@@ -18,47 +18,51 @@ public class Spinarak extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 167;
-    private static final String NAME = "Spinarak";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 167;
+    public static final String NAME = "Spinarak";
+    public static final String TYPE_OF_POKEMON = "String Spit";
+    public static final String DESCRIPTION = "It sets a trap by spinning a web with thin but" +
+            " strong silk. It waits motionlessly for prey to arrive.";
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 8.5;
+    public static final double HEIGHT = 0.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.Insomnia();
-    private static final Ability HIDDEN_ABILITY = new Ability.Sniper();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.Insomnia();
+    public static final Ability HIDDEN_ABILITY = new Ability.Sniper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/spinarak.png";
-    private static final String BACK_PATH = "battle/backs/johto/spinarak.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/spinarak.png";
-    private static final String CRY_PATH = "sounds/cry/167.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/spinarak.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/spinarak.png";
+    public static final String BACK_PATH = "battle/backs/johto/spinarak.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/spinarak.png";
+    public static final String CRY_PATH = "sounds/cry/167.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/spinarak.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.POISON;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.POISON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a spinarak
      */
     public Spinarak() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Ledyba extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 165;
-    private static final String NAME = "Ledyba";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 10.8;
+    public static final int NUMBER = 165;
+    public static final String NAME = "Ledyba";
+    public static final String TYPE_OF_POKEMON = "Five Star";
+    public static final String DESCRIPTION = "It is so timid, it can't move if it isn't with" +
+            " a swarm of others. It conveys its feelings with scent.";
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 10.8;
+    public static final double HEIGHT = 1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.EarlyBird();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.EarlyBird();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 20;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 20;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/ledyba.png";
-    private static final String BACK_PATH = "battle/backs/johto/ledyba.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/ledyba.png";
-    private static final String CRY_PATH = "sounds/cry/165.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/ledyba.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/ledyba.png";
+    public static final String BACK_PATH = "battle/backs/johto/ledyba.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/ledyba.png";
+    public static final String CRY_PATH = "sounds/cry/165.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/ledyba.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a ledyba
      */
     public Ledyba() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

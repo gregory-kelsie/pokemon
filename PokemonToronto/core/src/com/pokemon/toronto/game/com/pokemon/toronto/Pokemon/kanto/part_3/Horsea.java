@@ -19,47 +19,52 @@ import java.util.List;
 public class Horsea extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 116;
-    private static final String NAME = "Horsea";
-    private static final int BASE_EXP = 83;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 225;
-    private static final double WEIGHT = 8;
+    public static final int NUMBER = 116;
+    public static final String NAME = "Horsea";
+    public static final String TYPE_OF_POKEMON = "Dragon";
+    public static final String DESCRIPTION = "Known to shoot down flying bugs with precision" +
+            " blasts of ink from the surface of the water.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+    public static final int BASE_EXP = 83;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 225;
+    public static final double WEIGHT = 8;
+    public static final double HEIGHT = 0.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.Damp();
 
     //Base Stats
-    private static final int BASE_HEALTH = 30;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 25;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 30;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 25;
+    public static final int BASE_SPEED = 60;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/horsea.png";
-    private static final String BACK_PATH = "battle/backs/horsea.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/horsea.png";
-    private static final String CRY_PATH = "sounds/cry/116.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/116.png";
+    public static final String ICON_PATH = "pokemonSprites/horsea.png";
+    public static final String BACK_PATH = "battle/backs/horsea.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/horsea.png";
+    public static final String CRY_PATH = "sounds/cry/116.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/116.png";
 
     /**
      * Create a Horsea
      */
     public Horsea() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

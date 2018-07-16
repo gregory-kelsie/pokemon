@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -18,47 +19,51 @@ public class Piloswine extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 221;
-    private static final String NAME = "Piloswine";
-    private static final int BASE_EXP = 158;
-    private static final int[] EV_YIELD = {1, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 55.8;
+    public static final int NUMBER = 221;
+    public static final String NAME = "Piloswine";
+    public static final String TYPE_OF_POKEMON = "Swine";
+    public static final String DESCRIPTION = "Covered by a shaggy coat, it is strong against" +
+            " the cold. Its tusks of ice thicken when it snows.";
+    public static final int BASE_EXP = 158;
+    public static final int[] EV_YIELD = {1, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 55.8;
+    public static final double HEIGHT = 1.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.SnowCloak();
-    private static final Ability HIDDEN_ABILITY = new Ability.ThickFat();
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.SnowCloak();
+    public static final Ability HIDDEN_ABILITY = new Ability.ThickFat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/piloswine.png";
-    private static final String BACK_PATH = "battle/backs/johto/piloswine.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/piloswine.png";
-    private static final String CRY_PATH = "sounds/cry/221.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/piloswine.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/piloswine.png";
+    public static final String BACK_PATH = "battle/backs/johto/piloswine.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/piloswine.png";
+    public static final String CRY_PATH = "sounds/cry/221.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/piloswine.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a piloswine
      */
     public Piloswine() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -139,6 +144,20 @@ public class Piloswine extends Pokemon {
         } else {
             gender = 'F';
         }
+    }
+
+    /**
+     * Return Mamoswine if the Piloswine knows Ancient Power
+     * @return Mamoswine if Piloswine knows Ancient Power.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        for (Skill s: skills) {
+            if (s.getId() == SkillFactory.ANCIENT_POWER) {
+                return PokemonId.MAMOSWINE.getValue();
+            }
+        }
+        return -1;
     }
 
 }

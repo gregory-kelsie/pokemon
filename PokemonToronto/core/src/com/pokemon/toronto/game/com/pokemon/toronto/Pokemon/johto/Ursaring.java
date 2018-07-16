@@ -17,47 +17,51 @@ public class Ursaring extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 217;
-    private static final String NAME = "Ursaring";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 125.8;
+    public static final int NUMBER = 217;
+    public static final String NAME = "Ursaring";
+    public static final String TYPE_OF_POKEMON = "Hibernator";
+    public static final String DESCRIPTION = "In its territory, it leaves scratches on trees" +
+            " that bear delicious berries or fruits.";
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 125.8;
+    public static final double HEIGHT = 1.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Guts();
-    private static final Ability SECOND_ABILITY = new Ability.QuickFeet();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.Guts();
+    public static final Ability SECOND_ABILITY = new Ability.QuickFeet();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 130;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 130;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/ursaring.png";
-    private static final String BACK_PATH = "battle/backs/johto/ursaring.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/ursaring.png";
-    private static final String CRY_PATH = "sounds/cry/217.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/ursaring.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/ursaring.png";
+    public static final String BACK_PATH = "battle/backs/johto/ursaring.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/ursaring.png";
+    public static final String CRY_PATH = "sounds/cry/217.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/ursaring.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a ursaring
      */
     public Ursaring() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

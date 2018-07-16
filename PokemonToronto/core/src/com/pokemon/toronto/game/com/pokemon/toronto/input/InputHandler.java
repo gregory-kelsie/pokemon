@@ -49,6 +49,8 @@ public class InputHandler extends InputAdapter {
      */
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
+        MyInput.setDrag();
+        Gdx.app.log("drag", "screenX: " + screenX + ", screenY: " + screenY + ", pointer: " + pointer);
         return super.touchDragged(screenX, screenY, pointer);
     }
 

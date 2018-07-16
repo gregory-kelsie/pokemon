@@ -18,47 +18,52 @@ import java.util.List;
 public class Hitmonchan extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 107;
-    private static final String NAME = "Hitmonchan";
-    private static final int BASE_EXP = 140;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 50.2;
+    public static final int NUMBER = 107;
+    public static final String NAME = "Hitmonchan";
+    public static final String TYPE_OF_POKEMON = "Punching";
+    public static final String DESCRIPTION = "The spirit of a pro boxer has infused this" +
+            " Pokémon. It throws punches that are faster than a bullet train.";
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.IronFist();
-    private static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
+    public static final int BASE_EXP = 140;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 50.2;
+    public static final double HEIGHT = 1.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.IronFist();
+    public static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 79;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 76;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 79;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 76;
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/hitmonchan.png";
-    private static final String BACK_PATH = "battle/backs/hitmonchan.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/hitmonchan.png";
-    private static final String CRY_PATH = "sounds/cry/107.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/107.png";
+    public static final String ICON_PATH = "pokemonSprites/hitmonchan.png";
+    public static final String BACK_PATH = "battle/backs/hitmonchan.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/hitmonchan.png";
+    public static final String CRY_PATH = "sounds/cry/107.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/107.png";
 
     /**
      * Create a Hitmonchan
      */
     public Hitmonchan() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

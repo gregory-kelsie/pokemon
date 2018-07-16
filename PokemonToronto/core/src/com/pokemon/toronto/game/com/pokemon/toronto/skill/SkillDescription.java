@@ -548,8 +548,10 @@ public class SkillDescription {
             " sandstorm for four to five turns.";
     public static final String SHORE_UP = "The user regains up to half of its max HP. It " +
             "restores more HP in a sandstorm.";
-    public static final String SPIKES = "he user lays a trap of spikes at the opposing " +
+    public static final String SPIKES = "The user lays a trap of spikes at the opposing " +
             "team's feet. The trap hurts Pokémon that switch into battle.";
+    public static final String PRECIPICE_BLADES = "The user attacks opposing Pokémon by " +
+            "manifesting the power of the land in fearsome blades of stone.";
 
     /**********************************************************************************************
      *                                      ICE
@@ -970,6 +972,12 @@ public class SkillDescription {
             "Pokémon get to move first for five turns.";
     public static final String ZEN_HEADBUTT = "The user focuses its willpower to its head and " +
             "attacks the target. This may also make the target flinch.";
+    public static final String MIST_BALL = "A mist-like flurry of down envelops and damages the" +
+            " target. This may also lower the target's Sp. Atk stat.";
+    public static final String LUSTER_PURGE = "The user lets loose a damaging burst of light." +
+            " This may also lower the target's Sp. Def stat.";
+    public static final String PSYCHO_BOOST = "The user attacks the target at full power. The" +
+            " attack's recoil harshly lowers the user's Sp. Atk stat.";
 
     /**********************************************************************************************
      *                                      ROCK
@@ -1105,4 +1113,6 @@ public class SkillDescription {
             "whirlpool for four to five turns.";
     public static final String WITHDRAW = "The user withdraws its body into its hard shell, " +
             "raising its Defense stat.";
+    public static final String ORIGIN_PULSE = "The user attacks opposing Pokémon with countless" +
+            " beams of light that glow a deep and brilliant blue.";
 }

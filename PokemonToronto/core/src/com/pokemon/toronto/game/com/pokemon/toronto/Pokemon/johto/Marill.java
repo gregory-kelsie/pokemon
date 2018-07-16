@@ -18,47 +18,51 @@ public class Marill extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 183;
-    private static final String NAME = "Marill";
-    private static final int BASE_EXP = 88;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 183;
+    public static final String NAME = "Marill";
+    public static final String TYPE_OF_POKEMON = "Aquamouse";
+    public static final String DESCRIPTION = "The oil-filled tail functions as a buoy, so it's" +
+            " fine even in rivers with strong currents.";
+    public static final int BASE_EXP = 88;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 8.5;
+    public static final double HEIGHT = 0.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.ThickFat();
-    private static final Ability SECOND_ABILITY = new Ability.HugePower();
-    private static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
+    public static final Ability FIRST_ABILITY = new Ability.ThickFat();
+    public static final Ability SECOND_ABILITY = new Ability.HugePower();
+    public static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 20;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 20;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 20;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 20;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/marill.png";
-    private static final String BACK_PATH = "battle/backs/johto/marill.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/marill.png";
-    private static final String CRY_PATH = "sounds/cry/183.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/marill.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/marill.png";
+    public static final String BACK_PATH = "battle/backs/johto/marill.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/marill.png";
+    public static final String CRY_PATH = "sounds/cry/183.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/marill.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.FAIRY;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.FAIRY;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a marill
      */
     public Marill() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

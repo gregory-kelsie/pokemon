@@ -19,47 +19,52 @@ import java.util.List;
 public class Seel extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 86;
-    private static final String NAME = "Seel";
-    private static final int BASE_EXP = 100;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 90;
+    public static final int NUMBER = 86;
+    public static final String NAME = "Seel";
+    public static final String TYPE_OF_POKEMON = "Sea Lion";
+    public static final String DESCRIPTION = "A Pokémon that lives on icebergs. It swims in" +
+            " the sea using the point on its head to break up ice.";
 
-    private static final Ability FIRST_ABILITY = new Ability.ThickFat();
-    private static final Ability SECOND_ABILITY = new Ability.Hydration();
-    private static final Ability HIDDEN_ABILITY = new Ability.IceBody();
+    public static final int BASE_EXP = 100;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 90;
+    public static final double HEIGHT = 1.1;
+
+    public static final Ability FIRST_ABILITY = new Ability.ThickFat();
+    public static final Ability SECOND_ABILITY = new Ability.Hydration();
+    public static final Ability HIDDEN_ABILITY = new Ability.IceBody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 45;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/seel.png";
-    private static final String BACK_PATH = "battle/backs/seel.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/seel.png";
-    private static final String CRY_PATH = "sounds/cry/086.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/086.png";
+    public static final String ICON_PATH = "pokemonSprites/seel.png";
+    public static final String BACK_PATH = "battle/backs/seel.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/seel.png";
+    public static final String CRY_PATH = "sounds/cry/086.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/086.png";
 
     /**
      * Create a Seel
      */
     public Seel() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

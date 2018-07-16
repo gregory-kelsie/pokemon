@@ -19,40 +19,52 @@ import java.util.List;
 public class Spearow extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 21;
-    private static final String NAME = "Spearow";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 2;
+    public static final int NUMBER = 21;
+    public static final String NAME = "Spearow";
+    public static final String TYPE_OF_POKEMON = "Tiny Bird";
+    public static final String DESCRIPTION = "Very protective of its territory, it flaps its" +
+            " short wings busily to dart around at high speed.";
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Sniper();
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.3;
+    public static final double WEIGHT = 2;
+
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Sniper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 31;
-    private static final int BASE_SPECIAL_DEFENSE = 31;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 31;
+    public static final int BASE_SPECIAL_DEFENSE = 31;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/spearow.png";
-    private static final String BACK_PATH = "battle/backs/spearow.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/spearow.png";
-    private static final String CRY_PATH = "sounds/cry/021.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/021.png";
+    public static final String ICON_PATH = "pokemonSprites/spearow.png";
+    public static final String BACK_PATH = "battle/backs/spearow.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/spearow.png";
+    public static final String CRY_PATH = "sounds/cry/021.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/021.png";
+
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Spearow
      */
     public Spearow() {
-        super(NUMBER, NAME, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -35,14 +35,32 @@ import com.pokemon.toronto.game.com.pokemon.toronto.area.SeafoamB4F;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.VictoryRoad1F;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.VictoryRoad2F;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.ViridianForest;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.CliffCave;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.DarkCaveViolet;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.IlexForest;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.NationalPark;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.NationalPark2;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route29;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route30;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route32;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route34;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route35;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route36;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route37;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route38;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route40;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route41;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route46;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route47;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.Route48;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.RuinsOfAlph;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.SproutTower;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.TestRoute;
 import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.UnionCave1F;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.johto.UnionCaveB2F;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.misc.Africa;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.misc.JurassicPark;
+import com.pokemon.toronto.game.com.pokemon.toronto.area.misc.Swamp;
 
 /**
  * Created by Gregory on 7/27/2017.
@@ -149,6 +167,44 @@ public class RouteFactory {
             return new RuinsOfAlph();
         } else if (routeNumber == Route.UNION_CAVE_1F) {
             return new UnionCave1F();
+        } else if (routeNumber == Route.UNION_CAVE_B2F) {
+            return new UnionCaveB2F();
+        } else if (routeNumber == Route.ROUTE_34) {
+            return new Route34();
+        } else if (routeNumber == Route.ILEX_FOREST) {
+            return new IlexForest();
+        } else if (routeNumber == Route.ROUTE_35) {
+            return new Route35();
+        } else if (routeNumber == Route.NATIONAL_PARK) {
+            return new NationalPark();
+        } else if (routeNumber == Route.NATIONAL_PARK_2) {
+            return new NationalPark2();
+        } else if (routeNumber == Route.ROUTE_36) {
+            return new Route36();
+        } else if (routeNumber == Route.ROUTE_37) {
+            return new Route37();
+        } else if (routeNumber == Route.ROUTE_38) {
+            return new Route38();
+        } else if (routeNumber == Route.ROUTE_40) {
+            return new Route40();
+        } else if (routeNumber == Route.ROUTE_41) {
+            return new Route41();
+        } else if (routeNumber == Route.ROUTE_47) {
+            return new Route47();
+        } else if (routeNumber == Route.CLIFF_CAVE) {
+            return new CliffCave();
+        } else if (routeNumber == Route.ROUTE_48) {
+            return new Route48();
+        }
+        //Test Route
+        else if (routeNumber == Route.TEST_ROUTE) {
+            return new TestRoute();
+        } else if (routeNumber == Route.SWAMP) {
+            return new Swamp();
+        } else if (routeNumber == Route.AFRICA) {
+            return new Africa();
+        } else if (routeNumber == Route.JURASSIC_PARK) {
+            return new JurassicPark();
         }
         return null;
     }

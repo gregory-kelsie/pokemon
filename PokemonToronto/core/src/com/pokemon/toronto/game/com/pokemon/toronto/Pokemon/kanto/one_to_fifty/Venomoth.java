@@ -18,40 +18,52 @@ import java.util.List;
 public class Venomoth extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 49;
-    private static final String NAME = "Venomoth";
-    private static final int BASE_EXP = 138;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 12.5;
+    public static final int NUMBER = 49;
+    public static final String NAME = "Venomoth";
+    public static final String TYPE_OF_POKEMON = "Poison Moth";
+    public static final String DESCRIPTION = "The wings are covered with dustlike scales." +
+            " Every time it flaps its wings, it looses highly toxic dust.";
 
-    private static final Ability FIRST_ABILITY = new Ability.ShieldDust();
-    private static final Ability SECOND_ABILITY = new Ability.TintedLens();
-    private static final Ability HIDDEN_ABILITY = new Ability.WonderSkin();
+    public static final int BASE_EXP = 138;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 75;
+
+    public static final double HEIGHT = 1.5;
+    public static final double WEIGHT = 12.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.ShieldDust();
+    public static final Ability SECOND_ABILITY = new Ability.TintedLens();
+    public static final Ability HIDDEN_ABILITY = new Ability.WonderSkin();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 90;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/venomoth.png";
-    private static final String BACK_PATH = "battle/backs/venomoth.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/venomoth.png";
-    private static final String CRY_PATH = "sounds/cry/049.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/049.png";
+    public static final String ICON_PATH = "pokemonSprites/venomoth.png";
+    public static final String BACK_PATH = "battle/backs/venomoth.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/venomoth.png";
+    public static final String CRY_PATH = "sounds/cry/049.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/049.png";
+
+    public static final Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.POISON;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Venomoth
      */
     public Venomoth() {
-        super(NUMBER, NAME, Pokemon.Type.BUG, Pokemon.Type.POISON, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -19,46 +19,52 @@ import java.util.List;
 public class Machoke extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 67;
-    private static final String NAME = "Machoke";
-    private static final int BASE_EXP = 146;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 70.5;
+    public static final int NUMBER = 67;
+    public static final String NAME = "Machoke";
+    public static final String TYPE_OF_POKEMON = "Superpower";
+    public static final String DESCRIPTION = "Its muscular body is so powerful, it must wear a" +
+            " power-save belt to be able to regulate its motions.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Guts();
-    private static final Ability SECOND_ABILITY = new Ability.NoGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Steadfast();
+    public static final int BASE_EXP = 146;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+
+    public static final double HEIGHT = 1.5;
+    public static final double WEIGHT = 70.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.Guts();
+    public static final Ability SECOND_ABILITY = new Ability.NoGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Steadfast();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 45;
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/machoke.png";
-    private static final String BACK_PATH = "battle/backs/machoke.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/machoke.png";
-    private static final String CRY_PATH = "sounds/cry/067.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/067.png";
+    public static final String ICON_PATH = "pokemonSprites/machoke.png";
+    public static final String BACK_PATH = "battle/backs/machoke.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/machoke.png";
+    public static final String CRY_PATH = "sounds/cry/067.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/067.png";
 
     /**
      * Create a Machoke
      */
     public Machoke() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

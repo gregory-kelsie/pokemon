@@ -19,7 +19,7 @@ public class Yungoos extends Pokemon {
 
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 734;
-    private static final String NAME = "yungoos";
+    private static final String NAME = "Yungoos";
     private static final int BASE_EXP = 51;
     private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 255;

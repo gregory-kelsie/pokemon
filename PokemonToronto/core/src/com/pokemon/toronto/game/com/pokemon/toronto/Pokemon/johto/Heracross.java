@@ -17,47 +17,51 @@ public class Heracross extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 214;
-    private static final String NAME = "Heracross";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 54;
+    public static final int NUMBER = 214;
+    public static final String NAME = "Heracross";
+    public static final String TYPE_OF_POKEMON = "Singlehorn";
+    public static final String DESCRIPTION = "No matter how heavy its opponents, it flings" +
+            " them far away with its prized horn.";
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 54;
+    public static final double HEIGHT = 1.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.Guts();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moxie();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.Guts();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moxie();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 125;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 125;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/heracross.png";
-    private static final String BACK_PATH = "battle/backs/johto/heracross.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/heracross.png";
-    private static final String CRY_PATH = "sounds/cry/214.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/heracross.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/heracross.png";
+    public static final String BACK_PATH = "battle/backs/johto/heracross.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/heracross.png";
+    public static final String CRY_PATH = "sounds/cry/214.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/heracross.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a heracross
      */
     public Heracross() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

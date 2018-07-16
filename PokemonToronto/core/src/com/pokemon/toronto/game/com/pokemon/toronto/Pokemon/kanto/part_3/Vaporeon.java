@@ -18,47 +18,52 @@ import java.util.List;
 public class Vaporeon extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 134;
-    private static final String NAME = "Vaporeon";
-    private static final int BASE_EXP = 196;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 29;
+    public static final int NUMBER = 134;
+    public static final String NAME = "Vaporeon";
+    public static final String TYPE_OF_POKEMON = "Bubble Jet";
+    public static final String DESCRIPTION = "It prefers beautiful shores. With cells similar" +
+            " to water molecules, it could melt in water.";
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Hydration();
+    public static final int BASE_EXP = 196;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 29;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Hydration();
 
     //Base Stats
-    private static final int BASE_HEALTH = 130;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 110;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 130;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 110;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 65;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/vaporeon.png";
-    private static final String BACK_PATH = "battle/backs/vaporeon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/vaporeon.png";
-    private static final String CRY_PATH = "sounds/cry/134.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/134.png";
+    public static final String ICON_PATH = "pokemonSprites/vaporeon.png";
+    public static final String BACK_PATH = "battle/backs/vaporeon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/vaporeon.png";
+    public static final String CRY_PATH = "sounds/cry/134.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/134.png";
 
     /**
      * Create a Vaporeon
      */
     public Vaporeon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -19,47 +19,52 @@ import java.util.List;
 public class Haunter extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 93;
-    private static final String NAME = "Haunter";
-    private static final int BASE_EXP = 126;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 0.1;
+    public static final int NUMBER = 93;
+    public static final String NAME = "Haunter";
+    public static final String TYPE_OF_POKEMON = "Gas";
+    public static final String DESCRIPTION = "It licks with its gaseous tongue to steal the" +
+            " victim's life force. It lurks in darkness for prey.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final int BASE_EXP = 126;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 0.1;
+    public static final double HEIGHT = 1.6;
+
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 115;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 115;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 95;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.POISON;
+    public static final Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.POISON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/haunter.png";
-    private static final String BACK_PATH = "battle/backs/haunter.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/haunter.png";
-    private static final String CRY_PATH = "sounds/cry/093.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/093.png";
+    public static final String ICON_PATH = "pokemonSprites/haunter.png";
+    public static final String BACK_PATH = "battle/backs/haunter.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/haunter.png";
+    public static final String CRY_PATH = "sounds/cry/093.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/093.png";
 
     /**
      * Create a Haunter
      */
     public Haunter() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

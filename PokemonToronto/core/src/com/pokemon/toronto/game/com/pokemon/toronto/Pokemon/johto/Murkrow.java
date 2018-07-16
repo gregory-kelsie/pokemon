@@ -18,47 +18,51 @@ public class Murkrow extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 198;
-    private static final String NAME = "Murkrow";
-    private static final int BASE_EXP = 81;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 2.1;
+    public static final int NUMBER = 198;
+    public static final String NAME = "Murkrow";
+    public static final String TYPE_OF_POKEMON = "Darkness";
+    public static final String DESCRIPTION = "If spotted, it will lure an unwary person into" +
+            " chasing it, then lose the pursuer on mountain trails.";
+    public static final int BASE_EXP = 81;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 2.1;
+    public static final double HEIGHT = 0.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Insomnia();
-    private static final Ability SECOND_ABILITY = new Ability.SuperLuck();
-    private static final Ability HIDDEN_ABILITY = new Ability.Prankster();
+    public static final Ability FIRST_ABILITY = new Ability.Insomnia();
+    public static final Ability SECOND_ABILITY = new Ability.SuperLuck();
+    public static final Ability HIDDEN_ABILITY = new Ability.Prankster();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 42;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 42;
-    private static final int BASE_SPEED = 91;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 42;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 42;
+    public static final int BASE_SPEED = 91;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/murkrow.png";
-    private static final String BACK_PATH = "battle/backs/johto/murkrow.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/murkrow.png";
-    private static final String CRY_PATH = "sounds/cry/198.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/murkrow.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/murkrow.png";
+    public static final String BACK_PATH = "battle/backs/johto/murkrow.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/murkrow.png";
+    public static final String CRY_PATH = "sounds/cry/198.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/murkrow.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a murkrow
      */
     public Murkrow() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -137,4 +141,8 @@ public class Murkrow extends Pokemon {
         }
     }
 
+    @Override
+    public int getDuskStoneEvolutionId() {
+        return PokemonId.HONCHKROW.getValue();
+    }
 }

@@ -20,13 +20,28 @@ public class LoadingState extends GameState {
     public static final int POKEMON_MENU = 6;
     public static final int POKECENTER_STATE = 7;
     public static final int HUB_STATE = 8;
+    public static final int SIMULATOR_STATE = 9;
     private Texture background;
     private int nextState;
+
+    //Route Variables
+    private int route;
+    private int region;
+
     public LoadingState(GameStateManager gsm, int nextState) {
         this.gsm = gsm;
         background = new Texture("loadingBackground.png");
         this.nextState = nextState;
         loadData(nextState);
+    }
+
+    public LoadingState(GameStateManager gsm, int nextState, int region, int route) {
+        this.gsm = gsm;
+        background = new Texture("loadingBackground.png");
+        this.nextState = nextState;
+        loadData(nextState);
+        this.region = region;
+        this.route = route;
     }
     
     private void loadData(int nextState) {
@@ -187,6 +202,8 @@ public class LoadingState extends GameState {
                 gsm.setState(new PokeCenterState(gsm, false));
             } else if (nextState == HUB_STATE) {
                 gsm.setState(new HubState((gsm)));
+            } else if (nextState == SIMULATOR_STATE) {
+                gsm.setState(new SimulatorState(gsm, region, route));
             }
             dispose();
         }

@@ -18,47 +18,51 @@ public class Ledian extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 166;
-    private static final String NAME = "Ledian";
-    private static final int BASE_EXP = 134;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 35.6;
+    public static final int NUMBER = 166;
+    public static final String NAME = "Ledian";
+    public static final String TYPE_OF_POKEMON = "Five Star";
+    public static final String DESCRIPTION = "It uses starlight as energy. When more stars" +
+            " appear at night, the patterns on its back grow larger.";
+    public static final int BASE_EXP = 134;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 35.6;
+    public static final double HEIGHT = 1.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.EarlyBird();
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.EarlyBird();
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 35;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 35;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/ledian.png";
-    private static final String BACK_PATH = "battle/backs/johto/ledian.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/ledian.png";
-    private static final String CRY_PATH = "sounds/cry/166.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/ledian.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/ledian.png";
+    public static final String BACK_PATH = "battle/backs/johto/ledian.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/ledian.png";
+    public static final String CRY_PATH = "sounds/cry/166.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/ledian.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a ledian
      */
     public Ledian() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

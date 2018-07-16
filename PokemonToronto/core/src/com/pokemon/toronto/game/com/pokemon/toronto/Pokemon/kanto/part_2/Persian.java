@@ -18,47 +18,53 @@ import java.util.List;
 public class Persian extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 53;
-    private static final String NAME = "Persian";
-    private static final int BASE_EXP = 154;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 32;
+    public static final int NUMBER = 53;
+    public static final String NAME = "Persian";
+    public static final String TYPE_OF_POKEMON = "Classy Cat";
+    public static final String DESCRIPTION = "Its lithe muscles allow it to walk without making" +
+            " a sound. It attacks in an instant.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Limber();
-    private static final Ability SECOND_ABILITY = new Ability.Technician();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final int BASE_EXP = 154;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 90;
+
+    public static final double HEIGHT = 1;
+    public static final double WEIGHT = 32;
+
+    public static final Ability FIRST_ABILITY = new Ability.Limber();
+    public static final Ability SECOND_ABILITY = new Ability.Technician();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 115;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 115;
 
     //Typing
-    private static final Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/persian.png";
-    private static final String BACK_PATH = "battle/backs/persian.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/persian.png";
-    private static final String CRY_PATH = "sounds/cry/053.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/053.png";
+    public static final String ICON_PATH = "pokemonSprites/persian.png";
+    public static final String BACK_PATH = "battle/backs/persian.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/persian.png";
+    public static final String CRY_PATH = "sounds/cry/053.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/053.png";
 
     /**
      * Create a Persian
      */
     public Persian() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

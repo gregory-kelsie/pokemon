@@ -18,47 +18,51 @@ public class Snubbull extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 209;
-    private static final String NAME = "Snubbull";
-    private static final int BASE_EXP = 60;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 7.8;
+    public static final int NUMBER = 209;
+    public static final String NAME = "Snubbull";
+    public static final String TYPE_OF_POKEMON = "Fairy";
+    public static final String DESCRIPTION = "Small Pokémon flee from its scary face. It is," +
+            " however, considered by women to be cute.";
+    public static final int BASE_EXP = 60;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 7.8;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.RunAway();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.RunAway();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/snubbull.png";
-    private static final String BACK_PATH = "battle/backs/johto/snubbull.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/snubbull.png";
-    private static final String CRY_PATH = "sounds/cry/209.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/snubbull.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/snubbull.png";
+    public static final String BACK_PATH = "battle/backs/johto/snubbull.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/snubbull.png";
+    public static final String CRY_PATH = "sounds/cry/209.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/snubbull.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a snubbull
      */
     public Snubbull() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

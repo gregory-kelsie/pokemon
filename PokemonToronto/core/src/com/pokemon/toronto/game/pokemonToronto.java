@@ -31,6 +31,8 @@ public class pokemonToronto extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private MyGameCallBack gameCallBack;
 
+	private TiledMap tiledMap;
+
 		/*stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Skin skin = new Skin(Gdx.files.internal("uiskin.json"), new TextureAtlas(Gdx.files.internal("uiskin.atlas")));

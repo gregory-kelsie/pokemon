@@ -19,41 +19,53 @@ public class Pidgey extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 16;
-    private static final String NAME = "Pidgey";
-    private static final int BASE_EXP = 55;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 1.8;
+    public static final int NUMBER = 16;
+    public static final String NAME = "Pidgey";
+    public static final String TYPE_OF_POKEMON = "Tiny Bird";
+    public static final String DESCRIPTION = "A common sight in forests and woods. It flaps its" +
+            " wings at ground level to kick up blinding sand.";
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.TangledFeet();
-    private static final Ability HIDDEN_ABILITY = new Ability.BigPecks();
+    public static final int BASE_EXP = 55;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.3;
+    public static final double WEIGHT = 1.8;
+
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.TangledFeet();
+    public static final Ability HIDDEN_ABILITY = new Ability.BigPecks();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 35;
-    private static final int BASE_SPEED = 56;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 35;
+    public static final int BASE_SPEED = 56;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/pidgey/pidgey.png";
-    private static final String BACK_PATH = "battle/backs/pidgey.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/pidgey.png";
-    private static final String CRY_PATH = "sounds/cry/016.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/016.png";
+    public static final String ICON_PATH = "pokemonSprites/pidgey/pidgey.png";
+    public static final String BACK_PATH = "battle/backs/pidgey.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/pidgey.png";
+    public static final String CRY_PATH = "sounds/cry/016.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/016.png";
+
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Pidgey
      */
     public Pidgey() {
-        super(NUMBER, NAME, Type.NORMAL, Type.FLYING, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY, SECOND_ABILITY,
-                HIDDEN_ABILITY);
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

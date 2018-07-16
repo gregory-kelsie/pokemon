@@ -20,9 +20,15 @@ public class Pidgeot extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 18;
     private static final String NAME = "Pidgeot";
+    public static final String TYPE_OF_POKEMON = "Bird";
+    public static final String DESCRIPTION = "It spreads its gorgeous wings widely to intimidate" +
+            " enemies. It races through the skies at Mach-2 speed.";
+
     private static final int BASE_EXP = 172;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
     private static final int CAPTURE_RATE = 45;
+
+    public static final double HEIGHT = 1.5;
     private static final double WEIGHT = 39.5;
 
     private static final Ability FIRST_ABILITY = new Ability.KeenEye();
@@ -44,14 +50,20 @@ public class Pidgeot extends Pokemon {
     private static final String CRY_PATH = "sounds/cry/018.wav";
     private static final String PROFILE_PATH = "trainercard/pokemon/kanto/018.png";
 
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+
     /**
      * Create a Pidgeot
      */
     public Pidgeot() {
-        super(NUMBER, NAME, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, Pokemon.ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

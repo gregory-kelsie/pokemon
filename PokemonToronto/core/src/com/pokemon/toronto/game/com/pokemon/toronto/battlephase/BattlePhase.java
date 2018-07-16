@@ -30,6 +30,7 @@ public abstract class BattlePhase {
     public abstract void update(double dt);
     public abstract void renderText(SpriteBatch batch);
     public void render(SpriteBatch batch) { }
+    public void dispose() {}
 
     public boolean isHidingEnemyPokemon() {
         return false;

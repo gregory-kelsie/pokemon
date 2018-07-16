@@ -27,6 +27,9 @@ public abstract class Pokemon {
     //Basic
     protected int pokemonId;
     protected String name;
+    protected String classification;
+    protected String description;
+
     protected Nature nature;
     protected ExpType expType;
 
@@ -43,6 +46,8 @@ public abstract class Pokemon {
 
     protected double weight;
     protected double battleWeight;
+
+    protected double height;
 
     //Some moves override the actual types and abilities
     //during battle.
@@ -376,6 +381,43 @@ public abstract class Pokemon {
         this.hiddenAbility = hiddenAbility;
     }
 
+    /**
+     * Create a fresh Pokemon given the parameters.
+     * Fresh means that there are no current evs
+     * @param pokemonId The Pokemon id, 1 is Bulbasaur, 2 is Ivysaur etc.
+     * @param name The name of the Pokemon.
+     * @param typeOne The Pokemon's type.
+     * @param typeTwo The Pokemon's second type, could be NONE
+     * @param expType The Pokemon's exp growth type
+     * @param baseExp The base exp the Pokemon yields.
+     * @param evYield The ev yield for the Pokemon.
+     * @param baseStats The Pokemon's base stats.
+     * @param mapIconPath The basic Pokemon image path.
+     * @param backPath The back of the Pokemon image path.
+     * @param miniPath The mini Pokemon image path.
+     * @param profilePath The Pokemon's profile path that is displayed on the trainer card.
+     * @param captureRate The Pokemon's capture rate.
+     * @param weight The Pokemon's weight in KG
+     */
+    public Pokemon(int pokemonId, String name, String classification, String description, Type typeOne, Type typeTwo,
+                   ExpType expType, int baseExp, int[] evYield,
+                   int[] baseStats, String mapIconPath, String backPath, String miniPath,
+                   String cryPath, String profilePath, int captureRate, double weight, double height,
+                   Ability firstAbility, Ability secondAbility, Ability hiddenAbility) {
+
+        init(pokemonId, name, typeOne, typeTwo, expType, baseExp,
+                evYield, baseStats, mapIconPath, backPath, miniPath, cryPath, captureRate);
+        this.classification = classification;
+        this.description = description;
+        this.weight = weight;
+        this.height = height;
+        this.profilePath = profilePath;
+        this.firstAbility = firstAbility;
+        this.secondAbility = secondAbility;
+        this.hiddenAbility = hiddenAbility;
+    }
+
+
     private void init(int pokemonId, String name, Type typeOne, Type typeTwo,
                       ExpType expType, int baseExp, int[] evYield, int[] baseStats,
                       String mapIconPath, String backPath, String miniPath, String cryPath,
@@ -640,6 +682,10 @@ public abstract class Pokemon {
 
     public double getWeight() {
         return weight;
+    }
+
+    public double getHeight() {
+        return height;
     }
 
     public int getFuryCutterStacks() {
@@ -1856,6 +1902,9 @@ public abstract class Pokemon {
     public void wakeUp() {
         sleepTime = 0;
         status = Status.STATUS_FREE;
+        //Reset yawn
+        justReceivedYawn = false;
+        fallAsleepDueToYawnThisTurn = false;
     }
     
     /**
@@ -4081,6 +4130,22 @@ public abstract class Pokemon {
      * @return Pokemon's name
      */
     public String getName() { return name; }
+
+    /**
+     * Return the Pokemon's classifiation. Ex: Moltres is the Flame Pokemon
+     * @return The Pokemon's classification
+     */
+    public String getClassification() {
+        return classification;
+    }
+
+    /**
+     * Return the Pokemon's description.
+     * @return The Pokemon's description.
+     */
+    public String getDescription() {
+        return description;
+    }
 
     /**
      * Return the Pokemon's level.

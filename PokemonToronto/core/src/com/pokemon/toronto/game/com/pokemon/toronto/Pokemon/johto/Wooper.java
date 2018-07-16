@@ -18,47 +18,51 @@ public class Wooper extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 194;
-    private static final String NAME = "Wooper";
-    private static final int BASE_EXP = 42;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 194;
+    public static final String NAME = "Wooper";
+    public static final String TYPE_OF_POKEMON = "Water Fish";
+    public static final String DESCRIPTION = "When walking on land, it covers its body with" +
+            " a poisonous film that keeps its skin from dehydrating.";
+    public static final int BASE_EXP = 42;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 8.5;
+    public static final double HEIGHT = 0.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Damp();
-    private static final Ability SECOND_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unaware();
+    public static final Ability FIRST_ABILITY = new Ability.Damp();
+    public static final Ability SECOND_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unaware();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 25;
-    private static final int BASE_SPECIAL_DEFENSE = 25;
-    private static final int BASE_SPEED = 15;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 25;
+    public static final int BASE_SPECIAL_DEFENSE = 25;
+    public static final int BASE_SPEED = 15;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/wooper.png";
-    private static final String BACK_PATH = "battle/backs/johto/wooper.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/wooper.png";
-    private static final String CRY_PATH = "sounds/cry/194.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/wooper.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/wooper.png";
+    public static final String BACK_PATH = "battle/backs/johto/wooper.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/wooper.png";
+    public static final String CRY_PATH = "sounds/cry/194.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/wooper.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a wooper
      */
     public Wooper() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

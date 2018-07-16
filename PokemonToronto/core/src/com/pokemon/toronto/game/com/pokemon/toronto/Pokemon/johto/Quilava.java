@@ -18,47 +18,51 @@ public class Quilava extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 156;
-    private static final String NAME = "Quilava";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 19;
+    public static final int NUMBER = 156;
+    public static final String NAME = "Quilava";
+    public static final String TYPE_OF_POKEMON = "Volcano";
+    public static final String DESCRIPTION = "It intimidates foes with the heat of its flames." +
+            " The fire burns more strongly when it readies to fight.";
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 19;
+    public static final double HEIGHT = 0.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.FlashFire();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.FlashFire();
 
     //Base Stats
-    private static final int BASE_HEALTH = 58;
-    private static final int BASE_ATTACK = 64;
-    private static final int BASE_DEFENSE = 58;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 58;
+    public static final int BASE_ATTACK = 64;
+    public static final int BASE_DEFENSE = 58;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/quilava.png";
-    private static final String BACK_PATH = "battle/backs/johto/quilava.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/quilava.png";
-    private static final String CRY_PATH = "sounds/cry/156.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/quilava.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/quilava.png";
+    public static final String BACK_PATH = "battle/backs/johto/quilava.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/quilava.png";
+    public static final String CRY_PATH = "sounds/cry/156.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/quilava.png";
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a quilava
      */
     public Quilava() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

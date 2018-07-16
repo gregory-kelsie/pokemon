@@ -17,47 +17,51 @@ public class Magcargo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 219;
-    private static final String NAME = "Magcargo";
-    private static final int BASE_EXP = 144;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 55;
+    public static final int NUMBER = 219;
+    public static final String NAME = "Magcargo";
+    public static final String TYPE_OF_POKEMON = "Lava";
+    public static final String DESCRIPTION = "Its body temperature is roughly 18,000 degrees F." +
+            " Flames spout from gaps in its hardened shell.";
+    public static final int BASE_EXP = 144;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 55;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.MagmaArmor();
-    private static final Ability SECOND_ABILITY = new Ability.FlameBody();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.MagmaArmor();
+    public static final Ability SECOND_ABILITY = new Ability.FlameBody();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 120;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 120;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/magcargo.png";
-    private static final String BACK_PATH = "battle/backs/johto/magcargo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/magcargo.png";
-    private static final String CRY_PATH = "sounds/cry/219.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/magcargo.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/magcargo.png";
+    public static final String BACK_PATH = "battle/backs/johto/magcargo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/magcargo.png";
+    public static final String CRY_PATH = "sounds/cry/219.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/magcargo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a magcargo
      */
     public Magcargo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -19,48 +19,53 @@ import java.util.List;
 public class Magnemite extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 81;
-    private static final String NAME = "Magnemite";
-    private static final int BASE_EXP = 89;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 6;
+    public static final int NUMBER = 81;
+    public static final String NAME = "Magnemite";
+    public static final String TYPE_OF_POKEMON = "Magnet";
+    public static final String DESCRIPTION = "The units at the sides of its body generate" +
+            " antigravity energy to keep it aloft in the air.";
 
-    private static final Ability FIRST_ABILITY = new Ability.MagnetPull();
-    private static final Ability SECOND_ABILITY = new Ability.Sturdy();
-    private static final Ability HIDDEN_ABILITY = new Ability.Analytic();
+    public static final int BASE_EXP = 89;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 6;
+    public static final double HEIGHT = 0.3;
+
+    public static final Ability FIRST_ABILITY = new Ability.MagnetPull();
+    public static final Ability SECOND_ABILITY = new Ability.Sturdy();
+    public static final Ability HIDDEN_ABILITY = new Ability.Analytic();
 
     //Base Stats
-    private static final int BASE_HEALTH = 25;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 25;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 45;
 
 
     //Typing
-    private static final Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.STEEL;
+    public static final Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.STEEL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/magnemite.png";
-    private static final String BACK_PATH = "battle/backs/magnemite.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/magnemite.png";
-    private static final String CRY_PATH = "sounds/cry/081.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/081.png";
+    public static final String ICON_PATH = "pokemonSprites/magnemite.png";
+    public static final String BACK_PATH = "battle/backs/magnemite.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/magnemite.png";
+    public static final String CRY_PATH = "sounds/cry/081.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/081.png";
 
     /**
      * Create a Magnemite
      */
     public Magnemite() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

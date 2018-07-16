@@ -19,47 +19,52 @@ import java.util.List;
 public class Ponyta extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 77;
-    private static final String NAME = "Ponyta";
-    private static final int BASE_EXP = 152;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 30;
+    public static final int NUMBER = 77;
+    public static final String NAME = "Ponyta";
+    public static final String TYPE_OF_POKEMON = "Fire Horse";
+    public static final String DESCRIPTION = "Its legs grow strong while it chases after its" +
+            " parent. It runs in fields and mountains all day.";
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.FlashFire();
-    private static final Ability HIDDEN_ABILITY = new Ability.FlameBody();
+    public static final int BASE_EXP = 152;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 30;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.FlashFire();
+    public static final Ability HIDDEN_ABILITY = new Ability.FlameBody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 90;
 
     //Typing
-    private static final Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/ponyta.png";
-    private static final String BACK_PATH = "battle/backs/ponyta.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/ponyta.png";
-    private static final String CRY_PATH = "sounds/cry/077.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/077.png";
+    public static final String ICON_PATH = "pokemonSprites/ponyta.png";
+    public static final String BACK_PATH = "battle/backs/ponyta.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/ponyta.png";
+    public static final String CRY_PATH = "sounds/cry/077.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/077.png";
 
     /**
      * Create a Ponyta
      */
     public Ponyta() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

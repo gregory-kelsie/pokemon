@@ -18,47 +18,51 @@ public class Jumpluff extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 189;
-    private static final String NAME = "Jumpluff";
-    private static final int BASE_EXP = 207;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 3;
+    public static final int NUMBER = 189;
+    public static final String NAME = "Jumpluff";
+    public static final String TYPE_OF_POKEMON = "Cottonweed";
+    public static final String DESCRIPTION = "Blown by seasonal winds, it circles the globe," +
+            " scattering cotton spores as it goes.";
+    public static final int BASE_EXP = 207;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 3;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = new Ability.LeafGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = new Ability.LeafGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 110;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 110;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/jumpluff.png";
-    private static final String BACK_PATH = "battle/backs/johto/jumpluff.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/jumpluff.png";
-    private static final String CRY_PATH = "sounds/cry/189.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/jumpluff.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/jumpluff.png";
+    public static final String BACK_PATH = "battle/backs/johto/jumpluff.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/jumpluff.png";
+    public static final String CRY_PATH = "sounds/cry/189.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/jumpluff.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a jumpluff
      */
     public Jumpluff() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

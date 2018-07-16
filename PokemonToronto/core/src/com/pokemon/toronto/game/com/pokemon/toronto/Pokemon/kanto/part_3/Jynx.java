@@ -18,47 +18,52 @@ import java.util.List;
 public class Jynx extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 124;
-    private static final String NAME = "Jynx";
-    private static final int BASE_EXP = 137;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 40.6;
+    public static final int NUMBER = 124;
+    public static final String NAME = "Jynx";
+    public static final String TYPE_OF_POKEMON = "Humanshape";
+    public static final String DESCRIPTION = "It wiggles its hips as it walks. It can cause" +
+            " people to dance in unison with it.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.Forewarn();
-    private static final Ability HIDDEN_ABILITY = new Ability.DrySkin();
+    public static final int BASE_EXP = 137;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 40.6;
+    public static final double HEIGHT = 1.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.Forewarn();
+    public static final Ability HIDDEN_ABILITY = new Ability.DrySkin();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 115;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 115;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 95;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/jynx.png";
-    private static final String BACK_PATH = "battle/backs/jynx.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/jynx.png";
-    private static final String CRY_PATH = "sounds/cry/124.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/124.png";
+    public static final String ICON_PATH = "pokemonSprites/jynx.png";
+    public static final String BACK_PATH = "battle/backs/jynx.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/jynx.png";
+    public static final String CRY_PATH = "sounds/cry/124.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/124.png";
 
     /**
      * Create a Jynx
      */
     public Jynx() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

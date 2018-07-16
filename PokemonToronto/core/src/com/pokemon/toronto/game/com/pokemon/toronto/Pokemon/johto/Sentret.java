@@ -18,47 +18,51 @@ public class Sentret extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 161;
-    private static final String NAME = "Sentret";
-    private static final int BASE_EXP = 57;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 6;
+    public static final int NUMBER = 161;
+    public static final String NAME = "Sentret";
+    public static final String TYPE_OF_POKEMON = "Scout";
+    public static final String DESCRIPTION = "It has a very nervous nature. It stands up high" +
+            " on its tail so it can scan wide areas.";
+    public static final int BASE_EXP = 57;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 6;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.KeenEye();
-    private static final Ability HIDDEN_ABILITY = new Ability.Frisk();
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.KeenEye();
+    public static final Ability HIDDEN_ABILITY = new Ability.Frisk();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 46;
-    private static final int BASE_DEFENSE = 34;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 46;
+    public static final int BASE_DEFENSE = 34;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/sentret.png";
-    private static final String BACK_PATH = "battle/backs/johto/sentret.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/sentret.png";
-    private static final String CRY_PATH = "sounds/cry/161.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/sentret.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/sentret.png";
+    public static final String BACK_PATH = "battle/backs/johto/sentret.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/sentret.png";
+    public static final String CRY_PATH = "sounds/cry/161.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/sentret.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a sentret
      */
     public Sentret() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

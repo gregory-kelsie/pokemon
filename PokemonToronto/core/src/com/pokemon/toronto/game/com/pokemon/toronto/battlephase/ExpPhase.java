@@ -192,7 +192,7 @@ public class ExpPhase extends BattlePhase {
 
     private void updateDelayAfterExpGain(double dt) {
         counter += dt;
-        if (counter >= 2) {
+        if (counter >= 1) {
             if (pui.isWildBattle()) {
                 pui.finishedBattle();
             } else {

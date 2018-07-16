@@ -3,6 +3,7 @@ package com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
@@ -18,47 +19,52 @@ import java.util.List;
 public class Electabuzz extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 125;
-    private static final String NAME = "Electabuzz";
-    private static final int BASE_EXP = 156;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 30;
+    public static final int NUMBER = 125;
+    public static final String NAME = "Electabuzz";
+    public static final String TYPE_OF_POKEMON = "Electric";
+    public static final String DESCRIPTION = "Electricity runs across the surface of its body." +
+            " In darkness, its entire body glows a whitish blue.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Static();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
+    public static final int BASE_EXP = 156;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 30;
+    public static final double HEIGHT = 1.1;
+
+    public static final Ability FIRST_ABILITY = new Ability.Static();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 83;
-    private static final int BASE_DEFENSE = 57;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 105;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 83;
+    public static final int BASE_DEFENSE = 57;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 105;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/electabuzz.png";
-    private static final String BACK_PATH = "battle/backs/electabuzz.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/electabuzz.png";
-    private static final String CRY_PATH = "sounds/cry/125.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/125.png";
+    public static final String ICON_PATH = "pokemonSprites/electabuzz.png";
+    public static final String BACK_PATH = "battle/backs/electabuzz.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/electabuzz.png";
+    public static final String CRY_PATH = "sounds/cry/125.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/125.png";
 
     /**
      * Create a Electabuzz
      */
     public Electabuzz() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -128,5 +134,14 @@ public class Electabuzz extends Pokemon {
         tmSkills.add(TmId.SUBSTITUTE.getValue());
         tmSkills.add(TmId.WILD_CHARGE.getValue());
         tmSkills.add(TmId.CONFIDE.getValue());
+    }
+
+    /**
+     * Evolve into Electivire when a Thunderstone is used.
+     * @return Electivire
+     */
+    @Override
+    public int getThunderStoneEvolutionId() {
+        return PokemonId.ELECTIVIRE.getValue();
     }
 }

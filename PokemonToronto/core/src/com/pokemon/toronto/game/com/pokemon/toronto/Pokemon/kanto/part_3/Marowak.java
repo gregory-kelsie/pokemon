@@ -18,47 +18,52 @@ import java.util.List;
 public class Marowak extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 105;
-    private static final String NAME = "Marowak";
-    private static final int BASE_EXP = 124;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 45;
+    public static final int NUMBER = 105;
+    public static final String NAME = "Marowak";
+    public static final String TYPE_OF_POKEMON = "Bone Keeper";
+    public static final String DESCRIPTION = "The bone it holds is its key weapon. It throws" +
+            " the bone skillfully like a boomerang to KO targets.";
 
-    private static final Ability FIRST_ABILITY = new Ability.RockHead();
-    private static final Ability SECOND_ABILITY = new Ability.Lightningrod();
-    private static final Ability HIDDEN_ABILITY = new Ability.BattleArmor();
+    public static final int BASE_EXP = 124;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 45;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.RockHead();
+    public static final Ability SECOND_ABILITY = new Ability.Lightningrod();
+    public static final Ability HIDDEN_ABILITY = new Ability.BattleArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 110;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 110;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 45;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/marowak.png";
-    private static final String BACK_PATH = "battle/backs/marowak.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/marowak.png";
-    private static final String CRY_PATH = "sounds/cry/105.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/105.png";
+    public static final String ICON_PATH = "pokemonSprites/marowak.png";
+    public static final String BACK_PATH = "battle/backs/marowak.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/marowak.png";
+    public static final String CRY_PATH = "sounds/cry/105.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/105.png";
 
     /**
      * Create a Marowak
      */
     public Marowak() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

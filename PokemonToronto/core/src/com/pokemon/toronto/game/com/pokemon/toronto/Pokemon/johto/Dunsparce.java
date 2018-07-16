@@ -17,47 +17,51 @@ public class Dunsparce extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 206;
-    private static final String NAME = "Dunsparce";
-    private static final int BASE_EXP = 145;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 14;
+    public static final int NUMBER = 206;
+    public static final String NAME = "Dunsparce";
+    public static final String TYPE_OF_POKEMON = "Land Snake";
+    public static final String DESCRIPTION = "It creates mazes in dark locations. When spotted," +
+            " it flees into the ground by digging with its tail.";
+    public static final int BASE_EXP = 145;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 14;
+    public static final double HEIGHT = 1.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SereneGrace();
-    private static final Ability SECOND_ABILITY = new Ability.RunAway();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.SereneGrace();
+    public static final Ability SECOND_ABILITY = new Ability.RunAway();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/dunsparce.png";
-    private static final String BACK_PATH = "battle/backs/johto/dunsparce.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/dunsparce.png";
-    private static final String CRY_PATH = "sounds/cry/206.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/dunsparce.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/dunsparce.png";
+    public static final String BACK_PATH = "battle/backs/johto/dunsparce.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/dunsparce.png";
+    public static final String CRY_PATH = "sounds/cry/206.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/dunsparce.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a dunsparce
      */
     public Dunsparce() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Houndoom extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 229;
-    private static final String NAME = "Houndoom";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 35;
+    public static final int NUMBER = 229;
+    public static final String NAME = "Houndoom";
+    public static final String TYPE_OF_POKEMON = "Dark";
+    public static final String DESCRIPTION = "The flames it breathes when angry contain toxins." +
+            " If they cause a burn, it will hurt forever.";
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 35;
+    public static final double HEIGHT = 1.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.EarlyBird();
-    private static final Ability SECOND_ABILITY = new Ability.FlashFire();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.EarlyBird();
+    public static final Ability SECOND_ABILITY = new Ability.FlashFire();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 110;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 110;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 95;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/houndoom.png";
-    private static final String BACK_PATH = "battle/backs/johto/houndoom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/houndoom.png";
-    private static final String CRY_PATH = "sounds/cry/229.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/houndoom.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/houndoom.png";
+    public static final String BACK_PATH = "battle/backs/johto/houndoom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/houndoom.png";
+    public static final String CRY_PATH = "sounds/cry/229.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/houndoom.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a houndoom
      */
     public Houndoom() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

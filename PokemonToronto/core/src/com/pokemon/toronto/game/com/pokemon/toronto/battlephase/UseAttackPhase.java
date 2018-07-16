@@ -417,6 +417,21 @@ public class UseAttackPhase extends BattlePhase {
         }
     }
 
+    protected boolean willDealDamage(Skill skill, Pokemon receivingPokemon) {
+        if (skill.doesDamageToEnemy()) {
+            if (receivingPokemon.getResistances().get(skill.getType()) != 0) {
+                //Check if the receiving pokemon has wonder guard
+                if (receivingPokemon.getResistances().get(skill.getType()) <= 1 &&
+                        receivingPokemon.getBattleAbility().getId() == AbilityId.WONDER_GUARD) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * *************************************************************************************************************************
      * *************************************************************************************************************************

@@ -69,100 +69,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alola.Wimpod;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alola.Wishiwashi;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.alola.Yungoos;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Aipom;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ampharos;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ariados;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Azumarill;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Bayleef;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Bellossom;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Blissey;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Chikorita;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Chinchou;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Cleffa;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Corsola;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Crobat;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Croconaw;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Cyndaquil;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Delibird;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Donphan;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Dunsparce;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Elekid;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Espeon;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Feraligatr;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Flaffy;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Forretress;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Furret;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Girafarig;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Gligar;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Granbull;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Heracross;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hitmontop;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hoothoot;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Hoppip;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Houndoom;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Houndour;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Igglybuff;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Jumpluff;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Kingdra;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Lanturn;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Larvitar;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ledian;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ledyba;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Magby;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Magcargo;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Mantine;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Mareep;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Marill;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Meganium;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Miltank;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Misdreavus;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Murkrow;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Natu;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Noctowl;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Octillery;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Phanpy;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pichu;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Piloswine;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pineco;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Politoed;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Porygon2;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Pupitar;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Quagsire;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Quilava;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Qwilfish;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Remoraid;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Scizor;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sentret;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Shuckle;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Skarmory;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Skiploom;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Slowking;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Slugma;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Smeargle;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Smoochum;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sneasel;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Snubbull;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Spinarak;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Stantler;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Steelix;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sudowoodo;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sunflora;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Sunkern;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Swinub;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Teddiursa;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Togepi;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Togetic;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Totodile;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Typhlosion;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Tyranitar;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Tyrogue;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Umbreon;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Unown;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Ursaring;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Wobbuffet;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Wooper;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Xatu;
-import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.Yanma;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.hoenn.*;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.johto.*;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kalos.Aegislash;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kalos.Amaura;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kalos.Aromatisse;
@@ -235,6 +143,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.C
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Charizard;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Charmander;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Charmeleon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Articuno;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Eevee;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.one_to_fifty.Ivysaur;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Nature;
@@ -379,6 +288,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Lickitu
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Magikarp;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Magmar;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Marowak;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Mew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Mewtwo;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.MrMime;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Omanyte;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Omastar;
@@ -396,6 +307,101 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Tangela
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Tauros;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Vaporeon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Weezing;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.kanto.part_3.Zapdos;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Abomasnow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Ambipom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bastiodon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bibarel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bidoof;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bonsly;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bronzong;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Bronzor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Budew;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Buizel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Buneary;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Burmy;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Carnivine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Chatot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Cherrim;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Cherubi;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Chimchar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Chingling;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Combee;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Cranidos;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Croagunk;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Drapion;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Drifblim;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Drifloon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Dusknoir;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Electivire;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Empoleon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Finneon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Floatzel;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Froslass;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Gabite;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Gallade;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Garchomp;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Gastrodon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Gible;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Glaceon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Glameow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Gliscor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Grotle;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Happiny;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Hippopotas;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Hippowdon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Honchkrow;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Infernape;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Kricketot;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Kricketune;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Leafeon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Lickilicky;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Lopunny;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Lucario;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Lumineon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Luxio;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Luxray;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Magmortar;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Magnezone;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Mamoswine;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Mantyke;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.MimeJr;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Mismagius;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Monferno;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Mothim;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Munchlax;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Pachirisu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Piplup;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.PorygonZ;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Prinplup;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Probopass;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Purugly;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Rampardos;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Rhyperior;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Riolu;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Roserade;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Rotom;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Shellos;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Shieldon;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Shinx;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Skorupi;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Skuntank;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Snover;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Spiritomb;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Staraptor;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Staravia;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Starly;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Stunky;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Tangrowth;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Togekiss;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Torterra;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Toxicroak;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Turtwig;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Vespiquen;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Weavile;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Wormadam;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.sinnoh.Yanmega;
+import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.unova.*;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 
 /**
@@ -1071,7 +1077,6 @@ public class PokemonFactory {
         } else if (id == PokemonId.KABUTOPS.getValue()) {
             return getCompletedPokemon(new Kabutops(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
-
         } else if (id == PokemonId.AERODACTYL.getValue()) {
             return getCompletedPokemon(new Aerodactyl(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
@@ -1079,17 +1084,29 @@ public class PokemonFactory {
         } else if (id == PokemonId.SNORLAX.getValue()) {
             return getCompletedPokemon(new Snorlax(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
-
+        } else if (id == PokemonId.ARTICUNO.getValue()) {
+            return getCompletedPokemon(new Articuno(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZAPDOS.getValue()) {
+            return getCompletedPokemon(new Zapdos(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MOLTRES.getValue()) {
+            return getCompletedPokemon(new Zapdos(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.DRATINI.getValue()) {
             return getCompletedPokemon(new Dratini(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
-
         } else if (id == PokemonId.DRAGONAIR.getValue()) {
             return getCompletedPokemon(new Dragonair(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
-
         } else if (id == PokemonId.DRAGONITE.getValue()) {
             return getCompletedPokemon(new Dragonite(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MEWTWO.getValue()) {
+            return getCompletedPokemon(new Mewtwo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MEW.getValue()) {
+            return getCompletedPokemon(new Mew(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
         }
         /**
@@ -1370,6 +1387,15 @@ public class PokemonFactory {
         } else if (id == PokemonId.BLISSEY.getValue()) {
             return getCompletedPokemon(new Blissey(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RAIKOU.getValue()) {
+            return getCompletedPokemon(new Raikou(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ENTEI.getValue()) {
+            return getCompletedPokemon(new Entei(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SUICUNE.getValue()) {
+            return getCompletedPokemon(new Suicune(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
         } else if (id == PokemonId.LARVITAR.getValue()) {
             return getCompletedPokemon(new Larvitar(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
@@ -1379,7 +1405,1149 @@ public class PokemonFactory {
         } else if (id == PokemonId.TYRANITAR.getValue()) {
             return getCompletedPokemon(new Tyranitar(), level, gender, ivs, evs, firstSkill, secondSkill,
                     thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUGIA.getValue()) {
+            return getCompletedPokemon(new Lugia(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HOOH.getValue()) {
+            return getCompletedPokemon(new HoOh(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CELEBI.getValue()) {
+            return getCompletedPokemon(new Celebi(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
         }
+
+        /**
+         * ****************************************************************************************
+         *                              HOENN
+         ******************************************************************************************
+         */
+        else if (id == PokemonId.TREECKO.getValue()) {
+            return getCompletedPokemon(new Treecko(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GROVYLE.getValue()) {
+            return getCompletedPokemon(new Grovyle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SCEPTILE.getValue()) {
+            return getCompletedPokemon(new Sceptile(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TORCHIC.getValue()) {
+            return getCompletedPokemon(new Torchic(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.COMBUSKEN.getValue()) {
+            return getCompletedPokemon(new Combusken(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BLAZIKEN.getValue()) {
+            return getCompletedPokemon(new Blaziken(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MUDKIP.getValue()) {
+            return getCompletedPokemon(new Mudkip(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MARSHTOMP.getValue()) {
+            return getCompletedPokemon(new Marshtomp(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWAMPERT.getValue()) {
+            return getCompletedPokemon(new Swampert(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.POOCHYENA.getValue()) {
+            return getCompletedPokemon(new Poochyena(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MIGHTYENA.getValue()) {
+            return getCompletedPokemon(new Mightyena(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZIGZAGOON.getValue()) {
+            return getCompletedPokemon(new Zigzagoon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LINOONE.getValue()) {
+            return getCompletedPokemon(new Linoone(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WURMPLE.getValue()) {
+            return getCompletedPokemon(new Wurmple(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SILCOON.getValue()) {
+            return getCompletedPokemon(new Silcoon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BEAUTIFLY.getValue()) {
+            return getCompletedPokemon(new Beautifly(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CASCOON.getValue()) {
+            return getCompletedPokemon(new Cascoon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUSTOX.getValue()) {
+            return getCompletedPokemon(new Dustox(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LOTAD.getValue()) {
+            return getCompletedPokemon(new Lotad(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LOMBRE.getValue()) {
+            return getCompletedPokemon(new Lombre(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUDICOLO.getValue()) {
+            return getCompletedPokemon(new Ludicolo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEEDOT.getValue()) {
+            return getCompletedPokemon(new Seedot(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.NUZLEAF.getValue()) {
+            return getCompletedPokemon(new Nuzleaf(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHIFTRY.getValue()) {
+            return getCompletedPokemon(new Shiftry(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TAILLOW.getValue()) {
+            return getCompletedPokemon(new Taillow(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWELLOW.getValue()) {
+            return getCompletedPokemon(new Swellow(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WINGULL.getValue()) {
+            return getCompletedPokemon(new Wingull(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PELIPPER.getValue()) {
+            return getCompletedPokemon(new Pelipper(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RALTS.getValue()) {
+            return getCompletedPokemon(new Ralts(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KIRLIA.getValue()) {
+            return getCompletedPokemon(new Kirlia(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GARDEVOIR.getValue()) {
+            return getCompletedPokemon(new Gardevoir(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SURSKIT.getValue()) {
+            return getCompletedPokemon(new Surskit(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MASQUERAIN.getValue()) {
+            return getCompletedPokemon(new Masquerain(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHROOMISH.getValue()) {
+            return getCompletedPokemon(new Shroomish(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BRELOOM.getValue()) {
+            return getCompletedPokemon(new Breloom(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SLAKOTH.getValue()) {
+            return getCompletedPokemon(new Slakoth(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VIGOROTH.getValue()) {
+            return getCompletedPokemon(new Vigoroth(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SLAKING.getValue()) {
+            return getCompletedPokemon(new Slaking(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.NINCADA.getValue()) {
+            return getCompletedPokemon(new Nincada(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.NINJASK.getValue()) {
+            return getCompletedPokemon(new Ninjask(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHEDINJA.getValue()) {
+            return getCompletedPokemon(new Shedinja(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WHISMUR.getValue()) {
+            return getCompletedPokemon(new Whismur(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LOUDRED.getValue()) {
+            return getCompletedPokemon(new Loudred(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EXPLOUD.getValue()) {
+            return getCompletedPokemon(new Exploud(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAKUHITA.getValue()) {
+            return getCompletedPokemon(new Makuhita(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HARIYAMA.getValue()) {
+            return getCompletedPokemon(new Hariyama(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AZURILL.getValue()) {
+            return getCompletedPokemon(new Azurill(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.NOSEPASS.getValue()) {
+            return getCompletedPokemon(new Nosepass(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SKITTY.getValue()) {
+            return getCompletedPokemon(new Skitty(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DELCATTY.getValue()) {
+            return getCompletedPokemon(new Delcatty(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SABLEYE.getValue()) {
+            return getCompletedPokemon(new Sableye(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAWILE.getValue()) {
+            return getCompletedPokemon(new Mawile(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ARON.getValue()) {
+            return getCompletedPokemon(new Aron(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LAIRON.getValue()) {
+            return getCompletedPokemon(new Lairon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AGGRON.getValue()) {
+            return getCompletedPokemon(new Aggron(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MEDITITE.getValue()) {
+            return getCompletedPokemon(new Meditite(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MEDICHAM.getValue()) {
+            return getCompletedPokemon(new Medicham(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ELECTRIKE.getValue()) {
+            return getCompletedPokemon(new Electrike(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MANECTRIC.getValue()) {
+            return getCompletedPokemon(new Manectric(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PLUSLE.getValue()) {
+            return getCompletedPokemon(new Plusle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MINUN.getValue()) {
+            return getCompletedPokemon(new Minun(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VOLBEAT.getValue()) {
+            return getCompletedPokemon(new Volbeat(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ILLUMISE.getValue()) {
+            return getCompletedPokemon(new Illumise(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ROSELIA.getValue()) {
+            return getCompletedPokemon(new Roselia(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GULPIN.getValue()) {
+            return getCompletedPokemon(new Gulpin(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWALOT.getValue()) {
+            return getCompletedPokemon(new Swalot(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CARVANHA.getValue()) {
+            return getCompletedPokemon(new Carvanha(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHARPEDO.getValue()) {
+            return getCompletedPokemon(new Sharpedo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WAILMER.getValue()) {
+            return getCompletedPokemon(new Wailmer(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WAILORD.getValue()) {
+            return getCompletedPokemon(new Wailord(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.NUMEL.getValue()) {
+            return getCompletedPokemon(new Numel(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CAMERUPT.getValue()) {
+            return getCompletedPokemon(new Camerupt(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TORKOAL.getValue()) {
+            return getCompletedPokemon(new Torkoal(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SPOINK.getValue()) {
+            return getCompletedPokemon(new Spoink(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GRUMPIG.getValue()) {
+            return getCompletedPokemon(new Grumpig(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SPINDA.getValue()) {
+            return getCompletedPokemon(new Spinda(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TRAPINCH.getValue()) {
+            return getCompletedPokemon(new Trapinch(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VIBRAVA.getValue()) {
+            return getCompletedPokemon(new Vibrava(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FLYGON.getValue()) {
+            return getCompletedPokemon(new Flygon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CACNEA.getValue()) {
+            return getCompletedPokemon(new Cacnea(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CACTURNE.getValue()) {
+            return getCompletedPokemon(new Cacturne(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWABLU.getValue()) {
+            return getCompletedPokemon(new Swablu(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ALTARIA.getValue()) {
+            return getCompletedPokemon(new Altaria(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZANGOOSE.getValue()) {
+            return getCompletedPokemon(new Zangoose(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEVIPER.getValue()) {
+            return getCompletedPokemon(new Seviper(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUNATONE.getValue()) {
+            return getCompletedPokemon(new Lunatone(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SOLROCK.getValue()) {
+            return getCompletedPokemon(new Solrock(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BARBOACH.getValue()) {
+            return getCompletedPokemon(new Barboach(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WHISCASH.getValue()) {
+            return getCompletedPokemon(new Whiscash(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CORPHISH.getValue()) {
+            return getCompletedPokemon(new Corphish(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CRAWDAUNT.getValue()) {
+            return getCompletedPokemon(new Crawdaunt(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BALTOY.getValue()) {
+            return getCompletedPokemon(new Baltoy(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CLAYDOL.getValue()) {
+            return getCompletedPokemon(new Claydol(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LILEEP.getValue()) {
+            return getCompletedPokemon(new Lileep(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CRADILY.getValue()) {
+            return getCompletedPokemon(new Cradily(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ANORITH.getValue()) {
+            return getCompletedPokemon(new Anorith(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ARMALDO.getValue()) {
+            return getCompletedPokemon(new Armaldo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FEEBAS.getValue()) {
+            return getCompletedPokemon(new Feebas(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MILOTIC.getValue()) {
+            return getCompletedPokemon(new Milotic(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CASTFORM.getValue()) {
+            return getCompletedPokemon(new Castform(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KECLEON.getValue()) {
+            return getCompletedPokemon(new Kecleon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHUPPET.getValue()) {
+            return getCompletedPokemon(new Shuppet(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BANETTE.getValue()) {
+            return getCompletedPokemon(new Banette(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUSKULL.getValue()) {
+            return getCompletedPokemon(new Duskull(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUSCLOPS.getValue()) {
+            return getCompletedPokemon(new Dusclops(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TROPIUS.getValue()) {
+            return getCompletedPokemon(new Tropius(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHIMECHO.getValue()) {
+            return getCompletedPokemon(new Chimecho(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ABSOL.getValue()) {
+            return getCompletedPokemon(new Absol(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WYNAUT.getValue()) {
+            return getCompletedPokemon(new Wynaut(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SNORUNT.getValue()) {
+            return getCompletedPokemon(new Snorunt(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GLALIE.getValue()) {
+            return getCompletedPokemon(new Glalie(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SPHEAL.getValue()) {
+            return getCompletedPokemon(new Spheal(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEALEO.getValue()) {
+            return getCompletedPokemon(new Sealeo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WALREIN.getValue()) {
+            return getCompletedPokemon(new Walrein(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CLAMPERL.getValue()) {
+            return getCompletedPokemon(new Clamperl(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HUNTAIL.getValue()) {
+            return getCompletedPokemon(new Huntail(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOREBYSS.getValue()) {
+            return getCompletedPokemon(new Gorebyss(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RELICANTH.getValue()) {
+            return getCompletedPokemon(new Relicanth(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUVDISC.getValue()) {
+            return getCompletedPokemon(new Luvdisc(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BAGON.getValue()) {
+            return getCompletedPokemon(new Bagon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHELGON.getValue()) {
+            return getCompletedPokemon(new Shelgon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SALAMENCE.getValue()) {
+            return getCompletedPokemon(new Salamence(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BELDUM.getValue()) {
+            return getCompletedPokemon(new Beldum(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.METANG.getValue()) {
+            return getCompletedPokemon(new Metang(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.METAGROSS.getValue()) {
+            return getCompletedPokemon(new Metagross(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.REGIROCK.getValue()) {
+            return getCompletedPokemon(new Regirock(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.REGICE.getValue()) {
+            return getCompletedPokemon(new Regice(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.REGISTEEL.getValue()) {
+            return getCompletedPokemon(new Registeel(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LATIAS.getValue()) {
+            return getCompletedPokemon(new Latias(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LATIOS.getValue()) {
+            return getCompletedPokemon(new Latios(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KYOGRE.getValue()) {
+            return getCompletedPokemon(new Kyogre(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GROUDON.getValue()) {
+            return getCompletedPokemon(new Groudon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RAYQUAZA.getValue()) {
+            return getCompletedPokemon(new Rayquaza(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.JIRACHI.getValue()) {
+            return getCompletedPokemon(new Jirachi(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DEOXYS.getValue()) {
+            return getCompletedPokemon(new Deoxys(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }
+
+        /**
+         * ****************************************************************************************
+         *                              SINNOH
+         ******************************************************************************************
+         */
+
+        else if (id == PokemonId.TURTWIG.getValue()) {
+            return getCompletedPokemon(new Turtwig(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GROTLE.getValue()) {
+            return getCompletedPokemon(new Grotle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TORTERRA.getValue()) {
+            return getCompletedPokemon(new Torterra(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHIMCHAR.getValue()) {
+            return getCompletedPokemon(new Chimchar(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MONFERNO.getValue()) {
+            return getCompletedPokemon(new Monferno(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.INFERNAPE.getValue()) {
+            return getCompletedPokemon(new Infernape(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PIPLUP.getValue()) {
+            return getCompletedPokemon(new Piplup(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PRINPLUP.getValue()) {
+            return getCompletedPokemon(new Prinplup(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EMPOLEON.getValue()) {
+            return getCompletedPokemon(new Empoleon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STARLY.getValue()) {
+            return getCompletedPokemon(new Starly(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STARAVIA.getValue()) {
+            return getCompletedPokemon(new Staravia(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STARAPTOR.getValue()) {
+            return getCompletedPokemon(new Staraptor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BIDOOF.getValue()) {
+            return getCompletedPokemon(new Bidoof(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BIBAREL.getValue()) {
+            return getCompletedPokemon(new Bibarel(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KRICKETOT.getValue()) {
+            return getCompletedPokemon(new Kricketot(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KRICKETUNE.getValue()) {
+            return getCompletedPokemon(new Kricketune(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHINX.getValue()) {
+            return getCompletedPokemon(new Shinx(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUXIO.getValue()) {
+            return getCompletedPokemon(new Luxio(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUXRAY.getValue()) {
+            return getCompletedPokemon(new Luxray(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BUDEW.getValue()) {
+            return getCompletedPokemon(new Budew(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ROSERADE.getValue()) {
+            return getCompletedPokemon(new Roserade(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CRANIDOS.getValue()) {
+            return getCompletedPokemon(new Cranidos(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RAMPARDOS.getValue()) {
+            return getCompletedPokemon(new Rampardos(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHIELDON.getValue()) {
+            return getCompletedPokemon(new Shieldon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BASTIODON.getValue()) {
+            return getCompletedPokemon(new Bastiodon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BURMY.getValue()) {
+            return getCompletedPokemon(new Burmy(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WORMADAM.getValue()) {
+            return getCompletedPokemon(new Wormadam(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MOTHIM.getValue()) {
+            return getCompletedPokemon(new Mothim(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.COMBEE.getValue()) {
+            return getCompletedPokemon(new Combee(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VESPIQUEN.getValue()) {
+            return getCompletedPokemon(new Vespiquen(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PACHIRISU.getValue()) {
+            return getCompletedPokemon(new Pachirisu(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BUIZEL.getValue()) {
+            return getCompletedPokemon(new Buizel(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FLOATZEL.getValue()) {
+            return getCompletedPokemon(new Floatzel(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHERUBI.getValue()) {
+            return getCompletedPokemon(new Cherubi(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHERRIM.getValue()) {
+            return getCompletedPokemon(new Cherrim(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHELLOS.getValue()) {
+            return getCompletedPokemon(new Shellos(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GASTRODON.getValue()) {
+            return getCompletedPokemon(new Gastrodon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AMBIPOM.getValue()) {
+            return getCompletedPokemon(new Ambipom(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DRIFLOON.getValue()) {
+            return getCompletedPokemon(new Drifloon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DRIFBLIM.getValue()) {
+            return getCompletedPokemon(new Drifblim(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BUNEARY.getValue()) {
+            return getCompletedPokemon(new Buneary(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LOPUNNY.getValue()) {
+            return getCompletedPokemon(new Lopunny(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MISMAGIUS.getValue()) {
+            return getCompletedPokemon(new Mismagius(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HONCHKROW.getValue()) {
+            return getCompletedPokemon(new Honchkrow(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GLAMEOW.getValue()) {
+            return getCompletedPokemon(new Glameow(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PURUGLY.getValue()) {
+            return getCompletedPokemon(new Purugly(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHINGLING.getValue()) {
+            return getCompletedPokemon(new Chingling(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STUNKY.getValue()) {
+            return getCompletedPokemon(new Stunky(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SKUNTANK.getValue()) {
+            return getCompletedPokemon(new Skuntank(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BRONZOR.getValue()) {
+            return getCompletedPokemon(new Bronzor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BRONZONG.getValue()) {
+            return getCompletedPokemon(new Bronzong(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BONSLY.getValue()) {
+            return getCompletedPokemon(new Bonsly(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MIME_JR.getValue()) {
+            return getCompletedPokemon(new MimeJr(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HAPPINY.getValue()) {
+            return getCompletedPokemon(new Happiny(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHATOT.getValue()) {
+            return getCompletedPokemon(new Chatot(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SPIRITOMB.getValue()) {
+            return getCompletedPokemon(new Spiritomb(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GIBLE.getValue()) {
+            return getCompletedPokemon(new Gible(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GABITE.getValue()) {
+            return getCompletedPokemon(new Gabite(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GARCHOMP.getValue()) {
+            return getCompletedPokemon(new Garchomp(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MUNCHLAX.getValue()) {
+            return getCompletedPokemon(new Munchlax(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RIOLU.getValue()) {
+            return getCompletedPokemon(new Riolu(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUCARIO.getValue()) {
+            return getCompletedPokemon(new Lucario(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HIPPOPOTAS.getValue()) {
+            return getCompletedPokemon(new Hippopotas(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HIPPOWDON.getValue()) {
+            return getCompletedPokemon(new Hippowdon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SKORUPI.getValue()) {
+            return getCompletedPokemon(new Skorupi(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DRAPION.getValue()) {
+            return getCompletedPokemon(new Drapion(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CROAGUNK.getValue()) {
+            return getCompletedPokemon(new Croagunk(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TOXICROAK.getValue()) {
+            return getCompletedPokemon(new Toxicroak(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CARNIVINE.getValue()) {
+            return getCompletedPokemon(new Carnivine(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FINNEON.getValue()) {
+            return getCompletedPokemon(new Finneon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LUMINEON.getValue()) {
+            return getCompletedPokemon(new Lumineon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MANTYKE.getValue()) {
+            return getCompletedPokemon(new Mantyke(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SNOVER.getValue()) {
+            return getCompletedPokemon(new Snover(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ABOMASNOW.getValue()) {
+            return getCompletedPokemon(new Abomasnow(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WEAVILE.getValue()) {
+            return getCompletedPokemon(new Weavile(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAGNEZONE.getValue()) {
+            return getCompletedPokemon(new Magnezone(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LICKILICKY.getValue()) {
+            return getCompletedPokemon(new Lickilicky(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RHYPERIOR.getValue()) {
+            return getCompletedPokemon(new Rhyperior(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TANGROWTH.getValue()) {
+            return getCompletedPokemon(new Tangrowth(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ELECTIVIRE.getValue()) {
+            return getCompletedPokemon(new Electivire(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAGMORTAR.getValue()) {
+            return getCompletedPokemon(new Magmortar(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TOGEKISS.getValue()) {
+            return getCompletedPokemon(new Togekiss(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.YANMEGA.getValue()) {
+            return getCompletedPokemon(new Yanmega(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LEAFEON.getValue()) {
+            return getCompletedPokemon(new Leafeon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GLACEON.getValue()) {
+            return getCompletedPokemon(new Glaceon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GLISCOR.getValue()) {
+            return getCompletedPokemon(new Gliscor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MAMOSWINE.getValue()) {
+            return getCompletedPokemon(new Mamoswine(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PORYGON_Z.getValue()) {
+            return getCompletedPokemon(new PorygonZ(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GALLADE.getValue()) {
+            return getCompletedPokemon(new Gallade(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PROBOPASS.getValue()) {
+            return getCompletedPokemon(new Probopass(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUSKNOIR.getValue()) {
+            return getCompletedPokemon(new Dusknoir(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FROSLASS.getValue()) {
+            return getCompletedPokemon(new Froslass(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ROTOM.getValue()) {
+            return getCompletedPokemon(new Rotom(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }
+
+        /**
+         * ****************************************************************************************
+         *                              UNOVA
+         ******************************************************************************************
+         */
+        else if (id == PokemonId.SNIVY.getValue()) {
+            return getCompletedPokemon(new Snivy(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SERVINE.getValue()) {
+            return getCompletedPokemon(new Servine(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SERPERIOR.getValue()) {
+            return getCompletedPokemon(new Serperior(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TEPIG.getValue()) {
+            return getCompletedPokemon(new Tepig(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PIGNITE.getValue()) {
+            return getCompletedPokemon(new Pignite(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EMBOAR.getValue()) {
+            return getCompletedPokemon(new Emboar(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.OSHAWOTT.getValue()) {
+            return getCompletedPokemon(new Oshawott(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DEWOTT.getValue()) {
+            return getCompletedPokemon(new Dewott(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SAMUROTT.getValue()) {
+            return getCompletedPokemon(new Samurott(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PATRAT.getValue()) {
+            return getCompletedPokemon(new Patrat(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WATCHOG.getValue()) {
+            return getCompletedPokemon(new Watchog(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LILLIPUP.getValue()) {
+            return getCompletedPokemon(new Lillipup(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HERDIER.getValue()) {
+            return getCompletedPokemon(new Herdier(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STOUTLAND.getValue()) {
+            return getCompletedPokemon(new Stoutland(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PURRLOIN.getValue()) {
+            return getCompletedPokemon(new Purrloin(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LIEPARD.getValue()) {
+            return getCompletedPokemon(new Liepard(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PANSAGE.getValue()) {
+            return getCompletedPokemon(new Pansage(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SIMISAGE.getValue()) {
+            return getCompletedPokemon(new Simisage(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PANSEAR.getValue()) {
+            return getCompletedPokemon(new Pansear(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SIMISEAR.getValue()) {
+            return getCompletedPokemon(new Simisear(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PANPOUR.getValue()) {
+            return getCompletedPokemon(new Panpour(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SIMIPOUR.getValue()) {
+            return getCompletedPokemon(new Simipour(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MUNNA.getValue()) {
+            return getCompletedPokemon(new Munna(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MUSHARNA.getValue()) {
+            return getCompletedPokemon(new Musharna(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PIDOVE.getValue()) {
+            return getCompletedPokemon(new Pidove(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TRANQUILL.getValue()) {
+            return getCompletedPokemon(new Tranquill(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.UNFEZANT.getValue()) {
+            return getCompletedPokemon(new Unfezant(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BLITZLE.getValue()) {
+            return getCompletedPokemon(new Blitzle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZEBSTRIKA.getValue()) {
+            return getCompletedPokemon(new Zebstrika(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ROGGENROLA.getValue()) {
+            return getCompletedPokemon(new Roggenrola(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BOLDORE.getValue()) {
+            return getCompletedPokemon(new Boldore(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GIGALITH.getValue()) {
+            return getCompletedPokemon(new Gigalith(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WOOBAT.getValue()) {
+            return getCompletedPokemon(new Woobat(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWOOBAT.getValue()) {
+            return getCompletedPokemon(new Swoobat(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DRILBUR.getValue()) {
+            return getCompletedPokemon(new Drilbur(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EXCADRILL.getValue()) {
+            return getCompletedPokemon(new Excadrill(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AUDINO.getValue()) {
+            return getCompletedPokemon(new Audino(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TIMBURR.getValue()) {
+            return getCompletedPokemon(new Timburr(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GURDURR.getValue()) {
+            return getCompletedPokemon(new Gurdurr(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CONKELDURR.getValue()) {
+            return getCompletedPokemon(new Conkeldurr(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TYMPOLE.getValue()) {
+            return getCompletedPokemon(new Tympole(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PALPITOAD.getValue()) {
+            return getCompletedPokemon(new Palpitoad(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEISMITOAD.getValue()) {
+            return getCompletedPokemon(new Seismitoad(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.THROH.getValue()) {
+            return getCompletedPokemon(new Throh(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SAWK.getValue()) {
+            return getCompletedPokemon(new Sawk(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SEWADDLE.getValue()) {
+            return getCompletedPokemon(new Sewaddle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWADLOON.getValue()) {
+            return getCompletedPokemon(new Swadloon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LEAVANNY.getValue()) {
+            return getCompletedPokemon(new Leavanny(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VENIPEDE.getValue()) {
+            return getCompletedPokemon(new Venipede(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WHIRLIPEDE.getValue()) {
+            return getCompletedPokemon(new Whirlipede(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SCOLIPEDE.getValue()) {
+            return getCompletedPokemon(new Scolipede(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.COTTONEE.getValue()) {
+            return getCompletedPokemon(new Cottonee(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.WHIMSICOTT.getValue()) {
+            return getCompletedPokemon(new Whimsicott(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PETILIL.getValue()) {
+            return getCompletedPokemon(new Petilil(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LILLIGANT.getValue()) {
+            return getCompletedPokemon(new Lilligant(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BASCULIN.getValue()) {
+            return getCompletedPokemon(new Basculin(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SANDILE.getValue()) {
+            return getCompletedPokemon(new Sandile(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KROKOROK.getValue()) {
+            return getCompletedPokemon(new Krokorok(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KROOKODILE.getValue()) {
+            return getCompletedPokemon(new Krookodile(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DARUMAKA.getValue()) {
+            return getCompletedPokemon(new Darumaka(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DARMANITAN.getValue()) {
+            return getCompletedPokemon(new Darmanitan(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MARACTUS.getValue()) {
+            return getCompletedPokemon(new Maractus(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DWEBBLE.getValue()) {
+            return getCompletedPokemon(new Dwebble(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CRUSTLE.getValue()) {
+            return getCompletedPokemon(new Crustle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SCRAGGY.getValue()) {
+            return getCompletedPokemon(new Scraggy(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SCRAFTY.getValue()) {
+            return getCompletedPokemon(new Scrafty(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SIGILYPH.getValue()) {
+            return getCompletedPokemon(new Sigilyph(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.YAMASK.getValue()) {
+            return getCompletedPokemon(new Yamask(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.COFAGRIGUS.getValue()) {
+            return getCompletedPokemon(new Cofagrigus(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TIRTOUGA.getValue()) {
+            return getCompletedPokemon(new Tirtouga(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CARRACOSTA.getValue()) {
+            return getCompletedPokemon(new Carracosta(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ARCHEN.getValue()) {
+            return getCompletedPokemon(new Archen(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ARCHEOPS.getValue()) {
+            return getCompletedPokemon(new Archeops(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TRUBBISH.getValue()) {
+            return getCompletedPokemon(new Trubbish(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GARBODOR.getValue()) {
+            return getCompletedPokemon(new Garbodor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZORUA.getValue()) {
+            return getCompletedPokemon(new Zorua(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZOROARK.getValue()) {
+            return getCompletedPokemon(new Zoroark(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MINCCINO.getValue()) {
+            return getCompletedPokemon(new Minccino(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOTHITA.getValue()) {
+            return getCompletedPokemon(new Gothita(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOTHORITA.getValue()) {
+            return getCompletedPokemon(new Gothorita(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOTHITELLE.getValue()) {
+            return getCompletedPokemon(new Gothitelle(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SOLOSIS.getValue()) {
+            return getCompletedPokemon(new Solosis(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUOSION.getValue()) {
+            return getCompletedPokemon(new Duosion(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.REUNICLUS.getValue()) {
+            return getCompletedPokemon(new Reuniclus(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DUCKLETT.getValue()) {
+            return getCompletedPokemon(new Ducklett(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SWANNA.getValue()) {
+            return getCompletedPokemon(new Swanna(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VANILLITE.getValue()) {
+            return getCompletedPokemon(new Vanillite(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VANILLISH.getValue()) {
+            return getCompletedPokemon(new Vanillish(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VANILLUXE.getValue()) {
+            return getCompletedPokemon(new Vanilluxe(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DEERLING.getValue()) {
+            return getCompletedPokemon(new Deerling(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SAWSBUCK.getValue()) {
+            return getCompletedPokemon(new Sawsbuck(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EMOLGA.getValue()) {
+            return getCompletedPokemon(new Emolga(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KARRABLAST.getValue()) {
+            return getCompletedPokemon(new Karrablast(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ESCAVALIER.getValue()) {
+            return getCompletedPokemon(new Escavalier(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FOONGUS.getValue()) {
+            return getCompletedPokemon(new Foongus(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AMOONGUSS.getValue()) {
+            return getCompletedPokemon(new Amoonguss(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FRILLISH.getValue()) {
+            return getCompletedPokemon(new Frillish(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.JELLICENT.getValue()) {
+            return getCompletedPokemon(new Jellicent(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ALOMOMOLA.getValue()) {
+            return getCompletedPokemon(new Alomomola(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.JOLTIK.getValue()) {
+            return getCompletedPokemon(new Joltik(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GALVANTULA.getValue()) {
+            return getCompletedPokemon(new Galvantula(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FERROSEED.getValue()) {
+            return getCompletedPokemon(new Ferroseed(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FERROTHORN.getValue()) {
+            return getCompletedPokemon(new Ferrothorn(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KLINK.getValue()) {
+            return getCompletedPokemon(new Klink(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KLANG.getValue()) {
+            return getCompletedPokemon(new Klang(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.KLINKLANG.getValue()) {
+            return getCompletedPokemon(new Klinklang(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.TYNAMO.getValue()) {
+            return getCompletedPokemon(new Tynamo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EELEKTRIK.getValue()) {
+            return getCompletedPokemon(new Eelektrik(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.EELEKTROSS.getValue()) {
+            return getCompletedPokemon(new Eelektross(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ELGYEM.getValue()) {
+            return getCompletedPokemon(new Elgyem(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BEHEEYEM.getValue()) {
+            return getCompletedPokemon(new Beheeyem(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LITWICK.getValue()) {
+            return getCompletedPokemon(new Litwick(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LAMPENT.getValue()) {
+            return getCompletedPokemon(new Lampent(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CHANDELURE.getValue()) {
+            return getCompletedPokemon(new Chandelure(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.AXEW.getValue()) {
+            return getCompletedPokemon(new Axew(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.FRAXURE.getValue()) {
+            return getCompletedPokemon(new Fraxure(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HAXORUS.getValue()) {
+            return getCompletedPokemon(new Haxorus(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CUBCHOO.getValue()) {
+            return getCompletedPokemon(new Cubchoo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BEARTIC.getValue()) {
+            return getCompletedPokemon(new Beartic(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.CRYOGONAL.getValue()) {
+            return getCompletedPokemon(new Cryogonal(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.SHELMET.getValue()) {
+            return getCompletedPokemon(new Shelmet(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ACCELGOR.getValue()) {
+            return getCompletedPokemon(new Accelgor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.STUNFISK.getValue()) {
+            return getCompletedPokemon(new Stunfisk(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MIENFOO.getValue()) {
+            return getCompletedPokemon(new Mienfoo(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MIENSHAO.getValue()) {
+            return getCompletedPokemon(new Mienshao(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DRUDDIGON.getValue()) {
+            return getCompletedPokemon(new Druddigon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOLETT.getValue()) {
+            return getCompletedPokemon(new Golett(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.GOLURK.getValue()) {
+            return getCompletedPokemon(new Golurk(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.PAWNIARD.getValue()) {
+            return getCompletedPokemon(new Pawniard(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BISHARP.getValue()) {
+            return getCompletedPokemon(new Bisharp(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BOUFFALANT.getValue()) {
+            return getCompletedPokemon(new Bouffalant(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.RUFFLET.getValue()) {
+            return getCompletedPokemon(new Rufflet(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.BRAVIARY.getValue()) {
+            return getCompletedPokemon(new Braviary(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VULLABY.getValue()) {
+            return getCompletedPokemon(new Vullaby(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.MANDIBUZZ.getValue()) {
+            return getCompletedPokemon(new Mandibuzz(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HEATMOR.getValue()) {
+            return getCompletedPokemon(new Heatmor(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DURANT.getValue()) {
+            return getCompletedPokemon(new Durant(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.DEINO.getValue()) {
+            return getCompletedPokemon(new Deino(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.ZWEILOUS.getValue()) {
+            return getCompletedPokemon(new Zweilous(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.HYDREIGON.getValue()) {
+            return getCompletedPokemon(new Hydreigon(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.LARVESTA.getValue()) {
+            return getCompletedPokemon(new Larvesta(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        } else if (id == PokemonId.VOLCARONA.getValue()) {
+            return getCompletedPokemon(new Volcarona(), level, gender, ivs, evs, firstSkill, secondSkill,
+                    thirdSkill, fourthSkill, currentHealth, currentExp, status, nature, ability);
+        }
+
         /**
          * ****************************************************************************************
          *                              KALOS

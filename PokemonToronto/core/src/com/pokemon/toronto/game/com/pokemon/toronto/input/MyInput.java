@@ -1,5 +1,7 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.input;
 
+import com.badlogic.gdx.Gdx;
+
 /**
  * Created by Gregory on 6/5/2017.
  */
@@ -11,12 +13,70 @@ public class MyInput {
     private static int[] currentMouseLocation = new int[2];
     private static boolean dragging = false;
 
+    private static boolean tapped = false;
+
+    private static boolean panning = false;
+    private static float deltaX = 0;
+    private static float deltaY = 0;
+
+    public static void pan(int x, int y, float dx, float dy) {
+        panning = true;
+        deltaX = dx;
+        deltaY = dy;
+        currentMouseLocation[0] = x;
+        currentMouseLocation[1] = y;
+    }
+
+    public static void stopPan() {
+        panning = false;
+    }
+
+    public static void resetDeltas() {
+        deltaX = 0;
+        deltaY = 0;
+    }
+
+    public static boolean isPanning() {
+        return panning;
+    }
+
+    public static float getDeltaX() {
+        return deltaX;
+    }
+
+    public static float getDeltaY() {
+        return deltaY;
+    }
+
+    public static void tap(int x, int y) {
+        currentMouseLocation[0] = x;
+        currentMouseLocation[1] = y;
+        tapped = true;
+    }
+
+    public static boolean tapped() {
+        return tapped;
+    }
+
+
+    public static void setDrag() {
+        dragging = true;
+    }
+
+    public static void stopDrag() {
+        dragging = false;
+    }
+
+    public static boolean isDragging() {
+        return dragging;
+    }
     /**
      * Update the touch.
      * - Set previous mouse state to the current mouse state
      * - Reset current mouse state
      */
     public static void update() {
+        tapped = false;
         pMouseDown = mouseDown;
         mouseReleased = false;
         mouseDown = false;
@@ -40,6 +100,7 @@ public class MyInput {
      */
     public static void setMouseReleased(int x, int y) {
         mouseReleased = true;
+        dragging = false;
         currentMouseLocation[0] = x;
         currentMouseLocation[1] = y;
     }

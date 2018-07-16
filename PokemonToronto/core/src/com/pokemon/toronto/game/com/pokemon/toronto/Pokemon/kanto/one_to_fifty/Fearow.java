@@ -19,40 +19,52 @@ public class Fearow extends Pokemon {
 
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 22;
-    private static final String NAME = "Fearow";
-    private static final int BASE_EXP = 162;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 38;
+    public static final int NUMBER = 22;
+    public static final String NAME = "Fearow";
+    public static final String TYPE_OF_POKEMON = "Beak";
+    public static final String DESCRIPTION = "With its huge and magnificent wings, it can keep" +
+            " aloft without ever having to land for rest.";
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Sniper();
+    public static final int BASE_EXP = 162;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 90;
+
+    public static final double HEIGHT = 1.2;
+    public static final double WEIGHT = 38;
+
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Sniper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 61;
-    private static final int BASE_SPECIAL_DEFENSE = 61;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 61;
+    public static final int BASE_SPECIAL_DEFENSE = 61;
+    public static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/fearow.png";
-    private static final String BACK_PATH = "battle/backs/fearow.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/fearow.png";
-    private static final String CRY_PATH = "sounds/cry/022.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/022.png";
+    public static final String ICON_PATH = "pokemonSprites/fearow.png";
+    public static final String BACK_PATH = "battle/backs/fearow.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/fearow.png";
+    public static final String CRY_PATH = "sounds/cry/022.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/022.png";
+
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Fearow
      */
     public Fearow() {
-        super(NUMBER, NAME, Pokemon.Type.NORMAL, Pokemon.Type.FLYING, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

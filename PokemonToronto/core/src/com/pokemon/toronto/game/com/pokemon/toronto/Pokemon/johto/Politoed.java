@@ -18,47 +18,51 @@ public class Politoed extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 186;
-    private static final String NAME = "Politoed";
-    private static final int BASE_EXP = 225;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 33.9;
+    public static final int NUMBER = 186;
+    public static final String NAME = "Politoed";
+    public static final String TYPE_OF_POKEMON = "Frog";
+    public static final String DESCRIPTION = "It gathers groups of others as their leader. Its" +
+            " cries make Poliwag obey.";
+    public static final int BASE_EXP = 225;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 33.9;
+    public static final double HEIGHT = 1.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = new Ability.Damp();
-    private static final Ability HIDDEN_ABILITY = new Ability.Drizzle();
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = new Ability.Damp();
+    public static final Ability HIDDEN_ABILITY = new Ability.Drizzle();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/politoed.png";
-    private static final String BACK_PATH = "battle/backs/johto/politoed.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/politoed.png";
-    private static final String CRY_PATH = "sounds/cry/186.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/politoed.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/politoed.png";
+    public static final String BACK_PATH = "battle/backs/johto/politoed.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/politoed.png";
+    public static final String CRY_PATH = "sounds/cry/186.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/politoed.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a politoed
      */
     public Politoed() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

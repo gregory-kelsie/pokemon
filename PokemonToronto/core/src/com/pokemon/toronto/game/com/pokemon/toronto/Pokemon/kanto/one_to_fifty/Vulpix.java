@@ -19,40 +19,52 @@ import java.util.List;
 public class Vulpix extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 37;
-    private static final String NAME = "Vulpix";
-    private static final int BASE_EXP = 63;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 9.9;
+    public static final int NUMBER = 37;
+    public static final String NAME = "Vulpix";
+    public static final String TYPE_OF_POKEMON = "Fox";
+    public static final String DESCRIPTION = "While young, it has six gorgeous tails. When it" +
+            " grows, several new tails are sprouted.";
 
-    private static final Ability FIRST_ABILITY = new Ability.FlashFire();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Drought();
+    public static final int BASE_EXP = 63;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+
+    public static final double HEIGHT = 0.6;
+    public static final double WEIGHT = 9.9;
+
+    public static final Ability FIRST_ABILITY = new Ability.FlashFire();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Drought();
 
     //Base Stats
-    private static final int BASE_HEALTH = 38;
-    private static final int BASE_ATTACK = 41;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 38;
+    public static final int BASE_ATTACK = 41;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/vulpix.png";
-    private static final String BACK_PATH = "battle/backs/vulpix.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/vulpix.png";
-    private static final String CRY_PATH = "sounds/cry/037.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/037.png";
+    public static final String ICON_PATH = "pokemonSprites/vulpix.png";
+    public static final String BACK_PATH = "battle/backs/vulpix.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/vulpix.png";
+    public static final String CRY_PATH = "sounds/cry/037.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/037.png";
+
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Vulpix
      */
     public Vulpix() {
-        super(NUMBER, NAME, Pokemon.Type.FIRE, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

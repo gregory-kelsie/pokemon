@@ -20,40 +20,52 @@ public class Charmeleon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 5;
-    private static final String NAME = "Charmeleon";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 19;
+    public static final int NUMBER = 5;
+    public static final String NAME = "Charmeleon";
+    public static final String TYPE_OF_POKEMON = "Flame";
+    public static final String DESCRIPTION = "It lashes about with its tail to knock down its" +
+            " foe. It then tears up the fallen opponent with sharp claws.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+
+    public static final double HEIGHT = 1.1;
+    public static final double WEIGHT = 19;
+
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
 
     //Base Stats
-    private static final int BASE_HEALTH = 58;
-    private static final int BASE_ATTACK = 64;
-    private static final int BASE_DEFENSE = 58;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 58;
+    public static final int BASE_ATTACK = 64;
+    public static final int BASE_DEFENSE = 58;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/charmeleon/charmeleon.png";
-    private static final String BACK_PATH = "battle/backs/charmeleon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/charmeleon.png";
-    private static final String CRY_PATH = "sounds/cry/005.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/005.png";
+    public static final String ICON_PATH = "pokemonSprites/charmeleon/charmeleon.png";
+    public static final String BACK_PATH = "battle/backs/charmeleon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/charmeleon.png";
+    public static final String CRY_PATH = "sounds/cry/005.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/005.png";
+
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Charmeleon
      */
     public Charmeleon() {
-        super(NUMBER, NAME, Type.FIRE, Type.NONE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

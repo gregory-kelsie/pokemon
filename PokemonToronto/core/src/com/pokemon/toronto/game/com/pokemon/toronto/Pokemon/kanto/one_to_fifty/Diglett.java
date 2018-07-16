@@ -19,40 +19,52 @@ import java.util.List;
 public class Diglett extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 50;
-    private static final String NAME = "Diglett";
-    private static final int BASE_EXP = 53;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 0.8;
+    public static final int NUMBER = 50;
+    public static final String NAME = "Diglett";
+    public static final String TYPE_OF_POKEMON = "Mole";
+    public static final String DESCRIPTION = "Lives about one yard underground where it feeds" +
+            " on plant roots. It sometimes appears aboveground.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SandVeil();
-    private static final Ability SECOND_ABILITY = new Ability.ArenaTrap();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final int BASE_EXP = 53;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 0.2;
+    public static final double WEIGHT = 0.8;
+
+    public static final Ability FIRST_ABILITY = new Ability.SandVeil();
+    public static final Ability SECOND_ABILITY = new Ability.ArenaTrap();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 10;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 25;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 10;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 25;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 95;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/diglett.png";
-    private static final String BACK_PATH = "battle/backs/diglett.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/diglett.png";
-    private static final String CRY_PATH = "sounds/cry/050.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/050.png";
+    public static final String ICON_PATH = "pokemonSprites/diglett.png";
+    public static final String BACK_PATH = "battle/backs/diglett.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/diglett.png";
+    public static final String CRY_PATH = "sounds/cry/050.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/050.png";
+
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Diglett
      */
     public Diglett() {
-        super(NUMBER, NAME, Pokemon.Type.GROUND, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

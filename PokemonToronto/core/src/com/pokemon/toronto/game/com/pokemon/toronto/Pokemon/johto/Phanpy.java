@@ -18,47 +18,51 @@ public class Phanpy extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 231;
-    private static final String NAME = "Phanpy";
-    private static final int BASE_EXP = 66;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 33.5;
+    public static final int NUMBER = 231;
+    public static final String NAME = "Phanpy";
+    public static final String TYPE_OF_POKEMON = "Long Nose";
+    public static final String DESCRIPTION = "It is strong despite its compact size. It can " +
+            "easily pick up and carry an adult human on its back.";
+    public static final int BASE_EXP = 66;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 33.5;
+    public static final double HEIGHT = 0.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/phanpy.png";
-    private static final String BACK_PATH = "battle/backs/johto/phanpy.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/phanpy.png";
-    private static final String CRY_PATH = "sounds/cry/231.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/phanpy.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/phanpy.png";
+    public static final String BACK_PATH = "battle/backs/johto/phanpy.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/phanpy.png";
+    public static final String CRY_PATH = "sounds/cry/231.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/phanpy.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a phanpy
      */
     public Phanpy() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

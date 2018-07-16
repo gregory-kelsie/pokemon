@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -18,47 +19,51 @@ public class Aipom extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 190;
-    private static final String NAME = "Aipom";
-    private static final int BASE_EXP = 72;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 11.5;
+    public static final int NUMBER = 190;
+    public static final String NAME = "Aipom";
+    public static final String TYPE_OF_POKEMON = "Long Tail";
+    public static final String DESCRIPTION = "It lives high among the treetops. It can use its" +
+            " tail as freely and cleverly as its hands.";
+    public static final int BASE_EXP = 72;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 11.5;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.Pickup();
-    private static final Ability HIDDEN_ABILITY = new Ability.SkillLink();
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.Pickup();
+    public static final Ability HIDDEN_ABILITY = new Ability.SkillLink();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/aipom.png";
-    private static final String BACK_PATH = "battle/backs/johto/aipom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/aipom.png";
-    private static final String CRY_PATH = "sounds/cry/190.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/aipom.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/aipom.png";
+    public static final String BACK_PATH = "battle/backs/johto/aipom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/aipom.png";
+    public static final String CRY_PATH = "sounds/cry/190.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/aipom.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a aipom
      */
     public Aipom() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -134,5 +139,19 @@ public class Aipom extends Pokemon {
         } else {
             gender = 'F';
         }
+    }
+
+    /**
+     * Return Ambipom if the Aipom knows Double Hit
+     * @return Ambipom if Aipom knows double Hit.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        for (Skill s: skills) {
+            if (s.getId() == SkillFactory.DOUBLE_HIT) {
+                return PokemonId.AMBIPOM.getValue();
+            }
+        }
+        return -1;
     }
 }

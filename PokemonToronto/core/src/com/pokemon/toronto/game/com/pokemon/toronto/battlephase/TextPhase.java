@@ -30,7 +30,7 @@ public class TextPhase extends BattlePhase {
     public void update(double dt) {
 
         textCounter += dt;
-        if (textCounter >= 0.05) {
+        if (textCounter >= 0.03) {
             if (textPosition < text.length()) {
                 textPosition += 1;
                 textCounter = 0;

@@ -18,47 +18,51 @@ public class Houndour extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 228;
-    private static final String NAME = "Houndour";
-    private static final int BASE_EXP = 66;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 10.8;
+    public static final int NUMBER = 228;
+    public static final String NAME = "Houndour";
+    public static final String TYPE_OF_POKEMON = "Dark";
+    public static final String DESCRIPTION = "It is smart enough to hunt in packs. It uses a" +
+            " variety of cries for communicating with others.";
+    public static final int BASE_EXP = 66;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 10.8;
+    public static final double HEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.EarlyBird();
-    private static final Ability SECOND_ABILITY = new Ability.FlashFire();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.EarlyBird();
+    public static final Ability SECOND_ABILITY = new Ability.FlashFire();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/houndour.png";
-    private static final String BACK_PATH = "battle/backs/johto/houndour.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/houndour.png";
-    private static final String CRY_PATH = "sounds/cry/228.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/houndour.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/houndour.png";
+    public static final String BACK_PATH = "battle/backs/johto/houndour.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/houndour.png";
+    public static final String CRY_PATH = "sounds/cry/228.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/houndour.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a houndour
      */
     public Houndour() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -13,6 +13,7 @@ public interface BattleInterface {
     void setIsBattling(boolean battling);
     void setBattleTextList(List<List<String>> bList);
     boolean isBattling();
+    void startLoading();
     void endBattle();
     void blackedOut();
     void setCurrentPokemon(Pokemon poke);

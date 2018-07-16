@@ -18,47 +18,51 @@ public class Sudowoodo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 185;
-    private static final String NAME = "sudowoodo";
-    private static final int BASE_EXP = 144;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 65;
-    private static final double WEIGHT = 38.0;
+    public static final int NUMBER = 185;
+    public static final String NAME = "Sudowoodo";
+    public static final String TYPE_OF_POKEMON = "Imitation";
+    public static final String DESCRIPTION = "To avoid being attacked, it does nothing but" +
+            " mimic a tree. It hates water and flees from rain.";
+    public static final int BASE_EXP = 144;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 65;
+    public static final double WEIGHT = 38.0;
+    public static final double HEIGHT = 1.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.RockHead();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.RockHead();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 115;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 115;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/sudowoodo.png";
-    private static final String BACK_PATH = "battle/backs/johto/sudowoodo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/sudowoodo.png";
-    private static final String CRY_PATH = "sounds/cry/185.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/sudowoodo.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/sudowoodo.png";
+    public static final String BACK_PATH = "battle/backs/johto/sudowoodo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/sudowoodo.png";
+    public static final String CRY_PATH = "sounds/cry/185.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/sudowoodo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a sudowoodo
      */
     public Sudowoodo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

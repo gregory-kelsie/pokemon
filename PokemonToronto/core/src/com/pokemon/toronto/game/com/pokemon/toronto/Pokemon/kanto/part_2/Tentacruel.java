@@ -18,47 +18,52 @@ import java.util.List;
 public class Tentacruel extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 73;
-    private static final String NAME = "Tentacruel";
-    private static final int BASE_EXP = 205;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 55;
+    public static final int NUMBER = 73;
+    public static final String NAME = "Tentacruel";
+    public static final String TYPE_OF_POKEMON = "Jellyfish";
+    public static final String DESCRIPTION = "The tentacles are normally kept short. On hunts," +
+            " they are extended to ensnare and immobilize prey.";
 
-    private static final Ability FIRST_ABILITY = new Ability.ClearBody();
-    private static final Ability SECOND_ABILITY = new Ability.LiquidOoze();
-    private static final Ability HIDDEN_ABILITY = new Ability.RainDish();
+    public static final int BASE_EXP = 205;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 55;
+    public static final double HEIGHT = 1.6;
+
+    public static final Ability FIRST_ABILITY = new Ability.ClearBody();
+    public static final Ability SECOND_ABILITY = new Ability.LiquidOoze();
+    public static final Ability HIDDEN_ABILITY = new Ability.RainDish();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 120;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 120;
+    public static final int BASE_SPEED = 100;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.POISON;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.POISON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/tentacruel.png";
-    private static final String BACK_PATH = "battle/backs/tentacruel.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/tentacruel.png";
-    private static final String CRY_PATH = "sounds/cry/073.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/073.png";
+    public static final String ICON_PATH = "pokemonSprites/tentacruel.png";
+    public static final String BACK_PATH = "battle/backs/tentacruel.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/tentacruel.png";
+    public static final String CRY_PATH = "sounds/cry/073.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/073.png";
 
     /**
      * Create a Tentacruel
      */
     public Tentacruel() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

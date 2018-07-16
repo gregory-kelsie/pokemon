@@ -18,47 +18,53 @@ import java.util.List;
 public class Seadra extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 117;
-    private static final String NAME = "Seadra";
-    private static final int BASE_EXP = 155;
-    private static final int[] EV_YIELD = {0, 0, 1, 1, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 25;
+    public static final int NUMBER = 117;
+    public static final String NAME = "Seadra";
+    public static final String TYPE_OF_POKEMON = "Dragon";
+    public static final String DESCRIPTION = "Its body bristles with sharp spikes. Carelessly" +
+            " trying to touch it could cause fainting from the spikes.";
 
-    private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+    public static final int BASE_EXP = 155;
+    public static final int[] EV_YIELD = {0, 0, 1, 1, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 25;
+    public static final double HEIGHT = 1.2;
+
+
+    public static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.Damp();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 85;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/seadra.png";
-    private static final String BACK_PATH = "battle/backs/seadra.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/seadra.png";
-    private static final String CRY_PATH = "sounds/cry/117.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/117.png";
+    public static final String ICON_PATH = "pokemonSprites/seadra.png";
+    public static final String BACK_PATH = "battle/backs/seadra.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/seadra.png";
+    public static final String CRY_PATH = "sounds/cry/117.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/117.png";
 
     /**
      * Create a Seadra
      */
     public Seadra() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

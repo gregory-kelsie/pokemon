@@ -39,8 +39,9 @@ public class EndTrainerBattle extends BattlePhase {
         counter = 0;
         textIndex = 0;
         if (currentState == 2) {
+            //victoryBgm.stop();
             pui.finishedBattle();
-            dispose();
+
         } else {
             currentState++;
         }
@@ -71,7 +72,6 @@ public class EndTrainerBattle extends BattlePhase {
     }
 
     public void dispose() {
-        victoryBgm.stop();
         victoryBgm.dispose();
         trainerTexture.dispose();
     }

@@ -18,47 +18,52 @@ import java.util.List;
 public class Kingler extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 99;
-    private static final String NAME = "Kingler";
-    private static final int BASE_EXP = 206;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 60;
+    public static final int NUMBER = 99;
+    public static final String NAME = "Kingler";
+    public static final String TYPE_OF_POKEMON = "Pincer";
+    public static final String DESCRIPTION = "The large and hard pincer has 10,000-horsepower" +
+            " strength. However, being so big, it is unwieldy to move.";
 
-    private static final Ability FIRST_ABILITY = new Ability.HyperCutter();
-    private static final Ability SECOND_ABILITY = new Ability.ShellArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
+    public static final int BASE_EXP = 206;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 60;
+    public static final double HEIGHT = 1.3;
+
+    public static final Ability FIRST_ABILITY = new Ability.HyperCutter();
+    public static final Ability SECOND_ABILITY = new Ability.ShellArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 130;
-    private static final int BASE_DEFENSE = 115;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 75;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 130;
+    public static final int BASE_DEFENSE = 115;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 75;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kingler.png";
-    private static final String BACK_PATH = "battle/backs/kingler.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kingler.png";
-    private static final String CRY_PATH = "sounds/cry/099.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/099.png";
+    public static final String ICON_PATH = "pokemonSprites/kingler.png";
+    public static final String BACK_PATH = "battle/backs/kingler.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kingler.png";
+    public static final String CRY_PATH = "sounds/cry/099.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/099.png";
 
     /**
      * Create a Kingler
      */
     public Kingler() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

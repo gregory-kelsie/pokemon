@@ -68,6 +68,31 @@ public class Route {
     public static final int ROUTE_32 = 40;
     public static final int RUINS_OF_ALPH = 41;
     public static final int UNION_CAVE_1F = 42;
+    public static final int UNION_CAVE_B2F = 43;
+    public static final int ROUTE_34 = 44;
+    public static final int ILEX_FOREST = 45;
+    public static final int ROUTE_35 = 46;
+    public static final int NATIONAL_PARK = 47;
+    public static final int NATIONAL_PARK_2 = 48;
+    public static final int ROUTE_36 = 49;
+    public static final int ROUTE_37 = 50;
+    public static final int ROUTE_38 = 51;
+    public static final int ROUTE_40 = 52;
+    public static final int ROUTE_41 = 53;
+    public static final int CLIFF_CAVE = 54;
+    public static final int ROUTE_47 = 55;
+    public static final int ROUTE_48 = 56;
+
+
+    public static final int TEST_ROUTE = -1;
+    public static final int SWAMP = -2;
+    public static final int AFRICA = -3;
+    public static final int JURASSIC_PARK = -4;
+
+    //Time
+    protected final int MORNING = 0;
+    protected final int DAY = 1;
+    protected final int NIGHT = 2;
 
     //Instance Variables
     private String imagePath;
@@ -120,6 +145,20 @@ public class Route {
         Date date = new Date();
         String text = dateFormat.format(date);
         return new Integer(text.substring(11, 13)); //0 - 23
+    }
+
+    protected int getTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        Date date = new Date();
+        String text = dateFormat.format(date);
+        int hourTime = new Integer(text.substring(11, 13)); //0 - 23
+        if (hourTime >= 6 && hourTime < 12) {
+            return MORNING;
+        } else if (hourTime >= 12 && hourTime <= 19) {
+            return DAY;
+        } else {
+            return NIGHT;
+        }
     }
 
     public String getName() {

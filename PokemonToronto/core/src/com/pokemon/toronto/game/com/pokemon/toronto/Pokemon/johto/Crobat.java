@@ -16,47 +16,52 @@ import java.util.List;
 public class Crobat extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 169;
-    private static final String NAME = "Crobat";
-    private static final int BASE_EXP = 241;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 75;
-
-    private static final Ability FIRST_ABILITY = new Ability.InnerFocus();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
+    public static final int NUMBER = 169;
+    public static final String NAME = "Crobat";
+    public static final String TYPE_OF_POKEMON = "Bat";
+    public static final String DESCRIPTION = "The transformation of its legs into wings made" +
+            " it better at flying, but more clumsy at walking.";
+    public static final int BASE_EXP = 241;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
+    public static final int CAPTURE_RATE = 90;
+    
+    public static final double WEIGHT = 75;
+    public static final double HEIGHT = 1.8;
+    
+    public static final Ability FIRST_ABILITY = new Ability.InnerFocus();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 130;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 130;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/crobat.png";
-    private static final String BACK_PATH = "battle/backs/johto/crobat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/crobat.png";
-    private static final String CRY_PATH = "sounds/cry/169.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/crobat.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/crobat.png";
+    public static final String BACK_PATH = "battle/backs/johto/crobat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/crobat.png";
+    public static final String CRY_PATH = "sounds/cry/169.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/crobat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a crobat
      */
     public Crobat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

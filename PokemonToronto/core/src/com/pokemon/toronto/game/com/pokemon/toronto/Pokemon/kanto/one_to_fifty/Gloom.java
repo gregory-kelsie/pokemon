@@ -19,40 +19,52 @@ import java.util.List;
 public class Gloom extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 44;
-    private static final String NAME = "Gloom";
-    private static final int BASE_EXP = 132;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 8.6;
+    public static final int NUMBER = 44;
+    public static final String NAME = "Gloom";
+    public static final String TYPE_OF_POKEMON = "Weed";
+    public static final String DESCRIPTION = "The honey it drools from its mouth smells so" +
+            " atrocious, it can curl noses more than a mile away.";
+    
+    public static final int BASE_EXP = 132;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 120;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Stench();
+    public static final double HEIGHT = 0.8;
+    public static final double WEIGHT = 8.6;
+
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Stench();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/gloom.png";
-    private static final String BACK_PATH = "battle/backs/gloom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/gloom.png";
-    private static final String CRY_PATH = "sounds/cry/044.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/044.png";
+    public static final String ICON_PATH = "pokemonSprites/gloom.png";
+    public static final String BACK_PATH = "battle/backs/gloom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/gloom.png";
+    public static final String CRY_PATH = "sounds/cry/044.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/044.png";
+
+    public static final Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.POISON;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Gloom
      */
     public Gloom() {
-        super(NUMBER, NAME, Pokemon.Type.GRASS, Pokemon.Type.POISON, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

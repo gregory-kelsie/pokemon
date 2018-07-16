@@ -19,40 +19,52 @@ import java.util.List;
 public class Nidorino extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 33;
-    private static final String NAME = "Nidorino";
-    private static final int BASE_EXP = 118;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 19.5;
+    public static final int NUMBER = 33;
+    public static final String NAME = "Nidorino";
+    public static final String TYPE_OF_POKEMON = "Poison Pin";
+    public static final String DESCRIPTION = "It is recognized by its rock-hard hide and its" +
+            " extended horn. Be careful with the horn, as it contains venom.";
 
-    private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
-    private static final Ability SECOND_ABILITY = new Ability.Rivalry();
-    private static final Ability HIDDEN_ABILITY = new Ability.Hustle();
+    public static final int BASE_EXP = 118;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+
+    public static final double HEIGHT = 0.9;
+    public static final double WEIGHT = 19.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
+    public static final Ability SECOND_ABILITY = new Ability.Rivalry();
+    public static final Ability HIDDEN_ABILITY = new Ability.Hustle();
 
     //Base Stats
-    private static final int BASE_HEALTH = 61;
-    private static final int BASE_ATTACK = 72;
-    private static final int BASE_DEFENSE = 57;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 61;
+    public static final int BASE_ATTACK = 72;
+    public static final int BASE_DEFENSE = 57;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/nidorino.png";
-    private static final String BACK_PATH = "battle/backs/nidorino.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/nidorino.png";
-    private static final String CRY_PATH = "sounds/cry/033.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/033.png";
+    public static final String ICON_PATH = "pokemonSprites/nidorino.png";
+    public static final String BACK_PATH = "battle/backs/nidorino.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/nidorino.png";
+    public static final String CRY_PATH = "sounds/cry/033.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/033.png";
+
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Nidorino
      */
     public Nidorino() {
-        super(NUMBER, NAME, Pokemon.Type.POISON, Pokemon.Type.NONE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

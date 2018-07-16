@@ -60,6 +60,7 @@ public class SimulatorState extends GameState {
     }
 
     private void initResources() {
+        Gdx.app.log("simulator", "init resources");
         background = new Texture("simulator/background.png");
         gymIcon = new Texture("simulator/gymicon.png");
         hamburgerIcon = new Texture("simulator/hamburgermenu.png");
@@ -79,6 +80,7 @@ public class SimulatorState extends GameState {
         routeFont = new BitmapFont(Gdx.files.internal("simulator/routeFont.fnt"));
     }
     public void render(SpriteBatch batch) {
+        Gdx.app.log("simulator", "render");
         batch.draw(background, 0, 0);
         batch.draw(hamburgerIcon, 29, 1791);
         batch.draw(gymIcon, 274, 1765);
@@ -89,10 +91,10 @@ public class SimulatorState extends GameState {
         batch.draw(routeImage, 35, 849);
         batch.draw(routeNameLabel, 48, 1187);
         routeFont.draw(batch, routeStateModel.getRoute().getName(), getRouteNameOffset(), 1316);
+        drawSliderInfo(batch);
         if (routeStateModel.isWindowOpened()) {
             drawWindow(batch);
         }
-        drawSliderInfo(batch);
         if (!routeStateModel.getRoute().isAvailable(gsm.getPlayer())) {
             batch.draw(lock, 85, 1438);
         }
@@ -183,10 +185,14 @@ public class SimulatorState extends GameState {
                     if (routeStateModel.isWindowOpened()) {
                         Gdx.app.log("kanto", "windowopen");
                         routeStateModel.setRegion(RouteStateModel.KANTO);
+                        updateRouteImage = true;
+                        routeStateModel.closeWindow();
                     }
                 } else if (x >= 210 && x <= 469 && y >= 471 && y <= 541) {
                     if (routeStateModel.isWindowOpened()) {
                         routeStateModel.setRegion(RouteStateModel.JOHTO);
+                        updateRouteImage = true;
+                        routeStateModel.closeWindow();
                     }
                 }
             }

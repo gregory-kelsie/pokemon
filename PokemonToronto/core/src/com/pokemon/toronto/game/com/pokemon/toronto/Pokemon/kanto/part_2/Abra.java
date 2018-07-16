@@ -18,47 +18,53 @@ import java.util.List;
 public class Abra extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 63;
-    private static final String NAME = "Abra";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 19.5;
+    public static final int NUMBER = 63;
+    public static final String NAME = "Abra";
+    public static final String TYPE_OF_POKEMON = "Psi";
+    public static final String DESCRIPTION = "It senses impending attacks and teleports away to" +
+            " safety before the actual attacks can strike.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Synchronize();
-    private static final Ability SECOND_ABILITY = new Ability.InnerFocus();
-    private static final Ability HIDDEN_ABILITY = new Ability.MagicGuard();
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+
+    public static final double HEIGHT = 0.9;
+    public static final double WEIGHT = 19.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.Synchronize();
+    public static final Ability SECOND_ABILITY = new Ability.InnerFocus();
+    public static final Ability HIDDEN_ABILITY = new Ability.MagicGuard();
 
     //Base Stats
-    private static final int BASE_HEALTH = 25;
-    private static final int BASE_ATTACK = 20;
-    private static final int BASE_DEFENSE = 15;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 25;
+    public static final int BASE_ATTACK = 20;
+    public static final int BASE_DEFENSE = 15;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 90;
 
     //Typing
-    private static final Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/abra.png";
-    private static final String BACK_PATH = "battle/backs/abra.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/abra.png";
-    private static final String CRY_PATH = "sounds/cry/063.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/063.png";
+    public static final String ICON_PATH = "pokemonSprites/abra.png";
+    public static final String BACK_PATH = "battle/backs/abra.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/abra.png";
+    public static final String CRY_PATH = "sounds/cry/063.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/063.png";
 
     /**
      * Create a Abra
      */
     public Abra() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

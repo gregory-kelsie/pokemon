@@ -18,47 +18,52 @@ import java.util.List;
 public class Magikarp extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 129;
-    private static final String NAME = "Magikarp";
-    private static final int BASE_EXP = 20;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 10;
+    public static final int NUMBER = 129;
+    public static final String NAME = "Magikarp";
+    public static final String TYPE_OF_POKEMON = "Fish";
+    public static final String DESCRIPTION = "It is virtually worthless in terms of both power" +
+            " and speed. It is the most weak and pathetic Pokémon in the world.";
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final int BASE_EXP = 20;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 10;
+    public static final double HEIGHT = 0.9;
+
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 20;
-    private static final int BASE_ATTACK = 10;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 15;
-    private static final int BASE_SPECIAL_DEFENSE = 20;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 20;
+    public static final int BASE_ATTACK = 10;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 15;
+    public static final int BASE_SPECIAL_DEFENSE = 20;
+    public static final int BASE_SPEED = 80;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/magikarp.png";
-    private static final String BACK_PATH = "battle/backs/magikarp.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/magikarp.png";
-    private static final String CRY_PATH = "sounds/cry/129.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/129.png";
+    public static final String ICON_PATH = "pokemonSprites/magikarp.png";
+    public static final String BACK_PATH = "battle/backs/magikarp.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/magikarp.png";
+    public static final String CRY_PATH = "sounds/cry/129.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/129.png";
 
     /**
      * Create a Magikarp
      */
     public Magikarp() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

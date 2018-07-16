@@ -17,40 +17,52 @@ import java.util.List;
 public class Wigglytuff extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 40;
-    private static final String NAME = "Wigglytuff";
-    private static final int BASE_EXP = 109;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 50;
-    private static final double WEIGHT = 12;
+    public static final int NUMBER = 40;
+    public static final String NAME = "Wigglytuff";
+    public static final String TYPE_OF_POKEMON = "Balloon";
+    public static final String DESCRIPTION = "The body is soft and rubbery. When angered, it" +
+            " will suck in air and inflate itself to an enormous size.";
 
-    private static final Ability FIRST_ABILITY = new Ability.CuteCharm();
-    private static final Ability SECOND_ABILITY = new Ability.Competitive();
-    private static final Ability HIDDEN_ABILITY = new Ability.Frisk();
+    public static final int BASE_EXP = 109;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 50;
+
+    public static final double HEIGHT = 1;
+    public static final double WEIGHT = 12;
+
+    public static final Ability FIRST_ABILITY = new Ability.CuteCharm();
+    public static final Ability SECOND_ABILITY = new Ability.Competitive();
+    public static final Ability HIDDEN_ABILITY = new Ability.Frisk();
 
     //Base Stats
-    private static final int BASE_HEALTH = 115;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 20;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 25;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 115;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 20;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 25;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/wigglytuff.png";
-    private static final String BACK_PATH = "battle/backs/wigglytuff.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/wigglytuff.png";
-    private static final String CRY_PATH = "sounds/cry/040.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/040.png";
+    public static final String ICON_PATH = "pokemonSprites/wigglytuff.png";
+    public static final String BACK_PATH = "battle/backs/wigglytuff.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/wigglytuff.png";
+    public static final String CRY_PATH = "sounds/cry/040.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/040.png";
+
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FAIRY;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a Wigglytuff
      */
     public Wigglytuff() {
-        super(NUMBER, NAME, Pokemon.Type.NORMAL, Pokemon.Type.FAIRY, ExpType.FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

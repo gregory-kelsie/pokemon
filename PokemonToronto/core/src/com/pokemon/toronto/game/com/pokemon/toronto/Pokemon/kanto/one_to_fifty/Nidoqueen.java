@@ -18,40 +18,52 @@ import java.util.List;
 public class Nidoqueen extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 31;
-    private static final String NAME = "Nidoqueen";
-    private static final int BASE_EXP = 194;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 60;
+    public static final int NUMBER = 31;
+    public static final String NAME = "Nidoqueen";
+    public static final String TYPE_OF_POKEMON = "Drill";
+    public static final String DESCRIPTION = "It uses its scaly, rugged body to seal the " +
+            "entrance of its nest and protect its young from predators.";
 
-    private static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
-    private static final Ability SECOND_ABILITY = new Ability.Rivalry();
-    private static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
+    public static final int BASE_EXP = 194;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+
+    public static final double HEIGHT = 1.3;
+    public static final double WEIGHT = 60;
+
+    public static final Ability FIRST_ABILITY = new Ability.PoisonPoint();
+    public static final Ability SECOND_ABILITY = new Ability.Rivalry();
+    public static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 92;
-    private static final int BASE_DEFENSE = 87;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 76;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 92;
+    public static final int BASE_DEFENSE = 87;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 76;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/nidoqueen.png";
-    private static final String BACK_PATH = "battle/backs/nidoqueen.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/nidoqueen.png";
-    private static final String CRY_PATH = "sounds/cry/031.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/031.png";
+    public static final String ICON_PATH = "pokemonSprites/nidoqueen.png";
+    public static final String BACK_PATH = "battle/backs/nidoqueen.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/nidoqueen.png";
+    public static final String CRY_PATH = "sounds/cry/031.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/031.png";
+
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.GROUND;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Nidoqueen
      */
     public Nidoqueen() {
-        super(NUMBER, NAME, Pokemon.Type.POISON, Pokemon.Type.NONE, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ import java.util.List;
 public class Kabutops extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 141;
-    private static final String NAME = "Kabutops";
-    private static final int BASE_EXP = 199;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 40.5;
+    public static final int NUMBER = 141;
+    public static final String NAME = "Kabutops";
+    public static final String TYPE_OF_POKEMON = "Shellfish";
+    public static final String DESCRIPTION = "A slim and fast swimmer. It slices its prey with" +
+            " its sharp sickles and drinks the body fluids.";
+    public static final int BASE_EXP = 199;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 40.5;
+    public static final double HEIGHT = 1.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.BattleArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.BattleArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 115;
-    private static final int BASE_DEFENSE = 105;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 115;
+    public static final int BASE_DEFENSE = 105;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 80;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kabutops.png";
-    private static final String BACK_PATH = "battle/backs/kabutops.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kabutops.png";
-    private static final String CRY_PATH = "sounds/cry/141.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/141.png";
+    public static final String ICON_PATH = "pokemonSprites/kabutops.png";
+    public static final String BACK_PATH = "battle/backs/kabutops.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kabutops.png";
+    public static final String CRY_PATH = "sounds/cry/141.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/141.png";
 
     /**
      * Create a Kabutops
      */
     public Kabutops() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ import java.util.List;
 public class Slowbro extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 80;
-    private static final String NAME = "Slowbro";
-    private static final int BASE_EXP = 164;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 78.5;
+    public static final int NUMBER = 80;
+    public static final String NAME = "Slowbro";
+    public static final String TYPE_OF_POKEMON = "Hermit Crab";
+    public static final String DESCRIPTION = "An attached Shellder won't let go because of the" +
+            " tasty flavor that oozes out of its tail.";
+    public static final int BASE_EXP = 164;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 78.5;
+    public static final double HEIGHT = 1.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.OwnTempo();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.OwnTempo();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 110;
-    private static final int BASE_SPECIAL_ATTACK = 100;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 110;
+    public static final int BASE_SPECIAL_ATTACK = 100;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 30;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/slowbro.png";
-    private static final String BACK_PATH = "battle/backs/slowbro.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/slowbro.png";
-    private static final String CRY_PATH = "sounds/cry/080.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/080.png";
+    public static final String ICON_PATH = "pokemonSprites/slowbro.png";
+    public static final String BACK_PATH = "battle/backs/slowbro.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/slowbro.png";
+    public static final String CRY_PATH = "sounds/cry/080.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/080.png";
 
     /**
      * Create a Slowbro
      */
     public Slowbro() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

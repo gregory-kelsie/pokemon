@@ -19,47 +19,52 @@ import java.util.List;
 public class Rhyhorn extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 111;
-    private static final String NAME = "Rhyhorn";
-    private static final int BASE_EXP = 135;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 115;
+    public static final int NUMBER = 111;
+    public static final String NAME = "Rhyhorn";
+    public static final String TYPE_OF_POKEMON = "Spikes";
+    public static final String DESCRIPTION = "Strong, but not too bright, this Pokémon can" +
+            " shatter even a skyscraper with its charging Tackles.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Lightningrod();
-    private static final Ability SECOND_ABILITY = new Ability.RockHead();
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final int BASE_EXP = 135;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 115;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.Lightningrod();
+    public static final Ability SECOND_ABILITY = new Ability.RockHead();
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 25;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 25;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/rhyhorn.png";
-    private static final String BACK_PATH = "battle/backs/rhyhorn.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/rhyhorn.png";
-    private static final String CRY_PATH = "sounds/cry/111.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/111.png";
+    public static final String ICON_PATH = "pokemonSprites/rhyhorn.png";
+    public static final String BACK_PATH = "battle/backs/rhyhorn.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/rhyhorn.png";
+    public static final String CRY_PATH = "sounds/cry/111.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/111.png";
 
     /**
      * Create a Rhyhorn
      */
     public Rhyhorn() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

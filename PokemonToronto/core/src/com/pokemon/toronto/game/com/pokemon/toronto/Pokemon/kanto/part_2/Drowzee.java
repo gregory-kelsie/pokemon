@@ -19,47 +19,52 @@ import java.util.List;
 public class Drowzee extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 96;
-    private static final String NAME = "Drowzee";
-    private static final int BASE_EXP = 102;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 32.4;
+    public static final int NUMBER = 96;
+    public static final String NAME = "Drowzee";
+    public static final String TYPE_OF_POKEMON = "Hypnosis";
+    public static final String DESCRIPTION = "Puts enemies to sleep, then eats their dreams." +
+            " Occasionally gets sick from eating only bad dreams.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Insomnia();
-    private static final Ability SECOND_ABILITY = new Ability.Forewarn();
-    private static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
+    public static final int BASE_EXP = 102;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 32.4;
+    public static final double HEIGHT = 1;
+
+    public static final Ability FIRST_ABILITY = new Ability.Insomnia();
+    public static final Ability SECOND_ABILITY = new Ability.Forewarn();
+    public static final Ability HIDDEN_ABILITY = new Ability.InnerFocus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 48;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 43;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 42;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 48;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 43;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 42;
 
     //Typing
-    private static final Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/drowzee.png";
-    private static final String BACK_PATH = "battle/backs/drowzee.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/drowzee.png";
-    private static final String CRY_PATH = "sounds/cry/096.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/096.png";
+    public static final String ICON_PATH = "pokemonSprites/drowzee.png";
+    public static final String BACK_PATH = "battle/backs/drowzee.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/drowzee.png";
+    public static final String CRY_PATH = "sounds/cry/096.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/096.png";
 
     /**
      * Create a Drowzee
      */
     public Drowzee() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,52 @@ import java.util.List;
 public class Farfetchd extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 83;
-    private static final String NAME = "Farfetchd";
-    private static final int BASE_EXP = 94;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 15;
+    public static final int NUMBER = 83;
+    public static final String NAME = "Farfetchd";
+    public static final String TYPE_OF_POKEMON = "Wild Duck";
+    public static final String DESCRIPTION = "The plant stalk it holds is its weapon. The stalk " +
+            "is used like a sword to cut all sorts of things.";
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.InnerFocus();
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final int BASE_EXP = 94;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 15;
+    public static final double HEIGHT = 0.8;
+
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.InnerFocus();
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 52;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 58;
-    private static final int BASE_SPECIAL_DEFENSE = 62;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 52;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 58;
+    public static final int BASE_SPECIAL_DEFENSE = 62;
+    public static final int BASE_SPEED = 60;
 
     //Typing
-    private static final Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/farfetchd.png";
-    private static final String BACK_PATH = "battle/backs/farfetchd.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/farfetchd.png";
-    private static final String CRY_PATH = "sounds/cry/083.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/083.png";
+    public static final String ICON_PATH = "pokemonSprites/farfetchd.png";
+    public static final String BACK_PATH = "battle/backs/farfetchd.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/farfetchd.png";
+    public static final String CRY_PATH = "sounds/cry/083.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/083.png";
 
     /**
      * Create a Farfetchd
      */
     public Farfetchd() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

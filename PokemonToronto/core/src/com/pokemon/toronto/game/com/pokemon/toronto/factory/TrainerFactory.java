@@ -498,41 +498,92 @@ public class TrainerFactory {
         List<Integer> bugCatcherPokemon = new ArrayList<Integer>();
         if (difficulty <= 4) {
             bugCatcherPokemon.add(PokemonId.RATTATA.getValue());
+            bugCatcherPokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
+        }
+        if (difficulty <= 2) {
+            bugCatcherPokemon.add(PokemonId.SEEDOT.getValue());
+            bugCatcherPokemon.add(PokemonId.LOTAD.getValue());
+            bugCatcherPokemon.add(PokemonId.WOOPER.getValue());
+            bugCatcherPokemon.add(PokemonId.SPINARAK.getValue());
         }
         if (difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.PIDGEY.getValue());
+            bugCatcherPokemon.add(PokemonId.SENTRET.getValue());
+            bugCatcherPokemon.add(PokemonId.HOOTHOOT.getValue());
+            bugCatcherPokemon.add(PokemonId.ZIGZAGOON.getValue());
+            bugCatcherPokemon.add(PokemonId.TAILLOW.getValue());
+            bugCatcherPokemon.add(PokemonId.NINCADA.getValue());
+            bugCatcherPokemon.add(PokemonId.POOCHYENA.getValue());
+            bugCatcherPokemon.add(PokemonId.MAREEP.getValue());
+            bugCatcherPokemon.add(PokemonId.WINGULL.getValue());
+            bugCatcherPokemon.add(PokemonId.GULPIN.getValue());
         }
         if (difficulty >= 1.5 && difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.EKANS.getValue());
             bugCatcherPokemon.add(PokemonId.SANDSHREW.getValue());
             bugCatcherPokemon.add(PokemonId.DIGLETT.getValue());
+            bugCatcherPokemon.add(PokemonId.ALOLAN_DIGLETT.getValue());
             bugCatcherPokemon.add(PokemonId.PIKACHU.getValue());
             bugCatcherPokemon.add(PokemonId.PARAS.getValue());
             bugCatcherPokemon.add(PokemonId.SPEAROW.getValue());
+            bugCatcherPokemon.add(PokemonId.AIPOM.getValue());
+            bugCatcherPokemon.add(PokemonId.YANMA.getValue());
+            bugCatcherPokemon.add(PokemonId.PINECO.getValue());
+            bugCatcherPokemon.add(PokemonId.NUZLEAF.getValue());
+            bugCatcherPokemon.add(PokemonId.LOMBRE.getValue());
+            bugCatcherPokemon.add(PokemonId.FLAFFY.getValue());
+            bugCatcherPokemon.add(PokemonId.ELECTRIKE.getValue());
+            bugCatcherPokemon.add(PokemonId.NUMEL.getValue());
+            bugCatcherPokemon.add(PokemonId.SHROOMISH.getValue());
         }
         if (difficulty >= 2) {
             bugCatcherPokemon.add(PokemonId.PIDGEOTTO.getValue());
+            bugCatcherPokemon.add(PokemonId.NOCTOWL.getValue());
+            bugCatcherPokemon.add(PokemonId.FURRET.getValue());
+            bugCatcherPokemon.add(PokemonId.LINOONE.getValue());
+
         }
         if (difficulty >= 2.5) {
             bugCatcherPokemon.add(PokemonId.RATICATE.getValue());
+            bugCatcherPokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
             bugCatcherPokemon.add(PokemonId.SANDSLASH.getValue());
             bugCatcherPokemon.add(PokemonId.FEAROW.getValue());
             bugCatcherPokemon.add(PokemonId.ARBOK.getValue());
+            bugCatcherPokemon.add(PokemonId.SWELLOW.getValue());
+            bugCatcherPokemon.add(PokemonId.MIGHTYENA.getValue());
+            bugCatcherPokemon.add(PokemonId.TORKOAL.getValue());
+            bugCatcherPokemon.add(PokemonId.ARIADOS.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PARASECT.getValue());
+            bugCatcherPokemon.add(PokemonId.NINJASK.getValue());
+            bugCatcherPokemon.add(PokemonId.PELIPPER.getValue());
+            bugCatcherPokemon.add(PokemonId.QUAGSIRE.getValue());
+            bugCatcherPokemon.add(PokemonId.SWALOT.getValue());
         }
         if (difficulty >= 4) {
             bugCatcherPokemon.add(PokemonId.PIDGEOT.getValue());
+            bugCatcherPokemon.add(PokemonId.SHIFTRY.getValue());
+            bugCatcherPokemon.add(PokemonId.AMPHAROS.getValue());
+            bugCatcherPokemon.add(PokemonId.MANECTRIC.getValue());
+            bugCatcherPokemon.add(PokemonId.CAMERUPT.getValue());
+            bugCatcherPokemon.add(PokemonId.LUDICOLO.getValue());
+            bugCatcherPokemon.add(PokemonId.BRELOOM.getValue());
         }
         return bugCatcherPokemon;
     }
 
     public List<Integer> getBugCatcherPokemon(double difficulty) {
         List<Integer> bugCatcherPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2) {
+            bugCatcherPokemon.add(PokemonId.SURSKIT.getValue());
+            bugCatcherPokemon.add(PokemonId.SPINARAK.getValue());
+            bugCatcherPokemon.add(PokemonId.NINCADA.getValue());
+        }
         if (difficulty <= 3) {
             bugCatcherPokemon.add(PokemonId.CATERPIE.getValue());
             bugCatcherPokemon.add(PokemonId.WEEDLE.getValue());
+            bugCatcherPokemon.add(PokemonId.WURMPLE.getValue());
             bugCatcherPokemon.add(PokemonId.LEDYBA.getValue());
             bugCatcherPokemon.add(PokemonId.GRUBBIN.getValue());
         }
@@ -544,26 +595,32 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.PINECO.getValue());
             bugCatcherPokemon.add(PokemonId.DEWPIDER.getValue());
             bugCatcherPokemon.add(PokemonId.CHARJABUG.getValue());
+            bugCatcherPokemon.add(PokemonId.ANORITH.getValue());
         }
         if (difficulty <= 4) {
             bugCatcherPokemon.add(PokemonId.KAKUNA.getValue());
             bugCatcherPokemon.add(PokemonId.METAPOD.getValue());
-            bugCatcherPokemon.add(PokemonId.SPINARAK.getValue());
+            bugCatcherPokemon.add(PokemonId.CASCOON.getValue());
+            bugCatcherPokemon.add(PokemonId.SILCOON.getValue());
         }
         if (difficulty > 2) {
             bugCatcherPokemon.add(PokemonId.BEEDRILL.getValue());
             bugCatcherPokemon.add(PokemonId.BUTTERFREE.getValue());
+            bugCatcherPokemon.add(PokemonId.BEAUTIFLY.getValue());
+            bugCatcherPokemon.add(PokemonId.DUSTOX.getValue());
             bugCatcherPokemon.add(PokemonId.YANMA.getValue());
         }
         if (difficulty > 2.5) {
             bugCatcherPokemon.add(PokemonId.PARASECT.getValue());
             bugCatcherPokemon.add(PokemonId.ARIADOS.getValue());
+            bugCatcherPokemon.add(PokemonId.MASQUERAIN.getValue());
         }
         if (difficulty > 3) {
             bugCatcherPokemon.add(PokemonId.VENOMOTH.getValue());
             bugCatcherPokemon.add(PokemonId.PINSIR.getValue());
             bugCatcherPokemon.add(PokemonId.SCYTHER.getValue());
             bugCatcherPokemon.add(PokemonId.HERACROSS.getValue());
+            bugCatcherPokemon.add(PokemonId.NINJASK.getValue());
         }
         if (difficulty >= 4) {
             bugCatcherPokemon.add(PokemonId.VIKAVOLT.getValue());
@@ -573,6 +630,7 @@ public class TrainerFactory {
         if (difficulty >= 5) {
             bugCatcherPokemon.add(PokemonId.SCIZOR.getValue());
             bugCatcherPokemon.add(PokemonId.FORRETRESS.getValue());
+            bugCatcherPokemon.add(PokemonId.ARMALDO.getValue());
         }
 
         return bugCatcherPokemon;
@@ -585,11 +643,19 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.PIDGEY.getValue());
             bugCatcherPokemon.add(PokemonId.MAREEP.getValue());
             bugCatcherPokemon.add(PokemonId.MARILL.getValue());
+            bugCatcherPokemon.add(PokemonId.SWABLU.getValue());
+            bugCatcherPokemon.add(PokemonId.ILLUMISE.getValue());
+            bugCatcherPokemon.add(PokemonId.VOLBEAT.getValue());
+            bugCatcherPokemon.add(PokemonId.PLUSLE.getValue());
+            bugCatcherPokemon.add(PokemonId.MINUN.getValue());
         }
         if (difficulty <= 2.5) {
             bugCatcherPokemon.add(PokemonId.SENTRET.getValue());
             bugCatcherPokemon.add(PokemonId.CUTIEFLY.getValue());
             bugCatcherPokemon.add(PokemonId.BONUSWEET.getValue());
+            bugCatcherPokemon.add(PokemonId.WHISMUR.getValue());
+            bugCatcherPokemon.add(PokemonId.AZURILL.getValue());
+            bugCatcherPokemon.add(PokemonId.RALTS.getValue());
         }
         if (difficulty >= 1.5 && difficulty <= 2.5) {
             bugCatcherPokemon.add(PokemonId.NIDORANF.getValue());
@@ -601,6 +667,8 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.CLEFAIRY.getValue());
             bugCatcherPokemon.add(PokemonId.JIGGLYPUFF.getValue());
             bugCatcherPokemon.add(PokemonId.STUFFUL.getValue());
+            bugCatcherPokemon.add(PokemonId.SKITTY.getValue());
+            bugCatcherPokemon.add(PokemonId.KIRLIA.getValue());
         }
         if (difficulty >= 2) {
             bugCatcherPokemon.add(PokemonId.PIDGEOTTO.getValue());
@@ -608,18 +676,22 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.FURRET.getValue());
             bugCatcherPokemon.add(PokemonId.FLAFFY.getValue());
             bugCatcherPokemon.add(PokemonId.STEENEE.getValue());
+            bugCatcherPokemon.add(PokemonId.ROSELIA.getValue());
 
         }
         if (difficulty >= 2.5) {
             bugCatcherPokemon.add(PokemonId.NIDORINA.getValue());
             bugCatcherPokemon.add(PokemonId.GLOOM.getValue());
             bugCatcherPokemon.add(PokemonId.AZUMARILL.getValue());
+            bugCatcherPokemon.add(PokemonId.MAWILE.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PARASECT.getValue());
             bugCatcherPokemon.add(PokemonId.BELLOSSOM.getValue());
             bugCatcherPokemon.add(PokemonId.MILTANK.getValue());
             bugCatcherPokemon.add(PokemonId.RIBOMBEE.getValue());
+            bugCatcherPokemon.add(PokemonId.DELCATTY.getValue());
+            bugCatcherPokemon.add(PokemonId.BEAUTIFLY.getValue());
         }
         if (difficulty >= 4) {
             bugCatcherPokemon.add(PokemonId.PIDGEOT.getValue());
@@ -628,10 +700,12 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.VILEPLUME.getValue());
             bugCatcherPokemon.add(PokemonId.AMPHAROS.getValue());
             bugCatcherPokemon.add(PokemonId.BEWEAR.getValue());
+            bugCatcherPokemon.add(PokemonId.ALTARIA.getValue());
         }
         if (difficulty >= 5) {
             bugCatcherPokemon.add(PokemonId.NIDOQUEEN.getValue());
             bugCatcherPokemon.add(PokemonId.TSAREENA.getValue());
+            bugCatcherPokemon.add(PokemonId.GARDEVOIR.getValue());
         }
         return bugCatcherPokemon;
     }
@@ -644,10 +718,17 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.BULBASAUR.getValue());
             bugCatcherPokemon.add(PokemonId.CYNDAQUIL.getValue());
             bugCatcherPokemon.add(PokemonId.TOTODILE.getValue());
+            bugCatcherPokemon.add(PokemonId.TORCHIC.getValue());
+            bugCatcherPokemon.add(PokemonId.MUDKIP.getValue());
+            bugCatcherPokemon.add(PokemonId.TREECKO.getValue());
             bugCatcherPokemon.add(PokemonId.NIDORANM.getValue());
             bugCatcherPokemon.add(PokemonId.AIPOM.getValue());
             bugCatcherPokemon.add(PokemonId.YANMA.getValue());
             bugCatcherPokemon.add(PokemonId.PINECO.getValue());
+            bugCatcherPokemon.add(PokemonId.NUMEL.getValue());
+            bugCatcherPokemon.add(PokemonId.SHROOMISH.getValue());
+            bugCatcherPokemon.add(PokemonId.SLAKOTH.getValue());
+            bugCatcherPokemon.add(PokemonId.ARON.getValue());
         }
 
         if (difficulty <= 2.5) {
@@ -666,7 +747,16 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.NOCTOWL.getValue());
             bugCatcherPokemon.add(PokemonId.QUILAVA.getValue());
             bugCatcherPokemon.add(PokemonId.CROCONAW.getValue());
+            bugCatcherPokemon.add(PokemonId.MARSHTOMP.getValue());
+            bugCatcherPokemon.add(PokemonId.COMBUSKEN.getValue());
+            bugCatcherPokemon.add(PokemonId.GROVYLE.getValue());
             bugCatcherPokemon.add(PokemonId.HAKAMOO.getValue());
+            bugCatcherPokemon.add(PokemonId.CARVANHA.getValue());
+            bugCatcherPokemon.add(PokemonId.CACNEA.getValue());
+            bugCatcherPokemon.add(PokemonId.NUZLEAF.getValue());
+            bugCatcherPokemon.add(PokemonId.CORPHISH.getValue());
+            bugCatcherPokemon.add(PokemonId.ELECTRIKE.getValue());
+            bugCatcherPokemon.add(PokemonId.TRAPINCH.getValue());
         }
 
         if (difficulty >= 2.5) {
@@ -674,6 +764,8 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.BEEDRILL.getValue());
             bugCatcherPokemon.add(PokemonId.STANTLER.getValue());
             bugCatcherPokemon.add(PokemonId.TYPE_NULL.getValue());
+            bugCatcherPokemon.add(PokemonId.ZANGOOSE.getValue());
+            bugCatcherPokemon.add(PokemonId.SEVIPER.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PARASECT.getValue());
@@ -688,6 +780,8 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.DONPHAN.getValue());
             bugCatcherPokemon.add(PokemonId.TURTONATOR.getValue());
             bugCatcherPokemon.add(PokemonId.DRAMPA.getValue());
+            bugCatcherPokemon.add(PokemonId.NINJASK.getValue());
+            bugCatcherPokemon.add(PokemonId.SHARPEDO.getValue());
 
         }
         if (difficulty >= 3.5) {
@@ -697,13 +791,18 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.SKARMORY.getValue());
             bugCatcherPokemon.add(PokemonId.LYCANROC_NIGHT.getValue());
             bugCatcherPokemon.add(PokemonId.LYCANROC_DAY.getValue());
-
-
+            bugCatcherPokemon.add(PokemonId.ALTARIA.getValue());
+            bugCatcherPokemon.add(PokemonId.MANECTRIC.getValue());
+            bugCatcherPokemon.add(PokemonId.WHISCASH.getValue());
         }
 
         if (difficulty >= 2.5 && difficulty <= 5) {
             bugCatcherPokemon.add(PokemonId.NIDORINO.getValue());
             bugCatcherPokemon.add(PokemonId.RHYHORN.getValue());
+            bugCatcherPokemon.add(PokemonId.VIBRAVA.getValue());
+            bugCatcherPokemon.add(PokemonId.VIGOROTH.getValue());
+            bugCatcherPokemon.add(PokemonId.LOUDRED.getValue());
+            bugCatcherPokemon.add(PokemonId.LAIRON.getValue());
 
         }
         if (difficulty >= 4) {
@@ -727,6 +826,17 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.HOUNDOOM.getValue());
             bugCatcherPokemon.add(PokemonId.MUDSDALE.getValue());
             bugCatcherPokemon.add(PokemonId.SILVALLY.getValue());
+            bugCatcherPokemon.add(PokemonId.BLAZIKEN.getValue());
+            bugCatcherPokemon.add(PokemonId.SWAMPERT.getValue());
+            bugCatcherPokemon.add(PokemonId.SCEPTILE.getValue());
+            bugCatcherPokemon.add(PokemonId.ARMALDO.getValue());
+            bugCatcherPokemon.add(PokemonId.CACTURNE.getValue());
+            bugCatcherPokemon.add(PokemonId.CRAWDAUNT.getValue());
+            bugCatcherPokemon.add(PokemonId.CAMERUPT.getValue());
+            bugCatcherPokemon.add(PokemonId.BRELOOM.getValue());
+            bugCatcherPokemon.add(PokemonId.CLAYDOL.getValue());
+            bugCatcherPokemon.add(PokemonId.SLAKING.getValue());
+            bugCatcherPokemon.add(PokemonId.EXPLOUD.getValue());
         }
         if (difficulty >= 5) {
             bugCatcherPokemon.add(PokemonId.NIDOKING.getValue());
@@ -736,6 +846,9 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.SCIZOR.getValue());
             bugCatcherPokemon.add(PokemonId.VIKAVOLT.getValue());
             bugCatcherPokemon.add(PokemonId.KOMMOO.getValue());
+            bugCatcherPokemon.add(PokemonId.SHIFTRY.getValue());
+            bugCatcherPokemon.add(PokemonId.FLYGON.getValue());
+            bugCatcherPokemon.add(PokemonId.AGGRON.getValue());
         }
         return bugCatcherPokemon;
     }
@@ -822,6 +935,9 @@ public class TrainerFactory {
     public List<Integer> getAromaLadyPokemon(double difficulty) {
         List<Integer> bugCatcherPokemon = new ArrayList<Integer>();
         bugCatcherPokemon.add(PokemonId.COMFEY.getValue());
+        bugCatcherPokemon.add(PokemonId.VOLBEAT.getValue());
+        bugCatcherPokemon.add(PokemonId.ILLUMISE.getValue());
+        bugCatcherPokemon.add(PokemonId.ROSELIA.getValue());
         if (difficulty < 2) {
             bugCatcherPokemon.add(PokemonId.SUNKERN.getValue());
             bugCatcherPokemon.add(PokemonId.HOPPIP.getValue());
@@ -869,20 +985,26 @@ public class TrainerFactory {
         if (difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.MACHOP.getValue());
             bugCatcherPokemon.add(PokemonId.MANKEY.getValue());
+            bugCatcherPokemon.add(PokemonId.MEDITITE.getValue());
+            bugCatcherPokemon.add(PokemonId.MAKUHITA.getValue());
         }
         if (difficulty >= 2.5) {
             bugCatcherPokemon.add(PokemonId.PASSIMIAN.getValue());
+            bugCatcherPokemon.add(PokemonId.COMBUSKEN.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PRIMEAPE.getValue());
             bugCatcherPokemon.add(PokemonId.MACHOKE.getValue());
+            bugCatcherPokemon.add(PokemonId.HARIYAMA.getValue());
         }
         if (difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.HITMONLEE.getValue());
             bugCatcherPokemon.add(PokemonId.HITMONCHAN.getValue());
+            bugCatcherPokemon.add(PokemonId.MEDICHAM.getValue());
         }
         if (difficulty >= 4) {
             bugCatcherPokemon.add(PokemonId.MACHAMP.getValue());
+            bugCatcherPokemon.add(PokemonId.BLAZIKEN.getValue());
         }
         return bugCatcherPokemon;
     }
@@ -1008,12 +1130,18 @@ public class TrainerFactory {
 
     public List<Integer> getBirdKeeperPokemon(double difficulty) {
         List<Integer> bikerPokemon = new ArrayList<Integer>();
+
+        if (difficulty <= 2.5) {
+            bikerPokemon.add(PokemonId.TORCHIC.getValue());
+            bikerPokemon.add(PokemonId.ROWLET.getValue());
+        }
         if (difficulty <= 3) {
             bikerPokemon.add(PokemonId.PIDGEY.getValue());
             bikerPokemon.add(PokemonId.SPEAROW.getValue());
             bikerPokemon.add(PokemonId.HOOTHOOT.getValue());
+            bikerPokemon.add(PokemonId.TAILLOW.getValue());
+            bikerPokemon.add(PokemonId.WINGULL.getValue());
             bikerPokemon.add(PokemonId.PIKIPEK.getValue());
-            bikerPokemon.add(PokemonId.ROWLET.getValue());
         }
         if (difficulty >= 3) {
             bikerPokemon.add(PokemonId.FARFETCHD.getValue());
@@ -1031,6 +1159,11 @@ public class TrainerFactory {
             bikerPokemon.add(PokemonId.DARTRIX.getValue());
             bikerPokemon.add(PokemonId.SKARMORY.getValue());
             bikerPokemon.add(PokemonId.DELIBIRD.getValue());
+            bikerPokemon.add(PokemonId.PELIPPER.getValue());
+        }
+
+        if (difficulty >= 3) {
+            bikerPokemon.add(PokemonId.SWELLOW.getValue());
         }
         if (difficulty >= 3.5) {
             bikerPokemon.add(PokemonId.PIDGEOT.getValue());
@@ -1048,20 +1181,26 @@ public class TrainerFactory {
         if (difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.MACHOP.getValue());
             bugCatcherPokemon.add(PokemonId.MANKEY.getValue());
+            bugCatcherPokemon.add(PokemonId.MEDITITE.getValue());
+            bugCatcherPokemon.add(PokemonId.MAKUHITA.getValue());
         }
         if (difficulty >= 2.5) {
             bugCatcherPokemon.add(PokemonId.PASSIMIAN.getValue());
+            bugCatcherPokemon.add(PokemonId.COMBUSKEN.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PRIMEAPE.getValue());
             bugCatcherPokemon.add(PokemonId.MACHOKE.getValue());
+            bugCatcherPokemon.add(PokemonId.HARIYAMA.getValue());
         }
         if (difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.HITMONLEE.getValue());
             bugCatcherPokemon.add(PokemonId.HITMONCHAN.getValue());
+            bugCatcherPokemon.add(PokemonId.MEDICHAM.getValue());
         }
         if (difficulty >= 4) {
             bugCatcherPokemon.add(PokemonId.MACHAMP.getValue());
+            bugCatcherPokemon.add(PokemonId.BLAZIKEN.getValue());
         }
         return bugCatcherPokemon;
     }
@@ -1071,11 +1210,14 @@ public class TrainerFactory {
         if (difficulty <= 2.5) {
             burglarPokemon.add(PokemonId.CHARMANDER.getValue());
             burglarPokemon.add(PokemonId.CYNDAQUIL.getValue());
+            burglarPokemon.add(PokemonId.TORCHIC.getValue());
             burglarPokemon.add(PokemonId.LITTEN.getValue());
+
         }
         if (difficulty >= 2.5 && difficulty < 4.5) {
             burglarPokemon.add(PokemonId.CHARMELEON.getValue());
             burglarPokemon.add(PokemonId.QUILAVA.getValue());
+            burglarPokemon.add(PokemonId.COMBUSKEN.getValue());
             burglarPokemon.add(PokemonId.TORRACAT.getValue());
         }
         if (difficulty <= 4.5) {
@@ -1083,6 +1225,8 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.HOUNDOUR.getValue());
             burglarPokemon.add(PokemonId.SLUGMA.getValue());
             burglarPokemon.add(PokemonId.VULPIX.getValue());
+            burglarPokemon.add(PokemonId.NUMEL.getValue());
+
         }
         if (difficulty >= 3 && difficulty <= 4.5) {
             burglarPokemon.add(PokemonId.PONYTA.getValue());
@@ -1090,6 +1234,7 @@ public class TrainerFactory {
         }
         if (difficulty >= 3) {
             burglarPokemon.add(PokemonId.TURTONATOR.getValue());
+            burglarPokemon.add(PokemonId.TORKOAL.getValue());
         }
         if (difficulty >= 3.5) {
             burglarPokemon.add(PokemonId.ARCANINE.getValue());
@@ -1104,6 +1249,7 @@ public class TrainerFactory {
         if (difficulty >= 5) {
             burglarPokemon.add(PokemonId.CHARIZARD.getValue());
             burglarPokemon.add(PokemonId.TYPHLOSION.getValue());
+            burglarPokemon.add(PokemonId.BLAZIKEN.getValue());
         }
 
         return burglarPokemon;
@@ -1123,6 +1269,7 @@ public class TrainerFactory {
             cueBallPokemon.add(PokemonId.PRIMEAPE.getValue());
             cueBallPokemon.add(PokemonId.GUMSHOOS.getValue());
             cueBallPokemon.add(PokemonId.GLIGAR.getValue());
+            cueBallPokemon.add(PokemonId.ZANGOOSE.getValue());
         }
         if (difficulty <= 4.5) {
             cueBallPokemon.add(PokemonId.GRIMER.getValue());
@@ -1162,6 +1309,7 @@ public class TrainerFactory {
         if (difficulty <= 2.5) {
             dragonTamerPokemon.add(PokemonId.CHARMANDER.getValue());
             dragonTamerPokemon.add(PokemonId.EKANS.getValue());
+            dragonTamerPokemon.add(PokemonId.SWABLU.getValue());
         }
         if (difficulty >= 1 && difficulty <= 5) {
             dragonTamerPokemon.add(PokemonId.DRATINI.getValue());
@@ -1169,6 +1317,7 @@ public class TrainerFactory {
         }
         if (difficulty >= 2 && difficulty <= 4.5) {
             dragonTamerPokemon.add(PokemonId.CHARMELEON.getValue());
+            dragonTamerPokemon.add(PokemonId.VIBRAVA.getValue());
         }
         if (difficulty >= 2.5) {
             dragonTamerPokemon.add(PokemonId.ARBOK.getValue());
@@ -1178,6 +1327,7 @@ public class TrainerFactory {
             dragonTamerPokemon.add(PokemonId.GYARADOS.getValue());
             dragonTamerPokemon.add(PokemonId.TURTONATOR.getValue());
             dragonTamerPokemon.add(PokemonId.DRAMPA.getValue());
+            dragonTamerPokemon.add(PokemonId.ALTARIA.getValue());
         }
         if (difficulty >= 3.5) {
             dragonTamerPokemon.add(PokemonId.DRAGONAIR.getValue());
@@ -1185,11 +1335,13 @@ public class TrainerFactory {
         }
         if (difficulty >= 4) {
             dragonTamerPokemon.add(PokemonId.CHARIZARD.getValue());
+            dragonTamerPokemon.add(PokemonId.FLYGON.getValue());
         }
         if (difficulty >= 5) {
             dragonTamerPokemon.add(PokemonId.AERODACTYL.getValue());
             dragonTamerPokemon.add(PokemonId.DRAGONITE.getValue());
             dragonTamerPokemon.add(PokemonId.KINGDRA.getValue());
+            dragonTamerPokemon.add(PokemonId.AGGRON.getValue());
             dragonTamerPokemon.add(PokemonId.KOMMOO.getValue());
 
         }
@@ -1212,6 +1364,10 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.SLUGMA.getValue());
             burglarPokemon.add(PokemonId.HOUNDOUR.getValue());
             burglarPokemon.add(PokemonId.SALANDIT.getValue());
+            burglarPokemon.add(PokemonId.NUMEL.getValue());
+        }
+        if (difficulty >= 2.5) {
+            burglarPokemon.add(PokemonId.TORKOAL.getValue());
         }
         if (difficulty >= 3 && difficulty <= 4.5) {
             burglarPokemon.add(PokemonId.PONYTA.getValue());
@@ -1222,6 +1378,7 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.MAGCARGO.getValue());
             burglarPokemon.add(PokemonId.HOUNDOOM.getValue());
             burglarPokemon.add(PokemonId.TURTONATOR.getValue());
+            burglarPokemon.add(PokemonId.CAMERUPT.getValue());
 
         }
         if (difficulty >= 4) {
@@ -1245,6 +1402,7 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.POLIWAG.getValue());
             burglarPokemon.add(PokemonId.CHINCHOU.getValue());
             burglarPokemon.add(PokemonId.REMORAID.getValue());
+            burglarPokemon.add(PokemonId.FEEBAS.getValue());
         }
         if (difficulty <= 3.5) {
             burglarPokemon.add(PokemonId.GOLDEEN.getValue());
@@ -1252,6 +1410,10 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.HORSEA.getValue());
             burglarPokemon.add(PokemonId.STARYU.getValue());
             burglarPokemon.add(PokemonId.TENTACOOL.getValue());
+            burglarPokemon.add(PokemonId.BARBOACH.getValue());
+            burglarPokemon.add(PokemonId.CARVANHA.getValue());
+            burglarPokemon.add(PokemonId.WAILMER.getValue());
+            burglarPokemon.add(PokemonId.CORPHISH.getValue());
         }
         if (difficulty >= 2) {
             burglarPokemon.add(PokemonId.GYARADOS.getValue());
@@ -1266,13 +1428,17 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.LANTURN.getValue());
             burglarPokemon.add(PokemonId.OCTILLERY.getValue());
             burglarPokemon.add(PokemonId.MANTINE.getValue());
+            burglarPokemon.add(PokemonId.WHISCASH.getValue());
+            burglarPokemon.add(PokemonId.SHARPEDO.getValue());
         }
         if (difficulty >= 3.5) {
             burglarPokemon.add(PokemonId.TENTACRUEL.getValue());
             burglarPokemon.add(PokemonId.CLOYSTER.getValue());
+            burglarPokemon.add(PokemonId.CRAWDAUNT.getValue());
         }
         if (difficulty >= 4) {
             burglarPokemon.add(PokemonId.POLIWRATH.getValue());
+            burglarPokemon.add(PokemonId.WAILORD.getValue());
         }
         if (difficulty >= 5) {
             burglarPokemon.add(PokemonId.KINGDRA.getValue());
@@ -1282,6 +1448,10 @@ public class TrainerFactory {
 
     public List<Integer> getGamblerPokemon(double difficulty) {
         List<Integer> burglarPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            burglarPokemon.add(PokemonId.SLAKOTH.getValue());
+            burglarPokemon.add(PokemonId.ARON.getValue());
+        }
         if (difficulty <= 3) {
             burglarPokemon.add(PokemonId.NIDORANM.getValue());
             burglarPokemon.add(PokemonId.NIDORANF.getValue());
@@ -1290,6 +1460,7 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.SNUBBULL.getValue());
             burglarPokemon.add(PokemonId.SWINUB.getValue());
             burglarPokemon.add(PokemonId.PHANPY.getValue());
+            burglarPokemon.add(PokemonId.CORPHISH.getValue());
         }
         if (difficulty <= 3.5) {
             burglarPokemon.add(PokemonId.VOLTORB.getValue());
@@ -1311,6 +1482,8 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.GIRAFARIG.getValue());
             burglarPokemon.add(PokemonId.GRANBULL.getValue());
             burglarPokemon.add(PokemonId.MINIOR.getValue());
+            burglarPokemon.add(PokemonId.ZANGOOSE.getValue());
+            burglarPokemon.add(PokemonId.SEVIPER.getValue());
         }
         if (difficulty >= 3) {
             burglarPokemon.add(PokemonId.POLIWHIRL.getValue());
@@ -1323,6 +1496,7 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.SUDOWOODO.getValue());
             burglarPokemon.add(PokemonId.SHUCKLE.getValue());
             burglarPokemon.add(PokemonId.DONPHAN.getValue());
+            burglarPokemon.add(PokemonId.LAIRON.getValue());
         }
 
         if (difficulty >= 2 && difficulty <= 4) {
@@ -1333,6 +1507,9 @@ public class TrainerFactory {
         if (difficulty >= 4) {
             burglarPokemon.add(PokemonId.RHYDON.getValue());
             burglarPokemon.add(PokemonId.PILOSWINE.getValue());
+            burglarPokemon.add(PokemonId.LUDICOLO.getValue());
+            burglarPokemon.add(PokemonId.SLAKING.getValue());
+            burglarPokemon.add(PokemonId.CRAWDAUNT.getValue());
         }
 
         if (difficulty >= 5) {
@@ -1341,12 +1518,19 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.GOLEM.getValue());
             burglarPokemon.add(PokemonId.ALOLAN_GOLEM.getValue());
             burglarPokemon.add(PokemonId.SILVALLY.getValue());
+            burglarPokemon.add(PokemonId.AGGRON.getValue());
         }
         return burglarPokemon;
     }
 
     public List<Integer> getGentlemanPokemon(double difficulty) {
         List<Integer> burglarPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            burglarPokemon.add(PokemonId.SEEDOT.getValue());
+            burglarPokemon.add(PokemonId.LOTAD.getValue());
+            burglarPokemon.add(PokemonId.SLAKOTH.getValue());
+            burglarPokemon.add(PokemonId.WHISMUR.getValue());
+        }
         if (difficulty <= 3) {
             burglarPokemon.add(PokemonId.NIDORANM.getValue());
             burglarPokemon.add(PokemonId.LEDYBA.getValue());
@@ -1355,12 +1539,19 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.SNUBBULL.getValue());
             burglarPokemon.add(PokemonId.TEDDIURSA.getValue());
             burglarPokemon.add(PokemonId.SWINUB.getValue());
+            burglarPokemon.add(PokemonId.SHROOMISH.getValue());
+            burglarPokemon.add(PokemonId.ELECTRIKE.getValue());
+            burglarPokemon.add(PokemonId.CACNEA.getValue());
+            burglarPokemon.add(PokemonId.ROCKRUFF.getValue());
+            burglarPokemon.add(PokemonId.MUDBRAY.getValue());
+            burglarPokemon.add(PokemonId.TAILLOW.getValue());
+            burglarPokemon.add(PokemonId.ZIGZAGOON.getValue());
+            burglarPokemon.add(PokemonId.POOCHYENA.getValue());
         }
         if (difficulty <= 3.5) {
             burglarPokemon.add(PokemonId.MAGNEMITE.getValue());
             burglarPokemon.add(PokemonId.VOLTORB.getValue());
-            burglarPokemon.add(PokemonId.MUDBRAY.getValue());
-            burglarPokemon.add(PokemonId.ROCKRUFF.getValue());
+            burglarPokemon.add(PokemonId.NUMEL.getValue());
         }
         if (difficulty <= 4) {
             burglarPokemon.add(PokemonId.PIKACHU.getValue());
@@ -1370,6 +1561,10 @@ public class TrainerFactory {
         }
         if (difficulty >= 2 && difficulty <= 4) {
             burglarPokemon.add(PokemonId.PONYTA.getValue());
+            burglarPokemon.add(PokemonId.NUZLEAF.getValue());
+            burglarPokemon.add(PokemonId.LOMBRE.getValue());
+            burglarPokemon.add(PokemonId.VIGOROTH.getValue());
+            burglarPokemon.add(PokemonId.LOUDRED.getValue());
         }
         if (difficulty >= 2.5) {
             burglarPokemon.add(PokemonId.NIDORINO.getValue());
@@ -1377,6 +1572,8 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.NOCTOWL.getValue());
             burglarPokemon.add(PokemonId.LEDIAN.getValue());
             burglarPokemon.add(PokemonId.GRANBULL.getValue());
+            burglarPokemon.add(PokemonId.LINOONE.getValue());
+            burglarPokemon.add(PokemonId.MIGHTYENA.getValue());
         }
 
         if (difficulty >= 3) {
@@ -1388,6 +1585,11 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.LYCANROC_DAY.getValue());
             burglarPokemon.add(PokemonId.LYCANROC_NIGHT.getValue());
             burglarPokemon.add(PokemonId.DRAMPA.getValue());
+            burglarPokemon.add(PokemonId.SWELLOW.getValue());
+        }
+
+        if (difficulty >= 3.5) {
+            burglarPokemon.add(PokemonId.MANECTRIC.getValue());
         }
 
         if (difficulty >= 4.5) {
@@ -1397,6 +1599,9 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.BEWEAR.getValue());
             burglarPokemon.add(PokemonId.RAPIDASH.getValue());
             burglarPokemon.add(PokemonId.PILOSWINE.getValue());
+            burglarPokemon.add(PokemonId.CACTURNE.getValue());
+            burglarPokemon.add(PokemonId.EXPLOUD.getValue());
+            burglarPokemon.add(PokemonId.BRELOOM.getValue());
         }
 
         if (difficulty >= 5) {
@@ -1408,6 +1613,10 @@ public class TrainerFactory {
 
     public List<Integer> getHikerPokemon(double difficulty) {
         List<Integer> burglarPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            burglarPokemon.add(PokemonId.ARON.getValue());
+            burglarPokemon.add(PokemonId.MAKUHITA.getValue());
+        }
         if (difficulty <= 3.5) {
             burglarPokemon.add(PokemonId.GEODUDE.getValue());
             burglarPokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
@@ -1419,6 +1628,7 @@ public class TrainerFactory {
         }
         if (difficulty >= 1.5) {
             burglarPokemon.add(PokemonId.ONIX.getValue());
+            burglarPokemon.add(PokemonId.NOSEPASS.getValue());
         }
 
         if (difficulty >= 3) {
@@ -1428,6 +1638,8 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.ALOLAN_GRAVELER.getValue());
             burglarPokemon.add(PokemonId.MACHOKE.getValue());
             burglarPokemon.add(PokemonId.DONPHAN.getValue());
+            burglarPokemon.add(PokemonId.LAIRON.getValue());
+            burglarPokemon.add(PokemonId.HARIYAMA.getValue());
 
         }
         if (difficulty >= 4) {
@@ -1441,6 +1653,7 @@ public class TrainerFactory {
             burglarPokemon.add(PokemonId.MACHAMP.getValue());
             burglarPokemon.add(PokemonId.STEELIX.getValue());
             burglarPokemon.add(PokemonId.TYRANITAR.getValue());
+            burglarPokemon.add(PokemonId.AGGRON.getValue());
         }
         return burglarPokemon;
     }
@@ -1450,6 +1663,9 @@ public class TrainerFactory {
         if (difficulty <= 2) {
             janitorPokemon.add(PokemonId.GRUBBIN.getValue());
         }
+        if (difficulty <= 3) {
+            janitorPokemon.add(PokemonId.GULPIN.getValue());
+        }
         if (difficulty <= 4.5) {
             janitorPokemon.add(PokemonId.RATTATA.getValue());
             janitorPokemon.add(PokemonId.ALOLAN_RATTATA.getValue());
@@ -1458,6 +1674,7 @@ public class TrainerFactory {
         if (difficulty >= 2.5) {
             janitorPokemon.add(PokemonId.RATICATE.getValue());
             janitorPokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
+            janitorPokemon.add(PokemonId.SWALOT.getValue());
         }
         if (difficulty >= 3.5) {
             janitorPokemon.add(PokemonId.MUK.getValue());
@@ -1468,6 +1685,10 @@ public class TrainerFactory {
 
     public List<Integer> getJugglerPokemon(double difficulty) {
         List<Integer> janitorPokemon = new ArrayList<Integer>();
+        if (difficulty <= 3.5) {
+            janitorPokemon.add(PokemonId.SPOINK.getValue());
+            janitorPokemon.add(PokemonId.MEDITITE.getValue());
+        }
         if (difficulty <= 4) {
             janitorPokemon.add(PokemonId.DROWZEE.getValue());
         }
@@ -1477,9 +1698,13 @@ public class TrainerFactory {
         if (difficulty >= 2.5) {
             janitorPokemon.add(PokemonId.MR_MIME.getValue());
         }
+        if (difficulty >= 3) {
+            janitorPokemon.add(PokemonId.GRUMPIG.getValue());
+        }
         if (difficulty >= 3.5) {
             janitorPokemon.add(PokemonId.HYPNO.getValue());
             janitorPokemon.add(PokemonId.ORANGURU.getValue());
+            janitorPokemon.add(PokemonId.MEDICHAM.getValue());
         }
         if (difficulty >= 5) {
             janitorPokemon.add(PokemonId.ALAKAZAM.getValue());
@@ -1506,12 +1731,21 @@ public class TrainerFactory {
     public List<Integer> getLadyPokemon(double difficulty) {
         List<Integer> bugCatcherPokemon = new ArrayList<Integer>();
         bugCatcherPokemon.add(PokemonId.PIKACHU.getValue());
+
+        if (difficulty <= 2) {
+            bugCatcherPokemon.add(PokemonId.SURSKIT.getValue());
+            bugCatcherPokemon.add(PokemonId.AZURILL.getValue());
+        }
         if (difficulty >= 1.5 && difficulty <= 2.5) {
             bugCatcherPokemon.add(PokemonId.ODDISH.getValue());
+            bugCatcherPokemon.add(PokemonId.SKITTY.getValue());
+            bugCatcherPokemon.add(PokemonId.RALTS.getValue());
         }
         if (difficulty >= 1.5 && difficulty <= 3.5) {
             bugCatcherPokemon.add(PokemonId.CLEFAIRY.getValue());
             bugCatcherPokemon.add(PokemonId.JIGGLYPUFF.getValue());
+            bugCatcherPokemon.add(PokemonId.MARILL.getValue());
+            bugCatcherPokemon.add(PokemonId.SWABLU.getValue());
         }
         if (difficulty <= 3) {
             bugCatcherPokemon.add(PokemonId.MEOWTH.getValue());
@@ -1521,10 +1755,21 @@ public class TrainerFactory {
         }
         if (difficulty >= 2.5) {
             bugCatcherPokemon.add(PokemonId.GLOOM.getValue());
+            bugCatcherPokemon.add(PokemonId.ROSELIA.getValue());
+            bugCatcherPokemon.add(PokemonId.MAWILE.getValue());
+        }
+
+        if (difficulty >= 2.5 && difficulty <= 4.5) {
+            bugCatcherPokemon.add(PokemonId.KIRLIA.getValue());
         }
         if (difficulty >= 3) {
             bugCatcherPokemon.add(PokemonId.PERSIAN.getValue());
             bugCatcherPokemon.add(PokemonId.ALOLAN_PERSIAN.getValue());
+            bugCatcherPokemon.add(PokemonId.DELCATTY.getValue());
+            bugCatcherPokemon.add(PokemonId.MASQUERAIN.getValue());
+            bugCatcherPokemon.add(PokemonId.BEAUTIFLY.getValue());
+            bugCatcherPokemon.add(PokemonId.AZUMARILL.getValue());
+            bugCatcherPokemon.add(PokemonId.ALTARIA.getValue());
         }
         if (difficulty >= 3.5) {
             bugCatcherPokemon.add(PokemonId.FLAREON.getValue());
@@ -1536,6 +1781,8 @@ public class TrainerFactory {
             bugCatcherPokemon.add(PokemonId.WIGGLYTUFF.getValue());
             bugCatcherPokemon.add(PokemonId.VILEPLUME.getValue());
             bugCatcherPokemon.add(PokemonId.ALOLAN_NINETALES.getValue());
+            bugCatcherPokemon.add(PokemonId.GARDEVOIR.getValue());
+            bugCatcherPokemon.add(PokemonId.MILOTIC.getValue());
         }
         return bugCatcherPokemon;
     }
@@ -1547,6 +1794,9 @@ public class TrainerFactory {
             janitorPokemon.add(PokemonId.GASTLY.getValue());
             janitorPokemon.add(PokemonId.MISDREAVUS.getValue());
             janitorPokemon.add(PokemonId.NATU.getValue());
+        }
+        if (difficulty >= 1.5) {
+            janitorPokemon.add(PokemonId.SABLEYE.getValue());
         }
         if (difficulty >= 2.5) {
             janitorPokemon.add(PokemonId.HAUNTER.getValue());
@@ -1584,11 +1834,22 @@ public class TrainerFactory {
 
     public List<Integer> getParasolLadyPokemon(double difficulty) {
         List<Integer> janitorPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2) {
+            janitorPokemon.add(PokemonId.MUDKIP.getValue());
+            janitorPokemon.add(PokemonId.AZURILL.getValue());
+            janitorPokemon.add(PokemonId.LOTAD.getValue());
+        }
+
+        if (difficulty >= 2 && difficulty <= 4.5) {
+            janitorPokemon.add(PokemonId.LOMBRE.getValue());
+            janitorPokemon.add(PokemonId.MARSHTOMP.getValue());
+        }
         if (difficulty <= 3.5) {
             janitorPokemon.add(PokemonId.WOOPER.getValue());
             janitorPokemon.add(PokemonId.MARILL.getValue());
             janitorPokemon.add(PokemonId.DEWPIDER.getValue());
             janitorPokemon.add(PokemonId.CHINCHOU.getValue());
+            janitorPokemon.add(PokemonId.WINGULL.getValue());
         }
         if (difficulty <= 4) {
             janitorPokemon.add(PokemonId.GOLDEEN.getValue());
@@ -1607,10 +1868,13 @@ public class TrainerFactory {
             janitorPokemon.add(PokemonId.ARAQUANID.getValue());
             janitorPokemon.add(PokemonId.PYUKUMUKU.getValue());
             janitorPokemon.add(PokemonId.CORSOLA.getValue());
+            janitorPokemon.add(PokemonId.PELIPPER.getValue());
         }
         if (difficulty >= 4.5) {
             janitorPokemon.add(PokemonId.JOLTEON.getValue());
             janitorPokemon.add(PokemonId.POLITOED.getValue());
+            janitorPokemon.add(PokemonId.MILOTIC.getValue());
+            janitorPokemon.add(PokemonId.SWAMPERT.getValue());
 
         }
         return janitorPokemon;
@@ -1769,8 +2033,13 @@ public class TrainerFactory {
 
     public List<Integer> getWaiterPokemon(double difficulty) {
         List<Integer> waiterPokemon = new ArrayList<Integer>();
+        if (difficulty <= 2) {
+            waiterPokemon.add(PokemonId.INKAY.getValue());
+        }
         if (difficulty <= 3.5) {
             waiterPokemon.add(PokemonId.KRABBY.getValue());
+            waiterPokemon.add(PokemonId.CORPHISH.getValue());
+            waiterPokemon.add(PokemonId.CLAUNCHER.getValue());
         }
         if (difficulty <= 4) {
             waiterPokemon.add(PokemonId.SHELLDER.getValue());
@@ -1778,10 +2047,13 @@ public class TrainerFactory {
         }
         if (difficulty >= 3) {
             waiterPokemon.add(PokemonId.KINGLER.getValue());
+            waiterPokemon.add(PokemonId.CRAWDAUNT.getValue());
+            waiterPokemon.add(PokemonId.CLAWITZER.getValue());
         }
         if (difficulty >= 3.5) {
             waiterPokemon.add(PokemonId.CLOYSTER.getValue());
             waiterPokemon.add(PokemonId.EXEGGUTOR.getValue());
+            waiterPokemon.add(PokemonId.MALAMAR.getValue());
         }
         return waiterPokemon;
     }
@@ -1807,12 +2079,16 @@ public class TrainerFactory {
         List<Integer> policePokemon = new ArrayList<Integer>();
         if (difficulty <= 3.5) {
             policePokemon.add(PokemonId.MACHOP.getValue());
+            policePokemon.add(PokemonId.ROCKRUFF.getValue());
         }
         if (difficulty <= 4.5) {
             policePokemon.add(PokemonId.GROWLITHE.getValue());
+            policePokemon.add(PokemonId.ELECTRIKE.getValue());
         }
         if (difficulty >= 3) {
             policePokemon.add(PokemonId.MACHOKE.getValue());
+            policePokemon.add(PokemonId.MANECTRIC.getValue());
+            policePokemon.add(PokemonId.LYCANROC_DAY.getValue());
         }
         if (difficulty >= 3.5) {
             policePokemon.add(PokemonId.ARCANINE.getValue());
@@ -1827,10 +2103,16 @@ public class TrainerFactory {
         List<Integer> policePokemon = new ArrayList<Integer>();
         if (difficulty <= 2) {
             policePokemon.add(PokemonId.ABRA.getValue());
+            policePokemon.add(PokemonId.ESPURR.getValue());
+            policePokemon.add(PokemonId.SPOINK.getValue());
+            policePokemon.add(PokemonId.RALTS.getValue());
+            policePokemon.add(PokemonId.MEDITITE.getValue());
+            policePokemon.add(PokemonId.NATU.getValue());
         }
         if (difficulty <= 3.5) {
             policePokemon.add(PokemonId.GASTLY.getValue());
             policePokemon.add(PokemonId.EXEGGCUTE.getValue());
+            policePokemon.add(PokemonId.BALTOY.getValue());
         }
         if (difficulty <= 4) {
             policePokemon.add(PokemonId.DROWZEE.getValue());
@@ -1838,6 +2120,13 @@ public class TrainerFactory {
         }
         if (difficulty >= 2) {
             policePokemon.add(PokemonId.KADABRA.getValue());
+            policePokemon.add(PokemonId.LUNATONE.getValue());
+            policePokemon.add(PokemonId.SOLROCK.getValue());
+            policePokemon.add(PokemonId.GIRAFARIG.getValue());
+            policePokemon.add(PokemonId.SABLEYE.getValue());
+        }
+        if (difficulty >= 2 && difficulty <= 4) {
+            policePokemon.add(PokemonId.KIRLIA.getValue());
         }
         if (difficulty >= 2.5) {
             policePokemon.add(PokemonId.HAUNTER.getValue());
@@ -1845,27 +2134,54 @@ public class TrainerFactory {
         }
         if (difficulty >= 3) {
             policePokemon.add(PokemonId.HYPNO.getValue());
+            policePokemon.add(PokemonId.MEOWSTIC.getValue());
+            policePokemon.add(PokemonId.ORANGURU.getValue());
+            policePokemon.add(PokemonId.GRUMPIG.getValue());
         }
         if (difficulty >= 3.5) {
             policePokemon.add(PokemonId.SLOWBRO.getValue());
             policePokemon.add(PokemonId.STARMIE.getValue());
+            policePokemon.add(PokemonId.CLAYDOL.getValue());
+            policePokemon.add(PokemonId.MEDICHAM.getValue());
+            policePokemon.add(PokemonId.XATU.getValue());
         }
         if (difficulty >= 4) {
             policePokemon.add(PokemonId.ALOLAN_RAICHU.getValue());
+            policePokemon.add(PokemonId.SLOWKING.getValue());
         }
         if (difficulty >= 4.5) {
             policePokemon.add(PokemonId.GENGAR.getValue());
+            policePokemon.add(PokemonId.GARDEVOIR.getValue());
+            policePokemon.add(PokemonId.ESPEON.getValue());
         }
         return policePokemon;
     }
 
     public List<Integer> getRangerPokemon(double difficulty) {
         List<Integer> policePokemon = new ArrayList<Integer>();
+
+        if (difficulty <= 2.5) {
+            policePokemon.add(PokemonId.MORELULL.getValue());
+            policePokemon.add(PokemonId.ROWLET.getValue());
+            policePokemon.add(PokemonId.CHESPIN.getValue());
+            policePokemon.add(PokemonId.SEEDOT.getValue());
+            policePokemon.add(PokemonId.LOTAD.getValue());
+            policePokemon.add(PokemonId.CHIKORITA.getValue());
+        }
         if (difficulty <= 3) {
             policePokemon.add(PokemonId.PARAS.getValue());
             policePokemon.add(PokemonId.ODDISH.getValue());
             policePokemon.add(PokemonId.BELLSPROUT.getValue());
             policePokemon.add(PokemonId.EXEGGCUTE.getValue());
+            policePokemon.add(PokemonId.FOMANTIS.getValue());
+            policePokemon.add(PokemonId.SKIDDO.getValue());
+            policePokemon.add(PokemonId.SHROOMISH.getValue());
+            policePokemon.add(PokemonId.ROCKRUFF.getValue());
+            policePokemon.add(PokemonId.SILCOON.getValue());
+            policePokemon.add(PokemonId.CASCOON.getValue());
+            policePokemon.add(PokemonId.TEDDIURSA.getValue());
+            policePokemon.add(PokemonId.ZIGZAGOON.getValue());
+            policePokemon.add(PokemonId.TAILLOW.getValue());
         }
         if (difficulty <= 3.5) {
             policePokemon.add(PokemonId.BULBASAUR.getValue());
@@ -1874,11 +2190,26 @@ public class TrainerFactory {
             policePokemon.add(PokemonId.TANGELA.getValue());
             policePokemon.add(PokemonId.PARASECT.getValue());
             policePokemon.add(PokemonId.CHANSEY.getValue());
+            policePokemon.add(PokemonId.SHIINOTIC.getValue());
+            policePokemon.add(PokemonId.ZANGOOSE.getValue());
+            policePokemon.add(PokemonId.SEVIPER.getValue());
+            policePokemon.add(PokemonId.DUSTOX.getValue());
+            policePokemon.add(PokemonId.STANTLER.getValue());
+            policePokemon.add(PokemonId.LINOONE.getValue());
+        }
+        if (difficulty >= 3) {
+            policePokemon.add(PokemonId.LURANTIS.getValue());
+            policePokemon.add(PokemonId.SWELLOW.getValue());
         }
         if (difficulty >= 2.5 && difficulty <= 4.5) {
             policePokemon.add(PokemonId.IVYSAUR.getValue());
             policePokemon.add(PokemonId.WEEPINBELL.getValue());
             policePokemon.add(PokemonId.GLOOM.getValue());
+            policePokemon.add(PokemonId.QUILLADIN.getValue());
+            policePokemon.add(PokemonId.DARTRIX.getValue());
+            policePokemon.add(PokemonId.LOMBRE.getValue());
+            policePokemon.add(PokemonId.NUZLEAF.getValue());
+            policePokemon.add(PokemonId.BAYLEEF.getValue());
 
         }
         if (difficulty >= 3 && difficulty <= 4.5) {
@@ -1889,11 +2220,19 @@ public class TrainerFactory {
             policePokemon.add(PokemonId.VICTREEBEL.getValue());
             policePokemon.add(PokemonId.VILEPLUME.getValue());
             policePokemon.add(PokemonId.EXEGGUTOR.getValue());
+            policePokemon.add(PokemonId.GOGOAT.getValue());
+            policePokemon.add(PokemonId.LYCANROC_DAY.getValue());
+            policePokemon.add(PokemonId.URSARING.getValue());
         }
         if (difficulty >= 4.5) {
             policePokemon.add(PokemonId.RHYDON.getValue());
             policePokemon.add(PokemonId.ALOLAN_EXEGGUTOR.getValue());
             policePokemon.add(PokemonId.VENUSAUR.getValue());
+            policePokemon.add(PokemonId.DECIDUEYE.getValue());
+            policePokemon.add(PokemonId.CHESNAUGHT.getValue());
+            policePokemon.add(PokemonId.SHIFTRY.getValue());
+            policePokemon.add(PokemonId.LUDICOLO.getValue());
+            policePokemon.add(PokemonId.MEGANIUM.getValue());
         }
         return policePokemon;
 
@@ -1963,6 +2302,10 @@ public class TrainerFactory {
 
     public List<Integer> getRuneManiacPokemon(double difficulty) {
         List<Integer> policePokemon = new ArrayList<Integer>();
+        if (difficulty <= 2.5) {
+            policePokemon.add(PokemonId.SWINUB.getValue());
+            policePokemon.add(PokemonId.ARON.getValue());
+        }
         if (difficulty <= 3) {
             policePokemon.add(PokemonId.SANDSHREW.getValue());
             policePokemon.add(PokemonId.DIGLETT.getValue());
@@ -1970,13 +2313,22 @@ public class TrainerFactory {
             policePokemon.add(PokemonId.CUBONE.getValue());
             policePokemon.add(PokemonId.GEODUDE.getValue());
             policePokemon.add(PokemonId.ALOLAN_GEODUDE.getValue());
+            policePokemon.add(PokemonId.BALTOY.getValue());
+            policePokemon.add(PokemonId.LARVITAR.getValue());
+            policePokemon.add(PokemonId.TRAPINCH.getValue());
+            policePokemon.add(PokemonId.CACNEA.getValue());
         }
         if (difficulty >= 1.5) {
             policePokemon.add(PokemonId.ONIX.getValue());
+            policePokemon.add(PokemonId.NOSEPASS.getValue());
         }
         if (difficulty >= 2 && difficulty <= 4.5) {
             policePokemon.add(PokemonId.KABUTO.getValue());
             policePokemon.add(PokemonId.OMANYTE.getValue());
+            policePokemon.add(PokemonId.LILEEP.getValue());
+            policePokemon.add(PokemonId.ANORITH.getValue());
+            policePokemon.add(PokemonId.TYRUNT.getValue());
+            policePokemon.add(PokemonId.AMAURA.getValue());
         }
         if (difficulty >= 2.5) {
             policePokemon.add(PokemonId.SANDSLASH.getValue());
@@ -1985,21 +2337,34 @@ public class TrainerFactory {
         if (difficulty >= 3 && difficulty <= 5) {
             policePokemon.add(PokemonId.GRAVELER.getValue());
             policePokemon.add(PokemonId.ALOLAN_GRAVELER.getValue());
+            policePokemon.add(PokemonId.PUPITAR.getValue());
+            policePokemon.add(PokemonId.VIBRAVA.getValue());
+            policePokemon.add(PokemonId.LAIRON.getValue());
         }
         if (difficulty >= 3) {
             policePokemon.add(PokemonId.MAROWAK.getValue());
             policePokemon.add(PokemonId.DUGTRIO.getValue());
             policePokemon.add(PokemonId.ALOLAN_DUGTRIO.getValue());
+            policePokemon.add(PokemonId.CACTURNE.getValue());
         }
 
         if (difficulty >= 4) {
             policePokemon.add(PokemonId.KABUTOPS.getValue());
             policePokemon.add(PokemonId.OMASTAR.getValue());
+            policePokemon.add(PokemonId.CRADILY.getValue());
+            policePokemon.add(PokemonId.ARMALDO.getValue());
+            policePokemon.add(PokemonId.TYRANTRUM.getValue());
+            policePokemon.add(PokemonId.AURORUS.getValue());
+            policePokemon.add(PokemonId.CLAYDOL.getValue());
         }
         if (difficulty >= 4.5) {
             policePokemon.add(PokemonId.GOLEM.getValue());
             policePokemon.add(PokemonId.ALOLAN_GOLEM.getValue());
             policePokemon.add(PokemonId.AERODACTYL.getValue());
+            policePokemon.add(PokemonId.TYRANITAR.getValue());
+            policePokemon.add(PokemonId.FLYGON.getValue());
+            policePokemon.add(PokemonId.STEELIX.getValue());
+            policePokemon.add(PokemonId.AGGRON.getValue());
         }
         return policePokemon;
     }
@@ -2008,6 +2373,7 @@ public class TrainerFactory {
         List<Integer> policePokemon = new ArrayList<Integer>();
         if (difficulty <= 3.5) {
             policePokemon.add(PokemonId.BELLSPROUT.getValue());
+            policePokemon.add(PokemonId.PHANTUMP.getValue());
             policePokemon.add(PokemonId.GASTLY.getValue());
             policePokemon.add(PokemonId.ZUBAT.getValue());
         }
@@ -2021,6 +2387,7 @@ public class TrainerFactory {
 
         if (difficulty >= 4) {
             policePokemon.add(PokemonId.VICTREEBEL.getValue());
+            policePokemon.add(PokemonId.TREVENANT.getValue());
         }
         if (difficulty >= 4.5) {
             policePokemon.add(PokemonId.GENGAR.getValue());
@@ -2042,11 +2409,26 @@ public class TrainerFactory {
             policePokemon.add(PokemonId.STARYU.getValue());
             policePokemon.add(PokemonId.SQUIRTLE.getValue());
             policePokemon.add(PokemonId.SEEL.getValue());
+            policePokemon.add(PokemonId.CHINCHOU.getValue());
+            policePokemon.add(PokemonId.REMORAID.getValue());
+            policePokemon.add(PokemonId.WINGULL.getValue());
+            policePokemon.add(PokemonId.CARVANHA.getValue());
+            policePokemon.add(PokemonId.CORPHISH.getValue());
+            policePokemon.add(PokemonId.BARBOACH.getValue());
+            policePokemon.add(PokemonId.SKRELP.getValue());
+            policePokemon.add(PokemonId.CLAUNCHER.getValue());
+            policePokemon.add(PokemonId.MAREANIE.getValue());
         }
         if (difficulty >= 2.5) {
             policePokemon.add(PokemonId.RATICATE.getValue());
             policePokemon.add(PokemonId.ALOLAN_RATICATE.getValue());
             policePokemon.add(PokemonId.PRIMEAPE.getValue());
+            policePokemon.add(PokemonId.LANTURN.getValue());
+            policePokemon.add(PokemonId.QWILFISH.getValue());
+            policePokemon.add(PokemonId.MANTINE.getValue());
+            policePokemon.add(PokemonId.PELIPPER.getValue());
+            policePokemon.add(PokemonId.WISHIWASHI.getValue());
+            policePokemon.add(PokemonId.BRUXISH.getValue());
         }
         if (difficulty >= 3) {
             policePokemon.add(PokemonId.TENTACRUEL.getValue());
@@ -2054,6 +2436,9 @@ public class TrainerFactory {
             policePokemon.add(PokemonId.MACHOKE.getValue());
             policePokemon.add(PokemonId.GOLDUCK.getValue());
             policePokemon.add(PokemonId.SEADRA.getValue());
+            policePokemon.add(PokemonId.OCTILLERY.getValue());
+            policePokemon.add(PokemonId.SHARPEDO.getValue());
+            policePokemon.add(PokemonId.WHISCASH.getValue());
         }
         if (difficulty >= 2.5 && difficulty <= 4) {
             policePokemon.add(PokemonId.WARTORTLE.getValue());
@@ -2063,11 +2448,17 @@ public class TrainerFactory {
         if (difficulty >= 4) {
             policePokemon.add(PokemonId.DEWGONG.getValue());
             policePokemon.add(PokemonId.STARMIE.getValue());
+            policePokemon.add(PokemonId.CRAWDAUNT.getValue());
+            policePokemon.add(PokemonId.DRAGALGE.getValue());
+            policePokemon.add(PokemonId.CLAWITZER.getValue());
+            policePokemon.add(PokemonId.TOXAPEX.getValue());
         }
         if (difficulty >= 4.5) {
             policePokemon.add(PokemonId.KANGASKHAN.getValue());
             policePokemon.add(PokemonId.BLASTOISE.getValue());
             policePokemon.add(PokemonId.GYARADOS.getValue());
+            policePokemon.add(PokemonId.POLITOED.getValue());
+            policePokemon.add(PokemonId.GOLISOPOD.getValue());
         }
         return policePokemon;
     }
@@ -2122,6 +2513,7 @@ public class TrainerFactory {
         if (difficulty >= 2.5) {
             policePokemon.add(PokemonId.ELECTRODE.getValue());
             policePokemon.add(PokemonId.MAGNETON.getValue());
+            policePokemon.add(PokemonId.CHARJABUG.getValue());
         }
         if (difficulty >= 3) {
             policePokemon.add(PokemonId.WEEZING.getValue());
@@ -2132,6 +2524,7 @@ public class TrainerFactory {
         if (difficulty >= 4) {
             policePokemon.add(PokemonId.DITTO.getValue());
             policePokemon.add(PokemonId.PORYGON.getValue());
+            policePokemon.add(PokemonId.VIKAVOLT.getValue());
         }
         return policePokemon;
     }

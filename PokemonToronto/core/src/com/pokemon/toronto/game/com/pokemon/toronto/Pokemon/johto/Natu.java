@@ -18,47 +18,51 @@ public class Natu extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 177;
-    private static final String NAME = "Natu";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 2;
+    public static final int NUMBER = 177;
+    public static final String NAME = "Natu";
+    public static final String TYPE_OF_POKEMON = "Little Bird";
+    public static final String DESCRIPTION = "It picks food from cactus plants, deftly avoiding" +
+            " buds and spines. It seems to skip about to move.";
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 2;
+    public static final double HEIGHT = 0.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Synchronize();
-    private static final Ability SECOND_ABILITY = new Ability.EarlyBird();
-    private static final Ability HIDDEN_ABILITY = new Ability.MagicBounce();
+    public static final Ability FIRST_ABILITY = new Ability.Synchronize();
+    public static final Ability SECOND_ABILITY = new Ability.EarlyBird();
+    public static final Ability HIDDEN_ABILITY = new Ability.MagicBounce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/natu.png";
-    private static final String BACK_PATH = "battle/backs/johto/natu.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/natu.png";
-    private static final String CRY_PATH = "sounds/cry/177.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/natu.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/natu.png";
+    public static final String BACK_PATH = "battle/backs/johto/natu.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/natu.png";
+    public static final String CRY_PATH = "sounds/cry/177.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/natu.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a natu
      */
     public Natu() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

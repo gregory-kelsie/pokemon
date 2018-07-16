@@ -177,6 +177,7 @@ public class BattleClickController {
                 }
             } else if (x >= 272 && x <= 759 && y >= 1540 && y <= 1674 && model.isOnMainPanel() && !model.startedAttack()) {
                 //Clicked Run
+                model.getGsm().getGameCallBack().pulsate();
                 if (model.isWildBattle()) {
                     if (!cannotSwitchOut()) {
                         model.removeBattleVariablesFromCurrentPokemon();

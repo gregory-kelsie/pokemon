@@ -18,47 +18,51 @@ import java.util.List;
 public class Jolteon extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 135;
-    private static final String NAME = "Jolteon";
-    private static final int BASE_EXP = 197;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 24.5;
+    public static final int NUMBER = 135;
+    public static final String NAME = "Jolteon";
+    public static final String TYPE_OF_POKEMON = "Lightning";
+    public static final String DESCRIPTION = "Every hair on its body starts to stand sharply on" +
+            " end if it becomes charged with electricity.";
+    public static final int BASE_EXP = 197;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 24.5;
+    public static final double HEIGHT = 0.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.VoltAbsorb();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.QuickFeet();
+    public static final Ability FIRST_ABILITY = new Ability.VoltAbsorb();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.QuickFeet();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 110;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 130;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 110;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 130;
 
     //Typing
-    private static final Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/jolteon.png";
-    private static final String BACK_PATH = "battle/backs/jolteon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/jolteon.png";
-    private static final String CRY_PATH = "sounds/cry/135.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/135.png";
+    public static final String ICON_PATH = "pokemonSprites/jolteon.png";
+    public static final String BACK_PATH = "battle/backs/jolteon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/jolteon.png";
+    public static final String CRY_PATH = "sounds/cry/135.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/135.png";
 
     /**
      * Create a Jolteon
      */
     public Jolteon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

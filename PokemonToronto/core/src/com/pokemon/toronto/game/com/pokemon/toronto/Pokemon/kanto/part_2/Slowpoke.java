@@ -19,47 +19,52 @@ import java.util.List;
 public class Slowpoke extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 79;
-    private static final String NAME = "Slowpoke";
-    private static final int BASE_EXP = 99;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 36;
+    public static final int NUMBER = 79;
+    public static final String NAME = "Slowpoke";
+    public static final String TYPE_OF_POKEMON = "Dopey";
+    public static final String DESCRIPTION = "It is always vacantly lost in thought, but no one" +
+            " knows what it is thinking about. It is good at fishing with its tail.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.OwnTempo();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final int BASE_EXP = 99;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 36;
+    public static final double HEIGHT = 1.2;
+
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.OwnTempo();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 15;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 15;
 
     //Typing
-    private static final Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/slowpoke.png";
-    private static final String BACK_PATH = "battle/backs/slowpoke.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/slowpoke.png";
-    private static final String CRY_PATH = "sounds/cry/079.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/079.png";
+    public static final String ICON_PATH = "pokemonSprites/slowpoke.png";
+    public static final String BACK_PATH = "battle/backs/slowpoke.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/slowpoke.png";
+    public static final String CRY_PATH = "sounds/cry/079.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/079.png";
 
     /**
      * Create a Slowpoke
      */
     public Slowpoke() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

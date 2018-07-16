@@ -20,40 +20,52 @@ import java.util.List;
 public class Ekans extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 23;
-    private static final String NAME = "Ekans";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 6.9;
+    public static final int NUMBER = 23;
+    public static final String NAME = "Ekans";
+    public static final String TYPE_OF_POKEMON = "Snake";
+    public static final String DESCRIPTION = "The older it gets, the longer it grows. At night," +
+            " it wraps its long body around tree branches to rest.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.ShedSkin();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+
+    public static final double HEIGHT = 2;
+    public static final double WEIGHT = 6.9;
+
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.ShedSkin();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 44;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 54;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 44;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 54;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/ekans.png";
-    private static final String BACK_PATH = "battle/backs/ekans.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/ekans.png";
-    private static final String CRY_PATH = "sounds/cry/023.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/023.png";
+    public static final String ICON_PATH = "pokemonSprites/ekans.png";
+    public static final String BACK_PATH = "battle/backs/ekans.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/ekans.png";
+    public static final String CRY_PATH = "sounds/cry/023.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/023.png";
+
+    public static final Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Ekans
      */
     public Ekans() {
-        super(NUMBER, NAME, Type.POISON, Pokemon.Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

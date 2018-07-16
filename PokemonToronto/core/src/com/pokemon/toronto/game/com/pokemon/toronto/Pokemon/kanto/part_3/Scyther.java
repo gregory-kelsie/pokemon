@@ -18,47 +18,51 @@ import java.util.List;
 public class Scyther extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 123;
-    private static final String NAME = "Scyther";
-    private static final int BASE_EXP = 187;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 56;
+    public static final int NUMBER = 123;
+    public static final String NAME = "Scyther";
+    public static final String TYPE_OF_POKEMON = "Mantis";
+    public static final String DESCRIPTION = "It tears and shreds prey with its wickedly" +
+            " sharp scythes. It very rarely spreads its wings to fly.";
+    public static final int BASE_EXP = 187;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 56;
+    public static final double HEIGHT = 1.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.Technician();
-    private static final Ability HIDDEN_ABILITY = new Ability.Steadfast();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.Technician();
+    public static final Ability HIDDEN_ABILITY = new Ability.Steadfast();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 110;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 105;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 110;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 105;
 
     //Typing
-    private static final Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/scyther.png";
-    private static final String BACK_PATH = "battle/backs/scyther.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/scyther.png";
-    private static final String CRY_PATH = "sounds/cry/123.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/123.png";
+    public static final String ICON_PATH = "pokemonSprites/scyther.png";
+    public static final String BACK_PATH = "battle/backs/scyther.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/scyther.png";
+    public static final String CRY_PATH = "sounds/cry/123.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/123.png";
 
     /**
      * Create a Scyther
      */
     public Scyther() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -4,6 +4,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.Ability;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.attributes.PokemonId;
 import com.pokemon.toronto.game.com.pokemon.toronto.item.TmId;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Skill;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.SkillFactory;
 
 import java.util.ArrayList;
@@ -18,47 +19,51 @@ public class Yanma extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 193;
-    private static final String NAME = "Yanma";
-    private static final int BASE_EXP = 78;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 38;
+    public static final int NUMBER = 193;
+    public static final String NAME = "Yanma";
+    public static final String TYPE_OF_POKEMON = "Clear Wing";
+    public static final String DESCRIPTION = "It can hover in one spot by flapping its wings at" +
+            " high speed. It flits about to guard its territory.";
+    public static final int BASE_EXP = 78;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 38;
+    public static final double HEIGHT = 1.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.SpeedBoost();
-    private static final Ability SECOND_ABILITY = new Ability.Compoundeyes();
-    private static final Ability HIDDEN_ABILITY = new Ability.Frisk();
+    public static final Ability FIRST_ABILITY = new Ability.SpeedBoost();
+    public static final Ability SECOND_ABILITY = new Ability.Compoundeyes();
+    public static final Ability HIDDEN_ABILITY = new Ability.Frisk();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 95;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/johto/yanma.png";
-    private static final String BACK_PATH = "battle/backs/johto/yanma.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/johto/yanma.png";
-    private static final String CRY_PATH = "sounds/cry/193.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/johto/yanma.png";
+    public static final String ICON_PATH = "pokemonSprites/johto/yanma.png";
+    public static final String BACK_PATH = "battle/backs/johto/yanma.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/johto/yanma.png";
+    public static final String CRY_PATH = "sounds/cry/193.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/johto/yanma.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a yanma
      */
     public Yanma() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -126,6 +131,20 @@ public class Yanma extends Pokemon {
         } else {
             gender = 'F';
         }
+    }
+
+    /**
+     * Return Yanmega if the Yanma knows Ancient Power
+     * @return Yanmega if Yanma knows Ancient Power.
+     */
+    @Override
+    public int getLevelUpEvolutionId() {
+        for (Skill s: skills) {
+            if (s.getId() == SkillFactory.ANCIENT_POWER) {
+                return PokemonId.YANMEGA.getValue();
+            }
+        }
+        return -1;
     }
 
 }

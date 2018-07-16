@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.pokemon.toronto.game.com.pokemon.toronto.Ball.Ball;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
@@ -85,6 +86,10 @@ public class BattleTextures {
     private Texture maleTexture;
     private Texture femaleTexture;
 
+    //Loading Pokeball
+    private Sprite loadingPokeball;
+
+
     /**
      *
      * @param backPath
@@ -99,6 +104,8 @@ public class BattleTextures {
 
     private void initTextures(String backPath, String enemyPath,
                               List<Pokemon> partyPokemon, String background) {
+        loadingPokeball = new Sprite(new Texture("loading/1.png"));
+        loadingPokeball.setPosition(906, 1746);
         maleTexture = new Texture("battle/male.png");
         femaleTexture = new Texture("battle/female.png");
         healthText = new BitmapFont(Gdx.files.internal("battle/healthFont.fnt"));
@@ -455,6 +462,8 @@ public class BattleTextures {
         return femaleTexture;
     }
 
+    public Sprite getLoadingPokeball() { return loadingPokeball; }
+
     public void setFirstItem(Texture firstItem) {
         this.firstItem = firstItem;
     }
@@ -541,6 +550,7 @@ public class BattleTextures {
         paralysisTexture.dispose();
         maleTexture.dispose();
         femaleTexture.dispose();
+        loadingPokeball.getTexture().dispose();
         disposeItemTextures();
     }
 }

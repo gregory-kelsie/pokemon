@@ -18,41 +18,52 @@ public class Charizard extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 6;
-    private static final String NAME = "Charizard";
-    private static final int BASE_EXP = 54;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 90.5;
+    public static final int NUMBER = 6;
+    public static final String NAME = "Charizard";
+    public static final String TYPE_OF_POKEMON = "Flame";
+    public static final String DESCRIPTION = "Its wings can carry this Pokémon close to an" +
+            " altitude of 4,600 feet. It blows out fire at very high temperatures.";
+    public static final int BASE_EXP = 54;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 45;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
+    public static final double HEIGHT = 1.7;
+    public static final double WEIGHT = 90.5;
+
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
 
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 84;
-    private static final int BASE_DEFENSE = 78;
-    private static final int BASE_SPECIAL_ATTACK = 109;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 84;
+    public static final int BASE_DEFENSE = 78;
+    public static final int BASE_SPECIAL_ATTACK = 109;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/charizard/charizard.png";
-    private static final String BACK_PATH = "battle/backs/charizard.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/charizard.png";
-    private static final String CRY_PATH = "sounds/cry/006.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/006.png";
+    public static final String ICON_PATH = "pokemonSprites/charizard/charizard.png";
+    public static final String BACK_PATH = "battle/backs/charizard.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/charizard.png";
+    public static final String CRY_PATH = "sounds/cry/006.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/006.png";
+
+    public static final Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.FLYING;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a Charizard
      **/
     public Charizard() {
-        super(NUMBER, NAME, Type.FIRE, Type.FLYING, ExpType.MEDIUM_SLOW,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

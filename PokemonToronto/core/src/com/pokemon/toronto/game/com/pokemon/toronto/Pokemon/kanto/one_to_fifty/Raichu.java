@@ -18,41 +18,53 @@ public class Raichu extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 26;
-    private static final String NAME = "Raichu";
-    private static final int BASE_EXP = 122;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 30;
+    public static final int NUMBER = 26;
+    public static final String NAME = "Raichu";
+    public static final String TYPE_OF_POKEMON = "Mouse";
+    public static final String DESCRIPTION = "When its electricity builds, its muscles are" +
+            " stimulated, and it becomes more aggressive than usual.";
 
-    private static final Ability FIRST_ABILITY = new Ability.Static();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Lightningrod();
+    public static final int BASE_EXP = 122;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 3};
+    public static final int CAPTURE_RATE = 75;
+
+    public static final double HEIGHT = 0.8;
+    public static final double WEIGHT = 30;
+
+    public static final Ability FIRST_ABILITY = new Ability.Static();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Lightningrod();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 110;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 110;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/raichu.png";
-    private static final String BACK_PATH = "battle/backs/raichu.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/raichu.png";
-    private static final String CRY_PATH = "sounds/cry/026.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/026.png";
+    public static final String ICON_PATH = "pokemonSprites/raichu.png";
+    public static final String BACK_PATH = "battle/backs/raichu.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/raichu.png";
+    public static final String CRY_PATH = "sounds/cry/026.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/026.png";
+
+    public static final Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
+
+    //Exp
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a Raichu
      */
     public Raichu() {
-        super(NUMBER, NAME, Type.ELECTRIC, Type.NONE, ExpType.MEDIUM_FAST,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
-                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH, BACK_PATH, MINI_PATH,
-                CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY, SECOND_ABILITY,
-                HIDDEN_ABILITY);
+                        BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
+                SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
     /**

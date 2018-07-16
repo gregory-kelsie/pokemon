@@ -18,47 +18,52 @@ import java.util.List;
 public class Dragonite extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 149;
-    private static final String NAME = "Dragonite";
-    private static final int BASE_EXP = 218;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 210;
+    public static final int NUMBER = 149;
+    public static final String NAME = "Dragonite";
+    public static final String TYPE_OF_POKEMON = "Dragon";
+    public static final String DESCRIPTION = "It can fly in spite of its big and bulky physique." +
+            " It circles the globe in just 16 hours.";
 
-    private static final Ability FIRST_ABILITY = new Ability.InnerFocus();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Multiscale();
+    public static final int BASE_EXP = 218;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 210;
+    public static final double HEIGHT = 2.2;
+
+    public static final Ability FIRST_ABILITY = new Ability.InnerFocus();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Multiscale();
 
     //Base Stats
-    private static final int BASE_HEALTH = 91;
-    private static final int BASE_ATTACK = 134;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 100;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 91;
+    public static final int BASE_ATTACK = 134;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 100;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 80;
 
     //Typing
-    private static final Type TYPE_ONE = Type.DRAGON;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Type TYPE_ONE = Type.DRAGON;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/dragonite.png";
-    private static final String BACK_PATH = "battle/backs/dragonite.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/dragonite.png";
-    private static final String CRY_PATH = "sounds/cry/149.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/149.png";
+    public static final String ICON_PATH = "pokemonSprites/dragonite.png";
+    public static final String BACK_PATH = "battle/backs/dragonite.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/dragonite.png";
+    public static final String CRY_PATH = "sounds/cry/149.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/149.png";
 
     /**
      * Create a Dragonite
      */
     public Dragonite() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

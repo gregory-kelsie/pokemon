@@ -208,6 +208,7 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
 
     public void dispose() {
+        currentPhase.dispose();
         poisonSound.dispose();
         expGainSound.dispose();
         levelUpSound.dispose();
@@ -622,7 +623,8 @@ public class BattleUpdater implements PhaseUpdaterInterface {
 
     @Override
     public void finishedBattle() {
-        battleState.endBattle();
+        battleState.startLoading();
+        //battleState.endBattle();
     }
 
     @Override

@@ -19,47 +19,52 @@ import java.util.List;
 public class Cubone extends Pokemon {
     /** Init Variables */
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 104;
-    private static final String NAME = "Cubone";
-    private static final int BASE_EXP = 87;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 6.5;
+    public static final int NUMBER = 104;
+    public static final String NAME = "Cubone";
+    public static final String TYPE_OF_POKEMON = "Lonely";
+    public static final String DESCRIPTION = "It wears the skull of its dead mother on its" +
+            " head. When it becomes lonesome, it is said to cry loudly.";
 
-    private static final Ability FIRST_ABILITY = new Ability.RockHead();
-    private static final Ability SECOND_ABILITY = new Ability.Lightningrod();
-    private static final Ability HIDDEN_ABILITY = new Ability.BattleArmor();
+    public static final int BASE_EXP = 87;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 6.5;
+    public static final double HEIGHT = 0.4;
+
+    public static final Ability FIRST_ABILITY = new Ability.RockHead();
+    public static final Ability SECOND_ABILITY = new Ability.Lightningrod();
+    public static final Ability HIDDEN_ABILITY = new Ability.BattleArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 35;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 35;
 
     //Typing
-    private static final Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/cubone.png";
-    private static final String BACK_PATH = "battle/backs/cubone.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/cubone.png";
-    private static final String CRY_PATH = "sounds/cry/104.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kanto/104.png";
+    public static final String ICON_PATH = "pokemonSprites/cubone.png";
+    public static final String BACK_PATH = "battle/backs/cubone.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/cubone.png";
+    public static final String CRY_PATH = "sounds/cry/104.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kanto/104.png";
 
     /**
      * Create a Cubone
      */
     public Cubone() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
