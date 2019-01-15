@@ -17,47 +17,51 @@ public class Bewear extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 760;
-    private static final String NAME = "Bewear";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 70;
-    private static final double WEIGHT = 135;
+    public static final int NUMBER = 760;
+    public static final String NAME = "Bewear";
+    public static final String TYPE_OF_POKEMON = "Strong Arm";
+    public static final String DESCRIPTION = "This immensely dangerous Pokémon possesses " +
+            "overwhelming physical strength. Its habitat is generally off-limits.";
+    public static final double HEIGHT = 2.1;
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 70;
+    public static final double WEIGHT = 135;
 
-    private static final Ability FIRST_ABILITY = new Ability.Fluffy();
-    private static final Ability SECOND_ABILITY = new Ability.Klutz();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.Fluffy();
+    public static final Ability SECOND_ABILITY = new Ability.Klutz();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 120;
-    private static final int BASE_ATTACK = 125;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 120;
+    public static final int BASE_ATTACK = 125;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/bewear.png";
-    private static final String BACK_PATH = "battle/backs/alola/bewear.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/bewear.png";
-    private static final String CRY_PATH = "sounds/cry/760.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/bewear.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/bewear.png";
+    public static final String BACK_PATH = "battle/backs/alola/bewear.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/bewear.png";
+    public static final String CRY_PATH = "sounds/cry/760.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/bewear.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bewear
      */
     public Bewear() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

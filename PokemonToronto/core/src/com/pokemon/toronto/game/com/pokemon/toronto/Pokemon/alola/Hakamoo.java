@@ -18,47 +18,51 @@ public class Hakamoo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 783;
-    private static final String NAME = "Hakamo-o";
-    private static final int BASE_EXP = 147;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 47;
+    public static final int NUMBER = 783;
+    public static final String NAME = "Hakamo-o";
+    public static final String TYPE_OF_POKEMON = "Scaly";
+    public static final String DESCRIPTION = "It leaps at its prey with a courageous shout. Its " +
+            "scaly punches tear its opponents to shreds.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 147;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 47;
 
-    private static final Ability FIRST_ABILITY = new Ability.Bulletproof();
-    private static final Ability SECOND_ABILITY = new Ability.Soundproof();
-    private static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
+    public static final Ability FIRST_ABILITY = new Ability.Bulletproof();
+    public static final Ability SECOND_ABILITY = new Ability.Soundproof();
+    public static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/hakamo.png";
-    private static final String BACK_PATH = "battle/backs/alola/hakamo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/hakamo.png";
-    private static final String CRY_PATH = "sounds/cry/783.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/hakamo.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/hakamo.png";
+    public static final String BACK_PATH = "battle/backs/alola/hakamo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/hakamo.png";
+    public static final String CRY_PATH = "sounds/cry/783.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/hakamo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DRAGON;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.DRAGON;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a hakamo
      */
     public Hakamoo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

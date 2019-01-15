@@ -17,47 +17,51 @@ public class Snivy extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 495;
-    private static final String NAME = "Snivy";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 8.1;
+    public static final int NUMBER = 495;
+    public static final String NAME = "Snivy";
+    public static final String TYPE_OF_POKEMON = "Grass Snake";
+    public static final String DESCRIPTION = "Being exposed to sunlight makes its movements " +
+            "swifter. It uses vines more adeptly than its hands.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 8.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Contrary();
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Contrary();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 63;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 63;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/snivy.png";
-    private static final String BACK_PATH = "battle/backs/unova/snivy.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/snivy.png";
-    private static final String CRY_PATH = "sounds/cry/495.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/snivy.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/snivy.png";
+    public static final String BACK_PATH = "battle/backs/unova/snivy.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/snivy.png";
+    public static final String CRY_PATH = "sounds/cry/495.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/snivy.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a snivy
      */
     public Snivy() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

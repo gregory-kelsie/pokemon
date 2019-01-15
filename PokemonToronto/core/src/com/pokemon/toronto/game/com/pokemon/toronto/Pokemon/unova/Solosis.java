@@ -18,47 +18,51 @@ public class Solosis extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 577;
-    private static final String NAME = "Solosis";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 1;
+    public static final int NUMBER = 577;
+    public static final String NAME = "Solosis";
+    public static final String TYPE_OF_POKEMON = "Cell";
+    public static final String DESCRIPTION = "They drive away attackers by unleashing psychic " +
+            "power. They can use telepathy to talk with others.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overcoat();
-    private static final Ability SECOND_ABILITY = new Ability.MagicGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Overcoat();
+    public static final Ability SECOND_ABILITY = new Ability.MagicGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/solosis.png";
-    private static final String BACK_PATH = "battle/backs/unova/solosis.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/solosis.png";
-    private static final String CRY_PATH = "sounds/cry/577.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/solosis.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/solosis.png";
+    public static final String BACK_PATH = "battle/backs/unova/solosis.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/solosis.png";
+    public static final String CRY_PATH = "sounds/cry/577.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/solosis.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a solosis
      */
     public Solosis() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

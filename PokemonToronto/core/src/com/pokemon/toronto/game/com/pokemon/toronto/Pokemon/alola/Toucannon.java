@@ -17,47 +17,51 @@ public class Toucannon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 733;
-    private static final String NAME = "Toucannon";
-    private static final int BASE_EXP = 218;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 26;
+    public static final int NUMBER = 733;
+    public static final String NAME = "Toucannon";
+    public static final String TYPE_OF_POKEMON = "Cannon";
+    public static final String DESCRIPTION = "Within its beak, its internal gas ignites, " +
+            "explosively launching seeds with enough power to pulverize boulders.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 218;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 26;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.SkillLink();
-    private static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.SkillLink();
+    public static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/toucannon.png";
-    private static final String BACK_PATH = "battle/backs/alola/toucannon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/toucannon.png";
-    private static final String CRY_PATH = "sounds/cry/733.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/toucannon.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/toucannon.png";
+    public static final String BACK_PATH = "battle/backs/alola/toucannon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/toucannon.png";
+    public static final String CRY_PATH = "sounds/cry/733.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/toucannon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a toucannon
      */
     public Toucannon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

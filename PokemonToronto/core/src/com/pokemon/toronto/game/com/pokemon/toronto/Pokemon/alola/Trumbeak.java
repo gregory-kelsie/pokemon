@@ -18,47 +18,51 @@ public class Trumbeak extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 732;
-    private static final String NAME = "Trumbeak";
-    private static final int BASE_EXP = 124;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 14.8;
+    public static final int NUMBER = 732;
+    public static final String NAME = "Trumbeak";
+    public static final String TYPE_OF_POKEMON = "Bugle Beak";
+    public static final String DESCRIPTION = "By bending its beak, it can produce a variety of " +
+            "calls and brand itself a noisy nuisance for its neighbors.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 124;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 14.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.SkillLink();
-    private static final Ability HIDDEN_ABILITY = new Ability.Pickup();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.SkillLink();
+    public static final Ability HIDDEN_ABILITY = new Ability.Pickup();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 75;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 75;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/trumbeak.png";
-    private static final String BACK_PATH = "battle/backs/alola/trumbeak.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/trumbeak.png";
-    private static final String CRY_PATH = "sounds/cry/732.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/trumbeak.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/trumbeak.png";
+    public static final String BACK_PATH = "battle/backs/alola/trumbeak.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/trumbeak.png";
+    public static final String CRY_PATH = "sounds/cry/732.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/trumbeak.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a trumbeak
      */
     public Trumbeak() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

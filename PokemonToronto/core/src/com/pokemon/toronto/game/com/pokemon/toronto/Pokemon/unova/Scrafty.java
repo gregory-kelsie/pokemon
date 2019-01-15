@@ -17,47 +17,51 @@ public class Scrafty extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 560;
-    private static final String NAME = "Scrafty";
-    private static final int BASE_EXP = 171;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 30;
+    public static final int NUMBER = 560;
+    public static final String NAME = "Scrafty";
+    public static final String TYPE_OF_POKEMON = "Hoodlum";
+    public static final String DESCRIPTION = "Groups of them beat up anything that enters their" +
+            " territory. Each can spit acidic liquid from its mouth.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 171;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 30;
 
-    private static final Ability FIRST_ABILITY = new Ability.ShedSkin();
-    private static final Ability SECOND_ABILITY = new Ability.Moxie();
-    private static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
+    public static final Ability FIRST_ABILITY = new Ability.ShedSkin();
+    public static final Ability SECOND_ABILITY = new Ability.Moxie();
+    public static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 90;
-    private static final int BASE_DEFENSE = 115;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 115;
-    private static final int BASE_SPEED = 58;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 90;
+    public static final int BASE_DEFENSE = 115;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 115;
+    public static final int BASE_SPEED = 58;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/scrafty.png";
-    private static final String BACK_PATH = "battle/backs/unova/scrafty.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/scrafty.png";
-    private static final String CRY_PATH = "sounds/cry/560.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/scrafty.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/scrafty.png";
+    public static final String BACK_PATH = "battle/backs/unova/scrafty.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/scrafty.png";
+    public static final String CRY_PATH = "sounds/cry/560.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/scrafty.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a scrafty
      */
     public Scrafty() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

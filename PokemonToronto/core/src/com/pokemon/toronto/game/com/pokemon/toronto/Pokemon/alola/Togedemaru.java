@@ -17,47 +17,51 @@ public class Togedemaru extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 777;
-    private static final String NAME = "Togedemaru";
-    private static final int BASE_EXP = 152;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 3.3;
+    public static final int NUMBER = 777;
+    public static final String NAME = "Togedemaru";
+    public static final String TYPE_OF_POKEMON = "Roly-Poly";
+    public static final String DESCRIPTION = "The long hairs on its back act as lightning rods. " +
+            "The bolts of lightning it attracts are stored as energy in its electric sac.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 152;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 3.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.IronBarbs();
-    private static final Ability SECOND_ABILITY = new Ability.Lightningrod();
-    private static final Ability HIDDEN_ABILITY = new Ability.Sturdy();
+    public static final Ability FIRST_ABILITY = new Ability.IronBarbs();
+    public static final Ability SECOND_ABILITY = new Ability.Lightningrod();
+    public static final Ability HIDDEN_ABILITY = new Ability.Sturdy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 98;
-    private static final int BASE_DEFENSE = 63;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 73;
-    private static final int BASE_SPEED = 96;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 98;
+    public static final int BASE_DEFENSE = 63;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 73;
+    public static final int BASE_SPEED = 96;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/togedemaru.png";
-    private static final String BACK_PATH = "battle/backs/alola/togedemaru.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/togedemaru.png";
-    private static final String CRY_PATH = "sounds/cry/777.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/togedemaru.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/togedemaru.png";
+    public static final String BACK_PATH = "battle/backs/alola/togedemaru.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/togedemaru.png";
+    public static final String CRY_PATH = "sounds/cry/777.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/togedemaru.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.STEEL;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.STEEL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a togedemaru
      */
     public Togedemaru() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

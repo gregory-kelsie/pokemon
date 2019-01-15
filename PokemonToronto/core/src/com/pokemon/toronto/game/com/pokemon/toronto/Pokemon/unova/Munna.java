@@ -18,47 +18,51 @@ public class Munna extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 517;
-    private static final String NAME = "Munna";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 23.3;
+    public static final int NUMBER = 517;
+    public static final String NAME = "Munna";
+    public static final String TYPE_OF_POKEMON = "Dream Eater";
+    public static final String DESCRIPTION = "Munna always float in the air. People whose dreams" +
+            " are eaten by them forget what the dreams had been about.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 23.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Forewarn();
-    private static final Ability SECOND_ABILITY = new Ability.Synchronize();
-    private static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
+    public static final Ability FIRST_ABILITY = new Ability.Forewarn();
+    public static final Ability SECOND_ABILITY = new Ability.Synchronize();
+    public static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 76;
-    private static final int BASE_ATTACK = 25;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 67;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 24;
+    public static final int BASE_HEALTH = 76;
+    public static final int BASE_ATTACK = 25;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 67;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 24;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/munna.png";
-    private static final String BACK_PATH = "battle/backs/unova/munna.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/munna.png";
-    private static final String CRY_PATH = "sounds/cry/517.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/munna.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/munna.png";
+    public static final String BACK_PATH = "battle/backs/unova/munna.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/munna.png";
+    public static final String CRY_PATH = "sounds/cry/517.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/munna.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a munna
      */
     public Munna() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Popplio extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 728;
-    private static final String NAME = "Popplio";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 7.5;
+    public static final int NUMBER = 728;
+    public static final String NAME = "Popplio";
+    public static final String TYPE_OF_POKEMON = "Sea Lion";
+    public static final String DESCRIPTION = "This Pokémon can control water bubbles. It " +
+            "practices diligently so it can learn to make big bubbles.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 7.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Torrent();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.LiquidVoice();
+    public static final Ability FIRST_ABILITY = new Ability.Torrent();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.LiquidVoice();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 54;
-    private static final int BASE_DEFENSE = 54;
-    private static final int BASE_SPECIAL_ATTACK = 66;
-    private static final int BASE_SPECIAL_DEFENSE = 56;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 54;
+    public static final int BASE_DEFENSE = 54;
+    public static final int BASE_SPECIAL_ATTACK = 66;
+    public static final int BASE_SPECIAL_DEFENSE = 56;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/popplio.png";
-    private static final String BACK_PATH = "battle/backs/alola/popplio.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/popplio.png";
-    private static final String CRY_PATH = "sounds/cry/728.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/popplio.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/popplio.png";
+    public static final String BACK_PATH = "battle/backs/alola/popplio.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/popplio.png";
+    public static final String CRY_PATH = "sounds/cry/728.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/popplio.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a popplio
      */
     public Popplio() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

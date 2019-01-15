@@ -17,47 +17,51 @@ public class Turtonator extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 776;
-    private static final String NAME = "Turtonator";
-    private static final int BASE_EXP = 170;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 70;
-    private static final double WEIGHT = 212;
+    public static final int NUMBER = 776;
+    public static final String NAME = "Turtonator";
+    public static final String TYPE_OF_POKEMON = "Blast Turtle";
+    public static final String DESCRIPTION = "The shell on its back is chemically unstable and " +
+            "explodes violently if struck. The hole in its stomach is its weak point.";
+    public static final double HEIGHT = 2;
+    public static final int BASE_EXP = 170;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 70;
+    public static final double WEIGHT = 212;
 
-    private static final Ability FIRST_ABILITY = new Ability.ShellArmor();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.ShellArmor();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 78;
-    private static final int BASE_DEFENSE = 135;
-    private static final int BASE_SPECIAL_ATTACK = 91;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 36;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 78;
+    public static final int BASE_DEFENSE = 135;
+    public static final int BASE_SPECIAL_ATTACK = 91;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 36;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/turtonator.png";
-    private static final String BACK_PATH = "battle/backs/alola/turtonator.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/turtonator.png";
-    private static final String CRY_PATH = "sounds/cry/776.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/turtonator.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/turtonator.png";
+    public static final String BACK_PATH = "battle/backs/alola/turtonator.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/turtonator.png";
+    public static final String CRY_PATH = "sounds/cry/776.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/turtonator.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a turtonator
      */
     public Turtonator() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

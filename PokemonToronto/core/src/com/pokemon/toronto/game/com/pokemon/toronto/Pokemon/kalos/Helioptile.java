@@ -18,47 +18,51 @@ public class Helioptile extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 694;
-    private static final String NAME = "Helioptile";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 6;
+    public static final int NUMBER = 694;
+    public static final String NAME = "Helioptile";
+    public static final String TYPE_OF_POKEMON = "Generator";
+    public static final String DESCRIPTION = "The frills on either side of its head have cells" +
+            " that generate electricity when exposed to sunlight.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 6;
 
-    private static final Ability FIRST_ABILITY = new Ability.DrySkin();
-    private static final Ability SECOND_ABILITY = new Ability.SandVeil();
-    private static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
+    public static final Ability FIRST_ABILITY = new Ability.DrySkin();
+    public static final Ability SECOND_ABILITY = new Ability.SandVeil();
+    public static final Ability HIDDEN_ABILITY = new Ability.SolarPower();
 
     //Base Stats
-    private static final int BASE_HEALTH = 44;
-    private static final int BASE_ATTACK = 38;
-    private static final int BASE_DEFENSE = 33;
-    private static final int BASE_SPECIAL_ATTACK = 61;
-    private static final int BASE_SPECIAL_DEFENSE = 43;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 44;
+    public static final int BASE_ATTACK = 38;
+    public static final int BASE_DEFENSE = 33;
+    public static final int BASE_SPECIAL_ATTACK = 61;
+    public static final int BASE_SPECIAL_DEFENSE = 43;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/helioptile.png";
-    private static final String BACK_PATH = "battle/backs/kalos/helioptile.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/helioptile.png";
-    private static final String CRY_PATH = "sounds/cry/694.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/helioptile.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/helioptile.png";
+    public static final String BACK_PATH = "battle/backs/kalos/helioptile.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/helioptile.png";
+    public static final String CRY_PATH = "sounds/cry/694.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/helioptile.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NORMAL;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NORMAL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a helioptile
      */
     public Helioptile() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

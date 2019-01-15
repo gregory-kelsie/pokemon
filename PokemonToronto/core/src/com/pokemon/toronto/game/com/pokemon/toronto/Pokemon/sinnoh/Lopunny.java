@@ -17,47 +17,51 @@ public class Lopunny extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 428;
-    private static final String NAME = "Lopunny";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 33.3;
+    public static final int NUMBER = 428;
+    public static final String NAME = "Lopunny";
+    public static final String TYPE_OF_POKEMON = "Rabbit";
+    public static final String DESCRIPTION = "The ears appear to be delicate. If they are touched" +
+            " roughly, it kicks with its graceful legs.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 33.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.CuteCharm();
-    private static final Ability SECOND_ABILITY = new Ability.Klutz();
-    private static final Ability HIDDEN_ABILITY = new Ability.Limber();
+    public static final Ability FIRST_ABILITY = new Ability.CuteCharm();
+    public static final Ability SECOND_ABILITY = new Ability.Klutz();
+    public static final Ability HIDDEN_ABILITY = new Ability.Limber();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 76;
-    private static final int BASE_DEFENSE = 84;
-    private static final int BASE_SPECIAL_ATTACK = 54;
-    private static final int BASE_SPECIAL_DEFENSE = 96;
-    private static final int BASE_SPEED = 105;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 76;
+    public static final int BASE_DEFENSE = 84;
+    public static final int BASE_SPECIAL_ATTACK = 54;
+    public static final int BASE_SPECIAL_DEFENSE = 96;
+    public static final int BASE_SPEED = 105;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/lopunny.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/lopunny.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/lopunny.png";
-    private static final String CRY_PATH = "sounds/cry/428.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/lopunny.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/lopunny.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/lopunny.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/lopunny.png";
+    public static final String CRY_PATH = "sounds/cry/428.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/lopunny.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a lopunny
      */
     public Lopunny() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

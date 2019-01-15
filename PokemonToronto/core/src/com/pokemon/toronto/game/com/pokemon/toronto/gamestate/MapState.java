@@ -65,6 +65,7 @@ public class MapState extends GameState {
     }
 
     private void openMap() {
+        gsm.stopBgm();
         if (gsm.gotCoordinates()) {
             Gdx.app.log("MapState", "Gsm has coordinates");
             double[] pokemonLatitude = new double[gsm.getNearbyPokemon().size()];
@@ -73,10 +74,12 @@ public class MapState extends GameState {
             double[] trainerLatitude = new double[gsm.getNearbyTrainers().size()];
             double[] trainerLongitude = new double[gsm.getNearbyTrainers().size()];
             String[] trainerIcon = new String[gsm.getNearbyTrainers().size()];
+            int[] id = new int[gsm.getNearbyPokemon().size()];
             for (int i = 0; i < gsm.getNearbyPokemon().size(); i++) {
                 pokemonLatitude[i] = gsm.getNearbyPokemon().get(i).getLatitude();
                 pokemonLongitude[i] = gsm.getNearbyPokemon().get(i).getLongitude();
                 pokemonIcon[i] = gsm.getNearbyPokemon().get(i).getPokemon().getMapIconPath();
+                id[i] = i;
             }
             for (int i = 0; i < gsm.getNearbyTrainers().size(); i++) {
                 trainerLatitude[i] = gsm.getNearbyTrainers().get(i).getLatitude();
@@ -84,7 +87,7 @@ public class MapState extends GameState {
                 trainerIcon[i] = gsm.getNearbyTrainers().get(i).getIconPath();
             }
             gsm.getGameCallBack().startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon, trainerLatitude,
-                    trainerLongitude, trainerIcon);
+                    trainerLongitude, trainerIcon, id);
         } else {
             //play error sound
             Gdx.app.log("MapState", "Gsm doesnt have coordiantes");
@@ -112,7 +115,7 @@ public class MapState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         gsm.getLoader().unload("mapMenu.png");
     }
 }

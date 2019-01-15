@@ -17,47 +17,51 @@ public class Dhelmise extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 781;
-    private static final String NAME = "Dhelmise";
-    private static final int BASE_EXP = 181;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 25;
-    private static final double WEIGHT = 210;
+    public static final int NUMBER = 781;
+    public static final String NAME = "Dhelmise";
+    public static final String TYPE_OF_POKEMON = "Sea Creeper";
+    public static final String DESCRIPTION = "Swinging its massive anchor, it can KO Wailord in " +
+            "a single blow. What appears to be green seaweed is actually its body.";
+    public static final double HEIGHT = 3.9;
+    public static final int BASE_EXP = 181;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 25;
+    public static final double WEIGHT = 210;
 
-    private static final Ability FIRST_ABILITY = new Ability.Steelworker();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Steelworker();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 131;
-    private static final int BASE_DEFENSE = 100;
-    private static final int BASE_SPECIAL_ATTACK = 86;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 131;
+    public static final int BASE_DEFENSE = 100;
+    public static final int BASE_SPECIAL_ATTACK = 86;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/dhelmise.png";
-    private static final String BACK_PATH = "battle/backs/alola/dhelmise.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/dhelmise.png";
-    private static final String CRY_PATH = "sounds/cry/781.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/dhelmise.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/dhelmise.png";
+    public static final String BACK_PATH = "battle/backs/alola/dhelmise.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/dhelmise.png";
+    public static final String CRY_PATH = "sounds/cry/781.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/dhelmise.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.GRASS;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.GRASS;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a dhelmise
      */
     public Dhelmise() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

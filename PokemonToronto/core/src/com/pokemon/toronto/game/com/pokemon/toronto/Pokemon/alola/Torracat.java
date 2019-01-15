@@ -18,47 +18,51 @@ public class Torracat extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 726;
-    private static final String NAME = "Torracat";
-    private static final int BASE_EXP = 147;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 25;
+    public static final int NUMBER = 726;
+    public static final String NAME = "Torracat";
+    public static final String TYPE_OF_POKEMON = "Fire Cat";
+    public static final String DESCRIPTION = "It boasts powerful front legs. With a single " +
+            "punch, it can bend an iron bar right over.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 147;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 25;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 90;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 90;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/torracat.png";
-    private static final String BACK_PATH = "battle/backs/alola/torracat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/torracat.png";
-    private static final String CRY_PATH = "sounds/cry/726.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/torracat.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/torracat.png";
+    public static final String BACK_PATH = "battle/backs/alola/torracat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/torracat.png";
+    public static final String CRY_PATH = "sounds/cry/726.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/torracat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a torracat
      */
     public Torracat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

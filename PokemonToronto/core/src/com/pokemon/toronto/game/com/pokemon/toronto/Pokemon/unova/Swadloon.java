@@ -18,47 +18,51 @@ public class Swadloon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 541;
-    private static final String NAME = "Swadloon";
-    private static final int BASE_EXP = 133;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 7.3;
+    public static final int NUMBER = 541;
+    public static final String NAME = "Swadloon";
+    public static final String TYPE_OF_POKEMON = "Leaf-Wrapped";
+    public static final String DESCRIPTION = "Forests where Swadloon live have superb foliage" +
+            " because the nutrients they make from fallen leaves nourish the plant life.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 133;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 7.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.LeafGuard();
-    private static final Ability SECOND_ABILITY = new Ability.Chlorophyll();
-    private static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
+    public static final Ability FIRST_ABILITY = new Ability.LeafGuard();
+    public static final Ability SECOND_ABILITY = new Ability.Chlorophyll();
+    public static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 63;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 42;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 63;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 42;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/swadloon.png";
-    private static final String BACK_PATH = "battle/backs/unova/swadloon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/swadloon.png";
-    private static final String CRY_PATH = "sounds/cry/541.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/swadloon.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/swadloon.png";
+    public static final String BACK_PATH = "battle/backs/unova/swadloon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/swadloon.png";
+    public static final String CRY_PATH = "sounds/cry/541.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/swadloon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.GRASS;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.GRASS;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a swadloon
      */
     public Swadloon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

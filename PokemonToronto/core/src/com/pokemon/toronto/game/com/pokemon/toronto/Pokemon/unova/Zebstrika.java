@@ -17,47 +17,51 @@ public class Zebstrika extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 523;
-    private static final String NAME = "Zebstrika";
-    private static final int BASE_EXP = 174;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 79.5;
+    public static final int NUMBER = 523;
+    public static final String NAME = "Zebstrika";
+    public static final String TYPE_OF_POKEMON = "Thunderbolt";
+    public static final String DESCRIPTION = "They have lightning-like movements. When Zebstrika" +
+            " run at full speed, the sound of thunder reverberates.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 174;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 79.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Lightningrod();
-    private static final Ability SECOND_ABILITY = new Ability.MotorDrive();
-    private static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
+    public static final Ability FIRST_ABILITY = new Ability.Lightningrod();
+    public static final Ability SECOND_ABILITY = new Ability.MotorDrive();
+    public static final Ability HIDDEN_ABILITY = new Ability.SapSipper();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 63;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 63;
-    private static final int BASE_SPEED = 116;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 63;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 63;
+    public static final int BASE_SPEED = 116;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/zebstrika.png";
-    private static final String BACK_PATH = "battle/backs/unova/zebstrika.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/zebstrika.png";
-    private static final String CRY_PATH = "sounds/cry/523.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/zebstrika.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/zebstrika.png";
+    public static final String BACK_PATH = "battle/backs/unova/zebstrika.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/zebstrika.png";
+    public static final String CRY_PATH = "sounds/cry/523.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/zebstrika.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a zebstrika
      */
     public Zebstrika() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

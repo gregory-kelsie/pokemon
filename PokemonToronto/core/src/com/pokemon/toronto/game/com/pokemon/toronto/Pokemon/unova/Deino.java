@@ -18,47 +18,51 @@ public class Deino extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 633;
-    private static final String NAME = "Deino";
-    private static final int BASE_EXP = 60;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 17.3;
+    public static final int NUMBER = 633;
+    public static final String NAME = "Deino";
+    public static final String TYPE_OF_POKEMON = "Irate";
+    public static final String DESCRIPTION = "It tends to bite everything, and it is not a picky" +
+            " eater. Approaching it carelessly is dangerous.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 60;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 17.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 52;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 38;
+    public static final int BASE_HEALTH = 52;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 38;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/deino.png";
-    private static final String BACK_PATH = "battle/backs/unova/deino.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/deino.png";
-    private static final String CRY_PATH = "sounds/cry/633.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/deino.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/deino.png";
+    public static final String BACK_PATH = "battle/backs/unova/deino.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/deino.png";
+    public static final String CRY_PATH = "sounds/cry/633.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/deino.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a deino
      */
     public Deino() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

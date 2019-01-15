@@ -18,47 +18,51 @@ public class Timburr extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 532;
-    private static final String NAME = "Timburr";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 12.5;
+    public static final int NUMBER = 532;
+    public static final String NAME = "Timburr";
+    public static final String TYPE_OF_POKEMON = "Muscular";
+    public static final String DESCRIPTION = "It fights by swinging a piece of lumber around. It" +
+            " is close to evolving when it can handle the lumber without difficulty.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 12.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Guts();
-    private static final Ability SECOND_ABILITY = new Ability.SheerForce();
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Guts();
+    public static final Ability SECOND_ABILITY = new Ability.SheerForce();
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 25;
-    private static final int BASE_SPECIAL_DEFENSE = 35;
-    private static final int BASE_SPEED = 35;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 25;
+    public static final int BASE_SPECIAL_DEFENSE = 35;
+    public static final int BASE_SPEED = 35;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/timburr.png";
-    private static final String BACK_PATH = "battle/backs/unova/timburr.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/timburr.png";
-    private static final String CRY_PATH = "sounds/cry/532.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/timburr.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/timburr.png";
+    public static final String BACK_PATH = "battle/backs/unova/timburr.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/timburr.png";
+    public static final String CRY_PATH = "sounds/cry/532.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/timburr.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a timburr
      */
     public Timburr() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Dedenne extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 702;
-    private static final String NAME = "Dedenne";
-    private static final int BASE_EXP = 151;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 2.2;
+    public static final int NUMBER = 702;
+    public static final String NAME = "Dedenne";
+    public static final String TYPE_OF_POKEMON = "Antenna";
+    public static final String DESCRIPTION = "Its whiskers serve as antennas. By sending and " +
+            "receiving electrical waves, it can communicate with others over vast distances.";
+    public static final double HEIGHT = 0.2;
+    public static final int BASE_EXP = 151;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 2.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.CheekPouch();
-    private static final Ability SECOND_ABILITY = new Ability.Pickup();
-    private static final Ability HIDDEN_ABILITY = new Ability.Plus();
+    public static final Ability FIRST_ABILITY = new Ability.CheekPouch();
+    public static final Ability SECOND_ABILITY = new Ability.Pickup();
+    public static final Ability HIDDEN_ABILITY = new Ability.Plus();
 
     //Base Stats
-    private static final int BASE_HEALTH = 67;
-    private static final int BASE_ATTACK = 58;
-    private static final int BASE_DEFENSE = 57;
-    private static final int BASE_SPECIAL_ATTACK = 81;
-    private static final int BASE_SPECIAL_DEFENSE = 67;
-    private static final int BASE_SPEED = 101;
+    public static final int BASE_HEALTH = 67;
+    public static final int BASE_ATTACK = 58;
+    public static final int BASE_DEFENSE = 57;
+    public static final int BASE_SPECIAL_ATTACK = 81;
+    public static final int BASE_SPECIAL_DEFENSE = 67;
+    public static final int BASE_SPEED = 101;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/dedenne.png";
-    private static final String BACK_PATH = "battle/backs/kalos/dedenne.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/dedenne.png";
-    private static final String CRY_PATH = "sounds/cry/702.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/dedenne.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/dedenne.png";
+    public static final String BACK_PATH = "battle/backs/kalos/dedenne.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/dedenne.png";
+    public static final String CRY_PATH = "sounds/cry/702.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/dedenne.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.FAIRY;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.FAIRY;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a dedenne
      */
     public Dedenne() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Honchkrow extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 430;
-    private static final String NAME = "Honchkrow";
-    private static final int BASE_EXP = 177;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 27.3;
+    public static final int NUMBER = 430;
+    public static final String NAME = "Honchkrow";
+    public static final String TYPE_OF_POKEMON = "Big Boss";
+    public static final String DESCRIPTION = "If one utters a deep cry, many Murkrow gather " +
+            "quickly. For this, it is called Summoner of Night.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 177;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 27.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Insomnia();
-    private static final Ability SECOND_ABILITY = new Ability.SuperLuck();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moxie();
+    public static final Ability FIRST_ABILITY = new Ability.Insomnia();
+    public static final Ability SECOND_ABILITY = new Ability.SuperLuck();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moxie();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 125;
-    private static final int BASE_DEFENSE = 52;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 52;
-    private static final int BASE_SPEED = 71;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 125;
+    public static final int BASE_DEFENSE = 52;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 52;
+    public static final int BASE_SPEED = 71;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/honchkrow.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/honchkrow.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/honchkrow.png";
-    private static final String CRY_PATH = "sounds/cry/430.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/honchkrow.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/honchkrow.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/honchkrow.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/honchkrow.png";
+    public static final String CRY_PATH = "sounds/cry/430.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/honchkrow.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a honchkrow
      */
     public Honchkrow() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

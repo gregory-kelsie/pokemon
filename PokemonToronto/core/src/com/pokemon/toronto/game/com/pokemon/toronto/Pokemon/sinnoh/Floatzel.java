@@ -17,47 +17,51 @@ public class Floatzel extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 419;
-    private static final String NAME = "Floatzel";
-    private static final int BASE_EXP = 173;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 33.5;
+    public static final int NUMBER = 419;
+    public static final String NAME = "Floatzel";
+    public static final String TYPE_OF_POKEMON = "Sea Weasel";
+    public static final String DESCRIPTION = "It is a common sight around fishing ports. It is " +
+            "known to rescue people and carry off prey.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 173;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 33.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 115;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 115;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/floatzel.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/floatzel.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/floatzel.png";
-    private static final String CRY_PATH = "sounds/cry/419.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/floatzel.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/floatzel.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/floatzel.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/floatzel.png";
+    public static final String CRY_PATH = "sounds/cry/419.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/floatzel.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a floatzel
      */
     public Floatzel() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Krookodile extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 553;
-    private static final String NAME = "Krookodile";
-    private static final int BASE_EXP = 234;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 96.3;
+    public static final int NUMBER = 553;
+    public static final String NAME = "Krookodile";
+    public static final String TYPE_OF_POKEMON = "Indimidation";
+    public static final String DESCRIPTION = "They never allow prey to escape. Their jaws are" +
+            " so powerful, they can crush the body of an automobile.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 234;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 96.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.Moxie();
-    private static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.Moxie();
+    public static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 117;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 92;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 117;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 92;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/krookodile.png";
-    private static final String BACK_PATH = "battle/backs/unova/krookodile.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/krookodile.png";
-    private static final String CRY_PATH = "sounds/cry/553.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/krookodile.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/krookodile.png";
+    public static final String BACK_PATH = "battle/backs/unova/krookodile.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/krookodile.png";
+    public static final String CRY_PATH = "sounds/cry/553.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/krookodile.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.DARK;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.DARK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a krookodile
      */
     public Krookodile() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

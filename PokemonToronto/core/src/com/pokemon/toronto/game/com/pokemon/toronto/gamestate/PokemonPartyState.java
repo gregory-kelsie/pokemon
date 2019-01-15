@@ -345,7 +345,7 @@ public class PokemonPartyState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         panel.dispose();
         emptyPanel.dispose();

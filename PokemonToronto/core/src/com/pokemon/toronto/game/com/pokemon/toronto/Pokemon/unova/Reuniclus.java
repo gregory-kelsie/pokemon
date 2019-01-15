@@ -17,47 +17,51 @@ public class Reuniclus extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 579;
-    private static final String NAME = "Reuniclus";
-    private static final int BASE_EXP = 221;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 50;
-    private static final double WEIGHT = 20.1;
+    public static final int NUMBER = 579;
+    public static final String NAME = "Reuniclus";
+    public static final String TYPE_OF_POKEMON = "Multiplying";
+    public static final String DESCRIPTION = "They use psychic power to control their arms, " +
+            "which are made of a special liquid. They can crush boulders physically.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 221;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 50;
+    public static final double WEIGHT = 20.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overcoat();
-    private static final Ability SECOND_ABILITY = new Ability.MagicGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Overcoat();
+    public static final Ability SECOND_ABILITY = new Ability.MagicGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 110;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 110;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/reuniclus.png";
-    private static final String BACK_PATH = "battle/backs/unova/reuniclus.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/reuniclus.png";
-    private static final String CRY_PATH = "sounds/cry/579.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/reuniclus.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/reuniclus.png";
+    public static final String BACK_PATH = "battle/backs/unova/reuniclus.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/reuniclus.png";
+    public static final String CRY_PATH = "sounds/cry/579.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/reuniclus.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a reuniclus
      */
     public Reuniclus() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

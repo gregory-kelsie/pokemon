@@ -18,47 +18,51 @@ public class Espurr extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 677;
-    private static final String NAME = "Espurr";
-    private static final int BASE_EXP = 71;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 3.5;
+    public static final int NUMBER = 677;
+    public static final String NAME = "Espurr";
+    public static final String TYPE_OF_POKEMON = "Restraint";
+    public static final String DESCRIPTION = "The organ that emits its intense psychic power is" +
+            " sheltered by its ears to keep power from leaking out.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 71;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 3.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.Infiltrator();
-    private static final Ability HIDDEN_ABILITY = new Ability.OwnTempo();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.Infiltrator();
+    public static final Ability HIDDEN_ABILITY = new Ability.OwnTempo();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 48;
-    private static final int BASE_DEFENSE = 54;
-    private static final int BASE_SPECIAL_ATTACK = 63;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 68;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 48;
+    public static final int BASE_DEFENSE = 54;
+    public static final int BASE_SPECIAL_ATTACK = 63;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 68;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/espurr.png";
-    private static final String BACK_PATH = "battle/backs/kalos/espurr.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/espurr.png";
-    private static final String CRY_PATH = "sounds/cry/677.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/espurr.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/espurr.png";
+    public static final String BACK_PATH = "battle/backs/kalos/espurr.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/espurr.png";
+    public static final String CRY_PATH = "sounds/cry/677.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/espurr.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a espurr
      */
     public Espurr() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

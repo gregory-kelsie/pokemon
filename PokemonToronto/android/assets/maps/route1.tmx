@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="36" height="40" tilewidth="16" tileheight="16" infinite="0" nextobjectid="22">
+ <properties>
+  <property name="dayPokemonChances" value="Rattata,50;Pidgey,50;"/>
+  <property name="dayPokemonLevels" value="2-4;2-5;"/>
+  <property name="isCave" value="false"/>
+  <property name="nightPokemonChances" value="Rattata,50;Hoothoot,50;"/>
+  <property name="nightPokemonLevels" value="2-5;2-4;"/>
+  <property name="pvp" value="disabled"/>
+  <property name="waterPokemonChances" value=""/>
+  <property name="waterPokemonLevels" value=""/>
+  <property name="wildProbability" value="10"/>
+  <property name="xOffsetModifier" value="0"/>
+  <property name="yOffsetModifier" value="-2912"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../../TiledAppGen/android/assets/untitled folder/Path0.tsx"/>
+ <tileset firstgid="297" source="../../../../../../TiledAppGen/android/assets/untitled folder/normal2.tsx"/>
+ <tileset firstgid="1321" source="../../../../../../TiledAppGen/android/assets/untitled folder/Buildings7.tsx"/>
+ <tileset firstgid="1673" source="../../../../../../TiledAppGen/android/assets/untitled folder/Cliffs01.tsx"/>
+ <layer name="Walkable" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+2X3Q6DIAyFWbjddrW/C+d4/6eUC0kaRkvBFjDB5GTGTfutHo/FmP/tIqCH13PXq+C81HZWHovs53io8472J75eiufjdSN0F+TBtHh9Cf2Q/mnxlPCuA/BI+9lGn715uL5uzTNSf6gcmaJ7Ar+7Gn4eavFAhax2Jp2Na0VtLkvq+LLzSNSd0rlvUMHPUr7l1sP0NvhcppFbcNZxBp8xgp+1c7R2NtXyTsksqJmHQblZsGQ+lOhPjQ9GuceTZwyeUfyT4uCwSfPk3hE5hXeIFA/8f0clwcPJQJh5jvhdqzmt9TOd823Mo7km6vEMSXqM8oj2WtIW1Oi9ru1d/+zaALOcxhGAFgAA
+  </data>
+ </layer>
+ <layer name="Grass" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+2XsQ6AIAxE+R1lQif0///LMrg0rRYlRcy95DaaHCk90hAAAKMxkWajooOfRFqMWuEHfhiZtBm1O/gBz5ByySN/NKR37vGeR/EjzR3mC4B/gDyGnzfgfwAjoe3FV5nHa1rmozTPdzOUKs5aOe8o7XfWmpY5pO17/K7FQ1RqeuRQ6U3PPOZ8zU/pUU1fDtYwFwCAFgAA
+  </data>
+ </layer>
+ <layer name="LedgesDown" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+3WOw6AIBAE0K3giKun1aPZGj8BEyp5L5mK0M0EIoCsEcsla+0/hxls5Z69tO/ZDyPoEX+Qp97mhz/HU/QfxnrbJNDeR+/bZV8wrwNe0yY4gBYAAA==
+  </data>
+ </layer>
+ <layer name="Collisions" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+2VQQ6AIAwEueCTfIDe9L3+Tw0hNhya0i4SsZMQDlqzDg0N4eGY0rpZYghr1O8lmjqaZ7ue7VG/l2jqavygsfpB08qP1l8rP1p/X/CTM9G8Pf3QPO4n1eWeoYvm7e2nzPu2H9R8spK/i5pPVkbzI+1r6X9Y/Uj7WnrO3j887ofH/fC4Hx7U/YzKjbqfUefq/cPjfnj+5GdW5P2THw3uh2c0P7Ue0XPR6lH6/gn6KGQggBYAAA==
+  </data>
+ </layer>
+ <layer name="Collisions" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+3USwqAIBSF4TuxBdWsRi7a1leDLjjwHh+JkZwfwiAT+RDDIhKeRzuj99EFYz+7EzmcPfZO17X2s97fNmePvdN1Z/dp9Uv56J7e+LT6pXzi/dCHPij035f3T85h9P2Tc6DP/308fXh+6AOjD44+ON7POJ4fHH1w9MHRB0cf3Gw+tY6l81t9ah1L51+h3sHngBYAAA==
+  </data>
+ </layer>
+ <layer name="Walkable" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+3XwQkAIAwDwH66kH59uv9MLiG0hbsJAoFAIgCYYGXEzuoU/HaadXqb5QGoYp8BoBd/eK4Hrp39+IAWAAA=
+  </data>
+ </layer>
+ <layer name="WalkBehind" width="36" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE+2VwQ6DIAyGvfg6O7jTNi9LeP9nmjsQGwZ//0JnFtcvMRopIB/YTtMnz7ny0kgSY4yOdyP6rw7fzM7HrCc1Ypbt/dX4rdp8vX7e/e7b9Zht/r7lR/Zr+euZb8QPau+dL/zg9vCzP+d8IfPGr/lhODI/M1jWr+HhR6sL5TlA8aN+tLog28t7LX7UjxxXO9cltfgznp/4vzDhBxN+MK38y+TjEs/8rN2ZffXMzxrMvp7x/MT/hQk/GOTnYhz/3/xYCT8YLz+WeoriPPxY6ilTf48iOazfYz8z2Q/LC60WAuqAFgAA
+  </data>
+ </layer>
+ <objectgroup name="col">
+  <object id="1" x="-2.5" y="596" width="386.5" height="44.5"/>
+  <object id="2" x="416.5" y="596.5" width="158.5" height="44.5"/>
+  <object id="3" x="544.5" y="0.5" width="30.5" height="599.5"/>
+  <object id="4" x="415.5" y="0" width="128.5" height="31"/>
+  <object id="5" x="0" y="0.5" width="352.5" height="30"/>
+  <object id="6" x="143" y="32" width="82.5" height="563.5"/>
+  <object id="7" x="320" y="50" width="30" height="141"/>
+  <object id="8" x="227" y="229" width="29" height="43"/>
+  <object id="9" x="352" y="230" width="95.5" height="41"/>
+  <object id="10" x="226" y="387" width="158.5" height="45.5"/>
+  <object id="11" x="227.5" y="518" width="60" height="9.5"/>
+  <object id="12" x="336" y="511.5" width="16" height="17.5"/>
+  <object id="13" x="353.5" y="518.5" width="190.5" height="8"/>
+  <object id="14" x="482" y="423" width="61.5" height="8"/>
+  <object id="15" x="368" y="325.5" width="175.5" height="9.5"/>
+  <object id="16" x="272" y="324" width="64" height="12.5"/>
+  <object id="17" x="226.5" y="324.5" width="28.5" height="11.5"/>
+  <object id="18" x="227" y="180.5" width="92" height="10.5"/>
+  <object id="19" x="352" y="85" width="94.5" height="10"/>
+  <object id="20" x="226.5" y="85.5" width="92" height="9.5"/>
+ </objectgroup>
+</map>

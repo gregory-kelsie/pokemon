@@ -17,47 +17,51 @@ public class Escavalier extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 589;
-    private static final String NAME = "Escavalier";
-    private static final int BASE_EXP = 173;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 33;
+    public static final int NUMBER = 589;
+    public static final String NAME = "Escavalier";
+    public static final String TYPE_OF_POKEMON = "Cavalry";
+    public static final String DESCRIPTION = "They fly around at high speed, striking with their" +
+            " pointed spears. Even when in trouble, they face opponents bravely.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 173;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 33;
 
-    private static final Ability FIRST_ABILITY = new Ability.Swarm();
-    private static final Ability SECOND_ABILITY = new Ability.ShellArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
+    public static final Ability FIRST_ABILITY = new Ability.Swarm();
+    public static final Ability SECOND_ABILITY = new Ability.ShellArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 135;
-    private static final int BASE_DEFENSE = 105;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 105;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 135;
+    public static final int BASE_DEFENSE = 105;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 105;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/escavalier.png";
-    private static final String BACK_PATH = "battle/backs/unova/escavalier.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/escavalier.png";
-    private static final String CRY_PATH = "sounds/cry/589.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/escavalier.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/escavalier.png";
+    public static final String BACK_PATH = "battle/backs/unova/escavalier.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/escavalier.png";
+    public static final String CRY_PATH = "sounds/cry/589.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/escavalier.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.STEEL;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.STEEL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a escavalier
      */
     public Escavalier() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

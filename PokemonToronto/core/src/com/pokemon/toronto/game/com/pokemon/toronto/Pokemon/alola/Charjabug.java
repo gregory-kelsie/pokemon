@@ -18,47 +18,51 @@ public class Charjabug extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 737;
-    private static final String NAME = "Charjabug";
-    private static final int BASE_EXP = 140;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 10.5;
+    public static final int NUMBER = 737;
+    public static final String NAME = "Charjabug";
+    public static final String TYPE_OF_POKEMON = "Battery";
+    public static final String DESCRIPTION = "Its body is capable of storing electricity. On " +
+            "camping trips, people are grateful to have one around.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 140;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 10.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Battery();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Battery();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 57;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 36;
+    public static final int BASE_HEALTH = 57;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 36;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/charjabug.png";
-    private static final String BACK_PATH = "battle/backs/alola/charjabug.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/charjabug.png";
-    private static final String CRY_PATH = "sounds/cry/737.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/charjabug.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/charjabug.png";
+    public static final String BACK_PATH = "battle/backs/alola/charjabug.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/charjabug.png";
+    public static final String CRY_PATH = "sounds/cry/737.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/charjabug.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.ELECTRIC;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.ELECTRIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a charjabug
      */
     public Charjabug() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

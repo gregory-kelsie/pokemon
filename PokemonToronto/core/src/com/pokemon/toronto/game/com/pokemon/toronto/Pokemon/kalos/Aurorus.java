@@ -17,47 +17,51 @@ public class Aurorus extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 699;
-    private static final String NAME = "Aurorus";
-    private static final int BASE_EXP = 104;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 225;
+    public static final int NUMBER = 699;
+    public static final String NAME = "Aurorus";
+    public static final String TYPE_OF_POKEMON = "Tundra";
+    public static final String DESCRIPTION = "Using its diamond-shaped crystals, it can " +
+            "instantly create a wall of ice to block an opponent's attack.";
+    public static final double HEIGHT = 2.7;
+    public static final int BASE_EXP = 104;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 225;
 
-    private static final Ability FIRST_ABILITY = new Ability.Refrigerate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SnowWarning();
+    public static final Ability FIRST_ABILITY = new Ability.Refrigerate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SnowWarning();
 
     //Base Stats
-    private static final int BASE_HEALTH = 123;
-    private static final int BASE_ATTACK = 77;
-    private static final int BASE_DEFENSE = 72;
-    private static final int BASE_SPECIAL_ATTACK = 99;
-    private static final int BASE_SPECIAL_DEFENSE = 92;
-    private static final int BASE_SPEED = 58;
+    public static final int BASE_HEALTH = 123;
+    public static final int BASE_ATTACK = 77;
+    public static final int BASE_DEFENSE = 72;
+    public static final int BASE_SPECIAL_ATTACK = 99;
+    public static final int BASE_SPECIAL_DEFENSE = 92;
+    public static final int BASE_SPEED = 58;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/aurorus.png";
-    private static final String BACK_PATH = "battle/backs/kalos/aurorus.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/aurorus.png";
-    private static final String CRY_PATH = "sounds/cry/699.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/aurorus.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/aurorus.png";
+    public static final String BACK_PATH = "battle/backs/kalos/aurorus.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/aurorus.png";
+    public static final String CRY_PATH = "sounds/cry/699.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/aurorus.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.ICE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.ICE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a aurorus
      */
     public Aurorus() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

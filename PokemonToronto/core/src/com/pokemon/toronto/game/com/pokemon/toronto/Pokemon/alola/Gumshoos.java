@@ -17,47 +17,51 @@ public class Gumshoos extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 735;
-    private static final String NAME = "Gumshoos";
-    private static final int BASE_EXP = 146;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 127;
-    private static final double WEIGHT = 14.2;
+    public static final int NUMBER = 735;
+    public static final String NAME = "Gumshoos";
+    public static final String TYPE_OF_POKEMON = "Stakeout";
+    public static final String DESCRIPTION = "When it finds a trace of its prey, it patiently " +
+            "stakes out the location...but it’s always snoozing by nightfall.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 146;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 127;
+    public static final double WEIGHT = 14.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Stakeout();
-    private static final Ability SECOND_ABILITY = new Ability.StrongJaw();
-    private static final Ability HIDDEN_ABILITY = new Ability.Adaptability();
+    public static final Ability FIRST_ABILITY = new Ability.Stakeout();
+    public static final Ability SECOND_ABILITY = new Ability.StrongJaw();
+    public static final Ability HIDDEN_ABILITY = new Ability.Adaptability();
 
     //Base Stats
-    private static final int BASE_HEALTH = 88;
-    private static final int BASE_ATTACK = 110;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 88;
+    public static final int BASE_ATTACK = 110;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/gumshoos.png";
-    private static final String BACK_PATH = "battle/backs/alola/gumshoos.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/gumshoos.png";
-    private static final String CRY_PATH = "sounds/cry/735.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/gumshoos.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/gumshoos.png";
+    public static final String BACK_PATH = "battle/backs/alola/gumshoos.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/gumshoos.png";
+    public static final String CRY_PATH = "sounds/cry/735.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/gumshoos.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a gumshoos
      */
     public Gumshoos() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

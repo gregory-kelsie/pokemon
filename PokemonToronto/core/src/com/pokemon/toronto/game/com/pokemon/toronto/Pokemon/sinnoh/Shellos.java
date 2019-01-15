@@ -18,47 +18,51 @@ public class Shellos extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 422;
-    private static final String NAME = "Shellos";
-    private static final int BASE_EXP = 65;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 6.3;
+    public static final int NUMBER = 422;
+    public static final String NAME = "Shellos";
+    public static final String TYPE_OF_POKEMON = "Sea Slug";
+    public static final String DESCRIPTION = "Beware of pushing strongly on its squishy body, " +
+            "as it makes a mysterious purple fluid ooze out.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 65;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 6.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.StickyHold();
-    private static final Ability SECOND_ABILITY = new Ability.StormDrain();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.StickyHold();
+    public static final Ability SECOND_ABILITY = new Ability.StormDrain();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 76;
-    private static final int BASE_ATTACK = 48;
-    private static final int BASE_DEFENSE = 48;
-    private static final int BASE_SPECIAL_ATTACK = 57;
-    private static final int BASE_SPECIAL_DEFENSE = 62;
-    private static final int BASE_SPEED = 34;
+    public static final int BASE_HEALTH = 76;
+    public static final int BASE_ATTACK = 48;
+    public static final int BASE_DEFENSE = 48;
+    public static final int BASE_SPECIAL_ATTACK = 57;
+    public static final int BASE_SPECIAL_DEFENSE = 62;
+    public static final int BASE_SPEED = 34;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/shellos.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/shellos.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/shellos.png";
-    private static final String CRY_PATH = "sounds/cry/422.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/shellos.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/shellos.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/shellos.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/shellos.png";
+    public static final String CRY_PATH = "sounds/cry/422.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/shellos.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a shellos
      */
     public Shellos() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

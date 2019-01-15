@@ -18,47 +18,51 @@ public class Spritzee extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 682;
-    private static final String NAME = "Spritzee";
-    private static final int BASE_EXP = 68;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 0.5;
+    public static final int NUMBER = 682;
+    public static final String NAME = "Spritzee";
+    public static final String TYPE_OF_POKEMON = "Perfume";
+    public static final String DESCRIPTION = "It emits a scent that enraptures those who smell" +
+            " it. This fragance changes depending on what it has eaten.";
+    public static final double HEIGHT = 0.2;
+    public static final int BASE_EXP = 68;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 0.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Healer();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.AromaVeil();
+    public static final Ability FIRST_ABILITY = new Ability.Healer();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.AromaVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 52;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 63;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 23;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 52;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 63;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 23;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/spritzee.png";
-    private static final String BACK_PATH = "battle/backs/kalos/spritzee.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/spritzee.png";
-    private static final String CRY_PATH = "sounds/cry/682.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/spritzee.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/spritzee.png";
+    public static final String BACK_PATH = "battle/backs/kalos/spritzee.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/spritzee.png";
+    public static final String CRY_PATH = "sounds/cry/682.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/spritzee.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a spritzee
      */
     public Spritzee() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

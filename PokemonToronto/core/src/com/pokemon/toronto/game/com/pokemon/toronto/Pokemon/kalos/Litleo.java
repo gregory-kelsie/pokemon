@@ -18,47 +18,51 @@ public class Litleo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 667;
-    private static final String NAME = "Litleo";
-    private static final int BASE_EXP = 74;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 220;
-    private static final double WEIGHT = 13.5;
+    public static final int NUMBER = 667;
+    public static final String NAME = "Litleo";
+    public static final String TYPE_OF_POKEMON = "Lion Cub";
+    public static final String DESCRIPTION = "The stronger the opponent it faces, the more heat" +
+            " surges from its mane and the more power flows through its body.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 74;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 220;
+    public static final double WEIGHT = 13.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Rivalry();
-    private static final Ability SECOND_ABILITY = new Ability.Unnerve();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moxie();
+    public static final Ability FIRST_ABILITY = new Ability.Rivalry();
+    public static final Ability SECOND_ABILITY = new Ability.Unnerve();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moxie();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 58;
-    private static final int BASE_SPECIAL_ATTACK = 73;
-    private static final int BASE_SPECIAL_DEFENSE = 54;
-    private static final int BASE_SPEED = 72;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 58;
+    public static final int BASE_SPECIAL_ATTACK = 73;
+    public static final int BASE_SPECIAL_DEFENSE = 54;
+    public static final int BASE_SPEED = 72;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/litleo.png";
-    private static final String BACK_PATH = "battle/backs/kalos/litleo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/litleo.png";
-    private static final String CRY_PATH = "sounds/cry/667.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/litleo.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/litleo.png";
+    public static final String BACK_PATH = "battle/backs/kalos/litleo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/litleo.png";
+    public static final String CRY_PATH = "sounds/cry/667.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/litleo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NORMAL;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NORMAL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a litleo
      */
     public Litleo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

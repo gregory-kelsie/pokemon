@@ -17,47 +17,51 @@ public class Chesnaught extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 652;
-    private static final String NAME = "Chesnaught";
-    private static final int BASE_EXP = 239;
-    private static final int[] EV_YIELD = {0, 0, 3, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 90;
+    public static final int NUMBER = 652;
+    public static final String NAME = "Chesnaught";
+    public static final String TYPE_OF_POKEMON = "Spiny Armor";
+    public static final String DESCRIPTION = "Its Tackle is forceful enough to flip a 50-ton " +
+            "tank. It shields its allies from danger with its own body.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 239;
+    public static final int[] EV_YIELD = {0, 0, 3, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 90;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Bulletproof();
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Bulletproof();
 
     //Base Stats
-    private static final int BASE_HEALTH = 88;
-    private static final int BASE_ATTACK = 107;
-    private static final int BASE_DEFENSE = 122;
-    private static final int BASE_SPECIAL_ATTACK = 74;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 64;
+    public static final int BASE_HEALTH = 88;
+    public static final int BASE_ATTACK = 107;
+    public static final int BASE_DEFENSE = 122;
+    public static final int BASE_SPECIAL_ATTACK = 74;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 64;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/chesnaught.png";
-    private static final String BACK_PATH = "battle/backs/kalos/chesnaught.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/chesnaught.png";
-    private static final String CRY_PATH = "sounds/cry/652.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/chesnaught.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/chesnaught.png";
+    public static final String BACK_PATH = "battle/backs/kalos/chesnaught.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/chesnaught.png";
+    public static final String CRY_PATH = "sounds/cry/652.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/chesnaught.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a chesnaught
      */
     public Chesnaught() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

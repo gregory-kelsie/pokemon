@@ -100,6 +100,8 @@ public class BattleState extends GameState implements BattleInterface, LoadingIn
     private SaveThread saveThread;
 
     public BattleState(GameStateManager gsm, Pokemon enemyPokemon, Music bgm) {
+        Gdx.app.log("maerkerzzz", "asdf");
+        gsm.stopBgm();
         init(gsm, bgm);
         this.enemyPokemon = enemyPokemon;
         enemyPokemonCry = Gdx.audio.newSound(Gdx.files.internal(enemyPokemon.getCryPath()));

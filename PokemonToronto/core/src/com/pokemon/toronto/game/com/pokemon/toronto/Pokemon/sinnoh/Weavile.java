@@ -17,47 +17,51 @@ public class Weavile extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 461;
-    private static final String NAME = "Weavile";
-    private static final int BASE_EXP = 179;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 34;
+    public static final int NUMBER = 461;
+    public static final String NAME = "Weavile";
+    public static final String TYPE_OF_POKEMON = "Sharp Claw";
+    public static final String DESCRIPTION = "Evolution made it even more devious. It " +
+            "communicates by clawing signs in boulders.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 179;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 34;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pressure();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Pickpocket();
+    public static final Ability FIRST_ABILITY = new Ability.Pressure();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Pickpocket();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 125;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 125;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/weavile.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/weavile.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/weavile.png";
-    private static final String CRY_PATH = "sounds/cry/461.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/weavile.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/weavile.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/weavile.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/weavile.png";
+    public static final String CRY_PATH = "sounds/cry/461.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/weavile.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.ICE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.ICE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a weavile
      */
     public Weavile() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

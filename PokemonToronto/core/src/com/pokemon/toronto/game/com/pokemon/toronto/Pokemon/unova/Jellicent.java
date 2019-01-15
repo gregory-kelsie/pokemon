@@ -17,47 +17,51 @@ public class Jellicent extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 593;
-    private static final String NAME = "Jellicent";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 135;
+    public static final int NUMBER = 593;
+    public static final String NAME = "Jellicent";
+    public static final String TYPE_OF_POKEMON = "Floating";
+    public static final String DESCRIPTION = "They propel themselves by expelling absorbed " +
+            "seawater from their bodies. Their favorite food is life energy.";
+    public static final double HEIGHT = 2.2;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 135;
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = new Ability.CursedBody();
-    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = new Ability.CursedBody();
+    public static final Ability HIDDEN_ABILITY = new Ability.Damp();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 105;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 105;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/jellicent.png";
-    private static final String BACK_PATH = "battle/backs/unova/jellicent.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/jellicent.png";
-    private static final String CRY_PATH = "sounds/cry/593.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/jellicent.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/jellicent.png";
+    public static final String BACK_PATH = "battle/backs/unova/jellicent.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/jellicent.png";
+    public static final String CRY_PATH = "sounds/cry/593.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/jellicent.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a jellicent
      */
     public Jellicent() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Staraptor extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 398;
-    private static final String NAME = "Staraptor";
-    private static final int BASE_EXP = 218;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 24.9;
+    public static final int NUMBER = 398;
+    public static final String NAME = "Staraptor";
+    public static final String TYPE_OF_POKEMON = "Predator";
+    public static final String DESCRIPTION = "It never stops attacking even if it is injured." +
+            " It fusses over the shape of its comb.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 218;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 24.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/staraptor.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/staraptor.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/staraptor.png";
-    private static final String CRY_PATH = "sounds/cry/398.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/staraptor.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/staraptor.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/staraptor.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/staraptor.png";
+    public static final String CRY_PATH = "sounds/cry/398.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/staraptor.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a staraptor
      */
     public Staraptor() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

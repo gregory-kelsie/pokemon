@@ -17,47 +17,51 @@ public class Vivillon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 666;
-    private static final String NAME = "Vivillon";
-    private static final int BASE_EXP = 185;
-    private static final int[] EV_YIELD = {1, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 17;
+    public static final int NUMBER = 666;
+    public static final String NAME = "Vivillon";
+    public static final String TYPE_OF_POKEMON = "Scale";
+    public static final String DESCRIPTION = "The patterns on this Pokémon's wings depend on " +
+            "the climate and topography of its habitat. It scatters colorful scales.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 185;
+    public static final int[] EV_YIELD = {1, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 17;
 
-    private static final Ability FIRST_ABILITY = new Ability.ShieldDust();
-    private static final Ability SECOND_ABILITY = new Ability.Compoundeyes();
-    private static final Ability HIDDEN_ABILITY = new Ability.FriendGuard();
+    public static final Ability FIRST_ABILITY = new Ability.ShieldDust();
+    public static final Ability SECOND_ABILITY = new Ability.Compoundeyes();
+    public static final Ability HIDDEN_ABILITY = new Ability.FriendGuard();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 52;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 89;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 52;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 89;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/vivillon.png";
-    private static final String BACK_PATH = "battle/backs/kalos/vivillon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/vivillon.png";
-    private static final String CRY_PATH = "sounds/cry/666.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/vivillon.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/vivillon.png";
+    public static final String BACK_PATH = "battle/backs/kalos/vivillon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/vivillon.png";
+    public static final String CRY_PATH = "sounds/cry/666.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/vivillon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a vivillon
      */
     public Vivillon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

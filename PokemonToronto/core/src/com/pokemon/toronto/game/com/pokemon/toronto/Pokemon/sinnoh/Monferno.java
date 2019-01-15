@@ -18,47 +18,51 @@ public class Monferno extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 391;
-    private static final String NAME = "Monferno";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 22;
+    public static final int NUMBER = 391;
+    public static final String NAME = "Monferno";
+    public static final String TYPE_OF_POKEMON = "Playful";
+    public static final String DESCRIPTION = "It skillfully controls the intensity of the fire on" +
+            " its tail to keep its foes at an ideal distance.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 22;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 64;
-    private static final int BASE_ATTACK = 78;
-    private static final int BASE_DEFENSE = 52;
-    private static final int BASE_SPECIAL_ATTACK = 78;
-    private static final int BASE_SPECIAL_DEFENSE = 52;
-    private static final int BASE_SPEED = 81;
+    public static final int BASE_HEALTH = 64;
+    public static final int BASE_ATTACK = 78;
+    public static final int BASE_DEFENSE = 52;
+    public static final int BASE_SPECIAL_ATTACK = 78;
+    public static final int BASE_SPECIAL_DEFENSE = 52;
+    public static final int BASE_SPEED = 81;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/monferno.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/monferno.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/monferno.png";
-    private static final String CRY_PATH = "sounds/cry/391.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/monferno.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/monferno.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/monferno.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/monferno.png";
+    public static final String CRY_PATH = "sounds/cry/391.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/monferno.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a monferno
      */
     public Monferno() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -19,47 +19,51 @@ public class Steenee extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 762;
-    private static final String NAME = "Steenee";
-    private static final int BASE_EXP = 102;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 8.2;
+    public static final int NUMBER = 762;
+    public static final String NAME = "Steenee";
+    public static final String TYPE_OF_POKEMON = "Fruit";
+    public static final String DESCRIPTION = "This Pokémon is always bouncing around " +
+            "energetically. Other Pokémon are attracted by its lively appearance and pleasant aroma.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 102;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 8.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.LeafGuard();
-    private static final Ability SECOND_ABILITY = new Ability.Oblivious();
-    private static final Ability HIDDEN_ABILITY = new Ability.SweetVeil();
+    public static final Ability FIRST_ABILITY = new Ability.LeafGuard();
+    public static final Ability SECOND_ABILITY = new Ability.Oblivious();
+    public static final Ability HIDDEN_ABILITY = new Ability.SweetVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 52;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 48;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 48;
-    private static final int BASE_SPEED = 62;
+    public static final int BASE_HEALTH = 52;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 48;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 48;
+    public static final int BASE_SPEED = 62;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/steenee.png";
-    private static final String BACK_PATH = "battle/backs/alola/steenee.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/steenee.png";
-    private static final String CRY_PATH = "sounds/cry/762.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/steenee.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/steenee.png";
+    public static final String BACK_PATH = "battle/backs/alola/steenee.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/steenee.png";
+    public static final String CRY_PATH = "sounds/cry/762.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/steenee.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a steenee
      */
     public Steenee() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

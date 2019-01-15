@@ -17,47 +17,51 @@ public class Gogoat extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 673;
-    private static final String NAME = "Gogoat";
-    private static final int BASE_EXP = 186;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 91;
+    public static final int NUMBER = 673;
+    public static final String NAME = "Gogoat";
+    public static final String TYPE_OF_POKEMON = "Mount";
+    public static final String DESCRIPTION = "It can tell how its Trainer is feeling by subtle" +
+            " shifts in the grip on its horns. This empathic sense lets them run as if one being.";
+    public static final double HEIGHT = 1.7;
+    public static final int BASE_EXP = 186;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 91;
 
-    private static final Ability FIRST_ABILITY = new Ability.SapSipper();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.GrassPelt();
+    public static final Ability FIRST_ABILITY = new Ability.SapSipper();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.GrassPelt();
 
     //Base Stats
-    private static final int BASE_HEALTH = 123;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 62;
-    private static final int BASE_SPECIAL_ATTACK = 97;
-    private static final int BASE_SPECIAL_DEFENSE = 81;
-    private static final int BASE_SPEED = 68;
+    public static final int BASE_HEALTH = 123;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 62;
+    public static final int BASE_SPECIAL_ATTACK = 97;
+    public static final int BASE_SPECIAL_DEFENSE = 81;
+    public static final int BASE_SPEED = 68;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/gogoat.png";
-    private static final String BACK_PATH = "battle/backs/kalos/gogoat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/gogoat.png";
-    private static final String CRY_PATH = "sounds/cry/673.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/gogoat.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/gogoat.png";
+    public static final String BACK_PATH = "battle/backs/kalos/gogoat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/gogoat.png";
+    public static final String CRY_PATH = "sounds/cry/673.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/gogoat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a gogoat
      */
     public Gogoat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

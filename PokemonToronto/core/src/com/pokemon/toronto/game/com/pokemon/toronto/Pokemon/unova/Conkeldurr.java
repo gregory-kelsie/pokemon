@@ -17,47 +17,51 @@ public class Conkeldurr extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 534;
-    private static final String NAME = "Conkeldurr";
-    private static final int BASE_EXP = 227;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 87;
+    public static final int NUMBER = 534;
+    public static final String NAME = "Conkeldurr";
+    public static final String TYPE_OF_POKEMON = "Muscular";
+    public static final String DESCRIPTION = "They use concrete pillars as walking canes. They " +
+            "know moves that enable them to swing the pillars freely in battle.";
+    public static final double HEIGHT = 1.4;
+    public static final int BASE_EXP = 227;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 87;
 
-    private static final Ability FIRST_ABILITY = new Ability.Guts();
-    private static final Ability SECOND_ABILITY = new Ability.SheerForce();
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Guts();
+    public static final Ability SECOND_ABILITY = new Ability.SheerForce();
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 105;
-    private static final int BASE_ATTACK = 140;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 105;
+    public static final int BASE_ATTACK = 140;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/conkeldurr.png";
-    private static final String BACK_PATH = "battle/backs/unova/conkeldurr.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/conkeldurr.png";
-    private static final String CRY_PATH = "sounds/cry/534.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/conkeldurr.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/conkeldurr.png";
+    public static final String BACK_PATH = "battle/backs/unova/conkeldurr.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/conkeldurr.png";
+    public static final String CRY_PATH = "sounds/cry/534.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/conkeldurr.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a conkeldurr
      */
     public Conkeldurr() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

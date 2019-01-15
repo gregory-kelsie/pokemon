@@ -188,6 +188,8 @@ public abstract class Pokemon {
     private int whirlpoolTurns;
     private boolean fireSpin;
     private int fireSpinTurns;
+    private boolean magmaStorm;
+    private int magmaStormTurns;
     private boolean infested;
     private int infestationTurns;
     private boolean sandTomb;
@@ -1063,6 +1065,13 @@ public abstract class Pokemon {
      */
     public boolean inFireSpin() { return fireSpin; }
 
+    /**
+     * Return whether or not the Pokemon is in a Magma Storm.
+     * @return Whether or not the Pokemon is trapped in Magma
+     * Storm.
+     */
+    public boolean inMagmaStorm() { return magmaStorm; }
+
 
     /**
      * Return whether or not the Pokemon is infested by Infestation
@@ -1146,6 +1155,18 @@ public abstract class Pokemon {
     }
 
     /**
+     * Trap the Pokemon in Magma Storm.
+     */
+    public void trapInMagmaStorm() {
+        magmaStorm = true;
+        if (Math.random() < .5) {
+            magmaStormTurns = 4;
+        } else {
+            magmaStormTurns = 5;
+        }
+    }
+
+    /**
      * Trap the Pokemon in Infestation
      */
     public void trapInInfestation() {
@@ -1202,6 +1223,13 @@ public abstract class Pokemon {
     public void removeWhirlpool() { inWhirlpool = false; }
 
     /**
+     * Remove the Pokemon from Magma Storm.
+     */
+    public void removeMagmaStorm() {
+        magmaStorm = false;
+    }
+
+    /**
      * Remove the Pokemon from Fire Spin.
      */
     public void removeFireSpin() {
@@ -1239,6 +1267,8 @@ public abstract class Pokemon {
         whirlpoolTurns = 0;
         fireSpin = false;
         fireSpinTurns = 0;
+        magmaStorm = false;
+        magmaStormTurns = 0;
         infested = false;
         infestationTurns = 0;
         sandTomb = false;
@@ -1272,6 +1302,12 @@ public abstract class Pokemon {
      * @return The number of turns left until Fire Spin expires.
      */
     public int getFireSpinTurns() { return fireSpinTurns; }
+
+    /**
+     * Return the number of turns left until Magma Storm expires.
+     * @return The number of turns left until Magma Storm expires.
+     */
+    public int getMagmaStormTurns() { return magmaStormTurns; }
 
     /**
      * Return the number of turns left until Infestation expires.
@@ -1314,6 +1350,11 @@ public abstract class Pokemon {
      * Adjust the number of Fire Spin turns left.
      */
     public void adjustFireSpinTurns() { fireSpinTurns--; }
+
+    /**
+     * Adjust the number of Magma Storm turns left.
+     */
+    public void adjustMagmaStormTurns() { magmaStormTurns--; }
 
     /**
      * Adjust the number of Infestation turns left.

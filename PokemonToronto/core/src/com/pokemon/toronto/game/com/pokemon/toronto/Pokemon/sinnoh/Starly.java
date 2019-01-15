@@ -18,47 +18,51 @@ public class Starly extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 396;
-    private static final String NAME = "Starly";
-    private static final int BASE_EXP = 49;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 2;
+    public static final int NUMBER = 396;
+    public static final String NAME = "Starly";
+    public static final String TYPE_OF_POKEMON = "Starling";
+    public static final String DESCRIPTION = "Because they are weak individually, they form " +
+            "groups. However, they bicker if the group grows too big.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 49;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 2;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/starly.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/starly.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/starly.png";
-    private static final String CRY_PATH = "sounds/cry/396.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/starly.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/starly.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/starly.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/starly.png";
+    public static final String CRY_PATH = "sounds/cry/396.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/starly.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a starly
      */
     public Starly() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

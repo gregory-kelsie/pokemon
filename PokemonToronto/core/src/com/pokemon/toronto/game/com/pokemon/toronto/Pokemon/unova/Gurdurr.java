@@ -18,47 +18,51 @@ public class Gurdurr extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 533;
-    private static final String NAME = "Gurdurr";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 40;
+    public static final int NUMBER = 533;
+    public static final String NAME = "Gurdurr";
+    public static final String TYPE_OF_POKEMON = "Muscular";
+    public static final String DESCRIPTION = "This Pokémon is so muscular and strongly built " +
+            "that even a group of wrestlers could not make it budge an inch.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 40;
 
-    private static final Ability FIRST_ABILITY = new Ability.Guts();
-    private static final Ability SECOND_ABILITY = new Ability.SheerForce();
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Guts();
+    public static final Ability SECOND_ABILITY = new Ability.SheerForce();
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/gurdurr.png";
-    private static final String BACK_PATH = "battle/backs/unova/gurdurr.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/gurdurr.png";
-    private static final String CRY_PATH = "sounds/cry/533.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/gurdurr.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/gurdurr.png";
+    public static final String BACK_PATH = "battle/backs/unova/gurdurr.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/gurdurr.png";
+    public static final String CRY_PATH = "sounds/cry/533.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/gurdurr.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a gurdurr
      */
     public Gurdurr() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

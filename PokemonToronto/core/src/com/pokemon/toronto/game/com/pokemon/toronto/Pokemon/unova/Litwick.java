@@ -18,47 +18,51 @@ public class Litwick extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 607;
-    private static final String NAME = "Litwick";
-    private static final int BASE_EXP = 55;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 3.1;
+    public static final int NUMBER = 607;
+    public static final String NAME = "Litwick";
+    public static final String TYPE_OF_POKEMON = "Candle";
+    public static final String DESCRIPTION = "While shining a light and pretending to be a " +
+            "guide, it leeches off the life force of any who follow it.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 55;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 3.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlashFire();
-    private static final Ability SECOND_ABILITY = new Ability.FlameBody();
-    private static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
+    public static final Ability FIRST_ABILITY = new Ability.FlashFire();
+    public static final Ability SECOND_ABILITY = new Ability.FlameBody();
+    public static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/litwick.png";
-    private static final String BACK_PATH = "battle/backs/unova/litwick.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/litwick.png";
-    private static final String CRY_PATH = "sounds/cry/607.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/litwick.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/litwick.png";
+    public static final String BACK_PATH = "battle/backs/unova/litwick.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/litwick.png";
+    public static final String CRY_PATH = "sounds/cry/607.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/litwick.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a litwick
      */
     public Litwick() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

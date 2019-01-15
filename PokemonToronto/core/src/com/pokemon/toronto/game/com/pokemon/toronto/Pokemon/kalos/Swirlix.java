@@ -18,47 +18,51 @@ public class Swirlix extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 684;
-    private static final String NAME = "Swirlix";
-    private static final int BASE_EXP = 68;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 3.5;
+    public static final int NUMBER = 684;
+    public static final String NAME = "Swirlix";
+    public static final String TYPE_OF_POKEMON = "Cotton Candy";
+    public static final String DESCRIPTION = "To entangle its opponents in battle, it extrudes" +
+            " white threads as sweet and sticky as cotton candy.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 68;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 3.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SweetVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Unburden();
+    public static final Ability FIRST_ABILITY = new Ability.SweetVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Unburden();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 48;
-    private static final int BASE_DEFENSE = 66;
-    private static final int BASE_SPECIAL_ATTACK = 59;
-    private static final int BASE_SPECIAL_DEFENSE = 57;
-    private static final int BASE_SPEED = 49;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 48;
+    public static final int BASE_DEFENSE = 66;
+    public static final int BASE_SPECIAL_ATTACK = 59;
+    public static final int BASE_SPECIAL_DEFENSE = 57;
+    public static final int BASE_SPEED = 49;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/swirlix.png";
-    private static final String BACK_PATH = "battle/backs/kalos/swirlix.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/swirlix.png";
-    private static final String CRY_PATH = "sounds/cry/684.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/swirlix.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/swirlix.png";
+    public static final String BACK_PATH = "battle/backs/kalos/swirlix.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/swirlix.png";
+    public static final String CRY_PATH = "sounds/cry/684.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/swirlix.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a swirlix
      */
     public Swirlix() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

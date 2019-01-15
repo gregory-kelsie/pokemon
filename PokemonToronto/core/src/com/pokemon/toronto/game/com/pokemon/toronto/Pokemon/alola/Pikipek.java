@@ -18,47 +18,51 @@ public class Pikipek extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 731;
-    private static final String NAME = "Pikipek";
-    private static final int BASE_EXP = 53;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 225;
-    private static final double WEIGHT = 1.2;
+    public static final int NUMBER = 731;
+    public static final String NAME = "Pikipek";
+    public static final String TYPE_OF_POKEMON = "Woodpecker";
+    public static final String DESCRIPTION = "It can peck at a rate of 16 times a second to " +
+            "drill holes in trees. It uses the holes for food storage and for nesting.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 53;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 225;
+    public static final double WEIGHT = 1.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.SkillLink();
-    private static final Ability HIDDEN_ABILITY = new Ability.Pickup();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.SkillLink();
+    public static final Ability HIDDEN_ABILITY = new Ability.Pickup();
 
     //Base Stats
-    private static final int BASE_HEALTH = 35;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 30;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 35;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 30;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/pikipek.png";
-    private static final String BACK_PATH = "battle/backs/alola/pikipek.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/pikipek.png";
-    private static final String CRY_PATH = "sounds/cry/731.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/pikipek.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/pikipek.png";
+    public static final String BACK_PATH = "battle/backs/alola/pikipek.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/pikipek.png";
+    public static final String CRY_PATH = "sounds/cry/731.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/pikipek.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a pikipek
      */
     public Pikipek() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -210,7 +210,7 @@ public class LoadingState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
     }
 }

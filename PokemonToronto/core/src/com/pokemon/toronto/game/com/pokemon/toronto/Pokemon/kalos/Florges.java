@@ -17,47 +17,51 @@ public class Florges extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 671;
-    private static final String NAME = "Florges";
-    private static final int BASE_EXP = 248;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 10;
+    public static final int NUMBER = 671;
+    public static final String NAME = "Florges";
+    public static final String TYPE_OF_POKEMON = "Garden";
+    public static final String DESCRIPTION = "It claims exquisite flower gardens as its " +
+            "territory, and it obtains power from basking in the energy emitted by flowering plants.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 248;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 3, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 10;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
+    public static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 68;
-    private static final int BASE_SPECIAL_ATTACK = 112;
-    private static final int BASE_SPECIAL_DEFENSE = 154;
-    private static final int BASE_SPEED = 75;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 68;
+    public static final int BASE_SPECIAL_ATTACK = 112;
+    public static final int BASE_SPECIAL_DEFENSE = 154;
+    public static final int BASE_SPEED = 75;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/florges.png";
-    private static final String BACK_PATH = "battle/backs/kalos/florges.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/florges.png";
-    private static final String CRY_PATH = "sounds/cry/671.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/florges.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/florges.png";
+    public static final String BACK_PATH = "battle/backs/kalos/florges.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/florges.png";
+    public static final String CRY_PATH = "sounds/cry/671.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/florges.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a florges
      */
     public Florges() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

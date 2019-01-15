@@ -65,7 +65,7 @@ public class MainMenuState extends GameState{
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         gsm.getLoader().unload("mainMenu.png");
     }
 }

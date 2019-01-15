@@ -303,7 +303,7 @@ public class PokeNavState extends GameState{
      * Dispose of the textures and sounds for the PokeNav.
      */
     @Override
-    protected void dispose() {
+    public void dispose() {
         gsm.getLoader().unload("pokeNav/background.png");
         gsm.getLoader().unload("pokeNav/pokedex.png");
         gsm.getLoader().unload("pokeNav/pokedex_text.png");

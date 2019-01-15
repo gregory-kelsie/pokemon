@@ -294,7 +294,7 @@ public class KantoGymState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         title.dispose();
         for (Texture gymTexture: gymTextures) {

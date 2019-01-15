@@ -18,47 +18,51 @@ public class Joltik extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 595;
-    private static final String NAME = "Joltik";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 0.6;
+    public static final int NUMBER = 595;
+    public static final String NAME = "Joltik";
+    public static final String TYPE_OF_POKEMON = "Attaching";
+    public static final String DESCRIPTION = "Joltik that live in cities have learned a " +
+            "technique for sucking electricity from the outlets in houses.";
+    public static final double HEIGHT = 0.1;
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Compoundeyes();
-    private static final Ability SECOND_ABILITY = new Ability.Unnerve();
-    private static final Ability HIDDEN_ABILITY = new Ability.Swarm();
+    public static final Ability FIRST_ABILITY = new Ability.Compoundeyes();
+    public static final Ability SECOND_ABILITY = new Ability.Unnerve();
+    public static final Ability HIDDEN_ABILITY = new Ability.Swarm();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 47;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 57;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 47;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 57;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/joltik.png";
-    private static final String BACK_PATH = "battle/backs/unova/joltik.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/joltik.png";
-    private static final String CRY_PATH = "sounds/cry/595.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/joltik.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/joltik.png";
+    public static final String BACK_PATH = "battle/backs/unova/joltik.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/joltik.png";
+    public static final String CRY_PATH = "sounds/cry/595.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/joltik.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.ELECTRIC;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.ELECTRIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a joltik
      */
     public Joltik() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

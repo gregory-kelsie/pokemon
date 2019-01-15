@@ -17,47 +17,51 @@ public class Torterra extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 389;
-    private static final String NAME = "Torterra";
-    private static final int BASE_EXP = 236;
-    private static final int[] EV_YIELD = {0, 2, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 310;
+    public static final int NUMBER = 389;
+    public static final String NAME = "Torterra";
+    public static final String TYPE_OF_POKEMON = "Continent";
+    public static final String DESCRIPTION = "Some Pokémon are born on a Torterra's back and " +
+            "spend their entire life there.";
+    public static final double HEIGHT = 2.2;
+    public static final int BASE_EXP = 236;
+    public static final int[] EV_YIELD = {0, 2, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 310;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 109;
-    private static final int BASE_DEFENSE = 105;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 56;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 109;
+    public static final int BASE_DEFENSE = 105;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 56;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/torterra.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/torterra.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/torterra.png";
-    private static final String CRY_PATH = "sounds/cry/389.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/torterra.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/torterra.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/torterra.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/torterra.png";
+    public static final String CRY_PATH = "sounds/cry/389.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/torterra.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a torterra
      */
     public Torterra() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

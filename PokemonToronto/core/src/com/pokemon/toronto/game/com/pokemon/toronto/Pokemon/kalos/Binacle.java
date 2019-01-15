@@ -18,47 +18,51 @@ public class Binacle extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 688;
-    private static final String NAME = "Binacle";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 31;
+    public static final int NUMBER = 688;
+    public static final String NAME = "Binacle";
+    public static final String TYPE_OF_POKEMON = "Two-Handed";
+    public static final String DESCRIPTION = "Two Binacle live together on one rock. When they" +
+            " fight, one of them will move to a different rock.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 31;
 
-    private static final Ability FIRST_ABILITY = new Ability.ToughClaws();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.Pickpocket();
+    public static final Ability FIRST_ABILITY = new Ability.ToughClaws();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.Pickpocket();
 
     //Base Stats
-    private static final int BASE_HEALTH = 42;
-    private static final int BASE_ATTACK = 52;
-    private static final int BASE_DEFENSE = 67;
-    private static final int BASE_SPECIAL_ATTACK = 39;
-    private static final int BASE_SPECIAL_DEFENSE = 56;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 42;
+    public static final int BASE_ATTACK = 52;
+    public static final int BASE_DEFENSE = 67;
+    public static final int BASE_SPECIAL_ATTACK = 39;
+    public static final int BASE_SPECIAL_DEFENSE = 56;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/binacle.png";
-    private static final String BACK_PATH = "battle/backs/kalos/binacle.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/binacle.png";
-    private static final String CRY_PATH = "sounds/cry/688.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/binacle.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/binacle.png";
+    public static final String BACK_PATH = "battle/backs/kalos/binacle.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/binacle.png";
+    public static final String CRY_PATH = "sounds/cry/688.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/binacle.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a binacle
      */
     public Binacle() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

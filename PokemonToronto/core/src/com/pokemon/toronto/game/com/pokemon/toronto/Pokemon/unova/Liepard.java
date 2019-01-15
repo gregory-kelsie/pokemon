@@ -17,47 +17,51 @@ public class Liepard extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 510;
-    private static final String NAME = "Liepard";
-    private static final int BASE_EXP = 156;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 37.5;
+    public static final int NUMBER = 510;
+    public static final String NAME = "Liepard";
+    public static final String TYPE_OF_POKEMON = "Cruel";
+    public static final String DESCRIPTION = "Stealthily, it sneaks up on its target, striking" +
+            " from behind before its victim has a chance to react.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 156;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 37.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Limber();
-    private static final Ability SECOND_ABILITY = new Ability.Unburden();
-    private static final Ability HIDDEN_ABILITY = new Ability.Prankster();
+    public static final Ability FIRST_ABILITY = new Ability.Limber();
+    public static final Ability SECOND_ABILITY = new Ability.Unburden();
+    public static final Ability HIDDEN_ABILITY = new Ability.Prankster();
 
     //Base Stats
-    private static final int BASE_HEALTH = 64;
-    private static final int BASE_ATTACK = 88;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 88;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 106;
+    public static final int BASE_HEALTH = 64;
+    public static final int BASE_ATTACK = 88;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 88;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 106;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/liepard.png";
-    private static final String BACK_PATH = "battle/backs/unova/liepard.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/liepard.png";
-    private static final String CRY_PATH = "sounds/cry/510.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/liepard.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/liepard.png";
+    public static final String BACK_PATH = "battle/backs/unova/liepard.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/liepard.png";
+    public static final String CRY_PATH = "sounds/cry/510.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/liepard.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a liepard
      */
     public Liepard() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

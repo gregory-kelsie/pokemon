@@ -18,47 +18,51 @@ public class Frillish extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 592;
-    private static final String NAME = "Frillish";
-    private static final int BASE_EXP = 67;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 33;
+    public static final int NUMBER = 592;
+    public static final String NAME = "Frillish";
+    public static final String TYPE_OF_POKEMON = "Floating";
+    public static final String DESCRIPTION = "They paralyze prey with poison, then drag them " +
+            "down to their lairs, five miles below the surface.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 67;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 33;
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = new Ability.CursedBody();
-    private static final Ability HIDDEN_ABILITY = new Ability.Damp();
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = new Ability.CursedBody();
+    public static final Ability HIDDEN_ABILITY = new Ability.Damp();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/frillish.png";
-    private static final String BACK_PATH = "battle/backs/unova/frillish.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/frillish.png";
-    private static final String CRY_PATH = "sounds/cry/592.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/frillish.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/frillish.png";
+    public static final String BACK_PATH = "battle/backs/unova/frillish.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/frillish.png";
+    public static final String CRY_PATH = "sounds/cry/592.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/frillish.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a frillish
      */
     public Frillish() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Skorupi extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 451;
-    private static final String NAME = "Skorupi";
-    private static final int BASE_EXP = 66;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 12;
+    public static final int NUMBER = 451;
+    public static final String NAME = "Skorupi";
+    public static final String TYPE_OF_POKEMON = "Scorpion";
+    public static final String DESCRIPTION = "As soon as the tail claws close, its needle tips" +
+            " secrete poison. It can survive a year without food.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 66;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 12;
 
-    private static final Ability FIRST_ABILITY = new Ability.BattleArmor();
-    private static final Ability SECOND_ABILITY = new Ability.Sniper();
-    private static final Ability HIDDEN_ABILITY = new Ability.KeenEye();
+    public static final Ability FIRST_ABILITY = new Ability.BattleArmor();
+    public static final Ability SECOND_ABILITY = new Ability.Sniper();
+    public static final Ability HIDDEN_ABILITY = new Ability.KeenEye();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 30;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 30;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/skorupi.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/skorupi.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/skorupi.png";
-    private static final String CRY_PATH = "sounds/cry/451.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/skorupi.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/skorupi.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/skorupi.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/skorupi.png";
+    public static final String CRY_PATH = "sounds/cry/451.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/skorupi.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.BUG;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.BUG;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a skorupi
      */
     public Skorupi() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Audino extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 531;
-    private static final String NAME = "Audino";
-    private static final int BASE_EXP = 390;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 31;
+    public static final int NUMBER = 531;
+    public static final String NAME = "Audino";
+    public static final String TYPE_OF_POKEMON = "Hearing";
+    public static final String DESCRIPTION = "It touches others with the feelers on its ears, " +
+            "using the sound of their heartbeats to tell how they are feeling.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 390;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 31;
 
-    private static final Ability FIRST_ABILITY = new Ability.Healer();
-    private static final Ability SECOND_ABILITY = new Ability.Regenerator();
-    private static final Ability HIDDEN_ABILITY = new Ability.Klutz();
+    public static final Ability FIRST_ABILITY = new Ability.Healer();
+    public static final Ability SECOND_ABILITY = new Ability.Regenerator();
+    public static final Ability HIDDEN_ABILITY = new Ability.Klutz();
 
     //Base Stats
-    private static final int BASE_HEALTH = 103;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 86;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 86;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 103;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 86;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 86;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/audino.png";
-    private static final String BACK_PATH = "battle/backs/unova/audino.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/audino.png";
-    private static final String CRY_PATH = "sounds/cry/531.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/audino.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/audino.png";
+    public static final String BACK_PATH = "battle/backs/unova/audino.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/audino.png";
+    public static final String CRY_PATH = "sounds/cry/531.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/audino.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create an audino
      */
     public Audino() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

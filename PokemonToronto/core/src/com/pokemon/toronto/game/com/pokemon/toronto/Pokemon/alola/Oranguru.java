@@ -17,47 +17,51 @@ public class Oranguru extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 765;
-    private static final String NAME = "Oranguru";
-    private static final int BASE_EXP = 172;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 76;
+    public static final int NUMBER = 765;
+    public static final String NAME = "Oranguru";
+    public static final String TYPE_OF_POKEMON = "Sage";
+    public static final String DESCRIPTION = "Known for its extreme intelligence, this Pokémon " +
+            "will look down on inexperienced Trainers, so it’s best suited to veteran Trainers.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 172;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 76;
 
-    private static final Ability FIRST_ABILITY = new Ability.InnerFocus();
-    private static final Ability SECOND_ABILITY = new Ability.Telepathy();
-    private static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
+    public static final Ability FIRST_ABILITY = new Ability.InnerFocus();
+    public static final Ability SECOND_ABILITY = new Ability.Telepathy();
+    public static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/oranguru.png";
-    private static final String BACK_PATH = "battle/backs/alola/oranguru.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/oranguru.png";
-    private static final String CRY_PATH = "sounds/cry/765.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/oranguru.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/oranguru.png";
+    public static final String BACK_PATH = "battle/backs/alola/oranguru.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/oranguru.png";
+    public static final String CRY_PATH = "sounds/cry/765.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/oranguru.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a oranguru
      */
     public Oranguru() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

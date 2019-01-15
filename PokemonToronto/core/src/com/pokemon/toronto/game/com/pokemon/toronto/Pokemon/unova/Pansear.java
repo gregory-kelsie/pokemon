@@ -18,47 +18,51 @@ public class Pansear extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 513;
-    private static final String NAME = "Pansear";
-    private static final int BASE_EXP = 63;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 11;
+    public static final int NUMBER = 513;
+    public static final String NAME = "Pansear";
+    public static final String TYPE_OF_POKEMON = "High Temp";
+    public static final String DESCRIPTION = "Very intelligent, it roasts berries before eating" +
+            " them. It likes to help people.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 63;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 11;
 
-    private static final Ability FIRST_ABILITY = new Ability.Gluttony();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Blaze();
+    public static final Ability FIRST_ABILITY = new Ability.Gluttony();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Blaze();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 53;
-    private static final int BASE_DEFENSE = 48;
-    private static final int BASE_SPECIAL_ATTACK = 53;
-    private static final int BASE_SPECIAL_DEFENSE = 48;
-    private static final int BASE_SPEED = 64;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 53;
+    public static final int BASE_DEFENSE = 48;
+    public static final int BASE_SPECIAL_ATTACK = 53;
+    public static final int BASE_SPECIAL_DEFENSE = 48;
+    public static final int BASE_SPEED = 64;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/pansear.png";
-    private static final String BACK_PATH = "battle/backs/unova/pansear.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/pansear.png";
-    private static final String CRY_PATH = "sounds/cry/513.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/pansear.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/pansear.png";
+    public static final String BACK_PATH = "battle/backs/unova/pansear.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/pansear.png";
+    public static final String CRY_PATH = "sounds/cry/513.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/pansear.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a pansear
      */
     public Pansear() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

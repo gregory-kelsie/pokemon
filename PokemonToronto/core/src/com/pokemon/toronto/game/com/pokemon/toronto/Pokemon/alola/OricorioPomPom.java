@@ -16,6 +16,8 @@ public class OricorioPomPom extends Oricorio {
     /** Init Variables */
 
     private static final int NUMBER = -741;
+    public static final String DESCRIPTION = "This Oricorio has sipped bright yellow nectar. " +
+            "Its bright, cheerful dance melts the hearts of its enemies.";
 
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/alola/oricorio-pom.png";

@@ -17,47 +17,51 @@ public class Vespiquen extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 416;
-    private static final String NAME = "Vespiquen";
-    private static final int BASE_EXP = 166;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 38.5;
+    public static final int NUMBER = 416;
+    public static final String NAME = "Vespiquen";
+    public static final String TYPE_OF_POKEMON = "Beehive";
+    public static final String DESCRIPTION = "It releases various pheromones to make the grubs" +
+            " in its body do its bidding while fighting foes.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 166;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 38.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pressure();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.Pressure();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 102;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 102;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 102;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 102;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/vespiquen.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/vespiquen.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/vespiquen.png";
-    private static final String CRY_PATH = "sounds/cry/416.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/vespiquen.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/vespiquen.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/vespiquen.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/vespiquen.png";
+    public static final String CRY_PATH = "sounds/cry/416.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/vespiquen.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a vespiquen
      */
     public Vespiquen() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

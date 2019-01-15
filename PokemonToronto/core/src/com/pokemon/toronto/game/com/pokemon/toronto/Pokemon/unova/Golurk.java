@@ -17,47 +17,51 @@ public class Golurk extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 623;
-    private static final String NAME = "Golurk";
-    private static final int BASE_EXP = 169;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 330;
+    public static final int NUMBER = 623;
+    public static final String NAME = "Golurk";
+    public static final String TYPE_OF_POKEMON = "Automation";
+    public static final String DESCRIPTION = "It flies across the sky at Mach speeds. Removing " +
+            "the seal on its chest makes its internal energy go out of control.";
+    public static final double HEIGHT = 2.8;
+    public static final int BASE_EXP = 169;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 330;
 
-    private static final Ability FIRST_ABILITY = new Ability.IronFist();
-    private static final Ability SECOND_ABILITY = new Ability.Klutz();
-    private static final Ability HIDDEN_ABILITY = new Ability.NoGuard();
+    public static final Ability FIRST_ABILITY = new Ability.IronFist();
+    public static final Ability SECOND_ABILITY = new Ability.Klutz();
+    public static final Ability HIDDEN_ABILITY = new Ability.NoGuard();
 
     //Base Stats
-    private static final int BASE_HEALTH = 89;
-    private static final int BASE_ATTACK = 124;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 89;
+    public static final int BASE_ATTACK = 124;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/golurk.png";
-    private static final String BACK_PATH = "battle/backs/unova/golurk.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/golurk.png";
-    private static final String CRY_PATH = "sounds/cry/623.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/golurk.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/golurk.png";
+    public static final String BACK_PATH = "battle/backs/unova/golurk.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/golurk.png";
+    public static final String CRY_PATH = "sounds/cry/623.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/golurk.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a golurk
      */
     public Golurk() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

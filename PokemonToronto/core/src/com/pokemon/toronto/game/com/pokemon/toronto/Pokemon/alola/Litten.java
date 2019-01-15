@@ -18,47 +18,51 @@ public class Litten extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 725;
-    private static final String NAME = "Litten";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 4.3;
+    public static final int NUMBER = 725;
+    public static final String NAME = "Litten";
+    public static final String TYPE_OF_POKEMON = "Fire Cat";
+    public static final String DESCRIPTION = "It doesn’t allow its emotions to be easily seen. " +
+            "Earning its trust takes time. It prefers solitude.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 4.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/litten.png";
-    private static final String BACK_PATH = "battle/backs/alola/litten.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/litten.png";
-    private static final String CRY_PATH = "sounds/cry/725.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/litten.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/litten.png";
+    public static final String BACK_PATH = "battle/backs/alola/litten.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/litten.png";
+    public static final String CRY_PATH = "sounds/cry/725.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/litten.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a litten
      */
     public Litten() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

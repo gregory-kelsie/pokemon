@@ -17,47 +17,51 @@ public class Magmortar extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 467;
-    private static final String NAME = "Magmortar";
-    private static final int BASE_EXP = 243;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 68;
+    public static final int NUMBER = 467;
+    public static final String NAME = "Magmortar";
+    public static final String TYPE_OF_POKEMON = "Blast";
+    public static final String DESCRIPTION = "When launching 3,600 degrees F fireballs, its body" +
+            " takes on a whitish hue from the intense heat.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 243;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 68;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlameBody();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
+    public static final Ability FIRST_ABILITY = new Ability.FlameBody();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 67;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 83;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 67;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 83;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/magmortar.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/magmortar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/magmortar.png";
-    private static final String CRY_PATH = "sounds/cry/467.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/magmortar.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/magmortar.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/magmortar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/magmortar.png";
+    public static final String CRY_PATH = "sounds/cry/467.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/magmortar.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a magmortar
      */
     public Magmortar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

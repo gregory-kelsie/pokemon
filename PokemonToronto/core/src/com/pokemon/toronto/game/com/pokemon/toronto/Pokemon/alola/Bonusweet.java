@@ -20,6 +20,10 @@ public class Bonusweet extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 761;
     private static final String NAME = "Bonusweet";
+    public static final String TYPE_OF_POKEMON = "Fruit";
+    public static final String DESCRIPTION = "Although it’s too sugary for human consumption, " +
+            "its sweat can be watered down into a juice with just the right amount of sweetness.";
+    public static final double HEIGHT = 0.3;
     private static final int BASE_EXP = 42;
     private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 235;
@@ -55,10 +59,10 @@ public class Bonusweet extends Pokemon {
      * Create a bonusweet
      */
     public Bonusweet() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Wimpod extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 767;
-    private static final String NAME = "Wimpod";
-    private static final int BASE_EXP = 46;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 12;
+    public static final int NUMBER = 767;
+    public static final String NAME = "Wimpod";
+    public static final String TYPE_OF_POKEMON = "Turn Tail";
+    public static final String DESCRIPTION = "Its habitat varies from beaches to seabeds. A " +
+            "natural scavenger, it will gleefully chow down on anything edible, no matter how rotten.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 46;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 12;
 
-    private static final Ability FIRST_ABILITY = new Ability.WimpOut();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.WimpOut();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 25;
-    private static final int BASE_ATTACK = 35;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 20;
-    private static final int BASE_SPECIAL_DEFENSE = 30;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 25;
+    public static final int BASE_ATTACK = 35;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 20;
+    public static final int BASE_SPECIAL_DEFENSE = 30;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/wimpod.png";
-    private static final String BACK_PATH = "battle/backs/alola/wimpod.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/wimpod.png";
-    private static final String CRY_PATH = "sounds/cry/767.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/wimpod.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/wimpod.png";
+    public static final String BACK_PATH = "battle/backs/alola/wimpod.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/wimpod.png";
+    public static final String CRY_PATH = "sounds/cry/767.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/wimpod.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a wimpod
      */
     public Wimpod() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

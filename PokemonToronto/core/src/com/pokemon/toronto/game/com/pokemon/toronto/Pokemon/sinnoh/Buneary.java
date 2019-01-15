@@ -18,47 +18,51 @@ public class Buneary extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 427;
-    private static final String NAME = "Buneary";
-    private static final int BASE_EXP = 70;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 5.5;
+    public static final int NUMBER = 427;
+    public static final String NAME = "Buneary";
+    public static final String TYPE_OF_POKEMON = "Rabbit";
+    public static final String DESCRIPTION = "Its ears are always rolled up. They can be " +
+            "forcefully extended to shatter even a large boulder.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 70;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 5.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.Klutz();
-    private static final Ability HIDDEN_ABILITY = new Ability.Limber();
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.Klutz();
+    public static final Ability HIDDEN_ABILITY = new Ability.Limber();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 66;
-    private static final int BASE_DEFENSE = 44;
-    private static final int BASE_SPECIAL_ATTACK = 44;
-    private static final int BASE_SPECIAL_DEFENSE = 56;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 66;
+    public static final int BASE_DEFENSE = 44;
+    public static final int BASE_SPECIAL_ATTACK = 44;
+    public static final int BASE_SPECIAL_DEFENSE = 56;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/buneary.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/buneary.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/buneary.png";
-    private static final String CRY_PATH = "sounds/cry/427.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/buneary.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/buneary.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/buneary.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/buneary.png";
+    public static final String CRY_PATH = "sounds/cry/427.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/buneary.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a buneary
      */
     public Buneary() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

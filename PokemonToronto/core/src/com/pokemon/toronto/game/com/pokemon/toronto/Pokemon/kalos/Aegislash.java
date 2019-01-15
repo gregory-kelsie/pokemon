@@ -17,42 +17,46 @@ public class Aegislash extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 681;
-    private static final String NAME = "Aegislash";
-    private static final int BASE_EXP = 234;
-    private static final int[] EV_YIELD = {0, 2, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 53;
+    public static final int NUMBER = 681;
+    public static final String NAME = "Aegislash";
+    public static final String TYPE_OF_POKEMON = "Royal Sword";
+    public static final String DESCRIPTION = "Apparently, it can detect innate qualities of " +
+            "leadership. According to legend, whoever it recognizes is destined to become king.";
+    public static final double HEIGHT = 1.7;
+    public static final int BASE_EXP = 234;
+    public static final int[] EV_YIELD = {0, 2, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 53;
 
-    private static final Ability FIRST_ABILITY = new Ability.StanceChange();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.StanceChange();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 150;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 150;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 150;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 150;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/aegislash.png";
-    private static final String BACK_PATH = "battle/backs/kalos/aegislash.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/aegislash.png";
-    private static final String CRY_PATH = "sounds/cry/680.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/aegislash.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/aegislash.png";
+    public static final String BACK_PATH = "battle/backs/kalos/aegislash.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/aegislash.png";
+    public static final String CRY_PATH = "sounds/cry/680.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/aegislash.png";
 
     private String SHIELD_ICON_PATH = "pokemonSprites/kalos/aegislash-shield.png";
     private String SHIELD_BACK_PATH = "battle/backs/kalos/aegislash-shield.png";
     private String SHIELD_MINI_PATH = "pokemonMenu/sprites/kalos/aegislash-shield.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.STEEL;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.STEEL;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     private final int BLADE_FORM = 0;
     private final int SHIELD_FORM = 1;
@@ -62,10 +66,10 @@ public class Aegislash extends Pokemon {
      * Create a aegislash
      */
     public Aegislash() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
         aegislashForm = SHIELD_FORM;
     }

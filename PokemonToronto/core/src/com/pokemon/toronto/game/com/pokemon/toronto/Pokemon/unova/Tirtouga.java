@@ -18,47 +18,51 @@ public class Tirtouga extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 564;
-    private static final String NAME = "Tirtouga";
-    private static final int BASE_EXP = 71;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 16.5;
+    public static final int NUMBER = 564;
+    public static final String NAME = "Tirtouga";
+    public static final String TYPE_OF_POKEMON = "Prototurtle";
+    public static final String DESCRIPTION = "Restored from a fossil, this Pokémon can dive" +
+            " to depths beyond half a mile.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 71;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 16.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SolidRock();
-    private static final Ability SECOND_ABILITY = new Ability.Sturdy();
-    private static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
+    public static final Ability FIRST_ABILITY = new Ability.SolidRock();
+    public static final Ability SECOND_ABILITY = new Ability.Sturdy();
+    public static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
 
     //Base Stats
-    private static final int BASE_HEALTH = 54;
-    private static final int BASE_ATTACK = 78;
-    private static final int BASE_DEFENSE = 103;
-    private static final int BASE_SPECIAL_ATTACK = 53;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 22;
+    public static final int BASE_HEALTH = 54;
+    public static final int BASE_ATTACK = 78;
+    public static final int BASE_DEFENSE = 103;
+    public static final int BASE_SPECIAL_ATTACK = 53;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 22;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/tirtouga.png";
-    private static final String BACK_PATH = "battle/backs/unova/tirtouga.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/tirtouga.png";
-    private static final String CRY_PATH = "sounds/cry/564.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/tirtouga.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/tirtouga.png";
+    public static final String BACK_PATH = "battle/backs/unova/tirtouga.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/tirtouga.png";
+    public static final String CRY_PATH = "sounds/cry/564.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/tirtouga.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a tirtouga
      */
     public Tirtouga() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

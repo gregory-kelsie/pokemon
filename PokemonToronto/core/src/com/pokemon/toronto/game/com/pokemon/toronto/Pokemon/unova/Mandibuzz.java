@@ -17,47 +17,51 @@ public class Mandibuzz extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 630;
-    private static final String NAME = "Mandibuzz";
-    private static final int BASE_EXP = 179;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 39.5;
+    public static final int NUMBER = 630;
+    public static final String NAME = "Mandibuzz";
+    public static final String TYPE_OF_POKEMON = "Bone Vulture";
+    public static final String DESCRIPTION = "It makes a nest out of bones it finds. It grabs" +
+            " weakened prey in its talons and hauls it to its nest of bones.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 179;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 39.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.BigPecks();
-    private static final Ability SECOND_ABILITY = new Ability.Overcoat();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.BigPecks();
+    public static final Ability SECOND_ABILITY = new Ability.Overcoat();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 110;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 105;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 110;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 105;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/mandibuzz.png";
-    private static final String BACK_PATH = "battle/backs/unova/mandibuzz.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/mandibuzz.png";
-    private static final String CRY_PATH = "sounds/cry/630.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/mandibuzz.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/mandibuzz.png";
+    public static final String BACK_PATH = "battle/backs/unova/mandibuzz.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/mandibuzz.png";
+    public static final String CRY_PATH = "sounds/cry/630.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/mandibuzz.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a mandibuzz
      */
     public Mandibuzz() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

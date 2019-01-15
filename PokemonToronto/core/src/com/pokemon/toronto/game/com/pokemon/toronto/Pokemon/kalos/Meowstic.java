@@ -17,47 +17,51 @@ public class Meowstic extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 678;
-    private static final String NAME = "Meowstic";
-    private static final int BASE_EXP = 163;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 678;
+    public static final String NAME = "Meowstic";
+    public static final String TYPE_OF_POKEMON = "Constraint";
+    public static final String DESCRIPTION = "When in danger, it raises its ears and releases" +
+            " enough psychic power to grind a 10-ton truck into dust.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 163;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 8.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.Infiltrator();
-    private static final Ability HIDDEN_ABILITY = new Ability.OwnTempo();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.Infiltrator();
+    public static final Ability HIDDEN_ABILITY = new Ability.OwnTempo();
 
     //Base Stats
-    private static final int BASE_HEALTH = 74;
-    private static final int BASE_ATTACK = 48;
-    private static final int BASE_DEFENSE = 76;
-    private static final int BASE_SPECIAL_ATTACK = 83;
-    private static final int BASE_SPECIAL_DEFENSE = 81;
-    private static final int BASE_SPEED = 104;
+    public static final int BASE_HEALTH = 74;
+    public static final int BASE_ATTACK = 48;
+    public static final int BASE_DEFENSE = 76;
+    public static final int BASE_SPECIAL_ATTACK = 83;
+    public static final int BASE_SPECIAL_DEFENSE = 81;
+    public static final int BASE_SPEED = 104;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/meowstic.png";
-    private static final String BACK_PATH = "battle/backs/kalos/meowstic.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/meowstic.png";
-    private static final String CRY_PATH = "sounds/cry/678.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/meowstic.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/meowstic.png";
+    public static final String BACK_PATH = "battle/backs/kalos/meowstic.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/meowstic.png";
+    public static final String CRY_PATH = "sounds/cry/678.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/meowstic.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a meowstic
      */
     public Meowstic() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

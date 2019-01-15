@@ -18,47 +18,51 @@ public class Pumpkaboo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 710;
-    private static final String NAME = "Pumpkaboo";
-    private static final int BASE_EXP = 67;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 5;
+    public static final int NUMBER = 710;
+    public static final String NAME = "Pumpkaboo";
+    public static final String TYPE_OF_POKEMON = "Pumpkin";
+    public static final String DESCRIPTION = "The pumpkin body is inhabited by a spirit trapped " +
+            "in this world. As the sun sets, it becomes restless and active.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 67;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = new Ability.Frisk();
-    private static final Ability HIDDEN_ABILITY = new Ability.Insomnia();
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = new Ability.Frisk();
+    public static final Ability HIDDEN_ABILITY = new Ability.Insomnia();
 
     //Base Stats
-    private static final int BASE_HEALTH = 49;
-    private static final int BASE_ATTACK = 66;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 44;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 51;
+    public static final int BASE_HEALTH = 49;
+    public static final int BASE_ATTACK = 66;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 44;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 51;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/pumpkaboo.png";
-    private static final String BACK_PATH = "battle/backs/kalos/pumpkaboo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/pumpkaboo.png";
-    private static final String CRY_PATH = "sounds/cry/710.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/pumpkaboo.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/pumpkaboo.png";
+    public static final String BACK_PATH = "battle/backs/kalos/pumpkaboo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/pumpkaboo.png";
+    public static final String CRY_PATH = "sounds/cry/710.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/pumpkaboo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.GRASS;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.GRASS;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a pumpkaboo
      */
     public Pumpkaboo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

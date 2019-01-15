@@ -18,47 +18,51 @@ public class Chimchar extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 390;
-    private static final String NAME = "Chimchar";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 6.2;
+    public static final int NUMBER = 390;
+    public static final String NAME = "Chimchar";
+    public static final String TYPE_OF_POKEMON = "Chimp";
+    public static final String DESCRIPTION = "It is very agile. Before going to sleep, it " +
+            "extinguishes the flame on its tail to prevent fires.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 6.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 44;
-    private static final int BASE_ATTACK = 58;
-    private static final int BASE_DEFENSE = 44;
-    private static final int BASE_SPECIAL_ATTACK = 58;
-    private static final int BASE_SPECIAL_DEFENSE = 44;
-    private static final int BASE_SPEED = 61;
+    public static final int BASE_HEALTH = 44;
+    public static final int BASE_ATTACK = 58;
+    public static final int BASE_DEFENSE = 44;
+    public static final int BASE_SPECIAL_ATTACK = 58;
+    public static final int BASE_SPECIAL_DEFENSE = 44;
+    public static final int BASE_SPEED = 61;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/chimchar.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/chimchar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/chimchar.png";
-    private static final String CRY_PATH = "sounds/cry/390.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/chimchar.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/chimchar.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/chimchar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/chimchar.png";
+    public static final String CRY_PATH = "sounds/cry/390.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/chimchar.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a chimchar
      */
     public Chimchar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

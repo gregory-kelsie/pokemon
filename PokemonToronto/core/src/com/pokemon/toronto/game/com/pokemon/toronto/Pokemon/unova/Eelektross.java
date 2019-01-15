@@ -17,47 +17,51 @@ public class Eelektross extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 604;
-    private static final String NAME = "Eelektross";
-    private static final int BASE_EXP = 232;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 80.5;
+    public static final int NUMBER = 604;
+    public static final String NAME = "Eelektross";
+    public static final String TYPE_OF_POKEMON = "EleFish";
+    public static final String DESCRIPTION = "They crawl out of the ocean using their arms. " +
+            "They will attack prey on shore and immediately drag it into the ocean.";
+    public static final double HEIGHT = 2.1;
+    public static final int BASE_EXP = 232;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 80.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 115;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 105;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 115;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 105;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/eelektross.png";
-    private static final String BACK_PATH = "battle/backs/unova/eelektross.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/eelektross.png";
-    private static final String CRY_PATH = "sounds/cry/604.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/eelektross.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/eelektross.png";
+    public static final String BACK_PATH = "battle/backs/unova/eelektross.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/eelektross.png";
+    public static final String CRY_PATH = "sounds/cry/604.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/eelektross.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a eelektross
      */
     public Eelektross() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

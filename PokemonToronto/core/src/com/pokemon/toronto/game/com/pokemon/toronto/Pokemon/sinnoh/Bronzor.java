@@ -18,47 +18,51 @@ public class Bronzor extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 436;
-    private static final String NAME = "Bronzor";
-    private static final int BASE_EXP = 60;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 60.5;
+    public static final int NUMBER = 436;
+    public static final String NAME = "Bronzor";
+    public static final String TYPE_OF_POKEMON = "Bronze";
+    public static final String DESCRIPTION = "They are found in ancient tombs. The patterns on " +
+            "their back are said to be imbued with mysterious power.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 60;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 60.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = new Ability.Heatproof();
-    private static final Ability HIDDEN_ABILITY = new Ability.HeavyMetal();
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = new Ability.Heatproof();
+    public static final Ability HIDDEN_ABILITY = new Ability.HeavyMetal();
 
     //Base Stats
-    private static final int BASE_HEALTH = 57;
-    private static final int BASE_ATTACK = 24;
-    private static final int BASE_DEFENSE = 86;
-    private static final int BASE_SPECIAL_ATTACK = 24;
-    private static final int BASE_SPECIAL_DEFENSE = 86;
-    private static final int BASE_SPEED = 23;
+    public static final int BASE_HEALTH = 57;
+    public static final int BASE_ATTACK = 24;
+    public static final int BASE_DEFENSE = 86;
+    public static final int BASE_SPECIAL_ATTACK = 24;
+    public static final int BASE_SPECIAL_DEFENSE = 86;
+    public static final int BASE_SPEED = 23;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/bronzor.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/bronzor.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bronzor.png";
-    private static final String CRY_PATH = "sounds/cry/436.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bronzor.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/bronzor.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/bronzor.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bronzor.png";
+    public static final String CRY_PATH = "sounds/cry/436.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bronzor.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.STEEL;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Pokemon.Type TYPE_ONE = Type.STEEL;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bronzor
      */
     public Bronzor() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

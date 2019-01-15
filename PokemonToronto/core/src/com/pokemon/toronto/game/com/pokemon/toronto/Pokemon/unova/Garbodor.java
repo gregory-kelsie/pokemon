@@ -17,47 +17,51 @@ public class Garbodor extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 559;
-    private static final String NAME = "Garbodor";
-    private static final int BASE_EXP = 166;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 107.3;
+    public static final int NUMBER = 559;
+    public static final String NAME = "Garbodor";
+    public static final String TYPE_OF_POKEMON = "Trash Heap";
+    public static final String DESCRIPTION = "Consuming garbage makes new kinds of poison gases" +
+            " and liquids inside their bodies.";
+    public static final double HEIGHT = 1.9;
+    public static final int BASE_EXP = 166;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 107.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Stench();
-    private static final Ability SECOND_ABILITY = new Ability.WeakArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.Aftermath();
+    public static final Ability FIRST_ABILITY = new Ability.Stench();
+    public static final Ability SECOND_ABILITY = new Ability.WeakArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.Aftermath();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 82;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 82;
-    private static final int BASE_SPEED = 75;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 82;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 82;
+    public static final int BASE_SPEED = 75;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/garbodor.png";
-    private static final String BACK_PATH = "battle/backs/unova/garbodor.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/garbodor.png";
-    private static final String CRY_PATH = "sounds/cry/559.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/garbodor.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/garbodor.png";
+    public static final String BACK_PATH = "battle/backs/unova/garbodor.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/garbodor.png";
+    public static final String CRY_PATH = "sounds/cry/559.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/garbodor.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a garbodor
      */
     public Garbodor() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

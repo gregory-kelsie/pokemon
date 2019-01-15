@@ -17,47 +17,51 @@ public class Slurpuff extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 685;
-    private static final String NAME = "Slurpuff";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 140;
-    private static final double WEIGHT = 5;
+    public static final int NUMBER = 685;
+    public static final String NAME = "Slurpuff";
+    public static final String TYPE_OF_POKEMON = "Meringue";
+    public static final String DESCRIPTION = "It can distinguish the faintest of scents. It puts " +
+            "its sensitive sense of smell to use by helping pastry chefs in their work.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 140;
+    public static final double WEIGHT = 5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SweetVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Unburden();
+    public static final Ability FIRST_ABILITY = new Ability.SweetVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Unburden();
 
     //Base Stats
-    private static final int BASE_HEALTH = 82;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 86;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 72;
+    public static final int BASE_HEALTH = 82;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 86;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 72;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/slurpuff.png";
-    private static final String BACK_PATH = "battle/backs/kalos/slurpuff.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/slurpuff.png";
-    private static final String CRY_PATH = "sounds/cry/685.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/slurpuff.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/slurpuff.png";
+    public static final String BACK_PATH = "battle/backs/kalos/slurpuff.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/slurpuff.png";
+    public static final String CRY_PATH = "sounds/cry/685.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/slurpuff.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a slurpuff
      */
     public Slurpuff() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

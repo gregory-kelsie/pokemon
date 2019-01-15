@@ -18,47 +18,51 @@ public class Salandit extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 757;
-    private static final String NAME = "Salandit";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 4.8;
+    public static final int NUMBER = 757;
+    public static final String NAME = "Salandit";
+    public static final String TYPE_OF_POKEMON = "Toxic Lizard";
+    public static final String DESCRIPTION = "It burns its bodily fluids to create a poisonous " +
+            "gas. When its enemies become disoriented from inhaling the gas, it attacks them.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 4.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Corrosion();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Oblivious();
+    public static final Ability FIRST_ABILITY = new Ability.Corrosion();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Oblivious();
 
     //Base Stats
-    private static final int BASE_HEALTH = 48;
-    private static final int BASE_ATTACK = 44;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 71;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 77;
+    public static final int BASE_HEALTH = 48;
+    public static final int BASE_ATTACK = 44;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 71;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 77;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/salandit.png";
-    private static final String BACK_PATH = "battle/backs/alola/salandit.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/salandit.png";
-    private static final String CRY_PATH = "sounds/cry/757.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/salandit.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/salandit.png";
+    public static final String BACK_PATH = "battle/backs/alola/salandit.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/salandit.png";
+    public static final String CRY_PATH = "sounds/cry/757.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/salandit.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a salandit
      */
     public Salandit() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

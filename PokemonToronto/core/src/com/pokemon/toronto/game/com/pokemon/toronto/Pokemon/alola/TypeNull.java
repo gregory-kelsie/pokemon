@@ -18,47 +18,51 @@ public class TypeNull extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 772;
-    private static final String NAME = "Type: Null";
-    private static final int BASE_EXP = 107;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 3;
-    private static final double WEIGHT = 120.5;
+    public static final int NUMBER = 772;
+    public static final String NAME = "Type: Null";
+    public static final String TYPE_OF_POKEMON = "Synthetic";
+    public static final String DESCRIPTION = "The heavy control mask it wears suppresses its " +
+            "intrinsic capabilities. This Pokémon has some hidden special power.";
+    public static final double HEIGHT = 1.9;
+    public static final int BASE_EXP = 107;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 3;
+    public static final double WEIGHT = 120.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.BattleArmor();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.BattleArmor();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 59;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 59;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/typenull.png";
-    private static final String BACK_PATH = "battle/backs/alola/typenull.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/typenull.png";
-    private static final String CRY_PATH = "sounds/cry/772.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/typenull.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/typenull.png";
+    public static final String BACK_PATH = "battle/backs/alola/typenull.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/typenull.png";
+    public static final String CRY_PATH = "sounds/cry/772.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/typenull.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a typenull
      */
     public TypeNull() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

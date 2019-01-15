@@ -18,47 +18,51 @@ public class Zorua extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 570;
-    private static final String NAME = "Zorua";
-    private static final int BASE_EXP = 66;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 12.5;
+    public static final int NUMBER = 570;
+    public static final String NAME = "Zorua";
+    public static final String TYPE_OF_POKEMON = "Tricky Fox";
+    public static final String DESCRIPTION = "It changes so it looks just like its foe, tricks " +
+            "it, and then uses that opportunity to flee.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 66;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 12.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Illusion();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Illusion();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/zorua.png";
-    private static final String BACK_PATH = "battle/backs/unova/zorua.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/zorua.png";
-    private static final String CRY_PATH = "sounds/cry/570.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/zorua.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/zorua.png";
+    public static final String BACK_PATH = "battle/backs/unova/zorua.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/zorua.png";
+    public static final String CRY_PATH = "sounds/cry/570.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/zorua.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a zorua
      */
     public Zorua() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

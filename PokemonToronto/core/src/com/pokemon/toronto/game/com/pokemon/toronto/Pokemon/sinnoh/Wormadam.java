@@ -17,47 +17,51 @@ public class Wormadam extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 413;
-    private static final String NAME = "Wormadam";
-    private static final int BASE_EXP = 148;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 6.5;
+    public static final int NUMBER = 413;
+    public static final String NAME = "Wormadam";
+    public static final String TYPE_OF_POKEMON = "Bagworm";
+    public static final String DESCRIPTION = "When evolving, its body takes in surrounding " +
+            "materials. As a result, there are many body variations.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 148;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 6.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Anticipation();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
+    public static final Ability FIRST_ABILITY = new Ability.Anticipation();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Overcoat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 59;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 79;
-    private static final int BASE_SPECIAL_DEFENSE = 105;
-    private static final int BASE_SPEED = 36;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 59;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 79;
+    public static final int BASE_SPECIAL_DEFENSE = 105;
+    public static final int BASE_SPEED = 36;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/wormadam.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/wormadam.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/wormadam.png";
-    private static final String CRY_PATH = "sounds/cry/413.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/wormadam.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/wormadam.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/wormadam.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/wormadam.png";
+    public static final String CRY_PATH = "sounds/cry/413.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/wormadam.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.GRASS;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.GRASS;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a wormadam
      */
     public Wormadam() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

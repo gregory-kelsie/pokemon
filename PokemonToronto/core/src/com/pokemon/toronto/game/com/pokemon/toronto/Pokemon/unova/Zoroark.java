@@ -17,47 +17,51 @@ public class Zoroark extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 571;
-    private static final String NAME = "Zoroark";
-    private static final int BASE_EXP = 179;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 81.1;
+    public static final int NUMBER = 571;
+    public static final String NAME = "Zoroark";
+    public static final String TYPE_OF_POKEMON = "Illusion Fox";
+    public static final String DESCRIPTION = "Bonds between these Pokémon are very strong. It" +
+            " protects the safety of its pack by tricking its opponents.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 179;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 81.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.Illusion();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Illusion();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 120;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 105;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 120;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 105;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/zoroark.png";
-    private static final String BACK_PATH = "battle/backs/unova/zoroark.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/zoroark.png";
-    private static final String CRY_PATH = "sounds/cry/571.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/zoroark.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/zoroark.png";
+    public static final String BACK_PATH = "battle/backs/unova/zoroark.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/zoroark.png";
+    public static final String CRY_PATH = "sounds/cry/571.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/zoroark.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a zoroark
      */
     public Zoroark() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

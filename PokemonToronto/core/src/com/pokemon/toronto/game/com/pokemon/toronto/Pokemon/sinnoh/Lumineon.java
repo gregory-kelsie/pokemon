@@ -17,47 +17,51 @@ public class Lumineon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 457;
-    private static final String NAME = "Lumineon";
-    private static final int BASE_EXP = 161;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 24;
+    public static final int NUMBER = 457;
+    public static final String NAME = "Lumineon";
+    public static final String TYPE_OF_POKEMON = "Neon";
+    public static final String DESCRIPTION = "It crawls along the seafloor using its long front" +
+            " fins like legs. It competes for food with Lanturn.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 161;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 24;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.StormDrain();
-    private static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.StormDrain();
+    public static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 69;
-    private static final int BASE_ATTACK = 69;
-    private static final int BASE_DEFENSE = 76;
-    private static final int BASE_SPECIAL_ATTACK = 69;
-    private static final int BASE_SPECIAL_DEFENSE = 86;
-    private static final int BASE_SPEED = 91;
+    public static final int BASE_HEALTH = 69;
+    public static final int BASE_ATTACK = 69;
+    public static final int BASE_DEFENSE = 76;
+    public static final int BASE_SPECIAL_ATTACK = 69;
+    public static final int BASE_SPECIAL_DEFENSE = 86;
+    public static final int BASE_SPEED = 91;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/lumineon.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/lumineon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/lumineon.png";
-    private static final String CRY_PATH = "sounds/cry/457.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/lumineon.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/lumineon.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/lumineon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/lumineon.png";
+    public static final String CRY_PATH = "sounds/cry/457.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/lumineon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.ERRATIC;
+    public static final ExpType EXP_TYPE = ExpType.ERRATIC;
 
     /**
      * Create a lumineon
      */
     public Lumineon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

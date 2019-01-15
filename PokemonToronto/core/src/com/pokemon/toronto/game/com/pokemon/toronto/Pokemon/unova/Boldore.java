@@ -18,47 +18,51 @@ public class Boldore extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 525;
-    private static final String NAME = "Boldore";
-    private static final int BASE_EXP = 137;
-    private static final int[] EV_YIELD = {0, 1, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 102;
+    public static final int NUMBER = 525;
+    public static final String NAME = "Boldore";
+    public static final String TYPE_OF_POKEMON = "Ore";
+    public static final String DESCRIPTION = "When it overflows with power, the orange crystal " +
+            "on its body glows. It looks for underground water in caves.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 137;
+    public static final int[] EV_YIELD = {0, 1, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 102;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.WeakArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.WeakArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 105;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 105;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/boldore.png";
-    private static final String BACK_PATH = "battle/backs/unova/boldore.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/boldore.png";
-    private static final String CRY_PATH = "sounds/cry/525.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/boldore.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/boldore.png";
+    public static final String BACK_PATH = "battle/backs/unova/boldore.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/boldore.png";
+    public static final String CRY_PATH = "sounds/cry/525.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/boldore.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a boldore
      */
     public Boldore() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

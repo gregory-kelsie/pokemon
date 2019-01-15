@@ -17,47 +17,51 @@ public class Stunfisk extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 618;
-    private static final String NAME = "Stunfisk";
-    private static final int BASE_EXP = 165;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 11;
+    public static final int NUMBER = 618;
+    public static final String NAME = "Stunfisk";
+    public static final String TYPE_OF_POKEMON = "Trap";
+    public static final String DESCRIPTION = "Its skin is very hard, so it is unhurt even if " +
+            "stepped on by sumo wrestlers. It smiles when transmitting electricity.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 165;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 11;
 
-    private static final Ability FIRST_ABILITY = new Ability.Static();
-    private static final Ability SECOND_ABILITY = new Ability.Limber();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
+    public static final Ability FIRST_ABILITY = new Ability.Static();
+    public static final Ability SECOND_ABILITY = new Ability.Limber();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 109;
-    private static final int BASE_ATTACK = 66;
-    private static final int BASE_DEFENSE = 84;
-    private static final int BASE_SPECIAL_ATTACK = 81;
-    private static final int BASE_SPECIAL_DEFENSE = 99;
-    private static final int BASE_SPEED = 32;
+    public static final int BASE_HEALTH = 109;
+    public static final int BASE_ATTACK = 66;
+    public static final int BASE_DEFENSE = 84;
+    public static final int BASE_SPECIAL_ATTACK = 81;
+    public static final int BASE_SPECIAL_DEFENSE = 99;
+    public static final int BASE_SPEED = 32;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/stunfisk.png";
-    private static final String BACK_PATH = "battle/backs/unova/stunfisk.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/stunfisk.png";
-    private static final String CRY_PATH = "sounds/cry/618.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/stunfisk.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/stunfisk.png";
+    public static final String BACK_PATH = "battle/backs/unova/stunfisk.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/stunfisk.png";
+    public static final String CRY_PATH = "sounds/cry/618.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/stunfisk.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.ELECTRIC;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.ELECTRIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a stunfisk
      */
     public Stunfisk() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

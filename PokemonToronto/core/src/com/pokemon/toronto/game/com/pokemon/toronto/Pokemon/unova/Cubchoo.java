@@ -18,47 +18,51 @@ public class Cubchoo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 613;
-    private static final String NAME = "Cubchoo";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 8.5;
+    public static final int NUMBER = 613;
+    public static final String NAME = "Cubchoo";
+    public static final String TYPE_OF_POKEMON = "Chill";
+    public static final String DESCRIPTION = "When it is not feeling well, its mucus gets watery" +
+            " and the power of its Ice-type moves decreases.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 8.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SnowCloak();
-    private static final Ability SECOND_ABILITY = new Ability.SlushRush();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.SnowCloak();
+    public static final Ability SECOND_ABILITY = new Ability.SlushRush();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/cubchoo.png";
-    private static final String BACK_PATH = "battle/backs/unova/cubchoo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/cubchoo.png";
-    private static final String CRY_PATH = "sounds/cry/613.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/cubchoo.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/cubchoo.png";
+    public static final String BACK_PATH = "battle/backs/unova/cubchoo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/cubchoo.png";
+    public static final String CRY_PATH = "sounds/cry/613.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/cubchoo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a cubchoo
      */
     public Cubchoo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

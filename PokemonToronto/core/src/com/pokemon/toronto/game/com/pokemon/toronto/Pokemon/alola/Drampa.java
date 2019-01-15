@@ -17,47 +17,51 @@ public class Drampa extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 780;
-    private static final String NAME = "Drampa";
-    private static final int BASE_EXP = 170;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 70;
-    private static final double WEIGHT = 185;
+    public static final int NUMBER = 780;
+    public static final String NAME = "Drampa";
+    public static final String TYPE_OF_POKEMON = "Placid";
+    public static final String DESCRIPTION = "It has a compassionate personality, but if it is " +
+            "angered, it completely destroys its surroundings with its intense breath.";
+    public static final double HEIGHT = 3;
+    public static final int BASE_EXP = 170;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 70;
+    public static final double WEIGHT = 185;
 
-    private static final Ability FIRST_ABILITY = new Ability.Berserk();
-    private static final Ability SECOND_ABILITY = new Ability.SapSipper();
-    private static final Ability HIDDEN_ABILITY = new Ability.CloudNine();
+    public static final Ability FIRST_ABILITY = new Ability.Berserk();
+    public static final Ability SECOND_ABILITY = new Ability.SapSipper();
+    public static final Ability HIDDEN_ABILITY = new Ability.CloudNine();
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 135;
-    private static final int BASE_SPECIAL_DEFENSE = 91;
-    private static final int BASE_SPEED = 36;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 135;
+    public static final int BASE_SPECIAL_DEFENSE = 91;
+    public static final int BASE_SPEED = 36;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/drampa.png";
-    private static final String BACK_PATH = "battle/backs/alola/drampa.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/drampa.png";
-    private static final String CRY_PATH = "sounds/cry/780.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/drampa.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/drampa.png";
+    public static final String BACK_PATH = "battle/backs/alola/drampa.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/drampa.png";
+    public static final String CRY_PATH = "sounds/cry/780.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/drampa.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a drampa
      */
     public Drampa() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

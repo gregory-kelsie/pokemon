@@ -17,47 +17,51 @@ public class Gallade extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 475;
-    private static final String NAME = "Gallade";
-    private static final int BASE_EXP = 233;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 52;
+    public static final int NUMBER = 475;
+    public static final String NAME = "Gallade";
+    public static final String TYPE_OF_POKEMON = "Blade";
+    public static final String DESCRIPTION = "When trying to protect someone, it extends its " +
+            "elbows as if they were swords and fights savagely.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 233;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 52;
 
-    private static final Ability FIRST_ABILITY = new Ability.Steadfast();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Justified();
+    public static final Ability FIRST_ABILITY = new Ability.Steadfast();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Justified();
 
     //Base Stats
-    private static final int BASE_HEALTH = 68;
-    private static final int BASE_ATTACK = 125;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 115;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 68;
+    public static final int BASE_ATTACK = 125;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 115;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/gallade.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/gallade.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/gallade.png";
-    private static final String CRY_PATH = "sounds/cry/475.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/gallade.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/gallade.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/gallade.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/gallade.png";
+    public static final String CRY_PATH = "sounds/cry/475.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/gallade.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a gallade
      */
     public Gallade() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

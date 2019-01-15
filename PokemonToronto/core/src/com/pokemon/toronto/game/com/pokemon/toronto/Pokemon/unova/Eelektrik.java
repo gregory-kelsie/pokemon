@@ -18,47 +18,51 @@ public class Eelektrik extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 603;
-    private static final String NAME = "Eelektrik";
-    private static final int BASE_EXP = 142;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 22;
+    public static final int NUMBER = 603;
+    public static final String NAME = "Eelektrik";
+    public static final String TYPE_OF_POKEMON = "EleFish";
+    public static final String DESCRIPTION = "They coil around foes and shock them with " +
+            "electricity-generating organs that seem simply to be circular patterns.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 142;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 22;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/eelektrik.png";
-    private static final String BACK_PATH = "battle/backs/unova/eelektrik.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/eelektrik.png";
-    private static final String CRY_PATH = "sounds/cry/603.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/eelektrik.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/eelektrik.png";
+    public static final String BACK_PATH = "battle/backs/unova/eelektrik.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/eelektrik.png";
+    public static final String CRY_PATH = "sounds/cry/603.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/eelektrik.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a eelektrik
      */
     public Eelektrik() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

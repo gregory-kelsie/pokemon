@@ -17,47 +17,51 @@ public class Seismitoad extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 537;
-    private static final String NAME = "Seismitoad";
-    private static final int BASE_EXP = 229;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 62;
+    public static final int NUMBER = 537;
+    public static final String NAME = "Seismitoad";
+    public static final String TYPE_OF_POKEMON = "Vibration";
+    public static final String DESCRIPTION = "They shoot paralyzing liquid from their head bumps." +
+            " They use vibration to hurt their opponents.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 229;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 62;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.PoisonTouch();
-    private static final Ability HIDDEN_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.PoisonTouch();
+    public static final Ability HIDDEN_ABILITY = new Ability.WaterAbsorb();
 
     //Base Stats
-    private static final int BASE_HEALTH = 105;
-    private static final int BASE_ATTACK = 95;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 85;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 74;
+    public static final int BASE_HEALTH = 105;
+    public static final int BASE_ATTACK = 95;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 85;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 74;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/seismitoad.png";
-    private static final String BACK_PATH = "battle/backs/unova/seismitoad.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/seismitoad.png";
-    private static final String CRY_PATH = "sounds/cry/537.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/seismitoad.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/seismitoad.png";
+    public static final String BACK_PATH = "battle/backs/unova/seismitoad.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/seismitoad.png";
+    public static final String CRY_PATH = "sounds/cry/537.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/seismitoad.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a seismitoad
      */
     public Seismitoad() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

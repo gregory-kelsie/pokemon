@@ -18,47 +18,51 @@ public class Fraxure extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 611;
-    private static final String NAME = "Fraxure";
-    private static final int BASE_EXP = 144;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 36;
+    public static final int NUMBER = 611;
+    public static final String NAME = "Fraxure";
+    public static final String TYPE_OF_POKEMON = "Axe Jaw";
+    public static final String DESCRIPTION = "Their tusks can shatter rocks. Territory battles " +
+            "between Fraxure can be intensely violent.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 144;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 36;
 
-    private static final Ability FIRST_ABILITY = new Ability.Rivalry();
-    private static final Ability SECOND_ABILITY = new Ability.MoldBreaker();
-    private static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
+    public static final Ability FIRST_ABILITY = new Ability.Rivalry();
+    public static final Ability SECOND_ABILITY = new Ability.MoldBreaker();
+    public static final Ability HIDDEN_ABILITY = new Ability.Unnerve();
 
     //Base Stats
-    private static final int BASE_HEALTH = 66;
-    private static final int BASE_ATTACK = 117;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 67;
+    public static final int BASE_HEALTH = 66;
+    public static final int BASE_ATTACK = 117;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 67;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/fraxure.png";
-    private static final String BACK_PATH = "battle/backs/unova/fraxure.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/fraxure.png";
-    private static final String CRY_PATH = "sounds/cry/611.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/fraxure.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/fraxure.png";
+    public static final String BACK_PATH = "battle/backs/unova/fraxure.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/fraxure.png";
+    public static final String CRY_PATH = "sounds/cry/611.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/fraxure.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DRAGON;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DRAGON;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a fraxure
      */
     public Fraxure() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

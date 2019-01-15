@@ -18,47 +18,51 @@ public class Piplup extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 393;
-    private static final String NAME = "Piplup";
-    private static final int BASE_EXP = 63;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 5.2;
+    public static final int NUMBER = 393;
+    public static final String NAME = "Piplup";
+    public static final String TYPE_OF_POKEMON = "Penguin";
+    public static final String DESCRIPTION = "A poor walker, it often falls down. However, its " +
+            "strong pride makes it puff up its chest without a care.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 63;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 5.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Torrent();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final Ability FIRST_ABILITY = new Ability.Torrent();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 53;
-    private static final int BASE_ATTACK = 51;
-    private static final int BASE_DEFENSE = 53;
-    private static final int BASE_SPECIAL_ATTACK = 61;
-    private static final int BASE_SPECIAL_DEFENSE = 56;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 53;
+    public static final int BASE_ATTACK = 51;
+    public static final int BASE_DEFENSE = 53;
+    public static final int BASE_SPECIAL_ATTACK = 61;
+    public static final int BASE_SPECIAL_DEFENSE = 56;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/piplup.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/piplup.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/piplup.png";
-    private static final String CRY_PATH = "sounds/cry/393.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/piplup.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/piplup.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/piplup.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/piplup.png";
+    public static final String CRY_PATH = "sounds/cry/393.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/piplup.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a piplup
      */
     public Piplup() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

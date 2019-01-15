@@ -18,47 +18,51 @@ public class Maractus extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 556;
-    private static final String NAME = "Maractus";
-    private static final int BASE_EXP = 161;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 28;
+    public static final int NUMBER = 556;
+    public static final String NAME = "Maractus";
+    public static final String TYPE_OF_POKEMON = "Cactus";
+    public static final String DESCRIPTION = "It uses an up-tempo song and dance to drive away" +
+            " the bird Pokémon that prey on its flower seeds.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 161;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 28;
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
-    private static final Ability SECOND_ABILITY = new Ability.Chlorophyll();
-    private static final Ability HIDDEN_ABILITY = new Ability.StormDrain();
+    public static final Ability FIRST_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability SECOND_ABILITY = new Ability.Chlorophyll();
+    public static final Ability HIDDEN_ABILITY = new Ability.StormDrain();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 86;
-    private static final int BASE_DEFENSE = 67;
-    private static final int BASE_SPECIAL_ATTACK = 106;
-    private static final int BASE_SPECIAL_DEFENSE = 67;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 86;
+    public static final int BASE_DEFENSE = 67;
+    public static final int BASE_SPECIAL_ATTACK = 106;
+    public static final int BASE_SPECIAL_DEFENSE = 67;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/maractus.png";
-    private static final String BACK_PATH = "battle/backs/unova/maractus.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/maractus.png";
-    private static final String CRY_PATH = "sounds/cry/556.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/maractus.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/maractus.png";
+    public static final String BACK_PATH = "battle/backs/unova/maractus.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/maractus.png";
+    public static final String CRY_PATH = "sounds/cry/556.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/maractus.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a maractus
      */
     public Maractus() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

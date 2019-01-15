@@ -201,7 +201,7 @@ public class HubState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         checkmark.dispose();
         popupWindow.dispose();

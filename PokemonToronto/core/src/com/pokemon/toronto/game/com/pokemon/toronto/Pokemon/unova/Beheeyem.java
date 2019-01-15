@@ -17,47 +17,51 @@ public class Beheeyem extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 606;
-    private static final String NAME = "Beheeyem";
-    private static final int BASE_EXP = 170;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 34.5;
+    public static final int NUMBER = 606;
+    public static final String NAME = "Beheeyem";
+    public static final String TYPE_OF_POKEMON = "Cerebral";
+    public static final String DESCRIPTION = "It uses psychic power to control an opponent's " +
+            "brain and tamper with its memories.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 170;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 34.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Telepathy();
-    private static final Ability SECOND_ABILITY = new Ability.Synchronize();
-    private static final Ability HIDDEN_ABILITY = new Ability.Analytic();
+    public static final Ability FIRST_ABILITY = new Ability.Telepathy();
+    public static final Ability SECOND_ABILITY = new Ability.Synchronize();
+    public static final Ability HIDDEN_ABILITY = new Ability.Analytic();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/beheeyem.png";
-    private static final String BACK_PATH = "battle/backs/unova/beheeyem.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/beheeyem.png";
-    private static final String CRY_PATH = "sounds/cry/606.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/beheeyem.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/beheeyem.png";
+    public static final String BACK_PATH = "battle/backs/unova/beheeyem.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/beheeyem.png";
+    public static final String CRY_PATH = "sounds/cry/606.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/beheeyem.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a beheeyem
      */
     public Beheeyem() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

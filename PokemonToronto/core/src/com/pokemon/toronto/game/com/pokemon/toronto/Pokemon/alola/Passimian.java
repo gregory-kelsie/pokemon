@@ -17,47 +17,51 @@ public class Passimian extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 766;
-    private static final String NAME = "Passimian";
-    private static final int BASE_EXP = 172;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 82.8;
+    public static final int NUMBER = 766;
+    public static final String NAME = "Passimian";
+    public static final String TYPE_OF_POKEMON = "Teamwork";
+    public static final String DESCRIPTION = "They battle with hard berries for weapons. Their " +
+            "techniques are passed from the boss to the group, generation upon generation.";
+    public static final double HEIGHT = 2;
+    public static final int BASE_EXP = 172;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 82.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Receiver();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final Ability FIRST_ABILITY = new Ability.Receiver();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/passimian.png";
-    private static final String BACK_PATH = "battle/backs/alola/passimian.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/passimian.png";
-    private static final String CRY_PATH = "sounds/cry/766.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/passimian.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/passimian.png";
+    public static final String BACK_PATH = "battle/backs/alola/passimian.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/passimian.png";
+    public static final String CRY_PATH = "sounds/cry/766.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/passimian.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a passimian
      */
     public Passimian() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

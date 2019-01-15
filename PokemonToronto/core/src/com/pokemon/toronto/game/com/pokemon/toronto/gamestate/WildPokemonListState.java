@@ -473,7 +473,7 @@ public class WildPokemonListState extends GameState {
      * Dispose the textures, fonts and sounds.
      */
     @Override
-    protected void dispose() {
+    public void dispose() {
         name.dispose();
         info.dispose();
         topTexture.dispose();

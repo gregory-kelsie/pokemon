@@ -18,47 +18,51 @@ public class Staravia extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 397;
-    private static final String NAME = "Staravia";
-    private static final int BASE_EXP = 119;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 15.5;
+    public static final int NUMBER = 397;
+    public static final String NAME = "Staravia";
+    public static final String TYPE_OF_POKEMON = "Starling";
+    public static final String DESCRIPTION = "Recognizing their own weakness, they always live in" +
+            " a group. When alone, a Staravia cries noisily.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 119;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 15.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/staravia.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/staravia.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/staravia.png";
-    private static final String CRY_PATH = "sounds/cry/397.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/staravia.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/staravia.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/staravia.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/staravia.png";
+    public static final String CRY_PATH = "sounds/cry/397.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/staravia.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a staravia
      */
     public Staravia() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

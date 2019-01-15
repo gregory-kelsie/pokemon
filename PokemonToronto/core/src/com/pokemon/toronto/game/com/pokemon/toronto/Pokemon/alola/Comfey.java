@@ -21,47 +21,51 @@ public class Comfey extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 764;
-    private static final String NAME = "Comfey";
-    private static final int BASE_EXP = 170;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 0.3;
+    public static final int NUMBER = 764;
+    public static final String NAME = "Comfey";
+    public static final String TYPE_OF_POKEMON = "Posy Picker";
+    public static final String DESCRIPTION = "It attaches flowers to its highly nutritious vine." +
+            " This revitalizes the flowers, and they give off an aromatic scent.";
+    public static final double HEIGHT = 0.1;
+    public static final int BASE_EXP = 170;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 0.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
-    private static final Ability SECOND_ABILITY = new Ability.Triage();
-    private static final Ability HIDDEN_ABILITY = new Ability.NaturalCure();
+    public static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
+    public static final Ability SECOND_ABILITY = new Ability.Triage();
+    public static final Ability HIDDEN_ABILITY = new Ability.NaturalCure();
 
     //Base Stats
-    private static final int BASE_HEALTH = 51;
-    private static final int BASE_ATTACK = 52;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 82;
-    private static final int BASE_SPECIAL_DEFENSE = 110;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 51;
+    public static final int BASE_ATTACK = 52;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 82;
+    public static final int BASE_SPECIAL_DEFENSE = 110;
+    public static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/comfey.png";
-    private static final String BACK_PATH = "battle/backs/alola/comfey.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/comfey.png";
-    private static final String CRY_PATH = "sounds/cry/764.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/comfey.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/comfey.png";
+    public static final String BACK_PATH = "battle/backs/alola/comfey.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/comfey.png";
+    public static final String CRY_PATH = "sounds/cry/764.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/comfey.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a comfey
      */
     public Comfey() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

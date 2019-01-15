@@ -17,47 +17,51 @@ public class Swoobat extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 528;
-    private static final String NAME = "Swoobat";
-    private static final int BASE_EXP = 149;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 10.5;
+    public static final int NUMBER = 528;
+    public static final String NAME = "Swoobat";
+    public static final String TYPE_OF_POKEMON = "Courting";
+    public static final String DESCRIPTION = "It emits sound waves of various frequencies from" +
+            " its nose, including some powerful enough to destroy rocks.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 149;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 10.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Unaware();
-    private static final Ability SECOND_ABILITY = new Ability.Klutz();
-    private static final Ability HIDDEN_ABILITY = new Ability.Simple();
+    public static final Ability FIRST_ABILITY = new Ability.Unaware();
+    public static final Ability SECOND_ABILITY = new Ability.Klutz();
+    public static final Ability HIDDEN_ABILITY = new Ability.Simple();
 
     //Base Stats
-    private static final int BASE_HEALTH = 67;
-    private static final int BASE_ATTACK = 57;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 77;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 114;
+    public static final int BASE_HEALTH = 67;
+    public static final int BASE_ATTACK = 57;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 77;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 114;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/swoobat.png";
-    private static final String BACK_PATH = "battle/backs/unova/swoobat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/swoobat.png";
-    private static final String CRY_PATH = "sounds/cry/528.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/swoobat.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/swoobat.png";
+    public static final String BACK_PATH = "battle/backs/unova/swoobat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/swoobat.png";
+    public static final String CRY_PATH = "sounds/cry/528.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/swoobat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a swoobat
      */
     public Swoobat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

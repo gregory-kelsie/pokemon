@@ -18,47 +18,51 @@ public class Gigalith extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 526;
-    private static final String NAME = "Gigalith";
-    private static final int BASE_EXP = 232;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 260;
+    public static final int NUMBER = 526;
+    public static final String NAME = "Gigalith";
+    public static final String TYPE_OF_POKEMON = "Compressed";
+    public static final String DESCRIPTION = "Compressing the energy from its internal core lets" +
+            " it fire off an attack capable of blowing away a mountain.";
+    public static final double HEIGHT = 1.7;
+    public static final int BASE_EXP = 232;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 260;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.WeakArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.WeakArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 135;
-    private static final int BASE_DEFENSE = 130;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 25;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 135;
+    public static final int BASE_DEFENSE = 130;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 25;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/gigalith.png";
-    private static final String BACK_PATH = "battle/backs/unova/gigalith.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/gigalith.png";
-    private static final String CRY_PATH = "sounds/cry/526.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/gigalith.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/gigalith.png";
+    public static final String BACK_PATH = "battle/backs/unova/gigalith.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/gigalith.png";
+    public static final String CRY_PATH = "sounds/cry/526.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/gigalith.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a gigalith
      */
     public Gigalith() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

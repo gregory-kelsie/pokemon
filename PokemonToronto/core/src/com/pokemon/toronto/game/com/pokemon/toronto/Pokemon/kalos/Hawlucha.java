@@ -17,47 +17,51 @@ public class Hawlucha extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 701;
-    private static final String NAME = "Hawlucha";
-    private static final int BASE_EXP = 175;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 100;
-    private static final double WEIGHT = 21.5;
+    public static final int NUMBER = 701;
+    public static final String NAME = "Hawlucha";
+    public static final String TYPE_OF_POKEMON = "Wrestling";
+    public static final String DESCRIPTION = "With its wings, it controls its position in the " +
+            "air. It likes to attack from above, a maneuver that is difficult to defend against.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 175;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 100;
+    public static final double WEIGHT = 21.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Limber();
-    private static final Ability SECOND_ABILITY = new Ability.Unburden();
-    private static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
+    public static final Ability FIRST_ABILITY = new Ability.Limber();
+    public static final Ability SECOND_ABILITY = new Ability.Unburden();
+    public static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 92;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 74;
-    private static final int BASE_SPECIAL_DEFENSE = 63;
-    private static final int BASE_SPEED = 118;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 92;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 74;
+    public static final int BASE_SPECIAL_DEFENSE = 63;
+    public static final int BASE_SPEED = 118;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/hawlucha.png";
-    private static final String BACK_PATH = "battle/backs/kalos/hawlucha.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/hawlucha.png";
-    private static final String CRY_PATH = "sounds/cry/701.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/hawlucha.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/hawlucha.png";
+    public static final String BACK_PATH = "battle/backs/kalos/hawlucha.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/hawlucha.png";
+    public static final String CRY_PATH = "sounds/cry/701.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/hawlucha.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a hawlucha
      */
     public Hawlucha() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

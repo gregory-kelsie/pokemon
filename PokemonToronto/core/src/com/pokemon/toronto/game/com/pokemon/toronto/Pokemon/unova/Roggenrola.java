@@ -18,47 +18,51 @@ public class Roggenrola extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 524;
-    private static final String NAME = "Roggenrola";
-    private static final int BASE_EXP = 56;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 18;
+    public static final int NUMBER = 524;
+    public static final String NAME = "Roggenrola";
+    public static final String TYPE_OF_POKEMON = "Mantle";
+    public static final String DESCRIPTION = "Its ear is hexagonal in shape. Compressed " +
+            "underground, its body is as hard as steel.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 56;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 18;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.WeakArmor();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.WeakArmor();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 25;
-    private static final int BASE_SPECIAL_DEFENSE = 25;
-    private static final int BASE_SPEED = 15;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 25;
+    public static final int BASE_SPECIAL_DEFENSE = 25;
+    public static final int BASE_SPEED = 15;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/roggenrola.png";
-    private static final String BACK_PATH = "battle/backs/unova/roggenrola.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/roggenrola.png";
-    private static final String CRY_PATH = "sounds/cry/524.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/roggenrola.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/roggenrola.png";
+    public static final String BACK_PATH = "battle/backs/unova/roggenrola.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/roggenrola.png";
+    public static final String CRY_PATH = "sounds/cry/524.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/roggenrola.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a roggenrola
      */
     public Roggenrola() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -9,9 +9,9 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Normal.WorkUp;
  * Created by gregorykelsie on 2018-02-09.
  */
 
-public class TM02 extends Tm{
+public class TM02 extends Tm {
     public TM02() {
-        super(new ItemBlob.TM02Blob(), "bag/icons/dragontm.png", 1, new DragonClaw());
+        super(new ItemBlob.TM02Blob(), "bag/icons/dragontm.png", 2, new DragonClaw());
     }
 
     @Override

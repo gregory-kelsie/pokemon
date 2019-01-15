@@ -20,6 +20,10 @@ public class Stunky extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 434;
     private static final String NAME = "Stunky";
+    public static final String TYPE_OF_POKEMON = "Skunk";
+    public static final String DESCRIPTION = "It sprays a foul fluid from its rear. Its stench " +
+            "spreads over a mile radius, driving Pokémon away.";
+    public static final double HEIGHT = 0.4;
     private static final int BASE_EXP = 66;
     private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
     private static final int CAPTURE_RATE = 225;
@@ -55,10 +59,10 @@ public class Stunky extends Pokemon {
      * Create a stunky
      */
     public Stunky() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

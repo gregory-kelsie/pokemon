@@ -18,47 +18,51 @@ public class Archen extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 566;
-    private static final String NAME = "Archen";
-    private static final int BASE_EXP = 71;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 9.5;
+    public static final int NUMBER = 566;
+    public static final String NAME = "Archen";
+    public static final String TYPE_OF_POKEMON = "First Bird";
+    public static final String DESCRIPTION = "Said to be an ancestor of bird Pokémon, they were" +
+            " unable to fly and moved about by hopping from one branch to another.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 71;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 9.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Defeatist();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Defeatist();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 112;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 74;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 112;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 74;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/archen.png";
-    private static final String BACK_PATH = "battle/backs/unova/archen.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/archen.png";
-    private static final String CRY_PATH = "sounds/cry/566.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/archen.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/archen.png";
+    public static final String BACK_PATH = "battle/backs/unova/archen.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/archen.png";
+    public static final String CRY_PATH = "sounds/cry/566.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/archen.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a archen
      */
     public Archen() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

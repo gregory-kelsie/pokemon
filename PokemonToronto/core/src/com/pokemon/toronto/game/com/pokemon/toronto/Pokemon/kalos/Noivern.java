@@ -17,47 +17,51 @@ public class Noivern extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 715;
-    private static final String NAME = "Noivern";
-    private static final int BASE_EXP = 187;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 85;
+    public static final int NUMBER = 715;
+    public static final String NAME = "Noivern";
+    public static final String TYPE_OF_POKEMON = "Sound Wave";
+    public static final String DESCRIPTION = "They fly around on moonless nights and attack " +
+            "careless prey. Nothing can beat them in a battle in the dark.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 187;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 85;
 
-    private static final Ability FIRST_ABILITY = new Ability.Frisk();
-    private static final Ability SECOND_ABILITY = new Ability.Infiltrator();
-    private static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
+    public static final Ability FIRST_ABILITY = new Ability.Frisk();
+    public static final Ability SECOND_ABILITY = new Ability.Infiltrator();
+    public static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 97;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 123;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 97;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 123;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/noivern.png";
-    private static final String BACK_PATH = "battle/backs/kalos/noivern.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/noivern.png";
-    private static final String CRY_PATH = "sounds/cry/715.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/noivern.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/noivern.png";
+    public static final String BACK_PATH = "battle/backs/kalos/noivern.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/noivern.png";
+    public static final String CRY_PATH = "sounds/cry/715.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/noivern.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FLYING;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.FLYING;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a noivern
      */
     public Noivern() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

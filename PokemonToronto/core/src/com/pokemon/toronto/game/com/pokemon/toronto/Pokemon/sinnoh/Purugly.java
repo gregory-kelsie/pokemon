@@ -17,47 +17,51 @@ public class Purugly extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 432;
-    private static final String NAME = "Purugly";
-    private static final int BASE_EXP = 158;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 43.8;
+    public static final int NUMBER = 432;
+    public static final String NAME = "Purugly";
+    public static final String TYPE_OF_POKEMON = "Tiger Cat";
+    public static final String DESCRIPTION = "It binds its body with its tails to make itself " +
+            "look bigger. If it locks eyes, it will glare ceaselessly.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 158;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 43.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.ThickFat();
-    private static final Ability SECOND_ABILITY = new Ability.OwnTempo();
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final Ability FIRST_ABILITY = new Ability.ThickFat();
+    public static final Ability SECOND_ABILITY = new Ability.OwnTempo();
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 71;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 64;
-    private static final int BASE_SPECIAL_ATTACK = 64;
-    private static final int BASE_SPECIAL_DEFENSE = 59;
-    private static final int BASE_SPEED = 112;
+    public static final int BASE_HEALTH = 71;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 64;
+    public static final int BASE_SPECIAL_ATTACK = 64;
+    public static final int BASE_SPECIAL_DEFENSE = 59;
+    public static final int BASE_SPEED = 112;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/purugly.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/purugly.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/purugly.png";
-    private static final String CRY_PATH = "sounds/cry/432.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/purugly.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/purugly.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/purugly.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/purugly.png";
+    public static final String CRY_PATH = "sounds/cry/432.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/purugly.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a purugly
      */
     public Purugly() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

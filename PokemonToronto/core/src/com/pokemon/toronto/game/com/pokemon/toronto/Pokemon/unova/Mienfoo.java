@@ -18,47 +18,51 @@ public class Mienfoo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 619;
-    private static final String NAME = "Mienfoo";
-    private static final int BASE_EXP = 70;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 20;
+    public static final int NUMBER = 619;
+    public static final String NAME = "Mienfoo";
+    public static final String TYPE_OF_POKEMON = "Martial Arts";
+    public static final String DESCRIPTION = "In fights, they dominate with onslaughts of " +
+            "flowing, continuous attacks. With their sharp claws, they cut enemies.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 70;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 20;
 
-    private static final Ability FIRST_ABILITY = new Ability.InnerFocus();
-    private static final Ability SECOND_ABILITY = new Ability.Regenerator();
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final Ability FIRST_ABILITY = new Ability.InnerFocus();
+    public static final Ability SECOND_ABILITY = new Ability.Regenerator();
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/mienfoo.png";
-    private static final String BACK_PATH = "battle/backs/unova/mienfoo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/mienfoo.png";
-    private static final String CRY_PATH = "sounds/cry/619.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/mienfoo.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/mienfoo.png";
+    public static final String BACK_PATH = "battle/backs/unova/mienfoo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/mienfoo.png";
+    public static final String CRY_PATH = "sounds/cry/619.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/mienfoo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a mienfoo
      */
     public Mienfoo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

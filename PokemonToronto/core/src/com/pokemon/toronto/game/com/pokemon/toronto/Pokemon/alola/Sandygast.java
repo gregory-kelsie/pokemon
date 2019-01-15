@@ -18,47 +18,51 @@ public class Sandygast extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 769;
-    private static final String NAME = "Sandygast";
-    private static final int BASE_EXP = 64;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 140;
-    private static final double WEIGHT = 70;
+    public static final int NUMBER = 769;
+    public static final String NAME = "Sandygast";
+    public static final String TYPE_OF_POKEMON = "Sand Heap";
+    public static final String DESCRIPTION = "Born from a sand mound playfully built by a child," +
+            " this Pokémon embodies the grudges of the departed.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 64;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 140;
+    public static final double WEIGHT = 70;
 
-    private static final Ability FIRST_ABILITY = new Ability.WaterCompaction();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
+    public static final Ability FIRST_ABILITY = new Ability.WaterCompaction();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SandVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 15;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 15;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/sandygast.png";
-    private static final String BACK_PATH = "battle/backs/alola/sandygast.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/sandygast.png";
-    private static final String CRY_PATH = "sounds/cry/769.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/sandygast.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/sandygast.png";
+    public static final String BACK_PATH = "battle/backs/alola/sandygast.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/sandygast.png";
+    public static final String CRY_PATH = "sounds/cry/769.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/sandygast.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a sandygast
      */
     public Sandygast() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

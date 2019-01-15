@@ -18,47 +18,51 @@ public class Flabebe extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 669;
-    private static final String NAME = "Flabebe";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 225;
-    private static final double WEIGHT = 0.1;
+    public static final int NUMBER = 669;
+    public static final String NAME = "Flabebe";
+    public static final String TYPE_OF_POKEMON = "Single Bloom";
+    public static final String DESCRIPTION = "It draws out and controls the hidden power of " +
+            "flowers. The flower it holds is most likely part of its body.";
+    public static final double HEIGHT = 0.1;
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 225;
+    public static final double WEIGHT = 0.1;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
+    public static final Ability FIRST_ABILITY = new Ability.FlowerVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Symbiosis();
 
     //Base Stats
-    private static final int BASE_HEALTH = 44;
-    private static final int BASE_ATTACK = 38;
-    private static final int BASE_DEFENSE = 39;
-    private static final int BASE_SPECIAL_ATTACK = 61;
-    private static final int BASE_SPECIAL_DEFENSE = 79;
-    private static final int BASE_SPEED = 42;
+    public static final int BASE_HEALTH = 44;
+    public static final int BASE_ATTACK = 38;
+    public static final int BASE_DEFENSE = 39;
+    public static final int BASE_SPECIAL_ATTACK = 61;
+    public static final int BASE_SPECIAL_DEFENSE = 79;
+    public static final int BASE_SPEED = 42;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/flabebe.png";
-    private static final String BACK_PATH = "battle/backs/kalos/flabebe.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/flabebe.png";
-    private static final String CRY_PATH = "sounds/cry/669.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/flabebe.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/flabebe.png";
+    public static final String BACK_PATH = "battle/backs/kalos/flabebe.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/flabebe.png";
+    public static final String CRY_PATH = "sounds/cry/669.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/flabebe.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a flabebe
      */
     public Flabebe() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

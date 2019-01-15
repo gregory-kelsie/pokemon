@@ -2,12 +2,25 @@ package com.pokemon.toronto.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.PokemonLookup;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.WildPokemonCreator;
+import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.BattleState;
 import com.pokemon.toronto.game.com.pokemon.toronto.gamestate.GameStateManager;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.InputHandler;
 import com.pokemon.toronto.game.com.pokemon.toronto.input.MyInput;
@@ -31,16 +44,14 @@ public class pokemonToronto extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private MyGameCallBack gameCallBack;
 
-	private TiledMap tiledMap;
+	private Viewport gamePort;
+	private TiledMap map;
+	private OrthogonalTiledMapRenderer renderer;
+	private OrthographicCamera gameCam;
+	private AssetManager manager;
 
-		/*stage = new Stage();
-		Gdx.input.setInputProcessor(stage);
-		Skin skin = new Skin(Gdx.files.internal("uiskin.json"), new TextureAtlas(Gdx.files.internal("uiskin.atlas")));
-		textField = new TextField(Integer.toString(Gdx.graphics.getWidth()), skin);
-		textField.setPosition(200, 200);
-		textField.setSize(300, 40);
-		//stage.addActor(textField);
-		*/
+	public pokemonToronto() {
+	}
 
 	/**
 	 * A callback interface that links the pokemonToronto class to the AndroidLauncher
@@ -48,7 +59,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	 */
 	public interface MyGameCallBack {
 		public void startMapActivity(double[] pokemonLatitude, double[] pokemonLongitude, String[] pokemonIcon, double[] trainerLatitude,
-									 double[] trainerLongitude, String[] trainerIcon);
+									 double[] trainerLongitude, String[] trainerIcon, int[] id);
 		public void startPokemonMapActivity(double pokemonLatitude, double pokemonLongitude, String pokemonIcon, int distance);
 		public void spawnNewGamePokemon();
 		void spawnWalkingPokemon();
@@ -68,6 +79,13 @@ public class pokemonToronto extends ApplicationAdapter {
 	public void create () {
 		initEssentials();
 		initGameStateManager();
+		gameCam = new OrthographicCamera();
+		gamePort = new FitViewport(208, 208, gameCam);
+		gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+
+		map = new TmxMapLoader().load("maps/level1.tmx");
+		gameCam = new OrthographicCamera();
+		renderer = new OrthogonalTiledMapRenderer(map);
 	}
 
 	/**
@@ -99,7 +117,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	}
 
 	/**
-	 * Return the Game State Manager so the AndroidLauncher activity
+	 * Return the Game State Manager so the AndroidLauncher activityf
 	 * can have access.
 	 * @return The Game State Manager
 	 */
@@ -174,6 +192,10 @@ public class pokemonToronto extends ApplicationAdapter {
 			}
 
 		}
+	}
+
+	public void startWildBattle(int id) {
+		gsm.startBattle(id);
 	}
 
 	/**
@@ -330,6 +352,7 @@ public class pokemonToronto extends ApplicationAdapter {
 	@Override
 	public void render () {
 		double dt = Gdx.graphics.getDeltaTime(); //Get the time passed
+
 		gsm.update(dt); //Update the current game state.
 		MyInput.update(); //Update the input.
 
@@ -344,8 +367,19 @@ public class pokemonToronto extends ApplicationAdapter {
 		batch.end();
 		gsm.drawStage();
 
+		gameCam.update();
+		renderer.setView(gameCam);
+		renderer.render();
+
+
 		//End the rendering.
 		Gdx.gl.glDisable(GL20.GL_BLEND);
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		//gamePort.update(width, height);
 	}
 
 	/**
@@ -355,6 +389,10 @@ public class pokemonToronto extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		gsm.dispose(); //fix
+
+		map.dispose();
+		renderer.dispose();
+		manager.dispose();
 	}
 
 }

@@ -18,47 +18,51 @@ public class Zweilous extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 634;
-    private static final String NAME = "Zweilous";
-    private static final int BASE_EXP = 147;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 50;
+    public static final int NUMBER = 634;
+    public static final String NAME = "Zweilous";
+    public static final String TYPE_OF_POKEMON = "Hostile";
+    public static final String DESCRIPTION = "After it has eaten up all the food in its " +
+            "territory, it moves to another area. Its two heads do not get along.";
+    public static final double HEIGHT = 1.4;
+    public static final int BASE_EXP = 147;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 50;
 
-    private static final Ability FIRST_ABILITY = new Ability.Hustle();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Hustle();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 72;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 58;
+    public static final int BASE_HEALTH = 72;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 58;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/zweilous.png";
-    private static final String BACK_PATH = "battle/backs/unova/zweilous.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/zweilous.png";
-    private static final String CRY_PATH = "sounds/cry/634.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/zweilous.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/zweilous.png";
+    public static final String BACK_PATH = "battle/backs/unova/zweilous.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/zweilous.png";
+    public static final String CRY_PATH = "sounds/cry/634.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/zweilous.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a zweilous
      */
     public Zweilous() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

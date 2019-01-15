@@ -10,7 +10,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.trainer.Trainer;
 public abstract class GameState {
     public abstract void render(SpriteBatch batch);
     public abstract void update(double dt);
-    protected abstract void dispose();
+    public abstract void dispose();
     public void openTrainerPopUp(Trainer t) {
 
     }
@@ -22,4 +22,5 @@ public abstract class GameState {
 
     }
     public void drawStage() {}
+
 }

@@ -18,47 +18,51 @@ public class Chespin extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 650;
-    private static final String NAME = "Chespin";
-    private static final int BASE_EXP = 63;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 9;
+    public static final int NUMBER = 650;
+    public static final String NAME = "Chespin";
+    public static final String TYPE_OF_POKEMON = "Spiky Nut";
+    public static final String DESCRIPTION = "The quills on its head are usually soft. When it" +
+            " flexes them, the points become so hard and sharp that they can pierce rock.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 63;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 9;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Bulletproof();
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Bulletproof();
 
     //Base Stats
-    private static final int BASE_HEALTH = 56;
-    private static final int BASE_ATTACK = 61;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 48;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 38;
+    public static final int BASE_HEALTH = 56;
+    public static final int BASE_ATTACK = 61;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 48;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 38;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/chespin.png";
-    private static final String BACK_PATH = "battle/backs/kalos/chespin.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/chespin.png";
-    private static final String CRY_PATH = "sounds/cry/650.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/chespin.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/chespin.png";
+    public static final String BACK_PATH = "battle/backs/kalos/chespin.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/chespin.png";
+    public static final String CRY_PATH = "sounds/cry/650.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/chespin.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a chespin
      */
     public Chespin() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

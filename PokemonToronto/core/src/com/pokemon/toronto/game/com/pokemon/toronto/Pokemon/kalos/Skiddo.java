@@ -18,47 +18,51 @@ public class Skiddo extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 672;
-    private static final String NAME = "Skiddo";
-    private static final int BASE_EXP = 70;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 31;
+    public static final int NUMBER = 672;
+    public static final String NAME = "Skiddo";
+    public static final String TYPE_OF_POKEMON = "Mount";
+    public static final String DESCRIPTION = "Thought to be one of the first Pokémon to live in" +
+            " harmony with humans, it has a placid disposition.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 70;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 31;
 
-    private static final Ability FIRST_ABILITY = new Ability.SapSipper();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.GrassPelt();
+    public static final Ability FIRST_ABILITY = new Ability.SapSipper();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.GrassPelt();
 
     //Base Stats
-    private static final int BASE_HEALTH = 66;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 48;
-    private static final int BASE_SPECIAL_ATTACK = 62;
-    private static final int BASE_SPECIAL_DEFENSE = 57;
-    private static final int BASE_SPEED = 52;
+    public static final int BASE_HEALTH = 66;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 48;
+    public static final int BASE_SPECIAL_ATTACK = 62;
+    public static final int BASE_SPECIAL_DEFENSE = 57;
+    public static final int BASE_SPEED = 52;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/skiddo.png";
-    private static final String BACK_PATH = "battle/backs/kalos/skiddo.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/skiddo.png";
-    private static final String CRY_PATH = "sounds/cry/672.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/skiddo.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/skiddo.png";
+    public static final String BACK_PATH = "battle/backs/kalos/skiddo.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/skiddo.png";
+    public static final String CRY_PATH = "sounds/cry/672.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/skiddo.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a skiddo
      */
     public Skiddo() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

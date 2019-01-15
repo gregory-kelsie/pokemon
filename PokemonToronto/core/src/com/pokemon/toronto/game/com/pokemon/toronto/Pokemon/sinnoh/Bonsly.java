@@ -18,47 +18,51 @@ public class Bonsly extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 438;
-    private static final String NAME = "Bonsly";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 15;
+    public static final int NUMBER = 438;
+    public static final String NAME = "Bonsly";
+    public static final String TYPE_OF_POKEMON = "Bonsai";
+    public static final String DESCRIPTION = "It prefers an arid atmosphere. It leaks water that " +
+            "looks like tears when adjusting its moisture level.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 15;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.RockHead();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rattled();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.RockHead();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rattled();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 10;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 10;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 10;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 10;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/bonsly.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/bonsly.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bonsly.png";
-    private static final String CRY_PATH = "sounds/cry/438.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bonsly.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/bonsly.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/bonsly.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bonsly.png";
+    public static final String CRY_PATH = "sounds/cry/438.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bonsly.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bonsly
      */
     public Bonsly() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

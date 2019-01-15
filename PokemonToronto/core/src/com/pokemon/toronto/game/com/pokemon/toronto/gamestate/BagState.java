@@ -116,6 +116,7 @@ public class BagState extends GameState {
     private boolean learnedNewMove;
     private boolean displayingMoveYesNo;
     private boolean displayOverrideMove;
+    private boolean learningMoveLoop;
 
     public BagState(GameStateManager gsm, boolean cameFromMenu) {
         this.gsm = gsm;
@@ -138,6 +139,7 @@ public class BagState extends GameState {
         waitNoEffectClick = false;
         waitFinishedUseClick = false;
         learnedNewMove = false;
+        learningMoveLoop = false;
         displayingMoveYesNo = false;
         displayOverrideMove = false;
         selectedSkill = -1; //No skill is selected yet.
@@ -633,6 +635,7 @@ public class BagState extends GameState {
 
     private void declinedNewMove() {
         displayingMoveYesNo = false;
+        learningMoveLoop = false;
         panelText = gsm.getParty().get(pokemonIndex).getName() + " did not learn " +
                 newMove.getName() + ".";
         waitFinishedUseClick = true;
@@ -644,6 +647,7 @@ public class BagState extends GameState {
         displayingMoveYesNo = false;
         displayPokemonPanel = false;
         displayOverrideMove = true;
+        learningMoveLoop = false;
         firstSkillType = gsm.getParty().get(pokemonIndex).getFirstSkill().getSkillTypeTexture();
         secondSkillType = gsm.getParty().get(pokemonIndex).getSecondSkill().getSkillTypeTexture();
         thirdSkillType = gsm.getParty().get(pokemonIndex).getThirdSkill().getSkillTypeTexture();
@@ -691,21 +695,49 @@ public class BagState extends GameState {
     private void checkRemainingLevelUpSkills() {
         //Has level up skills.
         checkMovesAfterReplacing = false; //Reset this in case coming after overriding.
-        SkillFactory sf = new SkillFactory();
-        if (newSkillsForLevelUp.size() > 0) {
-            newMove = sf.createSkill(newSkillsForLevelUp.get(0));
-            //Remove the first move from the list of moves the pokemon learns at this level.
+        learningMoveLoop = true;
+        if (newSkillsForLevelUp != null && newSkillsForLevelUp.size() > 0) {
+            SkillFactory sf = new SkillFactory();
+            createAndLearnSkill(sf.createSkill(newSkillsForLevelUp.get(0)));
+        }
+    }
+
+    private void createAndLearnSkill(Skill s) {
+
+        newMove = s;
+        //Remove the first move from the list of moves the pokemon learns at this level.
+        if (newSkillsForLevelUp != null && newSkillsForLevelUp.size() > 0) {
             newSkillsForLevelUp.remove(0);
-            if (gsm.getParty().get(pokemonIndex).getSkills().size() < 4) {
-                gsm.getParty().get(pokemonIndex).addMove(newMove);
-                panelText = "Learned " + newMove.getName() + "!";
-                learnedNewMove = true;
+        }
+        if (gsm.getParty().get(pokemonIndex).getSkills().size() < 4) {
+            gsm.getParty().get(pokemonIndex).addMove(newMove);
+            panelText = "Learned " + newMove.getName() + "!";
+            learnedNewMove = true;
+            if (currentBag == ItemTab.TM) {
+                useTM();
+            }
+        } else {
+            //Attempt to override move.
+            panelText = gsm.getParty().get(pokemonIndex).getName() + " wants to learn " + newMove.getName() +
+                    ".\nDelete a move for " + newMove.getName() + "?";
+            waitFinishedUseClick = false;
+            displayingMoveYesNo = true;
+        }
+    }
+
+    private void useTM() {
+        gsm.getBag().getTMBag().get(currentIndex).discard();
+        if (gsm.getBag().getTMBag().get(currentIndex).getQuantity() == 0) {
+            if (gsm.getBag().getTMBag().size() > 1) {
+                gsm.getBag().getTMBag().remove(currentIndex);
+                if (currentIndex != 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = -1;
+                }
             } else {
-                //Attempt to override move.
-                panelText = gsm.getParty().get(pokemonIndex).getName() + " wants to learn " + newMove.getName() +
-                        ".\nDelete a move for " + newMove.getName() + "?";
-                waitFinishedUseClick = false;
-                displayingMoveYesNo = true;
+                gsm.getBag().getTMBag().remove(currentIndex);
+                currentIndex = -1;
             }
         }
     }
@@ -722,7 +754,6 @@ public class BagState extends GameState {
                 if (gsm.getBag().getUsables().get(currentIndex).getItem().getId() ==
                         ItemId.RARE_CANDY) {
                     initLevelUpSkills();
-
                 }
                 gsm.getBag().getUsables().get(currentIndex).discard();
                 if (gsm.getBag().getUsables().get(currentIndex).getQuantity() == 0) {
@@ -781,6 +812,16 @@ public class BagState extends GameState {
                         .get(currentIndex).getItem().getName() + " has no effect.";
                 waitNoEffectClick = true;
             }
+        } else if (currentBag == ItemTab.TM) {
+            if (gsm.getParty().get(pokemonIndex).canLearnTM(
+                    gsm.getBag().getTMBag().get(currentIndex).getTm().getTmId())) {
+                createAndLearnSkill(gsm.getBag().getTMBag().get(currentIndex).getTm().getSkill());
+            } else {
+                panelText = gsm.getParty().get(pokemonIndex).getName() + " cannot learn " +
+                        gsm.getBag().getTMBag().get(currentIndex).getTm().getName() + ".";
+                waitFinishedUseClick = true;
+            }
+
         }
     }
 
@@ -854,7 +895,7 @@ public class BagState extends GameState {
                 panelText = "Learned " + newMove.getName() + "!";
                 //TODO: Play fanfare
                 learnedNewMove = false;
-                if (newSkillsForLevelUp.size() != 0) {
+                if (newSkillsForLevelUp != null && newSkillsForLevelUp.size() != 0) {
                     checkRemainingLevelUpSkills();
                     //displayPokemonPanel = false;
                 } else {
@@ -942,8 +983,11 @@ public class BagState extends GameState {
                         displayPokemonPanel = true;
                         panelText = gsm.getParty().get(pokemonIndex).getName() + " forgot " +
                                 oldMove + "\nand learned " + newMove.getName() + ".";
+                        if (currentBag == ItemTab.TM) {
+                            useTM();
+                        }
                         checkMovesAfterReplacing = true;
-                        waitNoEffectClick = true;
+                        waitFinishedUseClick = true; //it used to be waitNoEffectClick
                         selectedSkill = -1;
                     }
                 } else if (x >= 969 && x <= 1080 && y >= 1868 && y <= 1919) {
@@ -951,7 +995,7 @@ public class BagState extends GameState {
                     displayPokemonPanel = true;
                     panelText = gsm.getParty().get(pokemonIndex).getName() + " did not learn " +
                             newMove.getName() + ".";
-                    waitNoEffectClick = true;
+                    waitFinishedUseClick = true;
                     checkMovesAfterReplacing = true;
                     selectedSkill = -1;
 
@@ -1173,7 +1217,7 @@ public class BagState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         topBackground.dispose();
         evolutionPanel.dispose();
         berryPanel.dispose();

@@ -17,47 +17,51 @@ public class Hydreigon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 635;
-    private static final String NAME = "Hydreigon";
-    private static final int BASE_EXP = 270;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 160;
+    public static final int NUMBER = 635;
+    public static final String NAME = "Hydreigon";
+    public static final String TYPE_OF_POKEMON = "Brutal";
+    public static final String DESCRIPTION = "This brutal Pokémon travels the skies on its six" +
+            " wings. Anything that moves seems like a foe to it, triggering its attack.";
+    public static final double HEIGHT = 1.8;
+    public static final int BASE_EXP = 270;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 160;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 92;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 98;
+    public static final int BASE_HEALTH = 92;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 98;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/hydreigon.png";
-    private static final String BACK_PATH = "battle/backs/unova/hydreigon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/hydreigon.png";
-    private static final String CRY_PATH = "sounds/cry/635.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/hydreigon.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/hydreigon.png";
+    public static final String BACK_PATH = "battle/backs/unova/hydreigon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/hydreigon.png";
+    public static final String CRY_PATH = "sounds/cry/635.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/hydreigon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a hydreigon
      */
     public Hydreigon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Malamar extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 687;
-    private static final String NAME = "Malamar";
-    private static final int BASE_EXP = 169;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 80;
-    private static final double WEIGHT = 47;
+    public static final int NUMBER = 687;
+    public static final String NAME = "Malamar";
+    public static final String TYPE_OF_POKEMON = "Overturning";
+    public static final String DESCRIPTION = "It wields the most compelling hypnotic powers of" +
+            " any Pokémon, and it forces others to do whatever it wants.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 169;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 80;
+    public static final double WEIGHT = 47;
 
-    private static final Ability FIRST_ABILITY = new Ability.Contrary();
-    private static final Ability SECOND_ABILITY = new Ability.SuctionCups();
-    private static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
+    public static final Ability FIRST_ABILITY = new Ability.Contrary();
+    public static final Ability SECOND_ABILITY = new Ability.SuctionCups();
+    public static final Ability HIDDEN_ABILITY = new Ability.Infiltrator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 86;
-    private static final int BASE_ATTACK = 92;
-    private static final int BASE_DEFENSE = 88;
-    private static final int BASE_SPECIAL_ATTACK = 68;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 73;
+    public static final int BASE_HEALTH = 86;
+    public static final int BASE_ATTACK = 92;
+    public static final int BASE_DEFENSE = 88;
+    public static final int BASE_SPECIAL_ATTACK = 68;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 73;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/malamar.png";
-    private static final String BACK_PATH = "battle/backs/kalos/malamar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/malamar.png";
-    private static final String CRY_PATH = "sounds/cry/687.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/malamar.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/malamar.png";
+    public static final String BACK_PATH = "battle/backs/kalos/malamar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/malamar.png";
+    public static final String CRY_PATH = "sounds/cry/687.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/malamar.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.PSYCHIC;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.PSYCHIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a malamar
      */
     public Malamar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

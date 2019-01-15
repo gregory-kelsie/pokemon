@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -33,7 +35,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     //Instance Variables
     private GoogleMap mMap;
@@ -45,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] trainerLatitude;
     private double[] trainerLongitude;
     private String[] trainerIcon;
+    private int[] id;
 
     private Bitmap temp;
     private List<Marker> markers;
@@ -102,6 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         pokemonLatitude = i.getDoubleArrayExtra("pokemonLatitude");
         pokemonLongitude = i.getDoubleArrayExtra("pokemonLongitude");
         pokemonIcon = i.getStringArrayExtra("pokemonIcon");
+        id = i.getIntArrayExtra("id");
     }
 
     /**
@@ -143,6 +147,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         finish();
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        marker.showInfoWindow();
+        Intent i = new Intent();
+        i.putExtra("pokemonIndex", Integer.parseInt(marker.getTitle()));
+        setResult(RESULT_OK, i);
+        onBackPressed();
+        Log.i("maerker", marker.getTitle());
+        //finish();
+
+       return true;
+    }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -157,6 +175,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Initialize the Google map
         mMap = googleMap;
         mMap.clear();
+        mMap.setOnMarkerClickListener(this);
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.go));
+
+
+            if (!success) {
+                Log.e("onMapReady", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("OnMapReady", "Can't find style. Error: ", e);
+        }
 
         //Create a marker for the player's position
         LatLng sydney = new LatLng(latitude, longitude);
@@ -173,7 +207,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Marker m;
             markers.add(mMap.addMarker(new MarkerOptions().position(new LatLng(
                     pokemonLatitude[i], pokemonLongitude[i]))
-                    .title("Lat: " + pokemonLatitude[i] + ", Lon: " + pokemonLongitude[i])
+                    .title("" + id[i])
                     .icon(BitmapDescriptorFactory.fromBitmap(
                             temp))));
         }

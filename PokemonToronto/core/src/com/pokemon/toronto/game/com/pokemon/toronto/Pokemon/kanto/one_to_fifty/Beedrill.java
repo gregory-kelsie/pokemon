@@ -87,5 +87,11 @@ public class Beedrill extends Pokemon {
         levelUpSkills.put(38, new ArrayList<Integer>(Arrays.asList(SkillFactory.AGILITY)));
         levelUpSkills.put(41, new ArrayList<Integer>(Arrays.asList(SkillFactory.ENDEAVOR)));
         levelUpSkills.put(44, new ArrayList<Integer>(Arrays.asList(SkillFactory.FELL_STINGER)));
+        initEvolutionSkills();
+    }
+
+    @Override
+    protected void initEvolutionSkills() {
+        evolutionSkills.add(SkillFactory.TWINEEDLE);
     }
 }

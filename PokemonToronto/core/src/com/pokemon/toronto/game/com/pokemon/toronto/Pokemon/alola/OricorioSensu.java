@@ -8,6 +8,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 
 public class OricorioSensu extends Oricorio {
     private static final int NUMBER = -7412;
+    public static final String DESCRIPTION = "This Oricorio has sipped purple nectar. Its " +
+            "elegant, attractive dance will send the minds and hearts of its enemies to another world.";
 
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/alola/oricorio-sensu.png";

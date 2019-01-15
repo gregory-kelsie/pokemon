@@ -18,34 +18,38 @@ public class Minior extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 774;
-    private static final String NAME = "Minior";
-    private static final int BASE_EXP = 154;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 40;
+    public static final int NUMBER = 774;
+    public static final String NAME = "Minior";
+    public static final String TYPE_OF_POKEMON = "Meteor";
+    public static final String DESCRIPTION = "Originally making its home in the ozone layer, " +
+            "it hurtles to the ground when the shell enclosing its body grows too heavy.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 154;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 1, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 40;
 
-    private static final Ability FIRST_ABILITY = new Ability.ShieldsDown();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.ShieldsDown();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 100;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 100;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 60;
 
     //Core Form Base Stats
     private final int[] CORE_BASE_STATS = {60, 100, 60, 100, 60, 120};
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/minior.png";
-    private static final String BACK_PATH = "battle/backs/alola/minior.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/minior.png";
-    private static final String CRY_PATH = "sounds/cry/774.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/minior.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/minior.png";
+    public static final String BACK_PATH = "battle/backs/alola/minior.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/minior.png";
+    public static final String CRY_PATH = "sounds/cry/774.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/minior.png";
 
     //Core Paths
     private final String CORE_ICON_PATH = "pokemonSprites/alola/minior.png";
@@ -53,20 +57,20 @@ public class Minior extends Pokemon {
     private final String CORE_MINI_PATH = "pokemonMenu/sprites/alola/minior.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a minior
      */
     public Minior() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
@@ -136,10 +140,14 @@ public class Minior extends Pokemon {
      */
     @Override
     public String getMapIconPath() {
-        if (currentHealth < getHealthStat() * 0.5) {
-            return CORE_ICON_PATH;
+        try {
+            if (currentHealth < getHealthStat() * 0.5) {
+                return CORE_ICON_PATH;
+            }
+            return mapIconPath;
+        } catch (Exception e) {
+            return mapIconPath;
         }
-        return mapIconPath;
     }
 
     /**
@@ -148,10 +156,14 @@ public class Minior extends Pokemon {
      */
     @Override
     public String getBackPath() {
-        if (currentHealth < getHealthStat() * 0.5) {
-            return CORE_BACK_PATH;
+        try {
+            if (currentHealth < getHealthStat() * 0.5) {
+                return CORE_BACK_PATH;
+            }
+            return backPath;
+        } catch (Exception e) {
+            return backPath;
         }
-        return backPath;
     }
 
     /**
@@ -160,10 +172,14 @@ public class Minior extends Pokemon {
      */
     @Override
     public String getMiniIconPath() {
-        if (currentHealth < getHealthStat() * 0.5) {
-            return CORE_MINI_PATH;
+        try {
+            if (currentHealth < getHealthStat() * 0.5) {
+                return CORE_MINI_PATH;
+            }
+            return miniPath;
+        } catch (Exception e) {
+            return miniPath;
         }
-        return miniPath;
     }
 
     /**

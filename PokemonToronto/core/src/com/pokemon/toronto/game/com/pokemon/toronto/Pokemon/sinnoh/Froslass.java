@@ -17,47 +17,51 @@ public class Froslass extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 478;
-    private static final String NAME = "Froslass";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 26.6;
+    public static final int NUMBER = 478;
+    public static final String NAME = "Froslass";
+    public static final String TYPE_OF_POKEMON = "Snow Land";
+    public static final String DESCRIPTION = "It freezes prey by blowing its -58 degrees F " +
+            "breath. It is said to then secretly display its prey.";
+    public static final double HEIGHT = 1.3;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 26.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.SnowCloak();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.CursedBody();
+    public static final Ability FIRST_ABILITY = new Ability.SnowCloak();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.CursedBody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 110;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 110;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/froslass.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/froslass.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/froslass.png";
-    private static final String CRY_PATH = "sounds/cry/478.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/froslass.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/froslass.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/froslass.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/froslass.png";
+    public static final String CRY_PATH = "sounds/cry/478.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/froslass.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
     
     /**
      *  Create a froslass
      */
     public Froslass() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

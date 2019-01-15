@@ -17,47 +17,51 @@ public class Bibarel extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 400;
-    private static final String NAME = "Bibarel";
-    private static final int BASE_EXP = 144;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 127;
-    private static final double WEIGHT = 31.5;
+    public static final int NUMBER = 400;
+    public static final String NAME = "Bibarel";
+    public static final String TYPE_OF_POKEMON = "Beaver";
+    public static final String DESCRIPTION = "A river dammed by Bibarel will never overflow its" +
+            " banks, which is appreciated by people nearby.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 144;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 127;
+    public static final double WEIGHT = 31.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Simple();
-    private static final Ability SECOND_ABILITY = new Ability.Unaware();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moody();
+    public static final Ability FIRST_ABILITY = new Ability.Simple();
+    public static final Ability SECOND_ABILITY = new Ability.Unaware();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 79;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 71;
+    public static final int BASE_HEALTH = 79;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 71;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/bibarel.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/bibarel.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bibarel.png";
-    private static final String CRY_PATH = "sounds/cry/400.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bibarel.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/bibarel.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/bibarel.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bibarel.png";
+    public static final String CRY_PATH = "sounds/cry/400.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bibarel.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.WATER;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.WATER;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bibarel
      */
     public Bibarel() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

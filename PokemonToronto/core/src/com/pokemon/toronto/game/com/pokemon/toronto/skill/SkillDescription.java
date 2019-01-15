@@ -148,6 +148,10 @@ public class SkillDescription {
             "The user then becomes confused.";
     public static String TWISTER = "The user whips up a vicious tornado to tear at the " +
             "opposing Pokémon. This may also make them flinch.";
+    public static String ROAR_OF_TIME = "The user blasts the target with power that distorts" +
+            " even time. The user can't move on the next turn.";
+    public static String SPACIAL_REND = "The user tears the target along with the space around " +
+            "it. Critical hits land more easily.";
 
     /**********************************************************************************************
      *                                      ELECTRIC
@@ -355,6 +359,8 @@ public class SkillDescription {
             "powering up Fire-type moves. It lowers the power of Water-type moves.";
     public static final String WILL_O_WISP = "The user shoots a sinister, bluish-white flame at " +
             "the target to inflict a burn.";
+    public static String MAGMA_STORM = "The target becomes trapped within a maelstrom of fire" +
+            " that rages for four to five turns.";
 
     /**********************************************************************************************
      *                                      FLYING
@@ -856,6 +862,8 @@ public class SkillDescription {
             "the target has, the greater the move's power.";
     public static final String YAWN = "The user lets loose a huge yawn that lulls the target " +
             "into falling asleep on the next turn.";
+    public static final String CRUSH_GRIP = "The target is crushed with great force. The more HP" +
+            " the target has left, the greater this move's power.";
 
     /**********************************************************************************************
      *                                      POISON

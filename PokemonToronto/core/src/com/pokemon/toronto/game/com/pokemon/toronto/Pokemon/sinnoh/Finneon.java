@@ -18,47 +18,51 @@ public class Finneon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 456;
-    private static final String NAME = "Finneon";
-    private static final int BASE_EXP = 66;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 7;
+    public static final int NUMBER = 456;
+    public static final String NAME = "Finneon";
+    public static final String TYPE_OF_POKEMON = "Wing Fish";
+    public static final String DESCRIPTION = "The line running down its side can store sunlight." +
+            " It shines vividly at night.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 66;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 7;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.StormDrain();
-    private static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.StormDrain();
+    public static final Ability HIDDEN_ABILITY = new Ability.WaterVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 49;
-    private static final int BASE_ATTACK = 49;
-    private static final int BASE_DEFENSE = 56;
-    private static final int BASE_SPECIAL_ATTACK = 49;
-    private static final int BASE_SPECIAL_DEFENSE = 61;
-    private static final int BASE_SPEED = 66;
+    public static final int BASE_HEALTH = 49;
+    public static final int BASE_ATTACK = 49;
+    public static final int BASE_DEFENSE = 56;
+    public static final int BASE_SPECIAL_ATTACK = 49;
+    public static final int BASE_SPECIAL_DEFENSE = 61;
+    public static final int BASE_SPEED = 66;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/finneon.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/finneon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/finneon.png";
-    private static final String CRY_PATH = "sounds/cry/456.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/finneon.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/finneon.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/finneon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/finneon.png";
+    public static final String CRY_PATH = "sounds/cry/456.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/finneon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.ERRATIC;
+    public static final ExpType EXP_TYPE = ExpType.ERRATIC;
 
     /**
      * Create a finneon
      */
     public Finneon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

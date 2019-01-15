@@ -18,47 +18,51 @@ public class Palpitoad extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 536;
-    private static final String NAME = "Palpitoad";
-    private static final int BASE_EXP = 134;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 17;
+    public static final int NUMBER = 536;
+    public static final String NAME = "Palpitoad";
+    public static final String TYPE_OF_POKEMON = "Vibration";
+    public static final String DESCRIPTION = "When they vibrate the bumps on their heads, they" +
+            " can make waves in water or earthquake-like vibrations on land.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 134;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 17;
 
-    private static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
-    private static final Ability SECOND_ABILITY = new Ability.Hydration();
-    private static final Ability HIDDEN_ABILITY = new Ability.WaterAbsorb();
+    public static final Ability FIRST_ABILITY = new Ability.SwiftSwim();
+    public static final Ability SECOND_ABILITY = new Ability.Hydration();
+    public static final Ability HIDDEN_ABILITY = new Ability.WaterAbsorb();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 69;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 69;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/palpitoad.png";
-    private static final String BACK_PATH = "battle/backs/unova/palpitoad.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/palpitoad.png";
-    private static final String CRY_PATH = "sounds/cry/536.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/palpitoad.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/palpitoad.png";
+    public static final String BACK_PATH = "battle/backs/unova/palpitoad.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/palpitoad.png";
+    public static final String CRY_PATH = "sounds/cry/536.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/palpitoad.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a palpitoad
      */
     public Palpitoad() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Decidueye extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 724;
-    private static final String NAME = "Decidueye";
-    private static final int BASE_EXP = 239;
-    private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 36.6;
+    public static final int NUMBER = 724;
+    public static final String NAME = "Decidueye";
+    public static final String TYPE_OF_POKEMON = "Arrow Quill";
+    public static final String DESCRIPTION = "It fires arrow quills from its wings with such " +
+            "precision, they can pierce a pebble at distances over a hundred yards.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 239;
+    public static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 36.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overgrow();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.LongReach();
+    public static final Ability FIRST_ABILITY = new Ability.Overgrow();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.LongReach();
 
     //Base Stats
-    private static final int BASE_HEALTH = 78;
-    private static final int BASE_ATTACK = 107;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 100;
-    private static final int BASE_SPECIAL_DEFENSE = 100;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 78;
+    public static final int BASE_ATTACK = 107;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 100;
+    public static final int BASE_SPECIAL_DEFENSE = 100;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/decidueye.png";
-    private static final String BACK_PATH = "battle/backs/alola/decidueye.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/decidueye.png";
-    private static final String CRY_PATH = "sounds/cry/724.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/decidueye.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/decidueye.png";
+    public static final String BACK_PATH = "battle/backs/alola/decidueye.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/decidueye.png";
+    public static final String CRY_PATH = "sounds/cry/724.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/decidueye.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a decidueye
      */
     public Decidueye() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

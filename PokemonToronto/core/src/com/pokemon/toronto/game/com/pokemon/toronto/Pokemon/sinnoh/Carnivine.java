@@ -17,47 +17,51 @@ public class Carnivine extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 455;
-    private static final String NAME = "Carnivine";
-    private static final int BASE_EXP = 159;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 27;
+    public static final int NUMBER = 455;
+    public static final String NAME = "Carnivine";
+    public static final String TYPE_OF_POKEMON = "Bug Catcher";
+    public static final String DESCRIPTION = "It binds itself to trees in marshes. It attracts " +
+            "prey with its sweet- smelling drool and gulps them down.";
+    public static final double HEIGHT = 1.4;
+    public static final int BASE_EXP = 159;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 27;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 74;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 72;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 72;
-    private static final int BASE_SPEED = 46;
+    public static final int BASE_HEALTH = 74;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 72;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 72;
+    public static final int BASE_SPEED = 46;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/carnivine.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/carnivine.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/carnivine.png";
-    private static final String CRY_PATH = "sounds/cry/455.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/carnivine.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/carnivine.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/carnivine.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/carnivine.png";
+    public static final String CRY_PATH = "sounds/cry/455.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/carnivine.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a carnivine
      */
     public Carnivine() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

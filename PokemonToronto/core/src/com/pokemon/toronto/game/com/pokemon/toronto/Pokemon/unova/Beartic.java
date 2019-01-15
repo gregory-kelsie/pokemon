@@ -17,47 +17,51 @@ public class Beartic extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 614;
-    private static final String NAME = "Beartic";
-    private static final int BASE_EXP = 177;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 260;
+    public static final int NUMBER = 614;
+    public static final String NAME = "Beartic";
+    public static final String TYPE_OF_POKEMON = "Freezing";
+    public static final String DESCRIPTION = "It can make its breath freeze at will. Very able " +
+            "in the water, it swims around in northern seas and catches prey.";
+    public static final double HEIGHT = 2.6;
+    public static final int BASE_EXP = 177;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 260;
 
-    private static final Ability FIRST_ABILITY = new Ability.SnowCloak();
-    private static final Ability SECOND_ABILITY = new Ability.SlushRush();
-    private static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
+    public static final Ability FIRST_ABILITY = new Ability.SnowCloak();
+    public static final Ability SECOND_ABILITY = new Ability.SlushRush();
+    public static final Ability HIDDEN_ABILITY = new Ability.SwiftSwim();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 130;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 80;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 130;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 80;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/beartic.png";
-    private static final String BACK_PATH = "battle/backs/unova/beartic.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/beartic.png";
-    private static final String CRY_PATH = "sounds/cry/614.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/beartic.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/beartic.png";
+    public static final String BACK_PATH = "battle/backs/unova/beartic.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/beartic.png";
+    public static final String CRY_PATH = "sounds/cry/614.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/beartic.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a beartic
      */
     public Beartic() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

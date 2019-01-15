@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="16" tileheight="16" infinite="0" nextobjectid="31">
+ <properties>
+  <property name="dayPokemonChances" value=""/>
+  <property name="dayPokemonLevels" value=""/>
+  <property name="fishPokemonChances" value="Magikarp,10;Gyarados,10;Krabby,20;Kingler,10;Horsea,10;Seadra,10;Shellder,10;Staryu,10;Psyduck,5;Slowpoke,5;"/>
+  <property name="fishPokemonLevels" value="10-20;40-40;20-40;40-40;20-40;40-40;40-40;40-40;40-40;40-40;"/>
+  <property name="isCave" value="false"/>
+  <property name="nightPokemonChances" value=""/>
+  <property name="nightPokemonLevels" value=""/>
+  <property name="pvp" value="disabled"/>
+  <property name="waterPokemonChances" value="Tentacool,100;"/>
+  <property name="waterPokemonLevels" value="5-40;"/>
+  <property name="wildProbability" value="10"/>
+  <property name="xOffsetModifier" value="384"/>
+  <property name="yOffsetModifier" value="-2912"/>
+ </properties>
+ <tileset firstgid="1" source="../../../../../../TiledAppGen/android/assets/untitled folder/Buildings1.tsx"/>
+ <tileset firstgid="381" source="../../../../../../TiledAppGen/android/assets/untitled folder/Buildings7.tsx"/>
+ <tileset firstgid="733" source="../../../../../../TiledAppGen/android/assets/untitled folder/Water02.tsx"/>
+ <tileset firstgid="925" source="../../../../../../TiledAppGen/android/assets/untitled folder/various1.tsx"/>
+ <tileset firstgid="1485" source="../../../../../../TiledAppGen/android/assets/untitled folder/Path0.tsx"/>
+ <tileset firstgid="1781" source="../../../../../../TiledAppGen/android/assets/untitled folder/GrassFlowers.tsx"/>
+ <layer name="Walkable " width="24" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAEzvHysBwbhSP4lE8igcJbmBkYKhnRNDUNh/Z7AYC5i9lGPjwGMXDFwMArcKYj4AHAAA=
+  </data>
+ </layer>
+ <layer name="Walkable" width="24" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE2NgGAWjYOiBNCqpGQWjAB9YOtAOGAVEgTZG6pjTTiVziAUAcCcyb4AHAAA=
+  </data>
+ </layer>
+ <layer name="Water" width="24" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE2NgGAWjYBSMglEwCugHkpgZGJKhOIWZ+uZnAc3MhuKcQWw+AAl2LQ6ABwAA
+  </data>
+ </layer>
+ <layer name="Collisions" width="24" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE83Sy07CQBiG4bIgXATXIsLKAysFV4CKCQEuQY4LEBDPmrSIAgEM3KavSZuMTZmZlibwJU/atH+nX9oxI4ZhwdQ8OtGdn2Lm4+hEd97dK6y4+4s5QAKHSCLl8bxqRtb/CMc4wSnSHuurZmT9z3CODLK48FhfNSPrn0MeBVziymN91cym/o+cl+zzMiqoup7Vmdnl/pHlFjXU0UATLbRdc0H7d9DFHXroY4B7H/2vo4ZRtN1gKNx/wjNe8Io3vOMjpP4WRvjEGF/4xsRHf1nmWGCJH/vaCmsf/R9C2E9B++tmm/0v/v+/fy/uBSf73F8VcU3nPfHYf9tE/Ca/uct45IAHAAA=
+  </data>
+ </layer>
+ <layer name="Collisions" width="24" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE2tjZGBoB2JqgzaouX1A3E8D82Hmto26HysYdT9+MOp+/GDU/fjBqPtxA2QzaeF+ZDOHuvsBGXpDgoAHAAA=
+  </data>
+ </layer>
+ <objectgroup name="col" opacity="0.51">
+  <object id="1" x="0.666667" y="0" width="192" height="21.3333"/>
+  <object id="4" x="2" y="23.3333" width="27.3333" height="299.333"/>
+  <object id="6" x="30.6667" y="308" width="67.3333" height="11.3333"/>
+  <object id="7" x="98" y="274" width="60" height="44.6667"/>
+  <object id="8" x="272.667" y="310" width="111.333" height="9.33333"/>
+  <object id="10" x="225.333" y="0.666667" width="158" height="19.3333"/>
+  <object id="11" x="353.333" y="22" width="30" height="287.333"/>
+  <object id="12" x="336" y="277.333" width="16.6667" height="31.3333"/>
+  <object id="15" x="80" y="50" width="79.3333" height="62.6667"/>
+  <object id="16" x="112.667" y="114" width="43.3333" height="14"/>
+  <object id="17" x="85.3333" y="114" width="8.66667" height="11.3333"/>
+  <object id="18" x="64" y="112.667" width="14.6667" height="14"/>
+  <object id="19" x="209.333" y="113.333" width="14" height="12.6667"/>
+  <object id="20" x="225.333" y="50" width="78" height="60"/>
+  <object id="21" x="258" y="113.333" width="41.3333" height="14.6667"/>
+  <object id="22" x="230" y="111.333" width="10" height="16"/>
+  <object id="23" x="80.6667" y="177.333" width="78" height="12.6667"/>
+  <object id="24" x="81.3333" y="224" width="12.6667" height="14.6667"/>
+  <object id="25" x="193.333" y="144.667" width="108.667" height="58.6667"/>
+  <object id="26" x="273.333" y="204" width="28.6667" height="19.3333"/>
+  <object id="27" x="194.667" y="204.667" width="60" height="19.3333"/>
+  <object id="28" x="209.333" y="256.667" width="104.667" height="12.6667"/>
+ </objectgroup>
+ <objectgroup name="warp">
+  <object id="30" x="194" y="-1.33333" width="29.3333" height="8">
+   <properties>
+    <property name="direction" type="int" value="0"/>
+    <property name="warpLocation" value="route1"/>
+    <property name="x" type="float" value="25.25"/>
+    <property name="y" type="float" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="WalkBehind" width="24" height="20" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAE9WRWw5AMBBF2z1hW94bQPjy+JFYrishJtXSIaFuclKReZwiBC+TFGKUzCZkuNFjSquZNSnvPOCD4GSOqUZ3v7f9n+RL/8piz1WNy98/BBGIQQJSkIGc1LjmXzB3u+bPzZV/+XDX1/6c6P79n/zVUHc6c/FvQL2enNSkd1Rmbunw3Mv9tL1PK4+91H8GZ6j9B4AHAAA=
+  </data>
+ </layer>
+</map>

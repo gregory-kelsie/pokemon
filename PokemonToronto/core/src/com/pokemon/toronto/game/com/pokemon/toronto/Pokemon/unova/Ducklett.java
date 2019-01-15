@@ -18,47 +18,51 @@ public class Ducklett extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 580;
-    private static final String NAME = "Ducklett";
-    private static final int BASE_EXP = 61;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 5.5;
+    public static final int NUMBER = 580;
+    public static final String NAME = "Ducklett";
+    public static final String TYPE_OF_POKEMON = "Water Bird";
+    public static final String DESCRIPTION = "When attacked, it uses its feathers to splash " +
+            "water, escaping under cover of the spray.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 61;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 5.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.BigPecks();
-    private static final Ability HIDDEN_ABILITY = new Ability.Hydration();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.BigPecks();
+    public static final Ability HIDDEN_ABILITY = new Ability.Hydration();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 44;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 44;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 44;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 44;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/ducklett.png";
-    private static final String BACK_PATH = "battle/backs/unova/ducklett.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/ducklett.png";
-    private static final String CRY_PATH = "sounds/cry/580.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/ducklett.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/ducklett.png";
+    public static final String BACK_PATH = "battle/backs/unova/ducklett.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/ducklett.png";
+    public static final String CRY_PATH = "sounds/cry/580.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/ducklett.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a ducklett
      */
     public Ducklett() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

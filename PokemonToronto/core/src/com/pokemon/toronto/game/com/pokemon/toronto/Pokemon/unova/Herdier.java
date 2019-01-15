@@ -18,47 +18,51 @@ public class Herdier extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 507;
-    private static final String NAME = "Herdier";
-    private static final int BASE_EXP = 130;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 14.7;
+    public static final int NUMBER = 507;
+    public static final String NAME = "Herdier";
+    public static final String TYPE_OF_POKEMON = "Loyal Dog";
+    public static final String DESCRIPTION = "This very loyal Pokémo helps trainers, and it also" +
+            " takes care of other Pokémon.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 130;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 14.7;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.SandRush();
-    private static final Ability HIDDEN_ABILITY = new Ability.Scrappy();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.SandRush();
+    public static final Ability HIDDEN_ABILITY = new Ability.Scrappy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/herdier.png";
-    private static final String BACK_PATH = "battle/backs/unova/herdier.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/herdier.png";
-    private static final String CRY_PATH = "sounds/cry/507.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/herdier.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/herdier.png";
+    public static final String BACK_PATH = "battle/backs/unova/herdier.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/herdier.png";
+    public static final String CRY_PATH = "sounds/cry/507.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/herdier.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a herdier
      */
     public Herdier() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

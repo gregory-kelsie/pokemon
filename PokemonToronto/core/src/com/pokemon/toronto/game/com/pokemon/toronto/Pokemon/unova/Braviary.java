@@ -17,47 +17,51 @@ public class Braviary extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 628;
-    private static final String NAME = "Braviary";
-    private static final int BASE_EXP = 179;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 41;
+    public static final int NUMBER = 628;
+    public static final String NAME = "Braviary";
+    public static final String TYPE_OF_POKEMON = "Valiant";
+    public static final String DESCRIPTION = "For the sake of its friends, this brave warrior " +
+            "of the sky will not stop battling, even if injured.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 179;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 41;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.SheerForce();
-    private static final Ability HIDDEN_ABILITY = new Ability.Defiant();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.SheerForce();
+    public static final Ability HIDDEN_ABILITY = new Ability.Defiant();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 123;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 57;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 123;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 57;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/braviary.png";
-    private static final String BACK_PATH = "battle/backs/unova/braviary.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/braviary.png";
-    private static final String CRY_PATH = "sounds/cry/628.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/braviary.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/braviary.png";
+    public static final String BACK_PATH = "battle/backs/unova/braviary.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/braviary.png";
+    public static final String CRY_PATH = "sounds/cry/628.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/braviary.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a braviary
      */
     public Braviary() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Simisear extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 514;
-    private static final String NAME = "Simisear";
-    private static final int BASE_EXP = 174;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 28;
+    public static final int NUMBER = 514;
+    public static final String NAME = "Simisear";
+    public static final String TYPE_OF_POKEMON = "Ember";
+    public static final String DESCRIPTION = "It loves sweets because they become energy for the" +
+            " fire burning inside its body.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 174;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 28;
 
-    private static final Ability FIRST_ABILITY = new Ability.Gluttony();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Blaze();
+    public static final Ability FIRST_ABILITY = new Ability.Gluttony();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Blaze();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 98;
-    private static final int BASE_DEFENSE = 63;
-    private static final int BASE_SPECIAL_ATTACK = 98;
-    private static final int BASE_SPECIAL_DEFENSE = 63;
-    private static final int BASE_SPEED = 101;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 98;
+    public static final int BASE_DEFENSE = 63;
+    public static final int BASE_SPECIAL_ATTACK = 98;
+    public static final int BASE_SPECIAL_DEFENSE = 63;
+    public static final int BASE_SPEED = 101;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/simisear.png";
-    private static final String BACK_PATH = "battle/backs/unova/simisear.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/simisear.png";
-    private static final String CRY_PATH = "sounds/cry/514.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/simisear.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/simisear.png";
+    public static final String BACK_PATH = "battle/backs/unova/simisear.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/simisear.png";
+    public static final String CRY_PATH = "sounds/cry/514.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/simisear.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a simisear
      */
     public Simisear() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Bidoof extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 399;
-    private static final String NAME = "Bidoof";
-    private static final int BASE_EXP = 50;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 20;
+    public static final int NUMBER = 399;
+    public static final String NAME = "Bidoof";
+    public static final String TYPE_OF_POKEMON = "Plump Mouse";
+    public static final String DESCRIPTION = "A comparison revealed that Bidoof's front teeth " +
+            "grow at the same rate as Rattata's.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 50;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 20;
 
-    private static final Ability FIRST_ABILITY = new Ability.Simple();
-    private static final Ability SECOND_ABILITY = new Ability.Unaware();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moody();
+    public static final Ability FIRST_ABILITY = new Ability.Simple();
+    public static final Ability SECOND_ABILITY = new Ability.Unaware();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moody();
 
     //Base Stats
-    private static final int BASE_HEALTH = 59;
-    private static final int BASE_ATTACK = 45;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 31;
+    public static final int BASE_HEALTH = 59;
+    public static final int BASE_ATTACK = 45;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 31;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/bidoof.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/bidoof.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bidoof.png";
-    private static final String CRY_PATH = "sounds/cry/399.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bidoof.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/bidoof.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/bidoof.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/bidoof.png";
+    public static final String CRY_PATH = "sounds/cry/399.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/bidoof.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bidoof
      */
     public Bidoof() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

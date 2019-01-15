@@ -17,47 +17,51 @@ public class Rotom extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 479;
-    private static final String NAME = "Rotom";
-    private static final int BASE_EXP = 154;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 0.3;
+    public static final int NUMBER = 479;
+    public static final String NAME = "Rotom";
+    public static final String TYPE_OF_POKEMON = "Plasma";
+    public static final String DESCRIPTION = "Its electric-like body can enter some kinds of " +
+            "machines and take control in order to make mischief.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 154;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 0.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 50;
-    private static final int BASE_DEFENSE = 77;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 77;
-    private static final int BASE_SPEED = 91;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 50;
+    public static final int BASE_DEFENSE = 77;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 77;
+    public static final int BASE_SPEED = 91;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/rotom.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/rotom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rotom.png";
-    private static final String CRY_PATH = "sounds/cry/479.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rotom.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/rotom.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/rotom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rotom.png";
+    public static final String CRY_PATH = "sounds/cry/479.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rotom.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      *  Create a rotom
      */
     public Rotom() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

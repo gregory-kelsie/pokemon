@@ -87,6 +87,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	private double[] trainerLatitude;
 	private double[] trainerLongitude;
 	private String[] trainerIcon;
+	private int[] id;
 
 	private double pokemonLatitude2;
 	private double pokemonLongitude2;
@@ -318,7 +319,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					// permission was granted, yay! Do the
 					// contacts-related task you need to do.
 					startMapActivity(pokemonLatitude, pokemonLongitude, pokemonIcon,
-							trainerLatitude, trainerLongitude, trainerIcon);
+							trainerLatitude, trainerLongitude, trainerIcon, id);
 
 				} else {
 					//permission denied.
@@ -355,7 +356,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	@Override
 	public void startMapActivity(double[] pokemonLatitude, double[] pokemonLongitude,
 								 String[] pokemonIcon, double[] trainerLatitude, double[] trainerLongitude,
-								 String[] trainerIcon) {
+								 String[] trainerIcon, int[] id) {
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
 				PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
 						this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
@@ -376,12 +377,14 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			this.trainerLatitude = trainerLatitude;
 			this.trainerLongitude = trainerLongitude;
 			this.trainerIcon = trainerIcon;
+			this.id = id;
 			Log.i("MapState", "Permission required");
 			return;
 		}
 		mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 		if (mLastLocation != null) {
-			Intent openSecondActivity = new Intent("com.pokemon.toronto.game.MAPSACTIVITY");
+			Intent openSecondActivity = new Intent(getApplicationContext(), MapsActivity.class);
+			//Intent openSecondActivity = new Intent("com.pokemon.toronto.game.MAPSACTIVITY");
 			openSecondActivity.putExtra("latitude", mLastLocation.getLatitude());
 			openSecondActivity.putExtra("longitude", mLastLocation.getLongitude());
 			openSecondActivity.putExtra("pokemonLatitude", pokemonLatitude);
@@ -390,7 +393,9 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			openSecondActivity.putExtra("trainerLatitude", trainerLatitude);
 			openSecondActivity.putExtra("trainerLongitude", trainerLongitude);
 			openSecondActivity.putExtra("trainerIcon", trainerIcon);
-			startActivity(openSecondActivity);
+			openSecondActivity.putExtra("id", id);
+			startActivityForResult(openSecondActivity, 999);
+			//startActivity(openSecondActivity);
 
 		} else {
 			Log.i("mLastLocation: ", "is null");
@@ -466,6 +471,17 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			}
 		} catch (Exception e) {
 			Log.i("Location", "Location Change Error: " + e.getMessage());
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 999 && resultCode == RESULT_OK) {
+			int index = data.getIntExtra("pokemonIndex", -1);
+			Log.i("maerkers", "" + index);
+			pToronto.startWildBattle(index);
+
 		}
 	}
 
@@ -583,90 +599,98 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 	 */
 	@Override
 	public void spawnNewGamePokemon() {
-		latitude = mLastLocation.getLatitude();
-		longitude = mLastLocation.getLongitude();
 		try {
-			//Make sure the pokemonToronto's game state manager
-			//exists before updating the player's coordinates.
-			if (pToronto.getGsm() != null) {
-				pToronto.setLatitude(latitude);
-				pToronto.setLongitude(longitude);
+			latitude = mLastLocation.getLatitude();
+			longitude = mLastLocation.getLongitude();
+			try {
+				//Make sure the pokemonToronto's game state manager
+				//exists before updating the player's coordinates.
+				if (pToronto.getGsm() != null) {
+					pToronto.setLatitude(latitude);
+					pToronto.setLongitude(longitude);
+				}
+			} catch (Exception e) {
+				Log.i("Location", "Location Change Error: " + e.getMessage());
 			}
+			Geocoder gc = new Geocoder(getContext(), Locale.getDefault());
+			String country = "";
+			String stateName = "";
+			String cityName = "";
+
+			try {
+				List<Address> address = gc.getFromLocation(latitude, longitude, 3);
+				Log.i("Geocoder", "Addresses: " + address.size());
+
+
+				for (int i = 0; i < address.size(); i++) {
+					if (address.get(i) != null) {
+						Log.i("Geocoder", "zz-------------------------------------------------------");
+						for (int j = 0; i < address.get(i).getMaxAddressLineIndex(); j++) {
+							Log.i("Geocoder", "Addresses Line: " + address.get(i).getAddressLine(j));
+						}
+						Log.i("Geocoder", "Feature (" + i + "):" + address.get(i).getFeatureName());
+						Log.i("Geocoder", "Premises: " + address.get(i).getPremises());
+						Log.i("Geocoder", "Sub-Admin Area: " + address.get(i).getSubAdminArea());
+						Log.i("Geocoder", "Locality: " + address.get(i).getLocality());
+						Log.i("Geocoder", "Sub-Locality: " + address.get(i).getSubLocality());
+						Log.i("Geocoder", "SubthoroughFare: " + address.get(i).getSubThoroughfare());
+						Log.i("Geocoder", "ThoroughFare: " + address.get(i).getThoroughfare());
+						Log.i("Geocoder", "Address: " + address.get(i).getAddressLine(1));
+					}
+				}
+
+				if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+					Log.e("not granted", "Permission is not granted");
+
+					ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+					return;
+				}
+
+				Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+
+				placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
+					@Override
+					public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
+						PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
+						for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+							name = placeLikelihood.getPlace().getName().toString();
+							LatLng ln = placeLikelihood.getPlace().getLatLng();
+							List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+							Log.i("osgh", "Type List");
+							for (int i = 0; i < types.size(); i++) {
+								Log.i("osgh", "Type: " + types.get(i));
+							}
+							try {
+								Log.i("osgh", String.format("PokemonPlace '%s' has likelihood: %g",
+										placeLikelihood.getPlace().getName(),
+										placeLikelihood.getLikelihood()));
+								Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
+							} catch (Exception e) {
+								Log.i("osgh", e.getMessage());
+							}
+							pToronto.createPlace(name, ln.latitude, ln.longitude, types);
+						}
+						likelyPlaces.release();
+					}
+				});
+
+				country = address.get(0).getCountryName();
+				stateName = address.get(0).getAdminArea();
+				cityName = address.get(0).getLocality();
+				Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
+
+			} catch (Exception e) {
+				Log.i("WildRec Trycatch ", e.getMessage());
+			}
+			try {
+				Log.i("Geocoder", cityName);
+			} catch (Exception e) {
+				Log.i("Geocoder", e.getMessage());
+			}
+			pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
 		} catch (Exception e) {
-			Log.i("Location", "Location Change Error: " + e.getMessage());
+			Gdx.app.log("Error", "Spawn New Game Pokemon - Probably latitude error.");
 		}
-		Geocoder gc = new Geocoder(getContext(), Locale.getDefault());
-		String country = "";
-		String stateName = "";
-		String cityName = "";
-
-		try {
-			List<Address> address = gc.getFromLocation(latitude, longitude, 3);
-			Log.i("Geocoder", "Addresses: " + address.size());
-
-
-			for (int i = 0; i < address.size(); i++) {
-				if (address.get(i) != null) {
-					Log.i("Geocoder", "zz-------------------------------------------------------");
-					for (int j = 0; i < address.get(i).getMaxAddressLineIndex(); j++) {
-						Log.i("Geocoder", "Addresses Line: " + address.get(i).getAddressLine(j));
-					}
-					Log.i("Geocoder", "Feature (" + i + "):" + address.get(i).getFeatureName());
-					Log.i("Geocoder", "Premises: " + address.get(i).getPremises());
-					Log.i("Geocoder", "Sub-Admin Area: " + address.get(i).getSubAdminArea());
-					Log.i("Geocoder", "Locality: " + address.get(i).getLocality());
-					Log.i("Geocoder", "Sub-Locality: " + address.get(i).getSubLocality());
-					Log.i("Geocoder", "SubthoroughFare: " + address.get(i).getSubThoroughfare());
-					Log.i("Geocoder", "ThoroughFare: " + address.get(i).getThoroughfare());
-					Log.i("Geocoder", "Address: " + address.get(i).getAddressLine(1));
-				}
-			}
-
-			if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-				Log.e("not granted", "Permission is not granted");
-
-				ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
-				return;
-			}
-
-			Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
-
-			placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
-				@Override
-				public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
-					PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
-					for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-						name = placeLikelihood.getPlace().getName().toString();
-						LatLng ln = placeLikelihood.getPlace().getLatLng();
-						List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
-						Log.i("osgh", "Type List");
-						for (int i = 0; i < types.size(); i++) {
-							Log.i("osgh", "Type: " + types.get(i));
-						}
-						try {
-							Log.i("osgh", String.format("PokemonPlace '%s' has likelihood: %g",
-									placeLikelihood.getPlace().getName(),
-									placeLikelihood.getLikelihood()));
-							Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
-						} catch (Exception e) {
-							Log.i("osgh", e.getMessage());
-						}
-						pToronto.createPlace(name, ln.latitude, ln.longitude, types);
-					}
-					likelyPlaces.release();
-				}
-			});
-
-			country = address.get(0).getCountryName();
-			stateName = address.get(0).getAdminArea();
-			cityName = address.get(0).getLocality();
-			Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
-
-		} catch (Exception e) { Log.i("WildRec Trycatch ", e.getMessage());}
-		try {
-			Log.i("Geocoder", cityName);
-		} catch (Exception e) { Log.i("Geocoder", e.getMessage());}
-		pToronto.wildPokemonNotification(latitude, longitude, country, stateName, cityName);
 	}
 
 	@Override
@@ -754,24 +778,20 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 						@Override
 						public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
 							PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
+							LatLng ln = null;
+							List<Integer> types = null;
+							float max = 0.0f;
 							for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-									name = placeLikelihood.getPlace().getName().toString();
-									LatLng ln = placeLikelihood.getPlace().getLatLng();
-									List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
-									Log.i("osgh", "Type List");
-									for (int i = 0; i < types.size(); i++) {
-										Log.i("osgh", "Type: " + types.get(i));
-									}
-									try {
-										Log.i("osgh", String.format("PokemonPlace '%s' has likelihood: %g",
-												placeLikelihood.getPlace().getName(),
-												placeLikelihood.getLikelihood()));
-										Log.i("osgh", "Latitude: " + ln.latitude + ", Longitude: " + ln.longitude);
-									} catch (Exception e) {
-										Log.i("osgh", e.getMessage());
-									}
-									pToronto.createPlace(name, ln.latitude, ln.longitude, types);
+								name = placeLikelihood.getPlace().getName().toString();
+								//Only take pokemonPlaces that have a decent likelihood.
+								if (placeLikelihood.getLikelihood() > max) {
+									types = placeLikelihood.getPlace().getPlaceTypes();
+									ln = placeLikelihood.getPlace().getLatLng();
+									max = placeLikelihood.getLikelihood();
+								}
+
 							}
+							pToronto.createPlace(name, ln.latitude, ln.longitude, types);
 							likelyPlaces.release();
 						}
 					});
@@ -825,16 +845,22 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
 				PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
 				List<PokemonPlace> pokemonPlaces = new ArrayList<PokemonPlace>();
+				float max = 0.0f;
+				List<Integer> types = null;
+				LatLng ln = null;
 				for (PlaceLikelihood placeLikelihood : likelyPlaces) {
 					name = placeLikelihood.getPlace().getName().toString();
-					LatLng ln = placeLikelihood.getPlace().getLatLng();
-					List<Integer> types = placeLikelihood.getPlace().getPlaceTypes();
+
 					//Only take pokemonPlaces that have a decent likelihood.
-					if (placeLikelihood.getLikelihood() > 0.0f) {
-						//Just set the difficulty to 0 because we're searching for trainers.
-						pokemonPlaces.add(new PokemonPlace(name, ln.latitude, ln.longitude, types, 0));
+					if (placeLikelihood.getLikelihood() > max) {
+						types = placeLikelihood.getPlace().getPlaceTypes();
+						ln = placeLikelihood.getPlace().getLatLng();
+						max = placeLikelihood.getLikelihood();
 					}
 				}
+				try {
+					pokemonPlaces.add(new PokemonPlace(name, ln.latitude, ln.longitude, types, 0));
+				} catch (Exception e) { }
 				for (PokemonPlace pokemonPlace : pokemonPlaces) {
 					Gdx.app.log("PlaceX", "name: " + pokemonPlace.getName() + " trainerset: " + pokemonPlace.getTrainers().size());
 				}

@@ -17,47 +17,51 @@ public class Tangrowth extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 465;
-    private static final String NAME = "Tangrowth";
-    private static final int BASE_EXP = 187;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 128.6;
+    public static final int NUMBER = 465;
+    public static final String NAME = "Tangrowth";
+    public static final String TYPE_OF_POKEMON = "Vine";
+    public static final String DESCRIPTION = "Its arms are made of plants that bind themselves " +
+            "to things. They grow back right away if cut.";
+    public static final double HEIGHT = 2;
+    public static final int BASE_EXP = 187;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 128.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
-    private static final Ability SECOND_ABILITY = new Ability.LeafGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Chlorophyll();
+    public static final Ability SECOND_ABILITY = new Ability.LeafGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 100;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 125;
-    private static final int BASE_SPECIAL_ATTACK = 110;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 50;
+    public static final int BASE_HEALTH = 100;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 125;
+    public static final int BASE_SPECIAL_ATTACK = 110;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 50;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/tangrowth.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/tangrowth.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/tangrowth.png";
-    private static final String CRY_PATH = "sounds/cry/465.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/tangrowth.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/tangrowth.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/tangrowth.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/tangrowth.png";
+    public static final String CRY_PATH = "sounds/cry/465.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/tangrowth.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a tangrowth
      */
     public Tangrowth() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

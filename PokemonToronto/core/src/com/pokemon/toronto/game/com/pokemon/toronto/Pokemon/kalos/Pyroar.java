@@ -17,47 +17,51 @@ public class Pyroar extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 668;
-    private static final String NAME = "Pyroar";
-    private static final int BASE_EXP = 177;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 65;
-    private static final double WEIGHT = 81.5;
+    public static final int NUMBER = 668;
+    public static final String NAME = "Pyroar";
+    public static final String TYPE_OF_POKEMON = "Royal";
+    public static final String DESCRIPTION = "The male with the largest mane of fire is the" +
+            " leader of the pride.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 177;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 65;
+    public static final double WEIGHT = 81.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Rivalry();
-    private static final Ability SECOND_ABILITY = new Ability.Unnerve();
-    private static final Ability HIDDEN_ABILITY = new Ability.Moxie();
+    public static final Ability FIRST_ABILITY = new Ability.Rivalry();
+    public static final Ability SECOND_ABILITY = new Ability.Unnerve();
+    public static final Ability HIDDEN_ABILITY = new Ability.Moxie();
 
     //Base Stats
-    private static final int BASE_HEALTH = 86;
-    private static final int BASE_ATTACK = 68;
-    private static final int BASE_DEFENSE = 72;
-    private static final int BASE_SPECIAL_ATTACK = 109;
-    private static final int BASE_SPECIAL_DEFENSE = 66;
-    private static final int BASE_SPEED = 106;
+    public static final int BASE_HEALTH = 86;
+    public static final int BASE_ATTACK = 68;
+    public static final int BASE_DEFENSE = 72;
+    public static final int BASE_SPECIAL_ATTACK = 109;
+    public static final int BASE_SPECIAL_DEFENSE = 66;
+    public static final int BASE_SPEED = 106;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/pyroar.png";
-    private static final String BACK_PATH = "battle/backs/kalos/pyroar.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/pyroar.png";
-    private static final String CRY_PATH = "sounds/cry/668.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/pyroar.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/pyroar.png";
+    public static final String BACK_PATH = "battle/backs/kalos/pyroar.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/pyroar.png";
+    public static final String CRY_PATH = "sounds/cry/668.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/pyroar.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.NORMAL;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.NORMAL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a pyroar
      */
     public Pyroar() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

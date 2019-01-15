@@ -17,47 +17,51 @@ public class Garchomp extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 445;
-    private static final String NAME = "Garchomp";
-    private static final int BASE_EXP = 270;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 95;
+    public static final int NUMBER = 445;
+    public static final String NAME = "Garchomp";
+    public static final String TYPE_OF_POKEMON = "Mach";
+    public static final String DESCRIPTION = "It is said that when one runs at high speed, its" +
+            " wings create blades of wind that can fell nearby trees.";
+    public static final double HEIGHT = 1.9;
+    public static final int BASE_EXP = 270;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 95;
 
-    private static final Ability FIRST_ABILITY = new Ability.SandVeil();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.RoughSkin();
+    public static final Ability FIRST_ABILITY = new Ability.SandVeil();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.RoughSkin();
 
     //Base Stats
-    private static final int BASE_HEALTH = 108;
-    private static final int BASE_ATTACK = 130;
-    private static final int BASE_DEFENSE = 95;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 102;
+    public static final int BASE_HEALTH = 108;
+    public static final int BASE_ATTACK = 130;
+    public static final int BASE_DEFENSE = 95;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 102;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/garchomp.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/garchomp.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/garchomp.png";
-    private static final String CRY_PATH = "sounds/cry/445.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/garchomp.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/garchomp.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/garchomp.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/garchomp.png";
+    public static final String CRY_PATH = "sounds/cry/445.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/garchomp.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DRAGON;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.DRAGON;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a garchomp
      */
     public Garchomp() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

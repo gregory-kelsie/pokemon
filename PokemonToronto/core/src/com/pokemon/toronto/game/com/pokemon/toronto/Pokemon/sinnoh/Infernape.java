@@ -17,47 +17,51 @@ public class Infernape extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 392;
-    private static final String NAME = "Infernape";
-    private static final int BASE_EXP = 240;
-    private static final int[] EV_YIELD = {0, 1, 0, 1, 0, 1};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 55;
+    public static final int NUMBER = 392;
+    public static final String NAME = "Infernape";
+    public static final String TYPE_OF_POKEMON = "Flame";
+    public static final String DESCRIPTION = "It uses unique fighting moves with fire on its" +
+            " hands and feet. It will take on any opponent.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 240;
+    public static final int[] EV_YIELD = {0, 1, 0, 1, 0, 1};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 55;
 
-    private static final Ability FIRST_ABILITY = new Ability.Blaze();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.IronFist();
+    public static final Ability FIRST_ABILITY = new Ability.Blaze();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.IronFist();
 
     //Base Stats
-    private static final int BASE_HEALTH = 76;
-    private static final int BASE_ATTACK = 104;
-    private static final int BASE_DEFENSE = 71;
-    private static final int BASE_SPECIAL_ATTACK = 104;
-    private static final int BASE_SPECIAL_DEFENSE = 71;
-    private static final int BASE_SPEED = 108;
+    public static final int BASE_HEALTH = 76;
+    public static final int BASE_ATTACK = 104;
+    public static final int BASE_DEFENSE = 71;
+    public static final int BASE_SPECIAL_ATTACK = 104;
+    public static final int BASE_SPECIAL_DEFENSE = 71;
+    public static final int BASE_SPEED = 108;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/infernape.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/infernape.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/infernape.png";
-    private static final String CRY_PATH = "sounds/cry/392.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/infernape.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/infernape.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/infernape.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/infernape.png";
+    public static final String CRY_PATH = "sounds/cry/392.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/infernape.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a infernape
      */
     public Infernape() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

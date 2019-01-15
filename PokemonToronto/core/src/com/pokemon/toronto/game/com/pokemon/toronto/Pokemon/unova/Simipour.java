@@ -17,47 +17,51 @@ public class Simipour extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 516;
-    private static final String NAME = "Simipour";
-    private static final int BASE_EXP = 174;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 29;
+    public static final int NUMBER = 516;
+    public static final String NAME = "Simipour";
+    public static final String TYPE_OF_POKEMON = "Geyser";
+    public static final String DESCRIPTION = "The tuft on its head holds water. When the level " +
+            "runs low, it replenishes the tuft by siphoning up water with its tail.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 174;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 29;
 
-    private static final Ability FIRST_ABILITY = new Ability.Gluttony();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Torrent();
+    public static final Ability FIRST_ABILITY = new Ability.Gluttony();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Torrent();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 98;
-    private static final int BASE_DEFENSE = 63;
-    private static final int BASE_SPECIAL_ATTACK = 98;
-    private static final int BASE_SPECIAL_DEFENSE = 63;
-    private static final int BASE_SPEED = 101;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 98;
+    public static final int BASE_DEFENSE = 63;
+    public static final int BASE_SPECIAL_ATTACK = 98;
+    public static final int BASE_SPECIAL_DEFENSE = 63;
+    public static final int BASE_SPEED = 101;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/simipour.png";
-    private static final String BACK_PATH = "battle/backs/unova/simipour.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/simipour.png";
-    private static final String CRY_PATH = "sounds/cry/516.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/simipour.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/simipour.png";
+    public static final String BACK_PATH = "battle/backs/unova/simipour.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/simipour.png";
+    public static final String CRY_PATH = "sounds/cry/516.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/simipour.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a simipour
      */
     public Simipour() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

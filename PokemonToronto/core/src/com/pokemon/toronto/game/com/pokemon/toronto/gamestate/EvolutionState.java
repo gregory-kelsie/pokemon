@@ -597,7 +597,7 @@ public class EvolutionState extends GameState {
 
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         lowerPanel.dispose();
         textPanel.dispose();
         background.dispose();

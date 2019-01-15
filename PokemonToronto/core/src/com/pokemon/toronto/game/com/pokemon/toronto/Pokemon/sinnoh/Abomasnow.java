@@ -17,47 +17,51 @@ public class Abomasnow extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 460;
-    private static final String NAME = "Abomasnow";
-    private static final int BASE_EXP = 173;
-    private static final int[] EV_YIELD = {0, 1, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 135.5;
+    public static final int NUMBER = 460;
+    public static final String NAME = "Abomasnow";
+    public static final String TYPE_OF_POKEMON = "Frosted Tree";
+    public static final String DESCRIPTION = "They appear when the snow flowers bloom. When the" +
+            " petals fall, they retreat to places unknown again.";
+    public static final double HEIGHT = 2.2;
+    public static final int BASE_EXP = 173;
+    public static final int[] EV_YIELD = {0, 1, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 135.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SnowWarning();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Soundproof();
+    public static final Ability FIRST_ABILITY = new Ability.SnowWarning();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Soundproof();
 
     //Base Stats
-    private static final int BASE_HEALTH = 90;
-    private static final int BASE_ATTACK = 92;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 92;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 90;
+    public static final int BASE_ATTACK = 92;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 92;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/abomasnow.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/abomasnow.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/abomasnow.png";
-    private static final String CRY_PATH = "sounds/cry/460.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/abomasnow.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/abomasnow.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/abomasnow.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/abomasnow.png";
+    public static final String CRY_PATH = "sounds/cry/460.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/abomasnow.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.ICE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.ICE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a abomasnow
      */
     public Abomasnow() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

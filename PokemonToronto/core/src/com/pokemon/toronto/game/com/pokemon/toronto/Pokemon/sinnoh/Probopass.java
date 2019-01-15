@@ -17,47 +17,51 @@ public class Probopass extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 476;
-    private static final String NAME = "Probopass";
-    private static final int BASE_EXP = 184;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 2, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 340;
+    public static final int NUMBER = 476;
+    public static final String NAME = "Probopass";
+    public static final String TYPE_OF_POKEMON = "Compass";
+    public static final String DESCRIPTION = "It freely controls three units called Mini-Noses" +
+            " using magnetic force.";
+    public static final double HEIGHT = 1.4;
+    public static final int BASE_EXP = 184;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 2, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 340;
 
-    private static final Ability FIRST_ABILITY = new Ability.Sturdy();
-    private static final Ability SECOND_ABILITY = new Ability.MagnetPull();
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.Sturdy();
+    public static final Ability SECOND_ABILITY = new Ability.MagnetPull();
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 145;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 150;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 145;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 150;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/probopass.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/probopass.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/probopass.png";
-    private static final String CRY_PATH = "sounds/cry/476.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/probopass.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/probopass.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/probopass.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/probopass.png";
+    public static final String CRY_PATH = "sounds/cry/476.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/probopass.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.STEEL;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.STEEL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a probopass
      */
     public Probopass() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -904,7 +904,7 @@ public class IntroductionState extends GameState {
      * for the Introduction State.
      */
     @Override
-    protected void dispose() {
+    public void dispose() {
         textBox.dispose();
         textBoxHeader.dispose();
         ivyTheme.stop();

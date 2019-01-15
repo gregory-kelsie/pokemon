@@ -62,6 +62,7 @@ public class EndTurnPhase extends BattlePhase {
     private final int PERISH_SONG = 37;
     private final int YAWN = 38;
     private final int WRAP = 39;
+    private final int MAGMA_STORM = 40;
 
 
     //End turn weather results
@@ -238,6 +239,8 @@ public class EndTurnPhase extends BattlePhase {
             adjustTailwind();
         } else if (currentState == FIRE_SPIN) {
             checkFireSpin();
+        } else if (currentState == MAGMA_STORM) {
+            checkMagmaStorm();
         } else if (currentState == INFESTATION) {
             checkInfestation();
         } else if (currentState == SAND_TOMB) {
@@ -588,7 +591,7 @@ public class EndTurnPhase extends BattlePhase {
                     stateAfterText = FIRE_SPIN;
                 } else {
                     usingOnEnemy = true;
-                    stateAfterText = SAND_TOMB;
+                    stateAfterText = MAGMA_STORM;
                 }
             } else if (currentPokemon.inFireSpin()) {
                 text = currentPokemon.getName() + " was hurt by Fire Spin.";
@@ -597,7 +600,37 @@ public class EndTurnPhase extends BattlePhase {
                 currentPokemon.subtractHealth(damage);
                 calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
                 currentPokemon.adjustFireSpinTurns();
-                adjustStates(currentPokemon, FIRE_SPIN, SAND_TOMB);
+                adjustStates(currentPokemon, FIRE_SPIN, MAGMA_STORM);
+            } else {
+                noStateUse(MAGMA_STORM);
+            }
+        } else {
+            noStateUse(MAGMA_STORM);
+        }
+    }
+
+    private void checkMagmaStorm() {
+        Pokemon currentPokemon = getCurrentPokemon();
+        if (currentPokemon.getCurrentHealth() != 0) {
+            if (currentPokemon.getMagmaStormTurns() == 0 && currentPokemon.inMagmaStorm()) {
+                currentPokemon.removeMagmaStorm();
+                text = currentPokemon.getName() + " was freed from the Magma Storm!";
+                currentState = DISPLAY_TEXT;
+                if (usingOnEnemy) {
+                    usingOnEnemy = false;
+                    stateAfterText = MAGMA_STORM;
+                } else {
+                    usingOnEnemy = true;
+                    stateAfterText = SAND_TOMB;
+                }
+            } else if (currentPokemon.inMagmaStorm()) {
+                text = currentPokemon.getName() + " was hurt by Magma Storm.";
+                int damage = (int)Math.round(currentPokemon.getHealthStat() / 8.0);
+                calcSchoolingBeforeDamageOrHeal(currentPokemon, !usingOnEnemy);
+                currentPokemon.subtractHealth(damage);
+                calcSchoolingAfterDamageOrHeal(currentPokemon, !usingOnEnemy);
+                currentPokemon.adjustMagmaStormTurns();
+                adjustStates(currentPokemon, MAGMA_STORM, SAND_TOMB);
             } else {
                 noStateUse(SAND_TOMB);
             }

@@ -18,47 +18,51 @@ public class Noibat extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 714;
-    private static final String NAME = "Noibat";
-    private static final int BASE_EXP = 49;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 8;
+    public static final int NUMBER = 714;
+    public static final String NAME = "Noibat";
+    public static final String TYPE_OF_POKEMON = "Sound Wave";
+    public static final String DESCRIPTION = "They live in pitch-black caves. Their enormous " +
+            "ears can emit ultrasonic waves of 200,000 hertz.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 49;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Frisk();
-    private static final Ability SECOND_ABILITY = new Ability.Infiltrator();
-    private static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
+    public static final Ability FIRST_ABILITY = new Ability.Frisk();
+    public static final Ability SECOND_ABILITY = new Ability.Infiltrator();
+    public static final Ability HIDDEN_ABILITY = new Ability.Telepathy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 40;
-    private static final int BASE_SPEED = 55;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 40;
+    public static final int BASE_SPEED = 55;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/noibat.png";
-    private static final String BACK_PATH = "battle/backs/kalos/noibat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/noibat.png";
-    private static final String CRY_PATH = "sounds/cry/714.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/noibat.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/noibat.png";
+    public static final String BACK_PATH = "battle/backs/kalos/noibat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/noibat.png";
+    public static final String CRY_PATH = "sounds/cry/714.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/noibat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FLYING;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.FLYING;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a noibat
      */
     public Noibat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Drifblim extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 426;
-    private static final String NAME = "Drifblim";
-    private static final int BASE_EXP = 174;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 15;
+    public static final int NUMBER = 426;
+    public static final String NAME = "Drifblim";
+    public static final String TYPE_OF_POKEMON = "Blimp";
+    public static final String DESCRIPTION = "At dusk, swarms of them are carried aloft on winds." +
+            " When noticed, they suddenly vanish.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 174;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 15;
 
-    private static final Ability FIRST_ABILITY = new Ability.Aftermath();
-    private static final Ability SECOND_ABILITY = new Ability.Unburden();
-    private static final Ability HIDDEN_ABILITY = new Ability.FlareBoost();
+    public static final Ability FIRST_ABILITY = new Ability.Aftermath();
+    public static final Ability SECOND_ABILITY = new Ability.Unburden();
+    public static final Ability HIDDEN_ABILITY = new Ability.FlareBoost();
 
     //Base Stats
-    private static final int BASE_HEALTH = 150;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 44;
-    private static final int BASE_SPECIAL_ATTACK = 90;
-    private static final int BASE_SPECIAL_DEFENSE = 54;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 150;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 44;
+    public static final int BASE_SPECIAL_ATTACK = 90;
+    public static final int BASE_SPECIAL_DEFENSE = 54;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/drifblim.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/drifblim.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/drifblim.png";
-    private static final String CRY_PATH = "sounds/cry/426.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/drifblim.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/drifblim.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/drifblim.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/drifblim.png";
+    public static final String CRY_PATH = "sounds/cry/426.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/drifblim.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FLUCTUATING;
+    public static final ExpType EXP_TYPE = ExpType.FLUCTUATING;
 
     /**
      * Create a drifblim
      */
     public Drifblim() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

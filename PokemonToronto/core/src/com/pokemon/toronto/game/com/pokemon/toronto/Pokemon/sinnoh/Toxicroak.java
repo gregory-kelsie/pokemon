@@ -17,47 +17,51 @@ public class Toxicroak extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 454;
-    private static final String NAME = "Toxicroak";
-    private static final int BASE_EXP = 172;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 44.4;
+    public static final int NUMBER = 454;
+    public static final String NAME = "Toxicroak";
+    public static final String TYPE_OF_POKEMON = "Toxic Mouth";
+    public static final String DESCRIPTION = "It has a poison sac at its throat. When it croaks," +
+            " the stored poison is churned for greater potency.";
+    public static final double HEIGHT = 1.3;
+    public static final int BASE_EXP = 172;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 44.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Anticipation();
-    private static final Ability SECOND_ABILITY = new Ability.DrySkin();
-    private static final Ability HIDDEN_ABILITY = new Ability.PoisonTouch();
+    public static final Ability FIRST_ABILITY = new Ability.Anticipation();
+    public static final Ability SECOND_ABILITY = new Ability.DrySkin();
+    public static final Ability HIDDEN_ABILITY = new Ability.PoisonTouch();
 
     //Base Stats
-    private static final int BASE_HEALTH = 83;
-    private static final int BASE_ATTACK = 106;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 86;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 85;
+    public static final int BASE_HEALTH = 83;
+    public static final int BASE_ATTACK = 106;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 86;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 85;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/toxicroak.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/toxicroak.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/toxicroak.png";
-    private static final String CRY_PATH = "sounds/cry/454.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/toxicroak.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/toxicroak.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/toxicroak.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/toxicroak.png";
+    public static final String CRY_PATH = "sounds/cry/454.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/toxicroak.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a toxicroak
      */
     public Toxicroak() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

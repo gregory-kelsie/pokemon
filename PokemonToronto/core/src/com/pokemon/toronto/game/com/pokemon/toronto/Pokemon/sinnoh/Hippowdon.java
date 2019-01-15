@@ -17,47 +17,51 @@ public class Hippowdon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 450;
-    private static final String NAME = "Hippowdon";
-    private static final int BASE_EXP = 184;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 300;
+    public static final int NUMBER = 450;
+    public static final String NAME = "Hippowdon";
+    public static final String TYPE_OF_POKEMON = "Heavyweight";
+    public static final String DESCRIPTION = "It is surprisingly quick to anger. It holds its " +
+            "mouth agape as a display of its strength.";
+    public static final double HEIGHT = 2;
+    public static final int BASE_EXP = 184;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 300;
 
-    private static final Ability FIRST_ABILITY = new Ability.SandStream();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SandForce();
+    public static final Ability FIRST_ABILITY = new Ability.SandStream();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SandForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 108;
-    private static final int BASE_ATTACK = 112;
-    private static final int BASE_DEFENSE = 118;
-    private static final int BASE_SPECIAL_ATTACK = 68;
-    private static final int BASE_SPECIAL_DEFENSE = 72;
-    private static final int BASE_SPEED = 47;
+    public static final int BASE_HEALTH = 108;
+    public static final int BASE_ATTACK = 112;
+    public static final int BASE_DEFENSE = 118;
+    public static final int BASE_SPECIAL_ATTACK = 68;
+    public static final int BASE_SPECIAL_DEFENSE = 72;
+    public static final int BASE_SPEED = 47;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/hippowdon.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/hippowdon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/hippowdon.png";
-    private static final String CRY_PATH = "sounds/cry/450.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/hippowdon.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/hippowdon.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/hippowdon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/hippowdon.png";
+    public static final String CRY_PATH = "sounds/cry/450.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/hippowdon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a hippowdon
      */
     public Hippowdon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

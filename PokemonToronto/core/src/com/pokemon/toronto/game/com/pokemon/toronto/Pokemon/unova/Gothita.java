@@ -18,47 +18,51 @@ public class Gothita extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 574;
-    private static final String NAME = "Gothita";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
-    private static final int CAPTURE_RATE = 200;
-    private static final double WEIGHT = 5.8;
+    public static final int NUMBER = 574;
+    public static final String NAME = "Gothita";
+    public static final String TYPE_OF_POKEMON = "Fixation";
+    public static final String DESCRIPTION = "It stares intently at everything. It can become so" +
+            " obsessed with watching that it doesn't notice attacks.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 1, 0};
+    public static final int CAPTURE_RATE = 200;
+    public static final double WEIGHT = 5.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Frisk();
-    private static final Ability SECOND_ABILITY = new Ability.Competitive();
-    private static final Ability HIDDEN_ABILITY = new Ability.ShadowTag();
+    public static final Ability FIRST_ABILITY = new Ability.Frisk();
+    public static final Ability SECOND_ABILITY = new Ability.Competitive();
+    public static final Ability HIDDEN_ABILITY = new Ability.ShadowTag();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 30;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 30;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/gothita.png";
-    private static final String BACK_PATH = "battle/backs/unova/gothita.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/gothita.png";
-    private static final String CRY_PATH = "sounds/cry/574.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/gothita.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/gothita.png";
+    public static final String BACK_PATH = "battle/backs/unova/gothita.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/gothita.png";
+    public static final String CRY_PATH = "sounds/cry/574.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/gothita.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a gothita
      */
     public Gothita() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

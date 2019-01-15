@@ -17,47 +17,51 @@ public class Volcarona extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 637;
-    private static final String NAME = "Volcarona";
-    private static final int BASE_EXP = 248;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 15;
-    private static final double WEIGHT = 46;
+    public static final int NUMBER = 637;
+    public static final String NAME = "Volcarona";
+    public static final String TYPE_OF_POKEMON = "Sun";
+    public static final String DESCRIPTION = "When volcanic ash darkened the atmosphere, it is" +
+            " said that Volcarona's fire provided a replacement for the sun.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 248;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 15;
+    public static final double WEIGHT = 46;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlameBody();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Swarm();
+    public static final Ability FIRST_ABILITY = new Ability.FlameBody();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Swarm();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 60;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 135;
-    private static final int BASE_SPECIAL_DEFENSE = 105;
-    private static final int BASE_SPEED = 100;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 60;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 135;
+    public static final int BASE_SPECIAL_DEFENSE = 105;
+    public static final int BASE_SPEED = 100;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/volcarona.png";
-    private static final String BACK_PATH = "battle/backs/unova/volcarona.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/volcarona.png";
-    private static final String CRY_PATH = "sounds/cry/637.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/volcarona.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/volcarona.png";
+    public static final String BACK_PATH = "battle/backs/unova/volcarona.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/volcarona.png";
+    public static final String CRY_PATH = "sounds/cry/637.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/volcarona.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a volcarona
      */
     public Volcarona() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

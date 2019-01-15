@@ -17,47 +17,51 @@ public class Lurantis extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 754;
-    private static final String NAME = "Lurantis";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 75;
-    private static final double WEIGHT = 18.5;
+    public static final int NUMBER = 754;
+    public static final String NAME = "Lurantis";
+    public static final String TYPE_OF_POKEMON = "Bloom Sickle";
+    public static final String DESCRIPTION = "It fires beams from its sickle-shaped petals. " +
+            "These beams are powerful enough to cleave through thick metal plates.";
+    public static final double HEIGHT = 0.9;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 75;
+    public static final double WEIGHT = 18.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.LeafGuard();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Contrary();
+    public static final Ability FIRST_ABILITY = new Ability.LeafGuard();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Contrary();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 105;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 105;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/lurantis.png";
-    private static final String BACK_PATH = "battle/backs/alola/lurantis.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/lurantis.png";
-    private static final String CRY_PATH = "sounds/cry/754.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/lurantis.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/lurantis.png";
+    public static final String BACK_PATH = "battle/backs/alola/lurantis.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/lurantis.png";
+    public static final String CRY_PATH = "sounds/cry/754.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/lurantis.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a lurantis
      */
     public Lurantis() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

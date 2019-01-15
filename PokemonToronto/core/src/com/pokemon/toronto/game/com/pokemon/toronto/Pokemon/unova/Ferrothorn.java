@@ -17,47 +17,51 @@ public class Ferrothorn extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 598;
-    private static final String NAME = "Ferrothorn";
-    private static final int BASE_EXP = 171;
-    private static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 110;
+    public static final int NUMBER = 598;
+    public static final String NAME = "Ferrothorn";
+    public static final String TYPE_OF_POKEMON = "Thorn Pod";
+    public static final String DESCRIPTION = "It fights by swinging around its three spiky " +
+            "feelers. A hit from these steel spikes can reduce a boulder to rubble.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 171;
+    public static final int[] EV_YIELD = {0, 0, 2, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 110;
 
-    private static final Ability FIRST_ABILITY = new Ability.IronBarbs();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Anticipation();
+    public static final Ability FIRST_ABILITY = new Ability.IronBarbs();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Anticipation();
 
     //Base Stats
-    private static final int BASE_HEALTH = 74;
-    private static final int BASE_ATTACK = 94;
-    private static final int BASE_DEFENSE = 131;
-    private static final int BASE_SPECIAL_ATTACK = 54;
-    private static final int BASE_SPECIAL_DEFENSE = 116;
-    private static final int BASE_SPEED = 20;
+    public static final int BASE_HEALTH = 74;
+    public static final int BASE_ATTACK = 94;
+    public static final int BASE_DEFENSE = 131;
+    public static final int BASE_SPECIAL_ATTACK = 54;
+    public static final int BASE_SPECIAL_DEFENSE = 116;
+    public static final int BASE_SPEED = 20;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/ferrothorn.png";
-    private static final String BACK_PATH = "battle/backs/unova/ferrothorn.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/ferrothorn.png";
-    private static final String CRY_PATH = "sounds/cry/598.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/ferrothorn.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/ferrothorn.png";
+    public static final String BACK_PATH = "battle/backs/unova/ferrothorn.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/ferrothorn.png";
+    public static final String CRY_PATH = "sounds/cry/598.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/ferrothorn.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.STEEL;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.STEEL;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a ferrothorn
      */
     public Ferrothorn() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -17,47 +17,51 @@ public class Oricorio extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 741;
-    private static final String NAME = "Oricorio";
-    private static final int BASE_EXP = 167;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 3.4;
+    public static final int NUMBER = 741;
+    public static final String NAME = "Oricorio";
+    public static final String TYPE_OF_POKEMON = "Dancing";
+    public static final String DESCRIPTION = "This Oricorio has sipped red nectar. Its passionate" +
+            " dance moves cause its enemies to combust in both body and mind.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 167;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 3.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Dancer();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Dancer();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 98;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 93;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 98;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 93;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/oricorio-baile.png";
-    private static final String BACK_PATH = "battle/backs/alola/oricorio-baile.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/oricorio-baile.png";
-    private static final String CRY_PATH = "sounds/cry/741-baile.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/oricorio-baile.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/oricorio-baile.png";
+    public static final String BACK_PATH = "battle/backs/alola/oricorio-baile.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/oricorio-baile.png";
+    public static final String CRY_PATH = "sounds/cry/741-baile.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/oricorio-baile.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a oricorio
      */
     public Oricorio() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

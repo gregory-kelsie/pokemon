@@ -17,47 +17,51 @@ public class Vikavolt extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 738;
-    private static final String NAME = "Vikavolt";
-    private static final int BASE_EXP = 225;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 45;
+    public static final int NUMBER = 738;
+    public static final String NAME = "Vikavolt";
+    public static final String TYPE_OF_POKEMON = "Stag Beetle";
+    public static final String DESCRIPTION = "It zips around, on sharp lookout for an opening. " +
+            "It concentrates electrical energy within its large jaws and uses it to zap its enemies.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 225;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 45;
 
-    private static final Ability FIRST_ABILITY = new Ability.Levitate();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Levitate();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 77;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 145;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 43;
+    public static final int BASE_HEALTH = 77;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 145;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 43;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/vikavolt.png";
-    private static final String BACK_PATH = "battle/backs/alola/vikavolt.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/vikavolt.png";
-    private static final String CRY_PATH = "sounds/cry/738.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/vikavolt.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/vikavolt.png";
+    public static final String BACK_PATH = "battle/backs/alola/vikavolt.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/vikavolt.png";
+    public static final String CRY_PATH = "sounds/cry/738.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/vikavolt.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.ELECTRIC;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.ELECTRIC;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a vikavolt
      */
     public Vikavolt() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Duosion extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 578;
-    private static final String NAME = "Duosion";
-    private static final int BASE_EXP = 130;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 100;
-    private static final double WEIGHT = 8;
+    public static final int NUMBER = 578;
+    public static final String NAME = "Duosion";
+    public static final String TYPE_OF_POKEMON = "Mitosis";
+    public static final String DESCRIPTION = "When their two divided brains think the same" +
+            " thoughts, their psychic power is maximized.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 130;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 100;
+    public static final double WEIGHT = 8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Overcoat();
-    private static final Ability SECOND_ABILITY = new Ability.MagicGuard();
-    private static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
+    public static final Ability FIRST_ABILITY = new Ability.Overcoat();
+    public static final Ability SECOND_ABILITY = new Ability.MagicGuard();
+    public static final Ability HIDDEN_ABILITY = new Ability.Regenerator();
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 40;
-    private static final int BASE_DEFENSE = 50;
-    private static final int BASE_SPECIAL_ATTACK = 125;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 30;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 40;
+    public static final int BASE_DEFENSE = 50;
+    public static final int BASE_SPECIAL_ATTACK = 125;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 30;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/duosion.png";
-    private static final String BACK_PATH = "battle/backs/unova/duosion.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/duosion.png";
-    private static final String CRY_PATH = "sounds/cry/578.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/duosion.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/duosion.png";
+    public static final String BACK_PATH = "battle/backs/unova/duosion.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/duosion.png";
+    public static final String CRY_PATH = "sounds/cry/578.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/duosion.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.PSYCHIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a duosion
      */
     public Duosion() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Phantump extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 708;
-    private static final String NAME = "Phantump";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 7;
+    public static final int NUMBER = 708;
+    public static final String NAME = "Phantump";
+    public static final String TYPE_OF_POKEMON = "Stump";
+    public static final String DESCRIPTION = "These Pokémon are created when spirits possess " +
+            "rotten tree stumps. They prefer to live in abandoned forests.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 7;
 
-    private static final Ability FIRST_ABILITY = new Ability.NaturalCure();
-    private static final Ability SECOND_ABILITY = new Ability.Frisk();
-    private static final Ability HIDDEN_ABILITY = new Ability.Harvest();
+    public static final Ability FIRST_ABILITY = new Ability.NaturalCure();
+    public static final Ability SECOND_ABILITY = new Ability.Frisk();
+    public static final Ability HIDDEN_ABILITY = new Ability.Harvest();
 
     //Base Stats
-    private static final int BASE_HEALTH = 43;
-    private static final int BASE_ATTACK = 70;
-    private static final int BASE_DEFENSE = 48;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 38;
+    public static final int BASE_HEALTH = 43;
+    public static final int BASE_ATTACK = 70;
+    public static final int BASE_DEFENSE = 48;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 38;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/phantump.png";
-    private static final String BACK_PATH = "battle/backs/kalos/phantump.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/phantump.png";
-    private static final String CRY_PATH = "sounds/cry/708.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/phantump.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/phantump.png";
+    public static final String BACK_PATH = "battle/backs/kalos/phantump.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/phantump.png";
+    public static final String CRY_PATH = "sounds/cry/708.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/phantump.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GHOST;
-    private static final Type TYPE_TWO = Type.GRASS;
+    public static final Pokemon.Type TYPE_ONE = Type.GHOST;
+    public static final Type TYPE_TWO = Type.GRASS;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a phantump
      */
     public Phantump() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

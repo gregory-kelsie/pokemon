@@ -17,47 +17,51 @@ public class Unfezant extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 521;
-    private static final String NAME = "Unfezant";
-    private static final int BASE_EXP = 220;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 29;
+    public static final int NUMBER = 521;
+    public static final String NAME = "Unfezant";
+    public static final String TYPE_OF_POKEMON = "Proud";
+    public static final String DESCRIPTION = "Males swing the plumage on their heads to threaten" +
+            " others, but females are better at flying.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 220;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 29;
 
-    private static final Ability FIRST_ABILITY = new Ability.BigPecks();
-    private static final Ability SECOND_ABILITY = new Ability.SuperLuck();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rivalry();
+    public static final Ability FIRST_ABILITY = new Ability.BigPecks();
+    public static final Ability SECOND_ABILITY = new Ability.SuperLuck();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rivalry();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 115;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 93;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 115;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 93;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/unfezant.png";
-    private static final String BACK_PATH = "battle/backs/unova/unfezant.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/unfezant.png";
-    private static final String CRY_PATH = "sounds/cry/521.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/unfezant.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/unfezant.png";
+    public static final String BACK_PATH = "battle/backs/unova/unfezant.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/unfezant.png";
+    public static final String CRY_PATH = "sounds/cry/521.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/unfezant.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a unfezant
      */
     public Unfezant() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

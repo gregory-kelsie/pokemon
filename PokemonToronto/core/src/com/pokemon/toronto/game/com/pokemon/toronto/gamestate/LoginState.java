@@ -88,6 +88,7 @@ public class LoginState extends GameState {
                             } catch (Exception e2) {
                                 displayError = true;
                                 errorMessage = "Could not connect online.\n" + e2.getMessage();
+                                Gdx.app.log("couldnotconnect", e2.getMessage());
                                 return false;
                             }
                         }
@@ -318,7 +319,7 @@ public class LoginState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         errorText.dispose();
         stage.dispose();

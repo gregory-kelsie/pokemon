@@ -62,6 +62,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.DragonRage;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.DragonRush;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.DualChop;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.Outrage;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.RoarOfTime;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.SpacialRend;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Dragon.Twister;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.Charge;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Electric.ChargeBeam;
@@ -150,6 +152,7 @@ import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.HeatWave;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Incinerate;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Inferno;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.LavaPlume;
+import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.MagmaStorm;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.MysticalFire;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.Overheat;
 import com.pokemon.toronto.game.com.pokemon.toronto.skill.Fire.SacredFire;
@@ -918,6 +921,10 @@ public class SkillFactory {
     public static final int ORIGIN_PULSE = 508;
     public static final int PRECIPICE_BLADES = 509;
     public static final int PSYCHO_BOOST = 510;
+    public static final int ROAR_OF_TIME = 511;
+    public static final int SPACIAL_REND = 512;
+    public static final int MAGMA_STORM = 513;
+    public static final int CRUSH_GRIP = 514;
 
     public SkillFactory() {
 
@@ -1951,6 +1958,14 @@ public class SkillFactory {
             return new PrecipiceBlades();
         } else if (skillId == PSYCHO_BOOST) {
             return new PsychoBoost();
+        } else if (skillId == ROAR_OF_TIME) {
+            return new RoarOfTime();
+        } else if (skillId == SPACIAL_REND) {
+            return new SpacialRend();
+        } else if (skillId == MAGMA_STORM) {
+            return new MagmaStorm();
+        } else if (skillId == CRUSH_GRIP) {
+            return new CrushGrip();
         }
         else {
             return new Covet();

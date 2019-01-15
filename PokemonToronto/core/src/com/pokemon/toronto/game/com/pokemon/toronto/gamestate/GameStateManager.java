@@ -94,6 +94,10 @@ public class GameStateManager {
     private boolean checkedWild;
     private boolean checkedTrainer;
 
+    //Clicked Map Pokemon
+    private boolean startBattle;
+    private int pokemonId;
+
     public GameStateManager(OrthographicCamera camera) {
         this.camera = camera;
         latitude = 0;
@@ -115,6 +119,9 @@ public class GameStateManager {
         menubgm.setLooping(true);
         checkedWild = true;
         checkedTrainer = true;
+
+        startBattle = false;
+        pokemonId = -1;
     }
 
     public void toggleWildCheck() {
@@ -465,6 +472,11 @@ public class GameStateManager {
 
     }
 
+    public void startBattle(int id) {
+        startBattle = true;
+        pokemonId = id;
+    }
+
     public List<WildPokemon> getNearbyPokemon() {
         return nearbyPokemon;
     }
@@ -499,6 +511,17 @@ public class GameStateManager {
     public void update(double dt) {
 
         currentState.update(dt);
+        if (startBattle) {
+            currentState.dispose();
+            stopBgm();
+            Music wildBgm = Gdx.audio.newMusic(Gdx.files.internal("sounds/wildBgm.mp3"));
+            wildBgm.play();
+            setState(new BattleState(this, getNearbyPokemon()
+                    .get(pokemonId).getPokemon(), wildBgm));
+            getNearbyPokemon().remove(pokemonId);
+            startBattle = false;
+            pokemonId = -1;
+        }
     }
 
     public void drawStage() {

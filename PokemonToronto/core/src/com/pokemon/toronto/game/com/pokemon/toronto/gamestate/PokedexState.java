@@ -96,7 +96,8 @@ public class PokedexState extends GameState {
         //batch.draw(downButton, 142, 251, 159, 176);
 
         //batch.draw(selectedPokemon, 21, 1340, 396, 396);
-        batch.draw(selectedPokemon, 21, 1340, 396, 396, 0, 0, 96, 96, true, false);
+        batch.draw(selectedPokemon, 21, 1340, 396, 396, 0, 0,
+                selectedPokemon.getWidth(), selectedPokemon.getHeight(), true, false);
 
         for (int i = 0; i < 14; i++) {
             batch.draw(obtainedEntry, 410, 1623 - (i * (29 + 88)), 632, 88);
@@ -117,6 +118,7 @@ public class PokedexState extends GameState {
     public void update(double dt) {
         int x = MyInput.getX();
         int y = MyInput.getY();
+
         if (MyInput.isPanning()) {
             float dx = MyInput.getDeltaX();
             float dy = MyInput.getDeltaY();
@@ -130,7 +132,7 @@ public class PokedexState extends GameState {
                         }
                     }
                 } else if (dy < -1) {
-                    if (scrollAmt  != 386 - 14) {
+                    if (scrollAmt  != 784 - 14) {
                         scrollPower += dy;
                         if (scrollPower <= -20) {
                             scrollDown();
@@ -153,11 +155,46 @@ public class PokedexState extends GameState {
                 }
             } else if (x >= 117 && x <= 282 && y >= 1477 && y <= 1684) {
                 //Clicked down
-                if (scrollAmt != 386 - 14) { //# of Pokemon in dex - 14 entries displayed
+                if (scrollAmt != 784 - 14) { //# of Pokemon in dex - 14 entries displayed
                     scrollDown();
                     gsm.getGameCallBack().pulsate();
                 }
-            } else if (x >= 382 && x <= 1020 && y >= 210 && y <= 298) {
+            } else if (x >= 680 && x <= 770 && y >= 1852 && y <= 1920) {
+                //Clicked Right arrow
+                if (scrollAmt >= 0 && scrollAmt < 151) {
+                    scrollAmt = 151;
+                } else if (scrollAmt >= 151 && scrollAmt < 251) {
+                    scrollAmt = 251;
+                } else if (scrollAmt >= 251 && scrollAmt < 386) {
+                    scrollAmt = 386;
+                } else if (scrollAmt >= 386 && scrollAmt < 493) {
+                    scrollAmt = 493;
+                } else if (scrollAmt >= 493 && scrollAmt < 649) {
+                    scrollAmt = 649;
+                } else if (scrollAmt >= 649 && scrollAmt < 721) {
+                    scrollAmt = 721;
+                }
+                refreshSprites();
+            } else if (x >= 564 && x <= 643 && y >= 1852 && y <= 1920) {
+                //Clicked left arrow
+                if (scrollAmt >= 151 && scrollAmt < 251) {
+                    //Johto goes to Kanto
+                    scrollAmt = 0;
+                } else if (scrollAmt >= 251 && scrollAmt < 386) {
+                    //Hoenn goes to Johto
+                    scrollAmt = 151;
+                } else if (scrollAmt >= 386 && scrollAmt < 493) {
+                    //Sinnoh goes to Hoenn
+                    scrollAmt = 251;
+                } else if (scrollAmt >= 493 && scrollAmt < 649) {
+                    scrollAmt = 386;
+                } else if (scrollAmt >= 649 && scrollAmt < 721) {
+                    scrollAmt = 493;
+                }
+                refreshSprites();
+            }
+
+            else if (x >= 382 && x <= 1020 && y >= 210 && y <= 298) {
                 //First Entry 29 DIFFERENCE AND 88 SIZE
                 selectOffset = 0;
                 changeSelectedPokemon();
@@ -236,8 +273,18 @@ public class PokedexState extends GameState {
         changeSelectedPokemon();
     }
 
+    private void refreshSprites() {
+        for (int i = 0; i < 14; i++) {
+            displayIcons.get(i).dispose();
+            displayIcons.set(i,
+                    new Texture(pokedex.getKantoDex().get(scrollAmt + i).getMiniIcon()));
+        }
+        selectOffset = 0;
+        changeSelectedPokemon();
+    }
+
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         blackDivider.dispose();
         grayArea.dispose();

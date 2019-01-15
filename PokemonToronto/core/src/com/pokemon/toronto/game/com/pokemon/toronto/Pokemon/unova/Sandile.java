@@ -18,47 +18,51 @@ public class Sandile extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 551;
-    private static final String NAME = "Sandile";
-    private static final int BASE_EXP = 58;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 15.2;
+    public static final int NUMBER = 551;
+    public static final String NAME = "Sandile";
+    public static final String TYPE_OF_POKEMON = "Desert Croc";
+    public static final String DESCRIPTION = "They live buried in the sands of the desert. The " +
+            "sun-warmed sands prevent their body temperature from dropping.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 58;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 15.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.Moxie();
-    private static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.Moxie();
+    public static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 72;
-    private static final int BASE_DEFENSE = 35;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 35;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 72;
+    public static final int BASE_DEFENSE = 35;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 35;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/sandile.png";
-    private static final String BACK_PATH = "battle/backs/unova/sandile.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/sandile.png";
-    private static final String CRY_PATH = "sounds/cry/551.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/sandile.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/sandile.png";
+    public static final String BACK_PATH = "battle/backs/unova/sandile.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/sandile.png";
+    public static final String CRY_PATH = "sounds/cry/551.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/sandile.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.DARK;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.DARK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a sandile
      */
     public Sandile() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

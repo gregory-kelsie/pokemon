@@ -17,47 +17,51 @@ public class Yanmega extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 469;
-    private static final String NAME = "Yanmega";
-    private static final int BASE_EXP = 180;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 51.5;
+    public static final int NUMBER = 469;
+    public static final String NAME = "Yanmega";
+    public static final String TYPE_OF_POKEMON = "Ogre Darner";
+    public static final String DESCRIPTION = "Its jaw power is incredible. It is adept at biting" +
+            " apart foes while flying by at high speed.";
+    public static final double HEIGHT = 1.9;
+    public static final int BASE_EXP = 180;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 51.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.SpeedBoost();
-    private static final Ability SECOND_ABILITY = new Ability.TintedLens();
-    private static final Ability HIDDEN_ABILITY = new Ability.Frisk();
+    public static final Ability FIRST_ABILITY = new Ability.SpeedBoost();
+    public static final Ability SECOND_ABILITY = new Ability.TintedLens();
+    public static final Ability HIDDEN_ABILITY = new Ability.Frisk();
 
     //Base Stats
-    private static final int BASE_HEALTH = 86;
-    private static final int BASE_ATTACK = 76;
-    private static final int BASE_DEFENSE = 86;
-    private static final int BASE_SPECIAL_ATTACK = 116;
-    private static final int BASE_SPECIAL_DEFENSE = 56;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 86;
+    public static final int BASE_ATTACK = 76;
+    public static final int BASE_DEFENSE = 86;
+    public static final int BASE_SPECIAL_ATTACK = 116;
+    public static final int BASE_SPECIAL_DEFENSE = 56;
+    public static final int BASE_SPEED = 95;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/yanmega.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/yanmega.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/yanmega.png";
-    private static final String CRY_PATH = "sounds/cry/469.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/yanmega.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/yanmega.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/yanmega.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/yanmega.png";
+    public static final String CRY_PATH = "sounds/cry/469.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/yanmega.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.BUG;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.BUG;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a yanmega
      */
     public Yanmega() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

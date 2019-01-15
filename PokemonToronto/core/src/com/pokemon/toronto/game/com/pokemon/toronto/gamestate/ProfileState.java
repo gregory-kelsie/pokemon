@@ -144,7 +144,7 @@ public class ProfileState extends GameState {
         }
     }
     @Override
-    protected void dispose() {
+    public void dispose() {
         card.dispose();
         background.dispose();
         for (Texture t: pokemonTeam) {

@@ -9,6 +9,8 @@ import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 public class OricorioPau extends Oricorio {
 
     private static final int NUMBER = -7411;
+    public static final String DESCRIPTION = "This Oricorio has sipped pink nectar. Its enemies’" +
+            " hearts melt at the sight of its gently swaying hips.";
 
     //Image Paths
     private static final String ICON_PATH = "pokemonSprites/alola/oricorio-pau.png";

@@ -17,47 +17,51 @@ public class Salazzle extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 758;
-    private static final String NAME = "Salazzle";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 22.2;
+    public static final int NUMBER = 758;
+    public static final String NAME = "Salazzle";
+    public static final String TYPE_OF_POKEMON = "Toxic Lizard";
+    public static final String DESCRIPTION = "For some reason, only females have been found. It " +
+            "creates a reverse harem of male Salandit that it lives with.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 22.2;
 
-    private static final Ability FIRST_ABILITY = new Ability.Corrosion();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Oblivious();
+    public static final Ability FIRST_ABILITY = new Ability.Corrosion();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Oblivious();
 
     //Base Stats
-    private static final int BASE_HEALTH = 68;
-    private static final int BASE_ATTACK = 64;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 111;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 117;
+    public static final int BASE_HEALTH = 68;
+    public static final int BASE_ATTACK = 64;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 111;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 117;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/salazzle.png";
-    private static final String BACK_PATH = "battle/backs/alola/salazzle.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/salazzle.png";
-    private static final String CRY_PATH = "sounds/cry/758.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/salazzle.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/salazzle.png";
+    public static final String BACK_PATH = "battle/backs/alola/salazzle.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/salazzle.png";
+    public static final String CRY_PATH = "sounds/cry/758.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/salazzle.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.FIRE;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.FIRE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a salazzle
      */
     public Salazzle() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -57,10 +57,14 @@ public class ExpPhase extends BattlePhase {
         if (!pui.getUserPokemon().hasMaxEvs()) {
             pui.getUserPokemon().addEvs(pui.getEnemyPokemon().getEvYield());
         }
-        text = pui.getUserPokemon().getName() + " gained " +
-                pui.getEnemyPokemon().calculateExp(1, a) + " Exp. Points.";
-        currentState = DISPLAY_EXP_GAIN;
-        playedLevelUpSound = false;
+        if (pui.getUserPokemon().getLevel() == 100) {
+            currentState = DELAY_AFTER_EXP_GAIN;
+        } else {
+            text = pui.getUserPokemon().getName() + " gained " +
+                    pui.getEnemyPokemon().calculateExp(1, a) + " Exp. Points.";
+            currentState = DISPLAY_EXP_GAIN;
+            playedLevelUpSound = false;
+        }
 
     }
 
@@ -99,8 +103,12 @@ public class ExpPhase extends BattlePhase {
         }
         if (counter >= 1.5) {
             if (newSkillsForLevelUp.size() == 0) {
-                currentState = ADD_EXP;
-                pui.playExpSound();
+                if (pui.getUserPokemon().getLevel() == 100) {
+                    currentState = DELAY_AFTER_EXP_GAIN;
+                } else {
+                    currentState = ADD_EXP;
+                    pui.playExpSound();
+                }
             } else {
                 if (pui.getUserPokemon().getSkills().size() < 4) {
                     SkillFactory sf = new SkillFactory();
@@ -169,8 +177,12 @@ public class ExpPhase extends BattlePhase {
         }
         if (counter >= 1.5) {
             if (newSkillsForLevelUp.size() == 0) {
-                currentState = ADD_EXP;
-                pui.playExpSound();
+                if (pui.getUserPokemon().getLevel() == 100) {
+                    currentState = DELAY_AFTER_EXP_GAIN;
+                } else {
+                    currentState = ADD_EXP;
+                    pui.playExpSound();
+                }
             } else {
                 if (pui.getUserPokemon().getSkills().size() < 4) {
                     SkillFactory sf = new SkillFactory();
@@ -290,8 +302,13 @@ public class ExpPhase extends BattlePhase {
             //Get the skills the Pokemon learns at this level.
             newSkillsForLevelUp = pui.getUserPokemon().getCurrentLevelUpSkills();
             if (newSkillsForLevelUp == null) {
-                currentState = ADD_EXP;
-                pui.playExpSound();
+                if (pui.getUserPokemon().getLevel() == 100) {
+                    currentState = DELAY_AFTER_EXP_GAIN;
+                } else {
+                    currentState = ADD_EXP;
+                    pui.playExpSound();
+                }
+
             } else {
                 SkillFactory sf = new SkillFactory();
                 //Add the first new skill it learns at this level.
@@ -341,8 +358,12 @@ public class ExpPhase extends BattlePhase {
                 currentState = ASKING_TO_MAKE_ROOM;
                 resetAllTextVariables();
             } else {
-                currentState = ADD_EXP;
-                pui.playExpSound();
+                if (pui.getUserPokemon().getLevel() == 100) {
+                    currentState = DELAY_AFTER_EXP_GAIN;
+                } else {
+                    currentState = ADD_EXP;
+                    pui.playExpSound();
+                }
             }
         }
     }

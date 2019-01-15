@@ -18,47 +18,51 @@ public class Honedge extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 679;
-    private static final String NAME = "Honedge";
-    private static final int BASE_EXP = 65;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 2;
+    public static final int NUMBER = 679;
+    public static final String NAME = "Honedge";
+    public static final String TYPE_OF_POKEMON = "Sword";
+    public static final String DESCRIPTION = "If anyone dares to grab its hilt, it wraps a blue " +
+            "cloth around that person's arm and drains that person's life energy completely.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 65;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 2;
 
-    private static final Ability FIRST_ABILITY = new Ability.NoGuard();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.NoGuard();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 80;
-    private static final int BASE_DEFENSE = 100;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 37;
-    private static final int BASE_SPEED = 28;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 80;
+    public static final int BASE_DEFENSE = 100;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 37;
+    public static final int BASE_SPEED = 28;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/honedge.png";
-    private static final String BACK_PATH = "battle/backs/kalos/honedge.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/honedge.png";
-    private static final String CRY_PATH = "sounds/cry/679.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/honedge.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/honedge.png";
+    public static final String BACK_PATH = "battle/backs/kalos/honedge.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/honedge.png";
+    public static final String CRY_PATH = "sounds/cry/679.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/honedge.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.STEEL;
-    private static final Type TYPE_TWO = Type.GHOST;
+    public static final Pokemon.Type TYPE_ONE = Type.STEEL;
+    public static final Type TYPE_TWO = Type.GHOST;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a honedge
      */
     public Honedge() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

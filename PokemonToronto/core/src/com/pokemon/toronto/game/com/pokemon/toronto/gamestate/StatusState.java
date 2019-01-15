@@ -159,7 +159,7 @@ public class StatusState extends GameState {
      * Dispose the textures and fonts.
      */
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         pokemonTexture.dispose();
         regularFont.dispose();

@@ -17,47 +17,51 @@ public class Aromatisse extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 683;
-    private static final String NAME = "Aromatisse";
-    private static final int BASE_EXP = 162;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 140;
-    private static final double WEIGHT = 15.5;
+    public static final int NUMBER = 683;
+    public static final String NAME = "Aromatisse";
+    public static final String TYPE_OF_POKEMON = "Fragrance";
+    public static final String DESCRIPTION = "It devises various scents, pleasant and " +
+            "unpleasant, and emits scents that its enemies dislike in order to gain an edge in battle.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 162;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 140;
+    public static final double WEIGHT = 15.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Healer();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.AromaVeil();
+    public static final Ability FIRST_ABILITY = new Ability.Healer();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.AromaVeil();
 
     //Base Stats
-    private static final int BASE_HEALTH = 101;
-    private static final int BASE_ATTACK = 72;
-    private static final int BASE_DEFENSE = 72;
-    private static final int BASE_SPECIAL_ATTACK = 99;
-    private static final int BASE_SPECIAL_DEFENSE = 89;
-    private static final int BASE_SPEED = 29;
+    public static final int BASE_HEALTH = 101;
+    public static final int BASE_ATTACK = 72;
+    public static final int BASE_DEFENSE = 72;
+    public static final int BASE_SPECIAL_ATTACK = 99;
+    public static final int BASE_SPECIAL_DEFENSE = 89;
+    public static final int BASE_SPEED = 29;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/aromatisse.png";
-    private static final String BACK_PATH = "battle/backs/kalos/aromatisse.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/aromatisse.png";
-    private static final String CRY_PATH = "sounds/cry/683.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/aromatisse.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/aromatisse.png";
+    public static final String BACK_PATH = "battle/backs/kalos/aromatisse.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/aromatisse.png";
+    public static final String CRY_PATH = "sounds/cry/683.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/aromatisse.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a aromatisse
      */
     public Aromatisse() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

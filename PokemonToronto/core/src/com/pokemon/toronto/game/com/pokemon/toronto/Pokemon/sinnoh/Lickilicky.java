@@ -19,6 +19,10 @@ public class Lickilicky extends Pokemon {
     //Basic (id, name, exp, ev yield, capture rate)
     private static final int NUMBER = 463;
     private static final String NAME = "Lickilicky";
+    public static final String TYPE_OF_POKEMON = "Licking";
+    public static final String DESCRIPTION = "The long tongue is always soggy with slobber. The" +
+            " saliva contains a solvent that causes numbness.";
+    public static final double HEIGHT = 1.7;
     private static final int BASE_EXP = 180;
     private static final int[] EV_YIELD = {3, 0, 0, 0, 0, 0};
     private static final int CAPTURE_RATE = 30;
@@ -54,10 +58,10 @@ public class Lickilicky extends Pokemon {
      * Create a lickilicky
      */
     public Lickilicky() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

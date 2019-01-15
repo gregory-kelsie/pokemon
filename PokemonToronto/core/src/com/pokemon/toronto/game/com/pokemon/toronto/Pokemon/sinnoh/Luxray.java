@@ -17,47 +17,51 @@ public class Luxray extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 405;
-    private static final String NAME = "Luxray";
-    private static final int BASE_EXP = 235;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 42;
+    public static final int NUMBER = 405;
+    public static final String NAME = "Luxray";
+    public static final String TYPE_OF_POKEMON = "Gleam Eyes";
+    public static final String DESCRIPTION = "It can see clearly through walls to track down its " +
+            "prey and seek its lost young.";
+    public static final double HEIGHT = 1.4;
+    public static final int BASE_EXP = 235;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 42;
 
-    private static final Ability FIRST_ABILITY = new Ability.Rivalry();
-    private static final Ability SECOND_ABILITY = new Ability.Intimidate();
-    private static final Ability HIDDEN_ABILITY = new Ability.Guts();
+    public static final Ability FIRST_ABILITY = new Ability.Rivalry();
+    public static final Ability SECOND_ABILITY = new Ability.Intimidate();
+    public static final Ability HIDDEN_ABILITY = new Ability.Guts();
 
     //Base Stats
-    private static final int BASE_HEALTH = 80;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 79;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 79;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 80;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 79;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 79;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/luxray.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/luxray.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/luxray.png";
-    private static final String CRY_PATH = "sounds/cry/405.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/luxray.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/luxray.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/luxray.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/luxray.png";
+    public static final String CRY_PATH = "sounds/cry/405.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/luxray.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a luxray
      */
     public Luxray() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

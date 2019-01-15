@@ -17,47 +17,51 @@ public class Samurott extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 503;
-    private static final String NAME = "Samurott";
-    private static final int BASE_EXP = 238;
-    private static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 94.6;
+    public static final int NUMBER = 503;
+    public static final String NAME = "Samurott";
+    public static final String TYPE_OF_POKEMON = "Formidable";
+    public static final String DESCRIPTION = "One swing of the sword incorporated in its armor " +
+            "can fell an opponent. A simple glare from one of them quiets everybody.";
+    public static final double HEIGHT = 1.5;
+    public static final int BASE_EXP = 238;
+    public static final int[] EV_YIELD = {0, 0, 0, 3, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 94.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Torrent();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
+    public static final Ability FIRST_ABILITY = new Ability.Torrent();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 85;
-    private static final int BASE_SPECIAL_ATTACK = 108;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 70;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 85;
+    public static final int BASE_SPECIAL_ATTACK = 108;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 70;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/samurott.png";
-    private static final String BACK_PATH = "battle/backs/unova/samurott.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/samurott.png";
-    private static final String CRY_PATH = "sounds/cry/503.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/samurott.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/samurott.png";
+    public static final String BACK_PATH = "battle/backs/unova/samurott.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/samurott.png";
+    public static final String CRY_PATH = "sounds/cry/503.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/samurott.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a samurott
      */
     public Samurott() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

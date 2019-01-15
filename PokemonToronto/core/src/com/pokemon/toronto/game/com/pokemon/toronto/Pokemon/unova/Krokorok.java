@@ -18,47 +18,51 @@ public class Krokorok extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 552;
-    private static final String NAME = "Krokorok";
-    private static final int BASE_EXP = 123;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 90;
-    private static final double WEIGHT = 33.4;
+    public static final int NUMBER = 552;
+    public static final String NAME = "Krokorok";
+    public static final String TYPE_OF_POKEMON = "Desert Croc";
+    public static final String DESCRIPTION = "They live in groups of a few individuals. " +
+            "Protective membranes shield their eyes from sandstorms.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 123;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 90;
+    public static final double WEIGHT = 33.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Intimidate();
-    private static final Ability SECOND_ABILITY = new Ability.Moxie();
-    private static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
+    public static final Ability FIRST_ABILITY = new Ability.Intimidate();
+    public static final Ability SECOND_ABILITY = new Ability.Moxie();
+    public static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
 
     //Base Stats
-    private static final int BASE_HEALTH = 60;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 74;
+    public static final int BASE_HEALTH = 60;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 74;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/krokorok.png";
-    private static final String BACK_PATH = "battle/backs/unova/krokorok.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/krokorok.png";
-    private static final String CRY_PATH = "sounds/cry/552.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/krokorok.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/krokorok.png";
+    public static final String BACK_PATH = "battle/backs/unova/krokorok.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/krokorok.png";
+    public static final String CRY_PATH = "sounds/cry/552.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/krokorok.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.DARK;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.DARK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a krokorok
      */
     public Krokorok() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

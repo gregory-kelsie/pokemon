@@ -18,47 +18,51 @@ public class Bunnelby extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 659;
-    private static final String NAME = "Bunnelby";
-    private static final int BASE_EXP = 47;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 5;
+    public static final int NUMBER = 659;
+    public static final String NAME = "Bunnelby";
+    public static final String TYPE_OF_POKEMON = "Digging";
+    public static final String DESCRIPTION = "They use their large ears to dig burrows. They will" +
+            " dig the whole night through.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 47;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 5;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = new Ability.CheekPouch();
-    private static final Ability HIDDEN_ABILITY = new Ability.HugePower();
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = new Ability.CheekPouch();
+    public static final Ability HIDDEN_ABILITY = new Ability.HugePower();
 
     //Base Stats
-    private static final int BASE_HEALTH = 38;
-    private static final int BASE_ATTACK = 36;
-    private static final int BASE_DEFENSE = 38;
-    private static final int BASE_SPECIAL_ATTACK = 32;
-    private static final int BASE_SPECIAL_DEFENSE = 36;
-    private static final int BASE_SPEED = 57;
+    public static final int BASE_HEALTH = 38;
+    public static final int BASE_ATTACK = 36;
+    public static final int BASE_DEFENSE = 38;
+    public static final int BASE_SPECIAL_ATTACK = 32;
+    public static final int BASE_SPECIAL_DEFENSE = 36;
+    public static final int BASE_SPEED = 57;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/bunnelby.png";
-    private static final String BACK_PATH = "battle/backs/kalos/bunnelby.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/bunnelby.png";
-    private static final String CRY_PATH = "sounds/cry/659.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/bunnelby.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/bunnelby.png";
+    public static final String BACK_PATH = "battle/backs/kalos/bunnelby.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/bunnelby.png";
+    public static final String CRY_PATH = "sounds/cry/659.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/bunnelby.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a bunnelby
      */
     public Bunnelby() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

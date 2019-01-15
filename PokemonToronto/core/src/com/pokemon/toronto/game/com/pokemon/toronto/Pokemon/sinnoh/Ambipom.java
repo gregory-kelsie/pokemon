@@ -17,47 +17,51 @@ public class Ambipom extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 424;
-    private static final String NAME = "Ambipom";
-    private static final int BASE_EXP = 169;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 20.3;
+    public static final int NUMBER = 424;
+    public static final String NAME = "Ambipom";
+    public static final String TYPE_OF_POKEMON = "Long Tail";
+    public static final String DESCRIPTION = "Split into two, the tails are so adept at handling" +
+            " and doing things, Ambipom rarely uses its hands.";
+    public static final double HEIGHT = 1.2;
+    public static final int BASE_EXP = 169;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 20.3;
 
-    private static final Ability FIRST_ABILITY = new Ability.Technician();
-    private static final Ability SECOND_ABILITY = new Ability.Pickup();
-    private static final Ability HIDDEN_ABILITY = new Ability.SkillLink();
+    public static final Ability FIRST_ABILITY = new Ability.Technician();
+    public static final Ability SECOND_ABILITY = new Ability.Pickup();
+    public static final Ability HIDDEN_ABILITY = new Ability.SkillLink();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 100;
-    private static final int BASE_DEFENSE = 66;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 66;
-    private static final int BASE_SPEED = 115;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 100;
+    public static final int BASE_DEFENSE = 66;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 66;
+    public static final int BASE_SPEED = 115;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/ambipom.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/ambipom.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/ambipom.png";
-    private static final String CRY_PATH = "sounds/cry/424.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/ambipom.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/ambipom.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/ambipom.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/ambipom.png";
+    public static final String CRY_PATH = "sounds/cry/424.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/ambipom.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.FAST;
+    public static final ExpType EXP_TYPE = ExpType.FAST;
 
     /**
      * Create a ambipom
      */
     public Ambipom() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

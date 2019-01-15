@@ -18,47 +18,51 @@ public class Crabrawler extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 739;
-    private static final String NAME = "Crabrawler";
-    private static final int BASE_EXP = 68;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 225;
-    private static final double WEIGHT = 7;
+    public static final int NUMBER = 739;
+    public static final String NAME = "Crabrawler";
+    public static final String TYPE_OF_POKEMON = "Boxing";
+    public static final String DESCRIPTION = "Its hard pincers are well suited to both offense " +
+            "and defense. Fights between two Crabrawler are like boxing matches.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 68;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 225;
+    public static final double WEIGHT = 7;
 
-    private static final Ability FIRST_ABILITY = new Ability.HyperCutter();
-    private static final Ability SECOND_ABILITY = new Ability.IronFist();
-    private static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
+    public static final Ability FIRST_ABILITY = new Ability.HyperCutter();
+    public static final Ability SECOND_ABILITY = new Ability.IronFist();
+    public static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
 
     //Base Stats
-    private static final int BASE_HEALTH = 47;
-    private static final int BASE_ATTACK = 82;
-    private static final int BASE_DEFENSE = 57;
-    private static final int BASE_SPECIAL_ATTACK = 42;
-    private static final int BASE_SPECIAL_DEFENSE = 47;
-    private static final int BASE_SPEED = 63;
+    public static final int BASE_HEALTH = 47;
+    public static final int BASE_ATTACK = 82;
+    public static final int BASE_DEFENSE = 57;
+    public static final int BASE_SPECIAL_ATTACK = 42;
+    public static final int BASE_SPECIAL_DEFENSE = 47;
+    public static final int BASE_SPEED = 63;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/crabrawler.png";
-    private static final String BACK_PATH = "battle/backs/alola/crabrawler.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/crabrawler.png";
-    private static final String CRY_PATH = "sounds/cry/739.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/crabrawler.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/crabrawler.png";
+    public static final String BACK_PATH = "battle/backs/alola/crabrawler.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/crabrawler.png";
+    public static final String CRY_PATH = "sounds/cry/739.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/crabrawler.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a crabrawler
      */
     public Crabrawler() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

@@ -18,47 +18,51 @@ public class Tranquill extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 520;
-    private static final String NAME = "Tranquill";
-    private static final int BASE_EXP = 125;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 15;
+    public static final int NUMBER = 520;
+    public static final String NAME = "Tranquill";
+    public static final String TYPE_OF_POKEMON = "Wild Pigeon";
+    public static final String DESCRIPTION = "Many people believe that, deep in the forest where " +
+            "Tranquill live, there is a peaceful place where there is no war.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 125;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 15;
 
-    private static final Ability FIRST_ABILITY = new Ability.BigPecks();
-    private static final Ability SECOND_ABILITY = new Ability.SuperLuck();
-    private static final Ability HIDDEN_ABILITY = new Ability.Rivalry();
+    public static final Ability FIRST_ABILITY = new Ability.BigPecks();
+    public static final Ability SECOND_ABILITY = new Ability.SuperLuck();
+    public static final Ability HIDDEN_ABILITY = new Ability.Rivalry();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 77;
-    private static final int BASE_DEFENSE = 62;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 42;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 77;
+    public static final int BASE_DEFENSE = 62;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 42;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/tranquill.png";
-    private static final String BACK_PATH = "battle/backs/unova/tranquill.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/tranquill.png";
-    private static final String CRY_PATH = "sounds/cry/520.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/tranquill.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/tranquill.png";
+    public static final String BACK_PATH = "battle/backs/unova/tranquill.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/tranquill.png";
+    public static final String CRY_PATH = "sounds/cry/520.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/tranquill.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a tranquill
      */
     public Tranquill() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

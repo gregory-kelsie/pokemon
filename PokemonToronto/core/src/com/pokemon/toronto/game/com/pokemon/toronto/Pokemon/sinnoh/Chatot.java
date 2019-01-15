@@ -17,47 +17,51 @@ public class Chatot extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 441;
-    private static final String NAME = "Chatot";
-    private static final int BASE_EXP = 144;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 1.9;
+    public static final int NUMBER = 441;
+    public static final String NAME = "Chatot";
+    public static final String TYPE_OF_POKEMON = "Music Note";
+    public static final String DESCRIPTION = "Its tongue is just like a human's. As a result, it" +
+            " can cleverly mimic human speech.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 144;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 1.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.KeenEye();
-    private static final Ability SECOND_ABILITY = new Ability.TangledFeet();
-    private static final Ability HIDDEN_ABILITY = new Ability.BigPecks();
+    public static final Ability FIRST_ABILITY = new Ability.KeenEye();
+    public static final Ability SECOND_ABILITY = new Ability.TangledFeet();
+    public static final Ability HIDDEN_ABILITY = new Ability.BigPecks();
 
     //Base Stats
-    private static final int BASE_HEALTH = 76;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 92;
-    private static final int BASE_SPECIAL_DEFENSE = 42;
-    private static final int BASE_SPEED = 91;
+    public static final int BASE_HEALTH = 76;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 92;
+    public static final int BASE_SPECIAL_DEFENSE = 42;
+    public static final int BASE_SPEED = 91;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/chatot.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/chatot.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/chatot.png";
-    private static final String CRY_PATH = "sounds/cry/441.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/chatot.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/chatot.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/chatot.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/chatot.png";
+    public static final String CRY_PATH = "sounds/cry/441.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/chatot.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a chatot
      */
     public Chatot() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

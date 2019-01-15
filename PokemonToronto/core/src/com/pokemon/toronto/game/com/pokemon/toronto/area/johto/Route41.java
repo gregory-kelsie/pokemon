@@ -25,7 +25,7 @@ public class Route41 extends Route {
         surfPokemon.add(new RoutePokemon(PokemonId.TENTACRUEL.getValue(), 20,
                 24, 90));
         surfPokemon.add(new RoutePokemon(PokemonId.MANTINE.getValue(), 20,
-                24, 90));
+                24, 100));
     }
 
     @Override

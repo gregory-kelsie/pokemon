@@ -17,47 +17,51 @@ public class Skuntank extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 435;
-    private static final String NAME = "Skuntank";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 38;
+    public static final int NUMBER = 435;
+    public static final String NAME = "Skuntank";
+    public static final String TYPE_OF_POKEMON = "Skunk";
+    public static final String DESCRIPTION = "It attacks by spraying a horribly smelly fluid " +
+            "from the tip of its tail. Attacks from above confound it.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 38;
 
-    private static final Ability FIRST_ABILITY = new Ability.Stench();
-    private static final Ability SECOND_ABILITY = new Ability.Aftermath();
-    private static final Ability HIDDEN_ABILITY = new Ability.KeenEye();
+    public static final Ability FIRST_ABILITY = new Ability.Stench();
+    public static final Ability SECOND_ABILITY = new Ability.Aftermath();
+    public static final Ability HIDDEN_ABILITY = new Ability.KeenEye();
 
     //Base Stats
-    private static final int BASE_HEALTH = 103;
-    private static final int BASE_ATTACK = 93;
-    private static final int BASE_DEFENSE = 67;
-    private static final int BASE_SPECIAL_ATTACK = 71;
-    private static final int BASE_SPECIAL_DEFENSE = 61;
-    private static final int BASE_SPEED = 84;
+    public static final int BASE_HEALTH = 103;
+    public static final int BASE_ATTACK = 93;
+    public static final int BASE_DEFENSE = 67;
+    public static final int BASE_SPECIAL_ATTACK = 71;
+    public static final int BASE_SPECIAL_DEFENSE = 61;
+    public static final int BASE_SPEED = 84;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/skuntank.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/skuntank.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/skuntank.png";
-    private static final String CRY_PATH = "sounds/cry/435.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/skuntank.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/skuntank.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/skuntank.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/skuntank.png";
+    public static final String CRY_PATH = "sounds/cry/435.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/skuntank.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.POISON;
-    private static final Type TYPE_TWO = Type.DARK;
+    public static final Pokemon.Type TYPE_ONE = Type.POISON;
+    public static final Type TYPE_TWO = Type.DARK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a skuntank
      */
     public Skuntank() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

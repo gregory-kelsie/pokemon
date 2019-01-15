@@ -107,7 +107,7 @@ public class PokeCenterState extends GameState{
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
 
         bgm.stop();
         gsm.getLoader().unload("pokecenter/background.png");

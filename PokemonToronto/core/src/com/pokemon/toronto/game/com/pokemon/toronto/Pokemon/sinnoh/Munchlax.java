@@ -18,47 +18,51 @@ public class Munchlax extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 446;
-    private static final String NAME = "Munchlax";
-    private static final int BASE_EXP = 78;
-    private static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 50;
-    private static final double WEIGHT = 105;
+    public static final int NUMBER = 446;
+    public static final String NAME = "Munchlax";
+    public static final String TYPE_OF_POKEMON = "Big Eater";
+    public static final String DESCRIPTION = "In its desperation to gulp down food, it forgets" +
+            " about the food it has hidden under its fur.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 78;
+    public static final int[] EV_YIELD = {1, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 50;
+    public static final double WEIGHT = 105;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = new Ability.ThickFat();
-    private static final Ability HIDDEN_ABILITY = new Ability.Gluttony();
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = new Ability.ThickFat();
+    public static final Ability HIDDEN_ABILITY = new Ability.Gluttony();
 
     //Base Stats
-    private static final int BASE_HEALTH = 135;
-    private static final int BASE_ATTACK = 85;
-    private static final int BASE_DEFENSE = 40;
-    private static final int BASE_SPECIAL_ATTACK = 40;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 5;
+    public static final int BASE_HEALTH = 135;
+    public static final int BASE_ATTACK = 85;
+    public static final int BASE_DEFENSE = 40;
+    public static final int BASE_SPECIAL_ATTACK = 40;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 5;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/munchlax.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/munchlax.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/munchlax.png";
-    private static final String CRY_PATH = "sounds/cry/446.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/munchlax.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/munchlax.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/munchlax.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/munchlax.png";
+    public static final String CRY_PATH = "sounds/cry/446.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/munchlax.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a Munchlax
      */
     public Munchlax() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

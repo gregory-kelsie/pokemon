@@ -17,47 +17,51 @@ public class Diggersby extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 660;
-    private static final String NAME = "Diggersby";
-    private static final int BASE_EXP = 148;
-    private static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 127;
-    private static final double WEIGHT = 42.4;
+    public static final int NUMBER = 660;
+    public static final String NAME = "Diggersby";
+    public static final String TYPE_OF_POKEMON = "Digging";
+    public static final String DESCRIPTION = "With their powerful ears, they can heft boulders " +
+            "of a ton or more with ease. They can be a big help at construction sites.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 148;
+    public static final int[] EV_YIELD = {2, 0, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 127;
+    public static final double WEIGHT = 42.4;
 
-    private static final Ability FIRST_ABILITY = new Ability.Pickup();
-    private static final Ability SECOND_ABILITY = new Ability.CheekPouch();
-    private static final Ability HIDDEN_ABILITY = new Ability.HugePower();
+    public static final Ability FIRST_ABILITY = new Ability.Pickup();
+    public static final Ability SECOND_ABILITY = new Ability.CheekPouch();
+    public static final Ability HIDDEN_ABILITY = new Ability.HugePower();
 
     //Base Stats
-    private static final int BASE_HEALTH = 85;
-    private static final int BASE_ATTACK = 56;
-    private static final int BASE_DEFENSE = 77;
-    private static final int BASE_SPECIAL_ATTACK = 50;
-    private static final int BASE_SPECIAL_DEFENSE = 77;
-    private static final int BASE_SPEED = 78;
+    public static final int BASE_HEALTH = 85;
+    public static final int BASE_ATTACK = 56;
+    public static final int BASE_DEFENSE = 77;
+    public static final int BASE_SPECIAL_ATTACK = 50;
+    public static final int BASE_SPECIAL_DEFENSE = 77;
+    public static final int BASE_SPEED = 78;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/diggersby.png";
-    private static final String BACK_PATH = "battle/backs/kalos/diggersby.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/diggersby.png";
-    private static final String CRY_PATH = "sounds/cry/660.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/diggersby.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/diggersby.png";
+    public static final String BACK_PATH = "battle/backs/kalos/diggersby.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/diggersby.png";
+    public static final String CRY_PATH = "sounds/cry/660.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/diggersby.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a diggersby
      */
     public Diggersby() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

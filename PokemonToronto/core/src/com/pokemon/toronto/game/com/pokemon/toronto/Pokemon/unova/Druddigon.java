@@ -17,47 +17,51 @@ public class Druddigon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 621;
-    private static final String NAME = "Druddigon";
-    private static final int BASE_EXP = 170;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 139;
+    public static final int NUMBER = 621;
+    public static final String NAME = "Druddigon";
+    public static final String TYPE_OF_POKEMON = "Cave";
+    public static final String DESCRIPTION = "It warms its body by absorbing sunlight with its " +
+            "wings. When its body temperature falls, it can no longer move.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 170;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 139;
 
-    private static final Ability FIRST_ABILITY = new Ability.RoughSkin();
-    private static final Ability SECOND_ABILITY = new Ability.SheerForce();
-    private static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
+    public static final Ability FIRST_ABILITY = new Ability.RoughSkin();
+    public static final Ability SECOND_ABILITY = new Ability.SheerForce();
+    public static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
 
     //Base Stats
-    private static final int BASE_HEALTH = 77;
-    private static final int BASE_ATTACK = 120;
-    private static final int BASE_DEFENSE = 90;
-    private static final int BASE_SPECIAL_ATTACK = 60;
-    private static final int BASE_SPECIAL_DEFENSE = 90;
-    private static final int BASE_SPEED = 48;
+    public static final int BASE_HEALTH = 77;
+    public static final int BASE_ATTACK = 120;
+    public static final int BASE_DEFENSE = 90;
+    public static final int BASE_SPECIAL_ATTACK = 60;
+    public static final int BASE_SPECIAL_DEFENSE = 90;
+    public static final int BASE_SPEED = 48;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/druddigon.png";
-    private static final String BACK_PATH = "battle/backs/unova/druddigon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/druddigon.png";
-    private static final String CRY_PATH = "sounds/cry/621.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/druddigon.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/druddigon.png";
+    public static final String BACK_PATH = "battle/backs/unova/druddigon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/druddigon.png";
+    public static final String CRY_PATH = "sounds/cry/621.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/druddigon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DRAGON;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.DRAGON;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a druddigon
      */
     public Druddigon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

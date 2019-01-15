@@ -17,47 +17,51 @@ public class Rhyperior extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 464;
-    private static final String NAME = "Rhyperior";
-    private static final int BASE_EXP = 241;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 282.8;
+    public static final int NUMBER = 464;
+    public static final String NAME = "Rhyperior";
+    public static final String TYPE_OF_POKEMON = "Drill";
+    public static final String DESCRIPTION = "It can launch a rock held in its hand like a " +
+            "missile by tightening then expanding muscles instantly.";
+    public static final double HEIGHT = 2.4;
+    public static final int BASE_EXP = 241;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 282.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.Lightningrod();
-    private static final Ability SECOND_ABILITY = new Ability.SolidRock();
-    private static final Ability HIDDEN_ABILITY = new Ability.Reckless();
+    public static final Ability FIRST_ABILITY = new Ability.Lightningrod();
+    public static final Ability SECOND_ABILITY = new Ability.SolidRock();
+    public static final Ability HIDDEN_ABILITY = new Ability.Reckless();
 
     //Base Stats
-    private static final int BASE_HEALTH = 115;
-    private static final int BASE_ATTACK = 140;
-    private static final int BASE_DEFENSE = 130;
-    private static final int BASE_SPECIAL_ATTACK = 55;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 40;
+    public static final int BASE_HEALTH = 115;
+    public static final int BASE_ATTACK = 140;
+    public static final int BASE_DEFENSE = 130;
+    public static final int BASE_SPECIAL_ATTACK = 55;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 40;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/rhyperior.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/rhyperior.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rhyperior.png";
-    private static final String CRY_PATH = "sounds/cry/464.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rhyperior.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/rhyperior.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/rhyperior.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rhyperior.png";
+    public static final String CRY_PATH = "sounds/cry/464.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rhyperior.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GROUND;
-    private static final Type TYPE_TWO = Type.ROCK;
+    public static final Pokemon.Type TYPE_ONE = Type.GROUND;
+    public static final Type TYPE_TWO = Type.ROCK;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a rhyperior
      */
     public Rhyperior() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

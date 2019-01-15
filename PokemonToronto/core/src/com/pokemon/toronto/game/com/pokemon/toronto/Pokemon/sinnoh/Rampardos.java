@@ -17,47 +17,51 @@ public class Rampardos extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 409;
-    private static final String NAME = "Rampardos";
-    private static final int BASE_EXP = 173;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 102.5;
+    public static final int NUMBER = 409;
+    public static final String NAME = "Rampardos";
+    public static final String TYPE_OF_POKEMON = "Head Butt";
+    public static final String DESCRIPTION = "If two were to smash their heads together, their" +
+            " foot-thick skulls would keep them from fainting.";
+    public static final double HEIGHT = 1.6;
+    public static final int BASE_EXP = 173;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 102.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.MoldBreaker();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
+    public static final Ability FIRST_ABILITY = new Ability.MoldBreaker();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.SheerForce();
 
     //Base Stats
-    private static final int BASE_HEALTH = 97;
-    private static final int BASE_ATTACK = 165;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 65;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 58;
+    public static final int BASE_HEALTH = 97;
+    public static final int BASE_ATTACK = 165;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 65;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 58;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/rampardos.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/rampardos.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rampardos.png";
-    private static final String CRY_PATH = "sounds/cry/409.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rampardos.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/rampardos.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/rampardos.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/rampardos.png";
+    public static final String CRY_PATH = "sounds/cry/409.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/rampardos.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.ERRATIC;
+    public static final ExpType EXP_TYPE = ExpType.ERRATIC;
 
     /**
      * Create a rampardos
      */
     public Rampardos() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

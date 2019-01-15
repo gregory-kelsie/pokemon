@@ -1,5 +1,6 @@
 package com.pokemon.toronto.game.com.pokemon.toronto.area;
 
+import com.badlogic.gdx.Gdx;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.Pokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.Pokemon.RoutePokemon;
 import com.pokemon.toronto.game.com.pokemon.toronto.factory.RoutePokemonFactory;
@@ -321,6 +322,8 @@ public class Route {
             //Check if the rolled number is within the Pokemon's rate.
             if (num <= area.get(i).getRate()) {
                 //Create the Pokemon that was rolled.
+                Gdx.app.log("routewpc", "" + area.get(i).getPokemonId());
+
                 WildPokemonCreator wpc = new WildPokemonCreator();
                 return wpc.createPokemon(area.get(i).getPokemonId(),
                         area.get(i).getLowestLevel(),

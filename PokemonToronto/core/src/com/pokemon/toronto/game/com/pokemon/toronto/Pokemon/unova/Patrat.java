@@ -18,47 +18,51 @@ public class Patrat extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 504;
-    private static final String NAME = "Patrat";
-    private static final int BASE_EXP = 51;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 255;
-    private static final double WEIGHT = 11.6;
+    public static final int NUMBER = 504;
+    public static final String NAME = "Patrat";
+    public static final String TYPE_OF_POKEMON = "Scout";
+    public static final String DESCRIPTION = "Using food stored in cheek pouches, they can keep " +
+            "watch for days. They use their tails to communicate with others.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 51;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 255;
+    public static final double WEIGHT = 11.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.RunAway();
-    private static final Ability SECOND_ABILITY = new Ability.KeenEye();
-    private static final Ability HIDDEN_ABILITY = new Ability.Analytic();
+    public static final Ability FIRST_ABILITY = new Ability.RunAway();
+    public static final Ability SECOND_ABILITY = new Ability.KeenEye();
+    public static final Ability HIDDEN_ABILITY = new Ability.Analytic();
 
     //Base Stats
-    private static final int BASE_HEALTH = 45;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 39;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 39;
-    private static final int BASE_SPEED = 42;
+    public static final int BASE_HEALTH = 45;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 39;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 39;
+    public static final int BASE_SPEED = 42;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/patrat.png";
-    private static final String BACK_PATH = "battle/backs/unova/patrat.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/patrat.png";
-    private static final String CRY_PATH = "sounds/cry/504.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/patrat.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/patrat.png";
+    public static final String BACK_PATH = "battle/backs/unova/patrat.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/patrat.png";
+    public static final String CRY_PATH = "sounds/cry/504.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/patrat.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a patrat
      */
     public Patrat() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

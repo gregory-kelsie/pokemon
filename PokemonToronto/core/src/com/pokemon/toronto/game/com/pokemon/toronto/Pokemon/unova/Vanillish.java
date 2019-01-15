@@ -18,47 +18,51 @@ public class Vanillish extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 583;
-    private static final String NAME = "Vanillish";
-    private static final int BASE_EXP = 138;
-    private static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 41;
+    public static final int NUMBER = 583;
+    public static final String NAME = "Vanillish";
+    public static final String TYPE_OF_POKEMON = "Icy Snow";
+    public static final String DESCRIPTION = "Snowy mountains are this Pokémon's habitat. During" +
+            " an ancient ice age, they moved to southern areas.";
+    public static final double HEIGHT = 1.1;
+    public static final int BASE_EXP = 138;
+    public static final int[] EV_YIELD = {0, 0, 0, 2, 0, 0};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 41;
 
-    private static final Ability FIRST_ABILITY = new Ability.IceBody();
-    private static final Ability SECOND_ABILITY = new Ability.SnowCloak();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.IceBody();
+    public static final Ability SECOND_ABILITY = new Ability.SnowCloak();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 51;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 75;
-    private static final int BASE_SPEED = 59;
+    public static final int BASE_HEALTH = 51;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 75;
+    public static final int BASE_SPEED = 59;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/vanillish.png";
-    private static final String BACK_PATH = "battle/backs/unova/vanillish.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/vanillish.png";
-    private static final String CRY_PATH = "sounds/cry/583.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/vanillish.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/vanillish.png";
+    public static final String BACK_PATH = "battle/backs/unova/vanillish.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/vanillish.png";
+    public static final String CRY_PATH = "sounds/cry/583.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/vanillish.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a vanillish
      */
     public Vanillish() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

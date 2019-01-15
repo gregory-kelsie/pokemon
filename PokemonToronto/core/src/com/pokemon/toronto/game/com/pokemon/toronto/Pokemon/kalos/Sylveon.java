@@ -18,47 +18,51 @@ public class Sylveon extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 700;
-    private static final String NAME = "Sylveon";
-    private static final int BASE_EXP = 184;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 23.5;
+    public static final int NUMBER = 700;
+    public static final String NAME = "Sylveon";
+    public static final String TYPE_OF_POKEMON = "Intertwining";
+    public static final String DESCRIPTION = "It sends a soothing aura from its ribbonlike " +
+            "feelers to calm fights.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 184;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 2, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 23.5;
 
-    private static final Ability FIRST_ABILITY = new Ability.CuteCharm();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Pixilate();
+    public static final Ability FIRST_ABILITY = new Ability.CuteCharm();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Pixilate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 95;
-    private static final int BASE_ATTACK = 65;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 110;
-    private static final int BASE_SPECIAL_DEFENSE = 130;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 95;
+    public static final int BASE_ATTACK = 65;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 110;
+    public static final int BASE_SPECIAL_DEFENSE = 130;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/sylveon.png";
-    private static final String BACK_PATH = "battle/backs/kalos/sylveon.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/sylveon.png";
-    private static final String CRY_PATH = "sounds/cry/700.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/sylveon.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/sylveon.png";
+    public static final String BACK_PATH = "battle/backs/kalos/sylveon.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/sylveon.png";
+    public static final String CRY_PATH = "sounds/cry/700.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/sylveon.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FAIRY;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.FAIRY;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a sylveon
      */
     public Sylveon() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

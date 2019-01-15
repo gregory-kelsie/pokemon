@@ -17,47 +17,51 @@ public class Electivire extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 466;
-    private static final String NAME = "Electivire";
-    private static final int BASE_EXP = 243;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 30;
-    private static final double WEIGHT = 138.6;
+    public static final int NUMBER = 466;
+    public static final String NAME = "Electivire";
+    public static final String TYPE_OF_POKEMON = "Thunderbolt";
+    public static final String DESCRIPTION = "The instant it presses the tips of its tails onto" +
+            " an opponent, it sends over 20,000 volts of electricity into the foe.";
+    public static final double HEIGHT = 1.8;
+    public static final int BASE_EXP = 243;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 30;
+    public static final double WEIGHT = 138.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.MotorDrive();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
+    public static final Ability FIRST_ABILITY = new Ability.MotorDrive();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.VitalSpirit();
 
     //Base Stats
-    private static final int BASE_HEALTH = 75;
-    private static final int BASE_ATTACK = 123;
-    private static final int BASE_DEFENSE = 67;
-    private static final int BASE_SPECIAL_ATTACK = 95;
-    private static final int BASE_SPECIAL_DEFENSE = 85;
-    private static final int BASE_SPEED = 95;
+    public static final int BASE_HEALTH = 75;
+    public static final int BASE_ATTACK = 123;
+    public static final int BASE_DEFENSE = 67;
+    public static final int BASE_SPECIAL_ATTACK = 95;
+    public static final int BASE_SPECIAL_DEFENSE = 85;
+    public static final int BASE_SPEED = 95;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/electivire.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/electivire.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/electivire.png";
-    private static final String CRY_PATH = "sounds/cry/466.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/electivire.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/electivire.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/electivire.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/electivire.png";
+    public static final String CRY_PATH = "sounds/cry/466.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/electivire.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.ELECTRIC;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a electivire
      */
     public Electivire() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

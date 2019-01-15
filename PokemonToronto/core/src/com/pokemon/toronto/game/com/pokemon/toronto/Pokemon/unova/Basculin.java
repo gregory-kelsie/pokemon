@@ -17,47 +17,51 @@ public class Basculin extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 550;
-    private static final String NAME = "Basculin";
-    private static final int BASE_EXP = 161;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 25;
-    private static final double WEIGHT = 18;
+    public static final int NUMBER = 550;
+    public static final String NAME = "Basculin";
+    public static final String TYPE_OF_POKEMON = "Hostile";
+    public static final String DESCRIPTION = "Red and blue Basculin get along so poorly, " +
+            "they'll start fighting instantly. These Pokémon are very hostile.";
+    public static final double HEIGHT = 1;
+    public static final int BASE_EXP = 161;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 25;
+    public static final double WEIGHT = 18;
 
-    private static final Ability FIRST_ABILITY = new Ability.Reckless();
-    private static final Ability SECOND_ABILITY = new Ability.Adaptability();
-    private static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
+    public static final Ability FIRST_ABILITY = new Ability.Reckless();
+    public static final Ability SECOND_ABILITY = new Ability.Adaptability();
+    public static final Ability HIDDEN_ABILITY = new Ability.MoldBreaker();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 92;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 80;
-    private static final int BASE_SPECIAL_DEFENSE = 55;
-    private static final int BASE_SPEED = 98;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 92;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 80;
+    public static final int BASE_SPECIAL_DEFENSE = 55;
+    public static final int BASE_SPEED = 98;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/basculin.png";
-    private static final String BACK_PATH = "battle/backs/unova/basculin.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/basculin.png";
-    private static final String CRY_PATH = "sounds/cry/550.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/basculin.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/basculin.png";
+    public static final String BACK_PATH = "battle/backs/unova/basculin.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/basculin.png";
+    public static final String CRY_PATH = "sounds/cry/550.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/basculin.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a basculin
      */
     public Basculin() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

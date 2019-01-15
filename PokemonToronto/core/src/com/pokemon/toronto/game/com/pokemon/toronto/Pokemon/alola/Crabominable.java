@@ -17,47 +17,51 @@ public class Crabominable extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 740;
-    private static final String NAME = "Crabominable";
-    private static final int BASE_EXP = 167;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 60;
-    private static final double WEIGHT = 180;
+    public static final int NUMBER = 740;
+    public static final String NAME = "Crabominable";
+    public static final String TYPE_OF_POKEMON = "Woolly Crab";
+    public static final String DESCRIPTION = "It just throws punches indiscriminately. In times " +
+            "of desperation, it can lop off its own pincers and fire them like rockets.";
+    public static final double HEIGHT = 1.7;
+    public static final int BASE_EXP = 167;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 60;
+    public static final double WEIGHT = 180;
 
-    private static final Ability FIRST_ABILITY = new Ability.HyperCutter();
-    private static final Ability SECOND_ABILITY = new Ability.IronFist();
-    private static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
+    public static final Ability FIRST_ABILITY = new Ability.HyperCutter();
+    public static final Ability SECOND_ABILITY = new Ability.IronFist();
+    public static final Ability HIDDEN_ABILITY = new Ability.AngerPoint();
 
     //Base Stats
-    private static final int BASE_HEALTH = 97;
-    private static final int BASE_ATTACK = 132;
-    private static final int BASE_DEFENSE = 77;
-    private static final int BASE_SPECIAL_ATTACK = 62;
-    private static final int BASE_SPECIAL_DEFENSE = 67;
-    private static final int BASE_SPEED = 43;
+    public static final int BASE_HEALTH = 97;
+    public static final int BASE_ATTACK = 132;
+    public static final int BASE_DEFENSE = 77;
+    public static final int BASE_SPECIAL_ATTACK = 62;
+    public static final int BASE_SPECIAL_DEFENSE = 67;
+    public static final int BASE_SPEED = 43;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/crabominable.png";
-    private static final String BACK_PATH = "battle/backs/alola/crabominable.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/crabominable.png";
-    private static final String CRY_PATH = "sounds/cry/740.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/crabominable.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/crabominable.png";
+    public static final String BACK_PATH = "battle/backs/alola/crabominable.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/crabominable.png";
+    public static final String CRY_PATH = "sounds/cry/740.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/crabominable.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
-    private static final Type TYPE_TWO = Type.ICE;
+    public static final Pokemon.Type TYPE_ONE = Type.FIGHTING;
+    public static final Type TYPE_TWO = Type.ICE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a crabominable
      */
     public Crabominable() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

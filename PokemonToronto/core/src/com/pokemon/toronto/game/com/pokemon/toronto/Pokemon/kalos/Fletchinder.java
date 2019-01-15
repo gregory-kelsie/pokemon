@@ -18,47 +18,51 @@ public class Fletchinder extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 662;
-    private static final String NAME = "Fletchinder";
-    private static final int BASE_EXP = 134;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
-    private static final int CAPTURE_RATE = 120;
-    private static final double WEIGHT = 16;
+    public static final int NUMBER = 662;
+    public static final String NAME = "Fletchinder";
+    public static final String TYPE_OF_POKEMON = "Ember";
+    public static final String DESCRIPTION = "From its beak, it expels embers that set the tall " +
+            "grass on fire. Then it pounces on the bewildered prey that pop out of the grass.";
+    public static final double HEIGHT = 0.7;
+    public static final int BASE_EXP = 134;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 2};
+    public static final int CAPTURE_RATE = 120;
+    public static final double WEIGHT = 16;
 
-    private static final Ability FIRST_ABILITY = new Ability.FlameBody();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.GaleWings();
+    public static final Ability FIRST_ABILITY = new Ability.FlameBody();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.GaleWings();
 
     //Base Stats
-    private static final int BASE_HEALTH = 62;
-    private static final int BASE_ATTACK = 73;
-    private static final int BASE_DEFENSE = 55;
-    private static final int BASE_SPECIAL_ATTACK = 56;
-    private static final int BASE_SPECIAL_DEFENSE = 52;
-    private static final int BASE_SPEED = 84;
+    public static final int BASE_HEALTH = 62;
+    public static final int BASE_ATTACK = 73;
+    public static final int BASE_DEFENSE = 55;
+    public static final int BASE_SPECIAL_ATTACK = 56;
+    public static final int BASE_SPECIAL_DEFENSE = 52;
+    public static final int BASE_SPEED = 84;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/fletchinder.png";
-    private static final String BACK_PATH = "battle/backs/kalos/fletchinder.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/fletchinder.png";
-    private static final String CRY_PATH = "sounds/cry/662.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/fletchinder.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/fletchinder.png";
+    public static final String BACK_PATH = "battle/backs/kalos/fletchinder.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/fletchinder.png";
+    public static final String CRY_PATH = "sounds/cry/662.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/fletchinder.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.FIRE;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.FIRE;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a fletchinder
      */
     public Fletchinder() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

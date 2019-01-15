@@ -18,47 +18,51 @@ public class Tyrunt extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 696;
-    private static final String NAME = "Tyrunt";
-    private static final int BASE_EXP = 72;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 26;
+    public static final int NUMBER = 696;
+    public static final String NAME = "Tyrunt";
+    public static final String TYPE_OF_POKEMON = "Royal Heir";
+    public static final String DESCRIPTION = "Its immense jaws have enough destructive force " +
+            "that it can chew up an automobile. It lived 100 million years ago.";
+    public static final double HEIGHT = 0.8;
+    public static final int BASE_EXP = 72;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 26;
 
-    private static final Ability FIRST_ABILITY = new Ability.StrongJaw();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.Sturdy();
+    public static final Ability FIRST_ABILITY = new Ability.StrongJaw();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.Sturdy();
 
     //Base Stats
-    private static final int BASE_HEALTH = 58;
-    private static final int BASE_ATTACK = 89;
-    private static final int BASE_DEFENSE = 77;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 48;
+    public static final int BASE_HEALTH = 58;
+    public static final int BASE_ATTACK = 89;
+    public static final int BASE_DEFENSE = 77;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 48;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/tyrunt.png";
-    private static final String BACK_PATH = "battle/backs/kalos/tyrunt.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/tyrunt.png";
-    private static final String CRY_PATH = "sounds/cry/696.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/tyrunt.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/tyrunt.png";
+    public static final String BACK_PATH = "battle/backs/kalos/tyrunt.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/tyrunt.png";
+    public static final String CRY_PATH = "sounds/cry/696.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/tyrunt.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a tyrunt
      */
     public Tyrunt() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

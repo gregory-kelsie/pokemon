@@ -18,47 +18,51 @@ public class Cottonee extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 546;
-    private static final String NAME = "Cottonee";
-    private static final int BASE_EXP = 56;
-    private static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 0.6;
+    public static final int NUMBER = 546;
+    public static final String NAME = "Cottonee";
+    public static final String TYPE_OF_POKEMON = "Cotton Puff";
+    public static final String DESCRIPTION = "Perhaps because they feel more at ease in a group," +
+            " they stick to others they find. They end up looking like a cloud.";
+    public static final double HEIGHT = 0.3;
+    public static final int BASE_EXP = 56;
+    public static final int[] EV_YIELD = {0, 0, 0, 0, 0, 1};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 0.6;
 
-    private static final Ability FIRST_ABILITY = new Ability.Prankster();
-    private static final Ability SECOND_ABILITY = new Ability.Infiltrator();
-    private static final Ability HIDDEN_ABILITY = new Ability.Chlorophyll();
+    public static final Ability FIRST_ABILITY = new Ability.Prankster();
+    public static final Ability SECOND_ABILITY = new Ability.Infiltrator();
+    public static final Ability HIDDEN_ABILITY = new Ability.Chlorophyll();
 
     //Base Stats
-    private static final int BASE_HEALTH = 40;
-    private static final int BASE_ATTACK = 27;
-    private static final int BASE_DEFENSE = 60;
-    private static final int BASE_SPECIAL_ATTACK = 37;
-    private static final int BASE_SPECIAL_DEFENSE = 50;
-    private static final int BASE_SPEED = 66;
+    public static final int BASE_HEALTH = 40;
+    public static final int BASE_ATTACK = 27;
+    public static final int BASE_DEFENSE = 60;
+    public static final int BASE_SPECIAL_ATTACK = 37;
+    public static final int BASE_SPECIAL_DEFENSE = 50;
+    public static final int BASE_SPEED = 66;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/cottonee.png";
-    private static final String BACK_PATH = "battle/backs/unova/cottonee.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/cottonee.png";
-    private static final String CRY_PATH = "sounds/cry/546.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/cottonee.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/cottonee.png";
+    public static final String BACK_PATH = "battle/backs/unova/cottonee.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/cottonee.png";
+    public static final String CRY_PATH = "sounds/cry/546.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/cottonee.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.GRASS;
-    private static final Type TYPE_TWO = Type.FAIRY;
+    public static final Pokemon.Type TYPE_ONE = Type.GRASS;
+    public static final Type TYPE_TWO = Type.FAIRY;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a cottonee
      */
     public Cottonee() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

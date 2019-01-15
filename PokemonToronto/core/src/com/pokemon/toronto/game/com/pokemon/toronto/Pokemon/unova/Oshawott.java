@@ -17,47 +17,51 @@ public class Oshawott extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 501;
-    private static final String NAME = "Oshawott";
-    private static final int BASE_EXP = 62;
-    private static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 5.9;
+    public static final int NUMBER = 501;
+    public static final String NAME = "Oshawott";
+    public static final String TYPE_OF_POKEMON = "Sea Otter";
+    public static final String DESCRIPTION = "It fights using the scalchop on its stomach. In " +
+            "response to an attack, it retaliates immediately by slashing.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 62;
+    public static final int[] EV_YIELD = {0, 0, 0, 1, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 5.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.Torrent();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
+    public static final Ability FIRST_ABILITY = new Ability.Torrent();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.ShellArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 55;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 45;
-    private static final int BASE_SPECIAL_ATTACK = 63;
-    private static final int BASE_SPECIAL_DEFENSE = 45;
-    private static final int BASE_SPEED = 45;
+    public static final int BASE_HEALTH = 55;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 45;
+    public static final int BASE_SPECIAL_ATTACK = 63;
+    public static final int BASE_SPECIAL_DEFENSE = 45;
+    public static final int BASE_SPEED = 45;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/oshawott.png";
-    private static final String BACK_PATH = "battle/backs/unova/oshawott.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/oshawott.png";
-    private static final String CRY_PATH = "sounds/cry/501.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/oshawott.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/oshawott.png";
+    public static final String BACK_PATH = "battle/backs/unova/oshawott.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/oshawott.png";
+    public static final String CRY_PATH = "sounds/cry/501.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/oshawott.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.WATER;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.WATER;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_SLOW;
 
     /**
      * Create a oshawott
      */
     public Oshawott() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

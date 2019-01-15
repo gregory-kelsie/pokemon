@@ -17,47 +17,51 @@ public class Mamoswine extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 473;
-    private static final String NAME = "Mamoswine";
-    private static final int BASE_EXP = 239;
-    private static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 50;
-    private static final double WEIGHT = 291;
+    public static final int NUMBER = 473;
+    public static final String NAME = "Mamoswine";
+    public static final String TYPE_OF_POKEMON = "Twin Tusk";
+    public static final String DESCRIPTION = "When the temperature rose at the end of the ice " +
+            "age, most Mamoswine disappeared.";
+    public static final double HEIGHT = 2.5;
+    public static final int BASE_EXP = 239;
+    public static final int[] EV_YIELD = {0, 3, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 50;
+    public static final double WEIGHT = 291;
 
-    private static final Ability FIRST_ABILITY = new Ability.Oblivious();
-    private static final Ability SECOND_ABILITY = new Ability.SnowCloak();
-    private static final Ability HIDDEN_ABILITY = new Ability.ThickFat();
+    public static final Ability FIRST_ABILITY = new Ability.Oblivious();
+    public static final Ability SECOND_ABILITY = new Ability.SnowCloak();
+    public static final Ability HIDDEN_ABILITY = new Ability.ThickFat();
 
     //Base Stats
-    private static final int BASE_HEALTH = 110;
-    private static final int BASE_ATTACK = 130;
-    private static final int BASE_DEFENSE = 80;
-    private static final int BASE_SPECIAL_ATTACK = 70;
-    private static final int BASE_SPECIAL_DEFENSE = 60;
-    private static final int BASE_SPEED = 80;
+    public static final int BASE_HEALTH = 110;
+    public static final int BASE_ATTACK = 130;
+    public static final int BASE_DEFENSE = 80;
+    public static final int BASE_SPECIAL_ATTACK = 70;
+    public static final int BASE_SPECIAL_DEFENSE = 60;
+    public static final int BASE_SPEED = 80;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/sinnoh/mamoswine.png";
-    private static final String BACK_PATH = "battle/backs/sinnoh/mamoswine.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/mamoswine.png";
-    private static final String CRY_PATH = "sounds/cry/473.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/mamoswine.png";
+    public static final String ICON_PATH = "pokemonSprites/sinnoh/mamoswine.png";
+    public static final String BACK_PATH = "battle/backs/sinnoh/mamoswine.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/sinnoh/mamoswine.png";
+    public static final String CRY_PATH = "sounds/cry/473.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/sinnoh/mamoswine.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ICE;
-    private static final Type TYPE_TWO = Type.GROUND;
+    public static final Pokemon.Type TYPE_ONE = Type.ICE;
+    public static final Type TYPE_TWO = Type.GROUND;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a mamoswine
      */
     public Mamoswine() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

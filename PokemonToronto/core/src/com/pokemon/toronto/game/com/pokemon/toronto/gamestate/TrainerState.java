@@ -212,7 +212,7 @@ public class TrainerState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         panel.dispose();
         pokeball.dispose();

@@ -18,47 +18,51 @@ public class Vullaby extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 629;
-    private static final String NAME = "Vullaby";
-    private static final int BASE_EXP = 74;
-    private static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
-    private static final int CAPTURE_RATE = 190;
-    private static final double WEIGHT = 9;
+    public static final int NUMBER = 629;
+    public static final String NAME = "Vullaby";
+    public static final String TYPE_OF_POKEMON = "Diapered";
+    public static final String DESCRIPTION = "Its wings are too tiny to allow it to fly. As the" +
+            " time approaches for it to evolve, it discards the bones it was wearing.";
+    public static final double HEIGHT = 0.5;
+    public static final int BASE_EXP = 74;
+    public static final int[] EV_YIELD = {0, 0, 1, 0, 0, 0};
+    public static final int CAPTURE_RATE = 190;
+    public static final double WEIGHT = 9;
 
-    private static final Ability FIRST_ABILITY = new Ability.BigPecks();
-    private static final Ability SECOND_ABILITY = new Ability.Overcoat();
-    private static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
+    public static final Ability FIRST_ABILITY = new Ability.BigPecks();
+    public static final Ability SECOND_ABILITY = new Ability.Overcoat();
+    public static final Ability HIDDEN_ABILITY = new Ability.WeakArmor();
 
     //Base Stats
-    private static final int BASE_HEALTH = 70;
-    private static final int BASE_ATTACK = 55;
-    private static final int BASE_DEFENSE = 75;
-    private static final int BASE_SPECIAL_ATTACK = 45;
-    private static final int BASE_SPECIAL_DEFENSE = 65;
-    private static final int BASE_SPEED = 60;
+    public static final int BASE_HEALTH = 70;
+    public static final int BASE_ATTACK = 55;
+    public static final int BASE_DEFENSE = 75;
+    public static final int BASE_SPECIAL_ATTACK = 45;
+    public static final int BASE_SPECIAL_DEFENSE = 65;
+    public static final int BASE_SPEED = 60;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/vullaby.png";
-    private static final String BACK_PATH = "battle/backs/unova/vullaby.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/vullaby.png";
-    private static final String CRY_PATH = "sounds/cry/629.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/vullaby.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/vullaby.png";
+    public static final String BACK_PATH = "battle/backs/unova/vullaby.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/vullaby.png";
+    public static final String CRY_PATH = "sounds/cry/629.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/vullaby.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FLYING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FLYING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a vullaby
      */
     public Vullaby() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

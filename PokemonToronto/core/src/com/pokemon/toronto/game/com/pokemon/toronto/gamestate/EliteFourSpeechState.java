@@ -120,7 +120,7 @@ public class EliteFourSpeechState extends GameState {
     }
 
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         trainerRender.dispose();
         textBox.dispose();

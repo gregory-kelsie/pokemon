@@ -18,47 +18,51 @@ public class Scraggy extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 559;
-    private static final String NAME = "Scraggy";
-    private static final int BASE_EXP = 70;
-    private static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 180;
-    private static final double WEIGHT = 11.8;
+    public static final int NUMBER = 559;
+    public static final String NAME = "Scraggy";
+    public static final String TYPE_OF_POKEMON = "Shedding";
+    public static final String DESCRIPTION = "Its skin has a rubbery elasticity, so it can " +
+            "reduce damage by defensively pulling its skin up to its neck.";
+    public static final double HEIGHT = 0.6;
+    public static final int BASE_EXP = 70;
+    public static final int[] EV_YIELD = {0, 1, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 180;
+    public static final double WEIGHT = 11.8;
 
-    private static final Ability FIRST_ABILITY = new Ability.ShedSkin();
-    private static final Ability SECOND_ABILITY = new Ability.Moxie();
-    private static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
+    public static final Ability FIRST_ABILITY = new Ability.ShedSkin();
+    public static final Ability SECOND_ABILITY = new Ability.Moxie();
+    public static final Ability HIDDEN_ABILITY = new Ability.Intimidate();
 
     //Base Stats
-    private static final int BASE_HEALTH = 50;
-    private static final int BASE_ATTACK = 75;
-    private static final int BASE_DEFENSE = 70;
-    private static final int BASE_SPECIAL_ATTACK = 35;
-    private static final int BASE_SPECIAL_DEFENSE = 70;
-    private static final int BASE_SPEED = 48;
+    public static final int BASE_HEALTH = 50;
+    public static final int BASE_ATTACK = 75;
+    public static final int BASE_DEFENSE = 70;
+    public static final int BASE_SPECIAL_ATTACK = 35;
+    public static final int BASE_SPECIAL_DEFENSE = 70;
+    public static final int BASE_SPEED = 48;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/unova/scraggy.png";
-    private static final String BACK_PATH = "battle/backs/unova/scraggy.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/unova/scraggy.png";
-    private static final String CRY_PATH = "sounds/cry/559.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/unova/scraggy.png";
+    public static final String ICON_PATH = "pokemonSprites/unova/scraggy.png";
+    public static final String BACK_PATH = "battle/backs/unova/scraggy.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/unova/scraggy.png";
+    public static final String CRY_PATH = "sounds/cry/559.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/unova/scraggy.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.DARK;
-    private static final Type TYPE_TWO = Type.FIGHTING;
+    public static final Pokemon.Type TYPE_ONE = Type.DARK;
+    public static final Type TYPE_TWO = Type.FIGHTING;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a scraggy
      */
     public Scraggy() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

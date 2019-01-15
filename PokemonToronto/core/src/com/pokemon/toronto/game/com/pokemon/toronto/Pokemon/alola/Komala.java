@@ -18,47 +18,51 @@ public class Komala extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 775;
-    private static final String NAME = "Komala";
-    private static final int BASE_EXP = 168;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 19.9;
+    public static final int NUMBER = 775;
+    public static final String NAME = "Komala";
+    public static final String TYPE_OF_POKEMON = "Drowsing";
+    public static final String DESCRIPTION = "The log it holds was given to it by its parents at" +
+            " birth. It has also been known to cling to the arm of a friendly Trainer.";
+    public static final double HEIGHT = 0.4;
+    public static final int BASE_EXP = 168;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 19.9;
 
-    private static final Ability FIRST_ABILITY = new Ability.Comatose();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = null;
+    public static final Ability FIRST_ABILITY = new Ability.Comatose();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = null;
 
     //Base Stats
-    private static final int BASE_HEALTH = 65;
-    private static final int BASE_ATTACK = 115;
-    private static final int BASE_DEFENSE = 65;
-    private static final int BASE_SPECIAL_ATTACK = 75;
-    private static final int BASE_SPECIAL_DEFENSE = 95;
-    private static final int BASE_SPEED = 65;
+    public static final int BASE_HEALTH = 65;
+    public static final int BASE_ATTACK = 115;
+    public static final int BASE_DEFENSE = 65;
+    public static final int BASE_SPECIAL_ATTACK = 75;
+    public static final int BASE_SPECIAL_DEFENSE = 95;
+    public static final int BASE_SPEED = 65;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/alola/komala.png";
-    private static final String BACK_PATH = "battle/backs/alola/komala.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/alola/komala.png";
-    private static final String CRY_PATH = "sounds/cry/775.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/alola/komala.png";
+    public static final String ICON_PATH = "pokemonSprites/alola/komala.png";
+    public static final String BACK_PATH = "battle/backs/alola/komala.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/alola/komala.png";
+    public static final String CRY_PATH = "sounds/cry/775.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/alola/komala.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.NORMAL;
-    private static final Type TYPE_TWO = Type.NONE;
+    public static final Pokemon.Type TYPE_ONE = Type.NORMAL;
+    public static final Type TYPE_TWO = Type.NONE;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.SLOW;
+    public static final ExpType EXP_TYPE = ExpType.SLOW;
 
     /**
      * Create a komala
      */
     public Komala() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 

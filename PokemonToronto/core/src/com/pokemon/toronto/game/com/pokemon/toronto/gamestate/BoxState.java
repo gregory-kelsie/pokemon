@@ -834,7 +834,7 @@ public class BoxState extends GameState {
         return LEFT_BOX_OFFSET + (getBoxPokemonTotalWidth() * BOX_COLUMNS);
     }
     @Override
-    protected void dispose() {
+    public void dispose() {
         background.dispose();
         statusBackground.dispose();
         popUp.dispose();

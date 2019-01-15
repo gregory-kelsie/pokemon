@@ -17,47 +17,51 @@ public class Tyrantrum extends Pokemon {
     /** Init Variables */
 
     //Basic (id, name, exp, ev yield, capture rate)
-    private static final int NUMBER = 697;
-    private static final String NAME = "Tyrantrum";
-    private static final int BASE_EXP = 182;
-    private static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
-    private static final int CAPTURE_RATE = 45;
-    private static final double WEIGHT = 270;
+    public static final int NUMBER = 697;
+    public static final String NAME = "Tyrantrum";
+    public static final String TYPE_OF_POKEMON = "Despot";
+    public static final String DESCRIPTION = "Nothing could stop this Pokémon 100 million years" +
+            " ago, so it behaved like a king.";
+    public static final double HEIGHT = 2.5;
+    public static final int BASE_EXP = 182;
+    public static final int[] EV_YIELD = {0, 2, 0, 0, 0, 0};
+    public static final int CAPTURE_RATE = 45;
+    public static final double WEIGHT = 270;
 
-    private static final Ability FIRST_ABILITY = new Ability.StrongJaw();
-    private static final Ability SECOND_ABILITY = null;
-    private static final Ability HIDDEN_ABILITY = new Ability.RockHead();
+    public static final Ability FIRST_ABILITY = new Ability.StrongJaw();
+    public static final Ability SECOND_ABILITY = null;
+    public static final Ability HIDDEN_ABILITY = new Ability.RockHead();
 
     //Base Stats
-    private static final int BASE_HEALTH = 82;
-    private static final int BASE_ATTACK = 121;
-    private static final int BASE_DEFENSE = 119;
-    private static final int BASE_SPECIAL_ATTACK = 69;
-    private static final int BASE_SPECIAL_DEFENSE = 59;
-    private static final int BASE_SPEED = 71;
+    public static final int BASE_HEALTH = 82;
+    public static final int BASE_ATTACK = 121;
+    public static final int BASE_DEFENSE = 119;
+    public static final int BASE_SPECIAL_ATTACK = 69;
+    public static final int BASE_SPECIAL_DEFENSE = 59;
+    public static final int BASE_SPEED = 71;
 
     //Image Paths
-    private static final String ICON_PATH = "pokemonSprites/kalos/tyrantrum.png";
-    private static final String BACK_PATH = "battle/backs/kalos/tyrantrum.png";
-    private static final String MINI_PATH = "pokemonMenu/sprites/kalos/tyrantrum.png";
-    private static final String CRY_PATH = "sounds/cry/697.wav";
-    private static final String PROFILE_PATH = "trainercard/pokemon/kalos/tyrantrum.png";
+    public static final String ICON_PATH = "pokemonSprites/kalos/tyrantrum.png";
+    public static final String BACK_PATH = "battle/backs/kalos/tyrantrum.png";
+    public static final String MINI_PATH = "pokemonMenu/sprites/kalos/tyrantrum.png";
+    public static final String CRY_PATH = "sounds/cry/697.wav";
+    public static final String PROFILE_PATH = "trainercard/pokemon/kalos/tyrantrum.png";
 
     //Typing
-    private static final Pokemon.Type TYPE_ONE = Type.ROCK;
-    private static final Type TYPE_TWO = Type.DRAGON;
+    public static final Pokemon.Type TYPE_ONE = Type.ROCK;
+    public static final Type TYPE_TWO = Type.DRAGON;
 
     //Exp
-    private static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
+    public static final ExpType EXP_TYPE = ExpType.MEDIUM_FAST;
 
     /**
      * Create a tyrantrum
      */
     public Tyrantrum() {
-        super(NUMBER, NAME, TYPE_ONE, TYPE_TWO, EXP_TYPE,
+        super(NUMBER, NAME, TYPE_OF_POKEMON, DESCRIPTION, TYPE_ONE, TYPE_TWO, EXP_TYPE,
                 BASE_EXP, EV_YIELD, new int[]{BASE_HEALTH, BASE_ATTACK, BASE_DEFENSE,
                         BASE_SPECIAL_ATTACK, BASE_SPECIAL_DEFENSE, BASE_SPEED}, ICON_PATH,
-                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, FIRST_ABILITY,
+                BACK_PATH, MINI_PATH, CRY_PATH, PROFILE_PATH, CAPTURE_RATE, WEIGHT, HEIGHT, FIRST_ABILITY,
                 SECOND_ABILITY, HIDDEN_ABILITY);
     }
 
