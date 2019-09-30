@@ -107,7 +107,7 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * we just add a marker near the player's longitude and latitude position.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -119,8 +119,8 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
         mMap.clear();
 
         //Create a marker for the player's position
-        LatLng sydney = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
+        LatLng playerPos = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(playerPos).title("Lat: " + latitude + ", Lon: " + longitude)
                 .icon(BitmapDescriptorFactory.fromBitmap(
                         resizeBitmap("maletrainer.png", 78, 100))));
 
@@ -131,7 +131,7 @@ public class PokemonMapActivity extends FragmentActivity implements OnMapReadyCa
                         resizeBitmap(pokemonIcon, 200, 200))));
 
         //Move the camera to the player's position and zoom in.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(playerPos, 14.0f));
     }
 
     /**

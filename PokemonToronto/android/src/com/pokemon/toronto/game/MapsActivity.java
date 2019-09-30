@@ -54,7 +54,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private List<Bitmap> icons;
     private List<Bitmap> icons2;
 
-
     /**
      * Create a Google Map Activity.
      * @param savedInstanceState
@@ -63,6 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         markers = new ArrayList<Marker>();
+        //References to used bitmaps to dispose of them later.
         icons = new ArrayList<Bitmap>();
         icons2 = new ArrayList<Bitmap>();
         initReceivedData();
@@ -72,7 +72,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
     }
 
     /**
@@ -147,25 +146,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         finish();
     }
 
+    /**
+     * Go back to the game screen and start a battle with the selected pokemon.
+     * @param marker The clicked marker.
+     * @return
+     */
     @Override
     public boolean onMarkerClick(Marker marker) {
-
         marker.showInfoWindow();
         Intent i = new Intent();
         i.putExtra("pokemonIndex", Integer.parseInt(marker.getTitle()));
         setResult(RESULT_OK, i);
         onBackPressed();
-        Log.i("maerker", marker.getTitle());
-        //finish();
-
-       return true;
+        return true;
     }
 
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * we just add a marker near the Player's position.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -193,10 +193,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         //Create a marker for the player's position
-        LatLng sydney = new LatLng(latitude, longitude);
+        LatLng playerPos = new LatLng(latitude, longitude);
         temp = resizeBitmap("maletrainer.png", 78, 100);
 
-        markers.add(mMap.addMarker(new MarkerOptions().position(sydney).title("Lat: " + latitude + ", Lon: " + longitude)
+        markers.add(mMap.addMarker(new MarkerOptions().position(playerPos).title("Lat: " + latitude + ", Lon: " + longitude)
                 .icon(BitmapDescriptorFactory.fromBitmap(
                 temp))));
 
@@ -225,7 +225,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         //Move the camera to the player's position and zoom in.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(playerPos, 16.0f));
     }
 
     /**
