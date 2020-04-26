@@ -515,7 +515,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				return;
 			}
 
-			Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+			/**Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
 
 			placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
 				@Override
@@ -549,7 +549,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					}
 					likelyPlaces.release();
 				}
-			});
+			}); **/
 			country = address.get(0).getCountryName();
 			stateName = address.get(0).getAdminArea();
 			cityName = address.get(0).getLocality();
@@ -619,6 +619,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 
 			try {
 				List<Address> address = gc.getFromLocation(latitude, longitude, 3);
+
 				Log.i("Geocoder", "Addresses: " + address.size());
 
 
@@ -636,6 +637,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 						Log.i("Geocoder", "SubthoroughFare: " + address.get(i).getSubThoroughfare());
 						Log.i("Geocoder", "ThoroughFare: " + address.get(i).getThoroughfare());
 						Log.i("Geocoder", "Address: " + address.get(i).getAddressLine(1));
+						Log.i("Geocoder", "Type: " + address.get(i).getExtras());
 					}
 				}
 
@@ -646,7 +648,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 					return;
 				}
 
-				Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+				/** Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
 
 				placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
 					@Override
@@ -677,7 +679,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				country = address.get(0).getCountryName();
 				stateName = address.get(0).getAdminArea();
 				cityName = address.get(0).getLocality();
-				Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
+				Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName); */
 
 			} catch (Exception e) {
 				Log.i("WildRec Trycatch ", e.getMessage());
@@ -773,7 +775,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				cityName = address.get(0).getLocality();
 				Log.i("Geocoder", "Country: " + country + " State: " + stateName + " City: " + cityName);
 				try {
-					Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+					/** Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
 					placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
 						@Override
 						public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
@@ -794,7 +796,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 							pToronto.createPlace(name, ln.latitude, ln.longitude, types);
 							likelyPlaces.release();
 						}
-					});
+					}); */
 				} catch (SecurityException e) {
 					Log.i("SecurityException", e.getMessage());
 				}
@@ -836,8 +838,9 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 			ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
 			return;
 		}
-
-		Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
+		List<PokemonPlace> pokemonPlaces = new ArrayList<PokemonPlace>();
+		pToronto.spawnTrainer(pokemonPlaces);
+		/**Task<PlaceLikelihoodBufferResponse> placeResult = pdc.getCurrentPlace(null);
 
 		//Get nearby places
 		placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
@@ -867,7 +870,7 @@ public class AndroidLauncher extends AndroidApplication implements pokemonToront
 				pToronto.spawnTrainer(pokemonPlaces);
 				likelyPlaces.release();
 			}
-		});
+		});*/
 	}
 
 	/**

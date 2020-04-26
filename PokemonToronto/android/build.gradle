@@ -1,6 +1,6 @@
 android {
     buildToolsVersion '25.0.0'
-    compileSdkVersion 23
+    compileSdkVersion 26
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -12,7 +12,7 @@ android {
             jniLibs.srcDirs = ['libs']
         }
 
-        instrumentTest.setRoot('tests')
+        androidTest.setRoot('tests')
     }
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "com.pokemon.toronto.game"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 26
     }
 }
 
@@ -130,5 +130,6 @@ idea {
         compile 'com.google.firebase:firebase-core:11.2.0'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.google.android.gms:play-services-location:11.2.0'
+
 
 }

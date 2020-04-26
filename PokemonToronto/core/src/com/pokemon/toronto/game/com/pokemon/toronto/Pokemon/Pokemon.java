@@ -4090,10 +4090,7 @@ public abstract class Pokemon {
      * @return Second Skill, null if no second skill.
      */
     public Skill getSecondSkill() {
-        if (skills.size() > 1) {
-            return skills.get(1);
-        }
-        return null;
+        return skills.size() > 1 ? skills.get(1) : null;
     }
 
     /**
@@ -4101,10 +4098,7 @@ public abstract class Pokemon {
      * @return Third Skill, null if no third skill.
      */
     public Skill getThirdSkill() {
-        if (skills.size() > 2) {
-            return skills.get(2);
-        }
-        return null;
+        return skills.size() > 2 ? skills.get(2) : null;
     }
 
     /**
@@ -4112,10 +4106,7 @@ public abstract class Pokemon {
      * @return Fourth Skill, null if no fourth skill.
      */
     public Skill getFourthSkill() {
-        if (skills.size() > 3) {
-            return skills.get(3);
-        }
-        return null;
+        return skills.size() > 3 ? skills.get(3) : null;
     }
 
     /**
@@ -4303,10 +4294,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon has full health.
      */
     public boolean hasFullHealth() {
-        if (currentHealth == getHealthStat()) {
-            return true;
-        }
-        return false;
+        return currentHealth == getHealthStat() ? true : false;
     }
 
     /**
@@ -4320,10 +4308,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon is paralyzed.
      */
     public boolean isParalyzed() {
-        if (status == Status.PARALYSIS) {
-            return true;
-        }
-        return false;
+        return status == Status.PARALYSIS ? true : false;
     }
 
     /**
@@ -4331,10 +4316,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon is burned.
      */
     public boolean isBurned() {
-        if (status == Status.BURN) {
-            return true;
-        }
-        return false;
+        return status == Status.BURN ? true : false;
     }
 
     /**
@@ -4342,10 +4324,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon is sleeping.
      */
     public boolean isSleeping() {
-        if (status == Status.SLEEP) {
-            return true;
-        }
-        return false;
+        return status == Status.SLEEP ? true : false;
     }
 
     /**
@@ -4353,10 +4332,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon is poisoned.
      */
     public boolean isPoisoned() {
-        if (status == Status.POISON) {
-            return true;
-        }
-        return false;
+        return status == Status.POISON ? true : false;
     }
 
     /**
@@ -4364,10 +4340,7 @@ public abstract class Pokemon {
      * @return Whether or not the Pokemon is frozen.
      */
     public boolean isFrozen() {
-        if (status == Status.FROZEN) {
-            return true;
-        }
-        return false;
+        return status == Status.FROZEN ? true : false;
     }
 
     /**
@@ -4377,11 +4350,7 @@ public abstract class Pokemon {
      * status condition.
      */
     public boolean isStatused() {
-        if (status != Status.STATUS_FREE) {
-            return true;
-        } else {
-            return false;
-        }
+        return status != Status.STATUS_FREE ? true : false;
     }
 
     public boolean isPoisonable() {
@@ -4540,10 +4509,7 @@ public abstract class Pokemon {
      * current health.
      */
     public boolean matchingAnimationHealth() {
-        if (animationHealth == currentHealth) {
-            return true;
-        }
-        return false;
+        return animationHealth == currentHealth ? true : false;
     }
 
     /**
